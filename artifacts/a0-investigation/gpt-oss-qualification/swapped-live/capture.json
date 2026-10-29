@@ -1,0 +1,9 @@
+{
+  "captured_at": "2026-10-29T20:23:37.313438+00:00",
+  "original_workspace": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T201547Z",
+  "source_before": "a900515d20cb83d6a490e8f35c6389e284388e8ef4607d9e56c9c67b38252bd3",
+  "source_after": "a900515d20cb83d6a490e8f35c6389e284388e8ef4607d9e56c9c67b38252bd3",
+  "commit": "d8212a91b4fb47608fe4d2e7d468a7bdf8d4696d",
+  "server_configuration_receipt": "../swapped-server-launch.json",
+  "scope": "Generated development layout variation; source finish validation and truthful media metadata also differ from prior original run, so not a frozen-source paired acceptance test."
+}

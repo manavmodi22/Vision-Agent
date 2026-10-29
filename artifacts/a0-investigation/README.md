@@ -164,3 +164,11 @@ so malformed completion can receive bounded feedback. It does not substitute
 IDs or remove the store's authority check. The generated-case harness supports
 original/swapped layouts and now preserves truthful synthetic provenance with
 fixture-only adapters disabled; historical metadata remains unchanged.
+
+The [swapped-layout trial](gpt-oss-qualification/swapped-live/report.json) failed:
+six real probes, no workflow, and a probe-budget stop after 435.70 seconds. The
+agent located the correct side but truncated the code to `2Z-481` with overly
+narrow horizontal crops. [CI `d8212a9`](ci-d821.json) passed 1,405 Python tests,
+two optional skips, Ruff, strict mypy on 203 files and 322 native checks. Those
+software results do not qualify the planner. The review-handoff and duplicate
+probe audits are proposals, not implemented behavior in this checkpoint.

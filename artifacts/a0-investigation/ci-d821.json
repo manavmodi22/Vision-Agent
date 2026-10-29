@@ -1,0 +1,22 @@
+{
+  "captured_at": "2026-10-29T20:25:18.755254+00:00",
+  "commit": "d8212a91b4fb47608fe4d2e7d468a7bdf8d4696d",
+  "run_id": 40947536537,
+  "url": "https://github.com/manavmodi22/Vision-Agent/actions/runs/40947536537",
+  "conclusion": "success",
+  "python": {
+    "passed": 1405,
+    "skipped": 2,
+    "elapsed_s": 433.81
+  },
+  "ruff": "passed",
+  "mypy": {
+    "passed": true,
+    "source_files": 203
+  },
+  "native": {
+    "passed": true,
+    "checks": 322
+  },
+  "scope": "Software contracts including pre-dispatch finish grounding. Not a model or autonomous app qualification."
+}

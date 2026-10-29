@@ -223,8 +223,16 @@ and required preview citation before dispatch. It uses only current host state,
 known revisions and actually exposed observation IDs. Invalid output enters the
 existing budgeted feedback loop without silently correcting IDs; the durable
 host validation is unchanged. Focused checks cover the captured failure and a
-corrected reply under both transports. A separate swapped-layout development
-run is in progress on this repair. The harness now labels generated media
+corrected reply under both transports. The [swapped-layout development run](../artifacts/a0-investigation/gpt-oss-qualification/swapped-live/report.json)
+ended inconclusive after exhausting six probes in 435.70 seconds, with no graph
+or preview. It found the code on the new side, but cut its horizontal bounds too
+tightly and read `2Z-481` twice. This is a failed generalization trial, not evidence
+that the citation repair completed a live task. Source remained unchanged during
+that run, but the finish validator and media metadata differ from the earlier
+original-layout run, so the two are not a frozen-source acceptance pair.
+[CI for `d8212a9`](https://github.com/manavmodi22/Vision-Agent/actions/runs/40947536537)
+passed 1,405 Python tests with two optional skips, Ruff, strict mypy on 203 files,
+and 322 native checks. The default local server was restored after the trial. The harness now labels generated media
 truthfully as synthetic while keeping fixture-only adapters disabled.
 
 Subsequent live investigation found two context defects: repeated metadata could
