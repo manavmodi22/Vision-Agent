@@ -29,6 +29,8 @@ class DecisionGrounding:
     observation_ids: tuple[str, ...]
     citable_ids: tuple[str, ...]
     workflow_revision_ids: tuple[str, ...]
+    selected_workflow_revision: str | None
+    preview_observation_id: str | None
 
     @classmethod
     def from_context(cls, context: dict[str, JsonValue], revision: int) -> DecisionGrounding:
@@ -47,8 +49,18 @@ class DecisionGrounding:
                 if isinstance(identifier, str) and _RECORD_ID.fullmatch(identifier):
                     identifiers.add(identifier)
         workflow_revisions = _ids(context.get("known_workflow_revision_ids"))
+        state = context.get("state")
+        selected, preview = None, None
+        # Selection is host state, not a claim in a projected payload or model
+        # prose. Require a current, known preview whose observation was exposed.
+        if isinstance(state, dict) and type(state.get("revision")) is int and state["revision"] == revision:
+            candidate, evidence = state.get("selected_workflow_revision"), state.get("preview_observation_id")
+            if (isinstance(candidate, str) and _RECORD_ID.fullmatch(candidate) and candidate in workflow_revisions
+                    and isinstance(evidence, str) and _RECORD_ID.fullmatch(evidence) and evidence in citable):
+                selected, preview = candidate, evidence
         return cls(revision=revision, observation_ids=tuple(sorted(identifiers)), citable_ids=tuple(sorted(citable)),
-                   workflow_revision_ids=tuple(sorted(workflow_revisions)))
+                   workflow_revision_ids=tuple(sorted(workflow_revisions)),
+                   selected_workflow_revision=selected, preview_observation_id=preview)
 
     def schema(self, source: dict[str, Any]) -> dict[str, Any]:
         """Specialize this response only; public DTOs retain their wire contract."""
@@ -62,6 +74,21 @@ class DecisionGrounding:
         for definition, field in (("ConstructWorkflow", "parent_revision_id"), ("Finish", "workflow_revision_id")):
             if definition in definitions:
                 self._nullable_reference(definitions[definition]["properties"][field], self.workflow_revision_ids)
+        if "Finish" in definitions:
+            # Keep the backend grammar simple: this outcome-dependent contract
+            # is checked below before dispatch even if descriptions are ignored.
+            requirement = (
+                "For outcome draft_ready, workflow_revision_id must equal the current selected workflow revision "
+                "and evidence_ids must include its exposed preview observation. "
+                "These requirements do not apply to blocked or inconclusive. "
+            )
+            if self.selected_workflow_revision is not None:
+                requirement += (f"Current selected revision: {self.selected_workflow_revision}; "
+                                f"required preview evidence ID: {self.preview_observation_id}.")
+            else:
+                requirement += "No current known selected revision with exposed preview evidence is available; draft_ready is not valid."
+            previous = definitions["Finish"].get("description", "")
+            definitions["Finish"]["description"] = (previous + " " + requirement).strip()
         if "InspectObservation" in definitions:
             if self.observation_ids:
                 definitions["InspectObservation"]["properties"]["observation_id"]["enum"] = list(self.observation_ids)
@@ -120,3 +147,10 @@ class DecisionGrounding:
             workflow_revision = decision.action.workflow_revision_id
         if workflow_revision is not None and workflow_revision not in self.workflow_revision_ids:
             raise ValueError("Workflow revision references must use an exact owned validated preview ID from known_workflow_revision_ids, or null; no action was executed")
+        if isinstance(decision.action, Finish) and decision.action.outcome == "draft_ready":
+            if self.selected_workflow_revision is None or self.preview_observation_id is None:
+                raise ValueError("draft_ready requires a current known selected workflow revision with exposed preview evidence in host state; no action was executed")
+            if decision.action.workflow_revision_id != self.selected_workflow_revision:
+                raise ValueError(f"draft_ready must select the current workflow revision {self.selected_workflow_revision}; no action was executed")
+            if self.preview_observation_id not in decision.action.evidence_ids:
+                raise ValueError(f"draft_ready evidence_ids must include the selected workflow preview observation {self.preview_observation_id}; no action was executed")

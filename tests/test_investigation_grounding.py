@@ -209,14 +209,18 @@ def test_workflow_references_reject_unknown_and_task_ids(graph: bool) -> None:
 def test_older_validated_workflow_revision_remains_a_model_option(graph: bool) -> None:
     older, selected = "e" * 32, "f" * 32
     grounding = DecisionGrounding.from_context({**context(), "known_workflow_revision_ids": [selected, older],
-        "state": {"selected_workflow_revision": selected}}, 7)
+        "state": {"revision": 7, "selected_workflow_revision": selected, "preview_observation_id": CURRENT}}, 7)
     action = workflow([]) if graph else {"type": "finish", "outcome": "draft_ready", "summary": "Protocol test", "evidence_ids": [CURRENT]}
     action["parent_revision_id" if graph else "workflow_revision_id"] = older
     value = proposed(action, [CURRENT])
     assert validator(grounding, graph=graph).is_valid(value)
-    grounding.validate(DECISION.validate_python(value))
-    # Host finish authority still requires the selected revision; grounding does
-    # not erase legitimate older parents or replace that separate host check.
+    if graph:
+        grounding.validate(DECISION.validate_python(value))
+    else:
+        with pytest.raises(ValueError, match="current workflow revision"):
+            grounding.validate(DECISION.validate_python(value))
+    # Older parents remain available. Only draft_ready requires the current
+    # selected revision, checked before dispatch and again by the durable host.
     assert grounding.workflow_revision_ids == (older, selected)
 
 

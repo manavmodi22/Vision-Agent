@@ -197,7 +197,35 @@ explains that probes do not save workflows. A [single captured-call diagnostic](
 changed the medium run's post-crop decision from a regex preference question to
 preparing a crop → OCR graph. Only the inventory and preparation descriptions
 changed; the replay dispatched no action. This is a positive next-step result,
-not a completed app. A fresh end-to-end run is in progress.
+not a completed app. The [fresh full run](../artifacts/a0-investigation/gpt-oss-qualification/workflow-visibility-live/report.json)
+then authored and actually previewed frame → crop → OCR, returning only `QZ-4817`.
+Its withheld fixture reference passed. After two unnecessary additional probes,
+its final `draft_ready` decision cited a later probe instead of the selected
+preview; the host rejected finalization and the session ended inconclusive in
+540.63 seconds. This is a correct fixed-layout artifact with an incomplete agent
+handoff, not an A0 pass. The historical generated-image import metadata was also
+incorrectly labelled as user-imported real media; that original metadata is
+preserved alongside the report's correct synthetic-fixture provenance.
+
+[CI for `e6340f3`](https://github.com/manavmodi22/Vision-Agent/actions/runs/40945639675)
+passed 1,387 Python tests with two optional skips, Ruff, strict mypy on 203 files,
+and 322 native checks. This verification predates the finish-grounding repair.
+The default Qwen14 configuration remains unchanged; its server was restored and
+verified at 16K between isolated candidate runs.
+
+The [native inspection](../artifacts/a0-investigation/gpt-oss-qualification/workflow-visibility-live/native-inspection.json)
+shows the exact selected revision, one workflow value `QZ-4817`, and the honest
+inconclusive status. Its cropped OCR returned no valid text geometry; the app
+states that limitation rather than drawing an invented region.
+
+The grounding validator now checks a `draft_ready` decision's selected revision
+and required preview citation before dispatch. It uses only current host state,
+known revisions and actually exposed observation IDs. Invalid output enters the
+existing budgeted feedback loop without silently correcting IDs; the durable
+host validation is unchanged. Focused checks cover the captured failure and a
+corrected reply under both transports. A separate swapped-layout development
+run is in progress on this repair. The harness now labels generated media
+truthfully as synthetic while keeping fixture-only adapters disabled.
 
 Subsequent live investigation found two context defects: repeated metadata could
 displace earlier vision evidence, and the fixed five-reading sample hid useful

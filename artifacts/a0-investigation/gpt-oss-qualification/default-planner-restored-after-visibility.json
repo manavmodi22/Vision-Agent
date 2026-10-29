@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-29T20:13:02.766979+00:00",
+  "candidate_pid": 48668,
+  "candidate_stopped": true,
+  "candidate_idle_verified": true,
+  "default_pid": 49853,
+  "argv": [
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server",
+    "-m",
+    "/Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/Qwen3-14B-Q4_K_M.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "1234",
+    "--alias",
+    "visionapp-planner",
+    "--ctx-size",
+    "16384",
+    "--parallel",
+    "1",
+    "--reasoning",
+    "off",
+    "--chat-template-kwargs",
+    "{\"enable_thinking\":false}",
+    "--no-webui",
+    "-lv",
+    "4"
+  ],
+  "configuration_changed": false,
+  "weights_preserved": true,
+  "status": "ready",
+  "log": "/Users/manavrakeshku.modi/vision-agent/.visionapp/logs/default-planner-after-visibility.log",
+  "verified_at": "2026-10-29T20:13:27.394777+00:00",
+  "advertised_models": [
+    "visionapp-planner"
+  ],
+  "active_context_tokens": 16384
+}

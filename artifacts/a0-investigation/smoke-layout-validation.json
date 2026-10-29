@@ -1,0 +1,85 @@
+{
+  "schema_version": "1",
+  "scope": "Generated software fixture layout and project-provenance validation; no model or vision inference and no acceptance claim.",
+  "harness": "artifacts/a0-investigation/run_smoke.py",
+  "harness_sha256_before": "f3627ae588bf8982a90313eae1da7e1e2479ba001ff7df8a25c973b396e0e3e1",
+  "harness_sha256_after": "baf3a0707d9e65ffc35af0929a09446bd4a46c10676029ac2a602d5266c8c12b",
+  "default_layout": "original",
+  "objective_and_start_parameters_unchanged": true,
+  "fixture_metadata": {
+    "original": {
+      "layout": "original",
+      "sha256": "36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051",
+      "rgb_pixels_sha256": "557e3cf82b5cb41759a4bab83d0c72d7ac2bd2c28550dfb71055bf58134ffc1b",
+      "pixel_hash_recipe": "SHA256 of RGB image.tobytes()",
+      "dimensions": [
+        1600,
+        500
+      ],
+      "provenance": "Generated software fixture using Pillow and local Arial font; contents preexposed during development. Swapped layout is a deliberate development counterfactual, not a held-out acceptance case.",
+      "evidence_scope": "development",
+      "acceptance_case": false
+    },
+    "swapped": {
+      "layout": "swapped",
+      "sha256": "2289362dd7a70575521f0803830d9411fc97c0cd5b60784f88368c548949a708",
+      "rgb_pixels_sha256": "579e9a5a2c5509db5d6e6fbf908efa45d5f70a1968f71fc5d7d2988b5eb6fd57",
+      "pixel_hash_recipe": "SHA256 of RGB image.tobytes()",
+      "dimensions": [
+        1600,
+        500
+      ],
+      "provenance": "Generated software fixture using Pillow and local Arial font; contents preexposed during development. Swapped layout is a deliberate development counterfactual, not a held-out acceptance case.",
+      "evidence_scope": "development",
+      "acceptance_case": false
+    }
+  },
+  "original_png_sha256_preserved": true,
+  "visual_inspection": {
+    "original": "Item header and value left; shipping header and value right.",
+    "swapped": "Shipping header and value left; item header and value right.",
+    "both": "All text visible; no clipping."
+  },
+  "project_provenance": {
+    "synthetic": true,
+    "fixture": false,
+    "data_origin": "Generated software fixture; contents preexposed during development, not acceptance data",
+    "persisted_metadata_and_imported_pixels_verified": true,
+    "historical_projects_rewritten": false
+  },
+  "checks": [
+    {
+      "command": ".venv/bin/python -B -m pytest -q artifacts/a0-investigation/test_run_smoke.py",
+      "passed": 3,
+      "elapsed_s": 0.57,
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python -B -m ruff check artifacts/a0-investigation/run_smoke.py artifacts/a0-investigation/test_run_smoke.py",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python -B artifacts/a0-investigation/run_smoke.py --help",
+      "exit_code": 0
+    }
+  ],
+  "prior_full_run": {
+    "report": ".visionapp/a0-investigation/run-20261029T200305Z/report.json",
+    "report_sha256": "eb25a9c546e3f531de72b4d7d502418ec6fe2d69d45283e89dfdc8af0ec2843e",
+    "source_before": "eccdf45df253baccdd3bc3a73f56b1746865b5f95823629664cd3cf5b5c49801",
+    "source_after": "eccdf45df253baccdd3bc3a73f56b1746865b5f95823629664cd3cf5b5c49801",
+    "reference_check": {
+      "actual_preview_texts": [
+        "QZ-4817"
+      ],
+      "exact": true
+    },
+    "status": "inconclusive",
+    "stop_reason": "Investigation action could not continue: Error executing tool investigation_step: draft_ready must cite the selected workflow preview observation",
+    "interpretation": "Saved preview passed the exact fixture reference, but finalization failed; this was not a completed A0 acceptance run."
+  },
+  "counterfactual_inference_status": "not_run",
+  "validation_inference_calls": 0,
+  "production_files_edited": [],
+  "historical_run_files_modified": false
+}

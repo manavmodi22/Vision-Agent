@@ -1,0 +1,11 @@
+{
+  "captured_at": "2026-10-29T20:12:52.411769+00:00",
+  "original_workspace": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T200305Z",
+  "source_before": "eccdf45df253baccdd3bc3a73f56b1746865b5f95823629664cd3cf5b5c49801",
+  "source_after": "eccdf45df253baccdd3bc3a73f56b1746865b5f95823629664cd3cf5b5c49801",
+  "commit": "e6340f3b2e91a6e274280f99f8989afacb197f8f",
+  "server_configuration_receipt": "../workflow-visibility-server-launch.json",
+  "model_pid": 48668,
+  "scope": "Actual local model and Apple Vision on generated development fixture; correct preview does not imply clean finalization or A0 acceptance",
+  "metadata_correction_note": "Historical import defaults incorrectly say synthetic=false/User imported media; image is generated software fixture as report states. Preserved unchanged; future harness is being corrected."
+}

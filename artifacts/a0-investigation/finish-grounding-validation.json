@@ -1,0 +1,55 @@
+{
+  "scope": "Pre-dispatch validation of draft_ready decisions against the current host-selected workflow revision and its exposed preview observation. No automatic ID repair; durable store authority checks remain unchanged.",
+  "source_identity": "a900515d20cb83d6a490e8f35c6389e284388e8ef4607d9e56c9c67b38252bd3",
+  "git_head": "e6340f3b2e91a6e274280f99f8989afacb197f8f",
+  "source_identity_evidence": "engine.runtime_identity.source_identity(Path.cwd()) was measured immediately before the focused checks and again after the combined suite; both measurements matched. Git HEAD was measured before checks. These are working-tree source and base-commit identities, respectively.",
+  "working_directory": "/Users/manavrakeshku.modi/vision-agent",
+  "changed_files": [
+    "agent/investigation_grounding.py",
+    "tests/test_investigation_grounding.py",
+    "tests/test_investigation_finish_grounding.py",
+    "tests/fixtures/investigation_finish_20261029T200305Z.json"
+  ],
+  "checks": [
+    {
+      "command": ".venv/bin/pytest -q tests/test_investigation_grounding.py tests/test_investigation_finish_grounding.py",
+      "exit_code": 0,
+      "passed": 43,
+      "duration_s": 3.47,
+      "output": "...........................................                              [100%]\n43 passed in 3.47s\n"
+    },
+    {
+      "command": ".venv/bin/pytest -q tests/test_investigation_grounding.py tests/test_investigation_finish_grounding.py tests/test_investigation_store.py tests/test_investigation_context.py tests/test_investigation_transport.py",
+      "exit_code": 0,
+      "passed": 113,
+      "duration_s": 6.45,
+      "output": "........................................................................ [ 63%]\n.........................................                                [100%]\n113 passed in 6.45s\n"
+    },
+    {
+      "command": ".venv/bin/ruff check agent/investigation_grounding.py tests/test_investigation_grounding.py tests/test_investigation_finish_grounding.py",
+      "exit_code": 0,
+      "output": "All checks passed!\n"
+    },
+    {
+      "command": ".venv/bin/mypy --strict agent/investigation_grounding.py",
+      "exit_code": 0,
+      "output": "Success: no issues found in 1 source file\n"
+    }
+  ],
+  "output_provenance": "Commands, exit codes, counts, durations, and output were preserved from completed tool transcript results. Separate raw log files were not captured. No tests were rerun to create this receipt. The 43 focused tests are included in the 113-test combined suite; these counts are not additive.",
+  "verified_behavior": [
+    "The exact recorded final decision from run-20261029T200305Z is rejected for omitting selected preview observation 2a0fb1139b6743639c7cb0044ae3ec30 despite naming the correct selected workflow revision 532c161858cb465ebe3c87b6dee75fad.",
+    "A test-supplied corrected response including that preview citation is accepted; validation does not mutate the captured decision.",
+    "Host state must have the exact current integer revision, format-valid selected IDs, a known previewed workflow revision, and currently or previously exposed preview evidence. Nested payloads, prose, index-only exposure, stale state, malformed IDs, and unknown revisions cannot establish selection.",
+    "Blocked and inconclusive outcomes retain their existing behavior; older valid revisions remain usable as construction parents, while draft_ready must name the current selection.",
+    "Both structured_json and decision_function scripted loops persist the invalid response as failed feedback, then dispatch exactly one corrected finish through the real MCP handlers and durable store.",
+    "The model-facing response schema describes the outcome-specific selected revision and required preview citation; explicit Python validation enforces the condition before dispatch. Public DTOs and durable store checks are unchanged."
+  ],
+  "limits": [
+    "Captured and scripted protocol regression evidence only; no live model or vision inference was run for this validation.",
+    "The loop tests use a typed host preview-receipt fixture, not a newly compiled or measured vision workflow.",
+    "The schema uses an explicit description rather than backend-dependent conditional JSON Schema enforcement; the pre-dispatch validator is the enforcement mechanism.",
+    "No app build, packaging, launch, UI interaction, commit, or server change was performed for this repair.",
+    "These checks establish contract repair behavior, not application quality, model reliability, or successful recovery by a live model. Subsequent swapped-layout and native-inspection evidence belongs to separate run receipts."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "provenance": {
+    "source": ".visionapp/a0-investigation/run-20261029T200305Z/workspace/projects/286720f126554487/investigations/44f15bd5f6d3432ea03ad7ffa7d7fb1f/task.json",
+    "source_sha256": "06cde67e2f30f595add3c4f03e3636464e61d0ce209aea22cbf41bb2c0b7eb27",
+    "model_call_id": "1e189a770e1e44bf96e7e5bbffafb829",
+    "scope": "Exact final decision and host grounding fields extracted from recorded run; unrelated context omitted. No model inference in regression."
+  },
+  "decision": {
+    "type": "next_action",
+    "state_revision": 24,
+    "decision_summary": "The current workflow crops to the bounding box of the detected code and runs OCR, yielding the item code. This satisfies the objective with the available image. No further probing is needed.",
+    "based_on_observation_ids": [
+      "822cfccba67743e6ac7b19c0fbab9cc7"
+    ],
+    "action": {
+      "type": "finish",
+      "outcome": "draft_ready",
+      "summary": "Workflow uses crop of code region and OCR to extract item code.",
+      "evidence_ids": [
+        "822cfccba67743e6ac7b19c0fbab9cc7"
+      ],
+      "workflow_revision_id": "532c161858cb465ebe3c87b6dee75fad"
+    }
+  },
+  "context": {
+    "visible_observation_ids": [
+      "2c916545965f4f948724a226836efceb",
+      "48aec14a587142fba4f1de066090b297",
+      "822cfccba67743e6ac7b19c0fbab9cc7",
+      "2a0fb1139b6743639c7cb0044ae3ec30"
+    ],
+    "citable_observation_ids": [
+      "02be2431891c43f98777754da173d25a",
+      "2a0fb1139b6743639c7cb0044ae3ec30",
+      "2c916545965f4f948724a226836efceb",
+      "48aec14a587142fba4f1de066090b297",
+      "646363b079c44a57b787abbadb541ece",
+      "7b2ffbf02ab44eb18996d3208616fda1",
+      "822cfccba67743e6ac7b19c0fbab9cc7",
+      "8b48dc779ed04616a1fff5f554eda642",
+      "a6489127564649579814e6341e9d1036",
+      "bd92f2bdfa0a473aa12c034af716b188",
+      "c6ff73d8ac064278abdab6191385ea7b",
+      "ee0d38f5747a49469ba5eb32171e22c6"
+    ],
+    "known_workflow_revision_ids": [
+      "532c161858cb465ebe3c87b6dee75fad"
+    ],
+    "state": {
+      "revision": 24,
+      "selected_workflow_revision": "532c161858cb465ebe3c87b6dee75fad",
+      "preview_observation_id": "2a0fb1139b6743639c7cb0044ae3ec30"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-29T20:15:04.806771+00:00",
+  "method": "CUA accessibility and screenshot inspection of actual development app on completed isolated workspace",
+  "native_pid": 50114,
+  "engine_pid": 50120,
+  "binary_sha256": "10e7109d9e2fe689e178f56aac102c0e6a0f3c6d9366eac0e7fa78784bc1573f",
+  "runtime": {
+    "data_dir": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T200305Z/workspace",
+    "python": "/Users/manavrakeshku.modi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "package_root": "/Users/manavrakeshku.modi/vision-agent/engine",
+    "build_id": "a900515d20cb83d6a490e8f35c6389e284388e8ef4607d9e56c9c67b38252bd3",
+    "pid": 50120
+  },
+  "task_state_visible": "Inconclusive",
+  "stop_reason_visible": "draft_ready must cite the selected workflow preview observation",
+  "selected_workflow_revision_visible": "532c161858cb465ebe3c87b6dee75fad",
+  "workflow_text_output_visible": [
+    "QZ-4817"
+  ],
+  "reading_geometry_visible": "Geometry not provided; no fabricated OCR region",
+  "raw_image_visible": true,
+  "later_probe_count_visible": 4,
+  "selected_preview_count": 1,
+  "task_unchanged_by_inspection": true,
+  "settings_changed": false,
+  "screenshot_scope": "Screenshot inspected inline through CUA; no standalone screenshot artifact claimed",
+  "app_left_open": true
+}

@@ -148,3 +148,19 @@ boundary. It returned a valid construction-stage request in 46.29 seconds, with
 unchanged historical state/evidence and no dispatch. Full-task qualification is
 separate. [CI `08e3f46`](ci-08e3.json) passed 1,384 Python tests, two optional skips,
 Ruff, strict mypy on 202 files and 322 native checks before this documentation change.
+
+The [fresh workflow-visibility run](gpt-oss-qualification/workflow-visibility-live/report.json)
+produced a real saved crop → OCR preview returning exactly `QZ-4817` in a
+540.63-second session. Finalization was rejected because its evidence IDs omitted
+the selected preview. Correct artifact output and incomplete agent handoff are
+separate findings; no A0 acceptance is claimed. Historical media provenance
+metadata is preserved with an explicit correction note in `capture.json`.
+[CI for `e6340f3`](ci-e634.json) passed 1,387 Python tests, two optional skips,
+Ruff, strict mypy on 203 files and 322 native checks.
+
+The saved result is also [verified in the native app](gpt-oss-qualification/workflow-visibility-live/native-inspection.json).
+Finish grounding now checks the exact selected-preview relation before dispatch
+so malformed completion can receive bounded feedback. It does not substitute
+IDs or remove the store's authority check. The generated-case harness supports
+original/swapped layouts and now preserves truthful synthetic provenance with
+fixture-only adapters disabled; historical metadata remains unchanged.

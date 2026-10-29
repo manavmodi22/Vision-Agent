@@ -1,0 +1,7 @@
+{
+  "captured_at": "2026-10-29T20:10:58.678968+00:00",
+  "scope": "Instantaneous process RSS and system counters during full run; not peak memory or complete Metal allocation",
+  "processes": "45543  14816 /Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server -m /Users/manavrakeshku.modi/.lmstudio/models/prithivMLmods/Cosmos-Reason2-8B-GGUF/Cosmos-Reason2-8B.Q8_0.gguf --mmproj /Users/manavrakeshku.modi/.lmstudio/models/prithivMLmods/Cosmos-Reason2-8B-GGUF/Cosmos-Reason2-8B.mmproj-f16.gguf --host 127.0.0.1 --port 1235 --alias visionapp-vlm --ctx-size 8192 --parallel 1 --reasoning off --image-max-tokens 1024 --no-webui\n48668 13832016 /Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server --model /Users/manavrakeshku.modi/vision-agent/.visionapp/model-qualification/gpt-oss-20b-MXFP4/gpt-oss-20b-MXFP4.gguf --alias gpt-oss-20b-MXFP4-medium-qualification --host 127.0.0.1 --port 1236 --ctx-size 16384 --parallel 1 --gpu-layers all --flash-attn on --batch-size 1024 --ubatch-size 512 --jinja --reasoning on --reasoning-effort medium --reasoning-budget 1024 --reasoning-format deepseek --no-webui -lv 4\n",
+  "memory_pressure": "kern.memorystatus_vm_pressure_level: 1\n",
+  "swap": "vm.swapusage: total = 9216.00M  used = 8440.12M  free = 775.88M  (encrypted)\n"
+}

@@ -1,0 +1,22 @@
+{
+  "captured_at": "2026-10-29T20:12:52.413890+00:00",
+  "commit": "e6340f3b2e91a6e274280f99f8989afacb197f8f",
+  "run_id": 40945639675,
+  "url": "https://github.com/manavmodi22/Vision-Agent/actions/runs/40945639675",
+  "conclusion": "success",
+  "python": {
+    "passed": 1387,
+    "skipped": 2,
+    "elapsed_s": 359.08
+  },
+  "ruff": "passed",
+  "mypy": {
+    "passed": true,
+    "source_files": 203
+  },
+  "native": {
+    "passed": true,
+    "checks": 322
+  },
+  "scope": "Software checks before finish-grounding repair; not autonomous application acceptance."
+}
