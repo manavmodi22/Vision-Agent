@@ -18,7 +18,7 @@ class KeychainVault:
             raise ValueError("Alert credentials require macOS Keychain on this build")
         from keyring.backends.macOS import Keyring
         try:
-            return cast(str | None, Keyring().get_password(self.service, key))  # type: ignore[no-untyped-call]
+            return cast(str | None, Keyring().get_password(self.service, key))  # type: ignore[no-untyped-call, unused-ignore]
         except Exception as exc:
             raise ValueError("Could not read alert credential from macOS Keychain") from exc
 
@@ -27,7 +27,7 @@ class KeychainVault:
             raise ValueError("Alert credentials require macOS Keychain on this build")
         from keyring.backends.macOS import Keyring
         try:
-            backend = Keyring()  # type: ignore[no-untyped-call]
+            backend = Keyring()  # type: ignore[no-untyped-call, unused-ignore]
             if value is None:
                 if backend.get_password(self.service, key) is not None:
                     backend.delete_password(self.service, key)

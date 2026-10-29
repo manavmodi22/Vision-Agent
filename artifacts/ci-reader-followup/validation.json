@@ -1,0 +1,27 @@
+{
+  "scope": "Two platform-sensitive type-ignore comments only; no runtime AST or global type-check configuration change",
+  "previous_commit": "55ae6f20c7a61622d6febc2e05a5b338be244c6a",
+  "previous_source_identity": "e523a04b24594a48710c716c333763de3824e7d4c37cdaed58e196f9fcfacd3f",
+  "current_source_identity": "22256a77e2d04e479f6f4a9882f126d5aab6a5eac2678908dd60b06f8209d285",
+  "ast_unchanged": true,
+  "file": "engine/alerts/secrets.py",
+  "before_sha256": "78f204093d7bc5d0cfbb2d6d018cfff17585f5ed9894d79fa81f7233aaddaca9",
+  "after_sha256": "3f3a470ae51d64bcb2ae310737bdd66cdf1de5360677d3b33ec8ab304128b16f",
+  "installed_package_source_identity": "e523a04b24594a48710c716c333763de3824e7d4c37cdaed58e196f9fcfacd3f",
+  "package_policy": "The verified e523 package is retained unchanged; these static-analysis comments do not change behavior. Runtime identities continue to describe the actual installed bytes.",
+  "validation": {
+    "linux_before": "Reproduced both unused-ignore errors in KeychainVault with --platform linux",
+    "mypy_linux_after": "Success: no issues found in 168 source files",
+    "mypy_macos_after": "Success: no issues found in 168 source files",
+    "ruff": "All checks passed!",
+    "runtime_tests": "Not repeated for this comment-only change; parsed AST is identical. Previous commit passed GitHub pytest and native checks."
+  },
+  "preceding_ci": {
+    "commit": "55ae6f20c7a61622d6febc2e05a5b338be244c6a",
+    "run_url": "https://github.com/manavmodi22/Vision-Agent/actions/runs/40815495403",
+    "native": "passed",
+    "pytest": "passed",
+    "ruff": "passed",
+    "mypy": "failed only on the two platform-sensitive unused-ignore comments corrected here"
+  }
+}
