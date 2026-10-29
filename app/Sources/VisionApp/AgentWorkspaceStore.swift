@@ -24,11 +24,13 @@ struct AgentBuildStatus: Decodable, Identifiable {
     let plan: PlatformBuildPlan?
     let execution: PlatformExecution?
     let toolEvents: [PlatformToolEvent]?
+    let investigationOrigin: InvestigationHandoffReceipt?
     enum CodingKeys: String, CodingKey {
         case id, projectID = "project_id", status, phase, nextAction = "next_action", message, questions, log, preview
         case selectedCandidateIndex = "selected_candidate_index", evaluations, project, updatedAt = "updated_at"
         case acceptanceEvaluation = "acceptance_evaluation"
         case plan, execution, toolEvents = "tool_events"
+        case investigationOrigin = "investigation_origin"
     }
     var running: Bool { status == "running" }
 }
@@ -43,9 +45,14 @@ final class AgentWorkspaceStore: ObservableObject {
     @Published var investigation: InvestigationSnapshot?
     @Published var runtime: AgentRuntime?
     @Published var investigationRequestPending = false
+    @Published var handoffStatus: InvestigationHandoffStatus?
+    @Published var handoffError: String?
+    @Published var handoffRequestPending = false
     var sessionResolved = false
     var investigationTaskID: String?
+    var handoffCheckedTaskID: String?
     var usingInvestigation: Bool { runtime == .investigation }
+    var handoffInProgress: Bool { handoffRequestPending || ["committing", "conflict"].contains(handoffStatus?.status ?? "") }
     var running: Bool { usingInvestigation ? investigation?.state.running == true : build?.running == true }
     init(projectID: String, client: EngineClient) {
         self.projectID = projectID; self.client = client
@@ -67,7 +74,7 @@ final class AgentWorkspaceStore: ObservableObject {
             else if runtime == .legacy {
                 let response: AgentBuildStatus = try await client.request("GET", "/projects/\(projectID)/build")
                 guard runtime == .legacy else { return }
-                build = response; reconcileSubmission()
+                build = response; retainInvestigationOrigin(response); reconcileSubmission()
             }
             error = nil
         } catch is CancellationError { }

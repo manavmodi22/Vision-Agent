@@ -36,6 +36,23 @@ enum EngineIdentityChecks {
         }
         try Data("# edited\n".utf8).write(to: directory.appendingPathComponent("engine/__init__.py"))
         guard try EngineBuildIdentity.sourceHash(directory) != hash else { throw EngineError.protocolError("Edited source did not change identity") }
-        return 9
+        let current = directory.appendingPathComponent("current-app"), configured = directory.appendingPathComponent("configured-bridge")
+        for executable in [current, configured] {
+            try Data("#!/bin/sh\nexit 0\n".utf8).write(to: executable)
+            try FileManager.default.setAttributes([.posixPermissions: 0o700], ofItemAtPath: executable.path)
+        }
+        guard try NativeVisionBridge.executable(environment: [:], appExecutable: current.path) == current.path,
+              try NativeVisionBridge.executable(environment: ["VISION_APP_BINARY": configured.path], appExecutable: current.path) == configured.path else { throw EngineError.protocolError("Vision bridge configuration did not select the exact executable") }
+        let notExecutable = directory.appendingPathComponent("not-executable")
+        try Data("plain file".utf8).write(to: notExecutable)
+        for invalid in ["", "relative/bridge", directory.appendingPathComponent("missing").path, directory.path, notExecutable.path] {
+            do {
+                _ = try NativeVisionBridge.executable(environment: ["VISION_APP_BINARY": invalid], appExecutable: current.path)
+                throw EngineError.protocolError("Invalid explicit vision bridge silently fell back")
+            } catch EngineError.protocolError(let message) {
+                guard message.hasPrefix("VISION_APP_BINARY must name") else { throw EngineError.protocolError(message) }
+            }
+        }
+        return 16
     }
 }

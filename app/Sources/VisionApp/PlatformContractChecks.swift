@@ -23,6 +23,21 @@ enum PlatformContractChecks {
                 _ = try JSONDecoder().decode(CapabilityCatalog.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
             case "--build-status":
                 _ = try JSONDecoder().decode(AgentBuildStatus.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
+            case "--handoff-proposal":
+                let proposal = try JSONDecoder().decode(InvestigationHandoffProposal.self, from: Data(contentsOf: URL(fileURLWithPath: path)))
+                guard proposal.schemaVersion == "a0.handoff.1", proposal.sourceAfter == "media" else { throw EngineError.protocolError("Unsupported handoff proposal") }
+                checks += 1
+            case "--handoff-result":
+                let result = try JSONDecoder().decode(InvestigationHandoffResult.self, from: Data(contentsOf: URL(fileURLWithPath: path)))
+                guard result.receipt.matches(result.build, project: result.receipt.projectID, task: result.receipt.taskID) else { throw EngineError.protocolError("Handoff result build does not match its receipt") }
+                checks += 1
+            case "--handoff-status":
+                let status = try JSONDecoder().decode(InvestigationHandoffStatus.self, from: Data(contentsOf: URL(fileURLWithPath: path)))
+                if status.status == "completed" {
+                    guard let receipt = status.receipt else { throw EngineError.protocolError("Completed handoff has no receipt") }
+                    if let build = status.build, !receipt.matches(build, project: receipt.projectID, task: receipt.taskID) { throw EngineError.protocolError("Completed handoff build does not match its receipt") }
+                }
+                checks += 1
             case "--evaluation-configuration":
                 _ = try JSONDecoder().decode(EvaluationConfiguration.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
             case "--evaluation-readiness":

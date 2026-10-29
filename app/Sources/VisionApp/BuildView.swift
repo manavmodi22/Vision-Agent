@@ -13,11 +13,15 @@ struct BuildView: View {
     @NativeState<Int> private var evidenceCandidate = 0
     @NativeState<String> private var evidenceCandidateName = ""
     @NativeState<Bool> private var reviewAfterEvidence = false
+    @NativeState<Bool> private var handoffProposalPresented = false
+    @NativeState<Bool> private var reviewAfterHandoff = false
+    @NativeState<Bool> private var handoffDismissed = true
+    @NativeState<Bool> private var investigationHistoryPresented = false
     init(store: AgentWorkspaceStore, dataset: DatasetWorkspace) {
         _agent = StateObject(wrappedValue: store); _reviewStore = StateObject(wrappedValue: dataset)
     }
     private var messages: [ChatMessage] { model.project?.messages ?? [] }
-    private var working: Bool { model.busy || agent.running }
+    private var working: Bool { model.busy || agent.running || agent.handoffInProgress }
     private var pendingGoal: String? { AgentConversation.pendingSubmission(agent.submittedGoal, messages: messages) }
     private var hasStarted: Bool { working || agent.investigation != nil || agent.build != nil || pendingGoal != nil || !messages.isEmpty }
     var body: some View {
@@ -31,6 +35,9 @@ struct BuildView: View {
                             if let snapshot = agent.investigation { InvestigationActivityView(snapshot: snapshot, selectedObservationID: $investigationObservationID) }
                             else if let goal = agent.submittedGoal { messageBubble("Your objective", text: goal) }
                         } else {
+                            if agent.build?.investigationOrigin != nil {
+                                Button("Open investigation history") { openInvestigationHistory() }.font(.callout)
+                            }
                             if let plan = agent.build?.plan { AgentPlanCard(plan: plan, execution: agent.build?.execution) }
                             conversation
                             if agent.build != nil { AgentTimelineView(agent: agent) }
@@ -49,7 +56,10 @@ struct BuildView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
                     if agent.usingInvestigation {
-                        if let snapshot = agent.investigation { InvestigationEvidenceView(snapshot: snapshot, selectedObservationID: $investigationObservationID).id(snapshot.state.id) }
+                        if let snapshot = agent.investigation {
+                            InvestigationHandoffCard(agent: agent, openProposal: openHandoffProposal)
+                            InvestigationEvidenceView(snapshot: snapshot, selectedObservationID: $investigationObservationID).id(snapshot.state.id)
+                        }
                         else { EmptyCard(symbol: "viewfinder", title: "Investigation evidence", detail: agent.error ?? "The agent's actual vision observations will appear here.").frame(minHeight: 390) }
                     } else {
                     application
@@ -84,6 +94,18 @@ struct BuildView: View {
         }
         .task(id: model.frame?.imagePath) { if !agent.usingInvestigation, model.frame != nil { await reviewStore.load() } }
         .sheet(isPresented: $annotationReview) { AgentAnnotationReview(store: reviewStore) }
+        .sheet(isPresented: $handoffProposalPresented, onDismiss: { handoffDismissed = true; openReturnedHandoffReview() }) {
+            if let proposal = agent.handoffStatus?.proposal, let snapshot = agent.investigation {
+                InvestigationHandoffSheet(agent: agent, proposal: proposal, snapshot: snapshot, onAccepted: finishHandoff).id(proposal.id)
+            }
+        }
+        .sheet(isPresented: $investigationHistoryPresented) {
+            if let snapshot = agent.investigation { InvestigationHistorySheet(snapshot: snapshot) }
+        }
+        .onChange(of: agent.usingInvestigation) { _, investigating in
+            if !investigating, handoffProposalPresented, agent.handoffStatus?.status == "completed", let build = agent.build { finishHandoff(build) }
+        }
+        .onChange(of: model.busy) { _, busy in if !busy { openReturnedHandoffReview() } }
         .sheet(isPresented: $evidenceEditor, onDismiss: { if reviewAfterEvidence { reviewAfterEvidence = false; openReview() } }) {
             EvaluationEvidenceEditor(projectID: agent.projectID, client: model.client, candidateIndex: evidenceCandidate, candidateName: evidenceCandidateName, onChanged: {
                 try? await model.refresh()
@@ -167,6 +189,33 @@ struct BuildView: View {
                 guard reviewStore.activeImageID == image.id else { throw EngineError.protocolError(reviewStore.error ?? "Could not open the selected example.") }
             } else if imagePath != nil { throw EngineError.protocolError("This preview image is no longer in the dataset. Refresh the examples before reviewing it.") }
             annotationReview = true
+        }
+    }
+    private func openHandoffProposal(refreshProposal: Bool) {
+        model.perform("Preparing draft review proposal") {
+            try await agent.prepareHandoff(refreshProposal: refreshProposal)
+            if agent.handoffStatus?.status == "completed", let build = agent.build { model.applyBuild(build) }
+            else if agent.handoffStatus?.proposal != nil { handoffDismissed = false; handoffProposalPresented = true }
+        }
+    }
+    private func finishHandoff(_ build: AgentBuildStatus) {
+        model.applyBuild(build)
+        guard handoffProposalPresented else { return }
+        reviewAfterHandoff = true; handoffProposalPresented = false
+    }
+    private func openReturnedHandoffReview() {
+        guard reviewAfterHandoff, handoffDismissed, !working, let build = agent.build else { return }
+        reviewAfterHandoff = false
+        switch InvestigationHandoffPresentation.reviewSurface(build) {
+        case .annotations: openReview()
+        case .evidence: openEvidence()
+        case nil: break
+        }
+    }
+    private func openInvestigationHistory() {
+        model.perform("Opening investigation history") {
+            try await agent.refreshInvestigationHistory()
+            investigationHistoryPresented = true
         }
     }
     private func openEvidence() {

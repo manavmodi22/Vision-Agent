@@ -62,7 +62,9 @@ class WorkspaceService:
         (self.root(project.id) / "eval-media.json").unlink(missing_ok=True)
 
     def import_media(self, project_id: str, paths: list[str]) -> Project:
+        from engine.investigations.handoff_guard import assert_handoff_mutable
         with self.repository.lock:
+            assert_handoff_mutable(self.root(project_id))
             project = self.get_project(project_id)
             if project.fixture and project.media:
                 raise ValueError("Create a separate project for real media; synthetic fixtures stay separate")
@@ -79,9 +81,11 @@ class WorkspaceService:
             return self.repository.save(project)
 
     def demo(self, project_id: str) -> Project:
+        from engine.investigations.handoff_guard import assert_handoff_mutable
         from engine.runtime.fixtures import generate_demo
 
         with self.repository.lock:
+            assert_handoff_mutable(self.root(project_id))
             project = self.get_project(project_id)
             if project.media:
                 raise ValueError("Synthetic walkthrough requires a new empty project")
@@ -104,8 +108,10 @@ class WorkspaceService:
 
     def save_candidates(self, project_id: str, candidates: list[PipelineSpec], brief: str) -> Project:
         from engine.compiler import compile_pipeline
+        from engine.investigations.handoff_guard import assert_handoff_mutable
 
         with self.repository.lock:
+            assert_handoff_mutable(self.root(project_id))
             project = self.get_project(project_id)
             if not project.media:
                 raise ValueError("Import sample images before building a pipeline")
@@ -187,8 +193,10 @@ class WorkspaceService:
                          imported_exposures: dict[str, list[str]] | None = None) -> EvalDataset:
         from engine.annotation_edits import normalize_annotation_edits
         from engine.eval.usage import preserve_annotation_usage
+        from engine.investigations.handoff_guard import assert_handoff_mutable
 
         with self.repository.lock:
+            assert_handoff_mutable(self.root(project_id))
             project = self.get_project(project_id)
             allowed = {Path(path).resolve() for path in project.media}
             seen: set[Path] = set()
@@ -241,8 +249,10 @@ class WorkspaceService:
     def evaluate(self, project_id: str, candidate_index: int = 0,
                  protocol_id: str | None = None) -> EvaluationResult:
         from engine.eval.protocol import protocol_dataset, read_protocol
+        from engine.investigations.handoff_guard import assert_handoff_settled
 
         with self.repository.lock:
+            assert_handoff_settled(self.root(project_id))
             root = self.root(project_id)
             candidate = self.candidate(project_id, candidate_index)
             protocol = (read_protocol(root, protocol_id) if protocol_id else
@@ -300,6 +310,8 @@ class WorkspaceService:
 
     def approved_deployment(self, project_id: str, candidate_index: int) -> Deployment:
         """Revalidate current protocol-bound human approval without granting one."""
+        from engine.investigations.handoff_guard import assert_handoff_settled
+        assert_handoff_settled(self.root(project_id))
         project, root = self.get_project(project_id), self.root(project_id)
         path = root / "deployment.json"
         if not project.deployment_id or not path.is_file():
@@ -329,7 +341,9 @@ class WorkspaceService:
     def deploy(self, project_id: str, candidate_index: int, approved: bool,
                override_reason: str | None = None, *,
                approval_scope: Literal["promotion", "local_trial"] = "promotion") -> dict[str, JsonValue]:
+        from engine.investigations.handoff_guard import assert_handoff_settled
         with self.repository.lock:
+            assert_handoff_settled(self.root(project_id))
             if not approved:
                 raise ValueError("Deployment requires an explicit user approval")
             project, root = self.get_project(project_id), self.root(project_id)

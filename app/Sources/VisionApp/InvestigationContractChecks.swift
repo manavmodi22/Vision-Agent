@@ -140,6 +140,7 @@ enum InvestigationContractChecks {
         store.bindRuntime(.investigation)
         let reopened = AgentWorkspaceStore(projectID: projectID, client: EngineClient(socketPath: "/no-connection"))
         try require(reopened.usingInvestigation && reopened.build == nil, "reopening session preserves runtime without inventing legacy build")
+        checks += try InvestigationHandoffChecks.run(snapshot: valid)
         return checks
     }
 }

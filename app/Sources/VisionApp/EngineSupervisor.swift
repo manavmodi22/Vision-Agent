@@ -95,7 +95,15 @@ final class EngineSupervisor: ObservableObject {
         environment.removeValue(forKey: "VIRTUAL_ENV")
         environment["PYTHONNOUSERSITE"] = "1"
         environment["PYTHONDONTWRITEBYTECODE"] = "1"
-        environment["VISION_APP_BINARY"] = Bundle.main.executableURL?.path ?? CommandLine.arguments[0]
+        do {
+            let bridge = try NativeVisionBridge.executable(environment: environment, appExecutable: Bundle.main.executableURL?.path ?? CommandLine.arguments[0])
+            environment["VISION_APP_BINARY"] = bridge
+            logs += "Vision runtime executable: \(bridge)\(ProcessInfo.processInfo.environment["VISION_APP_BINARY"] == nil ? " (app default)" : " (explicit configuration)")\n"
+        } catch {
+            status = "Vision runtime configuration invalid"
+            logs += error.localizedDescription + "\n"
+            return
+        }
         environment["PYTHONUNBUFFERED"] = "1"
         environment["VISION_DATA_DIR"] = dataRoot.path
         environment["VISION_SOCKET"] = socketPath
@@ -137,5 +145,18 @@ final class EngineSupervisor: ObservableObject {
             process.waitUntilExit()
         }
         process = nil
+    }
+}
+
+enum NativeVisionBridge {
+    static func executable(environment: [String: String], appExecutable: String) throws -> String {
+        let explicit = environment["VISION_APP_BINARY"]
+        let path = explicit ?? appExecutable
+        var directory: ObjCBool = false
+        guard path.hasPrefix("/"), FileManager.default.fileExists(atPath: path, isDirectory: &directory),
+              !directory.boolValue, FileManager.default.isExecutableFile(atPath: path) else {
+            throw EngineError.protocolError(explicit == nil ? "The app's vision runtime executable is unavailable: \(path)" : "VISION_APP_BINARY must name an absolute executable file. No fallback was selected: \(path)")
+        }
+        return path
     }
 }

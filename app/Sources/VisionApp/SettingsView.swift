@@ -36,7 +36,7 @@ struct SettingsView: View {
                     VStack(alignment: .leading, spacing: 18) {
                         Eyebrow(text: "Agent runtime")
                         Toggle("Experimental agent", isOn: $experimentalInvestigations)
-                        Text("Applies to new app sessions. The agent chooses bounded vision experiments and can construct a draft. Existing sessions keep their runtime. Draft review handoff is not yet available.").font(.caption).foregroundStyle(Studio.muted)
+                        Text("Applies to new app sessions. The agent chooses bounded vision experiments and can construct a draft. Eligible drafts can be explicitly imported for application review; evaluation and approval are still required.").font(.caption).foregroundStyle(Studio.muted)
                         Divider()
                         Eyebrow(text: "Model policy")
                         Toggle("Allow AGPL models", isOn: $model.settings.allowAgpl).disabled(true)

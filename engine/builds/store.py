@@ -15,12 +15,17 @@ from agent.refinement_contracts import RefinementDecision
 from agent.state_contracts import AgentOperation, CapturedCall
 from engine.agent_traces import AgentTraceStore
 from engine.eval import dataset_hash, spec_hash
+from engine.investigations.handoff_guard import assert_handoff_settled
 from engine.media import media_fingerprint
 from engine.platform.store import PlatformStore
 from engine.service import WorkspaceService
 from engine.store.models import now
 from engine.store.repository import atomic_model
 from spec.build import BuildLog, BuildStatus
+from spec.handoff import HandoffReceipt
+from spec.models import PipelineSpec, RunResult
+from spec.planning import CandidateModelSelection, PlanningOptions
+from spec.platform import ExecutionRun
 from spec.skills import SkillReference
 
 
@@ -74,6 +79,7 @@ class BuildStore:
 
     def get(self, project_id: str, build_id: str | None = None) -> BuildRecord:
         with self.service.repository.lock:
+            assert_handoff_settled(self.service.root(project_id))
             if build_id is not None and not re.fullmatch(r"[0-9a-f]{32}", build_id):
                 raise ValueError("Invalid build identifier")
             path = self.service.root(project_id) / "build.json"
@@ -131,6 +137,64 @@ class BuildStore:
             self.log(record, "planning", record.view.message)
             self.save(record)
             return record
+
+    def adopt_investigation(self, receipt: HandoffReceipt, prompt: str, candidate: PipelineSpec,
+                           preview: RunResult, options: PlanningOptions,
+                           bindings: list[CandidateModelSelection]) -> BuildRecord:
+        """Journal-owned adoption after real compilation/preview, without a planner call.
+
+        The coordinator holds the repository lock and durable recovery journal.
+        All subsequent work starts at the existing human evidence checkpoint.
+        """
+        project_id, identifier = receipt.project_id, receipt.build_id
+        path = self.service.root(project_id) / "build.json"
+        if path.exists():
+            record = BuildRecord.model_validate_json(path.read_text())
+            if record.view.id != identifier or record.view.investigation_origin != receipt:
+                raise AgentConflict("Another build replaced the handoff; it cannot be overwritten")
+            if record.view.preview != preview:
+                raise AgentConflict("The handoff build preview changed during recovery")
+        else:
+            stamp = receipt.created_at
+            record = BuildRecord(view=BuildStatus(id=identifier, project_id=project_id,
+                status="awaiting_review", phase="reviewing", next_action="configure_evaluation",
+                message="Imported the saved workflow and previewed project development images. Review the proposed target and labels before evaluation; no deployment is approved.",
+                created_at=stamp, updated_at=stamp, selected_candidate_index=0,
+                preview=preview, investigation_origin=receipt), prompt=prompt,
+                data_hash=self.labels_hash(project_id), operation=AgentOperation(id=identifier,
+                project_id=project_id, trace_id=uuid.uuid4().hex, root_span_id=uuid.uuid4().hex[:16],
+                owner_pid=os.getpid(), deadline=time() + 900, input_fingerprint=self.inputs_hash(project_id),
+                brief=prompt, source_path="media", detector_model="",
+                state=AgentState(phase=Phase.EVALUATE, brief_confirmed=True,
+                    candidate_count=1, compiled_count=1,
+                    budget=AgentBudget(max_tool_calls=30, max_wall_seconds=900, max_training_minutes=4))))
+            self.log(record, "reviewing", record.view.message)
+            self.save(record)
+        plans = self.platform.plans(project_id, identifier)
+        if plans:
+            plan = plans[-1]
+            if plan.candidates != [candidate] or plan.model_selections != bindings:
+                raise AgentConflict("The handoff's saved model plan changed during recovery")
+            if (not plan.planning_options_artifact_id or PlanningOptions.model_validate(
+                    self.platform.artifact_content(project_id, plan.planning_options_artifact_id).content) != options):
+                raise AgentConflict("The handoff's captured model options changed during recovery")
+            if self.platform.execution(project_id, identifier) is None:
+                # publish() writes the immutable plan before its execution binding.
+                # Recover that exact interrupted write without publishing a new plan.
+                prior_runs = [ExecutionRun.model_validate_json(path.read_text())
+                    for path in (self.platform.root(project_id) / "executions").glob("*.json")]
+                run = next((item for item in prior_runs if item.operation_id == identifier and item.plan_id == plan.id), None)
+                if run is None:
+                    run = ExecutionRun(id=uuid.uuid4().hex, project_id=project_id, build_id=identifier,
+                        operation_id=identifier, plan_id=plan.id, plan_hash=plan.content_hash,
+                        phase=Phase.EVALUATE.value, created_at=now(), updated_at=now(), accepted_snapshot=plan.snapshot)
+                self.platform.save_run(run)
+        else:
+            self.platform.publish(project_id, identifier, prompt, [candidate], Phase.EVALUATE,
+                "Human-imported investigation workflow; source rebind and actual preview are recorded in " + receipt.id,
+                build_id=identifier, skills=[], planning_options=options, model_selections=bindings)
+        self.platform.close(project_id, identifier, "paused")
+        return record
 
     def log(self, record: BuildRecord, phase: str, message: str) -> None:
         record.view.phase, record.view.message = phase, message

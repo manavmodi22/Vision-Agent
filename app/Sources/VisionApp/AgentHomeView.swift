@@ -23,7 +23,7 @@ struct AgentHomeView: View {
             VStack(alignment: .leading, spacing: 24) {
                 Text("What are you building?").font(.system(size: 30, weight: .medium))
                 Text("Describe the vision app you need. Your agent builds it and tests it on your examples.").font(.callout).foregroundStyle(Studio.muted)
-                if experimentalInvestigations { Text("Experimental agent · draft review handoff unavailable").font(.caption).foregroundStyle(.orange) }
+                if experimentalInvestigations { Text("Experimental agent · drafts require review and explicit import").font(.caption).foregroundStyle(.orange) }
                 VStack(alignment: .leading, spacing: 16) {
                     ZStack(alignment: .topLeading) {
                         if goal.isEmpty { Text("Describe what to detect and what should happen…").font(.system(size: 16)).foregroundStyle(Studio.muted).padding(16).allowsHitTesting(false) }
