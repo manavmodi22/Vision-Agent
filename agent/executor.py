@@ -4,6 +4,7 @@ from pydantic import JsonValue
 from agent.contracts import PlanResult
 from agent.machine import AgentError
 from agent.mcp_client import MCPTools
+from spec.model_bindings import validate_block_bindings
 from spec.platform import BuildPlan
 
 
@@ -18,11 +19,16 @@ async def execute_candidates(tools: MCPTools, proposed: PlanResult, source_path:
         selected = next((item for item in plan.model_selections if item.candidate_index == index), None)
         if plan.planning_options_artifact_id and selected is None:
             raise AgentError("The saved plan has no model binding for this candidate")
+        composed = any(item.block_id is not None for item in plan.model_selections)
+        if composed:
+            if any(item.candidate_index >= len(plan.candidates) or item.block_id is None for item in plan.model_selections):
+                raise AgentError("Composed model bindings contain an extra candidate or an unbound inference block")
+            validate_block_bindings(candidate, plan.model_selections, index)
         expected_model = selected.model_id if selected else detector_model
-        if any(block.type in {"detect", "detect_open_vocab"} and block.params.get("model") != expected_model
+        if not composed and any(block.type in {"detect", "detect_open_vocab"} and block.params.get("model") != expected_model
                for block in candidate.blocks):
             raise AgentError("The proposed detector differs from its saved model selection")
-        if selected and any(
+        if not composed and selected and any(
             (block.type == "ocr" and block.params.get("model", "apple-vision") != selected.model_id)
             or (block.type == "barcode" and selected.model_id != "apple-vision")
             for block in candidate.blocks

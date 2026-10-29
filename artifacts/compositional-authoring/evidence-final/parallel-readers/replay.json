@@ -1,0 +1,66 @@
+{
+  "operation_id": "6234b55e5be342c4ba257600df302e39",
+  "original_status": "completed",
+  "dry_run": true,
+  "effects_executed": false,
+  "reproduced": true,
+  "candidate_count": 1,
+  "captured_tool_calls": 5,
+  "captured_model_calls": 2,
+  "errors": [],
+  "result": {
+    "message": "Reads printed text. Reads barcodes.",
+    "questions": [],
+    "candidates": [
+      {
+        "spec_version": "0.1",
+        "name": "ReadTextAndBarcodes",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "s",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2.0
+            },
+            "in": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "ocr_reader",
+            "type": "ocr",
+            "params": {
+              "model": "apple-vision"
+            },
+            "in": {
+              "image": "$s.frame"
+            }
+          },
+          {
+            "id": "barcode_reader",
+            "type": "barcode",
+            "params": {},
+            "in": {
+              "image": "$s.frame"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "text_accuracy",
+          "target": 0.9
+        }
+      }
+    ],
+    "tool_calls": 5,
+    "elapsed_s": 85.89824462495744,
+    "operation_id": "6234b55e5be342c4ba257600df302e39",
+    "needs_zones": false
+  }
+}

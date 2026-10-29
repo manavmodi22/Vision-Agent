@@ -42,6 +42,9 @@ def require_complete_alert(decision: PlanDecision, brief: str) -> PlanDecision:
 def plan_from_context(decision: PlanDecision, brief: str, source_path: str, detector_model: str,
                       context: dict[str, JsonValue] | None = None, options: PlanningOptions | None = None) -> PlanResult:
     """Enforce task prerequisites using the recorded model choice and engine facts."""
+    if decision.schema_version == "0.2":
+        from agent.graph_authoring import graph_plan_from_context
+        return graph_plan_from_context(decision, brief, source_path, context, options)
     decision = require_complete_alert(decision, brief)
     validate_reading_mode(decision, brief)
     latest = brief.rsplit("User request:\n", 1)[-1].replace("’", "'")
@@ -69,6 +72,8 @@ def plan_from_context(decision: PlanDecision, brief: str, source_path: str, dete
 
 def compile_decision(decision: PlanDecision, source_path: str, detector_model: str,
                      options: PlanningOptions | None = None) -> PlanResult:
+    if decision.schema_version == "0.2":
+        raise ValueError("Composed decisions require plan_from_context with their originating request")
     if options is not None:
         validate_model_choices(decision, options)
     candidates: list[PipelineSpec] = []
@@ -109,6 +114,8 @@ def compile_decision(decision: PlanDecision, source_path: str, detector_model: s
             candidate.blocks = [block for block in candidate.blocks if block.type not in {"rule", "sink_event"}]
         if reading and not choice.expected_text:
             candidate.blocks = [block for block in candidate.blocks if block.type not in {"match", "sink_event"}]
+        if choice.record_events is False:
+            candidate.blocks = [block for block in candidate.blocks if block.type != "sink_event"]
         candidates.append(PipelineSpec.model_validate(candidate.model_dump(mode="json", by_alias=True)))
     from agent.graph_summary import describe_candidates
 

@@ -16,18 +16,18 @@ from spec.planning import PlanningModelOption, PlanningOptions
 
 
 @pytest.mark.parametrize("model", [ModelPlanDecision, ModelCustomPlanDecision])
-def test_model_schema_requires_both_fields(model: type[ModelPlanDecision] | type[ModelCustomPlanDecision]) -> None:
+def test_model_schema_requires_explicit_reading_and_event_fields(model: type[ModelPlanDecision] | type[ModelCustomPlanDecision]) -> None:
     schema = model.model_json_schema()
     name = schema["properties"]["choices"]["items"]["$ref"].split("/")[-1]
     choice = schema["$defs"][name]
-    assert {"match_mode", "match_emit", "model_capability_id", "model_reason"} <= set(choice["required"])
-    for field in ("match_mode", "match_emit", "model_capability_id", "model_reason"):
+    assert {"match_mode", "match_emit", "record_events", "model_capability_id", "model_reason"} <= set(choice["required"])
+    for field in ("match_mode", "match_emit", "record_events", "model_capability_id", "model_reason"):
         assert "default" not in choice["properties"][field]
     assert choice["additionalProperties"] is False
 
 
 @pytest.mark.parametrize("model", [ModelPlanDecision, ModelCustomPlanDecision])
-@pytest.mark.parametrize("omitted", [("match_mode",), ("match_emit",), ("match_mode", "match_emit")])
+@pytest.mark.parametrize("omitted", [("match_mode",), ("match_emit",), ("record_events",), ("match_mode", "match_emit", "record_events")])
 def test_missing_fields_are_rejected(model: type[ModelPlanDecision] | type[ModelCustomPlanDecision], omitted: tuple[str, ...]) -> None:
     value = json.loads(INITIAL_READING_EXAMPLE.split("Return: ", 1)[1].strip().removesuffix("."))
     for field in omitted:

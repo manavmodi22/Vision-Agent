@@ -10,13 +10,15 @@ allowed_tools = ["blocks_list","block_schema","dataset_context","pipeline_valida
 output_artifacts = ["BuildPlan revision","ExecutionRun and action records","EvaluationReport"]
 validation_recipe = ["Validate schema, inputs and capability readiness before execution","Preview actual samples; label proposals remain unreviewed","Compare compatible candidates on the same reviewed holdout"]
 failure_modes = ["Missing capability or media","Changed data, model or plan revision","Exhausted budget or failed target"]
-version = "1.0.0"
+version = "1.1.0"
 +++
 
 # Build the requested vision application
 Preserve the user's outcome, class names, spatial regions, thresholds and output semantics. Ask only for missing business meaning. Do not require a preset or a hand-built graph.
 
 Save a typed, reviewable plan before executing candidate experiments. State data assumptions, capability requirements, metric targets, stop conditions and human checkpoints. A model may propose a step; the executor validates its authority and current inputs. Never execute free-form generated code.
+
+Compose supported typed nodes and references for the requested workflow. Each detector or reader has its own eligible model binding. Preserve requested image transforms and connect them to the intended branch. Static crops are not detection-conditioned crops. Mixed outputs and multiple readers can be previewed; one aggregate score does not qualify every branch.
 
 Use the tool catalog as the executable boundary. A proposed adapter is not installed merely because a playbook mentions it. Preview results demonstrate execution, not accuracy. Show failed steps and their artifacts. Do not approve labels, training, recorded operation or external delivery from model prose.
 

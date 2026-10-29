@@ -55,11 +55,19 @@ about filtering that branch; do not silently claim class-specific counting or re
 expected_text: expected_text literal required label value, match_mode exact|contains if requested.
 sample_fps: fps>0..60. Resolve relative requests against current frame_sample.fps (half of2=1).
 eval_target: eval_target and optional eval_metric count_mae|precision|recall|text_accuracy. Preserve current metric unless asked.
+crop: crop_box [x0,y0,x1,y1] normalized to the transform input. Preserve supplied bounds exactly.
+Left/right/top/bottom half means [0,0,0.5,1]/[0.5,0,1,1]/[0,0,1,0.5]/[0,0.5,1,1].
+resize: width and height integer pixels1..8192; both must come from the user (e.g.640x480). Do not guess dimensions.
+For crop/resize, block_id names the intended existing detector/reader or transform. Without it there must be one image consumer.
+The unique existing transform in that consumer's image path is updated, or a transform is inserted before the consumer.
+Shared preprocessing is copied for the selected branch; other readers and model choices remain unchanged.
+If multiple crops/resizes already exist on that path, ask which transform. Bounds are relative to its input; do not invent full-frame coordinates for an already-cropped input.
 Accuracy/recall/precision/text targets are fractions0..1; count_mae is a nonnegative absolute count error.
 Only fields relevant to each kind are allowed. Never add null unrelated fields. Multiple edits form one patches list.
 Use block_id only to disambiguate an actual matching existing block. If several blocks could be meant, ask which one.
 count_rule can add rule+sink after the unique existing count_per_zone if absent; a new rule needs a threshold.
-expected_text can add match+sink after unique OCR/barcode if absent. Other new block types are unsupported: ask a clarifying question.
+expected_text can add a comparison after unique OCR/barcode if absent; it preserves existing event connections and never adds a sink.
+Only crop/resize can add preprocessing. New models, reader branches and other block types require a new structural build request.
 Confidence defaults to the selected candidate. All other goal edits default to all alternatives. Omit scope unless explicitly requested.
 Preserve prior classes for additive requests. Only remove or replace when explicitly requested. Do not invent synonyms for saved names.
 Do not drop part of a compound request. If any part is unsupported or ambiguous, ask rather than partially editing.

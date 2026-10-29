@@ -217,7 +217,7 @@ class AgentStateStore:
             if operation.planning_options:
                 selections = validate_model_choices(decision, operation.planning_options)
                 validate_current_options(self.service, operation.planning_options, [item.capability_id for item in selections])
-            elif any(choice.model_capability_id for choice in decision.choices):
+            elif decision.graphs or any(choice.model_capability_id for choice in decision.choices):
                 raise AgentConflict("Model selection requires a captured capability snapshot")
             operation.decision = decision
             self._save_operation(operation)

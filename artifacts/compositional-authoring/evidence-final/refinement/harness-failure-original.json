@@ -1,0 +1,1807 @@
+{
+  "passed": false,
+  "source_identity": "d76d7e7d6b91f28605917393e63e94eccc37f9099e9382a684b04daec751a552",
+  "workspace": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z",
+  "project_id": "402246585eb54b0c",
+  "prompt": "Change the OCR crop to the right half [0.5, 0, 1, 1] and resize it to 900 by 300 pixels. Keep the existing comparison and event behavior unchanged.",
+  "assertions": {
+    "actual_local_model_call": true,
+    "actual_refinement_tool": true,
+    "paused_for_evidence_without_approval": true,
+    "same_inference_comparison_event_nodes": true,
+    "same_saved_node_bindings": true,
+    "exact_crop": true,
+    "exact_resize": true,
+    "actual_new_pixels_and_false_comparison": false,
+    "no_events": true,
+    "no_review_eval_approval": true,
+    "source_unchanged": true
+  },
+  "elapsed_s": 48.734332749969326,
+  "initial_report": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z/report.json",
+  "status": {
+    "id": "8294c6564a9a4458ba32e401c9b44a85",
+    "project_id": "402246585eb54b0c",
+    "status": "awaiting_review",
+    "phase": "reviewing",
+    "next_action": "review_labels",
+    "message": "Review the labels on 1 evaluation images, then continue. 0 are reviewed. Evaluation requires 10–50 reviewed images; suggestions are not ground truth. This workflow requires manually reviewed expected text or labels; automatic detector proposals do not apply.",
+    "questions": [],
+    "log": [
+      {
+        "at": "2026-10-29T16:26:46.692160+00:00",
+        "phase": "planning",
+        "message": "Interpreting your goal and preparing a working preview"
+      },
+      {
+        "at": "2026-10-29T16:27:33.799708+00:00",
+        "phase": "labeling",
+        "message": "Applied 2 requested changes to 1 candidate(s), with an actual preview of every affected candidate. Preserved unrelated settings and human labels."
+      },
+      {
+        "at": "2026-10-29T16:27:35.335897+00:00",
+        "phase": "reviewing",
+        "message": "Review the labels on 1 evaluation images, then continue. 0 are reviewed. Evaluation requires 10–50 reviewed images; suggestions are not ground truth. This workflow requires manually reviewed expected text or labels; automatic detector proposals do not apply."
+      }
+    ],
+    "preview": {
+      "frames": [
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z/projects/402246585eb54b0c/media/f02c25a7-left-half-text.png",
+          "source_image_sha256": "ef86defcbafdcfd8e40b302da0f1ca5686feb8f908d30ddabdb6bf6eec59c7db",
+          "detections": [],
+          "counts": {},
+          "texts": [
+            "WRONG-111"
+          ],
+          "events": [],
+          "elapsed_ms": 326.26054203137755,
+          "timestamp_s": 0.0,
+          "judgements": [],
+          "inferences": [
+            {
+              "block_id": "o",
+              "result": {
+                "schema_version": 1,
+                "task": "ocr",
+                "input_size": [
+                  900,
+                  300
+                ],
+                "input_pixels_sha256": "1d1d08164e51a1ef42d80ff86066dfa3e83f12e375591b03b9674f4ed2db29fa",
+                "detections": [],
+                "readings": [
+                  {
+                    "box": [
+                      0.08666666712626263,
+                      0.3333333340303031,
+                      0.7866666671262627,
+                      0.6400000006969697
+                    ],
+                    "polygon": [
+                      [
+                        0.08666666712626263,
+                        0.3333333340303031
+                      ],
+                      [
+                        0.7866666671262627,
+                        0.3333333340303031
+                      ],
+                      [
+                        0.7866666671262627,
+                        0.6400000006969697
+                      ],
+                      [
+                        0.08666666712626263,
+                        0.6400000006969697
+                      ]
+                    ],
+                    "text": "WRONG-111",
+                    "kind": "ocr",
+                    "confidence": 1.0,
+                    "symbology": null
+                  }
+                ],
+                "identity": {
+                  "capability_id": "model.apple-vision",
+                  "model_id": "apple-vision",
+                  "adapter_id": "apple-vision",
+                  "identity_scope": "system_framework_versioned",
+                  "artifact_hashes": {
+                    "native_bridge": "919e25e300f50ab6971ef7a70559bbfba4c7cd1472e1643bab65fd7ccecae080"
+                  },
+                  "unavailable_artifacts": [],
+                  "adapter_code_sha256": "7fef46ab88f34d1bb0f73fcc8d53a57cf6b833444c3173ce880caa8e723d3c8c",
+                  "runtime_manifest_sha256": "e8b5a8e0e55e5eef5c9763b084e39f8192503076abcc3f15d59823f19c8e4d55",
+                  "system_identity": {
+                    "architecture": "arm64",
+                    "adapter": "apple-vision",
+                    "identity_scope": "system_framework_versioned",
+                    "request_policy": "apple-vision-en-us-v2",
+                    "output_protocol": "2",
+                    "macos": "26.7.1",
+                    "kernel": "25.6.0",
+                    "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041"
+                  },
+                  "provider": "apple-vision-system",
+                  "config_sha256": "81c8e6ffbf514841279646415e3eb3c651f68c976fee4df4c22617b3f14254c1",
+                  "identity_hash": "d40b876fa3132e25f507dd0faa661410f9eecd5f82fac6471ab3323dfb9e47a6"
+                },
+                "timing": {
+                  "total_ms": 322.982374986168,
+                  "startup_ms": null,
+                  "load_ms": null,
+                  "preprocess_ms": null,
+                  "inference_ms": null,
+                  "postprocess_ms": null,
+                  "transport_ms": null,
+                  "model_cached": null
+                },
+                "warnings": []
+              },
+              "input_to_frame": [
+                0.5,
+                0.0,
+                0.5,
+                1.0
+              ]
+            }
+          ],
+          "comparisons": [
+            {
+              "block_id": "m",
+              "expected": "ABC-990",
+              "observed": [
+                "WRONG-111"
+              ],
+              "mode": "exact",
+              "matched": false
+            }
+          ]
+        }
+      ],
+      "elapsed_s": 0.3473329159896821,
+      "warnings": [
+        "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+      ]
+    },
+    "selected_candidate_index": 0,
+    "evaluations": [],
+    "acceptance_evaluation": null,
+    "project": {
+      "id": "402246585eb54b0c",
+      "name": "Composition acceptance: crop-reading",
+      "use_case": "custom",
+      "status": "building",
+      "created_at": "2026-10-29T16:22:53.402758+00:00",
+      "updated_at": "2026-10-29T16:27:33.783915+00:00",
+      "media": [
+        "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z/projects/402246585eb54b0c/media/f02c25a7-left-half-text.png"
+      ],
+      "brief": "Build exactly one workflow. Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize that crop to width 1200 and height 400 before OCR. Use apple-vision OCR. Compare the recognized text exactly to \"ABC-990\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9.\nRefinement: Change the OCR crop to the right half [0.5, 0, 1, 1] and resize it to 900 by 300 pixels. Keep the existing comparison and event behavior unchanged.",
+      "clarification_count": 0,
+      "candidates": [
+        {
+          "spec_version": "0.1",
+          "name": "Read Left Half Text",
+          "inputs": {
+            "source": {
+              "type": "image_folder",
+              "path": "media"
+            }
+          },
+          "blocks": [
+            {
+              "id": "s",
+              "type": "frame_sample",
+              "params": {
+                "fps": 2.0
+              },
+              "in": {
+                "frames": "$inputs.source"
+              }
+            },
+            {
+              "id": "c",
+              "type": "crop",
+              "params": {
+                "box": [
+                  0.5,
+                  0.0,
+                  1.0,
+                  1.0
+                ]
+              },
+              "in": {
+                "image": "$s.frame"
+              }
+            },
+            {
+              "id": "r",
+              "type": "resize",
+              "params": {
+                "width": 900,
+                "height": 300
+              },
+              "in": {
+                "image": "$c.image"
+              }
+            },
+            {
+              "id": "o",
+              "type": "ocr",
+              "params": {
+                "model": "apple-vision"
+              },
+              "in": {
+                "image": "$r.image"
+              }
+            },
+            {
+              "id": "m",
+              "type": "match",
+              "params": {
+                "expected": "ABC-990",
+                "mode": "exact",
+                "emit": "all"
+              },
+              "in": {
+                "text": "$o.text"
+              }
+            }
+          ],
+          "eval": {
+            "set": "reviewed-v1",
+            "metric": "text_accuracy",
+            "target": 0.9
+          }
+        }
+      ],
+      "evaluations": [],
+      "messages": [
+        {
+          "role": "user",
+          "content": "Build exactly one workflow. Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize that crop to width 1200 and height 400 before OCR. Use apple-vision OCR. Compare the recognized text exactly to \"ABC-990\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9."
+        },
+        {
+          "role": "assistant",
+          "content": "Reads printed text. Checks whether the read text exactly matches \"ABC-990\". Uses the crop/resize steps shown in the saved workflow."
+        },
+        {
+          "role": "user",
+          "content": "Change the OCR crop to the right half [0.5, 0, 1, 1] and resize it to 900 by 300 pixels. Keep the existing comparison and event behavior unchanged."
+        },
+        {
+          "role": "assistant",
+          "content": "Applied 2 requested changes to 1 candidate(s), with an actual preview of every affected candidate. Preserved unrelated settings and human labels."
+        }
+      ],
+      "synthetic": false,
+      "fixture": false,
+      "data_origin": "User imported media",
+      "deployment_id": null,
+      "approval_scope": null,
+      "trial_limits": {}
+    },
+    "created_at": "2026-10-29T16:26:46.665605+00:00",
+    "updated_at": "2026-10-29T16:27:35.335918+00:00",
+    "plan": {
+      "id": "43b7b997267b4368869775bf7b5e61f1",
+      "project_id": "402246585eb54b0c",
+      "build_id": "8294c6564a9a4458ba32e401c9b44a85",
+      "operation_id": "8294c6564a9a4458ba32e401c9b44a85",
+      "revision": 3,
+      "parent_plan_id": "4c72be4baa254d50ac0b94dec69be8c2",
+      "created_at": "2026-10-29T16:27:35.038021+00:00",
+      "content_hash": "33d193488e7674dd8eb713bd5e0e4a8f6c1dd9702c98d092e88bd2291206352e",
+      "goal": "Change the OCR crop to the right half [0.5, 0, 1, 1] and resize it to 900 by 300 pixels. Keep the existing comparison and event behavior unchanged.",
+      "assumptions": [
+        "Use the project's imported media and saved region geometry.",
+        "A sample preview does not establish accuracy.",
+        "Evaluation requires reviewed labels on the same held-out data for every candidate."
+      ],
+      "candidates": [
+        {
+          "spec_version": "0.1",
+          "name": "Read Left Half Text",
+          "inputs": {
+            "source": {
+              "type": "image_folder",
+              "path": "media"
+            }
+          },
+          "blocks": [
+            {
+              "id": "s",
+              "type": "frame_sample",
+              "params": {
+                "fps": 2.0
+              },
+              "in": {
+                "frames": "$inputs.source"
+              }
+            },
+            {
+              "id": "c",
+              "type": "crop",
+              "params": {
+                "box": [
+                  0.5,
+                  0.0,
+                  1.0,
+                  1.0
+                ]
+              },
+              "in": {
+                "image": "$s.frame"
+              }
+            },
+            {
+              "id": "r",
+              "type": "resize",
+              "params": {
+                "width": 900,
+                "height": 300
+              },
+              "in": {
+                "image": "$c.image"
+              }
+            },
+            {
+              "id": "o",
+              "type": "ocr",
+              "params": {
+                "model": "apple-vision"
+              },
+              "in": {
+                "image": "$r.image"
+              }
+            },
+            {
+              "id": "m",
+              "type": "match",
+              "params": {
+                "expected": "ABC-990",
+                "mode": "exact",
+                "emit": "all"
+              },
+              "in": {
+                "text": "$o.text"
+              }
+            }
+          ],
+          "eval": {
+            "set": "reviewed-v1",
+            "metric": "text_accuracy",
+            "target": 0.9
+          }
+        }
+      ],
+      "required_capabilities": [
+        "block.crop",
+        "block.frame_sample",
+        "block.match",
+        "block.ocr",
+        "block.resize",
+        "model.apple-vision"
+      ],
+      "experiments": [
+        {
+          "id": "evaluate",
+          "phase": "evaluate",
+          "description": "Prepare the review set, then measure candidates once its labels are reviewed.",
+          "allowed_tools": [
+            "build_context",
+            "build_freeze_evaluation",
+            "build_prepare_review",
+            "eval_run",
+            "pipeline_run"
+          ],
+          "candidate_indices": [
+            0
+          ]
+        }
+      ],
+      "metrics": [
+        {
+          "candidate_index": 0,
+          "metric": "text_accuracy",
+          "target": 0.9,
+          "direction": "maximize"
+        }
+      ],
+      "stop_conditions": [
+        "Stop on changed data, models, settings or workflow.",
+        "Stop if a required capability is unavailable or a tool fails.",
+        "Respect existing call, time and training budgets.",
+        "Pause at human review and approval checkpoints."
+      ],
+      "human_checkpoints": [
+        {
+          "id": "labels",
+          "phase": "evaluate",
+          "description": "Before scoring, review any unreviewed labels in the chosen evaluation set.",
+          "requires_approval": true
+        },
+        {
+          "id": "deployment",
+          "phase": "operate",
+          "description": "Choose independent acceptance for promotion, or explicitly approve a bounded local-only trial.",
+          "requires_approval": true
+        }
+      ],
+      "snapshot": {
+        "workspace_hash": "68649c5e6f129b6076b5a7a4d69fdd5eada2f03643e91fb0e12ff16de8ffec61",
+        "dataset_hash": "2b776744670d90ee3c98e543f1c0f2427e59fd3cbc827b89e9e528ff8cb3d09e",
+        "model_hashes": [
+          "7e20766b42254d801d4f1e76b99b92c17db4caf3f879cc6f5d18c271f8fc35e2",
+          "5e1be925452909bfde624e368ade9d18f3a9e7a29c4497c951265582f4384b10"
+        ],
+        "settings_hash": "0a759c259264d0118dc4809a470c7378b308ed6813b6fa1a27c2781abbc053d4"
+      },
+      "skills": [
+        {
+          "id": "authoring",
+          "version": "1.1.0",
+          "sha256": "9c8f2850035bbef71d99157ac72d40d8709d74e147a73a8dbd90818373e0ad79"
+        },
+        {
+          "id": "reading",
+          "version": "1.2.0",
+          "sha256": "e9e8e5e573f29e033d8b7445fc34496ff316730eff9da7984e02d1bad55aa095"
+        },
+        {
+          "id": "alerting",
+          "version": "1.0.0",
+          "sha256": "3d0031531408e56f99c93aec804066d872fc58b4f7949954e5bd9ac09f49deb1"
+        }
+      ],
+      "revision_reason": "Next authorized experiment on the current project snapshot",
+      "planning_options_artifact_id": "9c1efac708bc18df4924e1ce18f3e22c1381356bedd683af7f060c12989b08f4",
+      "model_selections": [
+        {
+          "candidate_index": 0,
+          "block_id": "o",
+          "capability_id": "model.apple-vision",
+          "model_id": "apple-vision",
+          "adapter_id": "apple-vision",
+          "proposed_reason": "Eligible OCR for reading printed text",
+          "options_snapshot_id": "7b2ebca1bcbd526d60bd203f10663316f74fd4c706d35ac7a4bf1eff1f03c159",
+          "status": "proposed"
+        }
+      ]
+    },
+    "execution": {
+      "id": "b22a41d06732480fb93afc2a18d835e5",
+      "project_id": "402246585eb54b0c",
+      "build_id": "8294c6564a9a4458ba32e401c9b44a85",
+      "operation_id": "8294c6564a9a4458ba32e401c9b44a85",
+      "plan_id": "43b7b997267b4368869775bf7b5e61f1",
+      "plan_hash": "33d193488e7674dd8eb713bd5e0e4a8f6c1dd9702c98d092e88bd2291206352e",
+      "status": "paused",
+      "phase": "evaluate",
+      "created_at": "2026-10-29T16:27:35.038930+00:00",
+      "updated_at": "2026-10-29T16:27:35.337852+00:00",
+      "accepted_snapshot": {
+        "workspace_hash": "68649c5e6f129b6076b5a7a4d69fdd5eada2f03643e91fb0e12ff16de8ffec61",
+        "dataset_hash": "2b776744670d90ee3c98e543f1c0f2427e59fd3cbc827b89e9e528ff8cb3d09e",
+        "model_hashes": [
+          "7e20766b42254d801d4f1e76b99b92c17db4caf3f879cc6f5d18c271f8fc35e2",
+          "5e1be925452909bfde624e368ade9d18f3a9e7a29c4497c951265582f4384b10"
+        ],
+        "settings_hash": "0a759c259264d0118dc4809a470c7378b308ed6813b6fa1a27c2781abbc053d4"
+      },
+      "error": null
+    },
+    "tool_events": [
+      {
+        "id": "01872937f64e6f09a18ec9e5c4932c124b148a91bc97a4f9d9d43fb0c23ffa64",
+        "sequence": 13,
+        "project_id": "402246585eb54b0c",
+        "build_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "operation_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "execution_id": null,
+        "plan_id": null,
+        "call_id": "f93eb58f5917490085269fc0bfd5cd05",
+        "kind": "tool",
+        "stage": "started",
+        "name": "build_refinement_context",
+        "phase": "plan",
+        "at": "2026-10-29T16:26:47.614284+00:00",
+        "duration_ms": null,
+        "model_identity": null,
+        "cost_usd": null,
+        "input_artifact_id": "c618b965bce329c41a6599ee3914b1d238bcb2a9431f9139521f14f76ed290b4",
+        "output_artifact_id": null,
+        "error": null
+      },
+      {
+        "id": "02dc5bd3ab07f950a69b53078bd072f41caa20847ae2e0a631461b8964d6b5f8",
+        "sequence": 14,
+        "project_id": "402246585eb54b0c",
+        "build_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "operation_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "execution_id": null,
+        "plan_id": null,
+        "call_id": "f93eb58f5917490085269fc0bfd5cd05",
+        "kind": "tool",
+        "stage": "completed",
+        "name": "build_refinement_context",
+        "phase": "plan",
+        "at": "2026-10-29T16:26:47.624212+00:00",
+        "duration_ms": 9.928,
+        "model_identity": null,
+        "cost_usd": null,
+        "input_artifact_id": "c618b965bce329c41a6599ee3914b1d238bcb2a9431f9139521f14f76ed290b4",
+        "output_artifact_id": "71952e81cb60fb4b5ce1ba5a7b9c6373f92f37050254bc3eb79048847afedde7",
+        "error": null
+      },
+      {
+        "id": "9305ad07d86821d98f52c904065c06fec16cc267e2ff97fd21b24b2b6a8c707c",
+        "sequence": 15,
+        "project_id": "402246585eb54b0c",
+        "build_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "operation_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "execution_id": null,
+        "plan_id": null,
+        "call_id": "80ad262ab40e479f8ed68c1ec784db6a",
+        "kind": "llm",
+        "stage": "started",
+        "name": "visionapp-planner",
+        "phase": "plan",
+        "at": "2026-10-29T16:26:47.797936+00:00",
+        "duration_ms": null,
+        "model_identity": "Reported model alias: visionapp-planner",
+        "cost_usd": null,
+        "input_artifact_id": "688e56a337679208e0a4f12fe191b6ed3f0c5eaebafe399bae19fadf0b195646",
+        "output_artifact_id": null,
+        "error": null
+      },
+      {
+        "id": "dbe71d4cca5b0b23e70ea1b1a0707f5ca21ebcabf8a82aa665c05547a53807ae",
+        "sequence": 16,
+        "project_id": "402246585eb54b0c",
+        "build_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "operation_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "execution_id": null,
+        "plan_id": null,
+        "call_id": "80ad262ab40e479f8ed68c1ec784db6a",
+        "kind": "llm",
+        "stage": "completed",
+        "name": "visionapp-planner",
+        "phase": "plan",
+        "at": "2026-10-29T16:27:30.935568+00:00",
+        "duration_ms": 43137.632,
+        "model_identity": "Reported model alias: visionapp-planner",
+        "cost_usd": null,
+        "input_artifact_id": "688e56a337679208e0a4f12fe191b6ed3f0c5eaebafe399bae19fadf0b195646",
+        "output_artifact_id": "829d039705de51047fa5a88e0b5049e65e0071f42670909c0803bec7b1d17a7e",
+        "error": null
+      },
+      {
+        "id": "c28a31ba3a2df47c7ae0db5ad026e433aa12ed2c128b589cdc90758eacd9ab21",
+        "sequence": 17,
+        "project_id": "402246585eb54b0c",
+        "build_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "operation_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "execution_id": "88335c55091d47659f0039b831b4764c",
+        "plan_id": "4c72be4baa254d50ac0b94dec69be8c2",
+        "call_id": "8e0d3468529c4824912e243fc6bbff57",
+        "kind": "tool",
+        "stage": "started",
+        "name": "build_refine",
+        "phase": "plan",
+        "at": "2026-10-29T16:27:33.144854+00:00",
+        "duration_ms": null,
+        "model_identity": null,
+        "cost_usd": null,
+        "input_artifact_id": "796c4e2cea6f4a90c5a57caade023f56228c0d4c53729ae938c27a428e0a095f",
+        "output_artifact_id": null,
+        "error": null
+      },
+      {
+        "id": "f46f944d383e3dbae9d0ebb08700ca17d9cf90676eb1c50b377e119b4d933c5e",
+        "sequence": 18,
+        "project_id": "402246585eb54b0c",
+        "build_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "operation_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "execution_id": "88335c55091d47659f0039b831b4764c",
+        "plan_id": "4c72be4baa254d50ac0b94dec69be8c2",
+        "call_id": "8e0d3468529c4824912e243fc6bbff57",
+        "kind": "tool",
+        "stage": "completed",
+        "name": "build_refine",
+        "phase": "plan",
+        "at": "2026-10-29T16:27:33.618235+00:00",
+        "duration_ms": 473.381,
+        "model_identity": null,
+        "cost_usd": null,
+        "input_artifact_id": "796c4e2cea6f4a90c5a57caade023f56228c0d4c53729ae938c27a428e0a095f",
+        "output_artifact_id": "8546e9593c48fb78c9ed6164d6f998379c988388472f210bdf7584aa1e90690e",
+        "error": null
+      },
+      {
+        "id": "85e03575f7fa54d45e4b13e4a9da796ecbd14747c4cb09a810ab199f73df9789",
+        "sequence": 19,
+        "project_id": "402246585eb54b0c",
+        "build_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "operation_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "execution_id": "b22a41d06732480fb93afc2a18d835e5",
+        "plan_id": "43b7b997267b4368869775bf7b5e61f1",
+        "call_id": "306551aa1b69438bb77f3638645b8d01",
+        "kind": "tool",
+        "stage": "started",
+        "name": "build_prepare_review",
+        "phase": "evaluate",
+        "at": "2026-10-29T16:27:35.166189+00:00",
+        "duration_ms": null,
+        "model_identity": null,
+        "cost_usd": null,
+        "input_artifact_id": "ad810b4cb29606dcd228e6a9103d65f51ddf9a7385bd901fcb0a22ca2f1da5bb",
+        "output_artifact_id": null,
+        "error": null
+      },
+      {
+        "id": "296517dd700e39dee95ce74f5807125f078ff0203005f64e853d611e9ac5c4e8",
+        "sequence": 20,
+        "project_id": "402246585eb54b0c",
+        "build_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "operation_id": "8294c6564a9a4458ba32e401c9b44a85",
+        "execution_id": "b22a41d06732480fb93afc2a18d835e5",
+        "plan_id": "43b7b997267b4368869775bf7b5e61f1",
+        "call_id": "306551aa1b69438bb77f3638645b8d01",
+        "kind": "tool",
+        "stage": "completed",
+        "name": "build_prepare_review",
+        "phase": "evaluate",
+        "at": "2026-10-29T16:27:35.195995+00:00",
+        "duration_ms": 29.806,
+        "model_identity": null,
+        "cost_usd": null,
+        "input_artifact_id": "ad810b4cb29606dcd228e6a9103d65f51ddf9a7385bd901fcb0a22ca2f1da5bb",
+        "output_artifact_id": "ddde8a66d4dabc6a603c70f414717564bb91567ae3f0618f7fd80e26b795762b",
+        "error": null
+      }
+    ]
+  },
+  "operation": {
+    "id": "8294c6564a9a4458ba32e401c9b44a85",
+    "project_id": "402246585eb54b0c",
+    "trace_id": "88c4ce6becb3490a9efad5a166512119",
+    "root_span_id": "d2eaa120db1648ec",
+    "owner_pid": 21836,
+    "created_at": 1793291206.692128,
+    "updated_at": 1793291255.3359208,
+    "deadline": 1793292106.66737,
+    "status": "running",
+    "input_fingerprint": "e44f7072af2c6d056ab7d4e86cbe1fdac1299c9cf8072eafffe432851ce81230",
+    "brief": "Change the OCR crop to the right half [0.5, 0, 1, 1] and resize it to 900 by 300 pixels. Keep the existing comparison and event behavior unchanged.",
+    "source_path": "media",
+    "detector_model": "",
+    "state": {
+      "phase": "evaluate",
+      "budget": {
+        "max_tool_calls": 30,
+        "max_wall_seconds": 900.0,
+        "max_training_minutes": 4.0,
+        "max_model_calls": 5,
+        "tool_calls": 3,
+        "model_calls": 1,
+        "training_minutes": 0.0,
+        "started_at": 1793291206.692113
+      },
+      "brief_confirmed": true,
+      "candidate_count": 1,
+      "compiled_count": 1,
+      "evaluation": null,
+      "deployment_approved": false,
+      "override_reason": null,
+      "approval_scope": null
+    },
+    "calls": [
+      {
+        "id": "f93eb58f5917490085269fc0bfd5cd05",
+        "kind": "tool",
+        "name": "build_refinement_context",
+        "started_ns": 1793291207614284000,
+        "ended_ns": 1793291207624212000,
+        "status": "completed",
+        "request": {
+          "project_id": "402246585eb54b0c",
+          "candidate_index": 0
+        },
+        "result": {
+          "candidates": [
+            {
+              "spec_version": "0.1",
+              "name": "Read Left Half Text",
+              "inputs": {
+                "source": {
+                  "type": "image_folder",
+                  "path": "media"
+                }
+              },
+              "blocks": [
+                {
+                  "id": "s",
+                  "type": "frame_sample",
+                  "params": {
+                    "fps": 2.0
+                  },
+                  "in": {
+                    "frames": "$inputs.source"
+                  }
+                },
+                {
+                  "id": "c",
+                  "type": "crop",
+                  "params": {
+                    "box": [
+                      0.0,
+                      0.0,
+                      0.5,
+                      1.0
+                    ]
+                  },
+                  "in": {
+                    "image": "$s.frame"
+                  }
+                },
+                {
+                  "id": "r",
+                  "type": "resize",
+                  "params": {
+                    "width": 1200,
+                    "height": 400
+                  },
+                  "in": {
+                    "image": "$c.image"
+                  }
+                },
+                {
+                  "id": "o",
+                  "type": "ocr",
+                  "params": {
+                    "model": "apple-vision"
+                  },
+                  "in": {
+                    "image": "$r.image"
+                  }
+                },
+                {
+                  "id": "m",
+                  "type": "match",
+                  "params": {
+                    "expected": "ABC-990",
+                    "mode": "exact",
+                    "emit": "all"
+                  },
+                  "in": {
+                    "text": "$o.text"
+                  }
+                }
+              ],
+              "eval": {
+                "set": "reviewed-v1",
+                "metric": "text_accuracy",
+                "target": 0.9
+              }
+            }
+          ],
+          "selected_candidate_index": 0,
+          "current_goal": "Build exactly one workflow. Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize that crop to width 1200 and height 400 before OCR. Use apple-vision OCR. Compare the recognized text exactly to \"ABC-990\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9.",
+          "conversation": [
+            {
+              "role": "user",
+              "content": "Build exactly one workflow. Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize that crop to width 1200 and height 400 before OCR. Use apple-vision OCR. Compare the recognized text exactly to \"ABC-990\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9."
+            },
+            {
+              "role": "assistant",
+              "content": "Reads printed text. Checks whether the read text exactly matches \"ABC-990\". Uses the crop/resize steps shown in the saved workflow."
+            }
+          ],
+          "classes": [],
+          "saved_zone_ids": [],
+          "clarification_count": 0
+        },
+        "error": null
+      },
+      {
+        "id": "80ad262ab40e479f8ed68c1ec784db6a",
+        "kind": "llm",
+        "name": "visionapp-planner",
+        "started_ns": 1793291207797936000,
+        "ended_ns": 1793291250935568000,
+        "status": "completed",
+        "request": {
+          "messages": [
+            {
+              "parts": [
+                {
+                  "content": "You edit an existing visual application, using only the supplied typed patches.\nRead the actual graph, existing values, current goal and conversation. The last user request changes this app.\nAn answer to your question completes the previous request; interpret them together.\nReturn JSON {message, questions, patches}. Clear requests: questions=[] and one or more patches.\nAmbiguous requests: patches=[] and at most three short essential questions. Never guess a business threshold.\nNever regenerate a graph, remove unrelated blocks, approve labels/deployment/training, execute code, or invent results.\nDo not ask technical questions when values or sensible semantics are already explicit. No unnecessary confirmation.\n\nSupported patch kinds and fields:\nconfidence: confidence fraction0..1 (70%=0.7). 'Only show detections at least70percent sure' means confidence0.7.\nadd_classes: classes added to current labels. Map obvious plurals to exact existing names. Preserve prior classes.\nremove_classes: classes exact existing labels explicitly removed. replace_classes: explicit replacement label list.\nFor replacing pallets with forklifts, use {\"kind\":\"replace_classes\",\"classes\":[\"forklift\"]}; classes are the NEW complete detector labels.\nClass changes leave the current evaluation metric and target unchanged. Do not add an eval_target patch or ask about evaluation unless requested.\ncount_rule: count_threshold number, count_operator >= <= == != > <, hold_s seconds; supply only requested fields.\n'At least four objects for half a minute' means count_threshold4,count_operator>=,hold_s30.\nCounts aggregate every detector class in that branch. A class-specific rule with a mixed-class detector needs clarification\nabout filtering that branch; do not silently claim class-specific counting or remove classes to achieve it.\nexpected_text: expected_text literal required label value, match_mode exact|contains if requested.\nsample_fps: fps>0..60. Resolve relative requests against current frame_sample.fps (half of2=1).\neval_target: eval_target and optional eval_metric count_mae|precision|recall|text_accuracy. Preserve current metric unless asked.\ncrop: crop_box [x0,y0,x1,y1] normalized to the transform input. Preserve supplied bounds exactly.\nLeft/right/top/bottom half means [0,0,0.5,1]/[0.5,0,1,1]/[0,0,1,0.5]/[0,0.5,1,1].\nresize: width and height integer pixels1..8192; both must come from the user (e.g.640x480). Do not guess dimensions.\nFor crop/resize, block_id names the intended existing detector/reader or transform. Without it there must be one image consumer.\nThe unique existing transform in that consumer's image path is updated, or a transform is inserted before the consumer.\nShared preprocessing is copied for the selected branch; other readers and model choices remain unchanged.\nIf multiple crops/resizes already exist on that path, ask which transform. Bounds are relative to its input; do not invent full-frame coordinates for an already-cropped input.\nAccuracy/recall/precision/text targets are fractions0..1; count_mae is a nonnegative absolute count error.\nOnly fields relevant to each kind are allowed. Never add null unrelated fields. Multiple edits form one patches list.\nUse block_id only to disambiguate an actual matching existing block. If several blocks could be meant, ask which one.\ncount_rule can add rule+sink after the unique existing count_per_zone if absent; a new rule needs a threshold.\nexpected_text can add a comparison after unique OCR/barcode if absent; it preserves existing event connections and never adds a sink.\nOnly crop/resize can add preprocessing. New models, reader branches and other block types require a new structural build request.\nConfidence defaults to the selected candidate. All other goal edits default to all alternatives. Omit scope unless explicitly requested.\nPreserve prior classes for additive requests. Only remove or replace when explicitly requested. Do not invent synonyms for saved names.\nDo not drop part of a compound request. If any part is unsupported or ambiguous, ask rather than partially editing.\nFor 'make it more accurate' without a measurable requested change, ask which errors or target matter; do not guess a confidence direction.\nInterpret the LAST USER REQUEST below. The field descriptions above are a vocabulary, not tasks to execute.\nCount/alert/event thresholds concern count_rule; detection certainty concerns confidence. They are different settings.\nFor a clear count+duration request, emit count_rule with its count_threshold, count_operator and hold_s, without asking again.\n\nApplication playbook: Describe, plan, execute and measure (authoring@1.1.0; sha256 9c8f2850035bbef71d99157ac72d40d8709d74e147a73a8dbd90818373e0ad79)\nRequired inputs: The user's outcome; Imported media or an explicit request for source acquisition; Installed capability catalog\nValidation: Validate schema, inputs and capability readiness before execution; Preview actual samples; label proposals remain unreviewed; Compare compatible candidates on the same reviewed holdout\nFailure modes: Missing capability or media; Changed data, model or plan revision; Exhausted budget or failed target\n# Build the requested vision application\nPreserve the user's outcome, class names, spatial regions, thresholds and output semantics. Ask only for missing business meaning. Do not require a preset or a hand-built graph.\n\nSave a typed, reviewable plan before executing candidate experiments. State data assumptions, capability requirements, metric targets, stop conditions and human checkpoints. A model may propose a step; the executor validates its authority and current inputs. Never execute free-form generated code.\n\nCompose supported typed nodes and references for the requested workflow. Each detector or reader has its own eligible model binding. Preserve requested image transforms and connect them to the intended branch. Static crops are not detection-conditioned crops. Mixed outputs and multiple readers can be previewed; one aggregate score does not qualify every branch.\n\nUse the tool catalog as the executable boundary. A proposed adapter is not installed merely because a playbook mentions it. Preview results demonstrate execution, not accuracy. Show failed steps and their artifacts. Do not approve labels, training, recorded operation or external delivery from model prose.\n\n## Examples\n- \"Count people in these images\": discover detection, build a count preview, then request label review for measured count error.\n- \"Detect a new object class\": retain the requested class and test an eligible open-vocabulary adapter; never silently map it to a different pretrained class.\n- An unavailable capability: explain the missing adapter or data and preserve the current application.\n\nApplication playbook: OCR, barcode and field comparison (reading@1.2.0; sha256 e9e8e5e573f29e033d8b7445fc34496ff316730eff9da7984e02d1bad55aa095)\nRequired inputs: Representative label or barcode images; Exact literal only when comparison is requested; Matching and event semantics\nValidation: Score reviewed expected text with declared normalization; Preserve exact versus substring matching and event polarity; Report measured CER/WER, exact text-list accuracy and recognition failures\nFailure modes: Missing comparison value; Leading zeros lost; Exact/contains confusion; Unsupported language or unreadable text\n# Read the requested fields\nUse an implemented OCR or barcode adapter appropriate to the media. Reading-only requests do not need an expected SKU. When comparing, copy the supplied literal exactly, including case and leading zeros. A generic reference to \"the expected SKU\" is not itself the expected value.\n\nComposed match nodes explicitly state mode and emit. Exact equality uses exact; substring search uses contains. Emit matched for events only on a match, mismatched for only failed comparisons, and all for ordinary check-whether output. Comparison results remain visible without a sink_event. Add a local event sink only when requested; no-events forbids sinks. Legacy pattern choices express this separately as record_events. Do not add an object detector or spatial count rule to a reading-only pipeline.\n\nBenchmark OCR candidates on the project's text, language, lighting and scale. Keep raw recognition separate from field normalization. Report character/word error rates only when the evaluator returns them, with its saved normalization policy and counts. Exact text-list accuracy is not a named-field semantic score.\n\nUsers can draw and correct text quadrilaterals and exact transcripts in the image\neditor, or explicitly copy a recognized region as an unreviewed label. A copied\nprediction is not ground truth until human review. Keep raw Unicode and repeated\ninstances intact. The user chooses whether image-level expected values come from\nthe region transcripts or remain manually entered. Dataset context reports text\nregions separately from object boxes and image-level expected values. Region\ngeometry, reading order and repeated-instance localization are not scored by the\ncurrent image-level text evaluator; do not claim those capabilities from its score.\n\n## Examples\n- \"Read package codes\": return decoded text without a match block.\n- \"Create an event only when text exactly equals ABC-990\": expected_text ABC-990, match_mode exact, match_emit matched.\n- \"Compare against the expected SKU\": ask for its value; do not use the words expected SKU as the value unless explicitly quoted as a literal.\n\nApplication playbook: Local events and configured delivery (alerting@1.0.0; sha256 3d0031531408e56f99c93aec804066d872fc58b4f7949954e5bd9ac09f49deb1)\nRequired inputs: Explicit event condition; Configured destination for external delivery; Human approval for recorded operation and external delivery\nValidation: Check event threshold, polarity and duration; Preview must not send external messages; Verify idempotency and delivery receipts in approved operation\nFailure modes: Missing destination; Partial compound edit; Retry duplicates; Preview mistaken for delivery\n# Separate event behavior from delivery configuration\nA local event or saved crop can be part of a previewable application. External email, webhook or MQTT delivery additionally requires an implemented transport, configured destination and human approval. A model cannot invent recipients, credentials, approval or delivery receipts.\n\nPreserve the entire compound request. If delivery setup is unsupported in the current edit path, ask for configuration without partially changing confidence or classes. An explicit later request to skip delivery may proceed with only the vision changes.\n\n## Examples\n- \"Save a crop whenever a person appears\": plan a local evidence event on the requested condition; no external destination is implied.\n- \"Raise confidence and email me\": preserve current application until the delivery question is resolved.\n- \"Do not send email\": do not interpret email as an object class or create an outbound action.\nYou may ask at most 3 further questions.",
+                  "timestamp": "2026-10-29T16:26:47.760353Z",
+                  "dynamic_ref": null,
+                  "part_kind": "system-prompt"
+                },
+                {
+                  "content": "Authoritative current app:\n{\"candidates\":[{\"spec_version\":\"0.1\",\"name\":\"Read Left Half Text\",\"inputs\":{\"source\":{\"type\":\"image_folder\",\"path\":\"media\"}},\"blocks\":[{\"id\":\"s\",\"type\":\"frame_sample\",\"params\":{\"fps\":2.0},\"in\":{\"frames\":\"$inputs.source\"}},{\"id\":\"c\",\"type\":\"crop\",\"params\":{\"box\":[0.0,0.0,0.5,1.0]},\"in\":{\"image\":\"$s.frame\"}},{\"id\":\"r\",\"type\":\"resize\",\"params\":{\"width\":1200,\"height\":400},\"in\":{\"image\":\"$c.image\"}},{\"id\":\"o\",\"type\":\"ocr\",\"params\":{\"model\":\"apple-vision\"},\"in\":{\"image\":\"$r.image\"}},{\"id\":\"m\",\"type\":\"match\",\"params\":{\"expected\":\"ABC-990\",\"mode\":\"exact\",\"emit\":\"all\"},\"in\":{\"text\":\"$o.text\"}}],\"eval\":{\"set\":\"reviewed-v1\",\"metric\":\"text_accuracy\",\"target\":0.9}}],\"selected_candidate_index\":0,\"current_goal\":\"Build exactly one workflow. Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize that crop to width 1200 and height 400 before OCR. Use apple-vision OCR. Compare the recognized text exactly to \\\"ABC-990\\\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9.\",\"conversation\":[{\"role\":\"user\",\"content\":\"Build exactly one workflow. Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize that crop to width 1200 and height 400 before OCR. Use apple-vision OCR. Compare the recognized text exactly to \\\"ABC-990\\\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9.\"},{\"role\":\"assistant\",\"content\":\"Reads printed text. Checks whether the read text exactly matches \\\"ABC-990\\\". Uses the crop/resize steps shown in the saved workflow.\"}],\"classes\":[],\"saved_zone_ids\":[],\"clarification_count\":0,\"history_abbreviated\":false}\nUser request:\nChange the OCR crop to the right half [0.5, 0, 1, 1] and resize it to 900 by 300 pixels. Keep the existing comparison and event behavior unchanged.",
+                  "timestamp": "2026-10-29T16:26:47.760369Z",
+                  "part_kind": "user-prompt"
+                }
+              ],
+              "timestamp": "2026-10-29T16:26:47.760600Z",
+              "instructions": null,
+              "kind": "request",
+              "run_id": "01a1887c-444e-756b-85e5-2ab2bfbd4be6",
+              "conversation_id": "01a1887c-444e-756b-85e5-2ab12fa3fa1e",
+              "metadata": null
+            }
+          ],
+          "model_settings": {
+            "temperature": 0,
+            "max_tokens": 1600
+          },
+          "output_schema": {
+            "$defs": {
+              "AddClasses": {
+                "additionalProperties": false,
+                "properties": {
+                  "scope": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          "selected",
+                          "all"
+                        ],
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Scope"
+                  },
+                  "block_id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Block Id"
+                  },
+                  "kind": {
+                    "const": "add_classes",
+                    "title": "Kind",
+                    "type": "string"
+                  },
+                  "classes": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 64,
+                    "minItems": 1,
+                    "title": "Classes",
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "classes"
+                ],
+                "title": "AddClasses",
+                "type": "object"
+              },
+              "Confidence": {
+                "additionalProperties": false,
+                "properties": {
+                  "scope": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          "selected",
+                          "all"
+                        ],
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Scope"
+                  },
+                  "block_id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Block Id"
+                  },
+                  "kind": {
+                    "const": "confidence",
+                    "title": "Kind",
+                    "type": "string"
+                  },
+                  "confidence": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "title": "Confidence",
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "confidence"
+                ],
+                "title": "Confidence",
+                "type": "object"
+              },
+              "CountRule": {
+                "additionalProperties": false,
+                "properties": {
+                  "scope": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          "selected",
+                          "all"
+                        ],
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Scope"
+                  },
+                  "block_id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Block Id"
+                  },
+                  "kind": {
+                    "const": "count_rule",
+                    "title": "Kind",
+                    "type": "string"
+                  },
+                  "count_threshold": {
+                    "anyOf": [
+                      {
+                        "maximum": 1000000000,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Count Threshold"
+                  },
+                  "count_operator": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          ">=",
+                          "<=",
+                          "==",
+                          "!=",
+                          ">",
+                          "<"
+                        ],
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Count Operator"
+                  },
+                  "hold_s": {
+                    "anyOf": [
+                      {
+                        "maximum": 86400,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Hold S"
+                  }
+                },
+                "required": [
+                  "kind"
+                ],
+                "title": "CountRule",
+                "type": "object"
+              },
+              "Crop": {
+                "additionalProperties": false,
+                "properties": {
+                  "scope": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          "selected",
+                          "all"
+                        ],
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Scope"
+                  },
+                  "block_id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Block Id"
+                  },
+                  "kind": {
+                    "const": "crop",
+                    "title": "Kind",
+                    "type": "string"
+                  },
+                  "crop_box": {
+                    "items": {
+                      "type": "number"
+                    },
+                    "maxItems": 4,
+                    "minItems": 4,
+                    "title": "Crop Box",
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "crop_box"
+                ],
+                "title": "Crop",
+                "type": "object"
+              },
+              "EvalTarget": {
+                "additionalProperties": false,
+                "properties": {
+                  "kind": {
+                    "const": "eval_target",
+                    "title": "Kind",
+                    "type": "string"
+                  },
+                  "scope": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          "selected",
+                          "all"
+                        ],
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Scope"
+                  },
+                  "eval_metric": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          "count_mae",
+                          "precision",
+                          "recall",
+                          "text_accuracy"
+                        ],
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Eval Metric"
+                  },
+                  "eval_target": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Eval Target"
+                  }
+                },
+                "required": [
+                  "kind"
+                ],
+                "title": "EvalTarget",
+                "type": "object"
+              },
+              "ExpectedText": {
+                "additionalProperties": false,
+                "properties": {
+                  "scope": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          "selected",
+                          "all"
+                        ],
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Scope"
+                  },
+                  "block_id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Block Id"
+                  },
+                  "kind": {
+                    "const": "expected_text",
+                    "title": "Kind",
+                    "type": "string"
+                  },
+                  "expected_text": {
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "title": "Expected Text",
+                    "type": "string"
+                  },
+                  "match_mode": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          "exact",
+                          "contains"
+                        ],
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Match Mode"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "expected_text"
+                ],
+                "title": "ExpectedText",
+                "type": "object"
+              },
+              "RemoveClasses": {
+                "additionalProperties": false,
+                "properties": {
+                  "scope": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          "selected",
+                          "all"
+                        ],
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Scope"
+                  },
+                  "block_id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Block Id"
+                  },
+                  "kind": {
+                    "const": "remove_classes",
+                    "title": "Kind",
+                    "type": "string"
+                  },
+                  "classes": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 64,
+                    "minItems": 1,
+                    "title": "Classes",
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "classes"
+                ],
+                "title": "RemoveClasses",
+                "type": "object"
+              },
+              "ReplaceClasses": {
+                "additionalProperties": false,
+                "properties": {
+                  "scope": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          "selected",
+                          "all"
+                        ],
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Scope"
+                  },
+                  "block_id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Block Id"
+                  },
+                  "kind": {
+                    "const": "replace_classes",
+                    "title": "Kind",
+                    "type": "string"
+                  },
+                  "classes": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 64,
+                    "minItems": 1,
+                    "title": "Classes",
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "classes"
+                ],
+                "title": "ReplaceClasses",
+                "type": "object"
+              },
+              "Resize": {
+                "additionalProperties": false,
+                "properties": {
+                  "scope": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          "selected",
+                          "all"
+                        ],
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Scope"
+                  },
+                  "block_id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Block Id"
+                  },
+                  "kind": {
+                    "const": "resize",
+                    "title": "Kind",
+                    "type": "string"
+                  },
+                  "width": {
+                    "maximum": 8192,
+                    "minimum": 1,
+                    "title": "Width",
+                    "type": "integer"
+                  },
+                  "height": {
+                    "maximum": 8192,
+                    "minimum": 1,
+                    "title": "Height",
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "width",
+                  "height"
+                ],
+                "title": "Resize",
+                "type": "object"
+              },
+              "SampleFPS": {
+                "additionalProperties": false,
+                "properties": {
+                  "scope": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          "selected",
+                          "all"
+                        ],
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Scope"
+                  },
+                  "block_id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Block Id"
+                  },
+                  "kind": {
+                    "const": "sample_fps",
+                    "title": "Kind",
+                    "type": "string"
+                  },
+                  "fps": {
+                    "exclusiveMinimum": 0,
+                    "maximum": 60,
+                    "title": "Fps",
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "fps"
+                ],
+                "title": "SampleFPS",
+                "type": "object"
+              }
+            },
+            "additionalProperties": false,
+            "properties": {
+              "message": {
+                "maxLength": 1000,
+                "minLength": 1,
+                "title": "Message",
+                "type": "string"
+              },
+              "questions": {
+                "items": {
+                  "type": "string"
+                },
+                "maxItems": 3,
+                "title": "Questions",
+                "type": "array"
+              },
+              "patches": {
+                "items": {
+                  "discriminator": {
+                    "mapping": {
+                      "add_classes": "#/$defs/AddClasses",
+                      "confidence": "#/$defs/Confidence",
+                      "count_rule": "#/$defs/CountRule",
+                      "crop": "#/$defs/Crop",
+                      "eval_target": "#/$defs/EvalTarget",
+                      "expected_text": "#/$defs/ExpectedText",
+                      "remove_classes": "#/$defs/RemoveClasses",
+                      "replace_classes": "#/$defs/ReplaceClasses",
+                      "resize": "#/$defs/Resize",
+                      "sample_fps": "#/$defs/SampleFPS"
+                    },
+                    "propertyName": "kind"
+                  },
+                  "oneOf": [
+                    {
+                      "$ref": "#/$defs/Confidence"
+                    },
+                    {
+                      "$ref": "#/$defs/AddClasses"
+                    },
+                    {
+                      "$ref": "#/$defs/RemoveClasses"
+                    },
+                    {
+                      "$ref": "#/$defs/ReplaceClasses"
+                    },
+                    {
+                      "$ref": "#/$defs/CountRule"
+                    },
+                    {
+                      "$ref": "#/$defs/ExpectedText"
+                    },
+                    {
+                      "$ref": "#/$defs/SampleFPS"
+                    },
+                    {
+                      "$ref": "#/$defs/EvalTarget"
+                    },
+                    {
+                      "$ref": "#/$defs/Crop"
+                    },
+                    {
+                      "$ref": "#/$defs/Resize"
+                    }
+                  ]
+                },
+                "maxItems": 8,
+                "title": "Patches",
+                "type": "array"
+              }
+            },
+            "required": [
+              "message",
+              "questions",
+              "patches"
+            ],
+            "title": "RefinementModelDecision",
+            "type": "object"
+          }
+        },
+        "result": {
+          "messages": [
+            {
+              "parts": [
+                {
+                  "content": "{\n  \"message\": \"The OCR crop has been changed to the right half [0.5, 0, 1, 1], and the resize dimensions have been updated to 900 by 300 pixels. The existing comparison and event behavior remains unchanged.\",\n  \"questions\": [],\n  \"patches\": [\n    {\n      \"kind\": \"crop\",\n      \"crop_box\": [0.5, 0.0, 1.0, 1.0],\n      \"block_id\": \"c\"\n    },\n    {\n      \"kind\": \"resize\",\n      \"width\": 900,\n      \"height\": 300,\n      \"block_id\": \"r\"\n    }\n  ]\n}",
+                  "id": null,
+                  "provider_name": null,
+                  "provider_details": null,
+                  "part_kind": "text"
+                }
+              ],
+              "usage": {
+                "input_tokens": 2835,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 425,
+                "output_tokens": 153,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {}
+              },
+              "model_name": "visionapp-planner",
+              "timestamp": "2026-10-29T16:27:30.836162Z",
+              "kind": "response",
+              "provider_name": "openai",
+              "provider_url": "http://127.0.0.1:1234/v1/",
+              "provider_details": {
+                "finish_reason": "stop",
+                "timestamp": "2026-10-29T16:27:30Z"
+              },
+              "provider_response_id": "chatcmpl-mdaKyBOe2QQw6ssXPLTvUF1tAP2elDpW",
+              "finish_reason": "stop",
+              "run_id": null,
+              "conversation_id": null,
+              "metadata": null,
+              "state": "complete"
+            }
+          ]
+        },
+        "error": null
+      },
+      {
+        "id": "8e0d3468529c4824912e243fc6bbff57",
+        "kind": "tool",
+        "name": "build_refine",
+        "started_ns": 1793291253144854000,
+        "ended_ns": 1793291253618235000,
+        "status": "completed",
+        "request": {
+          "project_id": "402246585eb54b0c",
+          "build_id": "8294c6564a9a4458ba32e401c9b44a85",
+          "candidate_index": 0,
+          "batch": {
+            "patches": [
+              {
+                "kind": "crop",
+                "scope": null,
+                "block_id": "c",
+                "confidence": null,
+                "classes": [],
+                "count_threshold": null,
+                "count_operator": null,
+                "hold_s": null,
+                "expected_text": null,
+                "match_mode": null,
+                "fps": null,
+                "eval_metric": null,
+                "eval_target": null,
+                "crop_box": [
+                  0.5,
+                  0.0,
+                  1.0,
+                  1.0
+                ],
+                "width": null,
+                "height": null
+              },
+              {
+                "kind": "resize",
+                "scope": null,
+                "block_id": "r",
+                "confidence": null,
+                "classes": [],
+                "count_threshold": null,
+                "count_operator": null,
+                "hold_s": null,
+                "expected_text": null,
+                "match_mode": null,
+                "fps": null,
+                "eval_metric": null,
+                "eval_target": null,
+                "crop_box": null,
+                "width": 900,
+                "height": 300
+              }
+            ]
+          }
+        },
+        "result": {
+          "preview": {
+            "frames": [
+              {
+                "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z/projects/402246585eb54b0c/media/f02c25a7-left-half-text.png",
+                "source_image_sha256": "ef86defcbafdcfd8e40b302da0f1ca5686feb8f908d30ddabdb6bf6eec59c7db",
+                "detections": [],
+                "counts": {},
+                "texts": [
+                  "WRONG-111"
+                ],
+                "events": [],
+                "elapsed_ms": 326.26054203137755,
+                "timestamp_s": 0.0,
+                "judgements": [],
+                "inferences": [
+                  {
+                    "block_id": "o",
+                    "result": {
+                      "schema_version": 1,
+                      "task": "ocr",
+                      "input_size": [
+                        900,
+                        300
+                      ],
+                      "input_pixels_sha256": "1d1d08164e51a1ef42d80ff86066dfa3e83f12e375591b03b9674f4ed2db29fa",
+                      "detections": [],
+                      "readings": [
+                        {
+                          "box": [
+                            0.08666666712626263,
+                            0.3333333340303031,
+                            0.7866666671262627,
+                            0.6400000006969697
+                          ],
+                          "polygon": [
+                            [
+                              0.08666666712626263,
+                              0.3333333340303031
+                            ],
+                            [
+                              0.7866666671262627,
+                              0.3333333340303031
+                            ],
+                            [
+                              0.7866666671262627,
+                              0.6400000006969697
+                            ],
+                            [
+                              0.08666666712626263,
+                              0.6400000006969697
+                            ]
+                          ],
+                          "text": "WRONG-111",
+                          "kind": "ocr",
+                          "confidence": 1.0,
+                          "symbology": null
+                        }
+                      ],
+                      "identity": {
+                        "capability_id": "model.apple-vision",
+                        "model_id": "apple-vision",
+                        "adapter_id": "apple-vision",
+                        "identity_scope": "system_framework_versioned",
+                        "artifact_hashes": {
+                          "native_bridge": "919e25e300f50ab6971ef7a70559bbfba4c7cd1472e1643bab65fd7ccecae080"
+                        },
+                        "unavailable_artifacts": [],
+                        "adapter_code_sha256": "7fef46ab88f34d1bb0f73fcc8d53a57cf6b833444c3173ce880caa8e723d3c8c",
+                        "runtime_manifest_sha256": "e8b5a8e0e55e5eef5c9763b084e39f8192503076abcc3f15d59823f19c8e4d55",
+                        "system_identity": {
+                          "architecture": "arm64",
+                          "adapter": "apple-vision",
+                          "identity_scope": "system_framework_versioned",
+                          "request_policy": "apple-vision-en-us-v2",
+                          "output_protocol": "2",
+                          "macos": "26.7.1",
+                          "kernel": "25.6.0",
+                          "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041"
+                        },
+                        "provider": "apple-vision-system",
+                        "config_sha256": "81c8e6ffbf514841279646415e3eb3c651f68c976fee4df4c22617b3f14254c1",
+                        "identity_hash": "d40b876fa3132e25f507dd0faa661410f9eecd5f82fac6471ab3323dfb9e47a6"
+                      },
+                      "timing": {
+                        "total_ms": 322.982374986168,
+                        "startup_ms": null,
+                        "load_ms": null,
+                        "preprocess_ms": null,
+                        "inference_ms": null,
+                        "postprocess_ms": null,
+                        "transport_ms": null,
+                        "model_cached": null
+                      },
+                      "warnings": []
+                    },
+                    "input_to_frame": [
+                      0.5,
+                      0.0,
+                      0.5,
+                      1.0
+                    ]
+                  }
+                ],
+                "comparisons": [
+                  {
+                    "block_id": "m",
+                    "expected": "ABC-990",
+                    "observed": [
+                      "WRONG-111"
+                    ],
+                    "mode": "exact",
+                    "matched": false
+                  }
+                ]
+              }
+            ],
+            "elapsed_s": 0.3473329159896821,
+            "warnings": [
+              "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+            ]
+          },
+          "candidate_index": 0,
+          "message": "Applied 2 requested changes to 1 candidate(s), with an actual preview of every affected candidate. Preserved unrelated settings and human labels.",
+          "base_spec_hash": "76e33d7f9fc72fae98ce93c52f148533efe7b5f0159818d40e6c4b99859a1ffd",
+          "spec_hash": "7e20766b42254d801d4f1e76b99b92c17db4caf3f879cc6f5d18c271f8fc35e2",
+          "requires_review": false,
+          "affected_candidate_indices": [
+            0
+          ],
+          "previewed_candidate_indices": [
+            0
+          ],
+          "base_spec_hashes": {
+            "0": "76e33d7f9fc72fae98ce93c52f148533efe7b5f0159818d40e6c4b99859a1ffd"
+          },
+          "spec_hashes": {
+            "0": "7e20766b42254d801d4f1e76b99b92c17db4caf3f879cc6f5d18c271f8fc35e2"
+          }
+        },
+        "error": null
+      },
+      {
+        "id": "306551aa1b69438bb77f3638645b8d01",
+        "kind": "tool",
+        "name": "build_prepare_review",
+        "started_ns": 1793291255166189000,
+        "ended_ns": 1793291255195995000,
+        "status": "completed",
+        "request": {
+          "project_id": "402246585eb54b0c"
+        },
+        "result": {
+          "image_count": 1,
+          "reviewed_count": 0,
+          "evaluation_image_count": 1,
+          "evaluation_reviewed_count": 0,
+          "candidate_count": 1,
+          "can_propose_labels": false,
+          "fixture": false,
+          "training_eligible": false,
+          "review_subset_created": false,
+          "comparison_scopes": [
+            "e3208c3098b816383348ba13d9d29143e3de41ced907a2a5c6cf343b11fd6458"
+          ]
+        },
+        "error": null
+      }
+    ],
+    "history": [],
+    "decision": null,
+    "result": null,
+    "error": null,
+    "skills": [
+      {
+        "id": "authoring",
+        "version": "1.1.0",
+        "sha256": "9c8f2850035bbef71d99157ac72d40d8709d74e147a73a8dbd90818373e0ad79"
+      },
+      {
+        "id": "reading",
+        "version": "1.2.0",
+        "sha256": "e9e8e5e573f29e033d8b7445fc34496ff316730eff9da7984e02d1bad55aa095"
+      },
+      {
+        "id": "alerting",
+        "version": "1.0.0",
+        "sha256": "3d0031531408e56f99c93aec804066d872fc58b4f7949954e5bd9ac09f49deb1"
+      }
+    ],
+    "planning_options": null
+  },
+  "scope": "Actual local planner and Apple Vision on a generated software fixture; no quality or approval claim"
+}

@@ -1,0 +1,39 @@
+{
+  "source_identity": "d76d7e7d6b91f28605917393e63e94eccc37f9099e9382a684b04daec751a552",
+  "canonical_app": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app",
+  "previous_app": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app.previous-20261029T162446Z",
+  "native_sha256": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d",
+  "signature_verified": true,
+  "original_project_unchanged": true,
+  "canonical_relaunch_verified": true,
+  "runtime_health": {
+    "status": "ok",
+    "version": "0.1.0",
+    "model_server": {
+      "reachable": true,
+      "models": [
+        "visionapp-planner"
+      ],
+      "error": null
+    },
+    "runtime": {
+      "data_dir": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp",
+      "python": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/Resources/PythonRuntime/bin/python3.12",
+      "package_root": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+      "build_id": "d76d7e7d6b91f28605917393e63e94eccc37f9099e9382a684b04daec751a552",
+      "pid": 21557
+    },
+    "capabilities": {
+      "image_folder": true,
+      "recorded_video": true,
+      "apple_vision": true,
+      "camera": false,
+      "screen_capture": false,
+      "training": true,
+      "alerts": true,
+      "native_app": true,
+      "live_frame_ingress": true
+    }
+  },
+  "native_walkthrough": "artifacts/compositional-authoring/native-ui.json"
+}

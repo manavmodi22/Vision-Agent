@@ -1,0 +1,10 @@
+{
+  "project": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a",
+  "unchanged": true,
+  "sha256": {
+    "annotations.json": "0fb2b8c1200a8dafcd8bdfeb03dc0734109b800c861a7bb573ed66ffe61f5bea",
+    "project.json": "75f7182508e71e203a2a17d5e4df7749a12cd6d8a44ed7a02db741212181b108",
+    "agent-state.json": "2322a86af9451544d02275117eb90f3014141c9a96dab58017c78bb53bd729d6",
+    "build.json": "2a3215cfa88283842707da5d1d5b21787492390a98cf2472e25a3702137d0abf"
+  }
+}

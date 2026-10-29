@@ -1,0 +1,53 @@
+{
+  "message": "Workflow proposal for reading printed text in the left half of each image and comparing it to 'ABC-990'",
+  "schema_version": "0.2",
+  "questions": [],
+  "choices": [],
+  "graphs": [
+    {
+      "name": "Read Left Half Text",
+      "nodes": [
+        {
+          "type": "frame_sample",
+          "id": "s",
+          "fps": 2.0
+        },
+        {
+          "type": "crop",
+          "id": "c",
+          "image": "$s.frame",
+          "box": [
+            0.0,
+            0.0,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "type": "resize",
+          "id": "r",
+          "image": "$c.image",
+          "width": 1200,
+          "height": 400
+        },
+        {
+          "type": "ocr",
+          "id": "o",
+          "image": "$r.image",
+          "model_capability_id": "model.apple-vision",
+          "model_reason": "Eligible OCR for reading printed text"
+        },
+        {
+          "type": "match",
+          "id": "m",
+          "text": "$o.text",
+          "expected": "ABC-990",
+          "mode": "exact",
+          "emit": "all"
+        }
+      ],
+      "metric": "text_accuracy",
+      "target": 0.9
+    }
+  ]
+}

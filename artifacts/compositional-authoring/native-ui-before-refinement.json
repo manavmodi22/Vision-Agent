@@ -1,0 +1,340 @@
+{
+  "project_id": "1a782cfabc5b4a53",
+  "view": {
+    "id": "50bdc694541c467f80c179a2369262e0",
+    "project_id": "1a782cfabc5b4a53",
+    "status": "awaiting_review",
+    "phase": "reviewing",
+    "next_action": "review_labels",
+    "message": "Review the labels on 1 evaluation images, then continue. 0 are reviewed. Evaluation requires 10\u201350 reviewed images; suggestions are not ground truth. This workflow requires manually reviewed expected text or labels; automatic detector proposals do not apply.",
+    "questions": [],
+    "log": [
+      {
+        "at": "2026-10-29T16:30:50.529201+00:00",
+        "phase": "planning",
+        "message": "Interpreting your goal and preparing a working preview"
+      },
+      {
+        "at": "2026-10-29T16:31:40.458525+00:00",
+        "phase": "previewing",
+        "message": "Compiled 1 candidate(s) and previewed 1 images; observed 0 detections. Reads printed text. Checks whether the read text exactly matches \"ABC-990\". Accuracy has not been evaluated."
+      },
+      {
+        "at": "2026-10-29T16:31:40.458572+00:00",
+        "phase": "labeling",
+        "message": "Candidate adapters: apple-vision. Their quality still requires evaluation on reviewed examples."
+      },
+      {
+        "at": "2026-10-29T16:31:42.971651+00:00",
+        "phase": "reviewing",
+        "message": "Review the labels on 1 evaluation images, then continue. 0 are reviewed. Evaluation requires 10\u201350 reviewed images; suggestions are not ground truth. This workflow requires manually reviewed expected text or labels; automatic detector proposals do not apply."
+      }
+    ],
+    "preview": {
+      "frames": [
+        {
+          "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/1a782cfabc5b4a53/media/e24d31ea-left-half-text.png",
+          "source_image_sha256": "ef86defcbafdcfd8e40b302da0f1ca5686feb8f908d30ddabdb6bf6eec59c7db",
+          "detections": [],
+          "counts": {},
+          "texts": [
+            "ABC-990"
+          ],
+          "events": [],
+          "elapsed_ms": 267.4096249975264,
+          "timestamp_s": 0.0,
+          "judgements": [],
+          "inferences": [
+            {
+              "block_id": "o",
+              "result": {
+                "schema_version": 1,
+                "task": "ocr",
+                "input_size": [
+                  1200,
+                  400
+                ],
+                "input_pixels_sha256": "d1e3df7bd744939fa0085c431e674f9ef102f576aaae16df980e40e523f15b05",
+                "detections": [],
+                "readings": [
+                  {
+                    "box": [
+                      0.10449503427729785,
+                      0.3368158439458393,
+                      0.5955049626627145,
+                      0.6331841567815326
+                    ],
+                    "polygon": [
+                      [
+                        0.10449503427729785,
+                        0.35320155180106383
+                      ],
+                      [
+                        0.5944645929931182,
+                        0.3368158439458393
+                      ],
+                      [
+                        0.5955049626627145,
+                        0.616798448926308
+                      ],
+                      [
+                        0.1055354039468942,
+                        0.6331841567815326
+                      ]
+                    ],
+                    "text": "ABC-990",
+                    "kind": "ocr",
+                    "confidence": 1.0,
+                    "symbology": null
+                  }
+                ],
+                "identity": {
+                  "capability_id": "model.apple-vision",
+                  "model_id": "apple-vision",
+                  "adapter_id": "apple-vision",
+                  "identity_scope": "system_framework_versioned",
+                  "artifact_hashes": {
+                    "native_bridge": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d"
+                  },
+                  "unavailable_artifacts": [],
+                  "adapter_code_sha256": "7fef46ab88f34d1bb0f73fcc8d53a57cf6b833444c3173ce880caa8e723d3c8c",
+                  "runtime_manifest_sha256": "e8b5a8e0e55e5eef5c9763b084e39f8192503076abcc3f15d59823f19c8e4d55",
+                  "system_identity": {
+                    "architecture": "arm64",
+                    "adapter": "apple-vision",
+                    "identity_scope": "system_framework_versioned",
+                    "request_policy": "apple-vision-en-us-v2",
+                    "output_protocol": "2",
+                    "macos": "26.7.1",
+                    "kernel": "25.6.0",
+                    "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041"
+                  },
+                  "provider": "apple-vision-system",
+                  "config_sha256": "81c8e6ffbf514841279646415e3eb3c651f68c976fee4df4c22617b3f14254c1",
+                  "identity_hash": "bc5d12126cd315c7f8360460f871c1ddedcc13e944d9fa9f95630bd8525595ab"
+                },
+                "timing": {
+                  "total_ms": 263.440000009723,
+                  "startup_ms": null,
+                  "load_ms": null,
+                  "preprocess_ms": null,
+                  "inference_ms": null,
+                  "postprocess_ms": null,
+                  "transport_ms": null,
+                  "model_cached": null
+                },
+                "warnings": []
+              },
+              "input_to_frame": [
+                0.0,
+                0.0,
+                0.5,
+                1.0
+              ]
+            }
+          ],
+          "comparisons": [
+            {
+              "block_id": "m",
+              "expected": "ABC-990",
+              "observed": [
+                "ABC-990"
+              ],
+              "mode": "exact",
+              "matched": true
+            }
+          ]
+        }
+      ],
+      "elapsed_s": 0.28199437499279156,
+      "warnings": [
+        "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+      ]
+    },
+    "selected_candidate_index": 0,
+    "evaluations": [],
+    "acceptance_evaluation": null,
+    "project": {},
+    "created_at": "2026-10-29T16:30:50.511723+00:00",
+    "updated_at": "2026-10-29T16:31:42.971665+00:00",
+    "plan": null,
+    "execution": null,
+    "tool_events": []
+  },
+  "operation": {
+    "id": "50bdc694541c467f80c179a2369262e0",
+    "project_id": "1a782cfabc5b4a53",
+    "trace_id": "88d5f02b11ac4fd1a8b8ba8def498c9e",
+    "root_span_id": "2f2ea84e15db4940",
+    "owner_pid": 21557,
+    "created_at": 1793291450.528991,
+    "updated_at": 1793291502.971668,
+    "deadline": 1793292350.5143821,
+    "status": "running",
+    "input_fingerprint": "2e959068a56beb12f7cccef69d18c8bb776e99e8926871179c14dea41a9aebbe",
+    "brief": "Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize the crop to width 1200 and height 400 before OCR. Use apple-vision. Compare the recognized text exactly to \"ABC-990\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9.",
+    "source_path": "media",
+    "detector_model": "",
+    "state": {
+      "phase": "evaluate",
+      "budget": {
+        "max_tool_calls": 30,
+        "max_wall_seconds": 900.0,
+        "max_training_minutes": 4.0,
+        "max_model_calls": 5,
+        "tool_calls": 1,
+        "model_calls": 0,
+        "training_minutes": 0.0,
+        "started_at": 1793291450.52879
+      },
+      "brief_confirmed": true,
+      "candidate_count": 1,
+      "compiled_count": 1,
+      "evaluation": null,
+      "deployment_approved": false,
+      "override_reason": null,
+      "approval_scope": null
+    },
+    "calls": [
+      {
+        "id": "fd723fba34344062a07f75d982251227",
+        "kind": "tool",
+        "name": "build_prepare_review",
+        "started_ns": 1793291502779750000,
+        "ended_ns": 1793291502814680000,
+        "status": "completed",
+        "request": {
+          "project_id": "1a782cfabc5b4a53"
+        },
+        "result": {
+          "image_count": 1,
+          "reviewed_count": 0,
+          "evaluation_image_count": 1,
+          "evaluation_reviewed_count": 0,
+          "candidate_count": 1,
+          "can_propose_labels": false,
+          "fixture": false,
+          "training_eligible": false,
+          "review_subset_created": false,
+          "comparison_scopes": [
+            "e3208c3098b816383348ba13d9d29143e3de41ced907a2a5c6cf343b11fd6458"
+          ]
+        },
+        "error": null
+      }
+    ],
+    "history": [],
+    "decision": null,
+    "result": null,
+    "error": null,
+    "skills": [],
+    "planning_options": null
+  },
+  "project": {
+    "id": "1a782cfabc5b4a53",
+    "name": "Read printed text only in the left half of each image: crop",
+    "use_case": "custom",
+    "status": "building",
+    "created_at": "2026-10-29T16:30:49.545479+00:00",
+    "updated_at": "2026-10-29T16:31:40.379996+00:00",
+    "media": [
+      "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/1a782cfabc5b4a53/media/e24d31ea-left-half-text.png"
+    ],
+    "brief": "Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize the crop to width 1200 and height 400 before OCR. Use apple-vision. Compare the recognized text exactly to \"ABC-990\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9.",
+    "clarification_count": 0,
+    "candidates": [
+      {
+        "spec_version": "0.1",
+        "name": "OCR_Left_Half",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "s",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2.0
+            },
+            "inputs": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "c",
+            "type": "crop",
+            "params": {
+              "box": [
+                0.0,
+                0.0,
+                0.5,
+                1.0
+              ]
+            },
+            "inputs": {
+              "image": "$s.frame"
+            }
+          },
+          {
+            "id": "r",
+            "type": "resize",
+            "params": {
+              "width": 1200,
+              "height": 400
+            },
+            "inputs": {
+              "image": "$c.image"
+            }
+          },
+          {
+            "id": "o",
+            "type": "ocr",
+            "params": {
+              "model": "apple-vision"
+            },
+            "inputs": {
+              "image": "$r.image"
+            }
+          },
+          {
+            "id": "m",
+            "type": "match",
+            "params": {
+              "expected": "ABC-990",
+              "mode": "exact",
+              "emit": "all"
+            },
+            "inputs": {
+              "text": "$o.text"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "text_accuracy",
+          "target": 0.9
+        }
+      }
+    ],
+    "evaluations": [],
+    "messages": [
+      {
+        "role": "user",
+        "content": "Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize the crop to width 1200 and height 400 before OCR. Use apple-vision. Compare the recognized text exactly to \"ABC-990\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9."
+      },
+      {
+        "role": "assistant",
+        "content": "Reads printed text. Checks whether the read text exactly matches \"ABC-990\". Uses the crop/resize steps shown in the saved workflow."
+      }
+    ],
+    "synthetic": false,
+    "fixture": false,
+    "data_origin": "User imported media",
+    "deployment_id": null,
+    "approval_scope": null,
+    "trial_limits": {}
+  }
+}

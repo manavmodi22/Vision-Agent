@@ -1,0 +1,6 @@
+{
+  "source_identity": "dd1320a640430c8408558d60dcdc65c80c13553d9becb73b2a3b868a0ab5b9e9",
+  "full_suite_status": "interrupted, no overall pass claimed",
+  "reason": "Actual planner failed both graph cases; stopping outdated full run to correct schema property order and rerun frozen final source. SIGINT was caught by an active test; terminated pytest afterward.",
+  "package_status": "built and self-tested, not installed; source update and verification pending"
+}

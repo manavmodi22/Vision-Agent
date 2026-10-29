@@ -42,6 +42,7 @@ enum NativeSelfTests {
             checks += try PreviewOutcomeChecks.run()
             checks += try NativeOCRChecks.run()
             checks += try ReadingEvidenceChecks.run()
+            checks += try TextComparisonChecks.run()
             checks += try TextRegionChecks.run()
             checks += try CLIOutputChecks.run()
             checks += try CandidatePreviewChecks.run()

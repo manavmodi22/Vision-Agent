@@ -149,6 +149,9 @@ struct PreviewPanel: View {
                             if output.readerEvidenceUnavailable { Text("Reader region evidence is unavailable for this result.").font(.caption2).foregroundStyle(Studio.muted) }
                         }
                     }
+                    if TextComparisonPresentation.isVisible(frame: frame, pipeline: model.displayedPreviewPipeline) {
+                        TextComparisonEvidence(comparisons: frame.comparisons ?? [])
+                    }
                     if PreviewOutcomePresentation.hasEventSink(model.displayedPreviewPipeline) || !frame.events.isEmpty {
                         PreviewRuleOutcome(events: frame.events, recorded: model.previewIsRecorded)
                     }

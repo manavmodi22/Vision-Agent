@@ -1,17 +1,17 @@
 {
-  "checked_at": "2026-10-29T15:43:13.844852+00:00",
-  "source_identity": "3751f55e26bb8f270c3bd38ba4c51c4081d833b57effde506653c3298b864e6b",
-  "status": "editable_text_regions_and_native_label_roundtrip_verified; overall_architecture_incomplete",
+  "checked_at": "2026-10-29T16:33:14.473523+00:00",
+  "source_identity": "d76d7e7d6b91f28605917393e63e94eccc37f9099e9382a684b04daec751a552",
+  "status": "composition_and_conversational_refinement_verified; adaptive_agent_loop_and_overall_architecture_incomplete",
   "python_tests": {
-    "passed": 848,
+    "passed": 1137,
     "skipped": 2,
-    "duration_s": 267.22,
+    "duration_s": 398.8,
     "scope": "Locked base+dev environment, two optional training skips",
-    "evidence": "artifacts/text-region-authoring/software-validation.json"
+    "evidence": "artifacts/compositional-authoring/software-validation.json"
   },
   "mypy": {
     "passed": true,
-    "source_files": 172,
+    "source_files": 184,
     "platforms": [
       "linux",
       "macos"
@@ -21,19 +21,20 @@
     "passed": true
   },
   "native_contracts": {
-    "passed_per_binary": 242,
-    "evidence": "artifacts/text-region-authoring/native-validation.json"
+    "passed_per_binary": 257,
+    "release_with_actual_payloads": 263,
+    "evidence": "artifacts/compositional-authoring/native-payload-receipt.json"
   },
-  "native_release_sha256": "2f32425d16506f31cbd7ff37755568421abb606e1f08b17c612bbf28e6f887ab",
-  "native_packaged_sha256": "146881e5c2529fb9b6faa363e5bde4a1694b55bf293abfb58d1b03f3c2cb4c1a",
+  "native_release_sha256": "73c10d79ef1c40fe3c04009087f5d55f56fcc41ae15ae643a13cf0c06b6e8b7b",
+  "native_packaged_sha256": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d",
   "relocation": {
     "passed": true,
-    "evidence": "artifacts/text-region-authoring/bundle-verification.json",
-    "scope": "Relocated isolated imports, actual legacy and rich Apple OCR, 242 native checks, fixture gates and signatures"
+    "evidence": "artifacts/compositional-authoring/bundle-verification.json",
+    "scope": "Relocated isolated imports, actual legacy and rich Apple OCR, 257 native checks, fixture gates and signatures"
   },
-  "package_installation": "artifacts/text-region-authoring/package-installation.json",
-  "actual_planner_mcp": "artifacts/text-region-authoring/native-ui.json",
-  "actual_native_walkthrough": "artifacts/text-region-authoring/native-ui.json",
+  "package_installation": "artifacts/compositional-authoring/package-installation.json",
+  "actual_planner_mcp": "artifacts/compositional-authoring/README.md",
+  "actual_native_walkthrough": "artifacts/compositional-authoring/native-ui.json",
   "public_reader_diagnostic": {
     "evidence": "artifacts/reader-evaluation/COMPARISON.md",
     "sample_count": 100,
@@ -42,9 +43,10 @@
     "quality_claim": "Cropped-word endpoints only, unreviewed external labels, no promotion"
   },
   "paddle_runtime_proof": "artifacts/adapter-probes/ocr-minimal/FEASIBILITY.md",
-  "previous_report": "artifacts/runtime-validation-e523.json",
+  "previous_report": "artifacts/runtime-validation-3751.json",
   "remote_ci": "Local full suite passed; fresh GitHub CI status belongs to the published commit",
   "remaining": [
+    "A0 adaptive builder loop is missing: current model generates graph and host executes a prescribed sequence; actual results do not yet drive a continuing model action loop.",
     "Paddle worker lifecycle, signed/relocatable optional runtime, dependency notices and approved installation recipe remain incomplete; no production adapter registered.",
     "Text regions are editable and portable; scored text localization, reading order and repeated-instance geometry remain pending.",
     "Public cropped-word diagnostics do not establish warehouse accuracy or independent acceptance.",

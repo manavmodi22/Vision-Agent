@@ -42,6 +42,14 @@ Opening a preview or review performs no inference and never marks an image revie
 Text accuracy, CER and WER remain image-level metrics, not spatial OCR or
 reading-order quality. See [text-region editing](text-region-editor.md).
 
+The preview separately displays typed `FrameResult.comparisons` observations:
+comparison block, exact/contains mode, raw expected and observed values, and the
+engine's match result. A comparison remains visible with zero emitted events.
+Historical comparison previews without those observations show unavailable
+evidence; the app does not reconstruct a match from an event or recompute literal
+Unicode equality. Pass/fail describes the comparison, not measured reader
+accuracy. See [comparison evidence](comparison-evidence.md).
+
 Checks cover geometry conversion/envelopes, crop mapping, missing confidence,
 duplicate text IDs, Unicode distinction, legacy decoding, strict stdout and review
 provenance. `artifacts/native-reading-v2/probe.py` records bounded real Apple Vision

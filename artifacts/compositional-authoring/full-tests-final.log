@@ -1,0 +1,26 @@
+........................................................................ [  6%]
+........................................................................ [ 12%]
+........................................................................ [ 18%]
+.............s..s....................................................... [ 25%]
+........................................................................ [ 31%]
+........................................................................ [ 37%]
+........................................................................ [ 44%]
+........................................................................ [ 50%]
+........................................................................ [ 56%]
+........................................................................ [ 63%]
+........................................................................ [ 69%]
+........................................................................ [ 75%]
+........................................................................ [ 82%]
+........................................................................ [ 88%]
+........................................................................ [ 94%]
+...........................................................              [100%]
+============================= slowest 8 durations ==============================
+64.29s call     tests/test_agent_refinement_capabilities.py::test_manager_pauses_unchanged_then_explicit_vision_only_answer_can_apply
+17.91s call     tests/test_build_acceptance.py::test_agent_build_evaluates_every_candidate_and_waits_for_human_deployment[recall]
+17.12s call     tests/test_build_acceptance.py::test_agent_build_evaluates_every_candidate_and_waits_for_human_deployment[count_mae]
+15.76s call     tests/test_evaluation_integration.py::test_comparison_requires_one_protocol_and_candidate_change_invalidates_all_scores
+14.74s call     tests/test_build_acceptance.py::test_confidence_followup_edits_selected_winner_through_mcp_without_rebuilding
+14.12s call     tests/test_build_acceptance.py::test_agent_selects_measured_winner_in_metric_direction[count_mae-0.5]
+11.45s call     tests/test_build_acceptance.py::test_alternatives_with_different_goal_scopes_cannot_select_an_old_goal[zones]
+11.09s call     tests/test_build_acceptance.py::test_alternatives_with_different_goal_scopes_cannot_select_an_old_goal[classes]
+1137 passed, 2 skipped in 398.80s (0:06:38)

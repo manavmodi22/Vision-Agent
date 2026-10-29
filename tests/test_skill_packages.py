@@ -23,7 +23,7 @@ def test_real_packages_have_versioned_complete_contracts_and_examples() -> None:
     for skill in skills:
         assert skill.reference.id == skill.manifest.id
         assert skill.reference.version == skill.manifest.version
-        assert skill.reference.version == ("1.1.0" if skill.reference.id == "reading" else "1.0.0")
+        assert skill.reference.version == {"reading": "1.2.0", "authoring": "1.1.0"}.get(skill.reference.id, "1.0.0")
         assert len(skill.reference.sha256) == 64
         assert skill.manifest.required_inputs and skill.manifest.validation_recipe
         assert skill.manifest.failure_modes and "## Examples" in skill.body

@@ -34,7 +34,7 @@ from engine.runtime.values import (
     TextValue,
 )
 from spec.inference import BlockInference
-from spec.models import BlockSpec, Detection, FrameResult
+from spec.models import BlockSpec, Detection, FrameResult, TextComparison
 
 
 def execute_frame(compiled: CompiledPipeline, path: Path, timestamp: float,
@@ -62,7 +62,13 @@ def execute_image(compiled: CompiledPipeline, image: Image.Image, image_path: st
     result = FrameResult(image_path=image_path, timestamp_s=timestamp)
     for block in compiled.blocks:
         inputs = {name: values[ref] for name, ref in block.inputs.items()}
-        output = execute_block(block, inputs, compiled, timestamp, state)
+        if block.type == "match":
+            comparison, event = compare_text(block.id, cast(TextValue, inputs["text"]),
+                                             cast(MatchParams, compiled.params[block.id]))
+            result.comparisons.append(comparison)
+            output: dict[str, PortValue] = {"event": event}
+        else:
+            output = execute_block(block, inputs, compiled, timestamp, state)
         for port, value in output.items():
             values[f"${block.id}.{port}"] = value
             if isinstance(value, (DetectionsValue, TextValue)) and value.inference is not None:
@@ -80,6 +86,18 @@ def execute_image(compiled: CompiledPipeline, image: Image.Image, image_path: st
     result.texts = list(dict.fromkeys(result.texts))
     result.elapsed_ms = (time.perf_counter() - started) * 1000
     return result
+
+
+def compare_text(block_id: str, text: TextValue, params: MatchParams) -> tuple[TextComparison, EventValue]:
+    """Compute a check once; event filtering never removes the observation."""
+    matched = (params.expected in text.texts if params.mode == "exact"
+               else params.expected in " ".join(text.texts))
+    comparison = TextComparison(block_id=block_id, expected=params.expected, observed=list(text.texts),
+                                mode=params.mode, matched=matched)
+    if (params.emit == "matched" and not matched) or (params.emit == "mismatched" and matched):
+        return comparison, EventValue([])
+    return comparison, EventValue([{"type": "label_check", "matched": matched,
+                                    "expected": params.expected, "observed": list(text.texts)}])
 
 
 def execute_block(block: BlockSpec, inputs: dict[str, PortValue], compiled: CompiledPipeline,
@@ -135,14 +153,8 @@ def execute_block(block: BlockSpec, inputs: dict[str, PortValue], compiled: Comp
         return {"text": TextValue([reading.text for reading in inference.readings], BlockInference(
             block_id=block.id, result=inference, input_to_frame=image.transform))}
     if block.type == "match":
-        text = cast(TextValue, inputs["text"])
-        match_params = cast(MatchParams, params)
-        matched = (match_params.expected in text.texts if match_params.mode == "exact"
-                   else match_params.expected in " ".join(text.texts))
-        if (match_params.emit == "matched" and not matched) or (match_params.emit == "mismatched" and matched):
-            return {"event": EventValue([])}
-        return {"event": EventValue([{"type": "label_check", "matched": matched,
-                                     "expected": match_params.expected, "observed": list(text.texts)}])}
+        _, event = compare_text(block.id, cast(TextValue, inputs["text"]), cast(MatchParams, params))
+        return {"event": event}
     if block.type == "vlm_judge":
         from engine.llm_client import judge_image
         image = cast(ImageValue, inputs["image"])

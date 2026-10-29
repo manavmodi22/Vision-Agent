@@ -1,0 +1,3010 @@
+{
+  "id": "57eb36d32e4d4d378462187d10763b5f",
+  "project_id": "1a782cfabc5b4a53",
+  "trace_id": "737e1867e6114b29923f6ae8a0f33154",
+  "root_span_id": "79eb9d3a258d421a",
+  "owner_pid": 22585,
+  "created_at": 1793291452.579147,
+  "updated_at": 1793291500.410754,
+  "deadline": 1793291530.167124,
+  "status": "completed",
+  "input_fingerprint": "5f63d36998c9ec99262682cced2b1481a4aef37bbe2d49b86d4fc3761888479e",
+  "brief": "Current app context (preserve unless the user requests a change):\n{\"existing_goal\":\"\",\"existing_app\":[],\"conversation\":[]}\nUser request:\nRead printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize the crop to width 1200 and height 400 before OCR. Use apple-vision. Compare the recognized text exactly to \"ABC-990\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9.",
+  "source_path": "media",
+  "detector_model": "owlv2-base-patch16",
+  "state": {
+    "phase": "evaluate",
+    "budget": {
+      "max_tool_calls": 30,
+      "max_wall_seconds": 180.0,
+      "max_training_minutes": 30.0,
+      "max_model_calls": 5,
+      "tool_calls": 5,
+      "model_calls": 1,
+      "training_minutes": 0.0,
+      "started_at": 1793291452.5530932
+    },
+    "brief_confirmed": true,
+    "candidate_count": 1,
+    "compiled_count": 1,
+    "evaluation": null,
+    "deployment_approved": false,
+    "override_reason": null,
+    "approval_scope": null
+  },
+  "calls": [
+    {
+      "id": "c8807f6787014accb3703883c4749475",
+      "kind": "tool",
+      "name": "blocks_list",
+      "started_ns": 1793291452742217000,
+      "ended_ns": 1793291452767254000,
+      "status": "completed",
+      "request": {},
+      "result": {
+        "blocks": [
+          {
+            "type": "frame_sample",
+            "description": "Sample frames at a bounded rate.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "fps": {
+                  "default": 2,
+                  "exclusiveMinimum": 0,
+                  "maximum": 60,
+                  "title": "Fps",
+                  "type": "number"
+                }
+              },
+              "title": "FrameSampleParams",
+              "type": "object"
+            },
+            "inputs": {
+              "frames": "frames"
+            },
+            "outputs": {
+              "frame": "image"
+            }
+          },
+          {
+            "type": "detect",
+            "description": "Run a locally installed detector.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "model": {
+                  "default": "owlv2-base-patch16",
+                  "title": "Model",
+                  "type": "string"
+                },
+                "classes": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 64,
+                  "minItems": 1,
+                  "title": "Classes",
+                  "type": "array"
+                },
+                "min_conf": {
+                  "default": 0.25,
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Min Conf",
+                  "type": "number"
+                }
+              },
+              "title": "DetectParams",
+              "type": "object"
+            },
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "dets": "detections"
+            }
+          },
+          {
+            "type": "detect_open_vocab",
+            "description": "Detect text-prompted classes using local OWLv2.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "model": {
+                  "default": "owlv2-base-patch16",
+                  "title": "Model",
+                  "type": "string"
+                },
+                "classes": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 64,
+                  "minItems": 1,
+                  "title": "Classes",
+                  "type": "array"
+                },
+                "min_conf": {
+                  "default": 0.25,
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Min Conf",
+                  "type": "number"
+                }
+              },
+              "title": "DetectParams",
+              "type": "object"
+            },
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "dets": "detections"
+            }
+          },
+          {
+            "type": "zone_filter",
+            "description": "Keep objects whose center is inside a polygon.",
+            "params": {
+              "$defs": {
+                "Zone": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "maxLength": 80,
+                      "minLength": 1,
+                      "title": "Id",
+                      "type": "string"
+                    },
+                    "polygon": {
+                      "items": {
+                        "maxItems": 2,
+                        "minItems": 2,
+                        "prefixItems": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ],
+                        "type": "array"
+                      },
+                      "minItems": 3,
+                      "title": "Polygon",
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "polygon"
+                  ],
+                  "title": "Zone",
+                  "type": "object"
+                }
+              },
+              "additionalProperties": false,
+              "properties": {
+                "zones": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "items": {
+                        "$ref": "#/$defs/Zone"
+                      },
+                      "type": "array"
+                    }
+                  ],
+                  "default": "zones/lanes.json",
+                  "title": "Zones"
+                },
+                "include_ids": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 20,
+                  "title": "Include Ids",
+                  "type": "array"
+                }
+              },
+              "title": "ZoneFilterParams",
+              "type": "object"
+            },
+            "inputs": {
+              "dets": "detections"
+            },
+            "outputs": {
+              "dets": "detections"
+            }
+          },
+          {
+            "type": "count_per_zone",
+            "description": "Count detections in each named zone.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "include_unassigned": {
+                  "default": false,
+                  "title": "Include Unassigned",
+                  "type": "boolean"
+                }
+              },
+              "title": "CountParams",
+              "type": "object"
+            },
+            "inputs": {
+              "dets": "detections"
+            },
+            "outputs": {
+              "counts": "counts"
+            }
+          },
+          {
+            "type": "rule",
+            "description": "Compare zone counts using a small safe expression language.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "when": {
+                  "default": "count >= 1",
+                  "maxLength": 100,
+                  "title": "When",
+                  "type": "string"
+                },
+                "hold_s": {
+                  "default": 0,
+                  "maximum": 86400,
+                  "minimum": 0,
+                  "title": "Hold S",
+                  "type": "number"
+                }
+              },
+              "title": "RuleParams",
+              "type": "object"
+            },
+            "inputs": {
+              "value": "counts"
+            },
+            "outputs": {
+              "event": "event"
+            }
+          },
+          {
+            "type": "sink_event",
+            "description": "Emit local evidence events; delivery is separately approved.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "alert": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Alert"
+                }
+              },
+              "title": "SinkEventParams",
+              "type": "object"
+            },
+            "inputs": {
+              "event": "event"
+            },
+            "outputs": {
+              "event": "event"
+            }
+          },
+          {
+            "type": "ocr",
+            "description": "Read text with native Apple Vision.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "model": {
+                  "default": "apple-vision",
+                  "enum": [
+                    "apple-vision",
+                    "ppocr-v5-mobile-en"
+                  ],
+                  "title": "Model",
+                  "type": "string"
+                },
+                "languages": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "Languages",
+                  "type": "array"
+                }
+              },
+              "title": "ReadingParams",
+              "type": "object"
+            },
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "text": "text"
+            }
+          },
+          {
+            "type": "barcode",
+            "description": "Read barcode payloads with native Apple Vision.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {},
+              "title": "EmptyParams",
+              "type": "object"
+            },
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "text": "text"
+            }
+          },
+          {
+            "type": "match",
+            "description": "Compare recognized text with an expected value.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "expected": {
+                  "maxLength": 256,
+                  "minLength": 1,
+                  "title": "Expected",
+                  "type": "string"
+                },
+                "mode": {
+                  "default": "contains",
+                  "enum": [
+                    "contains",
+                    "exact"
+                  ],
+                  "title": "Mode",
+                  "type": "string"
+                },
+                "emit": {
+                  "default": "all",
+                  "enum": [
+                    "all",
+                    "matched",
+                    "mismatched"
+                  ],
+                  "title": "Emit",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "expected"
+              ],
+              "title": "MatchParams",
+              "type": "object"
+            },
+            "inputs": {
+              "text": "text"
+            },
+            "outputs": {
+              "event": "event"
+            }
+          },
+          {
+            "type": "vlm_judge",
+            "description": "Ask a configured local vision model for a bounded evidence judgement.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "base_url": {
+                  "default": "http://127.0.0.1:1235/v1",
+                  "title": "Base Url",
+                  "type": "string"
+                },
+                "model": {
+                  "default": "visionapp-vlm",
+                  "maxLength": 200,
+                  "minLength": 1,
+                  "title": "Model",
+                  "type": "string"
+                },
+                "timeout_s": {
+                  "default": 45,
+                  "exclusiveMinimum": 0,
+                  "maximum": 120,
+                  "title": "Timeout S",
+                  "type": "number"
+                },
+                "max_tokens": {
+                  "default": 512,
+                  "maximum": 2048,
+                  "minimum": 64,
+                  "title": "Max Tokens",
+                  "type": "integer"
+                },
+                "max_image_side": {
+                  "default": 768,
+                  "maximum": 1536,
+                  "minimum": 64,
+                  "title": "Max Image Side",
+                  "type": "integer"
+                },
+                "retries": {
+                  "default": 1,
+                  "maximum": 2,
+                  "minimum": 0,
+                  "title": "Retries",
+                  "type": "integer"
+                },
+                "model_sha256": {
+                  "anyOf": [
+                    {
+                      "pattern": "^[0-9a-f]{64}$",
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Model Sha256"
+                },
+                "question": {
+                  "maxLength": 3000,
+                  "minLength": 1,
+                  "title": "Question",
+                  "type": "string"
+                },
+                "labels": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 20,
+                  "minItems": 2,
+                  "title": "Labels",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "question",
+                "labels"
+              ],
+              "title": "VLMJudgeParams",
+              "type": "object"
+            },
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "judgement": "judgement",
+              "text": "text",
+              "event": "event"
+            }
+          },
+          {
+            "type": "resize",
+            "description": "Resize input pixels; normalized boxes remain unchanged.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "width": {
+                  "default": 640,
+                  "exclusiveMinimum": 0,
+                  "maximum": 8192,
+                  "title": "Width",
+                  "type": "integer"
+                },
+                "height": {
+                  "default": 480,
+                  "exclusiveMinimum": 0,
+                  "maximum": 8192,
+                  "title": "Height",
+                  "type": "integer"
+                }
+              },
+              "title": "ResizeParams",
+              "type": "object"
+            },
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "image": "image"
+            }
+          },
+          {
+            "type": "crop",
+            "description": "Crop a normalized rectangle and preserve coordinate transforms.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "box": {
+                  "maxItems": 4,
+                  "minItems": 4,
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "title": "Box",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "box"
+              ],
+              "title": "CropParams",
+              "type": "object"
+            },
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "image": "image"
+            }
+          }
+        ]
+      },
+      "error": null
+    },
+    {
+      "id": "9dc42ddc0a6c408887876faf39d613bb",
+      "kind": "tool",
+      "name": "dataset_context",
+      "started_ns": 1793291452806178000,
+      "ended_ns": 1793291452830853000,
+      "status": "completed",
+      "request": {
+        "project_id": "1a782cfabc5b4a53"
+      },
+      "result": {
+        "revision": 1,
+        "classes": [],
+        "image_count": 1,
+        "reviewed_count": 0,
+        "annotation_count": 0,
+        "text_region_count": 0,
+        "expected_text_count": 0,
+        "split_counts": {
+          "unassigned": 1
+        },
+        "saved_zone_ids": [],
+        "zones_confirmed": false,
+        "zone_origin": "unconfirmed"
+      },
+      "error": null
+    },
+    {
+      "id": "985160099c7f41e0ae1cc0a64b56b3f6",
+      "kind": "tool",
+      "name": "planning_options",
+      "started_ns": 1793291452864623000,
+      "ended_ns": 1793291453100344000,
+      "status": "completed",
+      "request": {
+        "project_id": "1a782cfabc5b4a53",
+        "operation_id": "57eb36d32e4d4d378462187d10763b5f"
+      },
+      "result": {
+        "schema_version": "0.3",
+        "snapshot_id": "6bac22309a240dc8d870b058ad498c80a0ced7aa36776fd8a780a326aa295265",
+        "project_id": "1a782cfabc5b4a53",
+        "fixture_source": false,
+        "detection_constraint": null,
+        "eligible_models": [
+          {
+            "capability_id": "model.apple-vision",
+            "model_id": "apple-vision",
+            "adapter_id": "apple-vision",
+            "task_types": [
+              "ocr",
+              "barcode"
+            ],
+            "output_contract": "texts/v1",
+            "vocabulary": "not_applicable",
+            "supported_classes": [],
+            "synthetic": false,
+            "readiness": "unchecked",
+            "provenance_hashes": {},
+            "version": "26.7.1",
+            "limitations": [
+              "Prerequisites permit a bounded experiment, not a quality claim.",
+              "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+              "Training facts are recorded provenance; scene independence is not established here."
+            ],
+            "training_provenance": {
+              "origin": "system_framework",
+              "initialization": "not_applicable",
+              "training_state": "unknown",
+              "use_scope": "upstream_baseline",
+              "use_scope_evidence_ref": null,
+              "base_model_id": null,
+              "training_samples": null,
+              "epochs_completed": null,
+              "optimizer_steps": null,
+              "preserved_classes": [],
+              "evaluation_dataset_recorded": false,
+              "evaluation_status": "none_attached",
+              "provenance_scope": "registry_recorded"
+            },
+            "selection_basis": "explicit_experiment",
+            "selection_reason": "Compatible recorded registration; quality still requires project evaluation."
+          },
+          {
+            "capability_id": "model.owlv2-base-patch16",
+            "model_id": "owlv2-base-patch16",
+            "adapter_id": "owlv2",
+            "task_types": [
+              "detection"
+            ],
+            "output_contract": "detections/v1",
+            "vocabulary": "open",
+            "supported_classes": [],
+            "synthetic": false,
+            "readiness": "unchecked",
+            "provenance_hashes": {
+              "config.json": "ba9df8c25a4b8461887dd0a93d9252c9cd84697fe8d49a9d8794ce409af9acb2"
+            },
+            "version": "cfd3195ba4ea9592eec887ded089f4c08eff231d",
+            "limitations": [
+              "Prerequisites permit a bounded experiment, not a quality claim.",
+              "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+              "Training facts are recorded provenance; scene independence is not established here."
+            ],
+            "training_provenance": {
+              "origin": "upstream_pretrained",
+              "initialization": "not_applicable",
+              "training_state": "unknown",
+              "use_scope": "upstream_baseline",
+              "use_scope_evidence_ref": null,
+              "base_model_id": null,
+              "training_samples": null,
+              "epochs_completed": null,
+              "optimizer_steps": null,
+              "preserved_classes": [],
+              "evaluation_dataset_recorded": false,
+              "evaluation_status": "none_attached",
+              "provenance_scope": "registry_recorded"
+            },
+            "selection_basis": "default",
+            "selection_reason": "Compatible recorded registration; quality still requires project evaluation."
+          },
+          {
+            "capability_id": "model.rtdetr-v2-r18",
+            "model_id": "rtdetr-v2-r18",
+            "adapter_id": "rtdetr-v2-r18",
+            "task_types": [
+              "detection"
+            ],
+            "output_contract": "detections/v1",
+            "vocabulary": "closed",
+            "supported_classes": [
+              "person",
+              "bicycle",
+              "car",
+              "motorbike",
+              "aeroplane",
+              "bus",
+              "train",
+              "truck",
+              "boat",
+              "traffic light",
+              "fire hydrant",
+              "stop sign",
+              "parking meter",
+              "bench",
+              "bird",
+              "cat",
+              "dog",
+              "horse",
+              "sheep",
+              "cow",
+              "elephant",
+              "bear",
+              "zebra",
+              "giraffe",
+              "backpack",
+              "umbrella",
+              "handbag",
+              "tie",
+              "suitcase",
+              "frisbee",
+              "skis",
+              "snowboard",
+              "sports ball",
+              "kite",
+              "baseball bat",
+              "baseball glove",
+              "skateboard",
+              "surfboard",
+              "tennis racket",
+              "bottle",
+              "wine glass",
+              "cup",
+              "fork",
+              "knife",
+              "spoon",
+              "bowl",
+              "banana",
+              "apple",
+              "sandwich",
+              "orange",
+              "broccoli",
+              "carrot",
+              "hot dog",
+              "pizza",
+              "donut",
+              "cake",
+              "chair",
+              "sofa",
+              "pottedplant",
+              "bed",
+              "diningtable",
+              "toilet",
+              "tvmonitor",
+              "laptop",
+              "mouse",
+              "remote",
+              "keyboard",
+              "cell phone",
+              "microwave",
+              "oven",
+              "toaster",
+              "sink",
+              "refrigerator",
+              "book",
+              "clock",
+              "vase",
+              "scissors",
+              "teddy bear",
+              "hair drier",
+              "toothbrush"
+            ],
+            "synthetic": false,
+            "readiness": "unchecked",
+            "provenance_hashes": {
+              "config.json": "ed051ec77cb41c5d9d5e3af21a979b1e890599dfd68434d7636ff82ded4c1527"
+            },
+            "version": "5650961749fa93567c0d46fc7f43ea4f9e914107",
+            "limitations": [
+              "Prerequisites permit a bounded experiment, not a quality claim.",
+              "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+              "Training facts are recorded provenance; scene independence is not established here."
+            ],
+            "training_provenance": {
+              "origin": "upstream_pretrained",
+              "initialization": "not_applicable",
+              "training_state": "unknown",
+              "use_scope": "upstream_baseline",
+              "use_scope_evidence_ref": null,
+              "base_model_id": null,
+              "training_samples": null,
+              "epochs_completed": null,
+              "optimizer_steps": null,
+              "preserved_classes": [],
+              "evaluation_dataset_recorded": false,
+              "evaluation_status": "none_attached",
+              "provenance_scope": "registry_recorded"
+            },
+            "selection_basis": "default",
+            "selection_reason": "Compatible recorded registration; quality still requires project evaluation."
+          },
+          {
+            "capability_id": "model.yolox-s-onnx-coco",
+            "model_id": "yolox-s-onnx-coco",
+            "adapter_id": "yolox-onnx",
+            "task_types": [
+              "detection"
+            ],
+            "output_contract": "detections/v1",
+            "vocabulary": "closed",
+            "supported_classes": [
+              "person",
+              "bicycle",
+              "car",
+              "motorcycle",
+              "airplane",
+              "bus",
+              "train",
+              "truck",
+              "boat",
+              "traffic light",
+              "fire hydrant",
+              "stop sign",
+              "parking meter",
+              "bench",
+              "bird",
+              "cat",
+              "dog",
+              "horse",
+              "sheep",
+              "cow",
+              "elephant",
+              "bear",
+              "zebra",
+              "giraffe",
+              "backpack",
+              "umbrella",
+              "handbag",
+              "tie",
+              "suitcase",
+              "frisbee",
+              "skis",
+              "snowboard",
+              "sports ball",
+              "kite",
+              "baseball bat",
+              "baseball glove",
+              "skateboard",
+              "surfboard",
+              "tennis racket",
+              "bottle",
+              "wine glass",
+              "cup",
+              "fork",
+              "knife",
+              "spoon",
+              "bowl",
+              "banana",
+              "apple",
+              "sandwich",
+              "orange",
+              "broccoli",
+              "carrot",
+              "hot dog",
+              "pizza",
+              "donut",
+              "cake",
+              "chair",
+              "couch",
+              "potted plant",
+              "bed",
+              "dining table",
+              "toilet",
+              "tv",
+              "laptop",
+              "mouse",
+              "remote",
+              "keyboard",
+              "cell phone",
+              "microwave",
+              "oven",
+              "toaster",
+              "sink",
+              "refrigerator",
+              "book",
+              "clock",
+              "vase",
+              "scissors",
+              "teddy bear",
+              "hair drier",
+              "toothbrush"
+            ],
+            "synthetic": false,
+            "readiness": "unchecked",
+            "provenance_hashes": {
+              "model.onnx": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+              "LICENSE.txt": "0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088"
+            },
+            "version": "6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+            "limitations": [
+              "Prerequisites permit a bounded experiment, not a quality claim.",
+              "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+              "Training facts are recorded provenance; scene independence is not established here."
+            ],
+            "training_provenance": {
+              "origin": "upstream_pretrained",
+              "initialization": "not_applicable",
+              "training_state": "unknown",
+              "use_scope": "upstream_baseline",
+              "use_scope_evidence_ref": null,
+              "base_model_id": null,
+              "training_samples": null,
+              "epochs_completed": null,
+              "optimizer_steps": null,
+              "preserved_classes": [],
+              "evaluation_dataset_recorded": false,
+              "evaluation_status": "none_attached",
+              "provenance_scope": "registry_recorded"
+            },
+            "selection_basis": "default",
+            "selection_reason": "Compatible recorded registration; quality still requires project evaluation."
+          }
+        ],
+        "blocked_options": [
+          {
+            "capability_id": "model.fixture-color-v1",
+            "reason": "Synthetic fixture models cannot process real project media"
+          },
+          {
+            "capability_id": "model.local-detector-rtdetr-prior001-20261028",
+            "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+          },
+          {
+            "capability_id": "model.local-detector-rtdetr-smoke-20261028",
+            "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+          },
+          {
+            "capability_id": "model.local-ssdlite-7dcfc58e1c6e",
+            "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+          },
+          {
+            "capability_id": "model.local-ssdlite-9bdcf7bd1751",
+            "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+          },
+          {
+            "capability_id": "model.local-ssdlite-finetune-smoke-20261028",
+            "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+          },
+          {
+            "capability_id": "model.local-ssdlite-smoke-20261028",
+            "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+          }
+        ],
+        "experimental_models": [
+          {
+            "capability_id": "model.local-detector-rtdetr-prior001-20261028",
+            "model_id": "local-detector-rtdetr-prior001-20261028",
+            "adapter_id": "rtdetr-v2-r18",
+            "task_types": [
+              "detection"
+            ],
+            "output_contract": "detections/v1",
+            "vocabulary": "closed",
+            "supported_classes": [
+              "forklift",
+              "person"
+            ],
+            "synthetic": false,
+            "readiness": "unchecked",
+            "provenance_hashes": {
+              "config.json": "bb2e53d7a8ff7a61e98198866a49d5b1426b8a245ab032bd6b20ef6ea9237016",
+              "manifest.json": "df144b8fa4b7ac1d71faa1084ea975ca8edd56e7ec98cf331221bdbd6f33ca23",
+              "declared_upstream_weights": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115"
+            },
+            "version": "2026-10-28T17:02:20.786480+00:00",
+            "limitations": [
+              "Prerequisites permit a bounded experiment, not a quality claim.",
+              "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+              "Training facts are recorded provenance; scene independence is not established here."
+            ],
+            "training_provenance": {
+              "origin": "locally_trained",
+              "initialization": "unknown",
+              "training_state": "unknown",
+              "use_scope": "unknown",
+              "use_scope_evidence_ref": null,
+              "base_model_id": "rtdetr-v2-r18",
+              "training_samples": 10,
+              "epochs_completed": 10,
+              "optimizer_steps": 50,
+              "preserved_classes": [
+                "person"
+              ],
+              "evaluation_dataset_recorded": true,
+              "evaluation_status": "none_attached",
+              "provenance_scope": "manifest_recorded"
+            },
+            "selection_basis": "requires_explicit_request",
+            "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+          },
+          {
+            "capability_id": "model.local-detector-rtdetr-smoke-20261028",
+            "model_id": "local-detector-rtdetr-smoke-20261028",
+            "adapter_id": "rtdetr-v2-r18",
+            "task_types": [
+              "detection"
+            ],
+            "output_contract": "detections/v1",
+            "vocabulary": "closed",
+            "supported_classes": [
+              "forklift",
+              "person"
+            ],
+            "synthetic": false,
+            "readiness": "unchecked",
+            "provenance_hashes": {
+              "config.json": "bb2e53d7a8ff7a61e98198866a49d5b1426b8a245ab032bd6b20ef6ea9237016",
+              "manifest.json": "d2dedc03077e1192ba151786bd16512347189a0e448d7ba25e9fe3fa2c24605e",
+              "declared_upstream_weights": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115"
+            },
+            "version": "2026-10-28T16:59:23.588493+00:00",
+            "limitations": [
+              "Prerequisites permit a bounded experiment, not a quality claim.",
+              "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+              "Training facts are recorded provenance; scene independence is not established here."
+            ],
+            "training_provenance": {
+              "origin": "locally_trained",
+              "initialization": "unknown",
+              "training_state": "unknown",
+              "use_scope": "unknown",
+              "use_scope_evidence_ref": null,
+              "base_model_id": "rtdetr-v2-r18",
+              "training_samples": 10,
+              "epochs_completed": 1,
+              "optimizer_steps": 5,
+              "preserved_classes": [
+                "person"
+              ],
+              "evaluation_dataset_recorded": true,
+              "evaluation_status": "none_attached",
+              "provenance_scope": "manifest_recorded"
+            },
+            "selection_basis": "requires_explicit_request",
+            "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+          },
+          {
+            "capability_id": "model.local-ssdlite-7dcfc58e1c6e",
+            "model_id": "local-ssdlite-7dcfc58e1c6e",
+            "adapter_id": "ssdlite320",
+            "task_types": [
+              "detection"
+            ],
+            "output_contract": "detections/v1",
+            "vocabulary": "closed",
+            "supported_classes": [
+              "forklift",
+              "person"
+            ],
+            "synthetic": false,
+            "readiness": "unchecked",
+            "provenance_hashes": {
+              "manifest.json": "b63ad94e53626d1a7d25a2b3fa2365f1ddc23a69a85c44a17bb37a6f46b343b9"
+            },
+            "version": "2026-10-28T16:39:49.358925+00:00",
+            "limitations": [
+              "Prerequisites permit a bounded experiment, not a quality claim.",
+              "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+              "Training facts are recorded provenance; scene independence is not established here."
+            ],
+            "training_provenance": {
+              "origin": "locally_trained",
+              "initialization": "unknown",
+              "training_state": "unknown",
+              "use_scope": "unknown",
+              "use_scope_evidence_ref": null,
+              "base_model_id": null,
+              "training_samples": 10,
+              "epochs_completed": 1,
+              "optimizer_steps": 5,
+              "preserved_classes": [],
+              "evaluation_dataset_recorded": true,
+              "evaluation_status": "none_attached",
+              "provenance_scope": "manifest_recorded"
+            },
+            "selection_basis": "requires_explicit_request",
+            "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+          },
+          {
+            "capability_id": "model.local-ssdlite-9bdcf7bd1751",
+            "model_id": "local-ssdlite-9bdcf7bd1751",
+            "adapter_id": "ssdlite320",
+            "task_types": [
+              "detection"
+            ],
+            "output_contract": "detections/v1",
+            "vocabulary": "closed",
+            "supported_classes": [
+              "forklift",
+              "person"
+            ],
+            "synthetic": false,
+            "readiness": "unchecked",
+            "provenance_hashes": {
+              "manifest.json": "bce1da1461fe847e891a98fdd600c01c0696c3bdbe7797fbbd55ef3fba4b5205"
+            },
+            "version": "2026-10-28T16:41:03.958262+00:00",
+            "limitations": [
+              "Prerequisites permit a bounded experiment, not a quality claim.",
+              "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+              "Training facts are recorded provenance; scene independence is not established here."
+            ],
+            "training_provenance": {
+              "origin": "locally_trained",
+              "initialization": "unknown",
+              "training_state": "unknown",
+              "use_scope": "unknown",
+              "use_scope_evidence_ref": null,
+              "base_model_id": null,
+              "training_samples": 10,
+              "epochs_completed": 1,
+              "optimizer_steps": 5,
+              "preserved_classes": [],
+              "evaluation_dataset_recorded": true,
+              "evaluation_status": "none_attached",
+              "provenance_scope": "manifest_recorded"
+            },
+            "selection_basis": "requires_explicit_request",
+            "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+          },
+          {
+            "capability_id": "model.local-ssdlite-finetune-smoke-20261028",
+            "model_id": "local-ssdlite-finetune-smoke-20261028",
+            "adapter_id": "ssdlite320",
+            "task_types": [
+              "detection"
+            ],
+            "output_contract": "detections/v1",
+            "vocabulary": "closed",
+            "supported_classes": [
+              "forklift",
+              "person"
+            ],
+            "synthetic": false,
+            "readiness": "unchecked",
+            "provenance_hashes": {
+              "manifest.json": "02e264f0da945a4df424f3abd45a91068af38e367238ac326c3334b4de29e354"
+            },
+            "version": "2026-10-28T16:35:46.790718+00:00",
+            "limitations": [
+              "Prerequisites permit a bounded experiment, not a quality claim.",
+              "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+              "Training facts are recorded provenance; scene independence is not established here."
+            ],
+            "training_provenance": {
+              "origin": "locally_trained",
+              "initialization": "unknown",
+              "training_state": "unknown",
+              "use_scope": "unknown",
+              "use_scope_evidence_ref": null,
+              "base_model_id": "local-ssdlite-smoke-20261028",
+              "training_samples": 10,
+              "epochs_completed": 1,
+              "optimizer_steps": 5,
+              "preserved_classes": [],
+              "evaluation_dataset_recorded": true,
+              "evaluation_status": "none_attached",
+              "provenance_scope": "manifest_recorded"
+            },
+            "selection_basis": "requires_explicit_request",
+            "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+          },
+          {
+            "capability_id": "model.local-ssdlite-smoke-20261028",
+            "model_id": "local-ssdlite-smoke-20261028",
+            "adapter_id": "ssdlite320",
+            "task_types": [
+              "detection"
+            ],
+            "output_contract": "detections/v1",
+            "vocabulary": "closed",
+            "supported_classes": [
+              "forklift",
+              "person"
+            ],
+            "synthetic": false,
+            "readiness": "unchecked",
+            "provenance_hashes": {
+              "manifest.json": "04f0f3c7acbd08941722c94a16fca9c0105f282428f117a0774084945c2b1dac"
+            },
+            "version": "2026-10-28T16:34:52.650167+00:00",
+            "limitations": [
+              "Prerequisites permit a bounded experiment, not a quality claim.",
+              "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+              "Training facts are recorded provenance; scene independence is not established here."
+            ],
+            "training_provenance": {
+              "origin": "locally_trained",
+              "initialization": "unknown",
+              "training_state": "unknown",
+              "use_scope": "unknown",
+              "use_scope_evidence_ref": null,
+              "base_model_id": null,
+              "training_samples": 10,
+              "epochs_completed": 1,
+              "optimizer_steps": 5,
+              "preserved_classes": [],
+              "evaluation_dataset_recorded": true,
+              "evaluation_status": "none_attached",
+              "provenance_scope": "manifest_recorded"
+            },
+            "selection_basis": "requires_explicit_request",
+            "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+          }
+        ],
+        "explicit_model_ids": [
+          "apple-vision"
+        ],
+        "request_hash": "c21a391aec356f7fadf52fb959aa9d322d16150a44db364605ba43edf167d8f5"
+      },
+      "error": null
+    },
+    {
+      "id": "03f1d83fd6334a2cb0bb1851fbbd2ad7",
+      "kind": "llm",
+      "name": "visionapp-planner",
+      "started_ns": 1793291453647330000,
+      "ended_ns": 1793291498560622000,
+      "status": "completed",
+      "request": {
+        "messages": [
+          {
+            "parts": [
+              {
+                "content": "Output schema_version 0.2,message,questions,graphs (name,nodes,metric,target).\nAsk questions OR propose a graph; alternatives only if requested, same task/metric.\nFollow playbooks; never claim execution/quality.\n\nEach node has type,id and FLAT node_fields, no params/in wrapper. References use\n$ACTUAL_ID.PORT from implemented_blocks: id \"s\" means $s.frame, not $sample.frame.\nOCR/barcode turns image into text; match consumes $reader_id.text, NEVER image.\nA match named \"ocr\" cannot recognize text. Include all requested stages/branches\nand each inference node's eligible capability/reason.\nOne frame_sample; at most one detector/count aggregate. Count via count_per_zone;\nregion counts first use zone_filter with saved zone_ids or ask for polygons.\nOnly requested transforms: crop normalized top-left xyxy, resize pixel width/\nheight, exact order/branch.\n\nComparisons need no sink. Only requested local events need sink_event. No-events\nforbids sinks; no external alerts permits requested local events. Ask for unknown\ncapacity. Preserve operator/threshold/hold; convert minutes to seconds. Approved\nruns cannot disable retention. Defaults: fps 2,min_confidence .4,hold_seconds 0;\nmatch contains/emit all unless specified; count_mae .5,recall .9,text_accuracy .95\nfor counting/detection/reading. Unsupported tracking/segmentation/tiling/dynamic\ncrops/VLM/acquisition require a question, not omission. Data only, no code or approval.\n\nSyntax example only; use the actual task/literal:\n{\"schema_version\":\"0.2\",\"message\":\"Example proposal\",\"questions\":[],\"graphs\":[{\"name\":\"Example\",\"nodes\":[{\"type\":\"frame_sample\",\"id\":\"s\",\"fps\":2.0},{\"type\":\"ocr\",\"id\":\"r\",\"image\":\"$s.frame\",\"model_capability_id\":\"model.apple-vision\",\"model_reason\":\"Eligible OCR\"},{\"type\":\"match\",\"id\":\"m\",\"text\":\"$r.text\",\"expected\":\"EXAMPLE-123\",\"mode\":\"exact\",\"emit\":\"all\"}],\"metric\":\"text_accuracy\",\"target\":0.95}]}\nPlaybook: authoring@1.1.0; sha256 9c8f2850035bbef71d99157ac72d40d8709d74e147a73a8dbd90818373e0ad79\n# Build the requested vision application\nPreserve the user's outcome, class names, spatial regions, thresholds and output semantics. Ask only for missing business meaning. Do not require a preset or a hand-built graph.\n\nSave a typed, reviewable plan before executing candidate experiments. State data assumptions, capability requirements, metric targets, stop conditions and human checkpoints. A model may propose a step; the executor validates its authority and current inputs. Never execute free-form generated code.\n\nCompose supported typed nodes and references for the requested workflow. Each detector or reader has its own eligible model binding. Preserve requested image transforms and connect them to the intended branch. Static crops are not detection-conditioned crops. Mixed outputs and multiple readers can be previewed; one aggregate score does not qualify every branch.\n\nUse the tool catalog as the executable boundary. A proposed adapter is not installed merely because a playbook mentions it. Preview results demonstrate execution, not accuracy. Show failed steps and their artifacts. Do not approve labels, training, recorded operation or external delivery from model prose.\n\n## Examples\n- \"Count people in these images\": discover detection, build a count preview, then request label review for measured count error.\n- \"Detect a new object class\": retain the requested class and test an eligible open-vocabulary adapter; never silently map it to a different pretrained class.\n- An unavailable capability: explain the missing adapter or data and preserve the current application.\n\nPlaybook: reading@1.2.0; sha256 e9e8e5e573f29e033d8b7445fc34496ff316730eff9da7984e02d1bad55aa095\n# Read the requested fields\nUse an implemented OCR or barcode adapter appropriate to the media. Reading-only requests do not need an expected SKU. When comparing, copy the supplied literal exactly, including case and leading zeros. A generic reference to \"the expected SKU\" is not itself the expected value.\n\nComposed match nodes explicitly state mode and emit. Exact equality uses exact; substring search uses contains. Emit matched for events only on a match, mismatched for only failed comparisons, and all for ordinary check-whether output. Comparison results remain visible without a sink_event. Add a local event sink only when requested; no-events forbids sinks. Legacy pattern choices express this separately as record_events. Do not add an object detector or spatial count rule to a reading-only pipeline.\n\nBenchmark OCR candidates on the project's text, language, lighting and scale. Keep raw recognition separate from field normalization. Report character/word error rates only when the evaluator returns them, with its saved normalization policy and counts. Exact text-list accuracy is not a named-field semantic score.\n\nUsers can draw and correct text quadrilaterals and exact transcripts in the image\neditor, or explicitly copy a recognized region as an unreviewed label. A copied\nprediction is not ground truth until human review. Keep raw Unicode and repeated\ninstances intact. The user chooses whether image-level expected values come from\nthe region transcripts or remain manually entered. Dataset context reports text\nregions separately from object boxes and image-level expected values. Region\ngeometry, reading order and repeated-instance localization are not scored by the\ncurrent image-level text evaluator; do not claim those capabilities from its score.\n\n## Examples\n- \"Read package codes\": return decoded text without a match block.\n- \"Create an event only when text exactly equals ABC-990\": expected_text ABC-990, match_mode exact, match_emit matched.\n- \"Compare against the expected SKU\": ask for its value; do not use the words expected SKU as the value unless explicitly quoted as a literal.\n\nPlaybook: alerting@1.0.0; sha256 3d0031531408e56f99c93aec804066d872fc58b4f7949954e5bd9ac09f49deb1\n# Separate event behavior from delivery configuration\nA local event or saved crop can be part of a previewable application. External email, webhook or MQTT delivery additionally requires an implemented transport, configured destination and human approval. A model cannot invent recipients, credentials, approval or delivery receipts.\n\nPreserve the entire compound request. If delivery setup is unsupported in the current edit path, ask for configuration without partially changing confidence or classes. An explicit later request to skip delivery may proceed with only the vision changes.\n\n## Examples\n- \"Save a crop whenever a person appears\": plan a local evidence event on the requested condition; no external destination is implied.\n- \"Raise confidence and email me\": preserve current application until the delivery question is resolved.\n- \"Do not send email\": do not interpret email as an object class or create an outbound action.\nYou may ask at most 3 further questions in this project.",
+                "timestamp": "2026-10-29T16:30:53.608242Z",
+                "dynamic_ref": null,
+                "part_kind": "system-prompt"
+              },
+              {
+                "content": "Task brief:\nCurrent app context (preserve unless the user requests a change):\n{\"existing_goal\":\"\",\"existing_app\":[],\"conversation\":[]}\nUser request:\nRead printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize the crop to width 1200 and height 400 before OCR. Use apple-vision. Compare the recognized text exactly to \"ABC-990\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9.\nAuthoritative engine context:\n{\"source_path\":\"media\",\"model_options\":{\"snapshot_id\":\"6bac22309a240dc8d870b058ad498c80a0ced7aa36776fd8a780a326aa295265\",\"eligible_models\":[{\"capability_id\":\"model.apple-vision\",\"task_types\":[\"ocr\",\"barcode\"],\"vocabulary\":\"not_applicable\",\"supported_classes\":[],\"synthetic\":false,\"readiness\":\"unchecked\",\"selection_basis\":\"explicit_experiment\",\"training_provenance\":{\"origin\":\"system_framework\",\"initialization\":\"not_applicable\",\"training_state\":\"unknown\",\"use_scope\":\"upstream_baseline\",\"preserved_classes\":[],\"evaluation_status\":\"none_attached\"},\"selection_reason\":\"Compatible recorded registration; quality still requires project evaluation.\"},{\"capability_id\":\"model.owlv2-base-patch16\",\"task_types\":[\"detection\"],\"vocabulary\":\"open\",\"supported_classes\":[],\"synthetic\":false,\"readiness\":\"unchecked\",\"selection_basis\":\"default\",\"training_provenance\":{\"origin\":\"upstream_pretrained\",\"initialization\":\"not_applicable\",\"training_state\":\"unknown\",\"use_scope\":\"upstream_baseline\",\"preserved_classes\":[],\"evaluation_status\":\"none_attached\"}},{\"capability_id\":\"model.rtdetr-v2-r18\",\"task_types\":[\"detection\"],\"vocabulary\":\"closed\",\"supported_classes\":[\"person\",\"bicycle\",\"car\",\"motorbike\",\"aeroplane\",\"bus\",\"train\",\"truck\",\"boat\",\"traffic light\",\"fire hydrant\",\"stop sign\",\"parking meter\",\"bench\",\"bird\",\"cat\",\"dog\",\"horse\",\"sheep\",\"cow\",\"elephant\",\"bear\",\"zebra\",\"giraffe\",\"backpack\",\"umbrella\",\"handbag\",\"tie\",\"suitcase\",\"frisbee\",\"skis\",\"snowboard\",\"sports ball\",\"kite\",\"baseball bat\",\"baseball glove\",\"skateboard\",\"surfboard\",\"tennis racket\",\"bottle\",\"wine glass\",\"cup\",\"fork\",\"knife\",\"spoon\",\"bowl\",\"banana\",\"apple\",\"sandwich\",\"orange\",\"broccoli\",\"carrot\",\"hot dog\",\"pizza\",\"donut\",\"cake\",\"chair\",\"sofa\",\"pottedplant\",\"bed\",\"diningtable\",\"toilet\",\"tvmonitor\",\"laptop\",\"mouse\",\"remote\",\"keyboard\",\"cell phone\",\"microwave\",\"oven\",\"toaster\",\"sink\",\"refrigerator\",\"book\",\"clock\",\"vase\",\"scissors\",\"teddy bear\",\"hair drier\",\"toothbrush\"],\"synthetic\":false,\"readiness\":\"unchecked\",\"selection_basis\":\"default\",\"training_provenance\":{\"origin\":\"upstream_pretrained\",\"initialization\":\"not_applicable\",\"training_state\":\"unknown\",\"use_scope\":\"upstream_baseline\",\"preserved_classes\":[],\"evaluation_status\":\"none_attached\"}},{\"capability_id\":\"model.yolox-s-onnx-coco\",\"task_types\":[\"detection\"],\"vocabulary\":\"closed\",\"supported_classes\":[\"person\",\"bicycle\",\"car\",\"motorcycle\",\"airplane\",\"bus\",\"train\",\"truck\",\"boat\",\"traffic light\",\"fire hydrant\",\"stop sign\",\"parking meter\",\"bench\",\"bird\",\"cat\",\"dog\",\"horse\",\"sheep\",\"cow\",\"elephant\",\"bear\",\"zebra\",\"giraffe\",\"backpack\",\"umbrella\",\"handbag\",\"tie\",\"suitcase\",\"frisbee\",\"skis\",\"snowboard\",\"sports ball\",\"kite\",\"baseball bat\",\"baseball glove\",\"skateboard\",\"surfboard\",\"tennis racket\",\"bottle\",\"wine glass\",\"cup\",\"fork\",\"knife\",\"spoon\",\"bowl\",\"banana\",\"apple\",\"sandwich\",\"orange\",\"broccoli\",\"carrot\",\"hot dog\",\"pizza\",\"donut\",\"cake\",\"chair\",\"couch\",\"potted plant\",\"bed\",\"dining table\",\"toilet\",\"tv\",\"laptop\",\"mouse\",\"remote\",\"keyboard\",\"cell phone\",\"microwave\",\"oven\",\"toaster\",\"sink\",\"refrigerator\",\"book\",\"clock\",\"vase\",\"scissors\",\"teddy bear\",\"hair drier\",\"toothbrush\"],\"synthetic\":false,\"readiness\":\"unchecked\",\"selection_basis\":\"default\",\"training_provenance\":{\"origin\":\"upstream_pretrained\",\"initialization\":\"not_applicable\",\"training_state\":\"unknown\",\"use_scope\":\"upstream_baseline\",\"preserved_classes\":[],\"evaluation_status\":\"none_attached\"}}],\"experimental_models\":[{\"capability_id\":\"model.local-detector-rtdetr-prior001-20261028\",\"purpose\":\"unknown\",\"reason\":\"Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available.\"},{\"capability_id\":\"model.local-detector-rtdetr-smoke-20261028\",\"purpose\":\"unknown\",\"reason\":\"Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available.\"},{\"capability_id\":\"model.local-ssdlite-7dcfc58e1c6e\",\"purpose\":\"unknown\",\"reason\":\"Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available.\"},{\"capability_id\":\"model.local-ssdlite-9bdcf7bd1751\",\"purpose\":\"unknown\",\"reason\":\"Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available.\"},{\"capability_id\":\"model.local-ssdlite-finetune-smoke-20261028\",\"purpose\":\"unknown\",\"reason\":\"Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available.\"},{\"capability_id\":\"model.local-ssdlite-smoke-20261028\",\"purpose\":\"unknown\",\"reason\":\"Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available.\"}],\"experimental_summary\":{\"total_count\":6,\"shown_count\":6,\"omitted_count\":0,\"purpose_counts\":{\"unknown\":6}},\"blocked_options\":[{\"capability_id\":\"model.fixture-color-v1\",\"reason\":\"Synthetic fixture models cannot process real project media\"}],\"evidence_limits\":\"Prerequisites permit bounded validation. Training facts are recorded provenance, not measured quality. No scored reports are attached; a dataset hash is not a score. Scene independence is not established.\"},\"use_case\":\"custom\",\"dataset\":{\"revision\":1,\"classes\":[],\"image_count\":1,\"reviewed_count\":0,\"annotation_count\":0,\"text_region_count\":0,\"expected_text_count\":0,\"split_counts\":{\"unassigned\":1},\"saved_zone_ids\":[],\"zones_confirmed\":false,\"zone_origin\":\"unconfirmed\"},\"zones_path\":\"zones/lanes.json\",\"source_provenance\":\"imported media\",\"implemented_blocks\":[{\"type\":\"frame_sample\",\"inputs\":{\"frames\":\"frames\"},\"outputs\":{\"frame\":\"image\"}},{\"type\":\"detect\",\"inputs\":{\"image\":\"image\"},\"outputs\":{\"dets\":\"detections\"}},{\"type\":\"zone_filter\",\"inputs\":{\"dets\":\"detections\"},\"outputs\":{\"dets\":\"detections\"}},{\"type\":\"count_per_zone\",\"inputs\":{\"dets\":\"detections\"},\"outputs\":{\"counts\":\"counts\"}},{\"type\":\"rule\",\"inputs\":{\"value\":\"counts\"},\"outputs\":{\"event\":\"event\"}},{\"type\":\"sink_event\",\"inputs\":{\"event\":\"event\"},\"outputs\":{\"event\":\"event\"}},{\"type\":\"ocr\",\"inputs\":{\"image\":\"image\"},\"outputs\":{\"text\":\"text\"}},{\"type\":\"barcode\",\"inputs\":{\"image\":\"image\"},\"outputs\":{\"text\":\"text\"}},{\"type\":\"match\",\"inputs\":{\"text\":\"text\"},\"outputs\":{\"event\":\"event\"}},{\"type\":\"resize\",\"inputs\":{\"image\":\"image\"},\"outputs\":{\"image\":\"image\"}},{\"type\":\"crop\",\"inputs\":{\"image\":\"image\"},\"outputs\":{\"image\":\"image\"}}],\"node_fields\":{\"barcode\":[\"image\",\"model_capability_id\",\"model_reason\"],\"count_per_zone\":[\"dets\",\"include_unassigned\"],\"crop\":[\"image\",\"box\"],\"detect\":[\"image\",\"model_capability_id\",\"model_reason\",\"classes\",\"min_confidence\"],\"sink_event\":[\"event\"],\"match\":[\"text\",\"expected\",\"mode\",\"emit\"],\"ocr\":[\"image\",\"model_capability_id\",\"model_reason\"],\"resize\":[\"image\",\"width\",\"height\"],\"rule\":[\"counts\",\"operator\",\"threshold\",\"hold_seconds\"],\"frame_sample\":[\"fps\"],\"zone_filter\":[\"dets\",\"zone_ids\"]}}",
+                "timestamp": "2026-10-29T16:30:53.608288Z",
+                "part_kind": "user-prompt"
+              }
+            ],
+            "timestamp": "2026-10-29T16:30:53.608515Z",
+            "instructions": null,
+            "kind": "request",
+            "run_id": "01a18880-04a6-7440-b913-ab21704c0128",
+            "conversation_id": "01a18880-04a6-7440-b913-ab2038d69db4",
+            "metadata": null
+          }
+        ],
+        "model_settings": {
+          "temperature": 0,
+          "max_tokens": 2600
+        },
+        "output_schema": {
+          "$defs": {
+            "BarcodeNode": {
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "barcode",
+                  "title": "Type",
+                  "type": "string"
+                },
+                "id": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+                  "title": "Id",
+                  "type": "string"
+                },
+                "image": {
+                  "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+                  "title": "Image",
+                  "type": "string"
+                },
+                "model_capability_id": {
+                  "maxLength": 120,
+                  "minLength": 1,
+                  "title": "Model Capability Id",
+                  "type": "string"
+                },
+                "model_reason": {
+                  "maxLength": 500,
+                  "minLength": 1,
+                  "title": "Model Reason",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "id",
+                "image",
+                "model_capability_id",
+                "model_reason"
+              ],
+              "title": "BarcodeNode",
+              "type": "object"
+            },
+            "CountNode": {
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "count_per_zone",
+                  "title": "Type",
+                  "type": "string"
+                },
+                "id": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+                  "title": "Id",
+                  "type": "string"
+                },
+                "dets": {
+                  "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+                  "title": "Dets",
+                  "type": "string"
+                },
+                "include_unassigned": {
+                  "title": "Include Unassigned",
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "type",
+                "id",
+                "dets",
+                "include_unassigned"
+              ],
+              "title": "CountNode",
+              "type": "object"
+            },
+            "CropNode": {
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "crop",
+                  "title": "Type",
+                  "type": "string"
+                },
+                "id": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+                  "title": "Id",
+                  "type": "string"
+                },
+                "image": {
+                  "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+                  "title": "Image",
+                  "type": "string"
+                },
+                "box": {
+                  "maxItems": 4,
+                  "minItems": 4,
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "title": "Box",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "type",
+                "id",
+                "image",
+                "box"
+              ],
+              "title": "CropNode",
+              "type": "object"
+            },
+            "DetectNode": {
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "detect",
+                  "title": "Type",
+                  "type": "string"
+                },
+                "id": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+                  "title": "Id",
+                  "type": "string"
+                },
+                "image": {
+                  "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+                  "title": "Image",
+                  "type": "string"
+                },
+                "model_capability_id": {
+                  "maxLength": 120,
+                  "minLength": 1,
+                  "title": "Model Capability Id",
+                  "type": "string"
+                },
+                "model_reason": {
+                  "maxLength": 500,
+                  "minLength": 1,
+                  "title": "Model Reason",
+                  "type": "string"
+                },
+                "classes": {
+                  "items": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 20,
+                  "minItems": 1,
+                  "title": "Classes",
+                  "type": "array"
+                },
+                "min_confidence": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Min Confidence",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "type",
+                "id",
+                "image",
+                "model_capability_id",
+                "model_reason",
+                "classes",
+                "min_confidence"
+              ],
+              "title": "DetectNode",
+              "type": "object"
+            },
+            "EventNode": {
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "sink_event",
+                  "title": "Type",
+                  "type": "string"
+                },
+                "id": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+                  "title": "Id",
+                  "type": "string"
+                },
+                "event": {
+                  "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+                  "title": "Event",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "id",
+                "event"
+              ],
+              "title": "EventNode",
+              "type": "object"
+            },
+            "GraphCandidate": {
+              "additionalProperties": false,
+              "properties": {
+                "name": {
+                  "maxLength": 120,
+                  "minLength": 1,
+                  "title": "Name",
+                  "type": "string"
+                },
+                "nodes": {
+                  "items": {
+                    "discriminator": {
+                      "mapping": {
+                        "barcode": "#/$defs/BarcodeNode",
+                        "count_per_zone": "#/$defs/CountNode",
+                        "crop": "#/$defs/CropNode",
+                        "detect": "#/$defs/DetectNode",
+                        "frame_sample": "#/$defs/SampleNode",
+                        "match": "#/$defs/MatchNode",
+                        "ocr": "#/$defs/OCRNode",
+                        "resize": "#/$defs/ResizeNode",
+                        "rule": "#/$defs/RuleNode",
+                        "sink_event": "#/$defs/EventNode",
+                        "zone_filter": "#/$defs/ZoneNode"
+                      },
+                      "propertyName": "type"
+                    },
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/SampleNode"
+                      },
+                      {
+                        "$ref": "#/$defs/CropNode"
+                      },
+                      {
+                        "$ref": "#/$defs/ResizeNode"
+                      },
+                      {
+                        "$ref": "#/$defs/DetectNode"
+                      },
+                      {
+                        "$ref": "#/$defs/OCRNode"
+                      },
+                      {
+                        "$ref": "#/$defs/BarcodeNode"
+                      },
+                      {
+                        "$ref": "#/$defs/ZoneNode"
+                      },
+                      {
+                        "$ref": "#/$defs/CountNode"
+                      },
+                      {
+                        "$ref": "#/$defs/RuleNode"
+                      },
+                      {
+                        "$ref": "#/$defs/MatchNode"
+                      },
+                      {
+                        "$ref": "#/$defs/EventNode"
+                      }
+                    ]
+                  },
+                  "maxItems": 16,
+                  "minItems": 2,
+                  "title": "Nodes",
+                  "type": "array"
+                },
+                "metric": {
+                  "enum": [
+                    "count_mae",
+                    "precision",
+                    "recall",
+                    "text_accuracy"
+                  ],
+                  "title": "Metric",
+                  "type": "string"
+                },
+                "target": {
+                  "minimum": 0,
+                  "title": "Target",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "name",
+                "nodes",
+                "metric",
+                "target"
+              ],
+              "title": "GraphCandidate",
+              "type": "object"
+            },
+            "MatchNode": {
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "match",
+                  "title": "Type",
+                  "type": "string"
+                },
+                "id": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+                  "title": "Id",
+                  "type": "string"
+                },
+                "text": {
+                  "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+                  "title": "Text",
+                  "type": "string"
+                },
+                "expected": {
+                  "maxLength": 256,
+                  "minLength": 1,
+                  "title": "Expected",
+                  "type": "string"
+                },
+                "mode": {
+                  "enum": [
+                    "contains",
+                    "exact"
+                  ],
+                  "title": "Mode",
+                  "type": "string"
+                },
+                "emit": {
+                  "enum": [
+                    "all",
+                    "matched",
+                    "mismatched"
+                  ],
+                  "title": "Emit",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "id",
+                "text",
+                "expected",
+                "mode",
+                "emit"
+              ],
+              "title": "MatchNode",
+              "type": "object"
+            },
+            "OCRNode": {
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "ocr",
+                  "title": "Type",
+                  "type": "string"
+                },
+                "id": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+                  "title": "Id",
+                  "type": "string"
+                },
+                "image": {
+                  "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+                  "title": "Image",
+                  "type": "string"
+                },
+                "model_capability_id": {
+                  "maxLength": 120,
+                  "minLength": 1,
+                  "title": "Model Capability Id",
+                  "type": "string"
+                },
+                "model_reason": {
+                  "maxLength": 500,
+                  "minLength": 1,
+                  "title": "Model Reason",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "id",
+                "image",
+                "model_capability_id",
+                "model_reason"
+              ],
+              "title": "OCRNode",
+              "type": "object"
+            },
+            "ResizeNode": {
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "resize",
+                  "title": "Type",
+                  "type": "string"
+                },
+                "id": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+                  "title": "Id",
+                  "type": "string"
+                },
+                "image": {
+                  "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+                  "title": "Image",
+                  "type": "string"
+                },
+                "width": {
+                  "exclusiveMinimum": 0,
+                  "maximum": 8192,
+                  "title": "Width",
+                  "type": "integer"
+                },
+                "height": {
+                  "exclusiveMinimum": 0,
+                  "maximum": 8192,
+                  "title": "Height",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "type",
+                "id",
+                "image",
+                "width",
+                "height"
+              ],
+              "title": "ResizeNode",
+              "type": "object"
+            },
+            "RuleNode": {
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "rule",
+                  "title": "Type",
+                  "type": "string"
+                },
+                "id": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+                  "title": "Id",
+                  "type": "string"
+                },
+                "counts": {
+                  "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+                  "title": "Counts",
+                  "type": "string"
+                },
+                "operator": {
+                  "enum": [
+                    ">=",
+                    "<=",
+                    ">",
+                    "<",
+                    "==",
+                    "!="
+                  ],
+                  "title": "Operator",
+                  "type": "string"
+                },
+                "threshold": {
+                  "maximum": 10000,
+                  "minimum": 0,
+                  "title": "Threshold",
+                  "type": "integer"
+                },
+                "hold_seconds": {
+                  "maximum": 3600,
+                  "minimum": 0,
+                  "title": "Hold Seconds",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "type",
+                "id",
+                "counts",
+                "operator",
+                "threshold",
+                "hold_seconds"
+              ],
+              "title": "RuleNode",
+              "type": "object"
+            },
+            "SampleNode": {
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "frame_sample",
+                  "title": "Type",
+                  "type": "string"
+                },
+                "id": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+                  "title": "Id",
+                  "type": "string"
+                },
+                "fps": {
+                  "exclusiveMinimum": 0,
+                  "maximum": 60,
+                  "title": "Fps",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "type",
+                "id",
+                "fps"
+              ],
+              "title": "SampleNode",
+              "type": "object"
+            },
+            "ZoneNode": {
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "zone_filter",
+                  "title": "Type",
+                  "type": "string"
+                },
+                "id": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+                  "title": "Id",
+                  "type": "string"
+                },
+                "dets": {
+                  "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+                  "title": "Dets",
+                  "type": "string"
+                },
+                "zone_ids": {
+                  "items": {
+                    "maxLength": 80,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 20,
+                  "title": "Zone Ids",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "type",
+                "id",
+                "dets",
+                "zone_ids"
+              ],
+              "title": "ZoneNode",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": "0.2",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "message": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Message",
+              "type": "string"
+            },
+            "questions": {
+              "items": {
+                "maxLength": 500,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 3,
+              "title": "Questions",
+              "type": "array"
+            },
+            "graphs": {
+              "items": {
+                "$ref": "#/$defs/GraphCandidate"
+              },
+              "maxItems": 3,
+              "title": "Graphs",
+              "type": "array"
+            }
+          },
+          "required": [
+            "schema_version",
+            "message",
+            "questions",
+            "graphs"
+          ],
+          "title": "GraphPlanDecision",
+          "type": "object"
+        }
+      },
+      "result": {
+        "messages": [
+          {
+            "parts": [
+              {
+                "content": "{\n  \"schema_version\": \"0.2\",\n  \"message\": \"OCR proposal for left half of image with resize and comparison\",\n  \"questions\": [],\n  \"graphs\": [\n    {\n      \"name\": \"OCR_Left_Half\",\n      \"nodes\": [\n        {\n          \"type\": \"frame_sample\",\n          \"id\": \"s\",\n          \"fps\": 2.0\n        },\n        {\n          \"type\": \"crop\",\n          \"id\": \"c\",\n          \"image\": \"$s.frame\",\n          \"box\": [0, 0, 0.5, 1]\n        },\n        {\n          \"type\": \"resize\",\n          \"id\": \"r\",\n          \"image\": \"$c.image\",\n          \"width\": 1200,\n          \"height\": 400\n        },\n        {\n          \"type\": \"ocr\",\n          \"id\": \"o\",\n          \"image\": \"$r.image\",\n          \"model_capability_id\": \"model.apple-vision\",\n          \"model_reason\": \"Eligible OCR\"\n        },\n        {\n          \"type\": \"match\",\n          \"id\": \"m\",\n          \"text\": \"$o.text\",\n          \"expected\": \"ABC-990\",\n          \"mode\": \"exact\",\n          \"emit\": \"all\"\n        }\n      ],\n      \"metric\": \"text_accuracy\",\n      \"target\": 0.9\n    }\n  ]\n}",
+                "id": null,
+                "provider_name": null,
+                "provider_details": null,
+                "part_kind": "text"
+              }
+            ],
+            "usage": {
+              "input_tokens": 3349,
+              "cache_write_tokens": 0,
+              "cache_read_tokens": 1552,
+              "output_tokens": 297,
+              "input_audio_tokens": 0,
+              "cache_audio_read_tokens": 0,
+              "output_audio_tokens": 0,
+              "details": {}
+            },
+            "model_name": "visionapp-planner",
+            "timestamp": "2026-10-29T16:31:38.476954Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_url": "http://127.0.0.1:1234/v1/",
+            "provider_details": {
+              "finish_reason": "stop",
+              "timestamp": "2026-10-29T16:31:38Z"
+            },
+            "provider_response_id": "chatcmpl-X4jNRfWqeXMxEl0RpXoN7mRFKcEANnzh",
+            "finish_reason": "stop",
+            "run_id": null,
+            "conversation_id": null,
+            "metadata": null,
+            "state": "complete"
+          }
+        ]
+      },
+      "error": null
+    },
+    {
+      "id": "5b0cc7d0a9954a4b8c7c706081387201",
+      "kind": "tool",
+      "name": "pipeline_validate",
+      "started_ns": 1793291499578288000,
+      "ended_ns": 1793291499599918000,
+      "status": "completed",
+      "request": {
+        "project_id": "1a782cfabc5b4a53",
+        "spec": {
+          "spec_version": "0.1",
+          "name": "OCR_Left_Half",
+          "inputs": {
+            "source": {
+              "type": "image_folder",
+              "path": "media"
+            }
+          },
+          "blocks": [
+            {
+              "id": "s",
+              "type": "frame_sample",
+              "params": {
+                "fps": 2.0
+              },
+              "in": {
+                "frames": "$inputs.source"
+              }
+            },
+            {
+              "id": "c",
+              "type": "crop",
+              "params": {
+                "box": [
+                  0.0,
+                  0.0,
+                  0.5,
+                  1.0
+                ]
+              },
+              "in": {
+                "image": "$s.frame"
+              }
+            },
+            {
+              "id": "r",
+              "type": "resize",
+              "params": {
+                "width": 1200,
+                "height": 400
+              },
+              "in": {
+                "image": "$c.image"
+              }
+            },
+            {
+              "id": "o",
+              "type": "ocr",
+              "params": {
+                "model": "apple-vision"
+              },
+              "in": {
+                "image": "$r.image"
+              }
+            },
+            {
+              "id": "m",
+              "type": "match",
+              "params": {
+                "expected": "ABC-990",
+                "mode": "exact",
+                "emit": "all"
+              },
+              "in": {
+                "text": "$o.text"
+              }
+            }
+          ],
+          "eval": {
+            "set": "reviewed-v1",
+            "metric": "text_accuracy",
+            "target": 0.9
+          }
+        }
+      },
+      "result": {
+        "valid": true,
+        "errors": []
+      },
+      "error": null
+    },
+    {
+      "id": "d9db52777cfd468681daf42090d4f3da",
+      "kind": "tool",
+      "name": "pipeline_run",
+      "started_ns": 1793291499819260000,
+      "ended_ns": 1793291500119312000,
+      "status": "completed",
+      "request": {
+        "project_id": "1a782cfabc5b4a53",
+        "spec": {
+          "spec_version": "0.1",
+          "name": "OCR_Left_Half",
+          "inputs": {
+            "source": {
+              "type": "image_folder",
+              "path": "media"
+            }
+          },
+          "blocks": [
+            {
+              "id": "s",
+              "type": "frame_sample",
+              "params": {
+                "fps": 2.0
+              },
+              "in": {
+                "frames": "$inputs.source"
+              }
+            },
+            {
+              "id": "c",
+              "type": "crop",
+              "params": {
+                "box": [
+                  0.0,
+                  0.0,
+                  0.5,
+                  1.0
+                ]
+              },
+              "in": {
+                "image": "$s.frame"
+              }
+            },
+            {
+              "id": "r",
+              "type": "resize",
+              "params": {
+                "width": 1200,
+                "height": 400
+              },
+              "in": {
+                "image": "$c.image"
+              }
+            },
+            {
+              "id": "o",
+              "type": "ocr",
+              "params": {
+                "model": "apple-vision"
+              },
+              "in": {
+                "image": "$r.image"
+              }
+            },
+            {
+              "id": "m",
+              "type": "match",
+              "params": {
+                "expected": "ABC-990",
+                "mode": "exact",
+                "emit": "all"
+              },
+              "in": {
+                "text": "$o.text"
+              }
+            }
+          ],
+          "eval": {
+            "set": "reviewed-v1",
+            "metric": "text_accuracy",
+            "target": 0.9
+          }
+        }
+      },
+      "result": {
+        "frames": [
+          {
+            "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/1a782cfabc5b4a53/media/e24d31ea-left-half-text.png",
+            "source_image_sha256": "ef86defcbafdcfd8e40b302da0f1ca5686feb8f908d30ddabdb6bf6eec59c7db",
+            "detections": [],
+            "counts": {},
+            "texts": [
+              "ABC-990"
+            ],
+            "events": [],
+            "elapsed_ms": 267.4096249975264,
+            "timestamp_s": 0.0,
+            "judgements": [],
+            "inferences": [
+              {
+                "block_id": "o",
+                "result": {
+                  "schema_version": 1,
+                  "task": "ocr",
+                  "input_size": [
+                    1200,
+                    400
+                  ],
+                  "input_pixels_sha256": "d1e3df7bd744939fa0085c431e674f9ef102f576aaae16df980e40e523f15b05",
+                  "detections": [],
+                  "readings": [
+                    {
+                      "box": [
+                        0.10449503427729785,
+                        0.3368158439458393,
+                        0.5955049626627145,
+                        0.6331841567815326
+                      ],
+                      "polygon": [
+                        [
+                          0.10449503427729785,
+                          0.35320155180106383
+                        ],
+                        [
+                          0.5944645929931182,
+                          0.3368158439458393
+                        ],
+                        [
+                          0.5955049626627145,
+                          0.616798448926308
+                        ],
+                        [
+                          0.1055354039468942,
+                          0.6331841567815326
+                        ]
+                      ],
+                      "text": "ABC-990",
+                      "kind": "ocr",
+                      "confidence": 1.0,
+                      "symbology": null
+                    }
+                  ],
+                  "identity": {
+                    "capability_id": "model.apple-vision",
+                    "model_id": "apple-vision",
+                    "adapter_id": "apple-vision",
+                    "identity_scope": "system_framework_versioned",
+                    "artifact_hashes": {
+                      "native_bridge": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d"
+                    },
+                    "unavailable_artifacts": [],
+                    "adapter_code_sha256": "7fef46ab88f34d1bb0f73fcc8d53a57cf6b833444c3173ce880caa8e723d3c8c",
+                    "runtime_manifest_sha256": "e8b5a8e0e55e5eef5c9763b084e39f8192503076abcc3f15d59823f19c8e4d55",
+                    "system_identity": {
+                      "architecture": "arm64",
+                      "adapter": "apple-vision",
+                      "identity_scope": "system_framework_versioned",
+                      "request_policy": "apple-vision-en-us-v2",
+                      "output_protocol": "2",
+                      "macos": "26.7.1",
+                      "kernel": "25.6.0",
+                      "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041"
+                    },
+                    "provider": "apple-vision-system",
+                    "config_sha256": "81c8e6ffbf514841279646415e3eb3c651f68c976fee4df4c22617b3f14254c1",
+                    "identity_hash": "bc5d12126cd315c7f8360460f871c1ddedcc13e944d9fa9f95630bd8525595ab"
+                  },
+                  "timing": {
+                    "total_ms": 263.440000009723,
+                    "startup_ms": null,
+                    "load_ms": null,
+                    "preprocess_ms": null,
+                    "inference_ms": null,
+                    "postprocess_ms": null,
+                    "transport_ms": null,
+                    "model_cached": null
+                  },
+                  "warnings": []
+                },
+                "input_to_frame": [
+                  0.0,
+                  0.0,
+                  0.5,
+                  1.0
+                ]
+              }
+            ],
+            "comparisons": [
+              {
+                "block_id": "m",
+                "expected": "ABC-990",
+                "observed": [
+                  "ABC-990"
+                ],
+                "mode": "exact",
+                "matched": true
+              }
+            ]
+          }
+        ],
+        "elapsed_s": 0.28199437499279156,
+        "warnings": [
+          "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+        ]
+      },
+      "error": null
+    }
+  ],
+  "history": [
+    {
+      "at": 1793291452.579138,
+      "action": "begin",
+      "phase": "plan",
+      "detail": ""
+    },
+    {
+      "at": 1793291499.165927,
+      "action": "prepare_compile",
+      "phase": "compile",
+      "detail": ""
+    },
+    {
+      "at": 1793291500.167132,
+      "action": "stage",
+      "phase": "evaluate",
+      "detail": ""
+    },
+    {
+      "at": 1793291500.41075,
+      "action": "commit",
+      "phase": "evaluate",
+      "detail": ""
+    }
+  ],
+  "decision": {
+    "message": "OCR proposal for left half of image with resize and comparison",
+    "schema_version": "0.2",
+    "questions": [],
+    "choices": [],
+    "graphs": [
+      {
+        "name": "OCR_Left_Half",
+        "nodes": [
+          {
+            "type": "frame_sample",
+            "id": "s",
+            "fps": 2.0
+          },
+          {
+            "type": "crop",
+            "id": "c",
+            "image": "$s.frame",
+            "box": [
+              0.0,
+              0.0,
+              0.5,
+              1.0
+            ]
+          },
+          {
+            "type": "resize",
+            "id": "r",
+            "image": "$c.image",
+            "width": 1200,
+            "height": 400
+          },
+          {
+            "type": "ocr",
+            "id": "o",
+            "image": "$r.image",
+            "model_capability_id": "model.apple-vision",
+            "model_reason": "Eligible OCR"
+          },
+          {
+            "type": "match",
+            "id": "m",
+            "text": "$o.text",
+            "expected": "ABC-990",
+            "mode": "exact",
+            "emit": "all"
+          }
+        ],
+        "metric": "text_accuracy",
+        "target": 0.9
+      }
+    ]
+  },
+  "result": {
+    "message": "Reads printed text. Checks whether the read text exactly matches \"ABC-990\". Uses the crop/resize steps shown in the saved workflow.",
+    "questions": [],
+    "candidates": [
+      {
+        "spec_version": "0.1",
+        "name": "OCR_Left_Half",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "s",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2.0
+            },
+            "inputs": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "c",
+            "type": "crop",
+            "params": {
+              "box": [
+                0.0,
+                0.0,
+                0.5,
+                1.0
+              ]
+            },
+            "inputs": {
+              "image": "$s.frame"
+            }
+          },
+          {
+            "id": "r",
+            "type": "resize",
+            "params": {
+              "width": 1200,
+              "height": 400
+            },
+            "inputs": {
+              "image": "$c.image"
+            }
+          },
+          {
+            "id": "o",
+            "type": "ocr",
+            "params": {
+              "model": "apple-vision"
+            },
+            "inputs": {
+              "image": "$r.image"
+            }
+          },
+          {
+            "id": "m",
+            "type": "match",
+            "params": {
+              "expected": "ABC-990",
+              "mode": "exact",
+              "emit": "all"
+            },
+            "inputs": {
+              "text": "$o.text"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "text_accuracy",
+          "target": 0.9
+        }
+      }
+    ],
+    "tool_calls": 5,
+    "elapsed_s": 49.60501295904396,
+    "operation_id": "57eb36d32e4d4d378462187d10763b5f",
+    "needs_zones": false
+  },
+  "error": null,
+  "skills": [
+    {
+      "id": "authoring",
+      "version": "1.1.0",
+      "sha256": "9c8f2850035bbef71d99157ac72d40d8709d74e147a73a8dbd90818373e0ad79"
+    },
+    {
+      "id": "reading",
+      "version": "1.2.0",
+      "sha256": "e9e8e5e573f29e033d8b7445fc34496ff316730eff9da7984e02d1bad55aa095"
+    },
+    {
+      "id": "alerting",
+      "version": "1.0.0",
+      "sha256": "3d0031531408e56f99c93aec804066d872fc58b4f7949954e5bd9ac09f49deb1"
+    }
+  ],
+  "planning_options": {
+    "schema_version": "0.3",
+    "snapshot_id": "6bac22309a240dc8d870b058ad498c80a0ced7aa36776fd8a780a326aa295265",
+    "project_id": "1a782cfabc5b4a53",
+    "fixture_source": false,
+    "detection_constraint": null,
+    "eligible_models": [
+      {
+        "capability_id": "model.apple-vision",
+        "model_id": "apple-vision",
+        "adapter_id": "apple-vision",
+        "task_types": [
+          "ocr",
+          "barcode"
+        ],
+        "output_contract": "texts/v1",
+        "vocabulary": "not_applicable",
+        "supported_classes": [],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {},
+        "version": "26.7.1",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "system_framework",
+          "initialization": "not_applicable",
+          "training_state": "unknown",
+          "use_scope": "upstream_baseline",
+          "use_scope_evidence_ref": null,
+          "base_model_id": null,
+          "training_samples": null,
+          "epochs_completed": null,
+          "optimizer_steps": null,
+          "preserved_classes": [],
+          "evaluation_dataset_recorded": false,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "registry_recorded"
+        },
+        "selection_basis": "explicit_experiment",
+        "selection_reason": "Compatible recorded registration; quality still requires project evaluation."
+      },
+      {
+        "capability_id": "model.owlv2-base-patch16",
+        "model_id": "owlv2-base-patch16",
+        "adapter_id": "owlv2",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "open",
+        "supported_classes": [],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "config.json": "ba9df8c25a4b8461887dd0a93d9252c9cd84697fe8d49a9d8794ce409af9acb2"
+        },
+        "version": "cfd3195ba4ea9592eec887ded089f4c08eff231d",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "upstream_pretrained",
+          "initialization": "not_applicable",
+          "training_state": "unknown",
+          "use_scope": "upstream_baseline",
+          "use_scope_evidence_ref": null,
+          "base_model_id": null,
+          "training_samples": null,
+          "epochs_completed": null,
+          "optimizer_steps": null,
+          "preserved_classes": [],
+          "evaluation_dataset_recorded": false,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "registry_recorded"
+        },
+        "selection_basis": "default",
+        "selection_reason": "Compatible recorded registration; quality still requires project evaluation."
+      },
+      {
+        "capability_id": "model.rtdetr-v2-r18",
+        "model_id": "rtdetr-v2-r18",
+        "adapter_id": "rtdetr-v2-r18",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "closed",
+        "supported_classes": [
+          "person",
+          "bicycle",
+          "car",
+          "motorbike",
+          "aeroplane",
+          "bus",
+          "train",
+          "truck",
+          "boat",
+          "traffic light",
+          "fire hydrant",
+          "stop sign",
+          "parking meter",
+          "bench",
+          "bird",
+          "cat",
+          "dog",
+          "horse",
+          "sheep",
+          "cow",
+          "elephant",
+          "bear",
+          "zebra",
+          "giraffe",
+          "backpack",
+          "umbrella",
+          "handbag",
+          "tie",
+          "suitcase",
+          "frisbee",
+          "skis",
+          "snowboard",
+          "sports ball",
+          "kite",
+          "baseball bat",
+          "baseball glove",
+          "skateboard",
+          "surfboard",
+          "tennis racket",
+          "bottle",
+          "wine glass",
+          "cup",
+          "fork",
+          "knife",
+          "spoon",
+          "bowl",
+          "banana",
+          "apple",
+          "sandwich",
+          "orange",
+          "broccoli",
+          "carrot",
+          "hot dog",
+          "pizza",
+          "donut",
+          "cake",
+          "chair",
+          "sofa",
+          "pottedplant",
+          "bed",
+          "diningtable",
+          "toilet",
+          "tvmonitor",
+          "laptop",
+          "mouse",
+          "remote",
+          "keyboard",
+          "cell phone",
+          "microwave",
+          "oven",
+          "toaster",
+          "sink",
+          "refrigerator",
+          "book",
+          "clock",
+          "vase",
+          "scissors",
+          "teddy bear",
+          "hair drier",
+          "toothbrush"
+        ],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "config.json": "ed051ec77cb41c5d9d5e3af21a979b1e890599dfd68434d7636ff82ded4c1527"
+        },
+        "version": "5650961749fa93567c0d46fc7f43ea4f9e914107",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "upstream_pretrained",
+          "initialization": "not_applicable",
+          "training_state": "unknown",
+          "use_scope": "upstream_baseline",
+          "use_scope_evidence_ref": null,
+          "base_model_id": null,
+          "training_samples": null,
+          "epochs_completed": null,
+          "optimizer_steps": null,
+          "preserved_classes": [],
+          "evaluation_dataset_recorded": false,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "registry_recorded"
+        },
+        "selection_basis": "default",
+        "selection_reason": "Compatible recorded registration; quality still requires project evaluation."
+      },
+      {
+        "capability_id": "model.yolox-s-onnx-coco",
+        "model_id": "yolox-s-onnx-coco",
+        "adapter_id": "yolox-onnx",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "closed",
+        "supported_classes": [
+          "person",
+          "bicycle",
+          "car",
+          "motorcycle",
+          "airplane",
+          "bus",
+          "train",
+          "truck",
+          "boat",
+          "traffic light",
+          "fire hydrant",
+          "stop sign",
+          "parking meter",
+          "bench",
+          "bird",
+          "cat",
+          "dog",
+          "horse",
+          "sheep",
+          "cow",
+          "elephant",
+          "bear",
+          "zebra",
+          "giraffe",
+          "backpack",
+          "umbrella",
+          "handbag",
+          "tie",
+          "suitcase",
+          "frisbee",
+          "skis",
+          "snowboard",
+          "sports ball",
+          "kite",
+          "baseball bat",
+          "baseball glove",
+          "skateboard",
+          "surfboard",
+          "tennis racket",
+          "bottle",
+          "wine glass",
+          "cup",
+          "fork",
+          "knife",
+          "spoon",
+          "bowl",
+          "banana",
+          "apple",
+          "sandwich",
+          "orange",
+          "broccoli",
+          "carrot",
+          "hot dog",
+          "pizza",
+          "donut",
+          "cake",
+          "chair",
+          "couch",
+          "potted plant",
+          "bed",
+          "dining table",
+          "toilet",
+          "tv",
+          "laptop",
+          "mouse",
+          "remote",
+          "keyboard",
+          "cell phone",
+          "microwave",
+          "oven",
+          "toaster",
+          "sink",
+          "refrigerator",
+          "book",
+          "clock",
+          "vase",
+          "scissors",
+          "teddy bear",
+          "hair drier",
+          "toothbrush"
+        ],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "model.onnx": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+          "LICENSE.txt": "0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088"
+        },
+        "version": "6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "upstream_pretrained",
+          "initialization": "not_applicable",
+          "training_state": "unknown",
+          "use_scope": "upstream_baseline",
+          "use_scope_evidence_ref": null,
+          "base_model_id": null,
+          "training_samples": null,
+          "epochs_completed": null,
+          "optimizer_steps": null,
+          "preserved_classes": [],
+          "evaluation_dataset_recorded": false,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "registry_recorded"
+        },
+        "selection_basis": "default",
+        "selection_reason": "Compatible recorded registration; quality still requires project evaluation."
+      }
+    ],
+    "blocked_options": [
+      {
+        "capability_id": "model.fixture-color-v1",
+        "reason": "Synthetic fixture models cannot process real project media"
+      },
+      {
+        "capability_id": "model.local-detector-rtdetr-prior001-20261028",
+        "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-detector-rtdetr-smoke-20261028",
+        "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-7dcfc58e1c6e",
+        "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-9bdcf7bd1751",
+        "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-finetune-smoke-20261028",
+        "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-smoke-20261028",
+        "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      }
+    ],
+    "experimental_models": [
+      {
+        "capability_id": "model.local-detector-rtdetr-prior001-20261028",
+        "model_id": "local-detector-rtdetr-prior001-20261028",
+        "adapter_id": "rtdetr-v2-r18",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "closed",
+        "supported_classes": [
+          "forklift",
+          "person"
+        ],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "config.json": "bb2e53d7a8ff7a61e98198866a49d5b1426b8a245ab032bd6b20ef6ea9237016",
+          "manifest.json": "df144b8fa4b7ac1d71faa1084ea975ca8edd56e7ec98cf331221bdbd6f33ca23",
+          "declared_upstream_weights": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115"
+        },
+        "version": "2026-10-28T17:02:20.786480+00:00",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "locally_trained",
+          "initialization": "unknown",
+          "training_state": "unknown",
+          "use_scope": "unknown",
+          "use_scope_evidence_ref": null,
+          "base_model_id": "rtdetr-v2-r18",
+          "training_samples": 10,
+          "epochs_completed": 10,
+          "optimizer_steps": 50,
+          "preserved_classes": [
+            "person"
+          ],
+          "evaluation_dataset_recorded": true,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "manifest_recorded"
+        },
+        "selection_basis": "requires_explicit_request",
+        "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-detector-rtdetr-smoke-20261028",
+        "model_id": "local-detector-rtdetr-smoke-20261028",
+        "adapter_id": "rtdetr-v2-r18",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "closed",
+        "supported_classes": [
+          "forklift",
+          "person"
+        ],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "config.json": "bb2e53d7a8ff7a61e98198866a49d5b1426b8a245ab032bd6b20ef6ea9237016",
+          "manifest.json": "d2dedc03077e1192ba151786bd16512347189a0e448d7ba25e9fe3fa2c24605e",
+          "declared_upstream_weights": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115"
+        },
+        "version": "2026-10-28T16:59:23.588493+00:00",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "locally_trained",
+          "initialization": "unknown",
+          "training_state": "unknown",
+          "use_scope": "unknown",
+          "use_scope_evidence_ref": null,
+          "base_model_id": "rtdetr-v2-r18",
+          "training_samples": 10,
+          "epochs_completed": 1,
+          "optimizer_steps": 5,
+          "preserved_classes": [
+            "person"
+          ],
+          "evaluation_dataset_recorded": true,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "manifest_recorded"
+        },
+        "selection_basis": "requires_explicit_request",
+        "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-7dcfc58e1c6e",
+        "model_id": "local-ssdlite-7dcfc58e1c6e",
+        "adapter_id": "ssdlite320",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "closed",
+        "supported_classes": [
+          "forklift",
+          "person"
+        ],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "manifest.json": "b63ad94e53626d1a7d25a2b3fa2365f1ddc23a69a85c44a17bb37a6f46b343b9"
+        },
+        "version": "2026-10-28T16:39:49.358925+00:00",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "locally_trained",
+          "initialization": "unknown",
+          "training_state": "unknown",
+          "use_scope": "unknown",
+          "use_scope_evidence_ref": null,
+          "base_model_id": null,
+          "training_samples": 10,
+          "epochs_completed": 1,
+          "optimizer_steps": 5,
+          "preserved_classes": [],
+          "evaluation_dataset_recorded": true,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "manifest_recorded"
+        },
+        "selection_basis": "requires_explicit_request",
+        "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-9bdcf7bd1751",
+        "model_id": "local-ssdlite-9bdcf7bd1751",
+        "adapter_id": "ssdlite320",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "closed",
+        "supported_classes": [
+          "forklift",
+          "person"
+        ],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "manifest.json": "bce1da1461fe847e891a98fdd600c01c0696c3bdbe7797fbbd55ef3fba4b5205"
+        },
+        "version": "2026-10-28T16:41:03.958262+00:00",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "locally_trained",
+          "initialization": "unknown",
+          "training_state": "unknown",
+          "use_scope": "unknown",
+          "use_scope_evidence_ref": null,
+          "base_model_id": null,
+          "training_samples": 10,
+          "epochs_completed": 1,
+          "optimizer_steps": 5,
+          "preserved_classes": [],
+          "evaluation_dataset_recorded": true,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "manifest_recorded"
+        },
+        "selection_basis": "requires_explicit_request",
+        "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-finetune-smoke-20261028",
+        "model_id": "local-ssdlite-finetune-smoke-20261028",
+        "adapter_id": "ssdlite320",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "closed",
+        "supported_classes": [
+          "forklift",
+          "person"
+        ],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "manifest.json": "02e264f0da945a4df424f3abd45a91068af38e367238ac326c3334b4de29e354"
+        },
+        "version": "2026-10-28T16:35:46.790718+00:00",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "locally_trained",
+          "initialization": "unknown",
+          "training_state": "unknown",
+          "use_scope": "unknown",
+          "use_scope_evidence_ref": null,
+          "base_model_id": "local-ssdlite-smoke-20261028",
+          "training_samples": 10,
+          "epochs_completed": 1,
+          "optimizer_steps": 5,
+          "preserved_classes": [],
+          "evaluation_dataset_recorded": true,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "manifest_recorded"
+        },
+        "selection_basis": "requires_explicit_request",
+        "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-smoke-20261028",
+        "model_id": "local-ssdlite-smoke-20261028",
+        "adapter_id": "ssdlite320",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "closed",
+        "supported_classes": [
+          "forklift",
+          "person"
+        ],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "manifest.json": "04f0f3c7acbd08941722c94a16fca9c0105f282428f117a0774084945c2b1dac"
+        },
+        "version": "2026-10-28T16:34:52.650167+00:00",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "locally_trained",
+          "initialization": "unknown",
+          "training_state": "unknown",
+          "use_scope": "unknown",
+          "use_scope_evidence_ref": null,
+          "base_model_id": null,
+          "training_samples": 10,
+          "epochs_completed": 1,
+          "optimizer_steps": 5,
+          "preserved_classes": [],
+          "evaluation_dataset_recorded": true,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "manifest_recorded"
+        },
+        "selection_basis": "requires_explicit_request",
+        "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      }
+    ],
+    "explicit_model_ids": [
+      "apple-vision"
+    ],
+    "request_hash": "c21a391aec356f7fadf52fb959aa9d322d16150a44db364605ba43edf167d8f5"
+  }
+}

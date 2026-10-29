@@ -1,0 +1,94 @@
+[
+  {
+    "call_id": "e6603d51dc0a4caaae5184b9bf0e8265",
+    "response": {
+      "messages": [
+        {
+          "parts": [
+            {
+              "content": "{\n  \"schema_version\": \"0.2\",\n  \"message\": \"Workflow to read both printed text and barcodes from the whole image using apple-vision for both readers.\",\n  \"questions\": [],\n  \"graphs\": [\n    {\n      \"name\": \"ReadTextAndBarcodes\",\n      \"nodes\": [\n        {\n          \"type\": \"frame_sample\",\n          \"id\": \"s\",\n          \"fps\": 2.0\n        },\n        {\n          \"type\": \"ocr\",\n          \"id\": \"ocr_reader\",\n          \"image\": \"$s.frame\",\n          \"model_capability_id\": \"model.apple-vision\",\n          \"model_reason\": \"Eligible OCR\"\n        },\n        {\n          \"type\": \"barcode\",\n          \"id\": \"barcode_reader\",\n          \"image\": \"$s.frame\",\n          \"model_capability_id\": \"model.apple-vision\",\n          \"model_reason\": \"Eligible barcode reader\"\n        },\n        {\n          \"type\": \"match\",\n          \"id\": \"ocr_match\",\n          \"text\": \"$ocr_reader.text\",\n          \"expected\": \"not_applicable\",\n          \"mode\": \"exact\",\n          \"emit\": \"all\"\n        },\n        {\n          \"type\": \"match\",\n          \"id\": \"barcode_match\",\n          \"text\": \"$barcode_reader.text\",\n          \"expected\": \"not_applicable\",\n          \"mode\": \"exact\",\n          \"emit\": \"all\"\n        }\n      ],\n      \"metric\": \"text_accuracy\",\n      \"target\": 0.9\n    }\n  ]\n}",
+              "id": null,
+              "provider_name": null,
+              "provider_details": null,
+              "part_kind": "text"
+            }
+          ],
+          "usage": {
+            "input_tokens": 3275,
+            "cache_write_tokens": 0,
+            "cache_read_tokens": 1556,
+            "output_tokens": 321,
+            "input_audio_tokens": 0,
+            "cache_audio_read_tokens": 0,
+            "output_audio_tokens": 0,
+            "details": {}
+          },
+          "model_name": "visionapp-planner",
+          "timestamp": "2026-10-29T16:25:03.682983Z",
+          "kind": "response",
+          "provider_name": "openai",
+          "provider_url": "http://127.0.0.1:1234/v1/",
+          "provider_details": {
+            "finish_reason": "stop",
+            "timestamp": "2026-10-29T16:25:03Z"
+          },
+          "provider_response_id": "chatcmpl-BqPKLEnab4fU1UGYcdPwRfeQftG5jIpD",
+          "finish_reason": "stop",
+          "run_id": null,
+          "conversation_id": null,
+          "metadata": null,
+          "state": "complete"
+        }
+      ]
+    },
+    "error": null,
+    "retry_feedback": []
+  },
+  {
+    "call_id": "4d18cc66527741b984ec858725751468",
+    "response": {
+      "messages": [
+        {
+          "parts": [
+            {
+              "content": "{\n  \"schema_version\": \"0.2\",\n  \"message\": \"Workflow to read both printed text and barcodes from the whole image using apple-vision for both readers.\",\n  \"questions\": [],\n  \"graphs\": [\n    {\n      \"name\": \"ReadTextAndBarcodes\",\n      \"nodes\": [\n        {\n          \"type\": \"frame_sample\",\n          \"id\": \"s\",\n          \"fps\": 2.0\n        },\n        {\n          \"type\": \"ocr\",\n          \"id\": \"ocr_reader\",\n          \"image\": \"$s.frame\",\n          \"model_capability_id\": \"model.apple-vision\",\n          \"model_reason\": \"Eligible OCR\"\n        },\n        {\n          \"type\": \"barcode\",\n          \"id\": \"barcode_reader\",\n          \"image\": \"$s.frame\",\n          \"model_capability_id\": \"model.apple-vision\",\n          \"model_reason\": \"Eligible barcode reader\"\n        }\n      ],\n      \"metric\": \"text_accuracy\",\n      \"target\": 0.9\n    }\n  ]\n}",
+              "id": null,
+              "provider_name": null,
+              "provider_details": null,
+              "part_kind": "text"
+            }
+          ],
+          "usage": {
+            "input_tokens": 3629,
+            "cache_write_tokens": 0,
+            "cache_read_tokens": 3271,
+            "output_tokens": 219,
+            "input_audio_tokens": 0,
+            "cache_audio_read_tokens": 0,
+            "output_audio_tokens": 0,
+            "details": {}
+          },
+          "model_name": "visionapp-planner",
+          "timestamp": "2026-10-29T16:25:31.403600Z",
+          "kind": "response",
+          "provider_name": "openai",
+          "provider_url": "http://127.0.0.1:1234/v1/",
+          "provider_details": {
+            "finish_reason": "stop",
+            "timestamp": "2026-10-29T16:25:31Z"
+          },
+          "provider_response_id": "chatcmpl-iEhOFfBNdoTrdUgAFIFpFQeZvOzmaN7x",
+          "finish_reason": "stop",
+          "run_id": null,
+          "conversation_id": null,
+          "metadata": null,
+          "state": "complete"
+        }
+      ]
+    },
+    "error": null,
+    "retry_feedback": [
+      "No comparison was requested for this reader branch; preserve read-only output"
+    ]
+  }
+]

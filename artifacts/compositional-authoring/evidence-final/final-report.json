@@ -1,0 +1,504 @@
+{
+  "passed": true,
+  "source_identity": "d76d7e7d6b91f28605917393e63e94eccc37f9099e9382a684b04daec751a552",
+  "scope": "Actual Qwen3-14B Q4_K_M planner and Apple Vision on generated software fixtures. Checks composition, execution and a requested follow-up; not an adaptive optimization loop or accuracy acceptance.",
+  "planner_alias": "visionapp-planner",
+  "planner_identity_scope": "Local server alias; model filename corroborated by server launch configuration, not a weights hash in planner receipts",
+  "native_binary_sha256": "919e25e300f50ab6971ef7a70559bbfba4c7cd1472e1643bab65fd7ccecae080",
+  "initial_raw_report": {
+    "path": ".visionapp/compositional-authoring/run-20261029T162251Z/report.json",
+    "sha256": "110c01e89bf88ac6b526283212385d1f2f3a4dc8c49a77d9deebba5d36a0a7b2"
+  },
+  "optional_mixed_detector_case": "not_run",
+  "cases": [
+    {
+      "case": "crop-reading",
+      "passed": true,
+      "prompt": "Build exactly one workflow. Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize that crop to width 1200 and height 400 before OCR. Use apple-vision OCR. Compare the recognized text exactly to \"ABC-990\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9.",
+      "project_id": "402246585eb54b0c",
+      "operation_id": "092a24eae1234fd98ac36620495eeeb2",
+      "raw_operation": {
+        "path": ".visionapp/compositional-authoring/run-20261029T162251Z/projects/402246585eb54b0c/agent-runs/092a24eae1234fd98ac36620495eeeb2.json",
+        "sha256": "0de107753986a01707a196848f2f7769351f43d0d8080eca65671f28fe63b39e"
+      },
+      "elapsed_s": 76.7874745419831,
+      "calls": [
+        {
+          "id": "6d18b8b43f704f53aae6e3ece2babf1b",
+          "kind": "tool",
+          "name": "blocks_list",
+          "status": "completed",
+          "elapsed_s": 0.029128,
+          "error": null
+        },
+        {
+          "id": "f6cd82ab1e6946dbaf27f8f4f2dd4fe6",
+          "kind": "tool",
+          "name": "dataset_context",
+          "status": "completed",
+          "elapsed_s": 0.030073,
+          "error": null
+        },
+        {
+          "id": "60302e4c10bf47b5b378b52ac90cb5bb",
+          "kind": "tool",
+          "name": "planning_options",
+          "status": "completed",
+          "elapsed_s": 0.413093,
+          "error": null
+        },
+        {
+          "id": "9e595d40e5ad49a4a00946fdf5606a7c",
+          "kind": "llm",
+          "name": "visionapp-planner",
+          "status": "completed",
+          "elapsed_s": 72.157315,
+          "error": null
+        },
+        {
+          "id": "3de4c86e7f704e408bc39ec148427bcb",
+          "kind": "tool",
+          "name": "pipeline_validate",
+          "status": "completed",
+          "elapsed_s": 0.025344,
+          "error": null
+        },
+        {
+          "id": "92dca452c656447eab6c5aabf5e1420a",
+          "kind": "tool",
+          "name": "pipeline_run",
+          "status": "completed",
+          "elapsed_s": 0.349926,
+          "error": null
+        }
+      ],
+      "assertions": [
+        {
+          "name": "one_binding_per_inference_node",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "no_event_sink_or_rule",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "exactly_one_preview_frame",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "no_preview_events",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "frame_0_all_inference_nodes_executed",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "frame_0_saved_bindings_match_execution",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "o_actual_apple_vision",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "o_has_region_geometry",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "o_input_to_frame",
+          "passed": true,
+          "detail": [
+            0.0,
+            0.0,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "name": "o_resized_input",
+          "passed": true,
+          "detail": [
+            1200,
+            400
+          ]
+        },
+        {
+          "name": "o_expected_printed_value",
+          "passed": true,
+          "detail": [
+            "ABC-990"
+          ]
+        },
+        {
+          "name": "excluded_right_half_distractor",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "comparison_observation_without_events",
+          "passed": true,
+          "detail": [
+            {
+              "block_id": "m",
+              "expected": "ABC-990",
+              "observed": [
+                "ABC-990"
+              ],
+              "mode": "exact",
+              "matched": true
+            }
+          ]
+        },
+        {
+          "name": "crop_resize_ocr_comparison_nodes",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "literal_crop_resize_parameters",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "crop_then_resize_then_ocr_then_match",
+          "passed": true,
+          "detail": null
+        }
+      ],
+      "artifacts": {
+        "decision": "crop-reading/decision.json",
+        "plan": "crop-reading/plan.json",
+        "preview": "crop-reading/preview.json",
+        "replay": "crop-reading/replay.json",
+        "model_responses": "crop-reading/model-responses.json"
+      }
+    },
+    {
+      "case": "parallel-readers",
+      "passed": true,
+      "prompt": "Build exactly one workflow that reads both printed text AND barcodes from the whole image, using apple-vision for both readers. Show both kinds of recognized values and their regions. Do not crop or resize. Do not record events or send alerts. Use text_accuracy with target 0.9.",
+      "project_id": "611af77117d34b40",
+      "operation_id": "6234b55e5be342c4ba257600df302e39",
+      "raw_operation": {
+        "path": ".visionapp/compositional-authoring/run-20261029T162251Z/projects/611af77117d34b40/agent-runs/6234b55e5be342c4ba257600df302e39.json",
+        "sha256": "c9aceaf6a763772bbce0f6330fed5ad1141343729b7f965f897d27e7e6b3ffcf"
+      },
+      "elapsed_s": 86.29931341699557,
+      "calls": [
+        {
+          "id": "46d9f5ac6c94497f96e3b93197984da3",
+          "kind": "tool",
+          "name": "blocks_list",
+          "status": "completed",
+          "elapsed_s": 0.020274,
+          "error": null
+        },
+        {
+          "id": "bc8c7dc323f94aa79b9ff29b7e7288c2",
+          "kind": "tool",
+          "name": "dataset_context",
+          "status": "completed",
+          "elapsed_s": 0.02143,
+          "error": null
+        },
+        {
+          "id": "895ab647e9f84cea8884205b5e93d9c1",
+          "kind": "tool",
+          "name": "planning_options",
+          "status": "completed",
+          "elapsed_s": 0.217025,
+          "error": null
+        },
+        {
+          "id": "e6603d51dc0a4caaae5184b9bf0e8265",
+          "kind": "llm",
+          "name": "visionapp-planner",
+          "status": "completed",
+          "elapsed_s": 51.666349,
+          "error": null
+        },
+        {
+          "id": "4d18cc66527741b984ec858725751468",
+          "kind": "llm",
+          "name": "visionapp-planner",
+          "status": "completed",
+          "elapsed_s": 27.438065,
+          "error": null
+        },
+        {
+          "id": "d04c386d94b44f21b8a1656f21b0f536",
+          "kind": "tool",
+          "name": "pipeline_validate",
+          "status": "completed",
+          "elapsed_s": 0.038016,
+          "error": null
+        },
+        {
+          "id": "6db7a7d16d6f427bb1d46782dfb6b588",
+          "kind": "tool",
+          "name": "pipeline_run",
+          "status": "completed",
+          "elapsed_s": 3.026582,
+          "error": null
+        }
+      ],
+      "assertions": [
+        {
+          "name": "one_binding_per_inference_node",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "no_event_sink_or_rule",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "exactly_one_preview_frame",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "no_preview_events",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "frame_0_all_inference_nodes_executed",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "frame_0_saved_bindings_match_execution",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "ocr_reader_actual_apple_vision",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "ocr_reader_has_region_geometry",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "ocr_reader_input_to_frame",
+          "passed": true,
+          "detail": [
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "ocr_reader_whole_image_size",
+          "passed": true,
+          "detail": [
+            1600,
+            600
+          ]
+        },
+        {
+          "name": "ocr_reader_expected_printed_value",
+          "passed": true,
+          "detail": [
+            "ABC-990"
+          ]
+        },
+        {
+          "name": "barcode_reader_actual_apple_vision",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "barcode_reader_has_region_geometry",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "barcode_reader_input_to_frame",
+          "passed": true,
+          "detail": [
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "barcode_reader_whole_image_size",
+          "passed": true,
+          "detail": [
+            1600,
+            600
+          ]
+        },
+        {
+          "name": "expected_qr_decoded",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "no_unrequested_comparison",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "two_parallel_reader_or_detector_branches",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "whole_frame_no_transforms",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "branches_share_input",
+          "passed": true,
+          "detail": null
+        }
+      ],
+      "artifacts": {
+        "decision": "parallel-readers/decision.json",
+        "plan": "parallel-readers/plan.json",
+        "preview": "parallel-readers/preview.json",
+        "replay": "parallel-readers/replay.json",
+        "model_responses": "parallel-readers/model-responses.json"
+      }
+    }
+  ],
+  "refinement": {
+    "passed": true,
+    "prompt": "Change the OCR crop to the right half [0.5, 0, 1, 1] and resize it to 900 by 300 pixels. Keep the existing comparison and event behavior unchanged.",
+    "elapsed_s": 48.734332749969326,
+    "status": "awaiting_review",
+    "next_action": "review_labels",
+    "assertions": {
+      "actual_local_model_call": true,
+      "actual_refinement_tool": true,
+      "paused_for_evidence_without_approval": true,
+      "same_inference_comparison_event_nodes": true,
+      "same_saved_node_bindings": true,
+      "exact_crop": true,
+      "exact_resize": true,
+      "actual_new_pixels_and_false_comparison": true,
+      "no_events": true,
+      "no_review_eval_approval": true,
+      "source_unchanged": true,
+      "captured_tool_preview_equals_saved_preview": true,
+      "reconstructed_patches_equal_saved_and_current_graph": true,
+      "captured_batch_equals_model_decision": true
+    },
+    "calls": [
+      {
+        "id": "f93eb58f5917490085269fc0bfd5cd05",
+        "kind": "tool",
+        "name": "build_refinement_context",
+        "status": "completed",
+        "elapsed_s": 0.009928,
+        "error": null
+      },
+      {
+        "id": "80ad262ab40e479f8ed68c1ec784db6a",
+        "kind": "llm",
+        "name": "visionapp-planner",
+        "status": "completed",
+        "elapsed_s": 43.137632,
+        "error": null
+      },
+      {
+        "id": "8e0d3468529c4824912e243fc6bbff57",
+        "kind": "tool",
+        "name": "build_refine",
+        "status": "completed",
+        "elapsed_s": 0.473381,
+        "error": null
+      },
+      {
+        "id": "306551aa1b69438bb77f3638645b8d01",
+        "kind": "tool",
+        "name": "build_prepare_review",
+        "status": "completed",
+        "elapsed_s": 0.029806,
+        "error": null
+      }
+    ],
+    "raw_build": {
+      "path": ".visionapp/compositional-authoring/run-20261029T162251Z/projects/402246585eb54b0c/build.json",
+      "sha256": "6014c99a0735012f101ae442a1c3a14a3dfe28156d26f08c79d421919e374b26"
+    },
+    "original_report": {
+      "path": ".visionapp/compositional-authoring/run-20261029T162251Z/refinement-report.json",
+      "sha256": "72ba4681e414f0534d65da38b885c7106639a7e504130c006f1f2b49e64dc768"
+    },
+    "harness_correction": {
+      "original_expected_transform": [
+        0.5,
+        0,
+        1,
+        1
+      ],
+      "correct_expected_transform": [
+        0.5,
+        0,
+        0.5,
+        1
+      ],
+      "reason": "input_to_frame stores offset_x,offset_y,scale_x,scale_y. Crop box uses x0,y0,x1,y1.",
+      "new_model_calls": 0,
+      "new_inference_calls": 0,
+      "original_failure_preserved": true
+    },
+    "artifacts": {
+      "original_harness_failure": "refinement/harness-failure-original.json",
+      "decision": "refinement/decision.json",
+      "preview": "refinement/preview.json",
+      "plan": "refinement/plan.json",
+      "reconstruction": "refinement/reconstruction.json",
+      "model_responses": "refinement/model-responses.json"
+    }
+  },
+  "workspace_unchanged": true,
+  "production_source_unchanged": true,
+  "automated_validation": {
+    "result": "1137 passed, 2 skipped in 398.80s (0:06:38)",
+    "log": {
+      "path": "artifacts/compositional-authoring/full-tests-final.log",
+      "sha256": "ec19edf32346d71467823fe0bd9a211a63046689939899d3be55cebeb2c42f2d"
+    }
+  },
+  "exported_files_sha256": {
+    "crop-reading/decision.json": "87a85c816fc6c0652df47ed062b31bac256334fefeb79bf71d7f76cd5103d4f6",
+    "crop-reading/model-responses.json": "0c1d39cb3c49afc724a6c62bf97dee1fdb8f6588d81edff65bf027bcb9615416",
+    "crop-reading/plan.json": "0995150d9ed8f35163cf0dfee11cd525bc674b2e9aaa46781d80de261b51a3f9",
+    "crop-reading/preview.json": "90eae571ba5cf3005ce0fc77d8a9092b519d23f4ce77960751d649ac662924b9",
+    "crop-reading/replay.json": "46404fff2cb5589e762fdd030f63dc23868aa13c03f385681c8dbbc16158257e",
+    "fixtures/left-half-text.png": "ef86defcbafdcfd8e40b302da0f1ca5686feb8f908d30ddabdb6bf6eec59c7db",
+    "fixtures/manifest.json": "57ec30b60611bee1c80b9dc02e0543e55f12e466cd80cc836bcb1122bc23226d",
+    "fixtures/printed-text-and-qr.png": "8195a639c3abb96911274545fdd5261dba6e16b3980c0c955be8709f84885a32",
+    "parallel-readers/decision.json": "105fd47292005231464d838951c16a34fb1f64dcdf0409f61410b489f73be8a7",
+    "parallel-readers/model-responses.json": "52a6d2d42179e9aa95a4a1a1b70c642467f87cedb8d51baac0b8a6dbb602d2d6",
+    "parallel-readers/plan.json": "e89d8dc181eca3315ceccff6c42cf332e390795a0824f21f583d505f1a308b82",
+    "parallel-readers/preview.json": "60ab5de3ed350a5a697a418561b487dbe6aee1fd64cf7052aba31d44a6b43faf",
+    "parallel-readers/replay.json": "ad1d6adb5c1f94276169603c8d8e47a8bda44c156e58b982c92a5b0de0765ab4",
+    "refinement/decision.json": "ae0b2084eaf54ae5e784589a7b64a1a09e5daad8e546864e3f36b6f322fe1d68",
+    "refinement/harness-failure-original.json": "72ba4681e414f0534d65da38b885c7106639a7e504130c006f1f2b49e64dc768",
+    "refinement/model-responses.json": "80dae9ac1a7927ec59aeffb9aba8ea594f60ef0b5f5f67672cd7ce2fa8651a08",
+    "refinement/plan.json": "b6e153dabadaeadc4c863b3758379d1abfd1fc2d5ebedbaf68f2baf4f924c6cf",
+    "refinement/preview.json": "c773cc693797783ea102e03d39211a7b1d080153ad42602d803cb7f329a23c9b",
+    "refinement/reconstruction.json": "929afc0566ad11d02d1fd44353d984839963491e24a83198c0cc205cf17dbaca"
+  }
+}

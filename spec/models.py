@@ -115,6 +115,16 @@ class JudgementEvidence(Contract):
     warnings: list[str] = Field(default_factory=list)
 
 
+class TextComparison(Contract):
+    """A literal reading check, independent from event filtering or storage."""
+
+    block_id: str = Field(pattern=r"^[A-Za-z][A-Za-z0-9_-]*$")
+    expected: str = Field(min_length=1, max_length=256)
+    observed: list[str] = Field(max_length=10000)
+    mode: Literal["exact", "contains"]
+    matched: bool
+
+
 class FrameResult(Contract):
     image_path: str
     source_image_sha256: SHA256 | None = None
@@ -126,6 +136,7 @@ class FrameResult(Contract):
     timestamp_s: float = Field(default=0, ge=0)
     judgements: list[JudgementEvidence] = Field(default_factory=list)
     inferences: list[BlockInference] = Field(default_factory=list, max_length=64)
+    comparisons: list[TextComparison] = Field(default_factory=list, max_length=64)
 
 
 class RunResult(Contract):

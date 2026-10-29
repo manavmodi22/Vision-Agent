@@ -10,7 +10,7 @@ from engine.compiler import compile_pipeline
 from engine.eval.hashes import dataset_hash, spec_hash
 from engine.eval.metrics import count_errors, match_detections
 from engine.eval.reading import NORMALIZATION, error_rate, reading_errors
-from engine.eval.recipe import recipe_hash
+from engine.eval.recipe import recipe_hash, unscored_behaviors
 from engine.eval.scope import detection_scope
 from engine.runtime.executor import execute_frame
 from engine.runtime.values import ExecutionState
@@ -107,7 +107,8 @@ def evaluate(spec: PipelineSpec, dataset: EvalDataset, project_root: Path, *,
     metrics = {"precision": precision, "recall": recall, "count_mae": mae, "text_accuracy": text_accuracy}
     value = metrics[spec.eval.metric]
     passed = value <= spec.eval.target if spec.eval.metric == "count_mae" else value >= spec.eval.target
-    warnings = list(compiled.warnings)
+    scope_warnings = unscored_behaviors(spec)
+    warnings = list(compiled.warnings) + scope_warnings
     if reading and any(annotation.text_regions for annotation in dataset.annotations):
         warnings.append("Text-region annotations supply image-level transcripts only. These metrics do not score localization, polygon IoU, reading order or duplicate-instance geometry.")
     cer = error_rate(character_edits, expected_characters) if reading else None
@@ -132,7 +133,7 @@ def evaluate(spec: PipelineSpec, dataset: EvalDataset, project_root: Path, *,
     if protocol is not None:
         return attach_evidence(project_root, full_dataset, spec, protocol, score)
     score.evidence_scope = "sample"
-    score.evidence_reasons = ["Diagnostic image metrics have no frozen acceptance protocol; promotion is not qualified"]
+    score.evidence_reasons = ["Diagnostic image metrics have no frozen acceptance protocol; promotion is not qualified"] + scope_warnings
     return score
 
 

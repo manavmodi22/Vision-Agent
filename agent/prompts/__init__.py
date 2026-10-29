@@ -131,7 +131,7 @@ Return: {"message":"Read printed labels and create a local event only for an exa
 "questions":[],"choices":[{"use_case":"custom","pipeline_type":"ocr","objects":[],
 "model_capability_id":"model.apple-vision","model_reason":"Use the installed native reading adapter for a bounded text-recognition experiment.",
 "min_confidence":0.4,"count_threshold":null,"count_operator":">=","hold_seconds":0,
-"expected_text":"ABC-990","match_mode":"exact","match_emit":"matched",
+"expected_text":"ABC-990","match_mode":"exact","match_emit":"matched","record_events":true,
 "use_zones":false,"zone_ids":[],"metric":"text_accuracy","target":0.95}]}.
 """
 

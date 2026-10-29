@@ -16,7 +16,7 @@ struct AgentPlanCard: View {
                     Text("\(index + 1). \(candidate.name)").font(.caption.weight(.medium))
                     ForEach(Array(plan.modelSelections(for: index).enumerated()), id: \.offset) { _, selection in
                         VStack(alignment: .leading, spacing: 3) {
-                            Text("Model to test: \(selection.modelID)").font(.caption2).textSelection(.enabled)
+                            Text(selection.modelTestLabel).font(.caption2).textSelection(.enabled)
                             Text("Proposed reason: \(selection.proposedReason)").font(.caption2).foregroundStyle(Studio.muted).lineLimit(2)
                         }
                     }
@@ -75,7 +75,7 @@ struct AgentPlanDetails: View {
                                 Text("Candidate \(index + 1) · \(candidate.name)").font(.callout.weight(.semibold))
                                 ForEach(Array(plan.modelSelections(for: index).enumerated()), id: \.offset) { _, selection in
                                     VStack(alignment: .leading, spacing: 6) {
-                                        Text("Model to test: \(selection.modelID)").font(.callout.weight(.medium)).textSelection(.enabled)
+                                        Text(selection.modelTestLabel).font(.callout.weight(.medium)).textSelection(.enabled)
                                         Text("Proposed reason: \(selection.proposedReason)").font(.callout).textSelection(.enabled)
                                         Text("This is a proposed test choice, not measured quality or an approved winner.").font(.caption2).foregroundStyle(Studio.muted)
                                         Text("Adapter: \(selection.adapterID) · Capability: \(selection.capabilityID)").font(.caption2).foregroundStyle(Studio.muted).textSelection(.enabled)

@@ -1,10 +1,52 @@
 # Implementation status
 
-The product remains describe → build and preview → correct examples or refine
-the goal → evaluate → explicitly approve a bounded operation. Evidence setup is
-a contextual checkpoint in that conversation, not a replacement for the builder.
+The product is an adaptive application builder: the user supplies an objective
+and media; the agent discovers tools, runs experiments, examines actual results,
+and changes its approach toward a working application. The
+[revised direction](agent-builder-proposal-2026-10-29.md) supersedes the earlier
+two-workflow-family framing. A0, the real observation-to-action loop, is the next
+milestone. The proposed time boxes are not accepted delivery commitments.
 
 ## Current software checkpoint
+
+The composition foundation generates typed connected workflows with per-node
+model bindings, static crops/resizes, parallel readers and visible text comparisons
+independent of event recording. Conversational preprocessing edits preserve model
+bindings and preview the changed pixels before committing. See
+[composition](compositional-authoring.md), [refinement](preprocessing-refinement.md)
+and [evaluation boundaries](compositional-evaluation.md).
+
+The [full base+dev suite](../artifacts/compositional-authoring/full-tests-final.log)
+passes **1,137 tests with two optional skips** in 398.80 seconds. Strict mypy passes
+on 184 source files for macOS and Linux; Ruff passes. Debug and Release native
+binaries each pass **257 checks**. The installed engine source is
+`d76d7e7d6b91f28605917393e63e94eccc37f9099e9382a684b04daec751a552`.
+[Bundle relocation](../artifacts/compositional-authoring/bundle-verification.json)
+passes isolated imports, actual native OCR and signature checks.
+
+[Actual local-planner evidence](../artifacts/compositional-authoring/README.md)
+includes connected crop → resize → OCR → comparison and parallel OCR/barcode
+execution on generated software fixtures. These observations prove those
+execution paths, not representative accuracy or adaptive investigation.
+
+The [installed native walkthrough](../artifacts/compositional-authoring/native-ui.json)
+visibly built the left-half workflow, then applied a conversational change to the
+right half at 900×300. Actual OCR changed from `ABC-990` to `WRONG-111`; the visible
+comparison changed from Pass to Fail, with the corresponding source-image region.
+Initial and refinement model calls took 44.91 and 23.32 seconds. The original
+project's checked files are unchanged. The new project remains unreviewed, with
+no evaluation, events or deployment approval. Earlier file-picker automation
+timeouts are retained; reconnecting to the canonical app recovered the walkthrough.
+
+**The builder still asks for a graph and then runs a prescribed host sequence.**
+It does not return experimental results to a continuing model that chooses its
+next experiment. Static graph composition is groundwork for A2, not completion of
+A0–A3. Data-dependent object crops, per-object joins, application view synthesis,
+unseen-task generalization and the wider release requirements remain open.
+The [A0 implementation plan](a0-implementation-plan.md) names the loop, tool and
+persistence changes needed next; it is not an implementation claim.
+
+### Previous text-region checkpoint: `3751`
 
 The text-region authoring update adds drawing, four-corner editing, transcripts,
 undo/redo and autosave to the contextual image editor. OCR/barcode predictions can

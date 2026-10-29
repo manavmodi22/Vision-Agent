@@ -1,0 +1,11 @@
+Building for debugging...
+[Planning deferred tasks]
+[1 / 4]
+[2 / 5] VisionApp-product
+[17 / 20] VisionApp-product
+[18 / 20] VisionApp-product
+/Users/manavrakeshku.modi/vision-agent/app/Package.swift: VisionApp-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/manavrakeshku.modi/vision-agent/app/Package.swift: VisionApp-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[20 / 22] VisionApp-product
+Build complete! (12.60 sec)
+{"status":"passed","checks":257}

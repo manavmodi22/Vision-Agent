@@ -1,0 +1,1139 @@
+{
+  "id": "77b621285434442bb70c6017ce001830",
+  "project_id": "1a782cfabc5b4a53",
+  "trace_id": "2e33bb5f261c4e359918c449fccc47e5",
+  "root_span_id": "1d0036affa0249ba",
+  "owner_pid": 21557,
+  "created_at": 1793291519.4841118,
+  "updated_at": 1793291550.83922,
+  "deadline": 1793292419.461832,
+  "status": "running",
+  "input_fingerprint": "87aa0d6ba5138a80fb4486ccb7fe052ae2349cc9c769319597eb7c755d4b37f5",
+  "brief": "Change the OCR crop to the right half [0.5, 0, 1, 1] and resize it to 900 by 300 pixels. Keep the existing comparison and event behavior unchanged.",
+  "source_path": "media",
+  "detector_model": "",
+  "state": {
+    "phase": "evaluate",
+    "budget": {
+      "max_tool_calls": 30,
+      "max_wall_seconds": 900.0,
+      "max_training_minutes": 4.0,
+      "max_model_calls": 5,
+      "tool_calls": 3,
+      "model_calls": 1,
+      "training_minutes": 0.0,
+      "started_at": 1793291519.4841
+    },
+    "brief_confirmed": true,
+    "candidate_count": 1,
+    "compiled_count": 1,
+    "evaluation": null,
+    "deployment_approved": false,
+    "override_reason": null,
+    "approval_scope": null
+  },
+  "calls": [
+    {
+      "id": "904bb3146407451b83159a0fdb908861",
+      "kind": "tool",
+      "name": "build_refinement_context",
+      "started_ns": 1793291521363323000,
+      "ended_ns": 1793291521374656000,
+      "status": "completed",
+      "request": {
+        "project_id": "1a782cfabc5b4a53",
+        "candidate_index": 0
+      },
+      "result": {
+        "candidates": [
+          {
+            "spec_version": "0.1",
+            "name": "OCR_Left_Half",
+            "inputs": {
+              "source": {
+                "type": "image_folder",
+                "path": "media"
+              }
+            },
+            "blocks": [
+              {
+                "id": "s",
+                "type": "frame_sample",
+                "params": {
+                  "fps": 2.0
+                },
+                "in": {
+                  "frames": "$inputs.source"
+                }
+              },
+              {
+                "id": "c",
+                "type": "crop",
+                "params": {
+                  "box": [
+                    0.0,
+                    0.0,
+                    0.5,
+                    1.0
+                  ]
+                },
+                "in": {
+                  "image": "$s.frame"
+                }
+              },
+              {
+                "id": "r",
+                "type": "resize",
+                "params": {
+                  "width": 1200,
+                  "height": 400
+                },
+                "in": {
+                  "image": "$c.image"
+                }
+              },
+              {
+                "id": "o",
+                "type": "ocr",
+                "params": {
+                  "model": "apple-vision"
+                },
+                "in": {
+                  "image": "$r.image"
+                }
+              },
+              {
+                "id": "m",
+                "type": "match",
+                "params": {
+                  "expected": "ABC-990",
+                  "mode": "exact",
+                  "emit": "all"
+                },
+                "in": {
+                  "text": "$o.text"
+                }
+              }
+            ],
+            "eval": {
+              "set": "reviewed-v1",
+              "metric": "text_accuracy",
+              "target": 0.9
+            }
+          }
+        ],
+        "selected_candidate_index": 0,
+        "current_goal": "Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize the crop to width 1200 and height 400 before OCR. Use apple-vision. Compare the recognized text exactly to \"ABC-990\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9.",
+        "conversation": [
+          {
+            "role": "user",
+            "content": "Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize the crop to width 1200 and height 400 before OCR. Use apple-vision. Compare the recognized text exactly to \"ABC-990\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9."
+          },
+          {
+            "role": "assistant",
+            "content": "Reads printed text. Checks whether the read text exactly matches \"ABC-990\". Uses the crop/resize steps shown in the saved workflow."
+          }
+        ],
+        "classes": [],
+        "saved_zone_ids": [],
+        "clarification_count": 0
+      },
+      "error": null
+    },
+    {
+      "id": "cc4d7b8195964527bccde83b2d44ff74",
+      "kind": "llm",
+      "name": "visionapp-planner",
+      "started_ns": 1793291521477521000,
+      "ended_ns": 1793291544794376000,
+      "status": "completed",
+      "request": {
+        "messages": [
+          {
+            "parts": [
+              {
+                "content": "You edit an existing visual application, using only the supplied typed patches.\nRead the actual graph, existing values, current goal and conversation. The last user request changes this app.\nAn answer to your question completes the previous request; interpret them together.\nReturn JSON {message, questions, patches}. Clear requests: questions=[] and one or more patches.\nAmbiguous requests: patches=[] and at most three short essential questions. Never guess a business threshold.\nNever regenerate a graph, remove unrelated blocks, approve labels/deployment/training, execute code, or invent results.\nDo not ask technical questions when values or sensible semantics are already explicit. No unnecessary confirmation.\n\nSupported patch kinds and fields:\nconfidence: confidence fraction0..1 (70%=0.7). 'Only show detections at least70percent sure' means confidence0.7.\nadd_classes: classes added to current labels. Map obvious plurals to exact existing names. Preserve prior classes.\nremove_classes: classes exact existing labels explicitly removed. replace_classes: explicit replacement label list.\nFor replacing pallets with forklifts, use {\"kind\":\"replace_classes\",\"classes\":[\"forklift\"]}; classes are the NEW complete detector labels.\nClass changes leave the current evaluation metric and target unchanged. Do not add an eval_target patch or ask about evaluation unless requested.\ncount_rule: count_threshold number, count_operator >= <= == != > <, hold_s seconds; supply only requested fields.\n'At least four objects for half a minute' means count_threshold4,count_operator>=,hold_s30.\nCounts aggregate every detector class in that branch. A class-specific rule with a mixed-class detector needs clarification\nabout filtering that branch; do not silently claim class-specific counting or remove classes to achieve it.\nexpected_text: expected_text literal required label value, match_mode exact|contains if requested.\nsample_fps: fps>0..60. Resolve relative requests against current frame_sample.fps (half of2=1).\neval_target: eval_target and optional eval_metric count_mae|precision|recall|text_accuracy. Preserve current metric unless asked.\ncrop: crop_box [x0,y0,x1,y1] normalized to the transform input. Preserve supplied bounds exactly.\nLeft/right/top/bottom half means [0,0,0.5,1]/[0.5,0,1,1]/[0,0,1,0.5]/[0,0.5,1,1].\nresize: width and height integer pixels1..8192; both must come from the user (e.g.640x480). Do not guess dimensions.\nFor crop/resize, block_id names the intended existing detector/reader or transform. Without it there must be one image consumer.\nThe unique existing transform in that consumer's image path is updated, or a transform is inserted before the consumer.\nShared preprocessing is copied for the selected branch; other readers and model choices remain unchanged.\nIf multiple crops/resizes already exist on that path, ask which transform. Bounds are relative to its input; do not invent full-frame coordinates for an already-cropped input.\nAccuracy/recall/precision/text targets are fractions0..1; count_mae is a nonnegative absolute count error.\nOnly fields relevant to each kind are allowed. Never add null unrelated fields. Multiple edits form one patches list.\nUse block_id only to disambiguate an actual matching existing block. If several blocks could be meant, ask which one.\ncount_rule can add rule+sink after the unique existing count_per_zone if absent; a new rule needs a threshold.\nexpected_text can add a comparison after unique OCR/barcode if absent; it preserves existing event connections and never adds a sink.\nOnly crop/resize can add preprocessing. New models, reader branches and other block types require a new structural build request.\nConfidence defaults to the selected candidate. All other goal edits default to all alternatives. Omit scope unless explicitly requested.\nPreserve prior classes for additive requests. Only remove or replace when explicitly requested. Do not invent synonyms for saved names.\nDo not drop part of a compound request. If any part is unsupported or ambiguous, ask rather than partially editing.\nFor 'make it more accurate' without a measurable requested change, ask which errors or target matter; do not guess a confidence direction.\nInterpret the LAST USER REQUEST below. The field descriptions above are a vocabulary, not tasks to execute.\nCount/alert/event thresholds concern count_rule; detection certainty concerns confidence. They are different settings.\nFor a clear count+duration request, emit count_rule with its count_threshold, count_operator and hold_s, without asking again.\n\nApplication playbook: Describe, plan, execute and measure (authoring@1.1.0; sha256 9c8f2850035bbef71d99157ac72d40d8709d74e147a73a8dbd90818373e0ad79)\nRequired inputs: The user's outcome; Imported media or an explicit request for source acquisition; Installed capability catalog\nValidation: Validate schema, inputs and capability readiness before execution; Preview actual samples; label proposals remain unreviewed; Compare compatible candidates on the same reviewed holdout\nFailure modes: Missing capability or media; Changed data, model or plan revision; Exhausted budget or failed target\n# Build the requested vision application\nPreserve the user's outcome, class names, spatial regions, thresholds and output semantics. Ask only for missing business meaning. Do not require a preset or a hand-built graph.\n\nSave a typed, reviewable plan before executing candidate experiments. State data assumptions, capability requirements, metric targets, stop conditions and human checkpoints. A model may propose a step; the executor validates its authority and current inputs. Never execute free-form generated code.\n\nCompose supported typed nodes and references for the requested workflow. Each detector or reader has its own eligible model binding. Preserve requested image transforms and connect them to the intended branch. Static crops are not detection-conditioned crops. Mixed outputs and multiple readers can be previewed; one aggregate score does not qualify every branch.\n\nUse the tool catalog as the executable boundary. A proposed adapter is not installed merely because a playbook mentions it. Preview results demonstrate execution, not accuracy. Show failed steps and their artifacts. Do not approve labels, training, recorded operation or external delivery from model prose.\n\n## Examples\n- \"Count people in these images\": discover detection, build a count preview, then request label review for measured count error.\n- \"Detect a new object class\": retain the requested class and test an eligible open-vocabulary adapter; never silently map it to a different pretrained class.\n- An unavailable capability: explain the missing adapter or data and preserve the current application.\n\nApplication playbook: OCR, barcode and field comparison (reading@1.2.0; sha256 e9e8e5e573f29e033d8b7445fc34496ff316730eff9da7984e02d1bad55aa095)\nRequired inputs: Representative label or barcode images; Exact literal only when comparison is requested; Matching and event semantics\nValidation: Score reviewed expected text with declared normalization; Preserve exact versus substring matching and event polarity; Report measured CER/WER, exact text-list accuracy and recognition failures\nFailure modes: Missing comparison value; Leading zeros lost; Exact/contains confusion; Unsupported language or unreadable text\n# Read the requested fields\nUse an implemented OCR or barcode adapter appropriate to the media. Reading-only requests do not need an expected SKU. When comparing, copy the supplied literal exactly, including case and leading zeros. A generic reference to \"the expected SKU\" is not itself the expected value.\n\nComposed match nodes explicitly state mode and emit. Exact equality uses exact; substring search uses contains. Emit matched for events only on a match, mismatched for only failed comparisons, and all for ordinary check-whether output. Comparison results remain visible without a sink_event. Add a local event sink only when requested; no-events forbids sinks. Legacy pattern choices express this separately as record_events. Do not add an object detector or spatial count rule to a reading-only pipeline.\n\nBenchmark OCR candidates on the project's text, language, lighting and scale. Keep raw recognition separate from field normalization. Report character/word error rates only when the evaluator returns them, with its saved normalization policy and counts. Exact text-list accuracy is not a named-field semantic score.\n\nUsers can draw and correct text quadrilaterals and exact transcripts in the image\neditor, or explicitly copy a recognized region as an unreviewed label. A copied\nprediction is not ground truth until human review. Keep raw Unicode and repeated\ninstances intact. The user chooses whether image-level expected values come from\nthe region transcripts or remain manually entered. Dataset context reports text\nregions separately from object boxes and image-level expected values. Region\ngeometry, reading order and repeated-instance localization are not scored by the\ncurrent image-level text evaluator; do not claim those capabilities from its score.\n\n## Examples\n- \"Read package codes\": return decoded text without a match block.\n- \"Create an event only when text exactly equals ABC-990\": expected_text ABC-990, match_mode exact, match_emit matched.\n- \"Compare against the expected SKU\": ask for its value; do not use the words expected SKU as the value unless explicitly quoted as a literal.\n\nApplication playbook: Local events and configured delivery (alerting@1.0.0; sha256 3d0031531408e56f99c93aec804066d872fc58b4f7949954e5bd9ac09f49deb1)\nRequired inputs: Explicit event condition; Configured destination for external delivery; Human approval for recorded operation and external delivery\nValidation: Check event threshold, polarity and duration; Preview must not send external messages; Verify idempotency and delivery receipts in approved operation\nFailure modes: Missing destination; Partial compound edit; Retry duplicates; Preview mistaken for delivery\n# Separate event behavior from delivery configuration\nA local event or saved crop can be part of a previewable application. External email, webhook or MQTT delivery additionally requires an implemented transport, configured destination and human approval. A model cannot invent recipients, credentials, approval or delivery receipts.\n\nPreserve the entire compound request. If delivery setup is unsupported in the current edit path, ask for configuration without partially changing confidence or classes. An explicit later request to skip delivery may proceed with only the vision changes.\n\n## Examples\n- \"Save a crop whenever a person appears\": plan a local evidence event on the requested condition; no external destination is implied.\n- \"Raise confidence and email me\": preserve current application until the delivery question is resolved.\n- \"Do not send email\": do not interpret email as an object class or create an outbound action.\nYou may ask at most 3 further questions.",
+                "timestamp": "2026-10-29T16:32:01.458975Z",
+                "dynamic_ref": null,
+                "part_kind": "system-prompt"
+              },
+              {
+                "content": "Authoritative current app:\n{\"candidates\":[{\"spec_version\":\"0.1\",\"name\":\"OCR_Left_Half\",\"inputs\":{\"source\":{\"type\":\"image_folder\",\"path\":\"media\"}},\"blocks\":[{\"id\":\"s\",\"type\":\"frame_sample\",\"params\":{\"fps\":2.0},\"in\":{\"frames\":\"$inputs.source\"}},{\"id\":\"c\",\"type\":\"crop\",\"params\":{\"box\":[0.0,0.0,0.5,1.0]},\"in\":{\"image\":\"$s.frame\"}},{\"id\":\"r\",\"type\":\"resize\",\"params\":{\"width\":1200,\"height\":400},\"in\":{\"image\":\"$c.image\"}},{\"id\":\"o\",\"type\":\"ocr\",\"params\":{\"model\":\"apple-vision\"},\"in\":{\"image\":\"$r.image\"}},{\"id\":\"m\",\"type\":\"match\",\"params\":{\"expected\":\"ABC-990\",\"mode\":\"exact\",\"emit\":\"all\"},\"in\":{\"text\":\"$o.text\"}}],\"eval\":{\"set\":\"reviewed-v1\",\"metric\":\"text_accuracy\",\"target\":0.9}}],\"selected_candidate_index\":0,\"current_goal\":\"Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize the crop to width 1200 and height 400 before OCR. Use apple-vision. Compare the recognized text exactly to \\\"ABC-990\\\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9.\",\"conversation\":[{\"role\":\"user\",\"content\":\"Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize the crop to width 1200 and height 400 before OCR. Use apple-vision. Compare the recognized text exactly to \\\"ABC-990\\\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9.\"},{\"role\":\"assistant\",\"content\":\"Reads printed text. Checks whether the read text exactly matches \\\"ABC-990\\\". Uses the crop/resize steps shown in the saved workflow.\"}],\"classes\":[],\"saved_zone_ids\":[],\"clarification_count\":0,\"history_abbreviated\":false}\nUser request:\nChange the OCR crop to the right half [0.5, 0, 1, 1] and resize it to 900 by 300 pixels. Keep the existing comparison and event behavior unchanged.",
+                "timestamp": "2026-10-29T16:32:01.458988Z",
+                "part_kind": "user-prompt"
+              }
+            ],
+            "timestamp": "2026-10-29T16:32:01.459232Z",
+            "instructions": null,
+            "kind": "request",
+            "run_id": "01a18881-0db2-7688-b8e0-deb04f322d84",
+            "conversation_id": "01a18881-0db2-7688-b8e0-deaf3a86dbe0",
+            "metadata": null
+          }
+        ],
+        "model_settings": {
+          "temperature": 0,
+          "max_tokens": 1600
+        },
+        "output_schema": {
+          "$defs": {
+            "AddClasses": {
+              "additionalProperties": false,
+              "properties": {
+                "scope": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "selected",
+                        "all"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Scope"
+                },
+                "block_id": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Block Id"
+                },
+                "kind": {
+                  "const": "add_classes",
+                  "title": "Kind",
+                  "type": "string"
+                },
+                "classes": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 64,
+                  "minItems": 1,
+                  "title": "Classes",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "kind",
+                "classes"
+              ],
+              "title": "AddClasses",
+              "type": "object"
+            },
+            "Confidence": {
+              "additionalProperties": false,
+              "properties": {
+                "scope": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "selected",
+                        "all"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Scope"
+                },
+                "block_id": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Block Id"
+                },
+                "kind": {
+                  "const": "confidence",
+                  "title": "Kind",
+                  "type": "string"
+                },
+                "confidence": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Confidence",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "kind",
+                "confidence"
+              ],
+              "title": "Confidence",
+              "type": "object"
+            },
+            "CountRule": {
+              "additionalProperties": false,
+              "properties": {
+                "scope": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "selected",
+                        "all"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Scope"
+                },
+                "block_id": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Block Id"
+                },
+                "kind": {
+                  "const": "count_rule",
+                  "title": "Kind",
+                  "type": "string"
+                },
+                "count_threshold": {
+                  "anyOf": [
+                    {
+                      "maximum": 1000000000,
+                      "minimum": 0,
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Count Threshold"
+                },
+                "count_operator": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        ">=",
+                        "<=",
+                        "==",
+                        "!=",
+                        ">",
+                        "<"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Count Operator"
+                },
+                "hold_s": {
+                  "anyOf": [
+                    {
+                      "maximum": 86400,
+                      "minimum": 0,
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Hold S"
+                }
+              },
+              "required": [
+                "kind"
+              ],
+              "title": "CountRule",
+              "type": "object"
+            },
+            "Crop": {
+              "additionalProperties": false,
+              "properties": {
+                "scope": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "selected",
+                        "all"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Scope"
+                },
+                "block_id": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Block Id"
+                },
+                "kind": {
+                  "const": "crop",
+                  "title": "Kind",
+                  "type": "string"
+                },
+                "crop_box": {
+                  "items": {
+                    "type": "number"
+                  },
+                  "maxItems": 4,
+                  "minItems": 4,
+                  "title": "Crop Box",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "kind",
+                "crop_box"
+              ],
+              "title": "Crop",
+              "type": "object"
+            },
+            "EvalTarget": {
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "const": "eval_target",
+                  "title": "Kind",
+                  "type": "string"
+                },
+                "scope": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "selected",
+                        "all"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Scope"
+                },
+                "eval_metric": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "count_mae",
+                        "precision",
+                        "recall",
+                        "text_accuracy"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Eval Metric"
+                },
+                "eval_target": {
+                  "anyOf": [
+                    {
+                      "minimum": 0,
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Eval Target"
+                }
+              },
+              "required": [
+                "kind"
+              ],
+              "title": "EvalTarget",
+              "type": "object"
+            },
+            "ExpectedText": {
+              "additionalProperties": false,
+              "properties": {
+                "scope": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "selected",
+                        "all"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Scope"
+                },
+                "block_id": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Block Id"
+                },
+                "kind": {
+                  "const": "expected_text",
+                  "title": "Kind",
+                  "type": "string"
+                },
+                "expected_text": {
+                  "maxLength": 256,
+                  "minLength": 1,
+                  "title": "Expected Text",
+                  "type": "string"
+                },
+                "match_mode": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "exact",
+                        "contains"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Match Mode"
+                }
+              },
+              "required": [
+                "kind",
+                "expected_text"
+              ],
+              "title": "ExpectedText",
+              "type": "object"
+            },
+            "RemoveClasses": {
+              "additionalProperties": false,
+              "properties": {
+                "scope": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "selected",
+                        "all"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Scope"
+                },
+                "block_id": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Block Id"
+                },
+                "kind": {
+                  "const": "remove_classes",
+                  "title": "Kind",
+                  "type": "string"
+                },
+                "classes": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 64,
+                  "minItems": 1,
+                  "title": "Classes",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "kind",
+                "classes"
+              ],
+              "title": "RemoveClasses",
+              "type": "object"
+            },
+            "ReplaceClasses": {
+              "additionalProperties": false,
+              "properties": {
+                "scope": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "selected",
+                        "all"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Scope"
+                },
+                "block_id": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Block Id"
+                },
+                "kind": {
+                  "const": "replace_classes",
+                  "title": "Kind",
+                  "type": "string"
+                },
+                "classes": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 64,
+                  "minItems": 1,
+                  "title": "Classes",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "kind",
+                "classes"
+              ],
+              "title": "ReplaceClasses",
+              "type": "object"
+            },
+            "Resize": {
+              "additionalProperties": false,
+              "properties": {
+                "scope": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "selected",
+                        "all"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Scope"
+                },
+                "block_id": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Block Id"
+                },
+                "kind": {
+                  "const": "resize",
+                  "title": "Kind",
+                  "type": "string"
+                },
+                "width": {
+                  "maximum": 8192,
+                  "minimum": 1,
+                  "title": "Width",
+                  "type": "integer"
+                },
+                "height": {
+                  "maximum": 8192,
+                  "minimum": 1,
+                  "title": "Height",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "kind",
+                "width",
+                "height"
+              ],
+              "title": "Resize",
+              "type": "object"
+            },
+            "SampleFPS": {
+              "additionalProperties": false,
+              "properties": {
+                "scope": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "selected",
+                        "all"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Scope"
+                },
+                "block_id": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Block Id"
+                },
+                "kind": {
+                  "const": "sample_fps",
+                  "title": "Kind",
+                  "type": "string"
+                },
+                "fps": {
+                  "exclusiveMinimum": 0,
+                  "maximum": 60,
+                  "title": "Fps",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "kind",
+                "fps"
+              ],
+              "title": "SampleFPS",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "message": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "title": "Message",
+              "type": "string"
+            },
+            "questions": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 3,
+              "title": "Questions",
+              "type": "array"
+            },
+            "patches": {
+              "items": {
+                "discriminator": {
+                  "mapping": {
+                    "add_classes": "#/$defs/AddClasses",
+                    "confidence": "#/$defs/Confidence",
+                    "count_rule": "#/$defs/CountRule",
+                    "crop": "#/$defs/Crop",
+                    "eval_target": "#/$defs/EvalTarget",
+                    "expected_text": "#/$defs/ExpectedText",
+                    "remove_classes": "#/$defs/RemoveClasses",
+                    "replace_classes": "#/$defs/ReplaceClasses",
+                    "resize": "#/$defs/Resize",
+                    "sample_fps": "#/$defs/SampleFPS"
+                  },
+                  "propertyName": "kind"
+                },
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/Confidence"
+                  },
+                  {
+                    "$ref": "#/$defs/AddClasses"
+                  },
+                  {
+                    "$ref": "#/$defs/RemoveClasses"
+                  },
+                  {
+                    "$ref": "#/$defs/ReplaceClasses"
+                  },
+                  {
+                    "$ref": "#/$defs/CountRule"
+                  },
+                  {
+                    "$ref": "#/$defs/ExpectedText"
+                  },
+                  {
+                    "$ref": "#/$defs/SampleFPS"
+                  },
+                  {
+                    "$ref": "#/$defs/EvalTarget"
+                  },
+                  {
+                    "$ref": "#/$defs/Crop"
+                  },
+                  {
+                    "$ref": "#/$defs/Resize"
+                  }
+                ]
+              },
+              "maxItems": 8,
+              "title": "Patches",
+              "type": "array"
+            }
+          },
+          "required": [
+            "message",
+            "questions",
+            "patches"
+          ],
+          "title": "RefinementModelDecision",
+          "type": "object"
+        }
+      },
+      "result": {
+        "messages": [
+          {
+            "parts": [
+              {
+                "content": "{\n  \"message\": \"The OCR crop has been changed to the right half [0.5, 0, 1, 1], and the resize dimensions have been updated to 900 by 300 pixels. The existing comparison and event behavior remains unchanged.\",\n  \"questions\": [],\n  \"patches\": [\n    {\n      \"kind\": \"crop\",\n      \"crop_box\": [0.5, 0.0, 1.0, 1.0],\n      \"block_id\": \"c\"\n    },\n    {\n      \"kind\": \"resize\",\n      \"width\": 900,\n      \"height\": 300,\n      \"block_id\": \"r\"\n    }\n  ]\n}",
+                "id": null,
+                "provider_name": null,
+                "provider_details": null,
+                "part_kind": "text"
+              }
+            ],
+            "usage": {
+              "input_tokens": 2823,
+              "cache_write_tokens": 0,
+              "cache_read_tokens": 2308,
+              "output_tokens": 153,
+              "input_audio_tokens": 0,
+              "cache_audio_read_tokens": 0,
+              "output_audio_tokens": 0,
+              "details": {}
+            },
+            "model_name": "visionapp-planner",
+            "timestamp": "2026-10-29T16:32:24.782675Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_url": "http://127.0.0.1:1234/v1/",
+            "provider_details": {
+              "finish_reason": "stop",
+              "timestamp": "2026-10-29T16:32:24Z"
+            },
+            "provider_response_id": "chatcmpl-Flo5nwYKBxBMZrSLe633EaGJKQ4inWBo",
+            "finish_reason": "stop",
+            "run_id": null,
+            "conversation_id": null,
+            "metadata": null,
+            "state": "complete"
+          }
+        ]
+      },
+      "error": null
+    },
+    {
+      "id": "a31774f49b8b4cd5ad5a87b77561bde5",
+      "kind": "tool",
+      "name": "build_refine",
+      "started_ns": 1793291547546074000,
+      "ended_ns": 1793291547959112000,
+      "status": "completed",
+      "request": {
+        "project_id": "1a782cfabc5b4a53",
+        "build_id": "77b621285434442bb70c6017ce001830",
+        "candidate_index": 0,
+        "batch": {
+          "patches": [
+            {
+              "kind": "crop",
+              "scope": null,
+              "block_id": "c",
+              "confidence": null,
+              "classes": [],
+              "count_threshold": null,
+              "count_operator": null,
+              "hold_s": null,
+              "expected_text": null,
+              "match_mode": null,
+              "fps": null,
+              "eval_metric": null,
+              "eval_target": null,
+              "crop_box": [
+                0.5,
+                0.0,
+                1.0,
+                1.0
+              ],
+              "width": null,
+              "height": null
+            },
+            {
+              "kind": "resize",
+              "scope": null,
+              "block_id": "r",
+              "confidence": null,
+              "classes": [],
+              "count_threshold": null,
+              "count_operator": null,
+              "hold_s": null,
+              "expected_text": null,
+              "match_mode": null,
+              "fps": null,
+              "eval_metric": null,
+              "eval_target": null,
+              "crop_box": null,
+              "width": 900,
+              "height": 300
+            }
+          ]
+        }
+      },
+      "result": {
+        "preview": {
+          "frames": [
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/1a782cfabc5b4a53/media/e24d31ea-left-half-text.png",
+              "source_image_sha256": "ef86defcbafdcfd8e40b302da0f1ca5686feb8f908d30ddabdb6bf6eec59c7db",
+              "detections": [],
+              "counts": {},
+              "texts": [
+                "WRONG-111"
+              ],
+              "events": [],
+              "elapsed_ms": 282.480709021911,
+              "timestamp_s": 0.0,
+              "judgements": [],
+              "inferences": [
+                {
+                  "block_id": "o",
+                  "result": {
+                    "schema_version": 1,
+                    "task": "ocr",
+                    "input_size": [
+                      900,
+                      300
+                    ],
+                    "input_pixels_sha256": "1d1d08164e51a1ef42d80ff86066dfa3e83f12e375591b03b9674f4ed2db29fa",
+                    "detections": [],
+                    "readings": [
+                      {
+                        "box": [
+                          0.08666666712626263,
+                          0.3333333340303031,
+                          0.7866666671262627,
+                          0.6400000006969697
+                        ],
+                        "polygon": [
+                          [
+                            0.08666666712626263,
+                            0.3333333340303031
+                          ],
+                          [
+                            0.7866666671262627,
+                            0.3333333340303031
+                          ],
+                          [
+                            0.7866666671262627,
+                            0.6400000006969697
+                          ],
+                          [
+                            0.08666666712626263,
+                            0.6400000006969697
+                          ]
+                        ],
+                        "text": "WRONG-111",
+                        "kind": "ocr",
+                        "confidence": 1.0,
+                        "symbology": null
+                      }
+                    ],
+                    "identity": {
+                      "capability_id": "model.apple-vision",
+                      "model_id": "apple-vision",
+                      "adapter_id": "apple-vision",
+                      "identity_scope": "system_framework_versioned",
+                      "artifact_hashes": {
+                        "native_bridge": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d"
+                      },
+                      "unavailable_artifacts": [],
+                      "adapter_code_sha256": "7fef46ab88f34d1bb0f73fcc8d53a57cf6b833444c3173ce880caa8e723d3c8c",
+                      "runtime_manifest_sha256": "e8b5a8e0e55e5eef5c9763b084e39f8192503076abcc3f15d59823f19c8e4d55",
+                      "system_identity": {
+                        "architecture": "arm64",
+                        "adapter": "apple-vision",
+                        "identity_scope": "system_framework_versioned",
+                        "request_policy": "apple-vision-en-us-v2",
+                        "output_protocol": "2",
+                        "macos": "26.7.1",
+                        "kernel": "25.6.0",
+                        "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041"
+                      },
+                      "provider": "apple-vision-system",
+                      "config_sha256": "81c8e6ffbf514841279646415e3eb3c651f68c976fee4df4c22617b3f14254c1",
+                      "identity_hash": "bc5d12126cd315c7f8360460f871c1ddedcc13e944d9fa9f95630bd8525595ab"
+                    },
+                    "timing": {
+                      "total_ms": 277.34758297447115,
+                      "startup_ms": null,
+                      "load_ms": null,
+                      "preprocess_ms": null,
+                      "inference_ms": null,
+                      "postprocess_ms": null,
+                      "transport_ms": null,
+                      "model_cached": null
+                    },
+                    "warnings": []
+                  },
+                  "input_to_frame": [
+                    0.5,
+                    0.0,
+                    0.5,
+                    1.0
+                  ]
+                }
+              ],
+              "comparisons": [
+                {
+                  "block_id": "m",
+                  "expected": "ABC-990",
+                  "observed": [
+                    "WRONG-111"
+                  ],
+                  "mode": "exact",
+                  "matched": false
+                }
+              ]
+            }
+          ],
+          "elapsed_s": 0.3009692920022644,
+          "warnings": [
+            "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+          ]
+        },
+        "candidate_index": 0,
+        "message": "Applied 2 requested changes to 1 candidate(s), with an actual preview of every affected candidate. Preserved unrelated settings and human labels.",
+        "base_spec_hash": "1052621db41f0a5ad110569be6b2997265cb17673da149c24d6087dd6288bd06",
+        "spec_hash": "21f9d848bedefa7f259041bfa534930e166c21f4a0e740838e2e78451dccde03",
+        "requires_review": false,
+        "affected_candidate_indices": [
+          0
+        ],
+        "previewed_candidate_indices": [
+          0
+        ],
+        "base_spec_hashes": {
+          "0": "1052621db41f0a5ad110569be6b2997265cb17673da149c24d6087dd6288bd06"
+        },
+        "spec_hashes": {
+          "0": "21f9d848bedefa7f259041bfa534930e166c21f4a0e740838e2e78451dccde03"
+        }
+      },
+      "error": null
+    },
+    {
+      "id": "1abae33b87b644b8b55d093a20544c47",
+      "kind": "tool",
+      "name": "build_prepare_review",
+      "started_ns": 1793291550657140000,
+      "ended_ns": 1793291550693723000,
+      "status": "completed",
+      "request": {
+        "project_id": "1a782cfabc5b4a53"
+      },
+      "result": {
+        "image_count": 1,
+        "reviewed_count": 0,
+        "evaluation_image_count": 1,
+        "evaluation_reviewed_count": 0,
+        "candidate_count": 1,
+        "can_propose_labels": false,
+        "fixture": false,
+        "training_eligible": false,
+        "review_subset_created": false,
+        "comparison_scopes": [
+          "e3208c3098b816383348ba13d9d29143e3de41ced907a2a5c6cf343b11fd6458"
+        ]
+      },
+      "error": null
+    }
+  ],
+  "history": [],
+  "decision": null,
+  "result": null,
+  "error": null,
+  "skills": [
+    {
+      "id": "authoring",
+      "version": "1.1.0",
+      "sha256": "9c8f2850035bbef71d99157ac72d40d8709d74e147a73a8dbd90818373e0ad79"
+    },
+    {
+      "id": "reading",
+      "version": "1.2.0",
+      "sha256": "e9e8e5e573f29e033d8b7445fc34496ff316730eff9da7984e02d1bad55aa095"
+    },
+    {
+      "id": "alerting",
+      "version": "1.0.0",
+      "sha256": "3d0031531408e56f99c93aec804066d872fc58b4f7949954e5bd9ac09f49deb1"
+    }
+  ],
+  "planning_options": null
+}

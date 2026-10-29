@@ -107,6 +107,9 @@ class PlatformStore:
         # must remain absent when verifying plans saved by the previous schema.
         canonical = plan.model_dump(mode="json", exclude={"content_hash"}, by_alias=True)
         canonical = {key: value for key, value in canonical.items() if key in raw}
+        for stored, normalized in zip(raw.get("model_selections", []), canonical.get("model_selections", []), strict=True):
+            if "block_id" not in stored and normalized.get("block_id") is None:
+                normalized.pop("block_id", None)
         if plan.content_hash != digest(canonical):
             raise AgentConflict("The saved plan content hash is invalid")
         return plan
@@ -120,6 +123,29 @@ class PlatformStore:
         atomic_model(self.path(run.project_id, "executions", run.id), run)
         atomic_model(self.path(run.project_id, "bindings", run.operation_id), run)
 
+    def inherited_bindings(self, project_id: str, candidates: list[PipelineSpec], phase: Phase,
+                           plans: list[BuildPlan]) -> tuple[PlanningOptions | None, list[CandidateModelSelection]]:
+        """Resolve evidence from the exact pre-edit graph, including across builds."""
+        from engine.platform.planning_options import validate_current_options
+        from engine.platform.proposals import validate_refinement_bindings
+
+        before = self.service.get_project(project_id).candidates if phase == Phase.PLAN else candidates
+        origin = next((plan for plan in reversed(plans) if plan.candidates == before), None)
+        if origin is None:
+            if phase == Phase.PLAN and any(plan.planning_options_artifact_id or plan.model_selections for plan in plans):
+                raise AgentConflict("No immutable model plan matches the current candidates; capture a new plan before refining")
+            return None, []
+        if not origin.planning_options_artifact_id and not origin.model_selections:
+            return None, []  # A genuinely legacy plan has no model-selection receipt.
+        if not origin.planning_options_artifact_id or not origin.model_selections:
+            raise AgentConflict("The originating plan has incomplete captured model evidence")
+        options = PlanningOptions.model_validate(self.artifact_content(project_id, origin.planning_options_artifact_id).content)
+        if options.project_id != project_id:
+            raise AgentConflict("The originating model options belong to a different project")
+        validate_refinement_bindings(origin.candidates, candidates, origin.model_selections, options)
+        validate_current_options(self.service, options, [item.capability_id for item in origin.model_selections])
+        return options, [item.model_copy(deep=True) for item in origin.model_selections]
+
     def publish(self, project_id: str, operation_id: str, goal: str, candidates: list[PipelineSpec],
                 phase: Phase, reason: str, *, skills: list[SkillReference] | None = None,
                 build_id: str | None = None, planning_options: PlanningOptions | None = None,
@@ -127,8 +153,6 @@ class PlatformStore:
         with self.service.repository.lock:
             experiments, checkpoints = experiment_policy(candidates, phase)
             previous = self.execution(project_id, operation_id)
-            if previous and previous.status in {"running", "planned", "paused"}:
-                self.close(project_id, operation_id, "stale", "Superseded by a new plan revision; prior action outcomes remain in the timeline")
             build_id = build_id or self.active_build(project_id)
             if build_id:
                 build = json.loads((self.service.root(project_id) / "build.json").read_text())
@@ -137,10 +161,10 @@ class PlatformStore:
                 goal = str(build["prompt"])
             plans = self.plans(project_id)
             parent = plans[-1] if plans else None
-            if (planning_options is None and parent and parent.build_id == build_id and parent.candidates == candidates
-                    and parent.planning_options_artifact_id):
-                planning_options = PlanningOptions.model_validate(self.artifact_content(project_id, parent.planning_options_artifact_id).content)
-                model_selections = parent.model_selections
+            if planning_options is None:
+                if model_selections:
+                    raise AgentConflict("Model bindings require their captured planning options")
+                planning_options, model_selections = self.inherited_bindings(project_id, candidates, phase, plans)
             source = self.snapshot(project_id, candidates)
             options_artifact = self.artifact(project_id, "planning_options", "Captured planning model options",
                 planning_options.model_dump(mode="json")) if planning_options else None
@@ -171,6 +195,8 @@ class PlatformStore:
                 revision_reason=reason, planning_options_artifact_id=options_artifact.id if options_artifact else None,
                 model_selections=model_selections or [])
             plan = plan.model_copy(update={"content_hash": digest(plan.model_dump(mode="json", exclude={"content_hash"}, by_alias=True))})
+            if previous and previous.status in {"running", "planned", "paused"}:
+                self.close(project_id, operation_id, "stale", "Superseded by a new plan revision; prior action outcomes remain in the timeline")
             self.immutable(self.path(project_id, "plans", plan.id), plan)
             run = ExecutionRun(id=uuid.uuid4().hex, project_id=project_id, build_id=plan.build_id,
                 operation_id=operation_id, plan_id=plan.id, plan_hash=plan.content_hash, phase=phase.value,
@@ -196,6 +222,12 @@ class PlatformStore:
             from engine.platform.planning_options import validate_current_options
             options = PlanningOptions.model_validate(self.artifact_content(project_id, plan.planning_options_artifact_id).content)
             validate_current_options(self.service, options, [selection.capability_id for selection in plan.model_selections])
+            if any(selection.block_id is not None for selection in plan.model_selections):
+                from spec.model_bindings import validate_block_bindings
+                if any(selection.candidate_index >= len(plan.candidates) or selection.block_id is None for selection in plan.model_selections):
+                    raise AgentConflict("Composed model bindings contain an extra candidate or an unbound block")
+                for binding_index, candidate in enumerate(plan.candidates):
+                    validate_block_bindings(candidate, plan.model_selections, binding_index, options)
         if name in {"pipeline_validate", "pipeline_run", "eval_run", "build_refine", "build_propose_labels", "build_train", "build_operate"}:
             from engine.capabilities import validate_experiment_capabilities
             validate_experiment_capabilities(self.service, plan.required_capabilities)

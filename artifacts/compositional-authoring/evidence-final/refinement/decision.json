@@ -1,0 +1,48 @@
+{
+  "source": "local_model",
+  "message": "The OCR crop has been changed to the right half [0.5, 0, 1, 1], and the resize dimensions have been updated to 900 by 300 pixels. The existing comparison and event behavior remains unchanged.",
+  "questions": [],
+  "patches": [
+    {
+      "kind": "crop",
+      "scope": null,
+      "block_id": "c",
+      "confidence": null,
+      "classes": [],
+      "count_threshold": null,
+      "count_operator": null,
+      "hold_s": null,
+      "expected_text": null,
+      "match_mode": null,
+      "fps": null,
+      "eval_metric": null,
+      "eval_target": null,
+      "crop_box": [
+        0.5,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "width": null,
+      "height": null
+    },
+    {
+      "kind": "resize",
+      "scope": null,
+      "block_id": "r",
+      "confidence": null,
+      "classes": [],
+      "count_threshold": null,
+      "count_operator": null,
+      "hold_s": null,
+      "expected_text": null,
+      "match_mode": null,
+      "fps": null,
+      "eval_metric": null,
+      "eval_target": null,
+      "crop_box": null,
+      "width": 900,
+      "height": 300
+    }
+  ]
+}

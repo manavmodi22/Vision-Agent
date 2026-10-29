@@ -1,0 +1,186 @@
+{
+  "id": "43b7b997267b4368869775bf7b5e61f1",
+  "project_id": "402246585eb54b0c",
+  "build_id": "8294c6564a9a4458ba32e401c9b44a85",
+  "operation_id": "8294c6564a9a4458ba32e401c9b44a85",
+  "revision": 3,
+  "parent_plan_id": "4c72be4baa254d50ac0b94dec69be8c2",
+  "created_at": "2026-10-29T16:27:35.038021+00:00",
+  "content_hash": "33d193488e7674dd8eb713bd5e0e4a8f6c1dd9702c98d092e88bd2291206352e",
+  "goal": "Change the OCR crop to the right half [0.5, 0, 1, 1] and resize it to 900 by 300 pixels. Keep the existing comparison and event behavior unchanged.",
+  "assumptions": [
+    "Use the project's imported media and saved region geometry.",
+    "A sample preview does not establish accuracy.",
+    "Evaluation requires reviewed labels on the same held-out data for every candidate."
+  ],
+  "candidates": [
+    {
+      "spec_version": "0.1",
+      "name": "Read Left Half Text",
+      "inputs": {
+        "source": {
+          "type": "image_folder",
+          "path": "media"
+        }
+      },
+      "blocks": [
+        {
+          "id": "s",
+          "type": "frame_sample",
+          "params": {
+            "fps": 2.0
+          },
+          "in": {
+            "frames": "$inputs.source"
+          }
+        },
+        {
+          "id": "c",
+          "type": "crop",
+          "params": {
+            "box": [
+              0.5,
+              0.0,
+              1.0,
+              1.0
+            ]
+          },
+          "in": {
+            "image": "$s.frame"
+          }
+        },
+        {
+          "id": "r",
+          "type": "resize",
+          "params": {
+            "width": 900,
+            "height": 300
+          },
+          "in": {
+            "image": "$c.image"
+          }
+        },
+        {
+          "id": "o",
+          "type": "ocr",
+          "params": {
+            "model": "apple-vision"
+          },
+          "in": {
+            "image": "$r.image"
+          }
+        },
+        {
+          "id": "m",
+          "type": "match",
+          "params": {
+            "expected": "ABC-990",
+            "mode": "exact",
+            "emit": "all"
+          },
+          "in": {
+            "text": "$o.text"
+          }
+        }
+      ],
+      "eval": {
+        "set": "reviewed-v1",
+        "metric": "text_accuracy",
+        "target": 0.9
+      }
+    }
+  ],
+  "required_capabilities": [
+    "block.crop",
+    "block.frame_sample",
+    "block.match",
+    "block.ocr",
+    "block.resize",
+    "model.apple-vision"
+  ],
+  "experiments": [
+    {
+      "id": "evaluate",
+      "phase": "evaluate",
+      "description": "Prepare the review set, then measure candidates once its labels are reviewed.",
+      "allowed_tools": [
+        "build_context",
+        "build_freeze_evaluation",
+        "build_prepare_review",
+        "eval_run",
+        "pipeline_run"
+      ],
+      "candidate_indices": [
+        0
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "candidate_index": 0,
+      "metric": "text_accuracy",
+      "target": 0.9,
+      "direction": "maximize"
+    }
+  ],
+  "stop_conditions": [
+    "Stop on changed data, models, settings or workflow.",
+    "Stop if a required capability is unavailable or a tool fails.",
+    "Respect existing call, time and training budgets.",
+    "Pause at human review and approval checkpoints."
+  ],
+  "human_checkpoints": [
+    {
+      "id": "labels",
+      "phase": "evaluate",
+      "description": "Before scoring, review any unreviewed labels in the chosen evaluation set.",
+      "requires_approval": true
+    },
+    {
+      "id": "deployment",
+      "phase": "operate",
+      "description": "Choose independent acceptance for promotion, or explicitly approve a bounded local-only trial.",
+      "requires_approval": true
+    }
+  ],
+  "snapshot": {
+    "workspace_hash": "68649c5e6f129b6076b5a7a4d69fdd5eada2f03643e91fb0e12ff16de8ffec61",
+    "dataset_hash": "2b776744670d90ee3c98e543f1c0f2427e59fd3cbc827b89e9e528ff8cb3d09e",
+    "model_hashes": [
+      "7e20766b42254d801d4f1e76b99b92c17db4caf3f879cc6f5d18c271f8fc35e2",
+      "5e1be925452909bfde624e368ade9d18f3a9e7a29c4497c951265582f4384b10"
+    ],
+    "settings_hash": "0a759c259264d0118dc4809a470c7378b308ed6813b6fa1a27c2781abbc053d4"
+  },
+  "skills": [
+    {
+      "id": "authoring",
+      "version": "1.1.0",
+      "sha256": "9c8f2850035bbef71d99157ac72d40d8709d74e147a73a8dbd90818373e0ad79"
+    },
+    {
+      "id": "reading",
+      "version": "1.2.0",
+      "sha256": "e9e8e5e573f29e033d8b7445fc34496ff316730eff9da7984e02d1bad55aa095"
+    },
+    {
+      "id": "alerting",
+      "version": "1.0.0",
+      "sha256": "3d0031531408e56f99c93aec804066d872fc58b4f7949954e5bd9ac09f49deb1"
+    }
+  ],
+  "revision_reason": "Next authorized experiment on the current project snapshot",
+  "planning_options_artifact_id": "9c1efac708bc18df4924e1ce18f3e22c1381356bedd683af7f060c12989b08f4",
+  "model_selections": [
+    {
+      "candidate_index": 0,
+      "block_id": "o",
+      "capability_id": "model.apple-vision",
+      "model_id": "apple-vision",
+      "adapter_id": "apple-vision",
+      "proposed_reason": "Eligible OCR for reading printed text",
+      "options_snapshot_id": "7b2ebca1bcbd526d60bd203f10663316f74fd4c706d35ac7a4bf1eff1f03c159",
+      "status": "proposed"
+    }
+  ]
+}

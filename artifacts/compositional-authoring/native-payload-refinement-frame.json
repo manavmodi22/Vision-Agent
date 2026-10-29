@@ -1,0 +1,113 @@
+{
+  "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z/projects/402246585eb54b0c/media/f02c25a7-left-half-text.png",
+  "source_image_sha256": "ef86defcbafdcfd8e40b302da0f1ca5686feb8f908d30ddabdb6bf6eec59c7db",
+  "detections": [],
+  "counts": {},
+  "texts": [
+    "WRONG-111"
+  ],
+  "events": [],
+  "elapsed_ms": 326.26054203137755,
+  "timestamp_s": 0.0,
+  "judgements": [],
+  "inferences": [
+    {
+      "block_id": "o",
+      "result": {
+        "schema_version": 1,
+        "task": "ocr",
+        "input_size": [
+          900,
+          300
+        ],
+        "input_pixels_sha256": "1d1d08164e51a1ef42d80ff86066dfa3e83f12e375591b03b9674f4ed2db29fa",
+        "detections": [],
+        "readings": [
+          {
+            "box": [
+              0.08666666712626263,
+              0.3333333340303031,
+              0.7866666671262627,
+              0.6400000006969697
+            ],
+            "polygon": [
+              [
+                0.08666666712626263,
+                0.3333333340303031
+              ],
+              [
+                0.7866666671262627,
+                0.3333333340303031
+              ],
+              [
+                0.7866666671262627,
+                0.6400000006969697
+              ],
+              [
+                0.08666666712626263,
+                0.6400000006969697
+              ]
+            ],
+            "text": "WRONG-111",
+            "kind": "ocr",
+            "confidence": 1.0,
+            "symbology": null
+          }
+        ],
+        "identity": {
+          "capability_id": "model.apple-vision",
+          "model_id": "apple-vision",
+          "adapter_id": "apple-vision",
+          "identity_scope": "system_framework_versioned",
+          "artifact_hashes": {
+            "native_bridge": "919e25e300f50ab6971ef7a70559bbfba4c7cd1472e1643bab65fd7ccecae080"
+          },
+          "unavailable_artifacts": [],
+          "adapter_code_sha256": "7fef46ab88f34d1bb0f73fcc8d53a57cf6b833444c3173ce880caa8e723d3c8c",
+          "runtime_manifest_sha256": "e8b5a8e0e55e5eef5c9763b084e39f8192503076abcc3f15d59823f19c8e4d55",
+          "system_identity": {
+            "architecture": "arm64",
+            "adapter": "apple-vision",
+            "identity_scope": "system_framework_versioned",
+            "request_policy": "apple-vision-en-us-v2",
+            "output_protocol": "2",
+            "macos": "26.7.1",
+            "kernel": "25.6.0",
+            "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041"
+          },
+          "provider": "apple-vision-system",
+          "config_sha256": "81c8e6ffbf514841279646415e3eb3c651f68c976fee4df4c22617b3f14254c1",
+          "identity_hash": "d40b876fa3132e25f507dd0faa661410f9eecd5f82fac6471ab3323dfb9e47a6"
+        },
+        "timing": {
+          "total_ms": 322.982374986168,
+          "startup_ms": null,
+          "load_ms": null,
+          "preprocess_ms": null,
+          "inference_ms": null,
+          "postprocess_ms": null,
+          "transport_ms": null,
+          "model_cached": null
+        },
+        "warnings": []
+      },
+      "input_to_frame": [
+        0.5,
+        0.0,
+        0.5,
+        1.0
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "block_id": "m",
+      "expected": "ABC-990",
+      "observed": [
+        "WRONG-111"
+      ],
+      "mode": "exact",
+      "matched": false
+    }
+  ]
+}

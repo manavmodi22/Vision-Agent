@@ -4,6 +4,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from spec.authoring import GraphCandidate
 from spec.models import PipelineSpec
 
 
@@ -23,6 +24,7 @@ class PatternChoice(BaseModel):
     expected_text: str | None = Field(default=None, max_length=500)
     match_mode: Literal["contains", "exact"] = "contains"
     match_emit: Literal["all", "matched", "mismatched"] = "all"
+    record_events: bool | None = None  # None retains historical implicit-sink semantics.
     use_zones: bool = False
     zone_ids: list[str] = Field(default_factory=list, max_length=20)
     metric: Literal["count_mae", "precision", "recall", "text_accuracy"]
@@ -37,6 +39,12 @@ class PatternChoice(BaseModel):
             raise ValueError("A label pipeline needs expected_text; otherwise ask a clarifying question.")
         if reading and self.metric != "text_accuracy":
             raise ValueError("Label patterns require text_accuracy.")
+        if self.record_events is True and reading and not self.expected_text:
+            raise ValueError("Reading events require an explicit comparison value; otherwise ask a clarifying question.")
+        if not reading and self.record_events is True and self.count_threshold is None:
+            raise ValueError("Detection events require an explicit count condition; otherwise ask a clarifying question.")
+        if not reading and self.record_events is False and (self.count_threshold is not None or self.hold_seconds != 0):
+            raise ValueError("A non-event detection pattern cannot include a count trigger or hold duration.")
         if self.use_case == "custom" and not reading and not self.objects:
             raise ValueError("A custom detector needs object classes; use the saved ontology or ask which objects to detect.")
         if reading and (self.use_zones or self.zone_ids):
@@ -53,14 +61,21 @@ class PlanDecision(BaseModel):
         "required": ["message", "questions", "choices"],
     })
     message: str = Field(min_length=1, max_length=2000)
+    schema_version: Literal["0.1", "0.2"] = "0.1"
     questions: list[str] = Field(default_factory=list, max_length=3)
     choices: list[PatternChoice] = Field(default_factory=list, max_length=3)
+    graphs: list[GraphCandidate] = Field(default_factory=list, max_length=3)
 
     @model_validator(mode="after")
     def require_next_step(self) -> "PlanDecision":
-        if not self.questions and not self.choices:
+        if self.schema_version == "0.1" and self.graphs:
+            raise ValueError("Composed graphs require planning decision version 0.2")
+        if self.schema_version == "0.2" and self.choices:
+            raise ValueError("Version 0.2 uses composed graphs, not legacy pattern choices")
+        candidates = self.graphs if self.schema_version == "0.2" else self.choices
+        if not self.questions and not candidates:
             raise ValueError("Choose one to three patterns or ask up to three questions.")
-        if self.questions and self.choices:
+        if self.questions and candidates:
             raise ValueError("Ask clarifying questions OR propose candidates; do not do both in one decision.")
         if any(not question.strip() for question in self.questions):
             raise ValueError("Questions cannot be blank.")

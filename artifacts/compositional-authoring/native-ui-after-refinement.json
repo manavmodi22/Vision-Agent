@@ -1,0 +1,273 @@
+{
+  "project": {
+    "id": "1a782cfabc5b4a53",
+    "name": "Read printed text only in the left half of each image: crop",
+    "use_case": "custom",
+    "status": "building",
+    "created_at": "2026-10-29T16:30:49.545479+00:00",
+    "updated_at": "2026-10-29T16:32:28.150211+00:00",
+    "media": [
+      "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/1a782cfabc5b4a53/media/e24d31ea-left-half-text.png"
+    ],
+    "brief": "Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize the crop to width 1200 and height 400 before OCR. Use apple-vision. Compare the recognized text exactly to \"ABC-990\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9.\nRefinement: Change the OCR crop to the right half [0.5, 0, 1, 1] and resize it to 900 by 300 pixels. Keep the existing comparison and event behavior unchanged.",
+    "clarification_count": 0,
+    "candidates": [
+      {
+        "spec_version": "0.1",
+        "name": "OCR_Left_Half",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "s",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2.0
+            },
+            "inputs": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "c",
+            "type": "crop",
+            "params": {
+              "box": [
+                0.5,
+                0.0,
+                1.0,
+                1.0
+              ]
+            },
+            "inputs": {
+              "image": "$s.frame"
+            }
+          },
+          {
+            "id": "r",
+            "type": "resize",
+            "params": {
+              "width": 900,
+              "height": 300
+            },
+            "inputs": {
+              "image": "$c.image"
+            }
+          },
+          {
+            "id": "o",
+            "type": "ocr",
+            "params": {
+              "model": "apple-vision"
+            },
+            "inputs": {
+              "image": "$r.image"
+            }
+          },
+          {
+            "id": "m",
+            "type": "match",
+            "params": {
+              "expected": "ABC-990",
+              "mode": "exact",
+              "emit": "all"
+            },
+            "inputs": {
+              "text": "$o.text"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "text_accuracy",
+          "target": 0.9
+        }
+      }
+    ],
+    "evaluations": [],
+    "messages": [
+      {
+        "role": "user",
+        "content": "Read printed text only in the left half of each image: crop normalized [0, 0, 0.5, 1], then resize the crop to width 1200 and height 400 before OCR. Use apple-vision. Compare the recognized text exactly to \"ABC-990\" and show the comparison result. Do not record events or send alerts. Use text_accuracy with target 0.9."
+      },
+      {
+        "role": "assistant",
+        "content": "Reads printed text. Checks whether the read text exactly matches \"ABC-990\". Uses the crop/resize steps shown in the saved workflow."
+      },
+      {
+        "role": "user",
+        "content": "Change the OCR crop to the right half [0.5, 0, 1, 1] and resize it to 900 by 300 pixels. Keep the existing comparison and event behavior unchanged."
+      },
+      {
+        "role": "assistant",
+        "content": "Applied 2 requested changes to 1 candidate(s), with an actual preview of every affected candidate. Preserved unrelated settings and human labels."
+      }
+    ],
+    "synthetic": false,
+    "fixture": false,
+    "data_origin": "User imported media",
+    "deployment_id": null,
+    "approval_scope": null,
+    "trial_limits": {}
+  },
+  "view": {
+    "id": "77b621285434442bb70c6017ce001830",
+    "project_id": "1a782cfabc5b4a53",
+    "status": "awaiting_review",
+    "phase": "reviewing",
+    "next_action": "review_labels",
+    "message": "Review the labels on 1 evaluation images, then continue. 0 are reviewed. Evaluation requires 10–50 reviewed images; suggestions are not ground truth. This workflow requires manually reviewed expected text or labels; automatic detector proposals do not apply.",
+    "questions": [],
+    "log": [
+      {
+        "at": "2026-10-29T16:31:59.484129+00:00",
+        "phase": "planning",
+        "message": "Interpreting your goal and preparing a working preview"
+      },
+      {
+        "at": "2026-10-29T16:32:28.179671+00:00",
+        "phase": "labeling",
+        "message": "Applied 2 requested changes to 1 candidate(s), with an actual preview of every affected candidate. Preserved unrelated settings and human labels."
+      },
+      {
+        "at": "2026-10-29T16:32:30.839205+00:00",
+        "phase": "reviewing",
+        "message": "Review the labels on 1 evaluation images, then continue. 0 are reviewed. Evaluation requires 10–50 reviewed images; suggestions are not ground truth. This workflow requires manually reviewed expected text or labels; automatic detector proposals do not apply."
+      }
+    ],
+    "preview": {
+      "frames": [
+        {
+          "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/1a782cfabc5b4a53/media/e24d31ea-left-half-text.png",
+          "source_image_sha256": "ef86defcbafdcfd8e40b302da0f1ca5686feb8f908d30ddabdb6bf6eec59c7db",
+          "detections": [],
+          "counts": {},
+          "texts": [
+            "WRONG-111"
+          ],
+          "events": [],
+          "elapsed_ms": 282.480709021911,
+          "timestamp_s": 0.0,
+          "judgements": [],
+          "inferences": [
+            {
+              "block_id": "o",
+              "result": {
+                "schema_version": 1,
+                "task": "ocr",
+                "input_size": [
+                  900,
+                  300
+                ],
+                "input_pixels_sha256": "1d1d08164e51a1ef42d80ff86066dfa3e83f12e375591b03b9674f4ed2db29fa",
+                "detections": [],
+                "readings": [
+                  {
+                    "box": [
+                      0.08666666712626263,
+                      0.3333333340303031,
+                      0.7866666671262627,
+                      0.6400000006969697
+                    ],
+                    "polygon": [
+                      [
+                        0.08666666712626263,
+                        0.3333333340303031
+                      ],
+                      [
+                        0.7866666671262627,
+                        0.3333333340303031
+                      ],
+                      [
+                        0.7866666671262627,
+                        0.6400000006969697
+                      ],
+                      [
+                        0.08666666712626263,
+                        0.6400000006969697
+                      ]
+                    ],
+                    "text": "WRONG-111",
+                    "kind": "ocr",
+                    "confidence": 1.0,
+                    "symbology": null
+                  }
+                ],
+                "identity": {
+                  "capability_id": "model.apple-vision",
+                  "model_id": "apple-vision",
+                  "adapter_id": "apple-vision",
+                  "identity_scope": "system_framework_versioned",
+                  "artifact_hashes": {
+                    "native_bridge": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d"
+                  },
+                  "unavailable_artifacts": [],
+                  "adapter_code_sha256": "7fef46ab88f34d1bb0f73fcc8d53a57cf6b833444c3173ce880caa8e723d3c8c",
+                  "runtime_manifest_sha256": "e8b5a8e0e55e5eef5c9763b084e39f8192503076abcc3f15d59823f19c8e4d55",
+                  "system_identity": {
+                    "architecture": "arm64",
+                    "adapter": "apple-vision",
+                    "identity_scope": "system_framework_versioned",
+                    "request_policy": "apple-vision-en-us-v2",
+                    "output_protocol": "2",
+                    "macos": "26.7.1",
+                    "kernel": "25.6.0",
+                    "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041"
+                  },
+                  "provider": "apple-vision-system",
+                  "config_sha256": "81c8e6ffbf514841279646415e3eb3c651f68c976fee4df4c22617b3f14254c1",
+                  "identity_hash": "bc5d12126cd315c7f8360460f871c1ddedcc13e944d9fa9f95630bd8525595ab"
+                },
+                "timing": {
+                  "total_ms": 277.34758297447115,
+                  "startup_ms": null,
+                  "load_ms": null,
+                  "preprocess_ms": null,
+                  "inference_ms": null,
+                  "postprocess_ms": null,
+                  "transport_ms": null,
+                  "model_cached": null
+                },
+                "warnings": []
+              },
+              "input_to_frame": [
+                0.5,
+                0.0,
+                0.5,
+                1.0
+              ]
+            }
+          ],
+          "comparisons": [
+            {
+              "block_id": "m",
+              "expected": "ABC-990",
+              "observed": [
+                "WRONG-111"
+              ],
+              "mode": "exact",
+              "matched": false
+            }
+          ]
+        }
+      ],
+      "elapsed_s": 0.3009692920022644,
+      "warnings": [
+        "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+      ]
+    },
+    "selected_candidate_index": 0,
+    "evaluations": [],
+    "acceptance_evaluation": null,
+    "project": {},
+    "created_at": "2026-10-29T16:31:59.457799+00:00",
+    "updated_at": "2026-10-29T16:32:30.839218+00:00",
+    "plan": null,
+    "execution": null,
+    "tool_events": []
+  }
+}

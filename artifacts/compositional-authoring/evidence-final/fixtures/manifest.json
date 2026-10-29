@@ -1,0 +1,32 @@
+{
+  "provenance": "Original deterministic generated software fixtures; not real-world task validation",
+  "generator": "/Users/manavrakeshku.modi/vision-agent/artifacts/compositional-authoring/run_live.py",
+  "font": "/System/Library/Fonts/Supplemental/Arial.ttf",
+  "font_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+  "pillow_version": "12.3.0",
+  "opencv_version": "4.14.0",
+  "images": [
+    {
+      "case": "crop-reading",
+      "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z/fixtures/left-half-text.png",
+      "sha256": "ef86defcbafdcfd8e40b302da0f1ca5686feb8f908d30ddabdb6bf6eec59c7db",
+      "printed_text": [
+        "ABC-990",
+        "WRONG-111"
+      ],
+      "barcode_payloads": []
+    },
+    {
+      "case": "parallel-readers",
+      "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z/fixtures/printed-text-and-qr.png",
+      "sha256": "8195a639c3abb96911274545fdd5261dba6e16b3980c0c955be8709f84885a32",
+      "printed_text": [
+        "ABC-990"
+      ],
+      "barcode_payloads": [
+        "VISION-AGENT-PARALLEL-QR"
+      ]
+    }
+  ],
+  "labels": "Generator expectations remain in this manifest; imported annotations stay unreviewed"
+}

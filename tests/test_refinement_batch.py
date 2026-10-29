@@ -161,7 +161,7 @@ def test_ambiguous_rule_insertion_does_not_guess_a_count_branch(tmp_path: Path) 
     assert service.candidate(project_id, 0) == spec
 
 
-def test_expected_text_inserts_match_and_sink_after_unique_reader() -> None:
+def test_expected_text_inserts_match_without_inventing_a_sink() -> None:
     from engine.builds.refinement_edits import apply_edit
     candidate = build_template("labels", "media", "fixture-color-v1")[0]
     candidate.blocks = [block for block in candidate.blocks if block.type not in {"match", "sink_event"}]
@@ -170,10 +170,10 @@ def test_expected_text_inserts_match_and_sink_after_unique_reader() -> None:
     assert candidate.blocks[:len(before.blocks)] == before.blocks
     match = next(block for block in candidate.blocks if block.type == "match")
     assert match.params == {"expected": "SKU-002", "mode": "exact"}
-    assert next(block for block in candidate.blocks if block.type == "sink_event").inputs["event"] == f"${match.id}.event"
+    assert not any(block.type == "sink_event" for block in candidate.blocks)
     apply_edit(candidate, RefinementPatch(kind="expected_text", expected_text="SKU-003", match_mode="contains"), {})
     assert match.params == {"expected": "SKU-003", "mode": "contains"}
-    assert len(candidate.blocks) == len(before.blocks) + 2
+    assert len(candidate.blocks) == len(before.blocks) + 1
 
 
 @pytest.mark.parametrize("value", [

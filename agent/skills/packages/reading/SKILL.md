@@ -10,13 +10,13 @@ allowed_tools = ["blocks_list","block_schema","dataset_context","pipeline_valida
 output_artifacts = ["Reading pipeline","Recognized text with source image","Field comparison evaluation"]
 validation_recipe = ["Score reviewed expected text with declared normalization","Preserve exact versus substring matching and event polarity","Report measured CER/WER, exact text-list accuracy and recognition failures"]
 failure_modes = ["Missing comparison value","Leading zeros lost","Exact/contains confusion","Unsupported language or unreadable text"]
-version = "1.1.0"
+version = "1.2.0"
 +++
 
 # Read the requested fields
 Use an implemented OCR or barcode adapter appropriate to the media. Reading-only requests do not need an expected SKU. When comparing, copy the supplied literal exactly, including case and leading zeros. A generic reference to "the expected SKU" is not itself the expected value.
 
-The model must explicitly state match_mode and match_emit. Exact equality uses exact; substring search uses contains. Emit matched for events only on a match, mismatched for only failed comparisons, and all for ordinary check-whether output. Do not add an object detector or spatial count rule to a reading-only pipeline.
+Composed match nodes explicitly state mode and emit. Exact equality uses exact; substring search uses contains. Emit matched for events only on a match, mismatched for only failed comparisons, and all for ordinary check-whether output. Comparison results remain visible without a sink_event. Add a local event sink only when requested; no-events forbids sinks. Legacy pattern choices express this separately as record_events. Do not add an object detector or spatial count rule to a reading-only pipeline.
 
 Benchmark OCR candidates on the project's text, language, lighting and scale. Keep raw recognition separate from field normalization. Report character/word error rates only when the evaluator returns them, with its saved normalization policy and counts. Exact text-list accuracy is not a named-field semantic score.
 

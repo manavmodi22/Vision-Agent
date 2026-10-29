@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-10-29T15:43:13.844852+00:00",
+  "source_identity": "3751f55e26bb8f270c3bd38ba4c51c4081d833b57effde506653c3298b864e6b",
+  "status": "editable_text_regions_and_native_label_roundtrip_verified; overall_architecture_incomplete",
+  "python_tests": {
+    "passed": 848,
+    "skipped": 2,
+    "duration_s": 267.22,
+    "scope": "Locked base+dev environment, two optional training skips",
+    "evidence": "artifacts/text-region-authoring/software-validation.json"
+  },
+  "mypy": {
+    "passed": true,
+    "source_files": 172,
+    "platforms": [
+      "linux",
+      "macos"
+    ]
+  },
+  "ruff": {
+    "passed": true
+  },
+  "native_contracts": {
+    "passed_per_binary": 242,
+    "evidence": "artifacts/text-region-authoring/native-validation.json"
+  },
+  "native_release_sha256": "2f32425d16506f31cbd7ff37755568421abb606e1f08b17c612bbf28e6f887ab",
+  "native_packaged_sha256": "146881e5c2529fb9b6faa363e5bde4a1694b55bf293abfb58d1b03f3c2cb4c1a",
+  "relocation": {
+    "passed": true,
+    "evidence": "artifacts/text-region-authoring/bundle-verification.json",
+    "scope": "Relocated isolated imports, actual legacy and rich Apple OCR, 242 native checks, fixture gates and signatures"
+  },
+  "package_installation": "artifacts/text-region-authoring/package-installation.json",
+  "actual_planner_mcp": "artifacts/text-region-authoring/native-ui.json",
+  "actual_native_walkthrough": "artifacts/text-region-authoring/native-ui.json",
+  "public_reader_diagnostic": {
+    "evidence": "artifacts/reader-evaluation/COMPARISON.md",
+    "sample_count": 100,
+    "apple_exact": 33,
+    "isolated_paddle_exact": 16,
+    "quality_claim": "Cropped-word endpoints only, unreviewed external labels, no promotion"
+  },
+  "paddle_runtime_proof": "artifacts/adapter-probes/ocr-minimal/FEASIBILITY.md",
+  "previous_report": "artifacts/runtime-validation-e523.json",
+  "remote_ci": "Local full suite passed; fresh GitHub CI status belongs to the published commit",
+  "remaining": [
+    "Paddle worker lifecycle, signed/relocatable optional runtime, dependency notices and approved installation recipe remain incomplete; no production adapter registered.",
+    "Text regions are editable and portable; scored text localization, reading order and repeated-instance geometry remain pending.",
+    "Public cropped-word diagnostics do not establish warehouse accuracy or independent acceptance.",
+    "Existing app OpenCV includes GPL-enabled FFmpeg; no uniformly permissive runtime or release-compliance claim.",
+    "Broader graph creation/refinement, segmentation/tracking, event and failure-slice metrics, representative reviewed data, live hardware/sustained tests and release signing/notarization remain incomplete."
+  ]
+}

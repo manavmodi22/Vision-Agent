@@ -18,17 +18,6 @@ def acceptance_blockers(root: Path, dataset: EvalDataset, candidates: list[Pipel
     policy = config.policy
     snapshot = ExposureSnapshot(root, config.images)
     reasons = unscored_behaviors(candidates[candidate_index])
-    spec = candidates[candidate_index]
-    kinds = {block.type for block in spec.blocks}
-    detection = bool(kinds & {"detect", "detect_open_vocab"})
-    reading = bool(kinds & {"ocr", "barcode"})
-    judgement = "vlm_judge" in kinds
-    if reading and spec.eval.metric != "text_accuracy":
-        reasons.append("Reading acceptance requires the text_accuracy metric; detection/count metrics do not score text")
-    if detection and spec.eval.metric == "text_accuracy":
-        reasons.append("Detection acceptance requires precision, recall or count_mae; empty text cannot establish detection quality")
-    if sum((detection, reading, judgement)) != 1 or {"ocr", "barcode"} <= kinds:
-        reasons.append("This recipe qualifies one output task; mixed or missing inference outputs need separate acceptance protocols")
     if not all(value.strip() for value in (policy.intended_use, policy.independent_group_basis, policy.coverage_rationale)):
         reasons.append("Declare intended use, independent group basis and coverage rationale")
     if not policy.required_acceptance_groups:

@@ -63,7 +63,8 @@ def test_reading_summary_uses_actual_operator_and_literal(reader: str, mode: str
     assert f'"{expected}"' in summary
     spec.blocks = [block for block in spec.blocks if block.type != "sink_event"]
     summary = describe_pipeline(spec)
-    assert "Reads" in summary and expected not in summary and "Checks" not in summary
+    assert "Reads" in summary and expected in summary and "Checks" in summary
+    assert "event" not in summary
 
 
 def test_rule_must_feed_sink_and_uses_actual_referenced_count_branch() -> None:

@@ -1,0 +1,34 @@
+{
+  "message": "Workflow to read both printed text and barcodes from the whole image using apple-vision for both readers.",
+  "schema_version": "0.2",
+  "questions": [],
+  "choices": [],
+  "graphs": [
+    {
+      "name": "ReadTextAndBarcodes",
+      "nodes": [
+        {
+          "type": "frame_sample",
+          "id": "s",
+          "fps": 2.0
+        },
+        {
+          "type": "ocr",
+          "id": "ocr_reader",
+          "image": "$s.frame",
+          "model_capability_id": "model.apple-vision",
+          "model_reason": "Eligible OCR"
+        },
+        {
+          "type": "barcode",
+          "id": "barcode_reader",
+          "image": "$s.frame",
+          "model_capability_id": "model.apple-vision",
+          "model_reason": "Eligible barcode reader"
+        }
+      ],
+      "metric": "text_accuracy",
+      "target": 0.9
+    }
+  ]
+}

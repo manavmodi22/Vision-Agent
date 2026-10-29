@@ -58,7 +58,18 @@ class EvalTarget(Contract):
     eval_target: float | None = Field(default=None, ge=0)
 
 
-ModelPatch = Annotated[Confidence | AddClasses | RemoveClasses | ReplaceClasses | CountRule | ExpectedText | SampleFPS | EvalTarget,
+class Crop(Target):
+    kind: Literal["crop"]
+    crop_box: list[float] = Field(min_length=4, max_length=4)
+
+
+class Resize(Target):
+    kind: Literal["resize"]
+    width: int = Field(strict=True, ge=1, le=8192)
+    height: int = Field(strict=True, ge=1, le=8192)
+
+
+ModelPatch = Annotated[Confidence | AddClasses | RemoveClasses | ReplaceClasses | CountRule | ExpectedText | SampleFPS | EvalTarget | Crop | Resize,
                        Field(discriminator="kind")]
 
 

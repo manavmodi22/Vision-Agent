@@ -6,6 +6,7 @@ patch or execute an edit when interpretation fails.
 import math
 import re
 
+from agent.preprocessing_fidelity import validate_preprocessing_fidelity
 from spec.refinement import RefinementContext, RefinementPatch
 
 _ONES = {word: value for value, word in enumerate(("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
@@ -44,6 +45,7 @@ def explicit_sampling_fps(prompt: str) -> float | None:
 
 
 def validate_explicit_fidelity(patches: list[RefinementPatch], prompt: str, context: RefinementContext) -> None:
+    validate_preprocessing_fidelity(patches, prompt, context)
     literal_prefix = r"\b(?:contains?|equals?|match(?:es)?(?:\s+against)?|expected\s+(?:label|text)\s+(?:is|to)(?:\s+now)?)\s+"
     literals = list(re.finditer(literal_prefix + r"(?:(?P<quote>[\"'])(?P<quoted>.{1,256}?)(?P=quote)|(?P<code>[A-Za-z0-9]+[-_][A-Za-z0-9][A-Za-z0-9_-]*))", prompt, re.I))
     expected = (literals[-1].group("quoted") or literals[-1].group("code")) if literals else None

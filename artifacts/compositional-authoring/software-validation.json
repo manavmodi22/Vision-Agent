@@ -1,0 +1,27 @@
+{
+  "source_identity": "d76d7e7d6b91f28605917393e63e94eccc37f9099e9382a684b04daec751a552",
+  "python": {
+    "passed": 1137,
+    "skipped": 2,
+    "duration_s": 398.8,
+    "evidence": "full-tests-final.log"
+  },
+  "mypy": {
+    "passed": true,
+    "files": 184,
+    "platforms": [
+      "macos",
+      "linux"
+    ]
+  },
+  "ruff": {
+    "passed": true,
+    "evidence": "ruff-final.log"
+  },
+  "native": {
+    "debug_checks": 257,
+    "release_checks": 257,
+    "actual_payload_release_checks": 263,
+    "payload_evidence": "native-payload-receipt.json"
+  }
+}

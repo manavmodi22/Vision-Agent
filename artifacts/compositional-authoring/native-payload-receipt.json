@@ -1,0 +1,271 @@
+{
+  "kind": "native_release_payload_contract_checks",
+  "source_run": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z",
+  "inputs": [
+    {
+      "case": "crop-reading",
+      "kind": "frame",
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/compositional-authoring/native-payload-crop-reading-frame.json",
+      "sha256": "ede5758fed00282fe507adb579b06d9822aedd860ba052c99bab236891d45280",
+      "source": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z/acceptance-evidence/crop-reading/preview.json",
+      "source_sha256": "90eae571ba5cf3005ce0fc77d8a9092b519d23f4ce77960751d649ac662924b9",
+      "source_pointer": "/frames/0"
+    },
+    {
+      "case": "crop-reading",
+      "kind": "plan",
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/compositional-authoring/native-payload-crop-reading-plan.json",
+      "sha256": "bdb13beba8301836bf14f200c5799bdcaf8cad3a0e6ffd1a10058ddb0e2a4cc3",
+      "source": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z/projects/402246585eb54b0c/platform/plans/fbb9b8fc125c459a9f7069625bc06580.json",
+      "source_sha256": "c29f1986bdb7fdf1f2b5e5b2424b67e64fe038785ed2638847c1c00367e1a1c9",
+      "source_pointer": "/ (wrapped as plan)"
+    },
+    {
+      "case": "parallel-readers",
+      "kind": "frame",
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/compositional-authoring/native-payload-parallel-readers-frame.json",
+      "sha256": "a7bdcd820de3429b8ffa99cb26f10a877d445092da092cf6102c7618f842e967",
+      "source": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z/acceptance-evidence/parallel-readers/preview.json",
+      "source_sha256": "60ab5de3ed350a5a697a418561b487dbe6aee1fd64cf7052aba31d44a6b43faf",
+      "source_pointer": "/frames/0"
+    },
+    {
+      "case": "parallel-readers",
+      "kind": "plan",
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/compositional-authoring/native-payload-parallel-readers-plan.json",
+      "sha256": "b397d064e81e51c5027080b19a56deb09ac6d77d760977af38e2d36644a7823b",
+      "source": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z/projects/611af77117d34b40/platform/plans/b408cddff25b48a3acce882e4dfab652.json",
+      "source_sha256": "addd9381cb872b0fc9e0dc948e9e1c6fecdd79e3095ab27dbf4019b9bfa69ddd",
+      "source_pointer": "/ (wrapped as plan)"
+    },
+    {
+      "case": "refinement",
+      "kind": "frame",
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/compositional-authoring/native-payload-refinement-frame.json",
+      "sha256": "82484260153da2f773e1eb6c09381cbe938b2790b654db5234bc6f83d04fd93e",
+      "source": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z/refinement-report.json",
+      "source_sha256": "72ba4681e414f0534d65da38b885c7106639a7e504130c006f1f2b49e64dc768",
+      "source_pointer": "/status/preview/frames/0"
+    },
+    {
+      "case": "refinement",
+      "kind": "plan",
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/compositional-authoring/native-payload-refinement-plan.json",
+      "sha256": "f9cb92e2f98a098b2f440fb3a5015df20989fed406b60d220a2d1ad9bcd8e645",
+      "source": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z/refinement-report.json",
+      "source_sha256": "72ba4681e414f0534d65da38b885c7106639a7e504130c006f1f2b49e64dc768",
+      "source_pointer": "/status/plan (wrapped as plan)"
+    }
+  ],
+  "source_report_status": {
+    "crop-reading": true,
+    "parallel-readers": true,
+    "refinement": false
+  },
+  "source_refinement_failed_assertions": [
+    "actual_new_pixels_and_false_comparison"
+  ],
+  "scope": "Decode saved backend payloads with the existing release binary. No new inference or visual/UI validation. Source report verdicts remain unchanged.",
+  "checked_at_utc": "2026-10-29T16:31:33.836865+00:00",
+  "binary": "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Release/VisionApp",
+  "binary_sha256": "73c10d79ef1c40fe3c04009087f5d55f56fcc41ae15ae643a13cf0c06b6e8b7b",
+  "process_exit_code": 0,
+  "native_result": {
+    "status": "passed",
+    "checks": 263
+  },
+  "native_baseline_checks": 257,
+  "native_external_payload_checks": 6,
+  "native_stdout": "/Users/manavrakeshku.modi/vision-agent/artifacts/compositional-authoring/native-payload-release-output.txt",
+  "cases": [
+    {
+      "case": "crop-reading",
+      "native_frame_decode": "passed",
+      "native_plan_decode": "passed",
+      "payload_observations": {
+        "comparisons": [
+          {
+            "block_id": "m",
+            "expected": "ABC-990",
+            "observed": [
+              "ABC-990"
+            ],
+            "mode": "exact",
+            "matched": true
+          }
+        ],
+        "texts": [
+          "ABC-990"
+        ],
+        "event_count": 0,
+        "model_bindings": [
+          {
+            "candidate_index": 0,
+            "block_id": "o",
+            "capability_id": "model.apple-vision",
+            "model_id": "apple-vision",
+            "adapter_id": "apple-vision",
+            "proposed_reason": "Eligible OCR for reading printed text",
+            "options_snapshot_id": "7b2ebca1bcbd526d60bd203f10663316f74fd4c706d35ac7a4bf1eff1f03c159",
+            "status": "proposed"
+          }
+        ],
+        "inference_block_ids": [
+          "o"
+        ],
+        "inference_input_sizes": [
+          [
+            1200,
+            400
+          ]
+        ],
+        "inference_transforms": [
+          [
+            0.0,
+            0.0,
+            0.5,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "case": "parallel-readers",
+      "native_frame_decode": "passed",
+      "native_plan_decode": "passed",
+      "payload_observations": {
+        "comparisons": [],
+        "texts": [
+          "ABC-990",
+          "VISION-AGENT-PARALLEL-QR"
+        ],
+        "event_count": 0,
+        "model_bindings": [
+          {
+            "candidate_index": 0,
+            "block_id": "ocr_reader",
+            "capability_id": "model.apple-vision",
+            "model_id": "apple-vision",
+            "adapter_id": "apple-vision",
+            "proposed_reason": "Eligible OCR",
+            "options_snapshot_id": "a0f5f88a6df141a4d2fcae14d026bef4ef0bb4bad3a808c842fce241d003c91c",
+            "status": "proposed"
+          },
+          {
+            "candidate_index": 0,
+            "block_id": "barcode_reader",
+            "capability_id": "model.apple-vision",
+            "model_id": "apple-vision",
+            "adapter_id": "apple-vision",
+            "proposed_reason": "Eligible barcode reader",
+            "options_snapshot_id": "a0f5f88a6df141a4d2fcae14d026bef4ef0bb4bad3a808c842fce241d003c91c",
+            "status": "proposed"
+          }
+        ],
+        "inference_block_ids": [
+          "barcode_reader",
+          "ocr_reader"
+        ],
+        "inference_input_sizes": [
+          [
+            1600,
+            600
+          ],
+          [
+            1600,
+            600
+          ]
+        ],
+        "inference_transforms": [
+          [
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "case": "refinement",
+      "native_frame_decode": "passed",
+      "native_plan_decode": "passed",
+      "payload_observations": {
+        "comparisons": [
+          {
+            "block_id": "m",
+            "expected": "ABC-990",
+            "observed": [
+              "WRONG-111"
+            ],
+            "mode": "exact",
+            "matched": false
+          }
+        ],
+        "texts": [
+          "WRONG-111"
+        ],
+        "event_count": 0,
+        "model_bindings": [
+          {
+            "candidate_index": 0,
+            "block_id": "o",
+            "capability_id": "model.apple-vision",
+            "model_id": "apple-vision",
+            "adapter_id": "apple-vision",
+            "proposed_reason": "Eligible OCR for reading printed text",
+            "options_snapshot_id": "7b2ebca1bcbd526d60bd203f10663316f74fd4c706d35ac7a4bf1eff1f03c159",
+            "status": "proposed"
+          }
+        ],
+        "inference_block_ids": [
+          "o"
+        ],
+        "inference_input_sizes": [
+          [
+            900,
+            300
+          ]
+        ],
+        "inference_transforms": [
+          [
+            0.5,
+            0.0,
+            0.5,
+            1.0
+          ]
+        ]
+      }
+    }
+  ],
+  "command_argv": [
+    "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Release/VisionApp",
+    "--self-test",
+    "--reading-frame",
+    "/Users/manavrakeshku.modi/vision-agent/artifacts/compositional-authoring/native-payload-crop-reading-frame.json",
+    "--planning-probe",
+    "/Users/manavrakeshku.modi/vision-agent/artifacts/compositional-authoring/native-payload-crop-reading-plan.json",
+    "--reading-frame",
+    "/Users/manavrakeshku.modi/vision-agent/artifacts/compositional-authoring/native-payload-parallel-readers-frame.json",
+    "--planning-probe",
+    "/Users/manavrakeshku.modi/vision-agent/artifacts/compositional-authoring/native-payload-parallel-readers-plan.json",
+    "--reading-frame",
+    "/Users/manavrakeshku.modi/vision-agent/artifacts/compositional-authoring/native-payload-refinement-frame.json",
+    "--planning-probe",
+    "/Users/manavrakeshku.modi/vision-agent/artifacts/compositional-authoring/native-payload-refinement-plan.json"
+  ],
+  "python_payload_observation_checks": "Passed: inference IDs equal saved binding IDs, zero events, initial true and refined false comparisons, unchanged original/refined bindings. These observations are separate from native decode checks.",
+  "source_files_unchanged_during_checks": true,
+  "limitations": [
+    "No new model inference was run by this check.",
+    "No rendered UI or visual success is claimed.",
+    "The source refinement report has passed=false for actual_new_pixels_and_false_comparison; this decode receipt does not replace that verdict.",
+    "Generated reading fixtures establish software behavior, not OCR accuracy or warehouse performance."
+  ]
+}

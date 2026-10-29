@@ -4,6 +4,23 @@ Source: `agent-platform-revision.md`, adopted by the user on 2026-10-28. This ma
 retains the full requested outcome; partial implementation is not completion.
 The original five describe/build/prove/run/improve flows remain acceptance flows.
 
+The [29 October product clarification](agent-builder-proposal-2026-10-29.md)
+requires adaptive application building, not fixed OCR/counting families. This
+adds an essential acceptance boundary: the model must choose an experiment,
+receive its actual observation and choose a useful different next action because
+of it. The current typed graph generator does not meet that boundary. A0 is next;
+the five-day spike and later milestones in the proposal are not approved dates.
+
+The current composition foundation passes 1,137 tests with two optional skips,
+strict mypy on 184 files for both platforms, Ruff and 257 native checks per build.
+Actual Qwen/MCP/Apple Vision fixtures cover crop/resize, parallel readers and
+comparison outputs. See [current status](status.md) and
+[captured evidence](../artifacts/compositional-authoring/README.md). These checks
+preserve useful execution infrastructure; they do not establish adaptive
+tool choice, failure diagnosis, unseen-task generalization or product accuracy.
+
+## Earlier checkpoint evidence
+
 The latest reader checkpoint adds actual native OCR/barcode regions and identity,
 explicit reader selection with legacy replay, and public same-input diagnostics.
 See [current status](status.md), [native validation](../artifacts/native-reading-v2/native-validation-final.json), [base-only tests](../artifacts/ci-baseonly/tests-final.log)

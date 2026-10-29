@@ -5,9 +5,13 @@ from typing import Literal
 
 from pydantic import Field, model_validator
 
+from agent.contracts import PatternChoice, PlanDecision
+from agent.event_intent import event_intent
 from agent.refinement_capabilities import delivery_question
 from agent.refinement_fidelity import validate_explicit_fidelity
+from agent.task_validation import reading_instruction_text, validate_reading_mode
 from spec.models import Contract
+from spec.preprocessing import preprocessing_target
 from spec.refinement import RefinementContext, RefinementPatch
 
 
@@ -36,6 +40,7 @@ def validate_refinement_intent(decision: RefinementDecision, prompt: str, contex
     if question := delivery_question(prompt, previous_question):
         raise ValueError(question)
     validate_explicit_fidelity(decision.patches, prompt, context)
+    validate_comparison_event_topology(decision, prompt, context)
     for patch in decision.patches:
         numeric = any(getattr(patch, name) is not None for name in (
             "confidence", "count_threshold", "hold_s", "fps", "eval_target"))
@@ -61,6 +66,9 @@ def validate_refinement_intent(decision: RefinementDecision, prompt: str, contex
         indices = [context.selected_candidate_index] if patch.target_scope() == "selected" else range(len(context.candidates))
         for index in indices:
             candidate = context.candidates[index]
+            if patch.kind in {"crop", "resize"}:
+                preprocessing_target(candidate, patch.kind, patch.block_id)
+                continue
             if patch.kind in {"remove_classes", "replace_classes"}:
                 for label in context.classes:
                     label_pattern = re.escape(label) + r"s?\b"
@@ -108,3 +116,37 @@ def validate_refinement_intent(decision: RefinementDecision, prompt: str, contex
                     raise ValueError("Remove only exact existing class names")
                 if len(patch.classes) == len(current):
                     raise ValueError("A detector must retain a class; ask which class to detect instead")
+
+
+def validate_comparison_event_topology(decision: RefinementDecision, prompt: str, context: RefinementContext) -> None:
+    """A literal-change patch cannot silently add/remove/filter local events."""
+    patches = [patch for patch in decision.patches if patch.kind == "expected_text"]
+    if not patches:
+        return
+    # Text inside quotes is comparison data, not a request to alter event behavior.
+    visible = reading_instruction_text(prompt)
+    intent = event_intent(visible, parse_counts=False)
+    if intent.ambiguous_negation or intent.excludes_storage:
+        raise ValueError("The reading event change needs clarification; an expected-text patch cannot change storage or resolve conflicting event instructions")
+    explicit_disable = intent.disabled and bool(re.search(r"\b(?:events?|flagging|flags?)\b", visible, re.I))
+    if not intent.requested and not explicit_disable:
+        return
+    for patch in patches:
+        indices = [context.selected_candidate_index] if patch.target_scope() == "selected" else range(len(context.candidates))
+        for index in indices:
+            candidate = context.candidates[index]
+            matches = [block for block in candidate.blocks if block.type == "match"
+                       and (patch.block_id is None or block.id == patch.block_id)]
+            if len(matches) > 1:
+                continue  # The normal target guard will request an unambiguous block.
+            match = matches[0] if matches else None
+            has_sink = match is not None and any(block.type == "sink_event"
+                and block.inputs.get("event") == f"${match.id}.event" for block in candidate.blocks)
+            if (intent.requested and not has_sink) or (explicit_disable and has_sink):
+                raise ValueError("Adding or removing local event output requires a structural workflow change; an expected-text patch only changes the comparison. Ask whether to apply only the text comparison and preserve existing event behavior.")
+            if intent.requested and match is not None:
+                choice = PatternChoice.model_validate({"use_case": "custom", "pipeline_type": "ocr",
+                    "expected_text": patch.expected_text, "match_mode": patch.match_mode or match.params.get("mode", "contains"),
+                    "match_emit": match.params.get("emit", "all"), "record_events": True,
+                    "metric": "text_accuracy", "target": 0.95})
+                validate_reading_mode(PlanDecision(message="Preserve current event connections", choices=[choice]), prompt)

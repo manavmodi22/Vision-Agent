@@ -62,8 +62,9 @@ struct FrameResult: Codable, Identifiable {
     var elapsedMs: Double
     var inferences: [FrameInference]? = nil
     var sourceImageSHA256: String? = nil
+    var comparisons: [TextComparison]? = nil
     var id: String { imagePath }
-    enum CodingKeys: String, CodingKey { case imagePath = "image_path", detections, counts, texts, events, elapsedMs = "elapsed_ms", inferences, sourceImageSHA256 = "source_image_sha256" }
+    enum CodingKeys: String, CodingKey { case imagePath = "image_path", detections, counts, texts, events, elapsedMs = "elapsed_ms", inferences, sourceImageSHA256 = "source_image_sha256", comparisons }
 }
 struct RunResult: Codable {
     var frames: [FrameResult]

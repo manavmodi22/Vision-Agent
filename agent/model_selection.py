@@ -79,10 +79,13 @@ def selected_option(choice: PatternChoice, options: PlanningOptions) -> Planning
 
 
 def validate_model_choices(decision: PlanDecision, options: PlanningOptions) -> list[CandidateModelSelection]:
+    if decision.schema_version == "0.2":
+        from agent.graph_authoring import graph_model_selections
+        return graph_model_selections(decision.graphs, options)
     if len(decision.choices) > 1:
         objectives = {(selected_task(choice), choice.metric, choice.target, tuple(sorted(requested_classes(choice))),
                        choice.use_zones, tuple(sorted(choice.zone_ids)), choice.count_threshold, choice.count_operator,
-                       choice.hold_seconds, choice.expected_text, choice.match_mode, choice.match_emit)
+                       choice.hold_seconds, choice.expected_text, choice.match_mode, choice.match_emit, choice.record_events)
                       for choice in decision.choices}
         if len(objectives) != 1:
             raise ValueError("Model alternatives must implement the same task, classes, regions, behavior, metric and target")

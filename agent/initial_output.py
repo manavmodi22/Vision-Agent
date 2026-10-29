@@ -11,6 +11,7 @@ class ModelPatternChoice(PatternChoice):
 
     match_mode: Literal["contains", "exact"] = Field(...)
     match_emit: Literal["all", "matched", "mismatched"] = Field(...)
+    record_events: bool = Field(...)
     model_capability_id: str = Field(..., min_length=1, max_length=120)
     model_reason: str = Field(..., min_length=1, max_length=500)
 

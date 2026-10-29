@@ -73,6 +73,7 @@ class PlanningOptions(Contract):
 
 class CandidateModelSelection(Contract):
     candidate_index: int = Field(ge=0, le=2)
+    block_id: str | None = None
     capability_id: str
     model_id: str
     adapter_id: str

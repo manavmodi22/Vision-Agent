@@ -7,10 +7,15 @@ import pytest
 from pydantic import JsonValue
 
 import agent.planner as planner
+from agent.graph_authoring import graph_model_selections
+from agent.graph_structure import OUTPUTS, ordered_nodes
 from agent.machine import AgentState
 from agent.mcp_client import MCPTools
 from agent.model_selection import MAX_EXPERIMENTAL_PROMPT_MODELS, planning_context
+from agent.prompts.graph import graph_syntax_example
+from agent.skills import select_skills
 from engine.platform.planning_options import options_digest
+from spec.authoring import GraphPlanDecision
 from spec.planning import PlanningOptions
 
 FIXTURE = Path(__file__).parent / "fixtures" / "planner-context-warehouse.json"
@@ -21,8 +26,9 @@ class BeforeModel(Exception):
 
 
 async def capture_prompt(monkeypatch: pytest.MonkeyPatch, *, longer: bool = False,
-                         experimental_count: int | None = None) -> dict[str, object]:
-    receipt = json.loads(FIXTURE.read_text())
+                         experimental_count: int | None = None,
+                         fixture: Path = FIXTURE, case: str | None = None) -> dict[str, object]:
+    receipt = json.loads(fixture.read_text())
     if experimental_count is not None:
         options = PlanningOptions.model_validate(receipt["tools"]["planning_options"])
         original_ids = {option.capability_id for option in options.experimental_models}
@@ -32,7 +38,7 @@ async def capture_prompt(monkeypatch: pytest.MonkeyPatch, *, longer: bool = Fals
         options.blocked_options = [option for option in options.blocked_options if option.capability_id not in original_ids]
         options.snapshot_id = options_digest(options)
         receipt["tools"]["planning_options"] = options.model_dump(mode="json")
-    brief = receipt["brief"]
+    brief = receipt["briefs"][case] if case else receipt["brief"]
     if longer:
         brief += "\n" + (
             "The examples show people near shelves and loading equipment. Count only visible people, "
@@ -85,6 +91,53 @@ async def capture_prompt(monkeypatch: pytest.MonkeyPatch, *, longer: bool = Fals
     except planner.PlannerError as error:
         captured.update(budget_passed=False, error=str(error))
     return captured
+
+
+@pytest.mark.parametrize("case", ["crop-reading", "parallel-readers", "mixed"])
+async def test_captured_composition_receipt_fits_without_losing_models_ports_or_skills(
+    monkeypatch: pytest.MonkeyPatch, case: str,
+) -> None:
+    fixture = FIXTURE.with_name("planner-context-composition.json")
+    receipt = json.loads(fixture.read_text())
+    before = fixture.read_bytes()
+    captured = await capture_prompt(monkeypatch, fixture=fixture, case=case)
+    assert captured["budget_passed"], captured
+    # Count the full unchanged output schema, not a compact underestimate.
+    assert captured["total_characters"] < planner.MAX_INPUT_CHARS  # type: ignore[operator]
+    assert planner.MAX_INPUT_CHARS == 24000
+    assert captured["model_constructed"] is False
+    context = json.loads(str(captured["user"]).split("Authoritative engine context:\n", 1)[1])
+    options = PlanningOptions.model_validate(receipt["tools"]["planning_options"])
+    assert context["model_options"] == planning_context(options)
+    projected = {item["capability_id"]: item for item in context["model_options"]["eligible_models"]}
+    for option in options.eligible_models:
+        assert projected[option.capability_id]["supported_classes"] == option.supported_classes
+        assert projected[option.capability_id]["task_types"] == option.task_types
+        assert projected[option.capability_id]["selection_basis"] == option.selection_basis
+    raw_ports = [{key: value for key, value in block.items() if key in {"type", "inputs", "outputs"}}
+                 for block in receipt["tools"]["blocks_list"]["blocks"] if block["type"] in OUTPUTS]
+    assert context["implemented_blocks"] == raw_ports
+    assert context["node_fields"] == {
+        definition["properties"]["type"]["const"]: [field for field in definition["required"] if field not in {"type", "id"}]
+        for definition in GraphPlanDecision.model_json_schema()["$defs"].values()
+        if "id" in definition.get("properties", {}) and "const" in definition.get("properties", {}).get("type", {})
+    }
+    example = graph_syntax_example(options)
+    assert example in str(captured["system"])
+    proposed = GraphPlanDecision.model_validate_json(example.split("\n", 2)[2])
+    assert [node.type for node in ordered_nodes(proposed.graphs[0])] == ["frame_sample", "ocr", "match"]
+    assert len(graph_model_selections(proposed.graphs, options)) == 1
+    assert context["dataset"] == receipt["tools"]["dataset_context"]
+    for skill in select_skills(receipt["briefs"][case], "custom"):
+        assert f"{skill.reference.id}@{skill.reference.version}; sha256 {skill.reference.sha256}" in str(captured["system"])
+        assert skill.body in str(captured["system"])
+    assert fixture.read_bytes() == before
+
+
+def test_syntax_example_never_invents_an_unavailable_reader() -> None:
+    options = PlanningOptions.model_validate(json.loads(FIXTURE.with_name("planner-context-composition.json").read_text())["tools"]["planning_options"])
+    options.eligible_models = [option for option in options.eligible_models if "ocr" not in option.task_types]
+    assert graph_syntax_example(options) == ""
 
 
 @pytest.mark.parametrize("longer", [False, True])

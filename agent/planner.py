@@ -18,19 +18,14 @@ from pydantic_ai.usage import UsageLimits
 from agent.contracts import PlanDecision, PlanResult
 from agent.decisions import plan_from_context
 from agent.executor import execute_candidates
-from agent.initial_output import ModelCustomPlanDecision, ModelPlanDecision
+from agent.graph_structure import OUTPUTS
 from agent.machine import AgentConflict, AgentError, AgentState
 from agent.mcp_client import MCPTools, connect_tools
 from agent.model_selection import planning_context, validate_model_choices
-from agent.prompts import CUSTOM_PLANNER_V02, PLANNER_V02
+from agent.prompts.graph import GRAPH_PLANNER_V03, graph_syntax_example
 from agent.recording import RecordedModel
-from agent.skills import render_skills, select_skills
-from agent.task_validation import (
-    validate_custom_inputs,
-    validate_explicit_metric,
-    validate_output_behavior,
-    validate_spatial_intent,
-)
+from agent.skills import LoadedSkill, select_skills
+from spec.authoring import GraphPlanDecision
 from spec.planning import PlanningOptions
 
 
@@ -49,6 +44,13 @@ MAX_INPUT_CHARS = 24000  # Includes guidance and output schema; not an exact tok
 def check_context_size(system: str, user: str, schema: object) -> None:
     if len(system) + len(user) + len(json.dumps(schema)) > MAX_INPUT_CHARS:
         raise PlannerError("The goal, project context and playbooks exceed the local context budget; shorten the request or project history")
+
+
+def graph_playbooks(skills: tuple[LoadedSkill, ...]) -> str:
+    """Keep complete guidance and identities; omit repeated catalog summaries."""
+    return "\n\n".join(
+        f"Playbook: {skill.reference.id}@{skill.reference.version}; sha256 {skill.reference.sha256}\n"
+        f"{skill.body}" for skill in skills)
 
 
 def local_model_url(value: str) -> str:
@@ -100,8 +102,13 @@ async def _generate(
     if isinstance(raw_blocks, list):
         for block in raw_blocks:
             if isinstance(block, dict):
-                supported_blocks.append({key: value for key, value in block.items()
-                                         if key in {"type", "description"}})
+                if block.get("type") in OUTPUTS:
+                    # The visible prompt exposes flat authoring fields; retain actual
+                    # catalog ports without repeating descriptions.
+                    supported_blocks.append({key: value for key, value in block.items()
+                                             if key in {"type", "inputs", "outputs"}})
+    output_type = GraphPlanDecision
+    output_schema = output_type.model_json_schema()
     context: dict[str, JsonValue] = {
         "source_path": source_path,
         "model_options": planning_context(options),
@@ -110,18 +117,25 @@ async def _generate(
         "zones_path": "zones/lanes.json",
         "source_provenance": "synthetic fixture" if options.fixture_source else "imported media",
         "implemented_blocks": supported_blocks,
+        "node_fields": {
+            definition["properties"]["type"]["const"]: [
+                name for name in definition["required"] if name not in {"id", "type"}
+            ]
+            for definition in output_schema["$defs"].values()
+            if "id" in definition.get("properties", {})
+            and "const" in definition.get("properties", {}).get("type", {})
+        },
     }
     skills = select_skills(brief, setting(settings, "use_case", "custom"))
     await tools.control("agent_record_skills", {"skills": [skill.reference.model_dump(mode="json") for skill in skills]})
     question_count = settings.get("clarification_count", 0)
     if not isinstance(question_count, int) or not 0 <= question_count <= 3:
         raise PlannerError("Clarification count must be an integer between zero and three.")
-    custom = setting(settings, "use_case", "custom") == "custom"
-    output_type = ModelCustomPlanDecision if custom else ModelPlanDecision
-    system_prompt = ((CUSTOM_PLANNER_V02 if custom else PLANNER_V02) + "\n" + render_skills(skills)
+    system_prompt = (GRAPH_PLANNER_V03 + graph_syntax_example(options) + "\n" + graph_playbooks(skills)
                      + f"\nYou may ask at most {3 - question_count} further questions in this project.")
-    user_prompt = "Task brief:\n" + brief + "\nAuthoritative engine context:\n" + json.dumps(context)
-    check_context_size(system_prompt, user_prompt, output_type.model_json_schema())
+    user_prompt = "Task brief:\n" + brief + "\nAuthoritative engine context:\n" + json.dumps(
+        context, ensure_ascii=False, separators=(",", ":"))
+    check_context_size(system_prompt, user_prompt, output_schema)
     # Slow local generation still shares the enclosing 180-second planning deadline.
     timeout = Timeout(read=150, connect=4, write=15, pool=4)
     async with AsyncOpenAI(base_url=url, api_key="local", max_retries=0, timeout=timeout,
@@ -134,23 +148,19 @@ async def _generate(
                 openai_supports_tool_choice_required=False,
             ),
         )
-        planner: Agent[None, ModelPlanDecision | ModelCustomPlanDecision] = Agent(
-            RecordedModel(model, tools, output_type.model_json_schema()), output_type=NativeOutput(output_type, strict=True), retries=2,
+        planner: Agent[None, GraphPlanDecision] = Agent(
+            RecordedModel(model, tools, output_schema), output_type=NativeOutput(output_type, strict=True), retries=2,
             system_prompt=system_prompt,
-            model_settings={"temperature": 0, "max_tokens": 1600},
+            model_settings={"temperature": 0, "max_tokens": 2600},
             tool_timeout=15,
         )
 
         @planner.output_validator
-        def validate_task(output: ModelPlanDecision | ModelCustomPlanDecision) -> ModelPlanDecision | ModelCustomPlanDecision:
+        def validate_task(output: GraphPlanDecision) -> GraphPlanDecision:
             try:
                 typed = PlanDecision.model_validate(output.model_dump(mode="json"))
                 validate_model_choices(typed, options)
-                validate_explicit_metric(typed, brief)
-                validate_output_behavior(typed, brief)
-                validate_spatial_intent(typed, brief)
-                classes = dataset_context.get("classes", [])
-                validate_custom_inputs(typed, brief, [item for item in classes if isinstance(item, str)] if isinstance(classes, list) else [])
+                plan_from_context(typed, brief, source_path, setting(settings, "detector_model", "owlv2-base-patch16"), dataset_context, options)
             except ValueError as error:
                 raise ModelRetry(str(error)) from error
             return output

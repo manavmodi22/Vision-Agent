@@ -1,0 +1,5 @@
+{"case": "crop-reading", "status": "planning", "project_id": "3d34708ffb0a4b0b"}
+{"case": "crop-reading", "passed": false, "elapsed_s": 2.4258602909976617, "failures": [], "error": "Local planning failed: The goal, project context and playbooks exceed the local context budget; shorten the request or project history"}
+{"case": "parallel-readers", "status": "planning", "project_id": "7b978d64a77c4f22"}
+{"case": "parallel-readers", "passed": false, "elapsed_s": 1.897826166008599, "failures": [], "error": "Local planning failed: The goal, project context and playbooks exceed the local context budget; shorten the request or project history"}
+{"passed": false, "required_acceptance_complete": false, "report": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T160813Z/report.json", "elapsed_s": 6.2984231659793295}

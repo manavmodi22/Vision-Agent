@@ -1,0 +1,5 @@
+{"case": "crop-reading", "status": "planning", "project_id": "96cca4871eb14e51"}
+{"case": "crop-reading", "passed": false, "elapsed_s": 158.8690412499709, "failures": [], "error": "Local planning failed: Exceeded maximum output retries (2)"}
+{"case": "parallel-readers", "status": "planning", "project_id": "09968f08893b4838"}
+{"case": "parallel-readers", "passed": false, "elapsed_s": 109.86957858304959, "failures": [], "error": "Local planning failed: Exceeded maximum output retries (2)"}
+{"passed": false, "required_acceptance_complete": false, "report": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T161407Z/report.json", "elapsed_s": 269.9235650000046}

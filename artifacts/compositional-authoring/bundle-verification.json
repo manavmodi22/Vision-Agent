@@ -1,0 +1,1653 @@
+{
+  "bundle": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/VisionApp.app",
+  "relocation_test": true,
+  "isolated_imports": {
+    "python": "/tmp/va-bundle-5s3xav5r/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/bin/python3.12",
+    "engine": "/private/tmp/va-bundle-5s3xav5r/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine/__init__.py",
+    "paths": [
+      "/private/tmp/va-bundle-5s3xav5r/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python312.zip",
+      "/private/tmp/va-bundle-5s3xav5r/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12",
+      "/private/tmp/va-bundle-5s3xav5r/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/lib-dynload",
+      "/private/tmp/va-bundle-5s3xav5r/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/site-packages"
+    ],
+    "mps": true
+  },
+  "packaged_skill_references": [
+    {
+      "id": "authoring",
+      "version": "1.1.0",
+      "sha256": "9c8f2850035bbef71d99157ac72d40d8709d74e147a73a8dbd90818373e0ad79"
+    },
+    {
+      "id": "reading",
+      "version": "1.2.0",
+      "sha256": "e9e8e5e573f29e033d8b7445fc34496ff316730eff9da7984e02d1bad55aa095"
+    }
+  ],
+  "native_checks": {
+    "status": "passed",
+    "checks": 257
+  },
+  "apple_vision_process": {
+    "stdout": "{\"barcodes\":[],\"texts\":[\"PALLET 12345\",\"DOCK 4\"]}\n",
+    "stderr": ""
+  },
+  "apple_vision": {
+    "barcodes": [],
+    "texts": [
+      "PALLET 12345",
+      "DOCK 4"
+    ]
+  },
+  "apple_vision_common_adapter": {
+    "schema_version": 1,
+    "task": "ocr",
+    "input_size": [
+      1000,
+      300
+    ],
+    "input_pixels_sha256": "9991e44dcf09c4a824dbc771c8333d07c008d313ebb34c6b8c8305ccd0d6578c",
+    "detections": [],
+    "readings": [
+      {
+        "box": [
+          0.04400000289999997,
+          0.24000000119047615,
+          0.48600000289999995,
+          0.4066666678571429
+        ],
+        "polygon": [
+          [
+            0.04400000289999997,
+            0.24000000119047615
+          ],
+          [
+            0.48600000289999995,
+            0.24000000119047615
+          ],
+          [
+            0.48600000289999995,
+            0.4066666678571429
+          ],
+          [
+            0.04400000289999997,
+            0.4066666678571429
+          ]
+        ],
+        "text": "PALLET 12345",
+        "kind": "ocr",
+        "confidence": 1.0,
+        "symbology": null
+      },
+      {
+        "box": [
+          0.041999998677777796,
+          0.44000000037037035,
+          0.2799999986777778,
+          0.6133333337037037
+        ],
+        "polygon": [
+          [
+            0.041999998677777796,
+            0.44000000037037035
+          ],
+          [
+            0.2799999986777778,
+            0.44000000037037035
+          ],
+          [
+            0.2799999986777778,
+            0.6133333337037037
+          ],
+          [
+            0.041999998677777796,
+            0.6133333337037037
+          ]
+        ],
+        "text": "DOCK 4",
+        "kind": "ocr",
+        "confidence": 1.0,
+        "symbology": null
+      }
+    ],
+    "identity": {
+      "capability_id": "model.apple-vision",
+      "model_id": "apple-vision",
+      "adapter_id": "apple-vision",
+      "identity_scope": "system_framework_versioned",
+      "artifact_hashes": {
+        "native_bridge": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d"
+      },
+      "unavailable_artifacts": [],
+      "adapter_code_sha256": "7fef46ab88f34d1bb0f73fcc8d53a57cf6b833444c3173ce880caa8e723d3c8c",
+      "runtime_manifest_sha256": "e8b5a8e0e55e5eef5c9763b084e39f8192503076abcc3f15d59823f19c8e4d55",
+      "system_identity": {
+        "architecture": "arm64",
+        "adapter": "apple-vision",
+        "identity_scope": "system_framework_versioned",
+        "request_policy": "apple-vision-en-us-v2",
+        "output_protocol": "2",
+        "macos": "26.7.1",
+        "kernel": "25.6.0",
+        "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041"
+      },
+      "provider": "apple-vision-system",
+      "config_sha256": "81c8e6ffbf514841279646415e3eb3c651f68c976fee4df4c22617b3f14254c1",
+      "identity_hash": "bc5d12126cd315c7f8360460f871c1ddedcc13e944d9fa9f95630bd8525595ab"
+    },
+    "timing": {
+      "total_ms": 372.0508749829605,
+      "startup_ms": null,
+      "load_ms": null,
+      "preprocess_ms": null,
+      "inference_ms": null,
+      "postprocess_ms": null,
+      "transport_ms": null,
+      "model_cached": null
+    },
+    "warnings": []
+  },
+  "health": {
+    "status": "ok",
+    "version": "0.1.0",
+    "model_server": {
+      "reachable": true,
+      "models": [
+        "visionapp-planner"
+      ],
+      "error": null
+    },
+    "runtime": {
+      "data_dir": "/private/tmp/va-bundle-5s3xav5r/data",
+      "python": "/private/tmp/va-bundle-5s3xav5r/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/bin/python3.12",
+      "package_root": "/private/tmp/va-bundle-5s3xav5r/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+      "build_id": "d76d7e7d6b91f28605917393e63e94eccc37f9099e9382a684b04daec751a552",
+      "pid": 21116
+    },
+    "capabilities": {
+      "image_folder": true,
+      "recorded_video": true,
+      "apple_vision": true,
+      "camera": false,
+      "screen_capture": false,
+      "training": true,
+      "alerts": true,
+      "native_app": true,
+      "live_frame_ingress": true
+    }
+  },
+  "fixture_preview": {
+    "frames": [
+      {
+        "image_path": "/private/tmp/va-bundle-5s3xav5r/data/projects/b7eb03f3e9ba4757/media/synthetic-01.png",
+        "source_image_sha256": "75eac315845012afb7513554fe9ae64bc24803b542b08f0091f5a391a43e5370",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.45,
+              0.4453125,
+              0.5875
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": "D"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.45,
+              0.9453125,
+              0.5875
+            ],
+            "zone": "D"
+          }
+        ],
+        "counts": {
+          "A": 0,
+          "B": 2,
+          "C": 0,
+          "D": 2
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 55.80129096051678,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "det",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                640,
+                400
+              ],
+              "input_pixels_sha256": "f7fc862eba58b8505dda19c7ca447cbb180eab6b92c34ae4292a84acc50d4d4a",
+              "detections": [
+                {
+                  "box": [
+                    0.3046875,
+                    0.225,
+                    0.4453125,
+                    0.3625
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.3046875,
+                    0.45,
+                    0.4453125,
+                    0.5875
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.8046875,
+                    0.225,
+                    0.9453125,
+                    0.3625
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.8046875,
+                    0.45,
+                    0.9453125,
+                    0.5875
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                }
+              ],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.fixture-color-v1",
+                "model_id": "fixture-color-v1",
+                "adapter_id": "fixture-color-v1",
+                "identity_scope": "synthetic_code",
+                "artifact_hashes": {
+                  "fixture.py": "72365bce263b5f0aafd205a65784dd744efa87673e5ec906de6f69f91c857575"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "d9ff692b77470330fc9710a16b05edfa0f86c9dc7856ae013b811a6adc900538",
+                "runtime_manifest_sha256": "c89a1440ed434e31e984a096917b62eb2c781d9ff8451bea048fb5f0cbdc1341",
+                "system_identity": {
+                  "architecture": "arm64"
+                },
+                "provider": "cpu",
+                "config_sha256": "a19024f20e6f0bd0cd145715a34d2e8857efecc9bb61f1091a74abd4970c14c2",
+                "identity_hash": "26ece61721fbde4aec4b784920cf2e2dd8dc21d5b20a67ff300b4930be5d4d64"
+              },
+              "timing": {
+                "total_ms": 53.93341701710597,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": [
+                "Synthetic color fixture; not a warehouse detector."
+              ]
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          }
+        ],
+        "comparisons": []
+      },
+      {
+        "image_path": "/private/tmp/va-bundle-5s3xav5r/data/projects/b7eb03f3e9ba4757/media/synthetic-02.png",
+        "source_image_sha256": "67a0b69fd1341905ba1f837ff9503d663e41265a17ccdd91c965da7f4fa04df8",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.225,
+              0.1953125,
+              0.3625
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.45,
+              0.4453125,
+              0.5875
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.675,
+              0.4453125,
+              0.8125
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.225,
+              0.6953125,
+              0.3625
+            ],
+            "zone": "C"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": "D"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.45,
+              0.9453125,
+              0.5875
+            ],
+            "zone": "D"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.675,
+              0.9453125,
+              0.8125
+            ],
+            "zone": "D"
+          }
+        ],
+        "counts": {
+          "A": 1,
+          "B": 3,
+          "C": 1,
+          "D": 3
+        },
+        "texts": [],
+        "events": [
+          {
+            "type": "count_rule",
+            "zone": "B",
+            "count": 3,
+            "when": "count >= 3",
+            "held_s": 0.0
+          },
+          {
+            "type": "count_rule",
+            "zone": "D",
+            "count": 3,
+            "when": "count >= 3",
+            "held_s": 0.0
+          }
+        ],
+        "elapsed_ms": 93.82966597331688,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "det",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                640,
+                400
+              ],
+              "input_pixels_sha256": "82d5c55eda0823db581ad5f4be814300fa97a4b2ea48f05f388d1449df0aea7f",
+              "detections": [
+                {
+                  "box": [
+                    0.0546875,
+                    0.225,
+                    0.1953125,
+                    0.3625
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.3046875,
+                    0.225,
+                    0.4453125,
+                    0.3625
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.3046875,
+                    0.45,
+                    0.4453125,
+                    0.5875
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.3046875,
+                    0.675,
+                    0.4453125,
+                    0.8125
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.5546875,
+                    0.225,
+                    0.6953125,
+                    0.3625
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.8046875,
+                    0.225,
+                    0.9453125,
+                    0.3625
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.8046875,
+                    0.45,
+                    0.9453125,
+                    0.5875
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.8046875,
+                    0.675,
+                    0.9453125,
+                    0.8125
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                }
+              ],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.fixture-color-v1",
+                "model_id": "fixture-color-v1",
+                "adapter_id": "fixture-color-v1",
+                "identity_scope": "synthetic_code",
+                "artifact_hashes": {
+                  "fixture.py": "72365bce263b5f0aafd205a65784dd744efa87673e5ec906de6f69f91c857575"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "d9ff692b77470330fc9710a16b05edfa0f86c9dc7856ae013b811a6adc900538",
+                "runtime_manifest_sha256": "c89a1440ed434e31e984a096917b62eb2c781d9ff8451bea048fb5f0cbdc1341",
+                "system_identity": {
+                  "architecture": "arm64"
+                },
+                "provider": "cpu",
+                "config_sha256": "a19024f20e6f0bd0cd145715a34d2e8857efecc9bb61f1091a74abd4970c14c2",
+                "identity_hash": "26ece61721fbde4aec4b784920cf2e2dd8dc21d5b20a67ff300b4930be5d4d64"
+              },
+              "timing": {
+                "total_ms": 91.92283300217241,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": [
+                "Synthetic color fixture; not a warehouse detector."
+              ]
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          }
+        ],
+        "comparisons": []
+      },
+      {
+        "image_path": "/private/tmp/va-bundle-5s3xav5r/data/projects/b7eb03f3e9ba4757/media/synthetic-03.png",
+        "source_image_sha256": "9cdee3e2e4e667ce8ae1ec70eabea94b7ae806ba1fde346ee9550604df021326",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.225,
+              0.1953125,
+              0.3625
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.45,
+              0.1953125,
+              0.5875
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.225,
+              0.6953125,
+              0.3625
+            ],
+            "zone": "C"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.45,
+              0.6953125,
+              0.5875
+            ],
+            "zone": "C"
+          }
+        ],
+        "counts": {
+          "A": 2,
+          "B": 0,
+          "C": 2,
+          "D": 0
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 60.964834003243595,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "det",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                640,
+                400
+              ],
+              "input_pixels_sha256": "d753676df55fdb6f25359ec11a13510f75183fc1b89a7cda4417dad68f7a365c",
+              "detections": [
+                {
+                  "box": [
+                    0.0546875,
+                    0.225,
+                    0.1953125,
+                    0.3625
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.0546875,
+                    0.45,
+                    0.1953125,
+                    0.5875
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.5546875,
+                    0.225,
+                    0.6953125,
+                    0.3625
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.5546875,
+                    0.45,
+                    0.6953125,
+                    0.5875
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                }
+              ],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.fixture-color-v1",
+                "model_id": "fixture-color-v1",
+                "adapter_id": "fixture-color-v1",
+                "identity_scope": "synthetic_code",
+                "artifact_hashes": {
+                  "fixture.py": "72365bce263b5f0aafd205a65784dd744efa87673e5ec906de6f69f91c857575"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "d9ff692b77470330fc9710a16b05edfa0f86c9dc7856ae013b811a6adc900538",
+                "runtime_manifest_sha256": "c89a1440ed434e31e984a096917b62eb2c781d9ff8451bea048fb5f0cbdc1341",
+                "system_identity": {
+                  "architecture": "arm64"
+                },
+                "provider": "cpu",
+                "config_sha256": "a19024f20e6f0bd0cd145715a34d2e8857efecc9bb61f1091a74abd4970c14c2",
+                "identity_hash": "26ece61721fbde4aec4b784920cf2e2dd8dc21d5b20a67ff300b4930be5d4d64"
+              },
+              "timing": {
+                "total_ms": 59.089249989483505,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": [
+                "Synthetic color fixture; not a warehouse detector."
+              ]
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          }
+        ],
+        "comparisons": []
+      },
+      {
+        "image_path": "/private/tmp/va-bundle-5s3xav5r/data/projects/b7eb03f3e9ba4757/media/synthetic-04.png",
+        "source_image_sha256": "8683caa5535a10d8012655272cdb110327829841b6138af95144d993f3818e11",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.225,
+              0.1953125,
+              0.3625
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.45,
+              0.1953125,
+              0.5875
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.675,
+              0.1953125,
+              0.8125
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.225,
+              0.6953125,
+              0.3625
+            ],
+            "zone": "C"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.45,
+              0.6953125,
+              0.5875
+            ],
+            "zone": "C"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.675,
+              0.6953125,
+              0.8125
+            ],
+            "zone": "C"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": "D"
+          }
+        ],
+        "counts": {
+          "A": 3,
+          "B": 1,
+          "C": 3,
+          "D": 1
+        },
+        "texts": [],
+        "events": [
+          {
+            "type": "count_rule",
+            "zone": "A",
+            "count": 3,
+            "when": "count >= 3",
+            "held_s": 0.0
+          },
+          {
+            "type": "count_rule",
+            "zone": "C",
+            "count": 3,
+            "when": "count >= 3",
+            "held_s": 0.0
+          }
+        ],
+        "elapsed_ms": 83.03862501634285,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "det",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                640,
+                400
+              ],
+              "input_pixels_sha256": "a069d598cc0c780aecdf5ea73e150262635533b544658fc8298de5da740b0310",
+              "detections": [
+                {
+                  "box": [
+                    0.0546875,
+                    0.225,
+                    0.1953125,
+                    0.3625
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.0546875,
+                    0.45,
+                    0.1953125,
+                    0.5875
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.0546875,
+                    0.675,
+                    0.1953125,
+                    0.8125
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.3046875,
+                    0.225,
+                    0.4453125,
+                    0.3625
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.5546875,
+                    0.225,
+                    0.6953125,
+                    0.3625
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.5546875,
+                    0.45,
+                    0.6953125,
+                    0.5875
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.5546875,
+                    0.675,
+                    0.6953125,
+                    0.8125
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.8046875,
+                    0.225,
+                    0.9453125,
+                    0.3625
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                }
+              ],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.fixture-color-v1",
+                "model_id": "fixture-color-v1",
+                "adapter_id": "fixture-color-v1",
+                "identity_scope": "synthetic_code",
+                "artifact_hashes": {
+                  "fixture.py": "72365bce263b5f0aafd205a65784dd744efa87673e5ec906de6f69f91c857575"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "d9ff692b77470330fc9710a16b05edfa0f86c9dc7856ae013b811a6adc900538",
+                "runtime_manifest_sha256": "c89a1440ed434e31e984a096917b62eb2c781d9ff8451bea048fb5f0cbdc1341",
+                "system_identity": {
+                  "architecture": "arm64"
+                },
+                "provider": "cpu",
+                "config_sha256": "a19024f20e6f0bd0cd145715a34d2e8857efecc9bb61f1091a74abd4970c14c2",
+                "identity_hash": "26ece61721fbde4aec4b784920cf2e2dd8dc21d5b20a67ff300b4930be5d4d64"
+              },
+              "timing": {
+                "total_ms": 81.05541701661423,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": [
+                "Synthetic color fixture; not a warehouse detector."
+              ]
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          }
+        ],
+        "comparisons": []
+      },
+      {
+        "image_path": "/private/tmp/va-bundle-5s3xav5r/data/projects/b7eb03f3e9ba4757/media/synthetic-05.png",
+        "source_image_sha256": "df9ea3df53aed76aa361754d67ed0941e430d030fbf58cbe7edd31cc7121e415",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.45,
+              0.4453125,
+              0.5875
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": "D"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.45,
+              0.9453125,
+              0.5875
+            ],
+            "zone": "D"
+          }
+        ],
+        "counts": {
+          "A": 0,
+          "B": 2,
+          "C": 0,
+          "D": 2
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 52.98241600394249,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "det",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                640,
+                400
+              ],
+              "input_pixels_sha256": "767b09e749509a08df0e222b8102e939aea29e579dafaf139da65fe0bb7f8267",
+              "detections": [
+                {
+                  "box": [
+                    0.3046875,
+                    0.225,
+                    0.4453125,
+                    0.3625
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.3046875,
+                    0.45,
+                    0.4453125,
+                    0.5875
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.8046875,
+                    0.225,
+                    0.9453125,
+                    0.3625
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                },
+                {
+                  "box": [
+                    0.8046875,
+                    0.45,
+                    0.9453125,
+                    0.5875
+                  ],
+                  "polygon": null,
+                  "label": "pallet",
+                  "confidence": 0.99
+                }
+              ],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.fixture-color-v1",
+                "model_id": "fixture-color-v1",
+                "adapter_id": "fixture-color-v1",
+                "identity_scope": "synthetic_code",
+                "artifact_hashes": {
+                  "fixture.py": "72365bce263b5f0aafd205a65784dd744efa87673e5ec906de6f69f91c857575"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "d9ff692b77470330fc9710a16b05edfa0f86c9dc7856ae013b811a6adc900538",
+                "runtime_manifest_sha256": "c89a1440ed434e31e984a096917b62eb2c781d9ff8451bea048fb5f0cbdc1341",
+                "system_identity": {
+                  "architecture": "arm64"
+                },
+                "provider": "cpu",
+                "config_sha256": "a19024f20e6f0bd0cd145715a34d2e8857efecc9bb61f1091a74abd4970c14c2",
+                "identity_hash": "26ece61721fbde4aec4b784920cf2e2dd8dc21d5b20a67ff300b4930be5d4d64"
+              },
+              "timing": {
+                "total_ms": 51.116749993525445,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": [
+                "Synthetic color fixture; not a warehouse detector."
+              ]
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          }
+        ],
+        "comparisons": []
+      }
+    ],
+    "elapsed_s": 0.44778612500522286,
+    "warnings": [
+      "SYNTHETIC FIXTURE: colored rectangles only. This does not validate warehouse detection.",
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+    ]
+  },
+  "fixture_evaluation": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "count_mae": 0.0,
+    "passed": true,
+    "metric": "count_mae",
+    "target": 0.5,
+    "sample_count": 16,
+    "failures": [],
+    "spec_hash": "280fc99b59ab08c12321e591e0bf23d93ac818a80226cdd8ffdadf11f91ef093",
+    "dataset_hash": "4eddca73d99de11dfd3278b62c19016d9827aaa4d6c89178768d86210a258e94",
+    "text_accuracy": 1.0,
+    "character_error_rate": null,
+    "word_error_rate": null,
+    "text_normalization": null,
+    "text_error_counts": {},
+    "warnings": [
+      "SYNTHETIC FIXTURE: colored rectangles only. This does not validate warehouse detection.",
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted.",
+      "This image recipe does not score event correctness, false alarms or temporal duration; numeric image scores are diagnostic only"
+    ],
+    "protocol_id": "597d322f9ff54f30a5d81e354ecc55d6",
+    "protocol_hash": "aa79bd07c3af0902bf4eef9a7718451746c8f2603e0338ef8021f7f8003161b7",
+    "evidence_scope": "sample",
+    "promotion_eligible": false,
+    "evidence_reasons": [
+      "Validation informs model/threshold selection; it is not untouched acceptance",
+      "This image recipe does not score event correctness, false alarms or temporal duration; numeric image scores are diagnostic only",
+      "Unknown, synthetic or undeclared source grouping supports sample evidence only"
+    ]
+  },
+  "fixture_promotion_rejected": {
+    "detail": "Promotion requires passing independent acceptance evidence. Configure reserved acceptance groups or explicitly approve a bounded local trial."
+  },
+  "trial_without_reason_rejected": {
+    "detail": "A bounded local trial requires an explicit reason of at least 10 characters, even when the numeric target passes"
+  },
+  "explicit_local_trial": {
+    "deployment_id": "fcadf6c05bb242b8b95f619eec7df5bf",
+    "status": "ready",
+    "approval_scope": "local_trial",
+    "trial_limits": {
+      "max_frames_per_run": 500,
+      "max_live_duration_s": 3600
+    },
+    "protocol_id": "597d322f9ff54f30a5d81e354ecc55d6",
+    "protocol_hash": "aa79bd07c3af0902bf4eef9a7718451746c8f2603e0338ef8021f7f8003161b7",
+    "temporal_event_quality_measured": false,
+    "external_delivery_enabled_by_approval": false
+  },
+  "models": [
+    {
+      "id": "fixture-color-v1",
+      "name": "Synthetic color fixture",
+      "license": "MIT",
+      "available": true,
+      "synthetic": true,
+      "backend": "numpy",
+      "description": "Test rectangles only; not a warehouse detector.",
+      "estimated_fps": null
+    },
+    {
+      "id": "owlv2-base-patch16",
+      "name": "OWLv2 base patch16 ensemble",
+      "license": "Apache-2.0",
+      "available": true,
+      "synthetic": false,
+      "backend": "transformers",
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/owlv2-base-patch16",
+      "source": "https://huggingface.co/google/owlv2-base-patch16-ensemble",
+      "description": "Open-vocabulary detector; install weights locally before use.",
+      "estimated_fps": null
+    },
+    {
+      "id": "apple-vision",
+      "name": "Apple Vision OCR and barcode",
+      "license": "macOS system framework",
+      "available": true,
+      "synthetic": false,
+      "backend": "apple-vision",
+      "description": "Native macOS OCR and barcode bridge.",
+      "estimated_fps": null
+    },
+    {
+      "id": "yolox-s-onnx-coco",
+      "name": "YOLOX-s ONNX COCO (CPU)",
+      "license": "Apache-2.0",
+      "available": true,
+      "synthetic": false,
+      "backend": "yolox-onnx",
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/yolox-s-onnx-coco",
+      "source": "https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_s.onnx",
+      "classes": [
+        "person",
+        "bicycle",
+        "car",
+        "motorcycle",
+        "airplane",
+        "bus",
+        "train",
+        "truck",
+        "boat",
+        "traffic light",
+        "fire hydrant",
+        "stop sign",
+        "parking meter",
+        "bench",
+        "bird",
+        "cat",
+        "dog",
+        "horse",
+        "sheep",
+        "cow",
+        "elephant",
+        "bear",
+        "zebra",
+        "giraffe",
+        "backpack",
+        "umbrella",
+        "handbag",
+        "tie",
+        "suitcase",
+        "frisbee",
+        "skis",
+        "snowboard",
+        "sports ball",
+        "kite",
+        "baseball bat",
+        "baseball glove",
+        "skateboard",
+        "surfboard",
+        "tennis racket",
+        "bottle",
+        "wine glass",
+        "cup",
+        "fork",
+        "knife",
+        "spoon",
+        "bowl",
+        "banana",
+        "apple",
+        "sandwich",
+        "orange",
+        "broccoli",
+        "carrot",
+        "hot dog",
+        "pizza",
+        "donut",
+        "cake",
+        "chair",
+        "couch",
+        "potted plant",
+        "bed",
+        "dining table",
+        "toilet",
+        "tv",
+        "laptop",
+        "mouse",
+        "remote",
+        "keyboard",
+        "cell phone",
+        "microwave",
+        "oven",
+        "toaster",
+        "sink",
+        "refrigerator",
+        "book",
+        "clock",
+        "vase",
+        "scissors",
+        "teddy bear",
+        "hair drier",
+        "toothbrush"
+      ],
+      "description": "Pinned official COCO detector; CPU only, no custom-class remapping or fine-tuning.",
+      "weights_license": "Official repository Apache-2.0 declaration; no separate asset-specific statement.",
+      "error": null,
+      "estimated_fps": null
+    },
+    {
+      "id": "rtdetr-v2-r18",
+      "name": "RT-DETRv2 R18 pretrained",
+      "license": "Apache-2.0",
+      "available": true,
+      "synthetic": false,
+      "backend": "rtdetr-v2-r18",
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/rtdetr-v2-r18",
+      "source": "https://huggingface.co/PekingU/rtdetr_v2_r18vd",
+      "classes": [
+        "person",
+        "bicycle",
+        "car",
+        "motorbike",
+        "aeroplane",
+        "bus",
+        "train",
+        "truck",
+        "boat",
+        "traffic light",
+        "fire hydrant",
+        "stop sign",
+        "parking meter",
+        "bench",
+        "bird",
+        "cat",
+        "dog",
+        "horse",
+        "sheep",
+        "cow",
+        "elephant",
+        "bear",
+        "zebra",
+        "giraffe",
+        "backpack",
+        "umbrella",
+        "handbag",
+        "tie",
+        "suitcase",
+        "frisbee",
+        "skis",
+        "snowboard",
+        "sports ball",
+        "kite",
+        "baseball bat",
+        "baseball glove",
+        "skateboard",
+        "surfboard",
+        "tennis racket",
+        "bottle",
+        "wine glass",
+        "cup",
+        "fork",
+        "knife",
+        "spoon",
+        "bowl",
+        "banana",
+        "apple",
+        "sandwich",
+        "orange",
+        "broccoli",
+        "carrot",
+        "hot dog",
+        "pizza",
+        "donut",
+        "cake",
+        "chair",
+        "sofa",
+        "pottedplant",
+        "bed",
+        "diningtable",
+        "toilet",
+        "tvmonitor",
+        "laptop",
+        "mouse",
+        "remote",
+        "keyboard",
+        "cell phone",
+        "microwave",
+        "oven",
+        "toaster",
+        "sink",
+        "refrigerator",
+        "book",
+        "clock",
+        "vase",
+        "scissors",
+        "teddy bear",
+        "hair drier",
+        "toothbrush"
+      ],
+      "description": "COCO-pretrained detector and default base for custom-class fine-tuning.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-detector-rtdetr-prior001-20261028",
+      "name": "local-detector-rtdetr-prior001-20261028",
+      "license": "Apache-2.0",
+      "weights_license": "Apache-2.0 upstream checkpoint; local fine-tune also subject to project dataset terms",
+      "available": true,
+      "synthetic": false,
+      "backend": "rtdetr-v2-r18",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-detector-rtdetr-prior001-20261028",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-detector-rtdetr-smoke-20261028",
+      "name": "local-detector-rtdetr-smoke-20261028",
+      "license": "Apache-2.0",
+      "weights_license": "Apache-2.0 upstream checkpoint; local fine-tune also subject to project dataset terms",
+      "available": true,
+      "synthetic": false,
+      "backend": "rtdetr-v2-r18",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-detector-rtdetr-smoke-20261028",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-ssdlite-7dcfc58e1c6e",
+      "name": "local-ssdlite-7dcfc58e1c6e",
+      "license": "BSD-3-Clause architecture; project-trained weights",
+      "weights_license": "Project dataset terms; local use only until reviewed for distribution",
+      "available": true,
+      "synthetic": false,
+      "backend": "ssdlite320",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-ssdlite-7dcfc58e1c6e",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-ssdlite-9bdcf7bd1751",
+      "name": "local-ssdlite-9bdcf7bd1751",
+      "license": "BSD-3-Clause architecture; project-trained weights",
+      "weights_license": "Project dataset terms; local use only until reviewed for distribution",
+      "available": true,
+      "synthetic": false,
+      "backend": "ssdlite320",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-ssdlite-9bdcf7bd1751",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-ssdlite-finetune-smoke-20261028",
+      "name": "local-ssdlite-finetune-smoke-20261028",
+      "license": "BSD-3-Clause architecture; project-trained weights",
+      "weights_license": "Project dataset terms; local use only until reviewed for distribution",
+      "available": true,
+      "synthetic": false,
+      "backend": "ssdlite320",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-ssdlite-finetune-smoke-20261028",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-ssdlite-smoke-20261028",
+      "name": "local-ssdlite-smoke-20261028",
+      "license": "BSD-3-Clause architecture; project-trained weights",
+      "weights_license": "Project dataset terms; local use only until reviewed for distribution",
+      "available": true,
+      "synthetic": false,
+      "backend": "ssdlite320",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-ssdlite-smoke-20261028",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    }
+  ],
+  "signature_after_execution": "passed",
+  "status": "passed",
+  "capability_catalog_summary": {
+    "schema_version": "0.1",
+    "generated_at": "2026-10-29T16:23:39.736748+00:00",
+    "count": 77,
+    "ids": [
+      "block.barcode",
+      "block.count_per_zone",
+      "block.crop",
+      "block.detect",
+      "block.detect_open_vocab",
+      "block.frame_sample",
+      "block.match",
+      "block.ocr",
+      "block.resize",
+      "block.rule",
+      "block.segment",
+      "block.sink_event",
+      "block.vlm_judge",
+      "block.zone_filter",
+      "model.apple-vision",
+      "model.configured-planner",
+      "model.configured-vlm",
+      "model.fixture-color-v1",
+      "model.local-detector-rtdetr-prior001-20261028",
+      "model.local-detector-rtdetr-smoke-20261028",
+      "model.local-ssdlite-7dcfc58e1c6e",
+      "model.local-ssdlite-9bdcf7bd1751",
+      "model.local-ssdlite-finetune-smoke-20261028",
+      "model.local-ssdlite-smoke-20261028",
+      "model.owlv2-base-patch16",
+      "model.paddleocr",
+      "model.rtdetr-v2-r18",
+      "model.sam3",
+      "model.yolo",
+      "model.yolox-s-onnx-coco",
+      "tool.agent_capture_finish",
+      "tool.agent_capture_start",
+      "tool.agent_plan_read",
+      "tool.agent_prepare_compile",
+      "tool.agent_record_decision",
+      "tool.agent_record_options",
+      "tool.agent_record_skills",
+      "tool.agent_run_begin",
+      "tool.agent_run_fail",
+      "tool.agent_stage_plan",
+      "tool.agent_state_get",
+      "tool.agent_tool_call",
+      "tool.block_schema",
+      "tool.blocks_list",
+      "tool.build_agent_state",
+      "tool.build_capture_finish",
+      "tool.build_capture_start",
+      "tool.build_context",
+      "tool.build_freeze_evaluation",
+      "tool.build_operate",
+      "tool.build_prepare_review",
+      "tool.build_propose_labels",
+      "tool.build_record_refinement",
+      "tool.build_record_skills",
+      "tool.build_refine",
+      "tool.build_refinement_context",
+      "tool.build_tool_call",
+      "tool.build_train",
+      "tool.dataset_context",
+      "tool.eval_create",
+      "tool.eval_run",
+      "tool.events_query",
+      "tool.evidence_capture_finish",
+      "tool.evidence_capture_start",
+      "tool.evidence_context",
+      "tool.evidence_execute",
+      "tool.evidence_query_begin",
+      "tool.evidence_query_finish",
+      "tool.evidence_tool_call",
+      "tool.frames_sample",
+      "tool.media_import",
+      "tool.pipeline_run",
+      "tool.pipeline_validate",
+      "tool.planning_options",
+      "tool.review_queue",
+      "tool.suggest_labels",
+      "tool.web_search"
+    ],
+    "full_receipt_retained_locally": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/bundle-verification-d76-full.json",
+    "full_receipt_sha256": "cc001b7fab2caba2e19510c628f3ebb848341f2f1c05dccc76fdbb22af882e18",
+    "omission": "Repeated catalogue schemas omitted from published receipt; all execution, identity, gating and signature results retained."
+  }
+}

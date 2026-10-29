@@ -1,0 +1,11 @@
+Building wheel...
+Successfully built .visionapp/compositional-authoring/wheel-update-amxhtvdt/visionapp_engine-0.1.0-py3-none-any.whl
+Using CPython 3.12.14 interpreter at: .visionapp/compositional-authoring/VisionApp.app/Contents/Resources/PythonRuntime/bin/python3.12
+Resolved 1 package in 2ms
+Prepared 1 package in 47ms
+Uninstalled 1 package in 75ms
+Installed 1 package in 450ms
+ - visionapp-engine==0.1.0 (from file:///Users/manavrakeshku.modi/vision-agent/.visionapp/visionapp-build-dj1oqx7c/wheels/visionapp_engine-0.1.0-py3-none-any.whl)
+ + visionapp-engine==0.1.0 (from file:///Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/wheel-update-amxhtvdt/visionapp_engine-0.1.0-py3-none-any.whl)
+/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/VisionApp.app: replacing existing signature
+{"status":"passed","checks":257}

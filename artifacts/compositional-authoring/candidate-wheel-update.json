@@ -1,0 +1,8 @@
+{
+  "bundle": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/VisionApp.app",
+  "source_identity": "d76d7e7d6b91f28605917393e63e94eccc37f9099e9382a684b04daec751a552",
+  "engine_wheel_sha256": "0afd464fd66247606dd6fd5273928c1b335c1c9f42c77a7285747339ebcc27c8",
+  "native_sha256": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d",
+  "signature_verified": true,
+  "scope": "Updated Python engine only in the uninstalled candidate; dependencies/native code unchanged; relocation and UI validation separate"
+}

@@ -5,17 +5,28 @@ import re
 from agent.contracts import PlanDecision
 from agent.event_intent import event_intent
 
+_QUOTED_READING_VALUE = re.compile(r'"[^"\n]{0,500}"|“[^”\n]{0,500}”|(?<!\w)\x27[^\x27\n]{0,500}\x27')
+
+
+def reading_instruction_text(brief: str) -> str:
+    """Quoted text is a reading value, including words that resemble actions."""
+    return _QUOTED_READING_VALUE.sub(lambda match: " " * len(match.group()), brief)
+
 
 def validate_event_values(decision: PlanDecision, brief: str) -> None:
     """Reject intent/value drift; explicit user values are never generated repairs."""
     if not decision.choices:
         return
-    intent = event_intent(brief, parse_counts=any(choice.pipeline_type == "detection" and choice.use_case != "labels" for choice in decision.choices))
+    detection = any(choice.pipeline_type == "detection" and choice.use_case != "labels" for choice in decision.choices)
+    instructions = reading_instruction_text(brief) if not detection and any(choice.record_events is not None for choice in decision.choices) else brief
+    intent = event_intent(instructions, parse_counts=detection)
     if intent.excludes_storage:
         raise ValueError("Approved runs retain local detection crops and frame evidence; disabling evidence storage is unsupported. Ask whether preview-only use or the existing retention behavior is acceptable, rather than returning a candidate that promises no storage.")
     if intent.ambiguous_negation:
         raise ValueError("The event instructions have conflicting or conditional negation; ask for one explicit event condition")
     for choice in decision.choices:
+        if choice.record_events is not None and choice.record_events != (intent.requested and not intent.disabled):
+            raise ValueError("Set record_events true only for the user's requested local event behavior; comparison or preview alone must use false.")
         if choice.pipeline_type != "detection" or choice.use_case == "labels":
             continue
         if not intent.requested or intent.disabled:
@@ -89,20 +100,20 @@ def explicit_expected_text(brief: str) -> str | None:
     """Recognize an explicit literal/code after a text comparison verb only."""
     latest = brief.rsplit("User request:\n", 1)[-1]
     prefix = r"\b(?:check\s+(?:for|against)|contains?|equals?|compare(?:\s+(?:it|them))?\s+(?:with|against)|(?:mis)?match(?:es)?(?:\s+against)?|(?:expected|correct)\s+(?:SKU|code|value|text)\s*(?:is|=|:))\s+"
-    quoted = re.search(prefix + r"[\"']([^\"']{1,256})[\"']", latest, re.IGNORECASE)
+    quoted = re.search(prefix + r"(?P<quote>[\"'])(?P<literal>.{1,256}?)(?P=quote)", latest, re.IGNORECASE)
     if quoted:
-        return quoted.group(1)
+        return quoted.group("literal")
     codes = re.finditer(prefix + r"([A-Za-z0-9][A-Za-z0-9_-]{0,255})\b", latest, re.IGNORECASE)
     for code in codes:
         suffix = latest[code.end():]
-        complete = bool(re.match(r"(?:\s*$|[.!?;,](?:\s|$)|\s+exactly\s*(?:[.!?]|$))", suffix, re.I))
+        complete = bool(re.match(r"(?:\s*$|[.!?;,](?:\s|$)|\s+exactly\s*(?:[.!?;,]|$))", suffix, re.I))
         if complete and code.group(1).lower() not in _PLACEHOLDERS:
             return code.group(1)
     if "User clarification:" in latest:
         answer = latest.rsplit("User clarification:", 1)[-1].strip()
-        quoted_answer = re.fullmatch(r"[\"']([^\"']{1,256})[\"'][.]?", answer)
+        quoted_answer = re.fullmatch(r"(?P<quote>[\"'])(?P<literal>.{1,256})(?P=quote)[.]?", answer)
         if quoted_answer:
-            return quoted_answer.group(1)
+            return quoted_answer.group("literal")
         simple_answer = re.fullmatch(r"([A-Za-z0-9][A-Za-z0-9_-]{0,255})[.]?", answer)
         if simple_answer and simple_answer.group(1).lower() not in _PLACEHOLDERS:
             return simple_answer.group(1)
@@ -117,8 +128,9 @@ def unresolved_expected_text(brief: str) -> bool:
 def validate_reading_literal(decision: PlanDecision, brief: str) -> None:
     expected = explicit_expected_text(brief)
     latest = brief.rsplit("User request:\n", 1)[-1].replace("’", "'")
-    read_only = (not re.search(_READING_COMPARISON, latest, re.I)
-                 or bool(re.search(r"\b(?:no|without)\s+(?:expected|comparison|matching)|\b(?:do not|don't)\s+(?:compare|match|check)", latest, re.I)))
+    instructions = reading_instruction_text(latest) if any(choice.record_events is not None for choice in decision.choices) else latest
+    read_only = (not re.search(_READING_COMPARISON, instructions, re.I)
+                 or bool(re.search(r"\b(?:no|without)\s+(?:expected|comparison|matching)|\b(?:do not|don't)\s+(?:compare|match|check)", instructions, re.I)))
     for choice in decision.choices:
         if choice.pipeline_type not in {"ocr", "barcode"} and choice.use_case != "labels":
             continue
@@ -140,9 +152,17 @@ def validate_reading_mode(decision: PlanDecision, brief: str) -> None:
                if choice.pipeline_type in {"ocr", "barcode"} or choice.use_case == "labels"]
     if not readers:
         return
+    explicit_events = any(choice.record_events is not None for choice in readers)
+    intent = event_intent(reading_instruction_text(brief) if explicit_events else brief, parse_counts=False)
+    if explicit_events:
+        if intent.ambiguous_negation:
+            raise ValueError("The event instructions have conflicting or conditional negation; ask for one explicit event condition")
+        requested = intent.requested and not intent.disabled
+        if any(choice.record_events is not None and choice.record_events != requested for choice in readers):
+            raise ValueError("Reading comparisons are separate from events: set record_events true only when the user requests local events, otherwise false.")
     latest = brief.rsplit("User request:\n", 1)[-1]
     # Mode words inside a quoted literal or identifier are comparison data.
-    unquoted = re.sub(r"([\"']).{0,500}?\1", " ", latest)
+    unquoted = reading_instruction_text(latest) if explicit_events else re.sub(r"([\"']).{0,500}?\1", " ", latest)
     unquoted = re.sub(r"\b[A-Za-z0-9]+[-_][A-Za-z0-9_-]+\b", " ", unquoted)
     contains = bool(re.search(r"\b(?:contains?|substring|partial\s+match(?:ing)?)\b", unquoted, re.I))
     exact = bool(re.search(r"\b(?:equals?|exact(?:ly)?\s+(?:match(?:es|ing)?|equal(?:s|ity)?)|matches?\s+exactly)\b|\bmatch(?:es)?\b[^.;!?]{0,80}\bexactly\b|\b(?:mode|comparison)\s*(?:is|=|:)?\s*exact\b", unquoted, re.I))
@@ -152,7 +172,7 @@ def validate_reading_mode(decision: PlanDecision, brief: str) -> None:
     if mode is not None and any(choice.match_mode != mode for choice in readers):
         raise ValueError(f"The user explicitly requested match_mode {mode!r}; preserve it exactly instead of changing equality or substring semantics")
     emit = "all"
-    if event_intent(brief, parse_counts=False).requested:
+    if intent.requested:
         condition = re.search(r"\b(?:when|whenever|if|on)\b(.{1,300})", unquoted, re.I)
         if condition:
             text = condition.group(1).replace("’", "'")

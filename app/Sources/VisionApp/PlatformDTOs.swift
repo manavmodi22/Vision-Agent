@@ -43,9 +43,15 @@ struct PlanCandidateModelSelection: Codable {
     let proposedReason: String
     let optionsSnapshotID: String
     let status: String
+    var blockID: String? = nil
+    var modelTestLabel: String {
+        if let blockID { return "Block \(blockID) · model to test: \(modelID)" }
+        return "Model to test: \(modelID)"
+    }
     enum CodingKeys: String, CodingKey {
         case candidateIndex = "candidate_index", capabilityID = "capability_id", modelID = "model_id"
         case adapterID = "adapter_id", proposedReason = "proposed_reason", optionsSnapshotID = "options_snapshot_id", status
+        case blockID = "block_id"
     }
 }
 struct PlatformBuildPlan: Codable, Identifiable {

@@ -1,0 +1,96 @@
+{
+  "operation_id": "092a24eae1234fd98ac36620495eeeb2",
+  "original_status": "completed",
+  "dry_run": true,
+  "effects_executed": false,
+  "reproduced": true,
+  "candidate_count": 1,
+  "captured_tool_calls": 5,
+  "captured_model_calls": 1,
+  "errors": [],
+  "result": {
+    "message": "Reads printed text. Checks whether the read text exactly matches \"ABC-990\". Uses the crop/resize steps shown in the saved workflow.",
+    "questions": [],
+    "candidates": [
+      {
+        "spec_version": "0.1",
+        "name": "Read Left Half Text",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "s",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2.0
+            },
+            "in": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "c",
+            "type": "crop",
+            "params": {
+              "box": [
+                0.0,
+                0.0,
+                0.5,
+                1.0
+              ]
+            },
+            "in": {
+              "image": "$s.frame"
+            }
+          },
+          {
+            "id": "r",
+            "type": "resize",
+            "params": {
+              "width": 1200,
+              "height": 400
+            },
+            "in": {
+              "image": "$c.image"
+            }
+          },
+          {
+            "id": "o",
+            "type": "ocr",
+            "params": {
+              "model": "apple-vision"
+            },
+            "in": {
+              "image": "$r.image"
+            }
+          },
+          {
+            "id": "m",
+            "type": "match",
+            "params": {
+              "expected": "ABC-990",
+              "mode": "exact",
+              "emit": "all"
+            },
+            "in": {
+              "text": "$o.text"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "text_accuracy",
+          "target": 0.9
+        }
+      }
+    ],
+    "tool_calls": 5,
+    "elapsed_s": 76.47455662500579,
+    "operation_id": "092a24eae1234fd98ac36620495eeeb2",
+    "needs_zones": false
+  }
+}

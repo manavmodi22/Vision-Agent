@@ -101,7 +101,7 @@ def test_new_model_output_requires_selection_but_legacy_choices_still_load() -> 
     assert PatternChoice.model_validate(legacy).model_capability_id is None
     with pytest.raises(ValidationError) as failed:
         ModelCustomPlanDecision.model_validate({"message": "Count", "questions": [], "choices": [legacy]})
-    assert {error["loc"][-1] for error in failed.value.errors()} == {"model_capability_id", "model_reason"}
+    assert {error["loc"][-1] for error in failed.value.errors()} == {"model_capability_id", "model_reason", "record_events"}
     with pytest.raises(ValueError, match="captured"):
         compile_decision(PlanDecision(message="No snapshot", choices=[choice("owlv2-base-patch16")]), "media", "fixture-color-v1")
 
@@ -301,6 +301,38 @@ def test_previous_schema_plan_hash_remains_readable_but_tampering_is_rejected(tm
     assert restored.model_selections == [] and restored.planning_options_artifact_id is None
     assert restored.candidates == [candidate]
     stored["goal"] = "Tampered request"
+    path.write_text(json.dumps(stored))
+    with pytest.raises(AgentConflict, match="hash"):
+        platform.plan(project.id, plan.id)
+
+
+def test_historical_selection_without_block_id_keeps_hash_and_rejects_tampering(tmp_path: Path) -> None:
+    import json
+
+    from agent.machine import Phase
+    from engine.platform.store import PlatformStore, digest
+
+    service = WorkspaceService(tmp_path)
+    project = service.create_project("Historical model binding", "custom")
+    service.demo(project.id)
+    catalog = planning_options(service, project.id, "fixture-color-v1")
+    decision = PlanDecision(message="Historical selection", choices=[
+        choice("fixture-color-v1", ["pallet"], metric="count_mae", target=.5)])
+    result = compile_decision(decision, "media", "fixture-color-v1", catalog)
+    platform = PlatformStore(service)
+    plan, _ = platform.publish(project.id, "b" * 32, "Count pallets", result.candidates,
+        Phase.COMPILE, "historical fixture", planning_options=catalog,
+        model_selections=validate_model_choices(decision, catalog))
+    stored = plan.model_dump(mode="json", by_alias=True)
+    for binding in stored["model_selections"]:
+        binding.pop("block_id")
+    stored["content_hash"] = digest({key: value for key, value in stored.items() if key != "content_hash"})
+    path = platform.path(project.id, "plans", plan.id)
+    path.write_text(json.dumps(stored))
+    restored = platform.plan(project.id, plan.id)
+    assert restored.model_selections[0].block_id is None
+    assert restored.model_selections[0].model_id == "fixture-color-v1"
+    stored["model_selections"][0]["block_id"] = "invented-binding"
     path.write_text(json.dumps(stored))
     with pytest.raises(AgentConflict, match="hash"):
         platform.plan(project.id, plan.id)

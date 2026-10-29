@@ -1,0 +1,47 @@
+[
+  {
+    "call_id": "9e595d40e5ad49a4a00946fdf5606a7c",
+    "response": {
+      "messages": [
+        {
+          "parts": [
+            {
+              "content": "{\n  \"schema_version\": \"0.2\",\n  \"message\": \"Workflow proposal for reading printed text in the left half of each image and comparing it to 'ABC-990'\",\n  \"questions\": [],\n  \"graphs\": [\n    {\n      \"name\": \"Read Left Half Text\",\n      \"nodes\": [\n        {\n          \"type\": \"frame_sample\",\n          \"id\": \"s\",\n          \"fps\": 2.0\n        },\n        {\n          \"type\": \"crop\",\n          \"id\": \"c\",\n          \"image\": \"$s.frame\",\n          \"box\": [0, 0, 0.5, 1]\n        },\n        {\n          \"type\": \"resize\",\n          \"id\": \"r\",\n          \"image\": \"$c.image\",\n          \"width\": 1200,\n          \"height\": 400\n        },\n        {\n          \"type\": \"ocr\",\n          \"id\": \"o\",\n          \"image\": \"$r.image\",\n          \"model_capability_id\": \"model.apple-vision\",\n          \"model_reason\": \"Eligible OCR for reading printed text\"\n        },\n        {\n          \"type\": \"match\",\n          \"id\": \"m\",\n          \"text\": \"$o.text\",\n          \"expected\": \"ABC-990\",\n          \"mode\": \"exact\",\n          \"emit\": \"all\"\n        }\n      ],\n      \"metric\": \"text_accuracy\",\n      \"target\": 0.9\n    }\n  ]\n}",
+              "id": null,
+              "provider_name": null,
+              "provider_details": null,
+              "part_kind": "text"
+            }
+          ],
+          "usage": {
+            "input_tokens": 3327,
+            "cache_write_tokens": 0,
+            "cache_read_tokens": 3,
+            "output_tokens": 313,
+            "input_audio_tokens": 0,
+            "cache_audio_read_tokens": 0,
+            "output_audio_tokens": 0,
+            "details": {}
+          },
+          "model_name": "visionapp-planner",
+          "timestamp": "2026-10-29T16:24:08.085583Z",
+          "kind": "response",
+          "provider_name": "openai",
+          "provider_url": "http://127.0.0.1:1234/v1/",
+          "provider_details": {
+            "finish_reason": "stop",
+            "timestamp": "2026-10-29T16:24:08Z"
+          },
+          "provider_response_id": "chatcmpl-t4S9zVDScS0wBKq35XZdngrxmiPalVCK",
+          "finish_reason": "stop",
+          "run_id": null,
+          "conversation_id": null,
+          "metadata": null,
+          "state": "complete"
+        }
+      ]
+    },
+    "error": null,
+    "retry_feedback": []
+  }
+]

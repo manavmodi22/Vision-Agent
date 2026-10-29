@@ -3,6 +3,7 @@ from decimal import Decimal
 
 from engine.blocks.logic import parse_rule
 from engine.blocks.params import MatchParams, RuleParams
+from engine.builds.preprocessing_edits import apply_preprocessing
 from engine.compiler import parse_reference
 from spec.models import BlockSpec, EvalConfig, PipelineSpec
 from spec.refinement import RefinementPatch
@@ -58,12 +59,15 @@ def behavior_block(candidate: PipelineSpec, patch: RefinementPatch) -> BlockSpec
         result = BlockSpec.model_validate({"id": new_id(candidate, "refined_match"), "type": "match",
             "params": {"expected": patch.expected_text, "mode": "exact"}, "in": {"text": f"${upstream.id}.text"}})
     candidate.blocks.append(result)
-    ensure_sink(candidate, result)
+    if kind == "rule":
+        ensure_sink(candidate, result)
     return result
 
 
 def apply_edit(candidate: PipelineSpec, patch: RefinementPatch, names: dict[str, str]) -> None:
-    if patch.kind == "eval_target":
+    if patch.kind in {"crop", "resize"}:
+        apply_preprocessing(candidate, patch)
+    elif patch.kind == "eval_target":
         metric = patch.eval_metric or candidate.eval.metric
         types = {block.type for block in candidate.blocks}
         required = {"ocr", "barcode", "vlm_judge"} if metric == "text_accuracy" else {"detect", "detect_open_vocab"}
@@ -90,7 +94,6 @@ def apply_edit(candidate: PipelineSpec, patch: RefinementPatch, names: dict[str,
         owner, _ = parse_reference(block.inputs["text"])
         unique_block(candidate, {"ocr", "barcode"}, owner)
         block.params.update(expected=patch.expected_text, mode=patch.match_mode or original_match.mode)
-        ensure_sink(candidate, block)
     else:
         detector = unique_block(candidate, {"detect", "detect_open_vocab"}, patch.block_id)
         if patch.kind == "confidence":

@@ -1,0 +1,87 @@
+{
+  "checked_at": "2026-10-29T16:33:14.473523+00:00",
+  "source_identity": "d76d7e7d6b91f28605917393e63e94eccc37f9099e9382a684b04daec751a552",
+  "project_id": "1a782cfabc5b4a53",
+  "health": {
+    "status": "ok",
+    "version": "0.1.0",
+    "model_server": {
+      "reachable": true,
+      "models": [
+        "visionapp-planner"
+      ],
+      "error": null
+    },
+    "runtime": {
+      "data_dir": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp",
+      "python": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/Resources/PythonRuntime/bin/python3.12",
+      "package_root": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+      "build_id": "d76d7e7d6b91f28605917393e63e94eccc37f9099e9382a684b04daec751a552",
+      "pid": 21557
+    },
+    "capabilities": {
+      "image_folder": true,
+      "recorded_video": true,
+      "apple_vision": true,
+      "camera": false,
+      "screen_capture": false,
+      "training": true,
+      "alerts": true,
+      "native_app": true,
+      "live_frame_ingress": true
+    }
+  },
+  "checks": {
+    "canonical_native_launched": true,
+    "installed_source_matches": true,
+    "actual_local_planner_initial_calls": 1,
+    "actual_local_planner_refinement_calls": 1,
+    "initial_comparison": {
+      "block_id": "m",
+      "expected": "ABC-990",
+      "observed": [
+        "ABC-990"
+      ],
+      "mode": "exact",
+      "matched": true
+    },
+    "refined_comparison": {
+      "block_id": "m",
+      "expected": "ABC-990",
+      "observed": [
+        "WRONG-111"
+      ],
+      "mode": "exact",
+      "matched": false
+    },
+    "refined_input_size": [
+      900,
+      300
+    ],
+    "refined_input_to_frame": [
+      0.5,
+      0.0,
+      0.5,
+      1.0
+    ],
+    "visible_initial_text": "ABC-990",
+    "visible_refined_text": "WRONG-111",
+    "visible_comparison_states": [
+      "Pass",
+      "Fail"
+    ],
+    "visible_image_regions": "Initial OCR box on left ABC-990; after refinement OCR box on right WRONG-111, verified by CUA screenshots.",
+    "no_events_or_reviews_or_approval": true,
+    "original_project_unchanged": true
+  },
+  "native_sha256": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d",
+  "initial_model_elapsed_s": [
+    44.913292
+  ],
+  "refinement_model_elapsed_s": [
+    23.316855
+  ],
+  "ui_method": "CUA accessibility state and screenshots from installed native app. No raw screenshot file exported.",
+  "recovered_failure": "Prior file-picker Open returned timeout; later reconnect showed file attached. Native sample was idle in AppKit event loop. Explicit canonical path restored UI access and completed walkthrough.",
+  "scope": "Generated software fixture; actual model and Apple Vision execution. User-directed refinement, not adaptive autonomous experiment selection. No accuracy acceptance."
+}

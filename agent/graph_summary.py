@@ -133,12 +133,14 @@ def describe_pipeline(spec: PipelineSpec) -> str:
         subject = "printed text" if reader.type == "ocr" else "barcodes"
         sentences.append(f"Reads {subject}.")
         for comparison in spec.blocks:
-            if comparison.id not in emitted or comparison.type != "match" or _source(comparison, "text", blocks) is not reader:
+            if comparison.type != "match" or _source(comparison, "text", blocks) is not reader:
                 continue
             expected, mode = comparison.params.get("expected"), comparison.params.get("mode", "contains")
             if isinstance(expected, str) and mode in {"contains", "exact"}:
                 check = "contains" if mode == "contains" else "exactly matches"
                 sentences.append(f"Checks whether the read text {check} {_quoted(expected)}.")
+                if comparison.id not in emitted:
+                    continue
                 emit = comparison.params.get("emit", "all")
                 if emit == "matched":
                     sentences.append("Creates a local event only when that comparison matches.")

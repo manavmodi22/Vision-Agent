@@ -1,0 +1,5 @@
+{"case": "crop-reading", "status": "planning", "project_id": "402246585eb54b0c"}
+{"case": "crop-reading", "passed": true, "elapsed_s": 76.7874745419831, "failures": [], "error": null}
+{"case": "parallel-readers", "status": "planning", "project_id": "611af77117d34b40"}
+{"case": "parallel-readers", "passed": true, "elapsed_s": 86.29931341699557, "failures": [], "error": null}
+{"passed": true, "required_acceptance_complete": true, "report": "/Users/manavrakeshku.modi/vision-agent/.visionapp/compositional-authoring/run-20261029T162251Z/report.json", "elapsed_s": 164.31978045904543}

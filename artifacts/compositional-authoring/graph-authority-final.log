@@ -1,0 +1,92 @@
+.........................................FF.......................       [100%]
+=================================== FAILURES ===================================
+_____________ test_half_repeated_as_exact_coordinates_is_one_crop ______________
+
+    def test_half_repeated_as_exact_coordinates_is_one_crop() -> None:
+        prompt = "Read printed text from the left half: crop normalized [0,0,0.5,1], then resize that crop to width1200 and height400 before OCR"
+>       validate_transforms(graph(ocr=[LEFT, ("resize", (1200, 400))]), prompt)
+
+tests/test_graph_transform_fidelity.py:162: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+agent/graph_transforms.py:100: in validate_transforms
+    operations = _requested(text)
+                 ^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+text = 'then resize that crop to width1200 and height400 before OCR'
+
+    def _requested(text: str) -> list[Transform]:
+        masked = visible(text)
+        crop_match, resize_match = _CROP.search(masked), _RESIZE.search(masked)
+        crop_requested = crop_match is not None and not _NO_CROP.search(masked)
+        resize_requested = resize_match is not None and not _NO_RESIZE.search(masked)
+        if crop_requested and _full_required(masked):
+            raise ValueError("The branch requests both a crop and the full frame; clarify its image scope")
+        if crop_requested and (re.search(r"\b(?:within|inside|relative to|of)\s+(?:the\s+)?(?:saved\s+)?(?:zone|lane|region|polygon|object|box)\b", masked, re.I)
+            or any(not re.match(r"(?:(?:the|its)\s+)?(?:(?:full|input|original|current|cropped)\s+)?(?:frame|image|crop|view)\b", match.group(1), re.I)
+                   for match in re.finditer(r"\bhalf\s+of\s+([^.;\n]+)", masked, re.I))):
+            raise ValueError("Supply crop coordinates relative to the input image; object or zone-relative halves are ambiguous")
+        if resize_requested and re.search(r"\b(?:letterbox|padding|pad|fit\s+(?:inside|within)|(?:keep|preserve|maintain)\s+(?:the\s+)?aspect\s+ratio)\b", masked, re.I):
+            raise ValueError("This resize supports exact pixel dimensions; clarify unsupported aspect-preserving fit or padding")
+        operations: list[tuple[int, Transform]] = []
+        if crop_requested:
+            box = _crop_values(masked)
+            if box is None:
+>               raise ValueError("Specify exact normalized crop coordinates or a clear image half; do not invent a crop")
+E               ValueError: Specify exact normalized crop coordinates or a clear image half; do not invent a crop
+
+agent/graph_transforms.py:54: ValueError
+________ test_composed_crop_resize_count_crosses_actual_mcp_and_replays ________
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/manavrakeshku.modi/vision-agent/tests/test_graph_authoring_mcp.py", line 38, in test_composed_crop_resize_count_crosses_actual_mcp_and_replays
+  |     async with connect_tools(str(workspace), AgentState()) as tools:
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/Users/manavrakeshku.modi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py", line 231, in __aexit__
+  |     await self.gen.athrow(value)
+  |   File "/Users/manavrakeshku.modi/vision-agent/agent/mcp_client.py", line 171, in connect_tools
+  |     async with stdio_client(parameters) as (reader, writer):
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/Users/manavrakeshku.modi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py", line 231, in __aexit__
+  |     await self.gen.athrow(value)
+  |   File "/Users/manavrakeshku.modi/vision-agent/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 183, in stdio_client
+  |     anyio.create_task_group() as tg,
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/Users/manavrakeshku.modi/vision-agent/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 847, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Exception Group Traceback (most recent call last):
+    |   File "/Users/manavrakeshku.modi/vision-agent/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 189, in stdio_client
+    |     yield read_stream, write_stream
+    |   File "/Users/manavrakeshku.modi/vision-agent/agent/mcp_client.py", line 172, in connect_tools
+    |     async with ClientSession(reader, writer) as session:
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/manavrakeshku.modi/vision-agent/.venv/lib/python3.12/site-packages/mcp/shared/session.py", line 238, in __aexit__
+    |     return await self._task_group.__aexit__(exc_type, exc_val, exc_tb)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/manavrakeshku.modi/vision-agent/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 847, in __aexit__
+    |     raise BaseExceptionGroup(
+    | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+    +-+---------------- 1 ----------------
+      | Traceback (most recent call last):
+      |   File "/Users/manavrakeshku.modi/vision-agent/tests/test_graph_authoring_mcp.py", line 63, in test_composed_crop_resize_count_crosses_actual_mcp_and_replays
+      |     result = plan_from_context(decision, brief, "media", "owlv2-base-patch16", context, captured)
+      |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      |   File "/Users/manavrakeshku.modi/vision-agent/agent/decisions.py", line 47, in plan_from_context
+      |     return graph_plan_from_context(decision, brief, source_path, context, options)
+      |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      |   File "/Users/manavrakeshku.modi/vision-agent/agent/graph_authoring.py", line 115, in graph_plan_from_context
+      |     validate_graph_intent(decision.graphs, brief, context or {})
+      |   File "/Users/manavrakeshku.modi/vision-agent/agent/graph_intent.py", line 59, in validate_graph_intent
+      |     validate_transforms(graph, request)
+      |   File "/Users/manavrakeshku.modi/vision-agent/agent/graph_transforms.py", line 100, in validate_transforms
+      |     operations = _requested(text)
+      |                  ^^^^^^^^^^^^^^^^
+      |   File "/Users/manavrakeshku.modi/vision-agent/agent/graph_transforms.py", line 47, in _requested
+      |     raise ValueError("Supply crop coordinates relative to the input image; object or zone-relative halves are ambiguous")
+      | ValueError: Supply crop coordinates relative to the input image; object or zone-relative halves are ambiguous
+      +------------------------------------
+=========================== short test summary info ============================
+FAILED tests/test_graph_transform_fidelity.py::test_half_repeated_as_exact_coordinates_is_one_crop
+FAILED tests/test_graph_authoring_mcp.py::test_composed_crop_resize_count_crosses_actual_mcp_and_replays
+2 failed, 64 passed in 10.09s
