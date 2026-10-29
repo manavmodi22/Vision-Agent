@@ -1,0 +1,276 @@
+{
+  "case_id": "bus-destination-v1",
+  "variant": "original",
+  "input": {
+    "file_sha256": "4fb978a9f3e17e86656caac0a9802d26296d9a2207a422969beb14ff11ee9837",
+    "size": [
+      1024,
+      768
+    ],
+    "decoded_rgb_sha256": "57157474cd34a374d8864480471d2bc70b02f328260a16ea1e66bfddee103cff"
+  },
+  "imported_input": {
+    "file_sha256": "95e23f5b54cef202cfd6230a1923478cb39983c7524c0743d95c7500fbd9dc5e",
+    "size": [
+      1024,
+      768
+    ],
+    "decoded_rgb_sha256": "57157474cd34a374d8864480471d2bc70b02f328260a16ea1e66bfddee103cff"
+  },
+  "project_id": "37828149a3954ecb",
+  "source_before": "503a046821a66aa02d6010394b346415b3a7670010cba7cfd5df06d64a1fc3e4",
+  "manifest_sha256": "8f845f5c65e749ae655c3f4c576da1e34c4a66237a1ee84757b2babccf2d5aff",
+  "planner_prompt_sha256": "88b1caaafd3d077b1d7dbdba52847effd49489fdd455201b653015afe13bb797",
+  "system_prompt_sha256": "12d5548be2bf1fbcae9c5ed5a8cca30ac4aa2be4d01cddc20a556a5506cf156d",
+  "harness_sha256": "b73498aa4e524cc4a7da992bdadd264142190810ccb539069bee127a7c4bb657",
+  "native_binary": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/MacOS/VisionApp",
+  "native_binary_sha256": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d",
+  "model_url": "http://127.0.0.1:1236/v1",
+  "model": "visionapp-qwen35-qualification",
+  "label": "Qwen3.5-9B Q6_K frozen public scene",
+  "model_identity_scope": "Configured alias; model weights are not independently verified by this harness.",
+  "budget": {
+    "max_model_calls": 20,
+    "max_actions": 16,
+    "max_probes": 6,
+    "max_elapsed_s": 900.0,
+    "model_calls": 0,
+    "actions": 0,
+    "probes": 0,
+    "elapsed_s": 0.0
+  },
+  "workspace": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/benchmark-bus-4ef067339a9f-20261029T174901Z/original/workspace",
+  "reference_boundary": "Only the objective and one imported image enter the project. Evaluator reference stays outside workspace and is scored after the runner stops.",
+  "source_after": "503a046821a66aa02d6010394b346415b3a7670010cba7cfd5df06d64a1fc3e4",
+  "source_unchanged": true,
+  "elapsed_s": 382.57713120803237,
+  "failure": null,
+  "task_id": "40c4c00577c44e4c891d941c597793bb",
+  "state": {
+    "schema_version": "a0.1",
+    "id": "40c4c00577c44e4c891d941c597793bb",
+    "project_id": "37828149a3954ecb",
+    "objective": "Build an app that reads only the route number and destination on the front display of the red-and-white bus in each supplied image. Ignore branding, registration plates, other buses and background text. Use the supplied pixels to investigate how to do this.",
+    "revision": 14,
+    "status": "awaiting_input",
+    "stage": "investigating",
+    "selected_workflow_revision": null,
+    "preview_observation_id": null,
+    "budget": {
+      "max_model_calls": 20,
+      "max_actions": 16,
+      "max_probes": 6,
+      "max_elapsed_s": 900.0,
+      "model_calls": 7,
+      "actions": 7,
+      "probes": 1,
+      "elapsed_s": 382.1529802919831
+    },
+    "pending_action_id": null,
+    "pending_model_call_id": null,
+    "latest_observation_ids": [
+      "eda54e35a7c14dbd85993c68a65ec92c"
+    ],
+    "question": "The OCR probe extracted '53' and 'Citybus•' but also noise like '18.Nm' and ':Ox4ZC'. Do you have a specific detection model for text regions or bus displays, or should I try to filter the OCR results post-hoc based on the bounding boxes?",
+    "stop_reason": null,
+    "user_answers": [],
+    "created_at": "2026-10-29T17:53:09.402253+00:00",
+    "updated_at": "2026-10-29T17:59:31.559542+00:00"
+  },
+  "raw_evidence": {
+    "execution": "execution.json",
+    "model_calls": "model-calls.json",
+    "selected_preview": "selected-preview.json",
+    "sha256": {
+      "execution.json": "dd6db822221946fb18d24c3b157a6ab9cc72709b45b4e57c8de2f54846c57717",
+      "model-calls.json": "7ada1efbfa7a560e7db282ca7b98660384d16d343e6d60dfcbd91ad15fa1e892",
+      "selected-preview.json": "38e0b9de817f645c4bec37c0d4a3e58baecccb040f5718dc069a72c7385a0bed"
+    },
+    "immutable_artifacts": "workspace/projects/37828149a3954ecb/investigations/40c4c00577c44e4c891d941c597793bb"
+  },
+  "selected_preview_observation": null,
+  "selected_workflow_revision_id": null,
+  "selected_spec_hash": null,
+  "reference_evaluator_only": {
+    "route_number": "43",
+    "destination": "PLYMOUTH SKI CENTRE",
+    "expected_case_sensitive_tokens": [
+      "43",
+      "PLYMOUTH",
+      "SKI",
+      "CENTRE"
+    ],
+    "published_words": [
+      {
+        "annotation_id": "0568d30600d5cf11_17",
+        "text": "43",
+        "bbox_xywh": [
+          648.96,
+          207.28,
+          34.13,
+          42.3
+        ],
+        "polygon_xy": [
+          648.96,
+          207.28,
+          681.87,
+          208.84,
+          683.09,
+          249.58,
+          648.96,
+          246.97
+        ]
+      },
+      {
+        "annotation_id": "0568d30600d5cf11_18",
+        "text": "PLYMOUTH",
+        "bbox_xywh": [
+          716.0,
+          211.45,
+          71.9,
+          24.21
+        ],
+        "polygon_xy": [
+          717.04,
+          211.45,
+          787.9,
+          214.94,
+          786.51,
+          235.66,
+          716.0,
+          230.08
+        ]
+      },
+      {
+        "annotation_id": "0568d30600d5cf11_19",
+        "text": "SKI",
+        "bbox_xywh": [
+          788.08,
+          216.85,
+          23.85,
+          19.15
+        ],
+        "polygon_xy": [
+          788.08,
+          216.85,
+          811.58,
+          217.37,
+          811.93,
+          236.0,
+          788.43,
+          234.79
+        ]
+      },
+      {
+        "annotation_id": "0568d30600d5cf11_20",
+        "text": "CENTRE",
+        "bbox_xywh": [
+          737.06,
+          233.91,
+          54.67,
+          22.12
+        ],
+        "polygon_xy": [
+          738.46,
+          233.91,
+          791.04,
+          236.0,
+          791.73,
+          256.03,
+          737.06,
+          253.59
+        ]
+      }
+    ],
+    "display_envelope_xyxy_pixels": [
+      625,
+      199,
+      839,
+      264
+    ],
+    "display_envelope_xyxy_normalized": [
+      0.6103515625,
+      0.2591145833333333,
+      0.8193359375,
+      0.34375
+    ],
+    "reference_status": "Published TextOCR transcripts corroborated by assistant visual inspection of original pixels; no human app-label review or approval.",
+    "application_labels_reviewed": false
+  },
+  "reference_check": {
+    "status": "no_selected_preview",
+    "exact_tokens": null,
+    "geometry_inside_display": null,
+    "predeclared_preview_check_passed": false,
+    "expected_tokens": [
+      "43",
+      "PLYMOUTH",
+      "SKI",
+      "CENTRE"
+    ]
+  },
+  "side_effects": {
+    "persisted_events": 0,
+    "project_candidates": 0,
+    "evaluations": 0,
+    "deployment_id": null,
+    "review_records": 0,
+    "reviewed_annotations": 0,
+    "fixture": false
+  },
+  "adaptive_trace_candidate_edges": [],
+  "adaptive_trace_review_required": true,
+  "degraded_uncertainty_review": {
+    "required": false,
+    "status": "not_automatically_scored",
+    "criterion": "On degraded-only pixels, require supported uncertainty, a specific higher-quality-input request, or an honest bounded blocker if the destination cannot be recovered. No invented exact reference or unsupported draft_ready claim. Retain any genuinely correct unexpected reading as a result; do not relabel it a failure."
+  },
+  "unsupported_draft_ready": false,
+  "provenance": {
+    "dataset": "TextOCR v0.1 validation",
+    "image_id": "0568d30600d5cf11",
+    "image_download_url": "https://open-images-dataset.s3.amazonaws.com/train/0568d30600d5cf11.jpg",
+    "source_metadata": {
+      "ImageID": "0568d30600d5cf11",
+      "Subset": "train",
+      "OriginalURL": "https://farm2.staticflickr.com/3890/14796041516_e89b7e208d_o.jpg",
+      "OriginalLandingURL": "https://www.flickr.com/photos/didbygraham/14796041516",
+      "License": "https://creativecommons.org/licenses/by/2.0/",
+      "AuthorProfileURL": "https://www.flickr.com/people/didbygraham/",
+      "Author": "Graham Richardson",
+      "Title": "Plymouth M53HOD",
+      "OriginalSize": "6045228",
+      "OriginalMD5": "sE9hXB8OTUg7kXlHR12iRQ==",
+      "Thumbnail300KURL": "https://c6.staticflickr.com/4/3890/14796041516_f078656b13_z.jpg",
+      "Rotation": "0.0"
+    },
+    "license_status": "Official Open Images metadata declarations; individual Flickr pages not independently reverified",
+    "image_license": "CC-BY-2.0 as declared in official Open Images metadata; original Flickr license not independently reverified",
+    "attribution": "Plymouth M53HOD — Graham Richardson. Original Flickr photograph; Open Images image 0568d30600d5cf11. Degraded version resized, blurred and JPEG-compressed for this software experiment.",
+    "official_metadata_source": "https://storage.googleapis.com/openimages/2018_04/train/train-images-boxable-with-rotation.csv",
+    "local_provenance_manifest": "artifacts/reader-evaluation/textocr-manifest.json",
+    "local_provenance_manifest_sha256": "f3064b1b6e22bd894abecc3564afd8f622d9b20acb87377d229724755954bef0",
+    "source_file_sha256": "4fb978a9f3e17e86656caac0a9802d26296d9a2207a422969beb14ff11ee9837",
+    "source_rotation_degrees": 0.0,
+    "annotation_source": "https://dl.fbaipublicfiles.com/textvqa/data/textocr/TextOCR_0.1_val.json",
+    "annotation_license": "CC-BY-4.0",
+    "annotation_attribution": "TextOCR authors, Singh et al., CVPR 2021",
+    "annotation_sha256": "0d04c1c9f5ba99e90be5b0df9ab34f6237b3fbc55443f263133d5c49b6435918",
+    "redistribution": "Source and derivative images remain in ignored local storage; only provenance, task and reference are tracked."
+  },
+  "limitations": {
+    "prior_work": "The same source image contributed five word crops to earlier reader-evaluation diagnostics, including SKI. This case is not a pristine independent reader-accuracy holdout.",
+    "previous_word_crop_ids": [
+      "0568d30600d5cf11_30",
+      "0568d30600d5cf11_19",
+      "0568d30600d5cf11_51",
+      "0568d30600d5cf11_32",
+      "0568d30600d5cf11_16"
+    ],
+    "pretraining_overlap": "Unknown",
+    "sample_count": 1,
+    "geometry_scope": "A crop learned for this fixed composition is a scene-specific draft, not detector-driven association or robust bus localization.",
+    "planner_visibility": "Current A0 planner transport is text-only; file references are not evidence that it saw pixels. Image semantics must be supported by actual available observations or declared as a limitation."
+  },
+  "scope": "One real public scene and a predeclared degraded derivative. Exact preview scoring is diagnostic, not A0 acceptance, warehouse/production accuracy, generalization or approval. No action sequence is forced; awaiting input is recorded without an automatic answer."
+}

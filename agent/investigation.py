@@ -14,6 +14,7 @@ from pydantic import JsonValue, TypeAdapter, ValidationError
 
 from agent.graph_structure import OUTPUTS
 from agent.investigation_client import InvestigationClient
+from agent.investigation_grounding import DecisionGrounding
 from agent.machine import AgentError, AgentState
 from agent.mcp_client import connect_tools
 from agent.planner import check_model, local_model_url
@@ -114,6 +115,8 @@ def _visible_contract(definition: dict[str, Any], definitions: dict[str, Any]) -
         nested[name] = _compact_schema(definitions[name])
         pending.update(_schema_references(nested[name]) - nested.keys())
     contract: dict[str, JsonValue] = {"required_fields": definition.get("required", []), "fields": fields}
+    if description := definition.get("description"):
+        contract["description"] = description
     if nested:
         contract["$defs"] = nested
     return contract
@@ -145,7 +148,8 @@ def workflow_action_contracts() -> dict[str, JsonValue]:
     graph_fields = _compact_schema(graph["properties"])
     graph_fields["nodes"]["items"] = {"type": "object", "description": "A typed node from node_contracts; its type selects its fields and ports."}
     fields = {name: _compact_schema(field) for name, field in action["properties"].items() if name != "type"}
-    fields["graph"] = {"type": "object", "required": graph["required"], "properties": graph_fields}
+    fields["graph"] = {"type": "object", "description": graph.get("description", ""),
+                       "required": graph["required"], "properties": graph_fields}
     return {"construct_workflow": {"required_fields": action["required"], "fields": fields}}
 
 
@@ -247,7 +251,8 @@ async def _run_steps(client: InvestigationClient, decide: Decider, model_name: s
         context = {**stable, **{key: value for key, value in context.items()
                                if key not in {"action_contracts", "node_contracts", "planner_modality"}}}
         output_type = WorkflowDecision if state.stage == "workflow" else NextAction
-        output_schema = output_type.model_json_schema()
+        grounding = DecisionGrounding.from_context(context, state.revision)
+        output_schema = grounding.schema(output_type.model_json_schema())
         # Model output must state its discriminator and provenance explicitly;
         # public DTOs retain defaults for compatible Python and stored callers.
         required = set(output_schema.get("required", [])) | {"type", "based_on_observation_ids"}
@@ -269,7 +274,8 @@ async def _run_steps(client: InvestigationClient, decide: Decider, model_name: s
                 if "based_on_observation_ids" not in raw:
                     raise KeyError("based_on_observation_ids must be explicitly supplied (possibly [])")
                 decision = DECISION.validate_python(raw)
-            except (ValidationError, KeyError, TypeError) as error:
+                grounding.validate(decision)
+            except (ValidationError, KeyError, TypeError, ValueError) as error:
                 await client.model_finish(call_id, response, f"Invalid next-action response: {error}")
                 continue
             await client.model_finish(call_id, response)

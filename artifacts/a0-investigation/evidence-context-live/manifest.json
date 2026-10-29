@@ -1,0 +1,127 @@
+{
+  "scope": "Byte-for-byte source copies below; snapshot and diagnostics are derived JSON. Raw model response/context retained in task.json and extracted call records. No production, ledger, inference or server mutation.",
+  "files": [
+    {
+      "source": ".visionapp/a0-investigation/run-20261029T180941Z/report.json",
+      "preserved": "report.json",
+      "bytes": 64920,
+      "sha256": "e8cba6bf3f4664f6dca5e3a9c9d3091d6c1a85461b9847cd2c2d193f905d4091"
+    },
+    {
+      "source": ".visionapp/a0-investigation/run-20261029T180941Z/workspace/projects/1a32862295864799/investigations/70e4ba01eae04c7899f3e7988af27258/task.json",
+      "preserved": "task.json",
+      "bytes": 508489,
+      "sha256": "b96e2246581f236d1bc6a72025d3d25d4354947b8f713441009b7f6abc52702d"
+    },
+    {
+      "source": ".visionapp/a0-investigation/run-20261029T180941Z/workspace/projects/1a32862295864799/project.json",
+      "preserved": "project.json",
+      "bytes": 682,
+      "sha256": "f85377e8b7887e9d8f8cc3213073eecd423c0d98ee9ba8526d728e4cea12cdff"
+    },
+    {
+      "source": ".visionapp/a0-investigation/run-20261029T180941Z/workspace/projects/1a32862295864799/media/media-sources.json",
+      "preserved": "media-sources.json",
+      "bytes": 436,
+      "sha256": "eed44303c11deec01e5f634a145489e6f3470baa31893afecbb0e3d3a4c1cab3"
+    },
+    {
+      "source": ".visionapp/a0-investigation/run-20261029T180941Z/item-and-shipping.png",
+      "preserved": "fixture/item-and-shipping.png",
+      "bytes": 21509,
+      "sha256": "36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051"
+    },
+    {
+      "source": ".visionapp/a0-investigation/run-20261029T180941Z/workspace/projects/1a32862295864799/investigations/70e4ba01eae04c7899f3e7988af27258/artifacts/3402478d85f8340a721a2bcf0825500af6302fece732c08e0e6f969bb6325469.json",
+      "preserved": "tool-artifacts/3402478d85f8340a721a2bcf0825500af6302fece732c08e0e6f969bb6325469.json",
+      "bytes": 3281,
+      "sha256": "3402478d85f8340a721a2bcf0825500af6302fece732c08e0e6f969bb6325469"
+    },
+    {
+      "source": ".visionapp/a0-investigation/run-20261029T180941Z/workspace/projects/1a32862295864799/investigations/70e4ba01eae04c7899f3e7988af27258/artifacts/36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051.png",
+      "preserved": "tool-artifacts/36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051.png",
+      "bytes": 21509,
+      "sha256": "36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051"
+    },
+    {
+      "source": ".visionapp/a0-investigation/run-20261029T180941Z/workspace/projects/1a32862295864799/investigations/70e4ba01eae04c7899f3e7988af27258/artifacts/7e895a1811f672464dfcb58b9cfedfbe3ee590dc2ca17d48b8c79b15fa9fb0cb.json",
+      "preserved": "tool-artifacts/7e895a1811f672464dfcb58b9cfedfbe3ee590dc2ca17d48b8c79b15fa9fb0cb.json",
+      "bytes": 238,
+      "sha256": "7e895a1811f672464dfcb58b9cfedfbe3ee590dc2ca17d48b8c79b15fa9fb0cb"
+    },
+    {
+      "source": ".visionapp/a0-investigation/run-20261029T180941Z/workspace/projects/1a32862295864799/investigations/70e4ba01eae04c7899f3e7988af27258/artifacts/9deba05dd981dbc3c4b1ecacdf7e5885a6e1ed9a4ecc824c53bbf7485a5c2d02.json",
+      "preserved": "tool-artifacts/9deba05dd981dbc3c4b1ecacdf7e5885a6e1ed9a4ecc824c53bbf7485a5c2d02.json",
+      "bytes": 7391,
+      "sha256": "9deba05dd981dbc3c4b1ecacdf7e5885a6e1ed9a4ecc824c53bbf7485a5c2d02"
+    },
+    {
+      "source": ".visionapp/a0-investigation/run-20261029T180941Z/workspace/projects/1a32862295864799/investigations/70e4ba01eae04c7899f3e7988af27258/artifacts/a21559ec75281687c20ceaa9f1895bad9bc5a593cb4338dd2dc2478f4fa64597.png",
+      "preserved": "tool-artifacts/a21559ec75281687c20ceaa9f1895bad9bc5a593cb4338dd2dc2478f4fa64597.png",
+      "bytes": 21694,
+      "sha256": "a21559ec75281687c20ceaa9f1895bad9bc5a593cb4338dd2dc2478f4fa64597"
+    },
+    {
+      "source": ".visionapp/a0-investigation/run-20261029T180941Z/workspace/projects/1a32862295864799/investigations/70e4ba01eae04c7899f3e7988af27258/artifacts/ebf517909f1a32771620944c7d225ed1f9a165a756d1550f12cf7b8098b15330.json",
+      "preserved": "tool-artifacts/ebf517909f1a32771620944c7d225ed1f9a165a756d1550f12cf7b8098b15330.json",
+      "bytes": 640,
+      "sha256": "ebf517909f1a32771620944c7d225ed1f9a165a756d1550f12cf7b8098b15330"
+    },
+    {
+      "source": "agent/investigation.py",
+      "preserved": "code-reference-snapshot/agent/investigation.py",
+      "bytes": 18787,
+      "sha256": "1cfb88acdbc0136b5aeaa8649160be90c686a312369103d83148788c5c17d0ca"
+    },
+    {
+      "source": "agent/investigation_client.py",
+      "preserved": "code-reference-snapshot/agent/investigation_client.py",
+      "bytes": 2336,
+      "sha256": "a162aa16a6eec3230f6e8bff6328ced96ce4c4dda9e1e39874a527495c491283"
+    },
+    {
+      "source": "agent/graph_structure.py",
+      "preserved": "code-reference-snapshot/agent/graph_structure.py",
+      "bytes": 4670,
+      "sha256": "cab3549b1e290b4c89e0b6a049bae978e8496dda62d8354ff6a3ea140e6414ff"
+    },
+    {
+      "source": "agent/graph_authoring.py",
+      "preserved": "code-reference-snapshot/agent/graph_authoring.py",
+      "bytes": 7129,
+      "sha256": "d0ba7bd0bd0f0eda284ac2ac19715e1af1755d076c71e49d522956591dd96983"
+    },
+    {
+      "source": "spec/authoring.py",
+      "preserved": "code-reference-snapshot/spec/authoring.py",
+      "bytes": 7062,
+      "sha256": "ec2de9a05b335dd51e7479ebdbb6454c57f93835607aa839f12e62169dfa23ec"
+    },
+    {
+      "source": "spec/investigation.py",
+      "preserved": "code-reference-snapshot/spec/investigation.py",
+      "bytes": 8780,
+      "sha256": "0af118a1f393672fddfd87fcd533e04fcdc8575a25761c4b9d00202d8601c123"
+    },
+    {
+      "source": "engine/investigations/store.py",
+      "preserved": "code-reference-snapshot/engine/investigations/store.py",
+      "bytes": 20904,
+      "sha256": "69b08d20479f50f8d6ef8273c9ef3c69a39f3cd920a356ee7adf04f89880a3d6"
+    },
+    {
+      "source": "engine/investigations/workflows.py",
+      "preserved": "code-reference-snapshot/engine/investigations/workflows.py",
+      "bytes": 15577,
+      "sha256": "f6eb1a3acf0b71ea710e20da1ef34f739dffc24add7a9bcc761a329ce29071b7"
+    },
+    {
+      "source": "mcp_server/investigations.py",
+      "preserved": "code-reference-snapshot/mcp_server/investigations.py",
+      "bytes": 12516,
+      "sha256": "111d0b3472862f525fc494c474e06b3e6b428b3594268298eae9523246298f26"
+    }
+  ],
+  "report_sha256": "e8cba6bf3f4664f6dca5e3a9c9d3091d6c1a85461b9847cd2c2d193f905d4091",
+  "task_sha256": "b96e2246581f236d1bc6a72025d3d25d4354947b8f713441009b7f6abc52702d"
+}

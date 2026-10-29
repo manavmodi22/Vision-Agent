@@ -1,0 +1,27 @@
+{
+  "omit_recent_purpose": true,
+  "before_sha256": "7853c1e8b3b45b8561329816bbee1eac38bb861216378df659d88b89a3e1e4d4",
+  "after_sha256": "2d69413c7caff3fd6cedbecdf3ca0944911f33759ceb68713467e2e73d79f894",
+  "changes": [
+    {
+      "op": "remove",
+      "path": "/recent_actions/0/purpose",
+      "removed_value": "The OCR probe (obs 0b4c82f13d224184801413e05074e5b6) successfully extracted 'QZ-4817' (the item code) and 'ITEM CODE' from the image, but also extracted 'SHIP TO' and 'IGNORE-552' (shipping label text). The user requires reading *only* the item code and ignoring the shipping label. The current OCR model cannot distinguish between these based on text alone. I must inspect the 'model.apple-vision' capability contract again to confirm if 'barcode' detection is a viable alternative for extracting the code without the label text, or if I need to ask the user for clarification on the code format."
+    },
+    {
+      "op": "remove",
+      "path": "/recent_actions/1/purpose",
+      "removed_value": "The OCR probe (obs 0b4c82f13d224184801413e05074e5b6) successfully extracted 'QZ-4817' (the item code) but also extracted 'SHIP TO' and 'IGNORE-552' (shipping label text). The user requires reading *only* the item code and ignoring the shipping label. The current OCR model cannot distinguish between these based on text alone. I must inspect the 'model.apple-vision' capability contract again to confirm if 'barcode' detection is a viable alternative for extracting the code without the label text, or if I need to ask the user for clarification on the code format."
+    },
+    {
+      "op": "remove",
+      "path": "/recent_actions/2/purpose",
+      "removed_value": "The OCR probe (obs 0b4c82f13d224184801413e05074e5b6) extracted 'QZ-4817' (the item code) but also extracted 'SHIP TO' and 'IGNORE-552' (shipping label text). The user requires reading *only* the item code and ignoring the shipping label. The current OCR model cannot distinguish between these based on text alone. I must inspect the 'model.apple-vision' capability contract again to confirm if 'barcode' detection is a viable alternative for extracting the code without the label text, or if I need to ask the user for clarification on the code format."
+    },
+    {
+      "op": "remove",
+      "path": "/recent_actions/3/purpose",
+      "removed_value": "The OCR probe (obs 0b4c82f13d224184801413e05074e5b6) successfully extracted the item code 'QZ-4817' but also extracted unwanted shipping label text ('SHIP TO', 'IGNORE-552'). The user requires reading *only* the item code. The capability 'model.apple-vision' supports both 'ocr' and 'barcode' tasks. Since the code format 'QZ-4817' resembles a barcode/identifier, I will probe the 'barcode' task to see if it can extract the code without the surrounding label text, which would satisfy the constraint to ignore the shipping label."
+    }
+  ]
+}

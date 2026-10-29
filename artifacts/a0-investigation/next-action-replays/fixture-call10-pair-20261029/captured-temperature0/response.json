@@ -1,0 +1,50 @@
+{
+  "id": "chatcmpl-wSO2yqH1sPJwx0IgJ7CM1k8aobZ6FnLq",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "{\n  \"type\": \"next_action\",\n  \"state_revision\": 18,\n  \"decision_summary\": \"The OCR probe (obs 0b4c82f13d224184801413e05074e5b6) successfully extracted the item code 'QZ-4817' but also extracted unwanted shipping label text ('SHIP TO', 'IGNORE-552'). The user requires reading *only* the item code. The capability 'model.apple-vision' supports both 'ocr' and 'barcode' tasks. Since the code format 'QZ-4817' resembles a barcode/identifier, I will probe the 'barcode' task to see if it can extract the code without the surrounding label text, which would satisfy the constraint to ignore the shipping label.\",\n  \"based_on_observation_ids\": [\"0b4c82f13d224184801413e05074e5b6\", \"b1bc4e58ace5407389ff735e6cc7d0a3\", \"1942b29f7f2f4790afdf93c65fe4aa30\"],\n  \"action\": {\n    \"type\": \"run_probe\",\n    \"capability_id\": \"model.apple-vision\",\n    \"inspected_descriptor_hash\": \"b4c6012e2b0d32242faae29bcd9f2705c7b77819d83fbc319a08a961de9d0125\",\n    \"media_id\": \"media-37bfc7455e8c63f77d1af724c9b7ddcf\",\n    \"source_sha256\": \"36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051\",\n    \"request\": {\n      \"task\": \"barcode\",\n      \"model_id\": \"apple-vision\"\n    }\n  }\n}",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1793297065,
+  "model": "visionapp-qwen35-qualification",
+  "object": "chat.completion",
+  "metadata": null,
+  "moderation": null,
+  "service_tier": null,
+  "system_fingerprint": "b11963-39febd2ad",
+  "usage": {
+    "completion_tokens": 521,
+    "prompt_tokens": 8171,
+    "total_tokens": 8692,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 674,
+      "image_tokens": null,
+      "text_tokens": null
+    }
+  },
+  "timings": {
+    "cache_n": 674,
+    "prompt_n": 7497,
+    "prompt_ms": 41630.569,
+    "prompt_per_token_ms": 5.5529637188208625,
+    "prompt_per_second": 180.08401470563612,
+    "predicted_n": 521,
+    "predicted_ms": 42320.62,
+    "predicted_per_token_ms": 81.3858076923077,
+    "predicted_per_second": 12.287154583274063
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "compiled-plan.json": {
+    "bytes": 1855,
+    "sha256": "597a8d38998b2b157ad9006ed1fe0eb99203d4fa7c714a56b1861e75d4ada26d"
+  },
+  "compiled-spec.json": {
+    "bytes": 593,
+    "sha256": "9a0a8145216937f7c1dce815ecf759f8dc1d0bf63a043aaebe2ce73aed649bbb"
+  },
+  "graph.json": {
+    "bytes": 403,
+    "sha256": "708e197a8588c4aa2e69583603c7d24cde8fb0dfa130bf40c7ea056761996f87"
+  },
+  "model-bindings.json": {
+    "bytes": 387,
+    "sha256": "fcd76f464a1d365c8966523eb286d30cb43ee58458909ed88e0c036fdc803312"
+  },
+  "planning-options.json": {
+    "bytes": 22493,
+    "sha256": "df48f684ca6d586757cb122158223c120218fadfd51705c065de4f48aae4fe36"
+  },
+  "proposal.json": {
+    "bytes": 1725,
+    "sha256": "4261cba52e814848308e08f260f92f2f5e509dd53afc049981ba0e9f6416d1bb"
+  },
+  "receipt.json": {
+    "bytes": 4353,
+    "sha256": "c75cbb3f75cef1023f91efe1629a383d54c8ecdeeb3636253a342dec64014d16"
+  },
+  "reference-check.json": {
+    "bytes": 524,
+    "sha256": "177c0743944bb73efca77a9fdd7a664d84bdfae081efb22324a305ea09e3e832"
+  },
+  "run-result.json": {
+    "bytes": 6670,
+    "sha256": "92dcccfaac0b7d1bf87a76a4ba1a3c0c870d12dab900a273f428bea18b43ae20"
+  }
+}

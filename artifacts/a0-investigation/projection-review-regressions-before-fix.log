@@ -1,0 +1,167 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+_ test_retrieval_hint_pages_original_immutable_observation_in_same_view[values] _
+
+tmp_path = PosixPath('/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-303/test_retrieval_hint_pages_orig0')
+view = 'values'
+
+    @pytest.mark.parametrize("view", ["values", "geometry"])
+    def test_retrieval_hint_pages_original_immutable_observation_in_same_view(tmp_path: Path, view: str) -> None:
+        service = WorkspaceService(tmp_path / "workspace")
+        project = service.create_project("Saved-observation paging software test", "custom")
+        store = InvestigationStore(service)
+        task = store.create(project.id, "Exercise saved evidence paging; no real inference")
+        tools = InvestigationTools(service, store)
+    
+        def reserve(action: dict[str, Any]) -> Any:
+            decision = NextAction.model_validate({"state_revision": store.get(project.id, task.id).revision,
+                "decision_summary": "Scripted paging test; no language model", "action": action})
+            call = store.start_model_call(project.id, task.id, {}, "scripted-paging-test")
+            store.finish_model_call(project.id, task.id, call.id, {"decision": decision.model_dump(mode="json")})
+            return store.reserve_action(project.id, task.id, decision)
+    
+        def inspect(action: dict[str, Any]) -> Observation:
+            receipt = reserve(action)
+            result = tools.execute(project.id, task.id, receipt.id, receipt.action)
+            saved = store.complete_action(project.id, task.id, receipt.id, result.payload,
+                                          status=result.status, error=result.error)
+            assert saved.status == "completed", saved.error
+            return saved
+    
+        # Save deterministic test rows in the same content-addressed artifact format
+        # the real probe reader uses. No adapter is invoked and executed stays false.
+        items = [{"item_id": f"software-row-{index}", "text": f"Literal-{index:03}",
+                  "kind": "ocr", "box": [.1, .2, .3, .4], "source_box": [.6, .2, .8, .4],
+                  "source_polygon": [[.6, .2], [.8, .2], [.8, .4], [.6, .4]]}
+                 for index in range(12)]
+        artifacts = Artifacts(store.root(project.id, task.id))
+        artifact_bytes = json.dumps({"software_fixture": True, "items": items}, sort_keys=True).encode()
+        reference = artifacts.write(artifact_bytes, "application/json")
+        receipt = reserve({"type": "run_probe", "capability_id": "model.apple-vision",
+            "inspected_descriptor_hash": "c" * 64, "media_id": "software-fixture", "source_sha256": "d" * 64,
+            "request": {"task": "ocr", "model_id": "apple-vision"}})
+        source = store.complete_action(project.id, task.id, receipt.id, {
+            "executed": False, "software_fixture": True, "input_refs": [], "result_artifact": reference,
+            "items": items, "total_items": 12, "returned_items": 12, "truncated": False, "next_cursor": None})
+        original = source.model_dump(mode="json")
+        page = inspect({"type": "inspect_observation", "observation_id": source.id,
+                        "view": view, "limit": 5, "cursor": None})
+        collected = list(page.payload["items"])
+        for expected_start in (5, 10):
+            before = page.model_dump(mode="json")
+            hint = observation_projection(page)["payload"]["retrieve_saved_values"]
+            next_page = inspect(hint)
+            # Follow the actual supplied action before checking it: the broken hint
+            # succeeds but silently pages the five-row inspection receipt itself.
+>           assert next_page.payload["total_items"] == 12, (
+                f"Hint inspected a nested page instead of all original rows: {hint}; "
+                f"reported total={next_page.payload['total_items']}")
+E           AssertionError: Hint inspected a nested page instead of all original rows: {'type': 'inspect_observation', 'observation_id': 'e3c437a3ba2946299e0d15fae177fd43', 'view': 'values', 'limit': 5, 'cursor': None}; reported total=5
+E           assert 5 == 12
+
+tests/test_investigation_projection_regressions.py:65: AssertionError
+_ test_retrieval_hint_pages_original_immutable_observation_in_same_view[geometry] _
+
+tmp_path = PosixPath('/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-303/test_retrieval_hint_pages_orig1')
+view = 'geometry'
+
+    @pytest.mark.parametrize("view", ["values", "geometry"])
+    def test_retrieval_hint_pages_original_immutable_observation_in_same_view(tmp_path: Path, view: str) -> None:
+        service = WorkspaceService(tmp_path / "workspace")
+        project = service.create_project("Saved-observation paging software test", "custom")
+        store = InvestigationStore(service)
+        task = store.create(project.id, "Exercise saved evidence paging; no real inference")
+        tools = InvestigationTools(service, store)
+    
+        def reserve(action: dict[str, Any]) -> Any:
+            decision = NextAction.model_validate({"state_revision": store.get(project.id, task.id).revision,
+                "decision_summary": "Scripted paging test; no language model", "action": action})
+            call = store.start_model_call(project.id, task.id, {}, "scripted-paging-test")
+            store.finish_model_call(project.id, task.id, call.id, {"decision": decision.model_dump(mode="json")})
+            return store.reserve_action(project.id, task.id, decision)
+    
+        def inspect(action: dict[str, Any]) -> Observation:
+            receipt = reserve(action)
+            result = tools.execute(project.id, task.id, receipt.id, receipt.action)
+            saved = store.complete_action(project.id, task.id, receipt.id, result.payload,
+                                          status=result.status, error=result.error)
+            assert saved.status == "completed", saved.error
+            return saved
+    
+        # Save deterministic test rows in the same content-addressed artifact format
+        # the real probe reader uses. No adapter is invoked and executed stays false.
+        items = [{"item_id": f"software-row-{index}", "text": f"Literal-{index:03}",
+                  "kind": "ocr", "box": [.1, .2, .3, .4], "source_box": [.6, .2, .8, .4],
+                  "source_polygon": [[.6, .2], [.8, .2], [.8, .4], [.6, .4]]}
+                 for index in range(12)]
+        artifacts = Artifacts(store.root(project.id, task.id))
+        artifact_bytes = json.dumps({"software_fixture": True, "items": items}, sort_keys=True).encode()
+        reference = artifacts.write(artifact_bytes, "application/json")
+        receipt = reserve({"type": "run_probe", "capability_id": "model.apple-vision",
+            "inspected_descriptor_hash": "c" * 64, "media_id": "software-fixture", "source_sha256": "d" * 64,
+            "request": {"task": "ocr", "model_id": "apple-vision"}})
+        source = store.complete_action(project.id, task.id, receipt.id, {
+            "executed": False, "software_fixture": True, "input_refs": [], "result_artifact": reference,
+            "items": items, "total_items": 12, "returned_items": 12, "truncated": False, "next_cursor": None})
+        original = source.model_dump(mode="json")
+        page = inspect({"type": "inspect_observation", "observation_id": source.id,
+                        "view": view, "limit": 5, "cursor": None})
+        collected = list(page.payload["items"])
+        for expected_start in (5, 10):
+            before = page.model_dump(mode="json")
+            hint = observation_projection(page)["payload"]["retrieve_saved_values"]
+            next_page = inspect(hint)
+            # Follow the actual supplied action before checking it: the broken hint
+            # succeeds but silently pages the five-row inspection receipt itself.
+>           assert next_page.payload["total_items"] == 12, (
+                f"Hint inspected a nested page instead of all original rows: {hint}; "
+                f"reported total={next_page.payload['total_items']}")
+E           AssertionError: Hint inspected a nested page instead of all original rows: {'type': 'inspect_observation', 'observation_id': 'b93f22dfd51e4f8899061a5678a76713', 'view': 'values', 'limit': 5, 'cursor': None}; reported total=5
+E           assert 5 == 12
+
+tests/test_investigation_projection_regressions.py:65: AssertionError
+_ test_complete_probe_payload_including_retrieval_hint_stays_within_5000_chars _
+
+    def test_complete_probe_payload_including_retrieval_hint_stays_within_5000_chars() -> None:
+        payload = {"executed": True, "items": [
+            {"text": "X" * 1327, "kind": "ocr", "item_id": f"probe:{i}",
+             "identity_scope": "frame_local_observation", "confidence": 1.0, "source_box": [.1, .2, .3, .4]}
+            for i in range(4)], "total_items": 4, "returned_items": 4, "truncated": False, "next_cursor": None}
+        observation = Observation(id="a" * 32, action_id="b" * 32, result_type="run_probe", status="completed",
+                                  payload=payload, created_at="2026-10-29T00:00:00Z")
+        before = deepcopy(observation.model_dump(mode="json"))
+        projected = observation_projection(observation)["payload"]
+        assert observation.model_dump(mode="json") == before
+        assert projected["truncated"] is True and projected["returned_items"] < 4
+        assert projected["retrieve_saved_values"]["observation_id"] == observation.id
+        assert all(row["text"] == "X" * 1327 for row in projected["items"])
+        size = len(json.dumps(projected, ensure_ascii=False))
+>       assert size <= 5000, f"Complete model-visible payload is {size} chars after retrieval hint was added"
+E       AssertionError: Complete model-visible payload is 5001 chars after retrieval hint was added
+E       assert 5001 <= 5000
+
+tests/test_investigation_projection_regressions.py:102: AssertionError
+_ test_metadata_only_oversize_uses_explicit_bounded_fallback_without_receipt_mutation _
+
+    def test_metadata_only_oversize_uses_explicit_bounded_fallback_without_receipt_mutation() -> None:
+        # Six 1000-character warnings are within the existing InferenceResult bounds.
+        payload = {"executed": True, "execution_status": "completed", "items": [{"text": "ACTUAL-LITERAL"}],
+                   "warnings": [f"{i}:" + "W" * 998 for i in range(6)],
+                   "total_items": 1, "returned_items": 1, "truncated": False, "next_cursor": None}
+        observation = Observation(id="c" * 32, action_id="d" * 32, result_type="run_probe", status="completed",
+                                  payload=payload, created_at="2026-10-29T00:00:00Z")
+        before = deepcopy(observation.model_dump(mode="json"))
+        projected = observation_projection(observation)["payload"]
+        assert observation.model_dump(mode="json") == before
+        size = len(json.dumps(projected, ensure_ascii=False))
+>       assert size <= 5000, f"Metadata alone defeats the declared projection limit: {size} chars"
+E       AssertionError: Metadata alone defeats the declared projection limit: 6640 chars
+E       assert 6640 <= 5000
+
+tests/test_investigation_projection_regressions.py:116: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_investigation_projection_regressions.py::test_retrieval_hint_pages_original_immutable_observation_in_same_view[values]
+FAILED tests/test_investigation_projection_regressions.py::test_retrieval_hint_pages_original_immutable_observation_in_same_view[geometry]
+FAILED tests/test_investigation_projection_regressions.py::test_complete_probe_payload_including_retrieval_hint_stays_within_5000_chars
+FAILED tests/test_investigation_projection_regressions.py::test_metadata_only_oversize_uses_explicit_bounded_fallback_without_receipt_mutation
+4 failed in 0.65s

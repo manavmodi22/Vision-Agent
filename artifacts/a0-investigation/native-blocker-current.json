@@ -1,0 +1,8 @@
+{
+  "recorded_at": "2026-10-29T18:11:53.169430+00:00",
+  "surface": "VisionApp-Development.app",
+  "attempt": "cua.getApp after documentation refresh",
+  "result": "The Mac is locked and automatic unlock could not unlock it.",
+  "scope": "No UI action, screenshot or new visual acceptance was completed. Earlier unlock request remains pending; backend work continues.",
+  "canonical_app_replaced": false
+}

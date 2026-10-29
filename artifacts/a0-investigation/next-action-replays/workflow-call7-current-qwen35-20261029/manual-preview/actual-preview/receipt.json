@@ -1,0 +1,85 @@
+{
+  "scope": "Manual diagnostic preview of exact captured model proposal; not an investigation action, live agent run, or A0 success.",
+  "created_at": "2026-10-29T18:30:36.614287+00:00",
+  "source_identity": "983d70a78951ed22652055fe2a9cae449dafdfa6548fca3cf7081c733e3fb62f",
+  "workspace": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/manual-graph-preview-qwen35-call7-20261029/attempt2/workspace",
+  "project_id": "3109f87cc35e430c",
+  "proposal_source": "/Users/manavrakeshku.modi/vision-agent/artifacts/a0-investigation/next-action-replays/workflow-call7-current-qwen35-20261029/candidate.json",
+  "proposal_sha256": "4261cba52e814848308e08f260f92f2f5e509dd53afc049981ba0e9f6416d1bb",
+  "graph_changed": false,
+  "manual_source_binding": {
+    "historical_media_ids": [
+      "media-0e53fc77549b0b5080d45aedd9373425"
+    ],
+    "copied_fixture": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/manual-graph-preview-qwen35-call7-20261029/attempt2/workspace/projects/3109f87cc35e430c/media/0567f474-item-and-shipping.png",
+    "source_sha256": "36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051"
+  },
+  "compiled": true,
+  "actual_apple_vision_preview": true,
+  "llm_requests": 0,
+  "native_bridge": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/MacOS/VisionApp",
+  "native_bridge_sha256": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d",
+  "model_authority_fabricated": false,
+  "investigation_store_created": false,
+  "protected_inputs_before": {
+    "/Users/manavrakeshku.modi/vision-agent/artifacts/a0-investigation/next-action-replays/workflow-call7-current-qwen35-20261029/candidate.json": "4261cba52e814848308e08f260f92f2f5e509dd53afc049981ba0e9f6416d1bb",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T180941Z/workspace/projects/1a32862295864799/investigations/70e4ba01eae04c7899f3e7988af27258/task.json": "b96e2246581f236d1bc6a72025d3d25d4354947b8f713441009b7f6abc52702d",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T180941Z/item-and-shipping.png": "36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T180941Z/report.json": "e8cba6bf3f4664f6dca5e3a9c9d3091d6c1a85461b9847cd2c2d193f905d4091",
+    "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/MacOS/VisionApp": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d"
+  },
+  "protected_inputs_unchanged": true,
+  "original_project_unchanged": true,
+  "production_source_unchanged": true,
+  "effects_before": {
+    "candidate_count": 0,
+    "evaluation_count": 0,
+    "approval_scope": null,
+    "deployment_id": null,
+    "persisted_event_count": 0,
+    "review_count": 0,
+    "deployment_file": false,
+    "investigation_directory": false,
+    "project_json_sha256": "eec2394d2deb5b854ebfa7cf73210d5dcb0cd3ddf610cf7d4f6853e8a7b35e09",
+    "annotations_sha256": "f01254abead465c562b82205d4a7e3c74cd64a5149d745e09a96aa4d989cbdfd"
+  },
+  "effects_after": {
+    "candidate_count": 0,
+    "evaluation_count": 0,
+    "approval_scope": null,
+    "deployment_id": null,
+    "persisted_event_count": 0,
+    "review_count": 0,
+    "deployment_file": false,
+    "investigation_directory": false,
+    "project_json_sha256": "eec2394d2deb5b854ebfa7cf73210d5dcb0cd3ddf610cf7d4f6853e8a7b35e09",
+    "annotations_sha256": "f01254abead465c562b82205d4a7e3c74cd64a5149d745e09a96aa4d989cbdfd"
+  },
+  "usage_note": "Runtime records preview exposure only inside the new isolated workspace; no labels reviewed or scores assigned.",
+  "reference_check": {
+    "scope": "One generated fixture diagnostic; not a scored evaluation or acceptance gate.",
+    "reference_origin": "Generated software fixture; these expected values were not supplied to the planner",
+    "expected_texts": [
+      "QZ-4817"
+    ],
+    "excluded_readings": [
+      "ITEM CODE",
+      "SHIP TO",
+      "IGNORE-552"
+    ],
+    "actual_texts": [
+      "ITEM CODE",
+      "QZ-4817",
+      "SHIP TO",
+      "IGNORE-552"
+    ],
+    "exact_match": false,
+    "excluded_readings_observed": [
+      "ITEM CODE",
+      "SHIP TO",
+      "IGNORE-552"
+    ]
+  },
+  "elapsed_s": 0.8702437080210075,
+  "preview_elapsed_s": 0.5637199169723317
+}

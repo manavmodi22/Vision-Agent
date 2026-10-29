@@ -1,0 +1,159 @@
+{
+  "scope": "Two next-decision diagnostics; no executed actions, new workflow, or A0 acceptance result.",
+  "request_count": 2,
+  "same_context": true,
+  "same_schema": true,
+  "source_identity": "c5a0e6922e6c806251372e12c80b3a9ef15c846216d4f13b5eeda3c9927a3c31",
+  "source_and_ledger_unchanged": true,
+  "server_idle_before_between_after": true,
+  "results": [
+    {
+      "name": "captured-temperature0",
+      "sampling": {
+        "temperature": 0
+      },
+      "elapsed_s": 84.15963508404093,
+      "usage": {
+        "completion_tokens": 521,
+        "prompt_tokens": 8171,
+        "total_tokens": 8692,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 674,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      },
+      "timings": {
+        "cache_n": 674,
+        "prompt_n": 7497,
+        "prompt_ms": 41630.569,
+        "prompt_per_token_ms": 5.5529637188208625,
+        "prompt_per_second": 180.08401470563612,
+        "predicted_n": 521,
+        "predicted_ms": 42320.62,
+        "predicted_per_token_ms": 81.3858076923077,
+        "predicted_per_second": 12.287154583274063
+      },
+      "context_budget": {
+        "mode": "backend_tokenizer",
+        "model": "visionapp-qwen35-qualification",
+        "input_tokens": 8171,
+        "backend_context_tokens": 16384,
+        "context_verified": true,
+        "output_tokens": 1400,
+        "margin_tokens": 128,
+        "effective_context_tokens": 16384
+      },
+      "decision": {
+        "type": "next_action",
+        "state_revision": 18,
+        "decision_summary": "The OCR probe (obs 0b4c82f13d224184801413e05074e5b6) successfully extracted the item code 'QZ-4817' but also extracted unwanted shipping label text ('SHIP TO', 'IGNORE-552'). The user requires reading *only* the item code. The capability 'model.apple-vision' supports both 'ocr' and 'barcode' tasks. Since the code format 'QZ-4817' resembles a barcode/identifier, I will probe the 'barcode' task to see if it can extract the code without the surrounding label text, which would satisfy the constraint to ignore the shipping label.",
+        "based_on_observation_ids": [
+          "0b4c82f13d224184801413e05074e5b6",
+          "b1bc4e58ace5407389ff735e6cc7d0a3",
+          "1942b29f7f2f4790afdf93c65fe4aa30"
+        ],
+        "action": {
+          "type": "run_probe",
+          "capability_id": "model.apple-vision",
+          "inspected_descriptor_hash": "b4c6012e2b0d32242faae29bcd9f2705c7b77819d83fbc319a08a961de9d0125",
+          "media_id": "media-37bfc7455e8c63f77d1af724c9b7ddcf",
+          "source_sha256": "36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051",
+          "transforms": [],
+          "request": {
+            "task": "barcode",
+            "model_id": "apple-vision"
+          }
+        }
+      },
+      "shape_and_provenance_valid": true,
+      "action_dispatched": false,
+      "source_unchanged": true,
+      "ledger_unchanged": true,
+      "context_sha256": "7853c1e8b3b45b8561329816bbee1eac38bb861216378df659d88b89a3e1e4d4",
+      "source_identity": "c5a0e6922e6c806251372e12c80b3a9ef15c846216d4f13b5eeda3c9927a3c31"
+    },
+    {
+      "name": "explicit-nonthinking-sampling",
+      "sampling": {
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "presence_penalty": 1.5,
+        "extra_body": {
+          "top_k": 20,
+          "min_p": 0.0,
+          "repeat_penalty": 1.0,
+          "seed": 42
+        }
+      },
+      "elapsed_s": 41.746887457964476,
+      "usage": {
+        "completion_tokens": 477,
+        "prompt_tokens": 8171,
+        "total_tokens": 8648,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 8167,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      },
+      "timings": {
+        "cache_n": 8167,
+        "prompt_n": 4,
+        "prompt_ms": 79.28,
+        "prompt_per_token_ms": 19.82,
+        "prompt_per_second": 50.45408678102926,
+        "predicted_n": 477,
+        "predicted_ms": 41552.859,
+        "predicted_per_token_ms": 87.29592226890756,
+        "predicted_per_second": 11.455288792523278
+      },
+      "context_budget": {
+        "mode": "backend_tokenizer",
+        "model": "visionapp-qwen35-qualification",
+        "input_tokens": 8171,
+        "backend_context_tokens": 16384,
+        "context_verified": true,
+        "output_tokens": 1400,
+        "margin_tokens": 128,
+        "effective_context_tokens": 16384
+      },
+      "decision": {
+        "type": "next_action",
+        "state_revision": 18,
+        "decision_summary": "The OCR probe (obs 0b4c82f13d224184801413e05074e5b6) successfully extracted 'QZ-4817' but also picked up unwanted shipping label text ('SHIP TO', 'IGNORE-552'). The user requires reading *only* the item code. The capability 'model.apple-vision' supports both 'ocr' and 'barcode' tasks (obs b1bc4e58ace5407389ff735e6cc7d0a3). Since OCR failed to isolate the code, I will probe the 'barcode' task with the same image to see if it can extract the code without the surrounding label text. Based on obs 9ef0e7d47558457c9907c36350e74302, the barcode probe returned empty results, indicating this capability cannot extract the code from this image format. Since OCR works but includes unwanted text, and barcode doesn't work at all, I must ask the user for clarification on how to isolate the item code (e.g., specific visual cues, bounding box coordinates, or if the code is always in a fixed position).",
+        "based_on_observation_ids": [
+          "0b4c82f13d224184801413e05074e5b6",
+          "b1bc4e58ace5407389ff735e6cc7d0a3",
+          "9ef0e7d47558457c9907c36350e74302"
+        ],
+        "action": {
+          "type": "ask_user",
+          "question": "The OCR model extracted the item code 'QZ-4817' but also picked up shipping label text ('SHIP TO', 'IGNORE-552'). The barcode model returned no results. How can I isolate *only* the item code? Is it always in a fixed position, does it have a specific visual marker (like a box), or should I filter by known code patterns?"
+        }
+      },
+      "shape_and_provenance_valid": true,
+      "action_dispatched": false,
+      "source_unchanged": true,
+      "ledger_unchanged": true,
+      "context_sha256": "7853c1e8b3b45b8561329816bbee1eac38bb861216378df659d88b89a3e1e4d4",
+      "source_identity": "c5a0e6922e6c806251372e12c80b3a9ef15c846216d4f13b5eeda3c9927a3c31"
+    }
+  ],
+  "interpretation": {
+    "temperature0": "Repeats the exact historical barcode action that completed with zero readings, despite retained positive OCR and empty barcode observations.",
+    "explicit_sampling": "Acknowledges empty barcode and asks for user guidance; no further autonomous experiment or workflow proposed.",
+    "limits": [
+      "One sample per policy; cannot establish which policy is generally better.",
+      "The second request reused 8167 cached prompt tokens; elapsed times are not a controlled speed comparison.",
+      "This pair compares sampling under corrected context only, not original versus corrected context.",
+      "Structural/provenance checks do not prove executable authorization or task correctness."
+    ]
+  }
+}

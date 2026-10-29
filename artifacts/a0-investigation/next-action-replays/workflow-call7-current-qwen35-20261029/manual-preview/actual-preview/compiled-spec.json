@@ -1,0 +1,37 @@
+{
+  "spec_version": "0.1",
+  "name": "Item Code Reader",
+  "inputs": {
+    "source": {
+      "type": "image_folder",
+      "path": "media"
+    }
+  },
+  "blocks": [
+    {
+      "id": "src",
+      "type": "frame_sample",
+      "params": {
+        "fps": 1.0
+      },
+      "in": {
+        "frames": "$inputs.source"
+      }
+    },
+    {
+      "id": "reader",
+      "type": "ocr",
+      "params": {
+        "model": "apple-vision"
+      },
+      "in": {
+        "image": "$src.frame"
+      }
+    }
+  ],
+  "eval": {
+    "set": "reviewed-v1",
+    "metric": "text_accuracy",
+    "target": 1.0
+  }
+}

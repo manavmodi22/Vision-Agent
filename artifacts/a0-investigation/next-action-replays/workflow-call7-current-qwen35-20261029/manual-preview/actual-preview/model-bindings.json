@@ -1,0 +1,12 @@
+[
+  {
+    "candidate_index": 0,
+    "block_id": "reader",
+    "capability_id": "model.apple-vision",
+    "model_id": "apple-vision",
+    "adapter_id": "apple-vision",
+    "proposed_reason": "Extract item code QZ-4817 from image, ignoring shipping label text.",
+    "options_snapshot_id": "544b59c213c17399e6505313cc172cfff0d1d15cd76c88f81f1ac0aebff50acb",
+    "status": "proposed"
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "type": "workflow_decision",
+  "state_revision": 12,
+  "decision_summary": "Construct the workflow using OCR to extract 'QZ-4817' (observation 6b504f808f3d4b0db73327fa737cf48f). The barcode probe failed (observation ebcbff419c664b21bf73e9e4346e67eb), confirming OCR is the correct approach. The workflow will use model.apple-vision with task 'ocr' and language 'en-US' on media-0e53fc77549b0b5080d45aedd9373425.",
+  "based_on_observation_ids": [
+    "6b504f808f3d4b0db73327fa737cf48f",
+    "ebcbff419c664b21bf73e9e4346e67eb",
+    "32bcfd442fb84ef58a83211f291e686f"
+  ],
+  "action": {
+    "type": "construct_workflow",
+    "graph": {
+      "name": "ItemCodeReader",
+      "nodes": [
+        {
+          "type": "ocr",
+          "id": "ocr-reader",
+          "image": "$media-0e53fc77549b0b5080d45aedd9373425.png",
+          "model_capability_id": "model.apple-vision",
+          "model_reason": "Extract item code 'QZ-4817' as confirmed by observation 6b504f808f3d4b0db73327fa737cf48f; barcode task failed."
+        },
+        {
+          "type": "sink_event",
+          "id": "sink-result",
+          "event": "$ocr-reader.text"
+        }
+      ],
+      "metric": "text_accuracy",
+      "target": 1.0
+    },
+    "media_ids": [
+      "media-0e53fc77549b0b5080d45aedd9373425"
+    ],
+    "evidence_ids": [
+      "6b504f808f3d4b0db73327fa737cf48f",
+      "ebcbff419c664b21bf73e9e4346e67eb",
+      "32bcfd442fb84ef58a83211f291e686f"
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "timestamp": "2026-10-29T17:53:00.322338+00:00",
+  "phase": "before_original",
+  "free_bytes": 9314193408,
+  "previous_fixture_task": {
+    "id": "b8356984efca48508eef49f3b543e6d7",
+    "status": "awaiting_input",
+    "budget": {
+      "max_model_calls": 20,
+      "max_actions": 16,
+      "max_probes": 6,
+      "max_elapsed_s": 900.0,
+      "model_calls": 10,
+      "actions": 10,
+      "probes": 2,
+      "elapsed_s": 559.0135977499885
+    },
+    "pending_action_id": null,
+    "pending_model_call_id": null
+  },
+  "candidate_slots": [
+    {
+      "id": 0,
+      "is_processing": false,
+      "n_ctx": 16384
+    }
+  ],
+  "candidate_context": 16384,
+  "server_processes": [
+    "33397 18124 1950512 .visionapp/runtime/llama-b11963/llama-server -m .visionapp/model-qualification/Qwen3.5-9B-Q6_K/Qwen3.5-9B-Q6_K.gguf --host 127.0.0.1 --port 1236 --alias visionapp-qwen35-qualification --ctx-size 16384 --parallel 1 --reasoning off --chat-template-kwargs {\"enable_thinking\":false} --no-webui -lv 4",
+    "45543     1  14832 /Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server -m /Users/manavrakeshku.modi/.lmstudio/models/prithivMLmods/Cosmos-Reason2-8B-GGUF/Cosmos-Reason2-8B.Q8_0.gguf --mmproj /Users/manavrakeshku.modi/.lmstudio/models/prithivMLmods/Cosmos-Reason2-8B-GGUF/Cosmos-Reason2-8B.mmproj-f16.gguf --host 127.0.0.1 --port 1235 --alias visionapp-vlm --ctx-size 8192 --parallel 1 --reasoning off --image-max-tokens 1024 --no-webui"
+  ],
+  "resources": {
+    "vm_stat": {
+      "returncode": 0,
+      "stdout": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                   161648.\nPages active:                                 667420.\nPages inactive:                               830698.\nPages speculative:                            223369.\nPages throttled:                                   0.\nPages wired down:                             724369.\nPages purgeable:                                3554.\n\"Translation faults\":                     1874859470.\nPages copy-on-write:                        53452019.\nPages zero filled:                        3456380747.\nPages reactivated:                         121592439.\nPages purged:                               27327386.\nFile-backed pages:                           1058595.\nAnonymous pages:                              662892.\nPages stored in compressor:                  2665617.\nPages occupied by compressor:                 493462.\nDecompressions:                             78768310.\nCompressions:                              112956965.\nPageins:                                    51969468.\nPageouts:                                     755155.\nSwapins:                                      583815.\nSwapouts:                                    1715859.\n",
+      "stderr": ""
+    },
+    "swap": {
+      "returncode": 0,
+      "stdout": "vm.swapusage: total = 15360.00M  used = 14469.38M  free = 890.62M  (encrypted)\n",
+      "stderr": ""
+    },
+    "memory_pressure": {
+      "returncode": 0,
+      "stdout": "The system has 51539607552 (3145728 pages with a page size of 16384).\nSystem-wide memory free percentage: 60%\n",
+      "stderr": ""
+    },
+    "server_listeners": {
+      "returncode": 0,
+      "stdout": "p33397\ncllama-server\nf3\ntIPv4\nn127.0.0.1:1236\np45543\ncllama-server\nf3\ntIPv4\nn127.0.0.1:1235\n",
+      "stderr": ""
+    }
+  },
+  "residency_note": "Qwen14 baseline was unloaded before this public pair; Qwen3.5 qualification and Cosmos remain. No model servers started by this harness."
+}

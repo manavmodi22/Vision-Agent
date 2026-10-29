@@ -1,0 +1,288 @@
+{
+  "contracts": "current",
+  "context": "original",
+  "changed_input_diagnostic": true,
+  "changes": [
+    {
+      "op": "add",
+      "path": "/context/action_contracts/construct_workflow/fields/graph/description",
+      "after": "One connected, acyclic vision graph. Output references must resolve to compatible ports on nodes in this graph. The host binds source media separately."
+    },
+    {
+      "op": "add",
+      "path": "/context/action_contracts/construct_workflow/fields/graph/properties/nodes/description",
+      "after": "Include exactly one frame_sample source and one to four detector/reader nodes. Connect each image operation to inference. References use $node_id.port and must match the source port's type. At most one detect, zone_filter, count_per_zone and rule node. An event sink is optional for plain reader/detection/count output."
+    },
+    {
+      "op": "add",
+      "path": "/context/citable_observation_ids",
+      "after": [
+        "2244a5c3edba401a9f8288a25a2a2dbd",
+        "2d065105ab794c7e87990845a7c99645",
+        "32bcfd442fb84ef58a83211f291e686f",
+        "6b504f808f3d4b0db73327fa737cf48f",
+        "e148dd064fb140c784cbcbc7b4a9fa18",
+        "ebcbff419c664b21bf73e9e4346e67eb"
+      ]
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/barcode/description",
+      "after": "Decode supported machine-readable codes in the input image. Ordinary printed text requires a text reader. Decoded text is included in preview output without an event sink."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/barcode/fields/image/description",
+      "after": "Reference to an image output of another graph node, never a media ID or filename. Use the upstream node's exact output port."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/count_per_zone/description",
+      "after": "Aggregate detections into counts by region; consumes the final zone-filtered detections when a zone filter is present."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/count_per_zone/fields/dets/description",
+      "after": "Reference to a detections output: $node_id.dets."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/crop/description",
+      "after": "Extract a static rectangular region before inference. The box is relative to this node's input image, not necessarily the original source. This does not locate objects dynamically."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/crop/fields/box/description",
+      "after": "Normalized [left, top, right, bottom] with positive area within [0,1]."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/crop/fields/image/description",
+      "after": "Reference to an image output of another node: $node_id.port."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/detect/description",
+      "after": "Run the selected detector on the input image and return detections for the requested supported classes."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/detect/fields/image/description",
+      "after": "Reference to an image output of another graph node, never a media ID or filename. Use the upstream node's exact output port."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/frame_sample/description",
+      "after": "The graph's single source. The host supplies selected media; no path or media ID belongs in a node reference. Its frame output has image type."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/match/description",
+      "after": "Compare text readings with a fixed expected string and produce match events. This does not filter or replace the original text readings in preview output."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/match/fields/text/description",
+      "after": "Reference to a text output: $node_id.text."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/ocr/description",
+      "after": "Read all detected text in the input image. This node does not semantically select a requested field or discard unrelated text. Its text readings are included in preview output without requiring an event sink."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/ocr/fields/image/description",
+      "after": "Reference to an image output of another graph node, never a media ID or filename. Use the upstream node's exact output port."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/resize/description",
+      "after": "Resize an image to the given pixel dimensions before downstream inference."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/resize/fields/image/description",
+      "after": "Reference to an image output of another node: $node_id.port."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/rule/description",
+      "after": "Test counts against a threshold and produce an event. Connect its event output to a sink_event node. Count-only applications do not need a rule."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/rule/fields/counts/description",
+      "after": "Reference to a counts output: $node_id.counts."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/sink_event/description",
+      "after": "Receive an event produced by match or rule. Text is not an event. Optional for plain detection, counting or reading output; investigation previews never dispatch external events."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/sink_event/fields/event/description",
+      "after": "Reference to an event output: $node_id.event; never a text, image or detections output."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/zone_filter/description",
+      "after": "Filter detections using the project's already confirmed region geometry."
+    },
+    {
+      "op": "add",
+      "path": "/context/node_contracts/zone_filter/fields/dets/description",
+      "after": "Reference to a detections output: $node_id.dets."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/BarcodeNode/description",
+      "after": "Decode supported machine-readable codes in the input image. Ordinary printed text requires a text reader. Decoded text is included in preview output without an event sink."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/BarcodeNode/properties/image/description",
+      "after": "Reference to an image output of another graph node, never a media ID or filename. Use the upstream node's exact output port."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/ConstructWorkflow/properties/evidence_ids/items/enum",
+      "after": [
+        "2244a5c3edba401a9f8288a25a2a2dbd",
+        "2d065105ab794c7e87990845a7c99645",
+        "32bcfd442fb84ef58a83211f291e686f",
+        "6b504f808f3d4b0db73327fa737cf48f",
+        "e148dd064fb140c784cbcbc7b4a9fa18",
+        "ebcbff419c664b21bf73e9e4346e67eb"
+      ]
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/CountNode/description",
+      "after": "Aggregate detections into counts by region; consumes the final zone-filtered detections when a zone filter is present."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/CountNode/properties/dets/description",
+      "after": "Reference to a detections output: $node_id.dets."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/CropNode/description",
+      "after": "Extract a static rectangular region before inference. The box is relative to this node's input image, not necessarily the original source. This does not locate objects dynamically."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/CropNode/properties/box/description",
+      "after": "Normalized [left, top, right, bottom] with positive area within [0,1]."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/CropNode/properties/image/description",
+      "after": "Reference to an image output of another node: $node_id.port."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/DetectNode/description",
+      "after": "Run the selected detector on the input image and return detections for the requested supported classes."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/DetectNode/properties/image/description",
+      "after": "Reference to an image output of another graph node, never a media ID or filename. Use the upstream node's exact output port."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/EventNode/description",
+      "after": "Receive an event produced by match or rule. Text is not an event. Optional for plain detection, counting or reading output; investigation previews never dispatch external events."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/EventNode/properties/event/description",
+      "after": "Reference to an event output: $node_id.event; never a text, image or detections output."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/GraphCandidate/description",
+      "after": "One connected, acyclic vision graph. Output references must resolve to compatible ports on nodes in this graph. The host binds source media separately."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/GraphCandidate/properties/nodes/description",
+      "after": "Include exactly one frame_sample source and one to four detector/reader nodes. Connect each image operation to inference. References use $node_id.port and must match the source port's type. At most one detect, zone_filter, count_per_zone and rule node. An event sink is optional for plain reader/detection/count output."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/MatchNode/description",
+      "after": "Compare text readings with a fixed expected string and produce match events. This does not filter or replace the original text readings in preview output."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/MatchNode/properties/text/description",
+      "after": "Reference to a text output: $node_id.text."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/OCRNode/description",
+      "after": "Read all detected text in the input image. This node does not semantically select a requested field or discard unrelated text. Its text readings are included in preview output without requiring an event sink."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/OCRNode/properties/image/description",
+      "after": "Reference to an image output of another graph node, never a media ID or filename. Use the upstream node's exact output port."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/ResizeNode/description",
+      "after": "Resize an image to the given pixel dimensions before downstream inference."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/ResizeNode/properties/image/description",
+      "after": "Reference to an image output of another node: $node_id.port."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/RuleNode/description",
+      "after": "Test counts against a threshold and produce an event. Connect its event output to a sink_event node. Count-only applications do not need a rule."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/RuleNode/properties/counts/description",
+      "after": "Reference to a counts output: $node_id.counts."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/SampleNode/description",
+      "after": "The graph's single source. The host supplies selected media; no path or media ID belongs in a node reference. Its frame output has image type."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/ZoneNode/description",
+      "after": "Filter detections using the project's already confirmed region geometry."
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/ZoneNode/properties/dets/description",
+      "after": "Reference to a detections output: $node_id.dets."
+    },
+    {
+      "op": "add",
+      "path": "/schema/properties/based_on_observation_ids/items/enum",
+      "after": [
+        "2244a5c3edba401a9f8288a25a2a2dbd",
+        "2d065105ab794c7e87990845a7c99645",
+        "32bcfd442fb84ef58a83211f291e686f",
+        "6b504f808f3d4b0db73327fa737cf48f",
+        "e148dd064fb140c784cbcbc7b4a9fa18",
+        "ebcbff419c664b21bf73e9e4346e67eb"
+      ]
+    },
+    {
+      "op": "add",
+      "path": "/schema/properties/state_revision/const",
+      "after": 12
+    }
+  ]
+}

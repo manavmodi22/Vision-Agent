@@ -1,0 +1,2457 @@
+{
+  "state": {
+    "schema_version": "a0.1",
+    "id": "40c4c00577c44e4c891d941c597793bb",
+    "project_id": "37828149a3954ecb",
+    "objective": "Build an app that reads only the route number and destination on the front display of the red-and-white bus in each supplied image. Ignore branding, registration plates, other buses and background text. Use the supplied pixels to investigate how to do this.",
+    "revision": 14,
+    "status": "awaiting_input",
+    "stage": "investigating",
+    "selected_workflow_revision": null,
+    "preview_observation_id": null,
+    "budget": {
+      "max_model_calls": 20,
+      "max_actions": 16,
+      "max_probes": 6,
+      "max_elapsed_s": 900.0,
+      "model_calls": 7,
+      "actions": 7,
+      "probes": 1,
+      "elapsed_s": 382.1529802919831
+    },
+    "pending_action_id": null,
+    "pending_model_call_id": null,
+    "latest_observation_ids": [
+      "eda54e35a7c14dbd85993c68a65ec92c"
+    ],
+    "question": "The OCR probe extracted '53' and 'Citybus•' but also noise like '18.Nm' and ':Ox4ZC'. Do you have a specific detection model for text regions or bus displays, or should I try to filter the OCR results post-hoc based on the bounding boxes?",
+    "stop_reason": null,
+    "user_answers": [],
+    "created_at": "2026-10-29T17:53:09.402253+00:00",
+    "updated_at": "2026-10-29T17:59:31.559542+00:00"
+  },
+  "actions": [
+    {
+      "id": "d5a7d550fb844fada11b697f7a32e581",
+      "model_call_id": "c2863367ca9d4f9fbe8b84c8527c4544",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 0,
+        "decision_summary": "Start by inspecting the available development media to understand the input image dimensions and metadata before selecting a capability for OCR or detection.",
+        "based_on_observation_ids": [],
+        "action": {
+          "type": "inspect_media",
+          "media_ids": [
+            "media-bb1bbac82e8e8121faa4bca1c416d99e"
+          ],
+          "representation": "metadata",
+          "limit": 1,
+          "cursor": null
+        }
+      },
+      "status": "completed",
+      "observation_id": "60fb44bb102348f482b712346245b623",
+      "started_at": "2026-10-29T17:53:32.794628+00:00",
+      "ended_at": "2026-10-29T17:53:32.819877+00:00"
+    },
+    {
+      "id": "859444c504e741608f9984b6262e88b6",
+      "model_call_id": "22f194a80f8e41b1bf5582e950dcf4e6",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 2,
+        "decision_summary": "I have inspected the available development media (observation 60fb44bb102348f482b712346245b623) and found one image (media-bb1bbac82e8e8121faa4bca1c416d99e, 1024x768). The next step is to discover available computer vision capabilities, specifically looking for OCR or detection models suitable for extracting text (route number, destination) from a bus display.",
+        "based_on_observation_ids": [
+          "60fb44bb102348f482b712346245b623"
+        ],
+        "action": {
+          "type": "discover_capabilities",
+          "query": "ocr text detection bus display",
+          "kind": null,
+          "task_type": null,
+          "limit": 8,
+          "cursor": null
+        }
+      },
+      "status": "completed",
+      "observation_id": "399e44e75ffa462982658326f0ab841d",
+      "started_at": "2026-10-29T17:54:12.335959+00:00",
+      "ended_at": "2026-10-29T17:54:12.879882+00:00"
+    },
+    {
+      "id": "140b5e5900e341da87da08c95af2db70",
+      "model_call_id": "891fdae0664b4f5ebea5491dd43193e4",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 4,
+        "decision_summary": "I have inspected the available development media (observation 60fb44bb102348f48f482b712346245b623) and discovered capabilities (observation 399e44e75ffa462982658326f0ab841d). The task requires reading text (route number, destination) from a bus display. The 'block.ocr' capability (Apple Vision) is installed and suitable for this task. The next step is to inspect this specific capability to get its exact descriptor hash and supported request format before running a probe.",
+        "based_on_observation_ids": [
+          "60fb44bb102348f482b712346245b623",
+          "399e44e75ffa462982658326f0ab841d"
+        ],
+        "action": {
+          "type": "inspect_capability",
+          "capability_id": "block.ocr"
+        }
+      },
+      "status": "completed",
+      "observation_id": "88146eec0ba64e689ea160ca9268f390",
+      "started_at": "2026-10-29T17:55:02.821810+00:00",
+      "ended_at": "2026-10-29T17:55:03.188957+00:00"
+    },
+    {
+      "id": "4e9005ae20e14a3c8caa5fe56a9ccde5",
+      "model_call_id": "f57eda972c1a4283ba36e1afb6c52d4d",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 6,
+        "decision_summary": "The capability 'block.ocr' was inspected (observation 88146eec0ba64e689ea160ca9268f390) and found to have 'probe_eligible: false' and 'probe_tasks: []'. This indicates the capability cannot be used directly for inference. The next step is to discover other capabilities, specifically looking for a detection model that might handle text regions or a different OCR tool that is probe-eligible.",
+        "based_on_observation_ids": [
+          "88146eec0ba64e689ea160ca9268f390",
+          "399e44e75ffa462982658326f0ab841d"
+        ],
+        "action": {
+          "type": "discover_capabilities",
+          "query": "text detection ocr",
+          "kind": null,
+          "task_type": null,
+          "limit": 8,
+          "cursor": null
+        }
+      },
+      "status": "completed",
+      "observation_id": "6e2a2cf49bdb48f38433afdbfdad7ddb",
+      "started_at": "2026-10-29T17:56:06.506080+00:00",
+      "ended_at": "2026-10-29T17:56:06.862959+00:00"
+    },
+    {
+      "id": "4fc69fd975074ca198cf54c1d0f6467d",
+      "model_call_id": "9b1bacf18e1945e99ca44b6369dfb3f8",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 8,
+        "decision_summary": "The 'block.ocr' capability is not probe-eligible. I will inspect the 'model.apple-vision' capability to check if it is probe-eligible and supports OCR tasks, as it is the native model for this task.",
+        "based_on_observation_ids": [
+          "88146eec0ba64e689ea160ca9268f390",
+          "6e2a2cf49bdb48f38433afdbfdad7ddb"
+        ],
+        "action": {
+          "type": "inspect_capability",
+          "capability_id": "model.apple-vision"
+        }
+      },
+      "status": "completed",
+      "observation_id": "11d6da087f3e4234bdd9870b61832c8e",
+      "started_at": "2026-10-29T17:56:58.213283+00:00",
+      "ended_at": "2026-10-29T17:56:58.563208+00:00"
+    },
+    {
+      "id": "5d44a4872a03422585d59fd947955e48",
+      "model_call_id": "95bbcb3e04ef483a9d2d66b7a407c8d1",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 10,
+        "decision_summary": "The 'model.apple-vision' capability is probe-eligible and supports OCR tasks. I have the media ID (media-bb1bbac82e8e8121faa4bca1c416d99e) and source hash. The next step is to run a provisional OCR probe to extract text from the bus image and verify if it can read the route number and destination.",
+        "based_on_observation_ids": [
+          "11d6da087f3e4234bdd9870b61832c8e",
+          "60fb44bb102348f482b712346245b623"
+        ],
+        "action": {
+          "type": "run_probe",
+          "capability_id": "model.apple-vision",
+          "inspected_descriptor_hash": "b4c6012e2b0d32242faae29bcd9f2705c7b77819d83fbc319a08a961de9d0125",
+          "media_id": "media-bb1bbac82e8e8121faa4bca1c416d99e",
+          "source_sha256": "95e23f5b54cef202cfd6230a1923478cb39983c7524c0743d95c7500fbd9dc5e",
+          "transforms": [],
+          "request": {
+            "task": "ocr",
+            "model_id": "apple-vision",
+            "languages": [
+              "en-US"
+            ]
+          }
+        }
+      },
+      "status": "completed",
+      "observation_id": "7ce5687bffa14b51b178f6ce4a245702",
+      "started_at": "2026-10-29T17:58:11.049471+00:00",
+      "ended_at": "2026-10-29T17:58:25.174010+00:00"
+    },
+    {
+      "id": "fa45e195406c4a5ca097f74e8dc82985",
+      "model_call_id": "c78eb1d90a1e4e81a565031ad35ad73b",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 12,
+        "decision_summary": "The OCR probe (observation 7ce5687bffa14b51b178f6ce4a245702) successfully extracted text but failed to isolate the specific target fields (route number '53' and destination) from noise (branding, other text). The model returned '53' with high confidence but also '18.Nm', ':Ox4ZC', and 'Citybus•'. Since the user requires reading *only* the route number and destination, and the current OCR output is unstructured and noisy, the next step is to attempt a detection-based approach to first locate the display region, then crop and re-run OCR, or use a detection model trained for text regions. However, no suitable detection model for 'text region' or 'display' was found in the initial discovery. I will ask the user if they have a specific detection model or if I should proceed with a different strategy (e.g., using the OCR bounding boxes to filter results post-hoc).",
+        "based_on_observation_ids": [
+          "7ce5687bffa14b51b178f6ce4a245702",
+          "6e2a2cf49bdb48f38433afdbfdad7ddb"
+        ],
+        "action": {
+          "type": "ask_user",
+          "question": "The OCR probe extracted '53' and 'Citybus•' but also noise like '18.Nm' and ':Ox4ZC'. Do you have a specific detection model for text regions or bus displays, or should I try to filter the OCR results post-hoc based on the bounding boxes?"
+        }
+      },
+      "status": "completed",
+      "observation_id": "eda54e35a7c14dbd85993c68a65ec92c",
+      "started_at": "2026-10-29T17:59:31.417681+00:00",
+      "ended_at": "2026-10-29T17:59:31.423916+00:00"
+    }
+  ],
+  "observations": [
+    {
+      "id": "60fb44bb102348f482b712346245b623",
+      "action_id": "d5a7d550fb844fada11b697f7a32e581",
+      "result_type": "inspect_media",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "items": [
+          {
+            "media_id": "media-bb1bbac82e8e8121faa4bca1c416d99e",
+            "source_sha256": "95e23f5b54cef202cfd6230a1923478cb39983c7524c0743d95c7500fbd9dc5e",
+            "pixels_sha256": "ad57403ba8aa4a1b78d48a0aa999f2a8983f2d57a0efea884d3eb73ff74d382f",
+            "width": 1024,
+            "height": 768,
+            "membership": "development"
+          }
+        ],
+        "input_refs": [
+          {
+            "media_id": "media-bb1bbac82e8e8121faa4bca1c416d99e",
+            "source_sha256": "95e23f5b54cef202cfd6230a1923478cb39983c7524c0743d95c7500fbd9dc5e",
+            "pixels_sha256": "ad57403ba8aa4a1b78d48a0aa999f2a8983f2d57a0efea884d3eb73ff74d382f",
+            "width": 1024,
+            "height": 768,
+            "membership": "development"
+          }
+        ],
+        "artifact_refs": [],
+        "pixels_visible_to_planner": false,
+        "total_items": 1,
+        "returned_items": 1,
+        "truncated": false,
+        "next_cursor": null,
+        "warnings": [
+          "pixels_not_visible_to_planner: this planner receives structured text; artifact references are not image attachments."
+        ]
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:53:32.819841+00:00"
+    },
+    {
+      "id": "399e44e75ffa462982658326f0ab841d",
+      "action_id": "859444c504e741608f9984b6262e88b6",
+      "result_type": "discover_capabilities",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "items": [
+          {
+            "capability_id": "block.ocr",
+            "name": "Ocr",
+            "description": "Read text with native Apple Vision.",
+            "kind": "tool",
+            "task_types": [
+              "ocr"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "ocr",
+              "text"
+            ],
+            "match_score": 11
+          },
+          {
+            "capability_id": "model.apple-vision",
+            "name": "Apple Vision OCR and barcode",
+            "description": "Native macOS OCR and barcode bridge.",
+            "kind": "model",
+            "task_types": [
+              "ocr",
+              "barcode"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "ocr"
+            ],
+            "match_score": 8
+          },
+          {
+            "capability_id": "block.detect_open_vocab",
+            "name": "Detect Open Vocab",
+            "description": "Detect text-prompted classes using local OWLv2.",
+            "kind": "tool",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection",
+              "text"
+            ],
+            "match_score": 5
+          },
+          {
+            "capability_id": "block.match",
+            "name": "Match",
+            "description": "Compare recognized text with an expected value.",
+            "kind": "tool",
+            "task_types": [
+              "text_comparison"
+            ],
+            "availability": "installed",
+            "readiness": "ready",
+            "installation_ready": true,
+            "matched_terms": [
+              "text"
+            ],
+            "match_score": 5
+          },
+          {
+            "capability_id": "model.paddleocr",
+            "name": "PaddleOCR alternative",
+            "description": "No PaddleOCR adapter, supported-weight manifest or OCR benchmark is implemented.",
+            "kind": "model",
+            "task_types": [
+              "ocr"
+            ],
+            "availability": "unsupported",
+            "readiness": "unsupported",
+            "installation_ready": false,
+            "matched_terms": [
+              "ocr"
+            ],
+            "match_score": 5
+          },
+          {
+            "capability_id": "block.detect",
+            "name": "Detect",
+            "description": "Run a locally installed detector.",
+            "kind": "tool",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.fixture-color-v1",
+            "name": "Synthetic color fixture",
+            "description": "Original colored rectangles for software checks; not a warehouse detector.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "ready",
+            "installation_ready": true,
+            "project_eligibility": {
+              "allowed": false,
+              "requires_fixture_project": true,
+              "fixture_project": false,
+              "reason": "Synthetic fixture models cannot process nonfixture project media; project.synthetic alone does not grant fixture-adapter permission."
+            },
+            "probe_eligible": false,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-detector-rtdetr-prior001-20261028",
+            "name": "local-detector-rtdetr-prior001-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection",
+              "training"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          }
+        ],
+        "total_items": 17,
+        "returned_items": 8,
+        "truncated": true,
+        "next_cursor": "287e527299ae62cc:8",
+        "query_terms": [
+          "bus",
+          "detection",
+          "display",
+          "ocr",
+          "text"
+        ],
+        "available_kinds": [
+          "model",
+          "tool"
+        ],
+        "available_task_types": [
+          "annotation",
+          "barcode",
+          "counting",
+          "detection",
+          "evaluation",
+          "event_logic",
+          "events",
+          "evidence",
+          "image_transform",
+          "instance_segmentation",
+          "media",
+          "ocr",
+          "orchestration",
+          "planning",
+          "source_acquisition",
+          "spatial_filter",
+          "text_comparison",
+          "training",
+          "visual_judgement"
+        ],
+        "filter_diagnostics": [],
+        "suggestions": [],
+        "suggestion_ignored_filters": [],
+        "suggestion_semantics": "Suggestions are labelled catalogue alternatives, not exact query results or execution recommendations; related terms use generic substring/character similarity. Inventory suggestions have no measured query relevance.",
+        "search_semantics": "Empty query lists inventory. Otherwise match any casefolded alphanumeric metadata token; punctuation, one-character tokens and common function words are ignored. Rank weighted ID/name/task/description matches, then capability ID. Explicit kind/task filters remain exact.",
+        "warnings": [
+          "Discovery metadata grants no execution or installation authority."
+        ]
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:54:12.879812+00:00"
+    },
+    {
+      "id": "88146eec0ba64e689ea160ca9268f390",
+      "action_id": "140b5e5900e341da87da08c95af2db70",
+      "result_type": "inspect_capability",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "descriptor": {
+          "id": "block.ocr",
+          "name": "Ocr",
+          "kind": "tool",
+          "description": "Read text with native Apple Vision.",
+          "availability": "installed",
+          "implemented": true,
+          "installation_ready": true,
+          "callable": false,
+          "task_types": [
+            "ocr"
+          ],
+          "version": "0.1",
+          "license": {
+            "identifier": "Project source; license unspecified",
+            "code": null,
+            "weights": null,
+            "status": "unverified",
+            "notes": [
+              "No license has been assigned to this user-owned repository. This catalog does not grant distribution rights."
+            ]
+          },
+          "provenance": {
+            "source_urls": [],
+            "revision": null,
+            "hashes": {
+              "registry.py": "bad4e584f4e3b5611f13be124b9b9e8b7200cd629ce0fdf1ffc7e1651c718653"
+            },
+            "scope": "bundled_code",
+            "notes": [
+              "Hash identifies adapter source, not model weights or a hardware smoke test."
+            ]
+          },
+          "hardware": {
+            "platforms": [
+              "host"
+            ],
+            "accelerators": [],
+            "required_packages": [],
+            "minimum_memory_gib": null,
+            "estimated_disk_bytes": null,
+            "notes": [
+              "Detector/model hardware requirements are selected and checked during compilation."
+            ]
+          },
+          "side_effects": [
+            "local_inference"
+          ],
+          "dependencies": [],
+          "input_schema": {
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "model": {
+                  "default": "apple-vision",
+                  "enum": [
+                    "apple-vision",
+                    "ppocr-v5-mobile-en"
+                  ],
+                  "title": "Model",
+                  "type": "string"
+                },
+                "languages": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "Languages",
+                  "type": "array"
+                }
+              },
+              "title": "ReadingParams",
+              "type": "object"
+            },
+            "ports": {
+              "image": "image"
+            }
+          },
+          "output_schema": {
+            "ports": {
+              "text": "text"
+            }
+          },
+          "install_method": "bundled",
+          "install_instructions": null,
+          "readiness": {
+            "state": "unchecked",
+            "reason": "Adapter contract is implemented; the selected model needs an inference validation.",
+            "checked_at": "2026-10-29T17:55:03.184786+00:00",
+            "evidence_scope": "prerequisites",
+            "evidence": [
+              {
+                "kind": "adapter",
+                "subject": "ocr",
+                "outcome": "pass",
+                "detail": "Implemented registry contract; invocation still requires a valid graph and its inputs.",
+                "observed_at": "2026-10-29T17:55:03.184519+00:00",
+                "metadata": {}
+              },
+              {
+                "kind": "adapter",
+                "subject": "selected OCR model",
+                "outcome": "pass",
+                "detail": "An installed OCR adapter is required; the selected graph model is checked during compilation.",
+                "observed_at": "2026-10-29T17:55:03.184526+00:00",
+                "metadata": {}
+              }
+            ]
+          },
+          "probe_eligible": false,
+          "probe_tasks": [],
+          "limitations": [
+            "Provisional observations do not establish accuracy, review, or deployment approval.",
+            "Catalogue visibility does not authorize arbitrary MCP calls; only investigation actions execute here."
+          ],
+          "descriptor_hash": "4d844a1b50c8de9e711c4df22f101495f4a9aa7d4847a0c9b1025de91d3c26a7"
+        },
+        "model_view": {
+          "id": "block.ocr",
+          "descriptor_hash": "4d844a1b50c8de9e711c4df22f101495f4a9aa7d4847a0c9b1025de91d3c26a7",
+          "probe_eligible": false,
+          "probe_tasks": [],
+          "availability": "installed",
+          "installation_ready": true,
+          "version": "0.1",
+          "limitations": [
+            "Provisional observations do not establish accuracy, review, or deployment approval.",
+            "Catalogue visibility does not authorize arbitrary MCP calls; only investigation actions execute here."
+          ],
+          "readiness": {
+            "state": "unchecked",
+            "reason": "Adapter contract is implemented; the selected model needs an inference validation.",
+            "evidence_scope": "prerequisites"
+          },
+          "provenance": {
+            "scope": "bundled_code",
+            "revision": null,
+            "source_urls": [],
+            "hashes": {
+              "registry.py": "bad4e584f4e3b5611f13be124b9b9e8b7200cd629ce0fdf1ffc7e1651c718653"
+            }
+          },
+          "hardware": {
+            "platforms": [
+              "host"
+            ],
+            "accelerators": [],
+            "required_packages": []
+          },
+          "output_summary": "Actual detections/readings, normalized geometry, input-to-source transform, identity, timing, warnings; full result available as a saved artifact.",
+          "project_eligibility": {
+            "allowed": true,
+            "requires_fixture_project": false,
+            "fixture_project": false,
+            "reason": null
+          }
+        },
+        "project_eligibility": {
+          "allowed": true,
+          "requires_fixture_project": false,
+          "fixture_project": false,
+          "reason": null
+        },
+        "total_items": 1,
+        "returned_items": 1,
+        "truncated": false
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:55:03.188915+00:00"
+    },
+    {
+      "id": "6e2a2cf49bdb48f38433afdbfdad7ddb",
+      "action_id": "4e9005ae20e14a3c8caa5fe56a9ccde5",
+      "result_type": "discover_capabilities",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "items": [
+          {
+            "capability_id": "block.ocr",
+            "name": "Ocr",
+            "description": "Read text with native Apple Vision.",
+            "kind": "tool",
+            "task_types": [
+              "ocr"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "ocr",
+              "text"
+            ],
+            "match_score": 11
+          },
+          {
+            "capability_id": "model.apple-vision",
+            "name": "Apple Vision OCR and barcode",
+            "description": "Native macOS OCR and barcode bridge.",
+            "kind": "model",
+            "task_types": [
+              "ocr",
+              "barcode"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "ocr"
+            ],
+            "match_score": 8
+          },
+          {
+            "capability_id": "block.detect_open_vocab",
+            "name": "Detect Open Vocab",
+            "description": "Detect text-prompted classes using local OWLv2.",
+            "kind": "tool",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection",
+              "text"
+            ],
+            "match_score": 5
+          },
+          {
+            "capability_id": "block.match",
+            "name": "Match",
+            "description": "Compare recognized text with an expected value.",
+            "kind": "tool",
+            "task_types": [
+              "text_comparison"
+            ],
+            "availability": "installed",
+            "readiness": "ready",
+            "installation_ready": true,
+            "matched_terms": [
+              "text"
+            ],
+            "match_score": 5
+          },
+          {
+            "capability_id": "model.paddleocr",
+            "name": "PaddleOCR alternative",
+            "description": "No PaddleOCR adapter, supported-weight manifest or OCR benchmark is implemented.",
+            "kind": "model",
+            "task_types": [
+              "ocr"
+            ],
+            "availability": "unsupported",
+            "readiness": "unsupported",
+            "installation_ready": false,
+            "matched_terms": [
+              "ocr"
+            ],
+            "match_score": 5
+          },
+          {
+            "capability_id": "block.detect",
+            "name": "Detect",
+            "description": "Run a locally installed detector.",
+            "kind": "tool",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.fixture-color-v1",
+            "name": "Synthetic color fixture",
+            "description": "Original colored rectangles for software checks; not a warehouse detector.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "ready",
+            "installation_ready": true,
+            "project_eligibility": {
+              "allowed": false,
+              "requires_fixture_project": true,
+              "fixture_project": false,
+              "reason": "Synthetic fixture models cannot process nonfixture project media; project.synthetic alone does not grant fixture-adapter permission."
+            },
+            "probe_eligible": false,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-detector-rtdetr-prior001-20261028",
+            "name": "local-detector-rtdetr-prior001-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection",
+              "training"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          }
+        ],
+        "total_items": 17,
+        "returned_items": 8,
+        "truncated": true,
+        "next_cursor": "31505fa747f6fa71:8",
+        "query_terms": [
+          "detection",
+          "ocr",
+          "text"
+        ],
+        "available_kinds": [
+          "model",
+          "tool"
+        ],
+        "available_task_types": [
+          "annotation",
+          "barcode",
+          "counting",
+          "detection",
+          "evaluation",
+          "event_logic",
+          "events",
+          "evidence",
+          "image_transform",
+          "instance_segmentation",
+          "media",
+          "ocr",
+          "orchestration",
+          "planning",
+          "source_acquisition",
+          "spatial_filter",
+          "text_comparison",
+          "training",
+          "visual_judgement"
+        ],
+        "filter_diagnostics": [],
+        "suggestions": [],
+        "suggestion_ignored_filters": [],
+        "suggestion_semantics": "Suggestions are labelled catalogue alternatives, not exact query results or execution recommendations; related terms use generic substring/character similarity. Inventory suggestions have no measured query relevance.",
+        "search_semantics": "Empty query lists inventory. Otherwise match any casefolded alphanumeric metadata token; punctuation, one-character tokens and common function words are ignored. Rank weighted ID/name/task/description matches, then capability ID. Explicit kind/task filters remain exact.",
+        "warnings": [
+          "Discovery metadata grants no execution or installation authority."
+        ]
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:56:06.862923+00:00"
+    },
+    {
+      "id": "11d6da087f3e4234bdd9870b61832c8e",
+      "action_id": "4fc69fd975074ca198cf54c1d0f6467d",
+      "result_type": "inspect_capability",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "descriptor": {
+          "id": "model.apple-vision",
+          "name": "Apple Vision OCR and barcode",
+          "kind": "model",
+          "description": "Native macOS OCR and barcode bridge.",
+          "availability": "installed",
+          "implemented": true,
+          "installation_ready": true,
+          "callable": false,
+          "task_types": [
+            "ocr",
+            "barcode"
+          ],
+          "version": "26.7.1",
+          "license": {
+            "identifier": "macOS system framework",
+            "code": "macOS system framework",
+            "weights": "macOS system framework",
+            "status": "declared",
+            "notes": []
+          },
+          "provenance": {
+            "source_urls": [],
+            "revision": null,
+            "hashes": {},
+            "scope": "registry_metadata",
+            "notes": [
+              "Registry metadata; current weights have not been content-verified by discovery."
+            ]
+          },
+          "hardware": {
+            "platforms": [
+              "Darwin"
+            ],
+            "accelerators": [
+              "system-managed"
+            ],
+            "required_packages": [],
+            "minimum_memory_gib": null,
+            "estimated_disk_bytes": null,
+            "notes": [
+              "Memory and throughput are not estimated without measurement."
+            ]
+          },
+          "side_effects": [
+            "read_images",
+            "local_inference"
+          ],
+          "dependencies": [],
+          "input_schema": {},
+          "output_schema": {},
+          "install_method": "system_framework",
+          "install_instructions": "Build the native bridge and configure VISION_APP_BINARY.",
+          "readiness": {
+            "state": "unchecked",
+            "reason": "Prerequisites are present; run a bounded inference validation before promotion.",
+            "checked_at": "2026-10-29T17:56:58.443531+00:00",
+            "evidence_scope": "prerequisites",
+            "evidence": [
+              {
+                "kind": "platform",
+                "subject": "macOS",
+                "outcome": "pass",
+                "detail": "Apple Vision requires macOS",
+                "observed_at": "2026-10-29T17:56:58.443306+00:00",
+                "metadata": {}
+              },
+              {
+                "kind": "file",
+                "subject": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/MacOS/VisionApp",
+                "outcome": "pass",
+                "detail": "File presence does not verify model inference or weights",
+                "observed_at": "2026-10-29T17:56:58.443326+00:00",
+                "metadata": {
+                  "bytes": 10899552,
+                  "mtime_ns": 1793290987844198040
+                }
+              }
+            ]
+          },
+          "probe_request_schemas": [
+            {
+              "additionalProperties": false,
+              "properties": {
+                "task": {
+                  "const": "ocr",
+                  "default": "ocr",
+                  "title": "Task",
+                  "type": "string"
+                },
+                "model_id": {
+                  "type": "string",
+                  "const": "apple-vision"
+                },
+                "languages": {
+                  "items": {
+                    "const": "en-US",
+                    "type": "string"
+                  },
+                  "maxItems": 1,
+                  "minItems": 1,
+                  "title": "Languages",
+                  "type": "array"
+                }
+              },
+              "title": "OcrRequest",
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "task": {
+                  "const": "barcode",
+                  "default": "barcode",
+                  "title": "Task",
+                  "type": "string"
+                },
+                "model_id": {
+                  "type": "string",
+                  "const": "apple-vision"
+                }
+              },
+              "title": "BarcodeRequest",
+              "type": "object"
+            }
+          ],
+          "probe_output_schema": {
+            "$defs": {
+              "DetectionObservation": {
+                "additionalProperties": false,
+                "properties": {
+                  "box": {
+                    "maxItems": 4,
+                    "minItems": 4,
+                    "prefixItems": [
+                      {
+                        "maximum": 1,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "maximum": 1,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "maximum": 1,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "maximum": 1,
+                        "minimum": 0,
+                        "type": "number"
+                      }
+                    ],
+                    "title": "Box",
+                    "type": "array"
+                  },
+                  "polygon": {
+                    "anyOf": [
+                      {
+                        "items": {
+                          "maxItems": 2,
+                          "minItems": 2,
+                          "prefixItems": [
+                            {
+                              "maximum": 1,
+                              "minimum": 0,
+                              "type": "number"
+                            },
+                            {
+                              "maximum": 1,
+                              "minimum": 0,
+                              "type": "number"
+                            }
+                          ],
+                          "type": "array"
+                        },
+                        "maxItems": 256,
+                        "minItems": 3,
+                        "type": "array"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Polygon"
+                  },
+                  "label": {
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "title": "Label",
+                    "type": "string"
+                  },
+                  "confidence": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "title": "Confidence",
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "box",
+                  "label",
+                  "confidence"
+                ],
+                "title": "DetectionObservation",
+                "type": "object"
+              },
+              "ExecutionIdentity": {
+                "additionalProperties": false,
+                "properties": {
+                  "capability_id": {
+                    "title": "Capability Id",
+                    "type": "string"
+                  },
+                  "model_id": {
+                    "title": "Model Id",
+                    "type": "string"
+                  },
+                  "adapter_id": {
+                    "title": "Adapter Id",
+                    "type": "string"
+                  },
+                  "identity_scope": {
+                    "enum": [
+                      "local_artifacts_verified",
+                      "system_framework_versioned",
+                      "synthetic_code"
+                    ],
+                    "title": "Identity Scope",
+                    "type": "string"
+                  },
+                  "artifact_hashes": {
+                    "additionalProperties": {
+                      "pattern": "^[0-9a-f]{64}$",
+                      "type": "string"
+                    },
+                    "title": "Artifact Hashes",
+                    "type": "object"
+                  },
+                  "unavailable_artifacts": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "title": "Unavailable Artifacts",
+                    "type": "array"
+                  },
+                  "adapter_code_sha256": {
+                    "pattern": "^[0-9a-f]{64}$",
+                    "title": "Adapter Code Sha256",
+                    "type": "string"
+                  },
+                  "runtime_manifest_sha256": {
+                    "pattern": "^[0-9a-f]{64}$",
+                    "title": "Runtime Manifest Sha256",
+                    "type": "string"
+                  },
+                  "system_identity": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "title": "System Identity",
+                    "type": "object"
+                  },
+                  "provider": {
+                    "title": "Provider",
+                    "type": "string"
+                  },
+                  "config_sha256": {
+                    "pattern": "^[0-9a-f]{64}$",
+                    "title": "Config Sha256",
+                    "type": "string"
+                  },
+                  "identity_hash": {
+                    "pattern": "^[0-9a-f]{64}$",
+                    "title": "Identity Hash",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "capability_id",
+                  "model_id",
+                  "adapter_id",
+                  "identity_scope",
+                  "artifact_hashes",
+                  "adapter_code_sha256",
+                  "runtime_manifest_sha256",
+                  "system_identity",
+                  "provider",
+                  "config_sha256",
+                  "identity_hash"
+                ],
+                "title": "ExecutionIdentity",
+                "type": "object"
+              },
+              "InferenceTiming": {
+                "additionalProperties": false,
+                "properties": {
+                  "total_ms": {
+                    "minimum": 0,
+                    "title": "Total Ms",
+                    "type": "number"
+                  },
+                  "startup_ms": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Startup Ms"
+                  },
+                  "load_ms": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Load Ms"
+                  },
+                  "preprocess_ms": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Preprocess Ms"
+                  },
+                  "inference_ms": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Inference Ms"
+                  },
+                  "postprocess_ms": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Postprocess Ms"
+                  },
+                  "transport_ms": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Transport Ms"
+                  },
+                  "model_cached": {
+                    "anyOf": [
+                      {
+                        "type": "boolean"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Model Cached"
+                  }
+                },
+                "required": [
+                  "total_ms"
+                ],
+                "title": "InferenceTiming",
+                "type": "object"
+              },
+              "TextObservation": {
+                "additionalProperties": false,
+                "properties": {
+                  "box": {
+                    "anyOf": [
+                      {
+                        "maxItems": 4,
+                        "minItems": 4,
+                        "prefixItems": [
+                          {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                          }
+                        ],
+                        "type": "array"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Box"
+                  },
+                  "polygon": {
+                    "anyOf": [
+                      {
+                        "items": {
+                          "maxItems": 2,
+                          "minItems": 2,
+                          "prefixItems": [
+                            {
+                              "maximum": 1,
+                              "minimum": 0,
+                              "type": "number"
+                            },
+                            {
+                              "maximum": 1,
+                              "minimum": 0,
+                              "type": "number"
+                            }
+                          ],
+                          "type": "array"
+                        },
+                        "maxItems": 256,
+                        "minItems": 3,
+                        "type": "array"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Polygon"
+                  },
+                  "text": {
+                    "maxLength": 16384,
+                    "title": "Text",
+                    "type": "string"
+                  },
+                  "kind": {
+                    "enum": [
+                      "ocr",
+                      "barcode"
+                    ],
+                    "title": "Kind",
+                    "type": "string"
+                  },
+                  "confidence": {
+                    "anyOf": [
+                      {
+                        "maximum": 1,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Confidence"
+                  },
+                  "symbology": {
+                    "anyOf": [
+                      {
+                        "maxLength": 80,
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Symbology"
+                  }
+                },
+                "required": [
+                  "text",
+                  "kind"
+                ],
+                "title": "TextObservation",
+                "type": "object"
+              }
+            },
+            "additionalProperties": false,
+            "properties": {
+              "schema_version": {
+                "const": 1,
+                "default": 1,
+                "title": "Schema Version",
+                "type": "integer"
+              },
+              "task": {
+                "enum": [
+                  "detection",
+                  "ocr",
+                  "barcode"
+                ],
+                "title": "Task",
+                "type": "string"
+              },
+              "input_size": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "exclusiveMinimum": 0,
+                    "maximum": 32768,
+                    "type": "integer"
+                  },
+                  {
+                    "exclusiveMinimum": 0,
+                    "maximum": 32768,
+                    "type": "integer"
+                  }
+                ],
+                "title": "Input Size",
+                "type": "array"
+              },
+              "input_pixels_sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "title": "Input Pixels Sha256",
+                "type": "string"
+              },
+              "detections": {
+                "items": {
+                  "$ref": "#/$defs/DetectionObservation"
+                },
+                "maxItems": 10000,
+                "title": "Detections",
+                "type": "array"
+              },
+              "readings": {
+                "items": {
+                  "$ref": "#/$defs/TextObservation"
+                },
+                "maxItems": 10000,
+                "title": "Readings",
+                "type": "array"
+              },
+              "identity": {
+                "$ref": "#/$defs/ExecutionIdentity"
+              },
+              "timing": {
+                "$ref": "#/$defs/InferenceTiming"
+              },
+              "warnings": {
+                "items": {
+                  "maxLength": 1000,
+                  "type": "string"
+                },
+                "maxItems": 20,
+                "title": "Warnings",
+                "type": "array"
+              }
+            },
+            "required": [
+              "task",
+              "input_size",
+              "input_pixels_sha256",
+              "identity",
+              "timing"
+            ],
+            "title": "InferenceResult",
+            "type": "object"
+          },
+          "probe_eligible": true,
+          "probe_tasks": [
+            "ocr",
+            "barcode"
+          ],
+          "limitations": [
+            "Provisional observations do not establish accuracy, review, or deployment approval."
+          ],
+          "descriptor_hash": "b4c6012e2b0d32242faae29bcd9f2705c7b77819d83fbc319a08a961de9d0125"
+        },
+        "model_view": {
+          "id": "model.apple-vision",
+          "descriptor_hash": "b4c6012e2b0d32242faae29bcd9f2705c7b77819d83fbc319a08a961de9d0125",
+          "probe_eligible": true,
+          "probe_tasks": [
+            "ocr",
+            "barcode"
+          ],
+          "probe_request_schemas": [
+            {
+              "additionalProperties": false,
+              "properties": {
+                "task": {
+                  "const": "ocr",
+                  "default": "ocr",
+                  "title": "Task",
+                  "type": "string"
+                },
+                "model_id": {
+                  "type": "string",
+                  "const": "apple-vision"
+                },
+                "languages": {
+                  "items": {
+                    "const": "en-US",
+                    "type": "string"
+                  },
+                  "maxItems": 1,
+                  "minItems": 1,
+                  "title": "Languages",
+                  "type": "array"
+                }
+              },
+              "title": "OcrRequest",
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "task": {
+                  "const": "barcode",
+                  "default": "barcode",
+                  "title": "Task",
+                  "type": "string"
+                },
+                "model_id": {
+                  "type": "string",
+                  "const": "apple-vision"
+                }
+              },
+              "title": "BarcodeRequest",
+              "type": "object"
+            }
+          ],
+          "availability": "installed",
+          "installation_ready": true,
+          "version": "26.7.1",
+          "limitations": [
+            "Provisional observations do not establish accuracy, review, or deployment approval."
+          ],
+          "readiness": {
+            "state": "unchecked",
+            "reason": "Prerequisites are present; run a bounded inference validation before promotion.",
+            "evidence_scope": "prerequisites"
+          },
+          "provenance": {
+            "scope": "registry_metadata",
+            "revision": null,
+            "source_urls": [],
+            "hashes": {}
+          },
+          "hardware": {
+            "platforms": [
+              "Darwin"
+            ],
+            "accelerators": [
+              "system-managed"
+            ],
+            "required_packages": []
+          },
+          "output_summary": "Actual detections/readings, normalized geometry, input-to-source transform, identity, timing, warnings; full result available as a saved artifact.",
+          "project_eligibility": {
+            "allowed": true,
+            "requires_fixture_project": false,
+            "fixture_project": false,
+            "reason": null
+          }
+        },
+        "project_eligibility": {
+          "allowed": true,
+          "requires_fixture_project": false,
+          "fixture_project": false,
+          "reason": null
+        },
+        "total_items": 1,
+        "returned_items": 1,
+        "truncated": false
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:56:58.563099+00:00"
+    },
+    {
+      "id": "7ce5687bffa14b51b178f6ce4a245702",
+      "action_id": "5d44a4872a03422585d59fd947955e48",
+      "result_type": "run_probe",
+      "status": "completed",
+      "payload": {
+        "executed": true,
+        "input_refs": [
+          {
+            "media_id": "media-bb1bbac82e8e8121faa4bca1c416d99e",
+            "source_sha256": "95e23f5b54cef202cfd6230a1923478cb39983c7524c0743d95c7500fbd9dc5e",
+            "pixels_sha256": "ad57403ba8aa4a1b78d48a0aa999f2a8983f2d57a0efea884d3eb73ff74d382f",
+            "width": 1024,
+            "height": 768,
+            "membership": "development"
+          }
+        ],
+        "artifact_refs": [
+          {
+            "artifact_id": "bea67a72d05c57ede7dcf043f06c57b0d68afa6ce34734339b2c2377a0c70bd2.json",
+            "sha256": "bea67a72d05c57ede7dcf043f06c57b0d68afa6ce34734339b2c2377a0c70bd2",
+            "mime_type": "application/json",
+            "bytes": 17590
+          },
+          {
+            "artifact_id": "95e23f5b54cef202cfd6230a1923478cb39983c7524c0743d95c7500fbd9dc5e.png",
+            "sha256": "95e23f5b54cef202cfd6230a1923478cb39983c7524c0743d95c7500fbd9dc5e",
+            "mime_type": "image/png",
+            "bytes": 1151590
+          },
+          {
+            "artifact_id": "71d053b826d6dd3eeca77481bce945220a576dc4f7d798df9c671199c75919c1.png",
+            "sha256": "71d053b826d6dd3eeca77481bce945220a576dc4f7d798df9c671199c75919c1",
+            "mime_type": "image/png",
+            "bytes": 1145492
+          }
+        ],
+        "image_artifact": {
+          "artifact_id": "95e23f5b54cef202cfd6230a1923478cb39983c7524c0743d95c7500fbd9dc5e.png",
+          "sha256": "95e23f5b54cef202cfd6230a1923478cb39983c7524c0743d95c7500fbd9dc5e",
+          "mime_type": "image/png",
+          "bytes": 1151590
+        },
+        "input_to_source": [
+          0.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "transforms": [],
+        "request": {
+          "task": "ocr",
+          "model_id": "apple-vision",
+          "languages": [
+            "en-US"
+          ]
+        },
+        "identity_refs": [
+          {
+            "capability_id": "model.apple-vision",
+            "model_id": "apple-vision",
+            "adapter_id": "apple-vision",
+            "identity_scope": "system_framework_versioned",
+            "artifact_hashes": {
+              "native_bridge": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d"
+            },
+            "unavailable_artifacts": [],
+            "adapter_code_sha256": "f75b542c3bc3f8d6776b9dfc878d3aadcdcda558c76b153635db77973aa4f1d3",
+            "runtime_manifest_sha256": "e8b5a8e0e55e5eef5c9763b084e39f8192503076abcc3f15d59823f19c8e4d55",
+            "system_identity": {
+              "architecture": "arm64",
+              "adapter": "apple-vision",
+              "identity_scope": "system_framework_versioned",
+              "request_policy": "apple-vision-en-us-v2",
+              "output_protocol": "2",
+              "macos": "26.7.1",
+              "kernel": "25.6.0",
+              "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041"
+            },
+            "provider": "apple-vision-system",
+            "config_sha256": "81c8e6ffbf514841279646415e3eb3c651f68c976fee4df4c22617b3f14254c1",
+            "identity_hash": "e63ee72fbd4782bea414d6f693e3c2974859c52ec990659fb012753a266223b0"
+          }
+        ],
+        "execution_status": "completed",
+        "result_artifact": {
+          "artifact_id": "bea67a72d05c57ede7dcf043f06c57b0d68afa6ce34734339b2c2377a0c70bd2.json",
+          "sha256": "bea67a72d05c57ede7dcf043f06c57b0d68afa6ce34734339b2c2377a0c70bd2",
+          "mime_type": "application/json",
+          "bytes": 17590
+        },
+        "overlay_artifact": {
+          "artifact_id": "71d053b826d6dd3eeca77481bce945220a576dc4f7d798df9c671199c75919c1.png",
+          "sha256": "71d053b826d6dd3eeca77481bce945220a576dc4f7d798df9c671199c75919c1",
+          "mime_type": "image/png",
+          "bytes": 1145492
+        },
+        "items": [
+          {
+            "box": [
+              0.576171874765625,
+              0.10156249976562504,
+              0.603515624765625,
+              0.12499999976562504
+            ],
+            "polygon": [
+              [
+                0.576171874765625,
+                0.10156249976562504
+              ],
+              [
+                0.603515624765625,
+                0.10156249976562504
+              ],
+              [
+                0.603515624765625,
+                0.12499999976562504
+              ],
+              [
+                0.576171874765625,
+                0.12499999976562504
+              ]
+            ],
+            "text": "18.Nm",
+            "kind": "ocr",
+            "confidence": 0.30000001192092896,
+            "symbology": null,
+            "item_id": "5d44a4872a03422585d59fd947955e48:0",
+            "identity_scope": "frame_local_observation",
+            "source_box": [
+              0.576171874765625,
+              0.10156249976562504,
+              0.603515624765625,
+              0.12499999976562504
+            ],
+            "source_polygon": [
+              [
+                0.576171874765625,
+                0.10156249976562504
+              ],
+              [
+                0.603515624765625,
+                0.10156249976562504
+              ],
+              [
+                0.603515624765625,
+                0.12499999976562504
+              ],
+              [
+                0.576171874765625,
+                0.12499999976562504
+              ]
+            ]
+          },
+          {
+            "box": [
+              0.02148437300714652,
+              0.30468749895833347,
+              0.02929687673243682,
+              0.36718749895833347
+            ],
+            "polygon": [
+              [
+                0.02929687673243682,
+                0.30468749895833347
+              ],
+              [
+                0.02929687486979167,
+                0.36718749895833347
+              ],
+              [
+                0.02148437300714652,
+                0.36718749895833347
+              ],
+              [
+                0.02148437486979167,
+                0.30468749895833347
+              ]
+            ],
+            "text": ":Ox4ZC",
+            "kind": "ocr",
+            "confidence": 0.5,
+            "symbology": null,
+            "item_id": "5d44a4872a03422585d59fd947955e48:1",
+            "identity_scope": "frame_local_observation",
+            "source_box": [
+              0.02148437300714652,
+              0.30468749895833347,
+              0.02929687673243682,
+              0.36718749895833347
+            ],
+            "source_polygon": [
+              [
+                0.02929687673243682,
+                0.30468749895833347
+              ],
+              [
+                0.02929687486979167,
+                0.36718749895833347
+              ],
+              [
+                0.02148437300714652,
+                0.36718749895833347
+              ],
+              [
+                0.02148437486979167,
+                0.30468749895833347
+              ]
+            ]
+          },
+          {
+            "box": [
+              0.3736778837466513,
+              0.5332932694364629,
+              0.4659555298114096,
+              0.5887419853219432
+            ],
+            "polygon": [
+              [
+                0.3774939891720091,
+                0.5332932694364629
+              ],
+              [
+                0.4659555298114096,
+                0.5480368583012662
+              ],
+              [
+                0.46213942438605177,
+                0.5887419853219432
+              ],
+              [
+                0.3736778837466513,
+                0.5739983964571399
+              ]
+            ],
+            "text": "Citybus•",
+            "kind": "ocr",
+            "confidence": 1.0,
+            "symbology": null,
+            "item_id": "5d44a4872a03422585d59fd947955e48:2",
+            "identity_scope": "frame_local_observation",
+            "source_box": [
+              0.3736778837466513,
+              0.5332932694364629,
+              0.4659555298114096,
+              0.5887419853219432
+            ],
+            "source_polygon": [
+              [
+                0.3774939891720091,
+                0.5332932694364629
+              ],
+              [
+                0.4659555298114096,
+                0.5480368583012662
+              ],
+              [
+                0.46213942438605177,
+                0.5887419853219432
+              ],
+              [
+                0.3736778837466513,
+                0.5739983964571399
+              ]
+            ]
+          },
+          {
+            "box": [
+              0.5976562501953124,
+              0.6015624998697916,
+              0.6093750001953124,
+              0.614583333203125
+            ],
+            "polygon": [
+              [
+                0.5976562501953124,
+                0.6015624998697916
+              ],
+              [
+                0.6093750001953124,
+                0.6015624998697916
+              ],
+              [
+                0.6093750001953124,
+                0.614583333203125
+              ],
+              [
+                0.5976562501953124,
+                0.614583333203125
+              ]
+            ],
+            "text": "53",
+            "kind": "ocr",
+            "confidence": 1.0,
+            "symbology": null,
+            "item_id": "5d44a4872a03422585d59fd947955e48:3",
+            "identity_scope": "frame_local_observation",
+            "source_box": [
+              0.5976562501953124,
+              0.6015624998697916,
+              0.6093750001953124,
+              0.614583333203125
+            ],
+            "source_polygon": [
+              [
+                0.5976562501953124,
+                0.6015624998697916
+              ],
+              [
+                0.6093750001953124,
+                0.6015624998697916
+              ],
+              [
+                0.6093750001953124,
+                0.614583333203125
+              ],
+              [
+                0.5976562501953124,
+                0.614583333203125
+              ]
+            ]
+          },
+          {
+            "box": [
+              0.009765626684570275,
+              0.9713541665364583,
+              0.14453125168457026,
+              0.9869791665364583
+            ],
+            "polygon": [
+              [
+                0.009765626684570275,
+                0.9713541665364583
+              ],
+              [
+                0.14453125168457026,
+                0.9713541665364583
+              ],
+              [
+                0.14453125168457026,
+                0.9869791665364583
+              ],
+              [
+                0.009765626684570275,
+                0.9869791665364583
+              ]
+            ],
+            "text": "did by graham// Plymothian Transit",
+            "kind": "ocr",
+            "confidence": 1.0,
+            "symbology": null,
+            "item_id": "5d44a4872a03422585d59fd947955e48:4",
+            "identity_scope": "frame_local_observation",
+            "source_box": [
+              0.009765626684570275,
+              0.9713541665364583,
+              0.14453125168457026,
+              0.9869791665364583
+            ],
+            "source_polygon": [
+              [
+                0.009765626684570275,
+                0.9713541665364583
+              ],
+              [
+                0.14453125168457026,
+                0.9713541665364583
+              ],
+              [
+                0.14453125168457026,
+                0.9869791665364583
+              ],
+              [
+                0.009765626684570275,
+                0.9869791665364583
+              ]
+            ]
+          },
+          {
+            "box": [
+              0.6980815462927499,
+              0.2775856743227061,
+              0.7939210392694154,
+              0.31192677492604814
+            ],
+            "polygon": [
+              [
+                0.699408282355515,
+                0.2775856743227061
+              ],
+              [
+                0.7939210392694154,
+                0.2862765027801808
+              ],
+              [
+                0.7925943032066503,
+                0.31192677492604814
+              ],
+              [
+                0.6980815462927499,
+                0.30323594646857344
+              ]
+            ],
+            "text": "PLYMOUTH SKI",
+            "kind": "ocr",
+            "confidence": 1.0,
+            "symbology": null,
+            "item_id": "5d44a4872a03422585d59fd947955e48:5",
+            "identity_scope": "frame_local_observation",
+            "source_box": [
+              0.6980815462927499,
+              0.2775856743227061,
+              0.7939210392694154,
+              0.31192677492604814
+            ],
+            "source_polygon": [
+              [
+                0.699408282355515,
+                0.2775856743227061
+              ],
+              [
+                0.7939210392694154,
+                0.2862765027801808
+              ],
+              [
+                0.7925943032066503,
+                0.31192677492604814
+              ],
+              [
+                0.6980815462927499,
+                0.30323594646857344
+              ]
+            ]
+          },
+          {
+            "box": [
+              0.7187500003540039,
+              0.3046874998860678,
+              0.7753906253540039,
+              0.33333333321940106
+            ],
+            "polygon": [
+              [
+                0.7187500003540039,
+                0.3046874998860678
+              ],
+              [
+                0.7753906253540039,
+                0.3046874998860678
+              ],
+              [
+                0.7753906253540039,
+                0.33333333321940106
+              ],
+              [
+                0.7187500003540039,
+                0.33333333321940106
+              ]
+            ],
+            "text": "CENTRE",
+            "kind": "ocr",
+            "confidence": 1.0,
+            "symbology": null,
+            "item_id": "5d44a4872a03422585d59fd947955e48:6",
+            "identity_scope": "frame_local_observation",
+            "source_box": [
+              0.7187500003540039,
+              0.3046874998860678,
+              0.7753906253540039,
+              0.33333333321940106
+            ],
+            "source_polygon": [
+              [
+                0.7187500003540039,
+                0.3046874998860678
+              ],
+              [
+                0.7753906253540039,
+                0.3046874998860678
+              ],
+              [
+                0.7753906253540039,
+                0.33333333321940106
+              ],
+              [
+                0.7187500003540039,
+                0.33333333321940106
+              ]
+            ]
+          },
+          {
+            "box": [
+              0.7656250003320313,
+              0.3723958332291666,
+              0.7988281253320313,
+              0.39322916656250007
+            ],
+            "polygon": [
+              [
+                0.7656250003320313,
+                0.3723958332291666
+              ],
+              [
+                0.7988281253320313,
+                0.3723958332291666
+              ],
+              [
+                0.7988281253320313,
+                0.39322916656250007
+              ],
+              [
+                0.7656250003320313,
+                0.39322916656250007
+              ]
+            ],
+            "text": "JTE",
+            "kind": "ocr",
+            "confidence": 1.0,
+            "symbology": null,
+            "item_id": "5d44a4872a03422585d59fd947955e48:7",
+            "identity_scope": "frame_local_observation",
+            "source_box": [
+              0.7656250003320313,
+              0.3723958332291666,
+              0.7988281253320313,
+              0.39322916656250007
+            ],
+            "source_polygon": [
+              [
+                0.7656250003320313,
+                0.3723958332291666
+              ],
+              [
+                0.7988281253320313,
+                0.3723958332291666
+              ],
+              [
+                0.7988281253320313,
+                0.39322916656250007
+              ],
+              [
+                0.7656250003320313,
+                0.39322916656250007
+              ]
+            ]
+          },
+          {
+            "box": [
+              0.6699218755859375,
+              0.5937499999348957,
+              0.7636718755859375,
+              0.6302083332682291
+            ],
+            "polygon": [
+              [
+                0.6699218755859375,
+                0.5937499999348957
+              ],
+              [
+                0.7636718755859375,
+                0.5937499999348957
+              ],
+              [
+                0.7636718755859375,
+                0.6302083332682291
+              ],
+              [
+                0.6699218755859375,
+                0.6302083332682291
+              ]
+            ],
+            "text": "Citybus",
+            "kind": "ocr",
+            "confidence": 1.0,
+            "symbology": null,
+            "item_id": "5d44a4872a03422585d59fd947955e48:8",
+            "identity_scope": "frame_local_observation",
+            "source_box": [
+              0.6699218755859375,
+              0.5937499999348957,
+              0.7636718755859375,
+              0.6302083332682291
+            ],
+            "source_polygon": [
+              [
+                0.6699218755859375,
+                0.5937499999348957
+              ],
+              [
+                0.7636718755859375,
+                0.5937499999348957
+              ],
+              [
+                0.7636718755859375,
+                0.6302083332682291
+              ],
+              [
+                0.6699218755859375,
+                0.6302083332682291
+              ]
+            ]
+          },
+          {
+            "box": [
+              0.6386718754557292,
+              0.68489583359375,
+              0.6894531254557292,
+              0.70052083359375
+            ],
+            "polygon": [
+              [
+                0.6386718754557292,
+                0.68489583359375
+              ],
+              [
+                0.6894531254557292,
+                0.68489583359375
+              ],
+              [
+                0.6894531254557292,
+                0.70052083359375
+              ],
+              [
+                0.6386718754557292,
+                0.70052083359375
+              ]
+            ],
+            "text": "vоло BБ",
+            "kind": "ocr",
+            "confidence": 0.30000001192092896,
+            "symbology": null,
+            "item_id": "5d44a4872a03422585d59fd947955e48:9",
+            "identity_scope": "frame_local_observation",
+            "source_box": [
+              0.6386718754557292,
+              0.68489583359375,
+              0.6894531254557292,
+              0.70052083359375
+            ],
+            "source_polygon": [
+              [
+                0.6386718754557292,
+                0.68489583359375
+              ],
+              [
+                0.6894531254557292,
+                0.68489583359375
+              ],
+              [
+                0.6894531254557292,
+                0.70052083359375
+              ],
+              [
+                0.6386718754557292,
+                0.70052083359375
+              ]
+            ]
+          },
+          {
+            "box": [
+              0.693359375546875,
+              0.6770833331770834,
+              0.748046875546875,
+              0.6979166665104167
+            ],
+            "polygon": [
+              [
+                0.693359375546875,
+                0.6770833331770834
+              ],
+              [
+                0.748046875546875,
+                0.6770833331770834
+              ],
+              [
+                0.748046875546875,
+                0.6979166665104167
+              ],
+              [
+                0.693359375546875,
+                0.6979166665104167
+              ]
+            ],
+            "text": "M53 HOD",
+            "kind": "ocr",
+            "confidence": 1.0,
+            "symbology": null,
+            "item_id": "5d44a4872a03422585d59fd947955e48:10",
+            "identity_scope": "frame_local_observation",
+            "source_box": [
+              0.693359375546875,
+              0.6770833331770834,
+              0.748046875546875,
+              0.6979166665104167
+            ],
+            "source_polygon": [
+              [
+                0.693359375546875,
+                0.6770833331770834
+              ],
+              [
+                0.748046875546875,
+                0.6770833331770834
+              ],
+              [
+                0.748046875546875,
+                0.6979166665104167
+              ],
+              [
+                0.693359375546875,
+                0.6979166665104167
+              ]
+            ]
+          },
+          {
+            "box": [
+              0.7499999991210937,
+              0.6770833335069444,
+              0.8027343741210937,
+              0.6927083335069444
+            ],
+            "polygon": [
+              [
+                0.7499999991210937,
+                0.6770833335069444
+              ],
+              [
+                0.8027343741210937,
+                0.6770833335069444
+              ],
+              [
+                0.8027343741210937,
+                0.6927083335069444
+              ],
+              [
+                0.7499999991210937,
+                0.6927083335069444
+              ]
+            ],
+            "text": "PLAXTON",
+            "kind": "ocr",
+            "confidence": 1.0,
+            "symbology": null,
+            "item_id": "5d44a4872a03422585d59fd947955e48:11",
+            "identity_scope": "frame_local_observation",
+            "source_box": [
+              0.7499999991210937,
+              0.6770833335069444,
+              0.8027343741210937,
+              0.6927083335069444
+            ],
+            "source_polygon": [
+              [
+                0.7499999991210937,
+                0.6770833335069444
+              ],
+              [
+                0.8027343741210937,
+                0.6770833335069444
+              ],
+              [
+                0.8027343741210937,
+                0.6927083335069444
+              ],
+              [
+                0.7499999991210937,
+                0.6927083335069444
+              ]
+            ]
+          },
+          {
+            "box": [
+              0.8359374979736329,
+              0.37239583349609373,
+              0.9980468729736329,
+              0.401041666829427
+            ],
+            "polygon": [
+              [
+                0.8359374979736329,
+                0.37239583349609373
+              ],
+              [
+                0.9980468729736329,
+                0.37239583349609373
+              ],
+              [
+                0.9980468729736329,
+                0.401041666829427
+              ],
+              [
+                0.8359374979736329,
+                0.401041666829427
+              ]
+            ],
+            "text": "ISTOKE< >DEV",
+            "kind": "ocr",
+            "confidence": 1.0,
+            "symbology": null,
+            "item_id": "5d44a4872a03422585d59fd947955e48:12",
+            "identity_scope": "frame_local_observation",
+            "source_box": [
+              0.8359374979736329,
+              0.37239583349609373,
+              0.9980468729736329,
+              0.401041666829427
+            ],
+            "source_polygon": [
+              [
+                0.8359374979736329,
+                0.37239583349609373
+              ],
+              [
+                0.9980468729736329,
+                0.37239583349609373
+              ],
+              [
+                0.9980468729736329,
+                0.401041666829427
+              ],
+              [
+                0.8359374979736329,
+                0.401041666829427
+              ]
+            ]
+          },
+          {
+            "box": [
+              0.8730468743489583,
+              0.5546875001302083,
+              0.9121093743489583,
+              0.5677083334635417
+            ],
+            "polygon": [
+              [
+                0.8730468743489583,
+                0.5546875001302083
+              ],
+              [
+                0.9121093743489583,
+                0.5546875001302083
+              ],
+              [
+                0.9121093743489583,
+                0.5677083334635417
+              ],
+              [
+                0.8730468743489583,
+                0.5677083334635417
+              ]
+            ],
+            "text": "\"Mene dheay",
+            "kind": "ocr",
+            "confidence": 0.30000001192092896,
+            "symbology": null,
+            "item_id": "5d44a4872a03422585d59fd947955e48:13",
+            "identity_scope": "frame_local_observation",
+            "source_box": [
+              0.8730468743489583,
+              0.5546875001302083,
+              0.9121093743489583,
+              0.5677083334635417
+            ],
+            "source_polygon": [
+              [
+                0.8730468743489583,
+                0.5546875001302083
+              ],
+              [
+                0.9121093743489583,
+                0.5546875001302083
+              ],
+              [
+                0.9121093743489583,
+                0.5677083334635417
+              ],
+              [
+                0.8730468743489583,
+                0.5677083334635417
+              ]
+            ]
+          }
+        ],
+        "total_items": 14,
+        "returned_items": 14,
+        "truncated": false,
+        "next_cursor": null,
+        "warnings": [],
+        "input_size": [
+          1024,
+          768
+        ],
+        "input_pixels_sha256": "57157474cd34a374d8864480471d2bc70b02f328260a16ea1e66bfddee103cff",
+        "timing": {
+          "total_ms": 11978.883415984455,
+          "adapter": {
+            "total_ms": 11757.445290975738,
+            "startup_ms": null,
+            "load_ms": null,
+            "preprocess_ms": null,
+            "inference_ms": null,
+            "postprocess_ms": null,
+            "transport_ms": null,
+            "model_cached": null
+          }
+        }
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:58:25.173865+00:00"
+    },
+    {
+      "id": "eda54e35a7c14dbd85993c68a65ec92c",
+      "action_id": "fa45e195406c4a5ca097f74e8dc82985",
+      "result_type": "ask_user",
+      "status": "completed",
+      "payload": {
+        "selected_action": {
+          "type": "ask_user",
+          "question": "The OCR probe extracted '53' and 'Citybus•' but also noise like '18.Nm' and ':Ox4ZC'. Do you have a specific detection model for text regions or bus displays, or should I try to filter the OCR results post-hoc based on the bounding boxes?"
+        },
+        "executed": false
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:59:31.423894+00:00"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "scope": "One generated fixture diagnostic; not a scored evaluation or acceptance gate.",
+  "reference_origin": "Generated software fixture; these expected values were not supplied to the planner",
+  "expected_texts": [
+    "QZ-4817"
+  ],
+  "excluded_readings": [
+    "ITEM CODE",
+    "SHIP TO",
+    "IGNORE-552"
+  ],
+  "actual_texts": [
+    "ITEM CODE",
+    "QZ-4817",
+    "SHIP TO",
+    "IGNORE-552"
+  ],
+  "exact_match": false,
+  "excluded_readings_observed": [
+    "ITEM CODE",
+    "SHIP TO",
+    "IGNORE-552"
+  ]
+}

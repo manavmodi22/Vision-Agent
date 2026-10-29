@@ -1,0 +1,1 @@
+{"action_id":"f578204f711542fc9a691b893d335081","error":{"code":"workflow_failed","failed_stage":"authorization","message":"A composed candidate needs exactly one frame_sample source","retryable":false},"executed":false,"validated":false}

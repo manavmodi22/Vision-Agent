@@ -1,0 +1,53 @@
+{
+  "files": [
+    {
+      "file": "report.json",
+      "source": ".visionapp/a0-investigation/benchmark-bus-4ef067339a9f-20261029T174901Z/original/report.json",
+      "bytes": 10769,
+      "sha256": "2fdcdfd315f33fc8e4800f8f2adbe57ac0b97ea9c785b937625512b243e387ab"
+    },
+    {
+      "file": "execution.json",
+      "source": ".visionapp/a0-investigation/benchmark-bus-4ef067339a9f-20261029T174901Z/original/execution.json",
+      "bytes": 81405,
+      "sha256": "dd6db822221946fb18d24c3b157a6ab9cc72709b45b4e57c8de2f54846c57717"
+    },
+    {
+      "file": "model-calls.json",
+      "source": ".visionapp/a0-investigation/benchmark-bus-4ef067339a9f-20261029T174901Z/original/model-calls.json",
+      "bytes": 378133,
+      "sha256": "7ada1efbfa7a560e7db282ca7b98660384d16d343e6d60dfcbd91ad15fa1e892"
+    },
+    {
+      "file": "selected-preview.json",
+      "source": ".visionapp/a0-investigation/benchmark-bus-4ef067339a9f-20261029T174901Z/original/selected-preview.json",
+      "bytes": 5,
+      "sha256": "38e0b9de817f645c4bec37c0d4a3e58baecccb040f5718dc069a72c7385a0bed"
+    },
+    {
+      "file": "setup.json",
+      "source": ".visionapp/a0-investigation/benchmark-bus-4ef067339a9f-20261029T174901Z/original/setup.json",
+      "bytes": 2003,
+      "sha256": "f3b25453e0a7e0e0fa4b4db91f3c03adbf962ac48e4d455939f43d6e2d3d9be6"
+    },
+    {
+      "file": "snapshot-verification.json",
+      "source": ".visionapp/a0-investigation/benchmark-bus-4ef067339a9f-20261029T174901Z/snapshot-verification.json",
+      "bytes": 56465,
+      "sha256": "c41ae2f0f3b9301ccc8015444073a5dab09dcf62a27cd0e73682c2b55aa388c0"
+    },
+    {
+      "file": "resources-before-original.json",
+      "source": ".visionapp/a0-investigation/benchmark-bus-4ef067339a9f-20261029T174901Z/resources-before-original.json",
+      "bytes": 3590,
+      "sha256": "d3ad76e7abf949e6337a2b714e828e1f6b4b251e7bc9b6676724a21c99f4fb14"
+    },
+    {
+      "file": "resources-after-original.json",
+      "source": ".visionapp/a0-investigation/benchmark-bus-4ef067339a9f-20261029T174901Z/resources-after-original.json",
+      "bytes": 3365,
+      "sha256": "341b5c6cb2193771f66bb4c7485bdb82bf2634a0dffef7b5df65b9fc9381d41b"
+    }
+  ],
+  "scope": "Exact JSON copies; no images, weights or model calls created during export."
+}

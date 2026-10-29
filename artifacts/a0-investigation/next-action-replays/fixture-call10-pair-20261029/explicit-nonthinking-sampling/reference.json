@@ -1,0 +1,78 @@
+{
+  "historical_call_id": "26a1e03dca744f6198799a51bea5ec77",
+  "historical_response": {
+    "id": "chatcmpl-4gz3V4LLKpxzm89Boewr4GWJix4wK3Ql",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"type\": \"next_action\",\n  \"state_revision\": 18,\n  \"decision_summary\": \"The barcode probe (obs 9ef0e7d47558457c9907c36350e74302) returned 0 items, failing to extract the code 'QZ-4817'. The OCR probe (obs 0b4c82f13d224184801413e05074e5b6) successfully extracted the code but also unwanted shipping label text. Since the code is alphanumeric and not a standard barcode, and the current OCR model cannot filter the label, I must ask the user for a strategy to ignore the label (e.g., spatial cropping coordinates or a specific label format).\",\n  \"based_on_observation_ids\": [\"9ef0e7d47558457c9907c36350e74302\", \"0b4c82f13d224184801413e05074e5b6\"],\n  \"action\": {\n    \"type\": \"ask_user\",\n    \"question\": \"The OCR model extracted the code 'QZ-4817' but also the shipping label text. The barcode model found nothing. How should I ignore the shipping label? Please provide the bounding box coordinates (normalized 0-1) for the item code area, or describe the label format so I can filter it.\"\n  }\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1793296331,
+    "model": "visionapp-qwen35-qualification",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b11963-39febd2ad",
+    "usage": {
+      "completion_tokens": 351,
+      "prompt_tokens": 6340,
+      "total_tokens": 6691,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 674,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 674,
+      "prompt_n": 5666,
+      "prompt_ms": 27970.718,
+      "prompt_per_token_ms": 4.936589834098129,
+      "prompt_per_second": 202.5689866094964,
+      "predicted_n": 351,
+      "predicted_ms": 29268.185,
+      "predicted_per_token_ms": 83.62338571428572,
+      "predicted_per_second": 11.958377330196594
+    },
+    "context_budget": {
+      "mode": "backend_tokenizer",
+      "model": "visionapp-qwen35-qualification",
+      "input_tokens": 6340,
+      "backend_context_tokens": 16384,
+      "context_verified": true,
+      "output_tokens": 1400,
+      "margin_tokens": 128,
+      "effective_context_tokens": 16384
+    },
+    "decision": {
+      "type": "next_action",
+      "state_revision": 18,
+      "decision_summary": "The barcode probe (obs 9ef0e7d47558457c9907c36350e74302) returned 0 items, failing to extract the code 'QZ-4817'. The OCR probe (obs 0b4c82f13d224184801413e05074e5b6) successfully extracted the code but also unwanted shipping label text. Since the code is alphanumeric and not a standard barcode, and the current OCR model cannot filter the label, I must ask the user for a strategy to ignore the label (e.g., spatial cropping coordinates or a specific label format).",
+      "based_on_observation_ids": [
+        "9ef0e7d47558457c9907c36350e74302",
+        "0b4c82f13d224184801413e05074e5b6"
+      ],
+      "action": {
+        "type": "ask_user",
+        "question": "The OCR model extracted the code 'QZ-4817' but also the shipping label text. The barcode model found nothing. How should I ignore the shipping label? Please provide the bounding box coordinates (normalized 0-1) for the item code area, or describe the label format so I can filter it."
+      }
+    }
+  },
+  "historical_error": null,
+  "scope": "Historical output is a comparison reference, not ground truth and never included in the prompt."
+}

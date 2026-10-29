@@ -1,0 +1,9 @@
+{
+  "scope": "Preserved initial manual diagnostic preparation failure; not a graph/compiler/inference result.",
+  "stage": "planning_model_selection",
+  "error": "Cannot select model.apple-vision: Missing or invalid prerequisites: VISION_APP_BINARY.",
+  "actual_inference_calls": 0,
+  "llm_calls": 0,
+  "workspace": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/manual-graph-preview-qwen35-call7-20261029/workspace",
+  "resolution": "Configure only this process with the exact existing dist/VisionApp.app native bridge used by source run_smoke.py; retain first workspace and create separate attempt2."
+}

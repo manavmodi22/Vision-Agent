@@ -6,6 +6,7 @@ import json
 from pydantic import JsonValue
 
 IDENTITY_FIELDS = {"capability_id", "model_id", "adapter_id", "identity_hash", "identity_scope", "provider"}
+VALUES_PROJECTION_CHARS = 5000
 
 
 def _page(row: dict[str, JsonValue], key: str, limit: int) -> None:
@@ -44,14 +45,83 @@ def probe_projection(payload: dict[str, JsonValue]) -> dict[str, JsonValue]:
         result["identity_refs"] = [compact_identity(item) for item in identities]
     items = result.get("items")
     if isinstance(items, list):
-        result["items"] = [compact_geometry(item, source_only=True) for item in items[:5]]
-        result["returned_items"] = min(len(items), 5)
-        if len(items) > 5:
+        selected = [compact_geometry(item, source_only=True) for item in items[:20]]
+        result["items"] = selected
+        result["returned_items"] = len(selected)
+        result["projection_note"] = ("Up to twenty actual values; normalized source_box rounded to six decimals. "
+                                     "Polygons and verbose artifact/identity fields omitted. Follow retrieve_saved_values "
+                                     "when present; full evidence remains available through inspect_observation.")
+        while selected and len(json.dumps(result, ensure_ascii=False)) > VALUES_PROJECTION_CHARS:
+            selected.pop()
+            result["returned_items"] = len(selected)
+        if len(selected) < len(items):
             result["truncated"] = True
+            # A source cursor after 20 would skip values omitted by this view.
             result["next_cursor"] = None
-    result["projection_note"] = ("First five actual values; normalized source_box rounded to six decimals. "
-                                 "Polygons and verbose artifact/identity fields omitted. Use inspect_observation "
-                                 "from cursor null for full paged values/geometry or image/overlay references.")
+    return result
+
+
+def bounded_values_projection(payload: dict[str, JsonValue], original: dict[str, JsonValue], *,
+                              observation_id: str, inspection: bool) -> dict[str, JsonValue]:
+    """Budget the complete view, including a correctly scoped continuation action.
+
+    A clipped inspection page restarts its original source cursor with a smaller
+    limit, rather than skipping hidden values or repeating the oversized request.
+    Whole readings are omitted, never shortened to fit this context projection.
+    """
+    result = payload.copy()
+    source_id = original.get("observation_id") if inspection else observation_id
+    if not isinstance(source_id, str):
+        source_id = observation_id
+    view = original.get("view", "values") if inspection else "values"
+    if not isinstance(view, str) or view not in {"values", "geometry", "image", "overlay", "error"}:
+        view = "values"
+    restart_cursor = original.get("source_cursor") if inspection else None
+    items, original_items = result.get("items"), original.get("items")
+    selected = list(items) if isinstance(items, list) else []
+    if isinstance(items, list):
+        result["items"] = selected
+    clipped = isinstance(original_items, list) and len(selected) < len(original_items)
+
+    def continuation() -> None:
+        if clipped:
+            result.update(truncated=True, next_cursor=None, returned_items=len(selected), omitted_for_size=True)
+            if inspection and isinstance(original_items, list) and len(original_items) == 1 and not selected:
+                # Even a one-row request cannot advance through this projection.
+                # Do not suggest the identical action as a way to recover it.
+                result.update(unprojectable=True,
+                              projection_note="The single-row page exceeds the context size budget. "
+                                              "It cannot be exposed completely in this text projection; "
+                                              "the full saved receipt is unchanged.")
+                result.pop("retrieve_saved_values", None)
+                return
+        if result.get("truncated") is True:
+            result["retrieve_saved_values"] = {
+                "type": "inspect_observation", "observation_id": source_id, "view": view,
+                "limit": max(1, len(selected)) if clipped else 5,
+                "cursor": restart_cursor if clipped else original.get("next_cursor"),
+            }
+
+    continuation()
+    while selected and len(json.dumps(result, ensure_ascii=False)) > VALUES_PROJECTION_CHARS:
+        selected.pop()
+        clipped = True
+        continuation()
+    if len(json.dumps(result, ensure_ascii=False)) > VALUES_PROJECTION_CHARS:
+        # Even zero values can exceed the budget (for example, long adapter
+        # warnings). Preserve bounded authority fields and explicitly omit the
+        # metadata; the durable receipt/artifact is never changed.
+        authority = {"executed", "execution_status", "observation_id", "source_result_type", "source_status",
+                     "view", "source_cursor", "total_items", "workflow_revision_id", "spec_hash", "preview_spec_hash"}
+        result = {key: value for key, value in result.items() if key in authority
+                  and (value is None or isinstance(value, (bool, int, float))
+                       or isinstance(value, str) and len(value) <= 256)}
+        selected = []
+        clipped = True
+        result.update(items=[], omitted_for_size=True,
+                      projection_note="Metadata and values omitted to fit the 5000-character context budget. "
+                                      "Full receipt remains saved; retrieve_saved_values restarts the original page.")
+        continuation()
     return result
 
 

@@ -1,0 +1,50 @@
+{
+  "id": "chatcmpl-rxtLvEqe2eF99QTd6Z9cpsInBehWBw1B",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "{\n  \"type\": \"workflow_decision\",\n  \"state_revision\": 12,\n  \"decision_summary\": \"Construct the final workflow using OCR to extract 'QZ-4817' from the development image. The probe (obs 6b504f808f3d4b0db73327fa737cf48f) confirmed OCR successfully reads the item code while ignoring shipping labels. The workflow uses model.apple-vision with task 'ocr' and language 'en-US' on media-0e53fc77549b0b5080d45aedd9373425.\",\n  \"based_on_observation_ids\": [\"6b504f808f3d4b0db73327fa737cf48f\", \"ebcbff419c664b21bf73e9e4346e67eb\", \"32bcfd442fb84ef58a83211f291e686f\"],\n  \"action\": {\n    \"type\": \"construct_workflow\",\n    \"graph\": {\n      \"name\": \"Item Code Reader\",\n      \"nodes\": [\n        {\n          \"type\": \"frame_sample\",\n          \"id\": \"src\",\n          \"fps\": 1.0\n        },\n        {\n          \"type\": \"ocr\",\n          \"id\": \"reader\",\n          \"image\": \"$src.frame\",\n          \"model_capability_id\": \"model.apple-vision\",\n          \"model_reason\": \"Extract item code QZ-4817 from image, ignoring shipping label text.\"\n        }\n      ],\n      \"metric\": \"text_accuracy\",\n      \"target\": 1.0\n    },\n    \"media_ids\": [\"media-0e53fc77549b0b5080d45aedd9373425\"],\n    \"evidence_ids\": [\"6b504f808f3d4b0db73327fa737cf48f\", \"ebcbff419c664b21bf73e9e4346e67eb\", \"32bcfd442fb84ef58a83211f291e686f\"]\n  }\n}",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1793298421,
+  "model": "visionapp-qwen35-qualification",
+  "object": "chat.completion",
+  "metadata": null,
+  "moderation": null,
+  "service_tier": null,
+  "system_fingerprint": "b11963-39febd2ad",
+  "usage": {
+    "completion_tokens": 550,
+    "prompt_tokens": 8679,
+    "total_tokens": 9229,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 674,
+      "image_tokens": null,
+      "text_tokens": null
+    }
+  },
+  "timings": {
+    "cache_n": 674,
+    "prompt_n": 8005,
+    "prompt_ms": 55180.76,
+    "prompt_per_token_ms": 6.8932866958151156,
+    "prompt_per_second": 145.068679735473,
+    "predicted_n": 550,
+    "predicted_ms": 49681.543,
+    "predicted_per_token_ms": 90.49461384335154,
+    "predicted_per_second": 11.050381426357873
+  }
+}

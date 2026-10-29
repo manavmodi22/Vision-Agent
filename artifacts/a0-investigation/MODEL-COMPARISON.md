@@ -52,5 +52,8 @@ its server must be restored after the isolated candidate tests finish.
 The 9B artifact is a pinned third-party Unsloth conversion with verified bytes;
 its exact conversion-source commit is not established. These are two exploratory
 runs on a generated software fixture, not independent vision-quality or model
-generalization measurements. The predeclared public original/degraded scene pair
-is running separately from a sealed snapshot of this same engine revision.
+generalization measurements. The [public original scene](bus-original-frozen/README.md)
+ran separately from a sealed snapshot of this same engine revision and also
+failed to produce a draft. Its degraded counterpart is postponed; no paired
+acceptance result is claimed. Subsequent context diagnostics and fixes are
+recorded in the [evidence index](README.md).

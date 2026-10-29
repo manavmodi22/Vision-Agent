@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-10-29T17:59:58.231730+00:00",
+  "phase": "after_original_before_diagnostic_interleaving",
+  "free_bytes": 13481820160,
+  "candidate_idle": true,
+  "server_processes": [
+    "33397 18124 4044464 .visionapp/runtime/llama-b11963/llama-server -m .visionapp/model-qualification/Qwen3.5-9B-Q6_K/Qwen3.5-9B-Q6_K.gguf --host 127.0.0.1 --port 1236 --alias visionapp-qwen35-qualification --ctx-size 16384 --parallel 1 --reasoning off --chat-template-kwargs {\"enable_thinking\":false} --no-webui -lv 4",
+    "45543     1  14832 /Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server -m /Users/manavrakeshku.modi/.lmstudio/models/prithivMLmods/Cosmos-Reason2-8B-GGUF/Cosmos-Reason2-8B.Q8_0.gguf --mmproj /Users/manavrakeshku.modi/.lmstudio/models/prithivMLmods/Cosmos-Reason2-8B-GGUF/Cosmos-Reason2-8B.mmproj-f16.gguf --host 127.0.0.1 --port 1235 --alias visionapp-vlm --ctx-size 8192 --parallel 1 --reasoning off --image-max-tokens 1024 --no-webui"
+  ],
+  "resources": {
+    "vm_stat": {
+      "returncode": 0,
+      "stdout": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                   281662.\nPages active:                                 855113.\nPages inactive:                               856240.\nPages speculative:                             29918.\nPages throttled:                                   0.\nPages wired down:                             701704.\nPages purgeable:                               18588.\n\"Translation faults\":                     1879771207.\nPages copy-on-write:                        53595752.\nPages zero filled:                        3476536158.\nPages reactivated:                         121627856.\nPages purged:                               27340935.\nFile-backed pages:                            531145.\nAnonymous pages:                             1210126.\nPages stored in compressor:                  2384819.\nPages occupied by compressor:                 376105.\nDecompressions:                             79027575.\nCompressions:                              112959594.\nPageins:                                    52646132.\nPageouts:                                     756574.\nSwapins:                                      592891.\nSwapouts:                                    1715859.\n",
+      "stderr": ""
+    },
+    "swap": {
+      "returncode": 0,
+      "stdout": "vm.swapusage: total = 15360.00M  used = 14333.38M  free = 1026.62M  (encrypted)\n",
+      "stderr": ""
+    },
+    "memory_pressure": {
+      "returncode": 0,
+      "stdout": "The system has 51539607552 (3145728 pages with a page size of 16384).\nSystem-wide memory free percentage: 65%\n",
+      "stderr": ""
+    },
+    "server_listeners": {
+      "returncode": 0,
+      "stdout": "p33397\ncllama-server\nf3\ntIPv4\nn127.0.0.1:1236\np45543\ncllama-server\nf3\ntIPv4\nn127.0.0.1:1235\n",
+      "stderr": ""
+    }
+  },
+  "native_binary_sha256": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d",
+  "native_unchanged": true,
+  "original_report": "original/report.json",
+  "original_status": "awaiting_input",
+  "scheduling": "Degraded deliberately held pending coordinator resume. Coordinator may run isolated next-decision diagnostics without tool dispatch between variants; this pair is not a controlled speed benchmark."
+}

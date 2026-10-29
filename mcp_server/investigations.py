@@ -17,6 +17,7 @@ from engine.investigations.tools import InvestigationTools, ToolOutcome, _page
 from engine.investigations.worker import run_owned_probe
 from engine.models.artifacts import canonical_hash
 from mcp_server.investigation_projection import (
+    bounded_values_projection,
     compact_identity,
     probe_projection,
     workflow_projection,
@@ -36,13 +37,19 @@ def observation_projection(observation: Observation) -> dict[str, JsonValue]:
     """Keep values and authority fields typed; bulky detail stays in the ledger."""
     row = observation.model_dump(mode="json")
     payload = observation.payload.copy()
+    if observation.result_type == "prepare_workflow":
+        selected = payload.get("selected_action")
+        if isinstance(selected, dict):
+            payload["selected_action"] = {key: value for key, value in selected.items() if key != "summary"}
+            payload["request_summary_omitted"] = True
+            payload["scope"] = "Construction schema requested. No workflow or vision result was produced by this control action. The model's request prose remains in the saved receipt."
     if observation.result_type == "construct_workflow" and isinstance(payload.get("preview"), dict):
         payload = workflow_projection(payload)
     elif observation.result_type == "run_probe":
         payload = probe_projection(payload)
     if isinstance(payload.get("model_view"), dict):
         payload = {"descriptor": payload["model_view"], "full_descriptor_omitted": True}
-    if len(json.dumps(payload, ensure_ascii=False)) > 5000:
+    if observation.result_type not in {"run_probe", "inspect_observation"} and len(json.dumps(payload, ensure_ascii=False)) > 5000:
         identity = payload.get("identity")
         if isinstance(identity, dict):
             payload["identity"] = compact_identity(identity)
@@ -53,6 +60,9 @@ def observation_projection(observation: Observation) -> dict[str, JsonValue]:
             payload["truncated"] = True
             payload.pop("next_cursor", None)
         payload["projection_note"] = "Bounded context projection; inspect_observation from cursor null for full paged values/geometry."
+    if observation.result_type in {"run_probe", "inspect_observation"}:
+        payload = bounded_values_projection(payload, observation.payload, observation_id=observation.id,
+                                            inspection=observation.result_type == "inspect_observation")
     row["payload"] = payload
     return row
 
@@ -66,6 +76,9 @@ def recent_action_context(actions: list[ActionReceipt]) -> list[JsonValue]:
     for item, original, signature in zip(actions[-4:], arguments[-4:], signatures[-4:], strict=True):
         selected = original.copy()
         selected.pop("type")
+        if item.action.type == "prepare_workflow":
+            selected.pop("summary", None)
+            selected["request_summary_omitted"] = True
         graph = selected.pop("graph", None)
         if graph is not None:
             selected.update(graph_omitted=True, graph_sha256=canonical_hash(graph))
@@ -74,7 +87,6 @@ def recent_action_context(actions: list[ActionReceipt]) -> list[JsonValue]:
         rows.append({"id": item.id, "type": item.action.type, "arguments": selected,
                      "arguments_sha256": signature,
                      "same_arguments_attempts_in_task": occurrences[signature],
-                     "purpose": item.decision.decision_summary,
                      "based_on_observation_ids": list(item.decision.based_on_observation_ids),
                      "observation_id": item.observation_id, "status": item.status})
     return rows
@@ -86,7 +98,14 @@ def investigation_context(store: InvestigationStore, project_id: str, task_id: s
     actions = store.actions(project_id, task_id)
     calls = store.model_calls(project_id, task_id)
     known_capabilities: dict[str, JsonValue] = {}
+    workflow_revisions: set[str] = set()
     for observation in observations:
+        workflow_revision_id = observation.payload.get("workflow_revision_id")
+        if (observation.result_type == "construct_workflow" and observation.status == "completed"
+                and observation.payload.get("validated") is True and observation.payload.get("preview_success") is True
+                and isinstance(workflow_revision_id, str) and len(workflow_revision_id) == 32
+                and all(character in "0123456789abcdef" for character in workflow_revision_id)):
+            workflow_revisions.add(workflow_revision_id)
         view = observation.payload.get("model_view")
         if isinstance(view, dict) and isinstance(view.get("id"), str):
             identifier = str(view["id"])
@@ -115,12 +134,15 @@ def investigation_context(store: InvestigationStore, project_id: str, task_id: s
         "state": state.model_dump(mode="json"),
         "observations": projected,
         "visible_observation_ids": [identifier for identifier in visible],
+        "citable_observation_ids": [identifier for identifier in sorted(set(visible).union(
+            identifier for call in calls for identifier in call.visible_observation_ids))],
+        "known_workflow_revision_ids": [revision_id for revision_id in sorted(workflow_revisions)],
         "earlier_observations": [{"id": item.id, "result_type": item.result_type, "status": item.status}
                                  for item in observations if item.id not in visible],
         "recent_actions": recent_action_context(actions),
         "last_model_error": calls[-1].error[:1500] if calls and calls[-1].error else None,
         "inspected_capabilities": list(known_capabilities.values())[-4:],
-        "context_note": "The latest three distinct observations are supplied; identical metadata uses its newest receipt. Recent actions include actual arguments and attempt counts. Their purpose text is the model's earlier interpretation, not new tool evidence. Full history remains inspectable.",
+        "context_note": "The latest three distinct observations are supplied; identical metadata uses its newest receipt. Recent actions include actual arguments, attempt counts and outcome links. Prior decision prose is retained in the task record and UI, but omitted here so it does not substitute for actual observations.",
         "development_media": development_media_summary(store, project_id),
         "planner_modality": "text_only; image paths are references, not supplied image pixels",
     }

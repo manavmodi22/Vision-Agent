@@ -1,0 +1,31 @@
+{
+  "type": "workflow_decision",
+  "state_revision": 12,
+  "decision_summary": "Prepare a workflow that uses OCR to extract the item code from the image, ignoring the shipping label. The workflow will use the model.apple-vision capability with task 'ocr' and language 'en-US' on the development media.",
+  "based_on_observation_ids": ["6b504f808f3d4b0db73327fa737cf48f", "ebcbff419c664b21bf73e9e4346e67eb", "32bcfd442fb84ef58a83211f291e686f"],
+  "action": {
+    "type": "construct_workflow",
+    "graph": {
+      "name": "Item Code Reader",
+      "nodes": [
+        {
+          "type": "frame_sample",
+          "id": "frame_sample_1",
+          "fps": 1
+        },
+        {
+          "type": "ocr",
+          "id": "ocr_1",
+          "image": "$frame_sample_1.frame",
+          "model_capability_id": "model.apple-vision",
+          "model_reason": "Extract text from the image to identify the item code."
+        }
+      ],
+      "metric": "text_accuracy",
+      "target": 1
+    },
+    "media_ids": ["media-0e53fc77549b0b5080d45aedd9373425"],
+    "evidence_ids": ["6b504f808f3d4b0db73327fa737cf48f", "ebcbff419c664b21bf73e9e4346e67eb", "32bcfd442fb84ef58a83211f291e686f"],
+    "parent_revision_id": "70e4ba01eae04c7899f3e7988af27258"
+  }
+}

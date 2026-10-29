@@ -1,0 +1,44 @@
+{
+  "case_id": "bus-destination-v1",
+  "variant": "original",
+  "input": {
+    "file_sha256": "4fb978a9f3e17e86656caac0a9802d26296d9a2207a422969beb14ff11ee9837",
+    "size": [
+      1024,
+      768
+    ],
+    "decoded_rgb_sha256": "57157474cd34a374d8864480471d2bc70b02f328260a16ea1e66bfddee103cff"
+  },
+  "imported_input": {
+    "file_sha256": "95e23f5b54cef202cfd6230a1923478cb39983c7524c0743d95c7500fbd9dc5e",
+    "size": [
+      1024,
+      768
+    ],
+    "decoded_rgb_sha256": "57157474cd34a374d8864480471d2bc70b02f328260a16ea1e66bfddee103cff"
+  },
+  "project_id": "37828149a3954ecb",
+  "source_before": "503a046821a66aa02d6010394b346415b3a7670010cba7cfd5df06d64a1fc3e4",
+  "manifest_sha256": "8f845f5c65e749ae655c3f4c576da1e34c4a66237a1ee84757b2babccf2d5aff",
+  "planner_prompt_sha256": "88b1caaafd3d077b1d7dbdba52847effd49489fdd455201b653015afe13bb797",
+  "system_prompt_sha256": "12d5548be2bf1fbcae9c5ed5a8cca30ac4aa2be4d01cddc20a556a5506cf156d",
+  "harness_sha256": "b73498aa4e524cc4a7da992bdadd264142190810ccb539069bee127a7c4bb657",
+  "native_binary": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/MacOS/VisionApp",
+  "native_binary_sha256": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d",
+  "model_url": "http://127.0.0.1:1236/v1",
+  "model": "visionapp-qwen35-qualification",
+  "label": "Qwen3.5-9B Q6_K frozen public scene",
+  "model_identity_scope": "Configured alias; model weights are not independently verified by this harness.",
+  "budget": {
+    "max_model_calls": 20,
+    "max_actions": 16,
+    "max_probes": 6,
+    "max_elapsed_s": 900.0,
+    "model_calls": 0,
+    "actions": 0,
+    "probes": 0,
+    "elapsed_s": 0.0
+  },
+  "workspace": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/benchmark-bus-4ef067339a9f-20261029T174901Z/original/workspace",
+  "reference_boundary": "Only the objective and one imported image enter the project. Evaluator reference stays outside workspace and is scored after the runner stops."
+}

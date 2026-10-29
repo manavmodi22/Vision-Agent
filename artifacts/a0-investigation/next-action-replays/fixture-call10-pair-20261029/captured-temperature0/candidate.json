@@ -1,0 +1,28 @@
+{
+  "shape_and_provenance_valid": true,
+  "decision": {
+    "type": "next_action",
+    "state_revision": 18,
+    "decision_summary": "The OCR probe (obs 0b4c82f13d224184801413e05074e5b6) successfully extracted the item code 'QZ-4817' but also extracted unwanted shipping label text ('SHIP TO', 'IGNORE-552'). The user requires reading *only* the item code. The capability 'model.apple-vision' supports both 'ocr' and 'barcode' tasks. Since the code format 'QZ-4817' resembles a barcode/identifier, I will probe the 'barcode' task to see if it can extract the code without the surrounding label text, which would satisfy the constraint to ignore the shipping label.",
+    "based_on_observation_ids": [
+      "0b4c82f13d224184801413e05074e5b6",
+      "b1bc4e58ace5407389ff735e6cc7d0a3",
+      "1942b29f7f2f4790afdf93c65fe4aa30"
+    ],
+    "action": {
+      "type": "run_probe",
+      "capability_id": "model.apple-vision",
+      "inspected_descriptor_hash": "b4c6012e2b0d32242faae29bcd9f2705c7b77819d83fbc319a08a961de9d0125",
+      "media_id": "media-37bfc7455e8c63f77d1af724c9b7ddcf",
+      "source_sha256": "36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051",
+      "transforms": [],
+      "request": {
+        "task": "barcode",
+        "model_id": "apple-vision"
+      }
+    }
+  },
+  "authority_validated": false,
+  "action_dispatched": false,
+  "scope": "Shape, revision and evidence references only; not task correctness, executable authorization or A0 success."
+}

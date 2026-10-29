@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-29T18:11:04.953359+00:00",
+  "engine_source_identity": "b787a9d409db6f865b20915e5ba5e3202926a1144d21a6b8451726f7366373b3",
+  "source_frozen_for_active_run": true,
+  "tests": [
+    {
+      "scope": "tests/test_investigation*",
+      "result": "168 passed in 35.33s",
+      "log": "projection-integration-tests.log",
+      "source": "c5a0e6922e6c806251372e12c80b3a9ef15c846216d4f13b5eeda3c9927a3c31",
+      "qualification": "Before omission of purpose in recent-action context."
+    },
+    {
+      "scope": "context, projection and loop tests after purpose omission",
+      "result": "49 passed in 14.51s",
+      "log": "evidence-context-tests.log"
+    }
+  ],
+  "ruff": "All checks passed",
+  "mypy": "Success: no issues found in 199 source files",
+  "live_scope": "Three diagnostic next-decisions executed no actions. A new complete generated-fixture investigation is running; no pass or default-model change claimed."
+}

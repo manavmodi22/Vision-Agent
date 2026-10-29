@@ -2,6 +2,8 @@
 from copy import deepcopy
 
 from mcp_server.investigation_projection import probe_projection, workflow_projection
+from mcp_server.investigations import observation_projection
+from spec.investigation import Observation
 
 
 def test_large_workflow_projection_preserves_authority_and_retrieval_without_mutation() -> None:
@@ -68,4 +70,30 @@ def test_preview_projection_keeps_real_readings_geometry_and_marks_partial_lists
     assert inference["result"]["readings"] == readings[:5]
     assert inference["result"]["readings_page"] == {"total_items": 7, "returned_items": 5, "truncated": True}
     assert inference["result"]["identity"] == {"identity_scope": "system_framework_versioned", "identity_hash": "e" * 64}
+    assert payload == before
+
+
+def test_compact_readings_beyond_fifth_are_visible_without_semantic_selection() -> None:
+    items = [{"text": f"VALUE-{index}", "source_box": [.1, .2, .3, .4]} for index in range(14)]
+    payload = {"executed": True, "items": items, "total_items": 14,
+               "returned_items": 14, "truncated": False, "next_cursor": None}
+    projected = probe_projection(payload)
+    assert projected["items"] == items
+    assert projected["returned_items"] == 14
+    assert projected["truncated"] is False
+
+
+def test_oversized_probe_value_is_omitted_honestly_with_exact_retrieval_action() -> None:
+    payload = {"executed": True, "items": [{"text": "X" * 10000}, {"text": "SECOND"}],
+               "total_items": 30, "returned_items": 2, "truncated": True,
+               "next_cursor": "abcdef1234567890:20"}
+    before = deepcopy(payload)
+    observation = Observation(id="a" * 32, action_id="b" * 32, result_type="run_probe", status="completed",
+                              payload=payload, created_at="2026-10-29T00:00:00Z")
+    projected = observation_projection(observation)["payload"]
+    assert projected["items"] == []
+    assert projected["returned_items"] == 0 and projected["total_items"] == 30
+    assert projected["truncated"] is True and projected["next_cursor"] is None
+    assert projected["retrieve_saved_values"] == {"type": "inspect_observation", "observation_id": observation.id,
+                                                "view": "values", "limit": 1, "cursor": None}
     assert payload == before

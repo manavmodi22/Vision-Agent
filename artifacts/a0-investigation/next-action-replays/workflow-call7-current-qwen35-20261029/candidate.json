@@ -1,0 +1,48 @@
+{
+  "shape_and_provenance_valid": true,
+  "decision": {
+    "type": "workflow_decision",
+    "state_revision": 12,
+    "decision_summary": "Construct the final workflow using OCR to extract 'QZ-4817' from the development image. The probe (obs 6b504f808f3d4b0db73327fa737cf48f) confirmed OCR successfully reads the item code while ignoring shipping labels. The workflow uses model.apple-vision with task 'ocr' and language 'en-US' on media-0e53fc77549b0b5080d45aedd9373425.",
+    "based_on_observation_ids": [
+      "6b504f808f3d4b0db73327fa737cf48f",
+      "ebcbff419c664b21bf73e9e4346e67eb",
+      "32bcfd442fb84ef58a83211f291e686f"
+    ],
+    "action": {
+      "type": "construct_workflow",
+      "graph": {
+        "name": "Item Code Reader",
+        "nodes": [
+          {
+            "type": "frame_sample",
+            "id": "src",
+            "fps": 1.0
+          },
+          {
+            "type": "ocr",
+            "id": "reader",
+            "image": "$src.frame",
+            "model_capability_id": "model.apple-vision",
+            "model_reason": "Extract item code QZ-4817 from image, ignoring shipping label text."
+          }
+        ],
+        "metric": "text_accuracy",
+        "target": 1.0
+      },
+      "media_ids": [
+        "media-0e53fc77549b0b5080d45aedd9373425"
+      ],
+      "evidence_ids": [
+        "6b504f808f3d4b0db73327fa737cf48f",
+        "ebcbff419c664b21bf73e9e4346e67eb",
+        "32bcfd442fb84ef58a83211f291e686f"
+      ],
+      "parent_revision_id": null
+    }
+  },
+  "authority_validated": false,
+  "action_dispatched": false,
+  "scope": "Shape, revision and evidence references only; not task correctness, executable authorization or A0 success.",
+  "graph_structure_valid": true
+}

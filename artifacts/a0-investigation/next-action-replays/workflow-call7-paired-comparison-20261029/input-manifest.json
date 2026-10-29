@@ -1,0 +1,52 @@
+[
+  {
+    "path": "artifacts/a0-investigation/next-action-replays/workflow-call7-current-qwen35-20261029/request.json",
+    "bytes": 49123,
+    "sha256": "e137752b8bc6ed58b15fe84b21da33204360f933fb1f38fa3da506021cf4d545"
+  },
+  {
+    "path": "artifacts/a0-investigation/next-action-replays/workflow-call7-current-qwen35-20261029/wire-request.json",
+    "bytes": 49123,
+    "sha256": "e137752b8bc6ed58b15fe84b21da33204360f933fb1f38fa3da506021cf4d545"
+  },
+  {
+    "path": "artifacts/a0-investigation/next-action-replays/workflow-call7-current-qwen35-20261029/candidate.json",
+    "bytes": 1725,
+    "sha256": "4261cba52e814848308e08f260f92f2f5e509dd53afc049981ba0e9f6416d1bb"
+  },
+  {
+    "path": "artifacts/a0-investigation/next-action-replays/workflow-call7-current-qwen35-20261029/response.json",
+    "bytes": 2633,
+    "sha256": "ae59c3a94944797707de108d56a2b74b7afd065ba83930e3a5d556fc594cb08c"
+  },
+  {
+    "path": "artifacts/a0-investigation/next-action-replays/workflow-call7-current-qwen35-20261029/receipt.json",
+    "bytes": 18524,
+    "sha256": "2ce1dcd1f87738d91313838ce8636da880b45fca5c150af23935df0b2e920b07"
+  },
+  {
+    "path": "artifacts/a0-investigation/next-action-replays/workflow-call7-current-qwen14-20261029/request.json",
+    "bytes": 49110,
+    "sha256": "101729365fae2bf07b8042448d5f7fa3bdf1184e06b8a5b502f622ee69dc9fb6"
+  },
+  {
+    "path": "artifacts/a0-investigation/next-action-replays/workflow-call7-current-qwen14-20261029/wire-request.json",
+    "bytes": 49110,
+    "sha256": "101729365fae2bf07b8042448d5f7fa3bdf1184e06b8a5b502f622ee69dc9fb6"
+  },
+  {
+    "path": "artifacts/a0-investigation/next-action-replays/workflow-call7-current-qwen14-20261029/candidate.json",
+    "bytes": 1652,
+    "sha256": "0253a0388afd2fb4c8454f59b56569d0cbd55cf81ef75975e2aa6d553b468565"
+  },
+  {
+    "path": "artifacts/a0-investigation/next-action-replays/workflow-call7-current-qwen14-20261029/response.json",
+    "bytes": 2576,
+    "sha256": "f1d366c68bffe65ad2f7c40dc84b3bbdc9586705567f80ad48b6c14810318ec7"
+  },
+  {
+    "path": "artifacts/a0-investigation/next-action-replays/workflow-call7-current-qwen14-20261029/receipt.json",
+    "bytes": 14683,
+    "sha256": "106c9ec76f8beb3522010224d7ee3b77fb493180d869a85501b7ce2608fd1885"
+  }
+]

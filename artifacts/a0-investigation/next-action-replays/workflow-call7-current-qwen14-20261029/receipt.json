@@ -1,0 +1,274 @@
+{
+  "scope": "Diagnostic next-decision candidate only; no action dispatch, task mutation, user reply or A0 success claim.",
+  "status": "diagnostic_response_captured",
+  "run_requested": true,
+  "ledger": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T180941Z/workspace/projects/1a32862295864799/investigations/70e4ba01eae04c7899f3e7988af27258/task.json",
+  "ledger_sha256": "b96e2246581f236d1bc6a72025d3d25d4354947b8f713441009b7f6abc52702d",
+  "call_number": 7,
+  "call_id": "486487648805485787fe28760b865d9a",
+  "context_mode": "original",
+  "decision_type": "workflow_decision",
+  "contracts_mode": "current",
+  "changed_input_diagnostic": true,
+  "changed_input_paths": [
+    "/context/action_contracts/construct_workflow/fields/graph/description",
+    "/context/action_contracts/construct_workflow/fields/graph/properties/nodes/description",
+    "/context/citable_observation_ids",
+    "/context/node_contracts/barcode/description",
+    "/context/node_contracts/barcode/fields/image/description",
+    "/context/node_contracts/count_per_zone/description",
+    "/context/node_contracts/count_per_zone/fields/dets/description",
+    "/context/node_contracts/crop/description",
+    "/context/node_contracts/crop/fields/box/description",
+    "/context/node_contracts/crop/fields/image/description",
+    "/context/node_contracts/detect/description",
+    "/context/node_contracts/detect/fields/image/description",
+    "/context/node_contracts/frame_sample/description",
+    "/context/node_contracts/match/description",
+    "/context/node_contracts/match/fields/text/description",
+    "/context/node_contracts/ocr/description",
+    "/context/node_contracts/ocr/fields/image/description",
+    "/context/node_contracts/resize/description",
+    "/context/node_contracts/resize/fields/image/description",
+    "/context/node_contracts/rule/description",
+    "/context/node_contracts/rule/fields/counts/description",
+    "/context/node_contracts/sink_event/description",
+    "/context/node_contracts/sink_event/fields/event/description",
+    "/context/node_contracts/zone_filter/description",
+    "/context/node_contracts/zone_filter/fields/dets/description",
+    "/schema/$defs/BarcodeNode/description",
+    "/schema/$defs/BarcodeNode/properties/image/description",
+    "/schema/$defs/ConstructWorkflow/properties/evidence_ids/items/enum",
+    "/schema/$defs/CountNode/description",
+    "/schema/$defs/CountNode/properties/dets/description",
+    "/schema/$defs/CropNode/description",
+    "/schema/$defs/CropNode/properties/box/description",
+    "/schema/$defs/CropNode/properties/image/description",
+    "/schema/$defs/DetectNode/description",
+    "/schema/$defs/DetectNode/properties/image/description",
+    "/schema/$defs/EventNode/description",
+    "/schema/$defs/EventNode/properties/event/description",
+    "/schema/$defs/GraphCandidate/description",
+    "/schema/$defs/GraphCandidate/properties/nodes/description",
+    "/schema/$defs/MatchNode/description",
+    "/schema/$defs/MatchNode/properties/text/description",
+    "/schema/$defs/OCRNode/description",
+    "/schema/$defs/OCRNode/properties/image/description",
+    "/schema/$defs/ResizeNode/description",
+    "/schema/$defs/ResizeNode/properties/image/description",
+    "/schema/$defs/RuleNode/description",
+    "/schema/$defs/RuleNode/properties/counts/description",
+    "/schema/$defs/SampleNode/description",
+    "/schema/$defs/ZoneNode/description",
+    "/schema/$defs/ZoneNode/properties/dets/description",
+    "/schema/properties/based_on_observation_ids/items/enum",
+    "/schema/properties/state_revision/const"
+  ],
+  "sampling_override_explicit": false,
+  "sampling": {
+    "temperature": 0
+  },
+  "omit_recent_purpose": false,
+  "omitted_purpose_count": 0,
+  "unmodified_context_sha256": "fb4d7e2c48acb164b4eaf6f6ce1d5260c9410d46e7ac7628c0f69d549d573a17",
+  "captured_sampling": {
+    "temperature": 0
+  },
+  "model_url": "http://127.0.0.1:1234/v1",
+  "model": "visionapp-planner",
+  "captured_model": "visionapp-qwen35-qualification",
+  "runner_sha256": "0aa7153a31d6ac8e2f23c2e06a64946e1e8c35f90ad0c1bd7bf29c4dc7d1e142",
+  "source_before": "983d70a78951ed22652055fe2a9cae449dafdfa6548fca3cf7081c733e3fb62f",
+  "context_sha256": "fb4d7e2c48acb164b4eaf6f6ce1d5260c9410d46e7ac7628c0f69d549d573a17",
+  "historical_context_sha256": "0c74a530e0b28889e12af710cf06165eaa5414245985a8dca59e7c99b1139335",
+  "historical_request_sha256": "33bb35562493c06b3e644cda7a1f19f733cfdb6543673180c86ad192cdb63e04",
+  "request_sha256": "32d8ab5d1d0fc4a9289b6a8d3c2dfe4015db2097b1cbf4a5ada6d83583fcbfd2",
+  "schema_sha256": "feb39af147b631d3bb6a539a01e5908c357c7243951a3ce0c06a00c6d9817800",
+  "system_sha256": "12d5548be2bf1fbcae9c5ed5a8cca30ac4aa2be4d01cddc20a556a5506cf156d",
+  "visible_observation_ids": [
+    "ebcbff419c664b21bf73e9e4346e67eb",
+    "6b504f808f3d4b0db73327fa737cf48f",
+    "2d065105ab794c7e87990845a7c99645"
+  ],
+  "prefix_observations": [
+    "e148dd064fb140c784cbcbc7b4a9fa18",
+    "2244a5c3edba401a9f8288a25a2a2dbd",
+    "32bcfd442fb84ef58a83211f291e686f",
+    "ebcbff419c664b21bf73e9e4346e67eb",
+    "6b504f808f3d4b0db73327fa737cf48f",
+    "2d065105ab794c7e87990845a7c99645"
+  ],
+  "context_budget": {
+    "mode": "backend_tokenizer",
+    "model": "visionapp-planner",
+    "input_tokens": 8663,
+    "backend_context_tokens": 16384,
+    "context_verified": true,
+    "output_tokens": 2600,
+    "margin_tokens": 128,
+    "effective_context_tokens": 16384
+  },
+  "reconstruction": "Captured state/output allowance/bootstrap retained. Captured contracts retain exact historical system/schema/docs; current contracts explicitly regenerate them and ground references from actual prior exposure. Corrected context uses current history projection. All changes recorded in input-diff.json; optional purpose omission in context-diff.json.",
+  "backend_models": {
+    "models": [
+      {
+        "name": "visionapp-planner",
+        "model": "visionapp-planner",
+        "modified_at": "",
+        "size": "",
+        "digest": "",
+        "type": "model",
+        "description": "",
+        "tags": [
+          ""
+        ],
+        "capabilities": [
+          "completion"
+        ],
+        "parameters": "",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "",
+          "families": [
+            ""
+          ],
+          "parameter_size": "",
+          "quantization_level": ""
+        }
+      }
+    ],
+    "object": "list",
+    "data": [
+      {
+        "id": "visionapp-planner",
+        "aliases": [
+          "visionapp-planner"
+        ],
+        "tags": [],
+        "object": "model",
+        "architecture": {
+          "input_modalities": [
+            "text"
+          ],
+          "output_modalities": [
+            "text"
+          ]
+        },
+        "created": 1793298480,
+        "owned_by": "llamacpp",
+        "meta": {
+          "vocab_type": 2,
+          "n_vocab": 151936,
+          "n_ctx": 16384,
+          "n_ctx_train": 40960,
+          "n_embd": 5120,
+          "n_params": 14768307200,
+          "size": 8995793920,
+          "ftype": "Q4_K - Medium"
+        }
+      }
+    ]
+  },
+  "backend_properties": {
+    "default_generation_settings": {
+      "params": {
+        "seed": 4294967295,
+        "temperature": 0.800000011920929,
+        "dynatemp_range": 0.0,
+        "dynatemp_exponent": 1.0,
+        "top_k": 40,
+        "top_p": 0.949999988079071,
+        "min_p": 0.05000000074505806,
+        "top_n_sigma": -1.0,
+        "xtc_probability": 0.0,
+        "xtc_threshold": 0.10000000149011612,
+        "typical_p": 1.0,
+        "repeat_last_n": 64,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "dry_multiplier": 0.0,
+        "dry_base": 1.75,
+        "dry_allowed_length": 2,
+        "dry_penalty_last_n": 64,
+        "mirostat": 0,
+        "mirostat_tau": 5.0,
+        "mirostat_eta": 0.10000000149011612,
+        "adaptive_target": -1.0,
+        "adaptive_decay": 0.8999999761581421,
+        "max_tokens": -1,
+        "n_predict": -1,
+        "n_keep": 0,
+        "n_discard": 0,
+        "ignore_eos": false,
+        "stream": false,
+        "n_probs": 0,
+        "min_keep": 0,
+        "chat_format": "Content-only",
+        "reasoning_format": "none",
+        "reasoning_in_content": false,
+        "generation_prompt": "",
+        "samplers": [
+          "penalties",
+          "dry",
+          "top_n_sigma",
+          "top_k",
+          "typ_p",
+          "top_p",
+          "min_p",
+          "xtc",
+          "temperature"
+        ],
+        "speculative.types": "none",
+        "timings_per_token": false,
+        "post_sampling_probs": false,
+        "backend_sampling": false,
+        "lora": []
+      },
+      "n_ctx": 16384
+    },
+    "total_slots": 1,
+    "model_alias": "visionapp-planner",
+    "model_ftype": "Q4_K - Medium",
+    "model_path": "/Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/Qwen3-14B-Q4_K_M.gguf",
+    "modalities": {
+      "vision": false,
+      "video": false,
+      "audio": false
+    },
+    "media_marker": "<__media_WR8Cyk3q6jwJrSBIV3I4VAEJu7t6ZISf__>",
+    "endpoint_slots": true,
+    "endpoint_props": false,
+    "endpoint_metrics": false,
+    "ui": false,
+    "ui_settings": {},
+    "chat_template": "{%- if tools %}\n    {{- '<|im_start|>system\\n' }}\n    {%- if messages[0].role == 'system' %}\n        {{- messages[0].content + '\\n\\n' }}\n    {%- endif %}\n    {{- \"# Tools\\n\\nYou may call one or more functions to assist with the user query.\\n\\nYou are provided with function signatures within <tools></tools> XML tags:\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\\n\\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\\n<tool_call>\\n{\\\"name\\\": <function-name>, \\\"arguments\\\": <args-json-object>}\\n</tool_call><|im_end|>\\n\" }}\n{%- else %}\n    {%- if messages[0].role == 'system' %}\n        {{- '<|im_start|>system\\n' + messages[0].content + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for index in range(ns.last_query_index, -1, -1) %}\n    {%- set message = messages[index] %}\n    {%- if ns.multi_step_tool and message.role == \"user\" and not('<tool_response>' in message.content and '</tool_response>' in message.content) %}\n        {%- set ns.multi_step_tool = false %}\n        {%- set ns.last_query_index = index %}\n    {%- endif %}\n{%- endfor %}\n{%- for message in messages %}\n    {%- if (message.role == \"user\") or (message.role == \"system\" and not loop.first) %}\n        {{- '<|im_start|>' + message.role + '\\n' + message.content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {%- set content = message.content %}\n        {%- set reasoning_content = '' %}\n        {%- if message.reasoning_content is defined and message.reasoning_content is not none %}\n            {%- set reasoning_content = message.reasoning_content %}\n        {%- else %}\n            {%- if '</think>' in message.content %}\n                {%- set content = message.content.split('</think>')[-1].lstrip('\\n') %}\n                {%- set reasoning_content = message.content.split('</think>')[0].rstrip('\\n').split('<think>')[-1].lstrip('\\n') %}\n            {%- endif %}\n        {%- endif %}\n        {%- if loop.index0 > ns.last_query_index %}\n            {%- if loop.last or (not loop.last and reasoning_content) %}\n                {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content.strip('\\n') + '\\n</think>\\n\\n' + content.lstrip('\\n') }}\n            {%- else %}\n                {{- '<|im_start|>' + message.role + '\\n' + content }}\n            {%- endif %}\n        {%- else %}\n            {{- '<|im_start|>' + message.role + '\\n' + content }}\n        {%- endif %}\n        {%- if message.tool_calls %}\n            {%- for tool_call in message.tool_calls %}\n                {%- if (loop.first and content) or (not loop.first) %}\n                    {{- '\\n' }}\n                {%- endif %}\n                {%- if tool_call.function %}\n                    {%- set tool_call = tool_call.function %}\n                {%- endif %}\n                {{- '<tool_call>\\n{\"name\": \"' }}\n                {{- tool_call.name }}\n                {{- '\", \"arguments\": ' }}\n                {%- if tool_call.arguments is string %}\n                    {{- tool_call.arguments }}\n                {%- else %}\n                    {{- tool_call.arguments | tojson }}\n                {%- endif %}\n                {{- '}\\n</tool_call>' }}\n            {%- endfor %}\n        {%- endif %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.first or (messages[loop.index0 - 1].role != \"tool\") %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- message.content }}\n        {{- '\\n</tool_response>' }}\n        {%- if loop.last or (messages[loop.index0 + 1].role != \"tool\") %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n    {%- if enable_thinking is defined and enable_thinking is false %}\n        {{- '<think>\\n\\n</think>\\n\\n' }}\n    {%- endif %}\n{%- endif %}",
+    "chat_template_caps": {
+      "supports_object_arguments": true,
+      "supports_parallel_tool_calls": true,
+      "supports_preserve_reasoning": false,
+      "supports_reasoning_effort": false,
+      "supports_string_content": true,
+      "supports_system_role": true,
+      "supports_tool_calls": true,
+      "supports_tools": true,
+      "supports_typed_content": false,
+      "reasoning_effort_levels": []
+    },
+    "bos_token": "<|endoftext|>",
+    "eos_token": "<|im_end|>",
+    "build_info": "b11963-39febd2ad",
+    "is_sleeping": false,
+    "cors_proxy_enabled": false
+  },
+  "wire_request_sha256": "ec5c17efeccc943fe0911e0e5191733d96769a12f4d55d28be3cf8b25a5208c5",
+  "wire_response_sha256": "be66e5bda6b2c886ef273c43056dfe776b2e544353dc9d7b2aaabcc5d470cb00",
+  "wire_response_http_status": 200,
+  "elapsed_s": 146.58043729199562,
+  "source_after": "983d70a78951ed22652055fe2a9cae449dafdfa6548fca3cf7081c733e3fb62f",
+  "ledger_sha256_after": "b96e2246581f236d1bc6a72025d3d25d4354947b8f713441009b7f6abc52702d",
+  "source_unchanged": true,
+  "ledger_unchanged": true,
+  "comparison_inputs_unchanged": true
+}

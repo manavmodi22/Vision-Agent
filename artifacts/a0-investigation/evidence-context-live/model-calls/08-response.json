@@ -1,0 +1,78 @@
+{
+  "id": "chatcmpl-KyCKqKdrLszjZk2ksL6tQQ8qhdHzf2FG",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "{\n  \"type\": \"next_action\",\n  \"state_revision\": 14,\n  \"decision_summary\": \"The workflow construction failed because it lacks a required 'frame_sample' source node. The previous 'prepare_workflow' action did not include the necessary frame_sample configuration. I need to re-run 'prepare_workflow' with the correct structure that includes a frame_sample source pointing to the development media.\",\n  \"based_on_observation_ids\": [\"3f9f351e92c0480b97976ee44b743508\", \"2d065105ab794c7e87990845a7c99645\"],\n  \"action\": {\n    \"type\": \"prepare_workflow\",\n    \"summary\": \"Build an app that reads the item code from each image using OCR. The probe confirmed 'QZ-4817' was extracted correctly while ignoring the shipping label. The workflow will use model.apple-vision with task 'ocr' and language 'en-US' on the development media, including a required frame_sample source.\",\n    \"evidence_ids\": [\"6b504f808f3d4b0db73327fa737cf48f\", \"ebcbff419c664b21bf73e9e4346e67eb\", \"32bcfd442fb84ef58a83211f291e686f\"]\n  }\n}",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1793297878,
+  "model": "visionapp-qwen35-qualification",
+  "object": "chat.completion",
+  "metadata": null,
+  "moderation": null,
+  "service_tier": null,
+  "system_fingerprint": "b11963-39febd2ad",
+  "usage": {
+    "completion_tokens": 350,
+    "prompt_tokens": 7754,
+    "total_tokens": 8104,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 674,
+      "image_tokens": null,
+      "text_tokens": null
+    }
+  },
+  "timings": {
+    "cache_n": 674,
+    "prompt_n": 7080,
+    "prompt_ms": 38760.704,
+    "prompt_per_token_ms": 5.474675706214689,
+    "prompt_per_second": 182.65922105026783,
+    "predicted_n": 350,
+    "predicted_ms": 29135.073,
+    "predicted_per_token_ms": 83.48158452722063,
+    "predicted_per_second": 11.97868973933925
+  },
+  "context_budget": {
+    "mode": "backend_tokenizer",
+    "model": "visionapp-qwen35-qualification",
+    "input_tokens": 7754,
+    "backend_context_tokens": 16384,
+    "context_verified": true,
+    "output_tokens": 1400,
+    "margin_tokens": 128,
+    "effective_context_tokens": 16384
+  },
+  "decision": {
+    "type": "next_action",
+    "state_revision": 14,
+    "decision_summary": "The workflow construction failed because it lacks a required 'frame_sample' source node. The previous 'prepare_workflow' action did not include the necessary frame_sample configuration. I need to re-run 'prepare_workflow' with the correct structure that includes a frame_sample source pointing to the development media.",
+    "based_on_observation_ids": [
+      "3f9f351e92c0480b97976ee44b743508",
+      "2d065105ab794c7e87990845a7c99645"
+    ],
+    "action": {
+      "type": "prepare_workflow",
+      "summary": "Build an app that reads the item code from each image using OCR. The probe confirmed 'QZ-4817' was extracted correctly while ignoring the shipping label. The workflow will use model.apple-vision with task 'ocr' and language 'en-US' on the development media, including a required frame_sample source.",
+      "evidence_ids": [
+        "6b504f808f3d4b0db73327fa737cf48f",
+        "ebcbff419c664b21bf73e9e4346e67eb",
+        "32bcfd442fb84ef58a83211f291e686f"
+      ]
+    }
+  }
+}

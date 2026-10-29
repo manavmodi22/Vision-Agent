@@ -1,0 +1,22 @@
+{
+  "id": "1a32862295864799",
+  "name": "A0 model qualification: qwen35-evidence-context",
+  "use_case": "custom",
+  "status": "draft",
+  "created_at": "2026-10-29T18:09:41.209026+00:00",
+  "updated_at": "2026-10-29T18:09:41.225490+00:00",
+  "media": [
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T180941Z/workspace/projects/1a32862295864799/media/7b030c48-item-and-shipping.png"
+  ],
+  "brief": "",
+  "clarification_count": 0,
+  "candidates": [],
+  "evaluations": [],
+  "messages": [],
+  "synthetic": false,
+  "fixture": false,
+  "data_origin": "User imported media",
+  "deployment_id": null,
+  "approval_scope": null,
+  "trial_limits": {}
+}

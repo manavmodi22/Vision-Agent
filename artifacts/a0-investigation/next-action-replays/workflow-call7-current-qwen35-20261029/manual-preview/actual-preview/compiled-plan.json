@@ -1,0 +1,65 @@
+{
+  "blocks": [
+    {
+      "id": "src",
+      "type": "frame_sample",
+      "params": {
+        "fps": 1.0
+      },
+      "in": {
+        "frames": "$inputs.source"
+      }
+    },
+    {
+      "id": "reader",
+      "type": "ocr",
+      "params": {
+        "model": "apple-vision"
+      },
+      "in": {
+        "image": "$src.frame"
+      }
+    }
+  ],
+  "params": {
+    "src": {
+      "fps": 1.0
+    },
+    "reader": {
+      "model": "apple-vision",
+      "languages": [
+        "en-US"
+      ]
+    }
+  },
+  "warnings": [
+    "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+  ],
+  "inference_identities": {
+    "reader": {
+      "capability_id": "model.apple-vision",
+      "model_id": "apple-vision",
+      "adapter_id": "apple-vision",
+      "identity_scope": "system_framework_versioned",
+      "artifact_hashes": {
+        "native_bridge": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d"
+      },
+      "unavailable_artifacts": [],
+      "adapter_code_sha256": "f75b542c3bc3f8d6776b9dfc878d3aadcdcda558c76b153635db77973aa4f1d3",
+      "runtime_manifest_sha256": "e8b5a8e0e55e5eef5c9763b084e39f8192503076abcc3f15d59823f19c8e4d55",
+      "system_identity": {
+        "architecture": "arm64",
+        "adapter": "apple-vision",
+        "identity_scope": "system_framework_versioned",
+        "request_policy": "apple-vision-en-us-v2",
+        "output_protocol": "2",
+        "macos": "26.7.1",
+        "kernel": "25.6.0",
+        "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041"
+      },
+      "provider": "apple-vision-system",
+      "config_sha256": "81c8e6ffbf514841279646415e3eb3c651f68c976fee4df4c22617b3f14254c1",
+      "identity_hash": "e63ee72fbd4782bea414d6f693e3c2974859c52ec990659fb012753a266223b0"
+    }
+  }
+}

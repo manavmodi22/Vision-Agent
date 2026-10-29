@@ -1,0 +1,21 @@
+{
+  "case_id": "bus-destination-v1",
+  "variant": "degraded",
+  "run_status": "not_run",
+  "disposition": "postponed",
+  "recorded_at": "2026-10-29T18:09:11.050045+00:00",
+  "source_snapshot": ".visionapp/source-snapshots/4ef067339a9f-20261029T174901Z",
+  "source_identity": "503a046821a66aa02d6010394b346415b3a7670010cba7cfd5df06d64a1fc3e4",
+  "planned_model_url": "http://127.0.0.1:1236/v1",
+  "planned_model": "visionapp-qwen35-qualification",
+  "planned_max_elapsed_s": 900,
+  "model_calls": 0,
+  "vision_executions": 0,
+  "preview": null,
+  "case_pass": null,
+  "paired_comparison_available": false,
+  "reason": "Coordinator explicitly postponed this old-source variant after the original produced no draft; updated-code qualification will be a separate experiment.",
+  "interleaving": "After the original completed, the coordinator ran isolated next-decision diagnostics on a different generated-fixture trace, without tool dispatch. No degraded case was started during or after those diagnostics. Timings are not a controlled speed comparison.",
+  "preserved": "Frozen source snapshot, case manifest, original/degraded image files and original-run evidence remain available. No source, model, server or default configuration changed by this agent.",
+  "interpretation": "Not run is neither a pass nor a measured failure on degraded pixels. Original-source failure does not establish the negative-case outcome."
+}

@@ -1,0 +1,207 @@
+{
+  "scope": "Paired diagnostic graph-generation candidates at the same captured workflow point, not complete agent runs or A0 acceptance.",
+  "created_at": "2026-10-29T18:34:01.968333+00:00",
+  "captured_task_id": "70e4ba01eae04c7899f3e7988af27258",
+  "captured_model_call_number": 7,
+  "planned_request_differences": [
+    "model"
+  ],
+  "actual_wire_request_differences": [
+    "model"
+  ],
+  "identical_messages_schema_sampling_and_output_allowance": true,
+  "current_contract_source_at_both_requests": "983d70a78951ed22652055fe2a9cae449dafdfa6548fca3cf7081c733e3fb62f",
+  "known_workflow_revisions_at_historical_point": [],
+  "results": {
+    "qwen35_9b": {
+      "model_alias": "visionapp-qwen35-qualification",
+      "endpoint": "http://127.0.0.1:1236/v1",
+      "source_identity": "983d70a78951ed22652055fe2a9cae449dafdfa6548fca3cf7081c733e3fb62f",
+      "source_unchanged": true,
+      "ledger_unchanged": true,
+      "elapsed_s": 105.09781062498223,
+      "context_budget": {
+        "mode": "backend_tokenizer",
+        "model": "visionapp-qwen35-qualification",
+        "input_tokens": 8679,
+        "backend_context_tokens": 16384,
+        "context_verified": true,
+        "output_tokens": 2600,
+        "margin_tokens": 128,
+        "effective_context_tokens": 16384
+      },
+      "usage": {
+        "completion_tokens": 550,
+        "prompt_tokens": 8679,
+        "total_tokens": 9229,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 674,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      },
+      "backend_timings_reported": {
+        "cache_n": 674,
+        "prompt_n": 8005,
+        "prompt_ms": 55180.76,
+        "prompt_per_token_ms": 6.8932866958151156,
+        "prompt_per_second": 145.068679735473,
+        "predicted_n": 550,
+        "predicted_ms": 49681.543,
+        "predicted_per_token_ms": 90.49461384335154,
+        "predicted_per_second": 11.050381426357873
+      },
+      "raw_graph": {
+        "name": "Item Code Reader",
+        "nodes": [
+          {
+            "type": "frame_sample",
+            "id": "src",
+            "fps": 1.0
+          },
+          {
+            "type": "ocr",
+            "id": "reader",
+            "image": "$src.frame",
+            "model_capability_id": "model.apple-vision",
+            "model_reason": "Extract item code QZ-4817 from image, ignoring shipping label text."
+          }
+        ],
+        "metric": "text_accuracy",
+        "target": 1.0
+      },
+      "raw_parent_revision_id": null,
+      "historical_candidate_validation": {
+        "shape_and_provenance_valid": true,
+        "authority_validated": false,
+        "action_dispatched": false,
+        "scope": "Shape, revision and evidence references only; not task correctness, executable authorization or A0 success.",
+        "graph_structure_valid": true
+      },
+      "action_dispatched": false,
+      "generated_claim": "Construct the final workflow using OCR to extract 'QZ-4817' from the development image. The probe (obs 6b504f808f3d4b0db73327fa737cf48f) confirmed OCR successfully reads the item code while ignoring shipping labels. The workflow uses model.apple-vision with task 'ocr' and language 'en-US' on media-0e53fc77549b0b5080d45aedd9373425."
+    },
+    "qwen3_14b": {
+      "model_alias": "visionapp-planner",
+      "endpoint": "http://127.0.0.1:1234/v1",
+      "source_identity": "983d70a78951ed22652055fe2a9cae449dafdfa6548fca3cf7081c733e3fb62f",
+      "source_unchanged": true,
+      "ledger_unchanged": true,
+      "elapsed_s": 146.58043729199562,
+      "context_budget": {
+        "mode": "backend_tokenizer",
+        "model": "visionapp-planner",
+        "input_tokens": 8663,
+        "backend_context_tokens": 16384,
+        "context_verified": true,
+        "output_tokens": 2600,
+        "margin_tokens": 128,
+        "effective_context_tokens": 16384
+      },
+      "usage": {
+        "completion_tokens": 483,
+        "prompt_tokens": 8663,
+        "total_tokens": 9146,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        }
+      },
+      "backend_timings_reported": {
+        "cache_n": 0,
+        "prompt_n": 8663,
+        "prompt_ms": 164825.05,
+        "prompt_per_token_ms": 19.02632459886875,
+        "prompt_per_second": 52.55875851395161,
+        "predicted_n": 483,
+        "predicted_ms": 59660.25,
+        "predicted_per_token_ms": 123.77645228215768,
+        "predicted_per_second": 8.079081130233279
+      },
+      "raw_graph": {
+        "name": "Item Code Reader",
+        "nodes": [
+          {
+            "type": "frame_sample",
+            "id": "frame_sample_1",
+            "fps": 1
+          },
+          {
+            "type": "ocr",
+            "id": "ocr_1",
+            "image": "$frame_sample_1.frame",
+            "model_capability_id": "model.apple-vision",
+            "model_reason": "Extract text from the image to identify the item code."
+          }
+        ],
+        "metric": "text_accuracy",
+        "target": 1
+      },
+      "raw_parent_revision_id": "70e4ba01eae04c7899f3e7988af27258",
+      "historical_candidate_validation": {
+        "shape_and_provenance_valid": true,
+        "authority_validated": false,
+        "action_dispatched": false,
+        "scope": "Shape, revision and evidence references only; not task correctness, executable authorization or A0 success.",
+        "graph_structure_valid": true
+      },
+      "action_dispatched": false,
+      "generated_claim": "Prepare a workflow that uses OCR to extract the item code from the image, ignoring the shipping label. The workflow will use the model.apple-vision capability with task 'ocr' and language 'en-US' on the development media."
+    }
+  },
+  "actual_manual_qwen35_preview": {
+    "path": "artifacts/a0-investigation/next-action-replays/workflow-call7-current-qwen35-20261029/manual-preview/actual-preview",
+    "reference_check": {
+      "scope": "One generated fixture diagnostic; not a scored evaluation or acceptance gate.",
+      "reference_origin": "Generated software fixture; these expected values were not supplied to the planner",
+      "expected_texts": [
+        "QZ-4817"
+      ],
+      "excluded_readings": [
+        "ITEM CODE",
+        "SHIP TO",
+        "IGNORE-552"
+      ],
+      "actual_texts": [
+        "ITEM CODE",
+        "QZ-4817",
+        "SHIP TO",
+        "IGNORE-552"
+      ],
+      "exact_match": false,
+      "excluded_readings_observed": [
+        "ITEM CODE",
+        "SHIP TO",
+        "IGNORE-552"
+      ]
+    },
+    "preview_elapsed_s": 0.5637199169723317,
+    "manual_diagnostic_only": true,
+    "original_inputs_and_source_unchanged": true
+  },
+  "retrospective_qwen14_parent_validation": {
+    "valid": false,
+    "generated_parent": "70e4ba01eae04c7899f3e7988af27258",
+    "matches_task_id": true,
+    "reason": "No successful workflow preview existed at the captured point. A task ID is not a workflow revision ID. Original candidate files remain unchanged; new grounding rejects this value."
+  },
+  "conclusions": [
+    "Both generated structurally valid frame_sample-to-full-image-OCR graphs, without an isolation operation.",
+    "The exact 9B graph was manually executed and returned all four readings, contradicting its shipping-label exclusion claim.",
+    "The 14B proposal additionally mistook the task ID for parent_revision_id; it was not executed.",
+    "No model winner or A0 success is established from one candidate each."
+  ],
+  "limitations": [
+    "Different model backends/templates/tokenizers and cache states; no controlled speed claim.",
+    "14B receipt elapsed 146.58 s differs from its reported backend prompt 164.83 s plus generation 59.66 s; preserve these as separate observations, do not derive a speed comparison.",
+    "Both requests retained earlier unsupported prepare_workflow summary claims; later projection fixes were not part of these requests.",
+    "The 9B manual preview is separate from the original task and supplied no feedback to either captured diagnostic."
+  ]
+}

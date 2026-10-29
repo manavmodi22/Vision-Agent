@@ -1,0 +1,32 @@
+{
+  "recorded_at": "2026-10-29T18:14:42.148540+00:00",
+  "production_source_identity": "b787a9d409db6f865b20915e5ba5e3202926a1144d21a6b8451726f7366373b3",
+  "command": ".venv/bin/python -B -m pytest tests/test_investigation_projection_regressions.py -q",
+  "result": "4 expected current failures in 0.65s; no xfail markers",
+  "ruff": "passed",
+  "failures": [
+    {
+      "test": "test_retrieval_hint_pages_original_immutable_observation_in_same_view[values]",
+      "actual": "Following supplied hint returned nested page total_items=5",
+      "expected": "Original immutable result total_items=12; remaining rows, original cursor scope and values view"
+    },
+    {
+      "test": "test_retrieval_hint_pages_original_immutable_observation_in_same_view[geometry]",
+      "actual": "Following hint returned nested page total_items=5 and hint switched view to values",
+      "expected": "Original immutable result total_items=12; remaining rows, original cursor scope and geometry view"
+    },
+    {
+      "test": "test_complete_probe_payload_including_retrieval_hint_stays_within_5000_chars",
+      "actual_chars": 5001,
+      "maximum_chars": 5000
+    },
+    {
+      "test": "test_metadata_only_oversize_uses_explicit_bounded_fallback_without_receipt_mutation",
+      "actual_chars": 6640,
+      "maximum_chars": 5000
+    }
+  ],
+  "log": "artifacts/a0-investigation/projection-review-regressions-before-fix.log",
+  "log_sha256": "7a21b3500d7ab70f505e53c664415659afdeb27e4476d1f11129de366cbdf439",
+  "scope": "Added tests only; saved artifact/store paging uses synthetic rows. No production source edits, inference, server changes or broad test run."
+}

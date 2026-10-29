@@ -1,0 +1,50 @@
+{
+  "id": "chatcmpl-UANvfUXqiaxycOqumZbDalEuK3VU4f4l",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "{\n  \"type\": \"next_action\",\n  \"state_revision\": 18,\n  \"decision_summary\": \"The barcode probe (obs 9ef0e7d47558457c9907c36350e74302) returned 0 items, while the OCR probe (obs 0b4c82f13d224184801413e05074e5b6) successfully extracted 'QZ-4817' as the item code. Since the objective is to read the item code and ignore the shipping label, and OCR already provides the code with high confidence, the next step is to prepare the workflow using the OCR capability.\",\n  \"based_on_observation_ids\": [\"0b4c82f13d224184801413e05074e5b6\", \"9ef0e7d47558457c9907c36350e74302\", \"b1bc4e58ace5407389ff735e6cc7d0a3\"],\n  \"action\": {\n    \"type\": \"prepare_workflow\",\n    \"summary\": \"Build an OCR-based app to extract the item code from the development image. The barcode probe failed (0 items), but OCR successfully identified 'QZ-4817' as the item code. The workflow will use model.apple-vision with task 'ocr' and language 'en-US' on media-37bfc7455e8c63f77d1af724c9b7ddcf.\",\n    \"evidence_ids\": [\"0b4c82f13d224184801413e05074e5b6\", \"9ef0e7d47558457c9907c36350e74302\", \"b1bc4e58ace5407389ff735e6cc7d0a3\"]\n  }\n}",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1793297270,
+  "model": "visionapp-qwen35-qualification",
+  "object": "chat.completion",
+  "metadata": null,
+  "moderation": null,
+  "service_tier": null,
+  "system_fingerprint": "b11963-39febd2ad",
+  "usage": {
+    "completion_tokens": 492,
+    "prompt_tokens": 7538,
+    "total_tokens": 8030,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 674,
+      "image_tokens": null,
+      "text_tokens": null
+    }
+  },
+  "timings": {
+    "cache_n": 674,
+    "prompt_n": 6864,
+    "prompt_ms": 42171.932,
+    "prompt_per_token_ms": 6.143929487179487,
+    "prompt_per_second": 162.7622846399354,
+    "predicted_n": 492,
+    "predicted_ms": 44737.812,
+    "predicted_per_token_ms": 91.1157067209776,
+    "predicted_per_second": 10.97505617842911
+  }
+}

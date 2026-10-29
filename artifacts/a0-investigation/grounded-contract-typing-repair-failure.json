@@ -1,0 +1,29 @@
+{
+  "scope": "Deterministic software contract tests; no live planner acceptance claim",
+  "source_before": "98a5e95e5cc98f6fa8eed6fb832cb59ed9ef4137355c2c08bfb08df9a9e35ce9",
+  "source_after": "98a5e95e5cc98f6fa8eed6fb832cb59ed9ef4137355c2c08bfb08df9a9e35ce9",
+  "command": [
+    "/Users/manavrakeshku.modi/vision-agent/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_investigation_api.py",
+    "tests/test_investigation_context.py",
+    "tests/test_investigation_grounding.py",
+    "tests/test_investigation_loop.py",
+    "tests/test_investigation_projection.py",
+    "tests/test_investigation_projection_regressions.py",
+    "tests/test_investigation_review_regressions.py",
+    "tests/test_investigation_store.py",
+    "tests/test_investigation_tools.py",
+    "tests/test_investigation_worker.py",
+    "tests/test_investigation_workflows.py",
+    "tests/test_graph_authoring.py",
+    "tests/test_graph_authoring_mcp.py",
+    "tests/core/test_graph_authoring_structure.py",
+    "tests/test_graph_transform_fidelity.py",
+    "tests/test_graph_comparison_fidelity.py"
+  ],
+  "exit_code": 2,
+  "log": "grounded-contract-typing-repair-failure.log"
+}

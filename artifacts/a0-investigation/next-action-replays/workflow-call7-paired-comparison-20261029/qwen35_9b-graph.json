@@ -1,0 +1,19 @@
+{
+  "name": "Item Code Reader",
+  "nodes": [
+    {
+      "type": "frame_sample",
+      "id": "src",
+      "fps": 1.0
+    },
+    {
+      "type": "ocr",
+      "id": "reader",
+      "image": "$src.frame",
+      "model_capability_id": "model.apple-vision",
+      "model_reason": "Extract item code QZ-4817 from image, ignoring shipping label text."
+    }
+  ],
+  "metric": "text_accuracy",
+  "target": 1.0
+}

@@ -1,0 +1,20 @@
+{
+  "shape_and_provenance_valid": true,
+  "decision": {
+    "type": "next_action",
+    "state_revision": 18,
+    "decision_summary": "The OCR probe (obs 0b4c82f13d224184801413e05074e5b6) successfully extracted 'QZ-4817' but also picked up unwanted shipping label text ('SHIP TO', 'IGNORE-552'). The user requires reading *only* the item code. The capability 'model.apple-vision' supports both 'ocr' and 'barcode' tasks (obs b1bc4e58ace5407389ff735e6cc7d0a3). Since OCR failed to isolate the code, I will probe the 'barcode' task with the same image to see if it can extract the code without the surrounding label text. Based on obs 9ef0e7d47558457c9907c36350e74302, the barcode probe returned empty results, indicating this capability cannot extract the code from this image format. Since OCR works but includes unwanted text, and barcode doesn't work at all, I must ask the user for clarification on how to isolate the item code (e.g., specific visual cues, bounding box coordinates, or if the code is always in a fixed position).",
+    "based_on_observation_ids": [
+      "0b4c82f13d224184801413e05074e5b6",
+      "b1bc4e58ace5407389ff735e6cc7d0a3",
+      "9ef0e7d47558457c9907c36350e74302"
+    ],
+    "action": {
+      "type": "ask_user",
+      "question": "The OCR model extracted the item code 'QZ-4817' but also picked up shipping label text ('SHIP TO', 'IGNORE-552'). The barcode model returned no results. How can I isolate *only* the item code? Is it always in a fixed position, does it have a specific visual marker (like a box), or should I filter by known code patterns?"
+    }
+  },
+  "authority_validated": false,
+  "action_dispatched": false,
+  "scope": "Shape, revision and evidence references only; not task correctness, executable authorization or A0 success."
+}

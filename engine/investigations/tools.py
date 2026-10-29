@@ -367,6 +367,7 @@ class InvestigationTools:
                          for reference in inputs if isinstance(reference, dict)]
         common: dict[str, Any] = {"executed": False, "observation_id": saved.id, "source_result_type": saved.result_type,
                   "source_status": saved.status, "input_refs": public_inputs,
+                  "view": action.view, "source_cursor": action.cursor,
                   **{key: payload[key] for key in ("workflow_revision_id", "spec_hash", "preview_spec_hash") if key in payload}}
         if action.view == "error":
             return JSON_OBJECT.validate_python({**common, "observed_error": saved.error})

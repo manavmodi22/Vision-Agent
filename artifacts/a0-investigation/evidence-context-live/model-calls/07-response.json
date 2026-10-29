@@ -1,0 +1,100 @@
+{
+  "id": "chatcmpl-L9YzcDqJ9HiLk1reeTvySYcPxSvh0vVg",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "{\n  \"type\": \"workflow_decision\",\n  \"state_revision\": 12,\n  \"decision_summary\": \"Construct the workflow using OCR to extract 'QZ-4817' (observation 6b504f808f3d4b0db73327fa737cf48f). The barcode probe failed (observation ebcbff419c664b21bf73e9e4346e67eb), confirming OCR is the correct approach. The workflow will use model.apple-vision with task 'ocr' and language 'en-US' on media-0e53fc77549b0b5080d45aedd9373425.\",\n  \"based_on_observation_ids\": [\"6b504f808f3d4b0db73327fa737cf48f\", \"ebcbff419c664b21bf73e9e4346e67eb\", \"32bcfd442fb84ef58a83211f291e686f\"],\n  \"action\": {\n    \"type\": \"construct_workflow\",\n    \"graph\": {\n      \"name\": \"ItemCodeReader\",\n      \"nodes\": [\n        {\n          \"type\": \"ocr\",\n          \"id\": \"ocr-reader\",\n          \"image\": \"$media-0e53fc77549b0b5080d45aedd9373425.png\",\n          \"model_capability_id\": \"model.apple-vision\",\n          \"model_reason\": \"Extract item code 'QZ-4817' as confirmed by observation 6b504f808f3d4b0db73327fa737cf48f; barcode task failed.\"\n        },\n        {\n          \"type\": \"sink_event\",\n          \"id\": \"sink-result\",\n          \"event\": \"$ocr-reader.text\"\n        }\n      ],\n      \"metric\": \"text_accuracy\",\n      \"target\": 1.0\n    },\n    \"media_ids\": [\"media-0e53fc77549b0b5080d45aedd9373425\"],\n    \"evidence_ids\": [\"6b504f808f3d4b0db73327fa737cf48f\", \"ebcbff419c664b21bf73e9e4346e67eb\", \"32bcfd442fb84ef58a83211f291e686f\"]\n  }\n}",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1793297809,
+  "model": "visionapp-qwen35-qualification",
+  "object": "chat.completion",
+  "metadata": null,
+  "moderation": null,
+  "service_tier": null,
+  "system_fingerprint": "b11963-39febd2ad",
+  "usage": {
+    "completion_tokens": 639,
+    "prompt_tokens": 7828,
+    "total_tokens": 8467,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 674,
+      "image_tokens": null,
+      "text_tokens": null
+    }
+  },
+  "timings": {
+    "cache_n": 674,
+    "prompt_n": 7154,
+    "prompt_ms": 37668.682,
+    "prompt_per_token_ms": 5.265401453732178,
+    "prompt_per_second": 189.91904203072463,
+    "predicted_n": 639,
+    "predicted_ms": 54820.994,
+    "predicted_per_token_ms": 85.92632288401254,
+    "predicted_per_second": 11.637877270156757
+  },
+  "context_budget": {
+    "mode": "backend_tokenizer",
+    "model": "visionapp-qwen35-qualification",
+    "input_tokens": 7828,
+    "backend_context_tokens": 16384,
+    "context_verified": true,
+    "output_tokens": 2600,
+    "margin_tokens": 128,
+    "effective_context_tokens": 16384
+  },
+  "decision": {
+    "type": "workflow_decision",
+    "state_revision": 12,
+    "decision_summary": "Construct the workflow using OCR to extract 'QZ-4817' (observation 6b504f808f3d4b0db73327fa737cf48f). The barcode probe failed (observation ebcbff419c664b21bf73e9e4346e67eb), confirming OCR is the correct approach. The workflow will use model.apple-vision with task 'ocr' and language 'en-US' on media-0e53fc77549b0b5080d45aedd9373425.",
+    "based_on_observation_ids": [
+      "6b504f808f3d4b0db73327fa737cf48f",
+      "ebcbff419c664b21bf73e9e4346e67eb",
+      "32bcfd442fb84ef58a83211f291e686f"
+    ],
+    "action": {
+      "type": "construct_workflow",
+      "graph": {
+        "name": "ItemCodeReader",
+        "nodes": [
+          {
+            "type": "ocr",
+            "id": "ocr-reader",
+            "image": "$media-0e53fc77549b0b5080d45aedd9373425.png",
+            "model_capability_id": "model.apple-vision",
+            "model_reason": "Extract item code 'QZ-4817' as confirmed by observation 6b504f808f3d4b0db73327fa737cf48f; barcode task failed."
+          },
+          {
+            "type": "sink_event",
+            "id": "sink-result",
+            "event": "$ocr-reader.text"
+          }
+        ],
+        "metric": "text_accuracy",
+        "target": 1.0
+      },
+      "media_ids": [
+        "media-0e53fc77549b0b5080d45aedd9373425"
+      ],
+      "evidence_ids": [
+        "6b504f808f3d4b0db73327fa737cf48f",
+        "ebcbff419c664b21bf73e9e4346e67eb",
+        "32bcfd442fb84ef58a83211f291e686f"
+      ]
+    }
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "scope": "Diagnostic next-decision candidate only; no action dispatch, task mutation, user reply or A0 success claim.",
+  "status": "diagnostic_response_captured",
+  "run_requested": true,
+  "ledger": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T180941Z/workspace/projects/1a32862295864799/investigations/70e4ba01eae04c7899f3e7988af27258/task.json",
+  "ledger_sha256": "b96e2246581f236d1bc6a72025d3d25d4354947b8f713441009b7f6abc52702d",
+  "call_number": 7,
+  "call_id": "486487648805485787fe28760b865d9a",
+  "context_mode": "original",
+  "decision_type": "workflow_decision",
+  "contracts_mode": "current",
+  "changed_input_diagnostic": true,
+  "changed_input_paths": [
+    "/context/action_contracts/construct_workflow/fields/graph/description",
+    "/context/action_contracts/construct_workflow/fields/graph/properties/nodes/description",
+    "/context/citable_observation_ids",
+    "/context/node_contracts/barcode/description",
+    "/context/node_contracts/barcode/fields/image/description",
+    "/context/node_contracts/count_per_zone/description",
+    "/context/node_contracts/count_per_zone/fields/dets/description",
+    "/context/node_contracts/crop/description",
+    "/context/node_contracts/crop/fields/box/description",
+    "/context/node_contracts/crop/fields/image/description",
+    "/context/node_contracts/detect/description",
+    "/context/node_contracts/detect/fields/image/description",
+    "/context/node_contracts/frame_sample/description",
+    "/context/node_contracts/match/description",
+    "/context/node_contracts/match/fields/text/description",
+    "/context/node_contracts/ocr/description",
+    "/context/node_contracts/ocr/fields/image/description",
+    "/context/node_contracts/resize/description",
+    "/context/node_contracts/resize/fields/image/description",
+    "/context/node_contracts/rule/description",
+    "/context/node_contracts/rule/fields/counts/description",
+    "/context/node_contracts/sink_event/description",
+    "/context/node_contracts/sink_event/fields/event/description",
+    "/context/node_contracts/zone_filter/description",
+    "/context/node_contracts/zone_filter/fields/dets/description",
+    "/schema/$defs/BarcodeNode/description",
+    "/schema/$defs/BarcodeNode/properties/image/description",
+    "/schema/$defs/ConstructWorkflow/properties/evidence_ids/items/enum",
+    "/schema/$defs/CountNode/description",
+    "/schema/$defs/CountNode/properties/dets/description",
+    "/schema/$defs/CropNode/description",
+    "/schema/$defs/CropNode/properties/box/description",
+    "/schema/$defs/CropNode/properties/image/description",
+    "/schema/$defs/DetectNode/description",
+    "/schema/$defs/DetectNode/properties/image/description",
+    "/schema/$defs/EventNode/description",
+    "/schema/$defs/EventNode/properties/event/description",
+    "/schema/$defs/GraphCandidate/description",
+    "/schema/$defs/GraphCandidate/properties/nodes/description",
+    "/schema/$defs/MatchNode/description",
+    "/schema/$defs/MatchNode/properties/text/description",
+    "/schema/$defs/OCRNode/description",
+    "/schema/$defs/OCRNode/properties/image/description",
+    "/schema/$defs/ResizeNode/description",
+    "/schema/$defs/ResizeNode/properties/image/description",
+    "/schema/$defs/RuleNode/description",
+    "/schema/$defs/RuleNode/properties/counts/description",
+    "/schema/$defs/SampleNode/description",
+    "/schema/$defs/ZoneNode/description",
+    "/schema/$defs/ZoneNode/properties/dets/description",
+    "/schema/properties/based_on_observation_ids/items/enum",
+    "/schema/properties/state_revision/const"
+  ],
+  "sampling_override_explicit": false,
+  "sampling": {
+    "temperature": 0
+  },
+  "omit_recent_purpose": false,
+  "omitted_purpose_count": 0,
+  "unmodified_context_sha256": "fb4d7e2c48acb164b4eaf6f6ce1d5260c9410d46e7ac7628c0f69d549d573a17",
+  "captured_sampling": {
+    "temperature": 0
+  },
+  "model_url": "http://127.0.0.1:1236/v1",
+  "model": "visionapp-qwen35-qualification",
+  "captured_model": "visionapp-qwen35-qualification",
+  "runner_sha256": "0aa7153a31d6ac8e2f23c2e06a64946e1e8c35f90ad0c1bd7bf29c4dc7d1e142",
+  "source_before": "983d70a78951ed22652055fe2a9cae449dafdfa6548fca3cf7081c733e3fb62f",
+  "context_sha256": "fb4d7e2c48acb164b4eaf6f6ce1d5260c9410d46e7ac7628c0f69d549d573a17",
+  "historical_context_sha256": "0c74a530e0b28889e12af710cf06165eaa5414245985a8dca59e7c99b1139335",
+  "historical_request_sha256": "33bb35562493c06b3e644cda7a1f19f733cfdb6543673180c86ad192cdb63e04",
+  "request_sha256": "35af0b4da60177d94d5bfd7103292995c5bb41148f071f21342842e2d36e0c74",
+  "schema_sha256": "feb39af147b631d3bb6a539a01e5908c357c7243951a3ce0c06a00c6d9817800",
+  "system_sha256": "12d5548be2bf1fbcae9c5ed5a8cca30ac4aa2be4d01cddc20a556a5506cf156d",
+  "visible_observation_ids": [
+    "ebcbff419c664b21bf73e9e4346e67eb",
+    "6b504f808f3d4b0db73327fa737cf48f",
+    "2d065105ab794c7e87990845a7c99645"
+  ],
+  "prefix_observations": [
+    "e148dd064fb140c784cbcbc7b4a9fa18",
+    "2244a5c3edba401a9f8288a25a2a2dbd",
+    "32bcfd442fb84ef58a83211f291e686f",
+    "ebcbff419c664b21bf73e9e4346e67eb",
+    "6b504f808f3d4b0db73327fa737cf48f",
+    "2d065105ab794c7e87990845a7c99645"
+  ],
+  "context_budget": {
+    "mode": "backend_tokenizer",
+    "model": "visionapp-qwen35-qualification",
+    "input_tokens": 8679,
+    "backend_context_tokens": 16384,
+    "context_verified": true,
+    "output_tokens": 2600,
+    "margin_tokens": 128,
+    "effective_context_tokens": 16384
+  },
+  "reconstruction": "Captured state/output allowance/bootstrap retained. Captured contracts retain exact historical system/schema/docs; current contracts explicitly regenerate them and ground references from actual prior exposure. Corrected context uses current history projection. All changes recorded in input-diff.json; optional purpose omission in context-diff.json.",
+  "backend_models": {
+    "models": [
+      {
+        "name": "visionapp-qwen35-qualification",
+        "model": "visionapp-qwen35-qualification",
+        "modified_at": "",
+        "size": "",
+        "digest": "",
+        "type": "model",
+        "description": "",
+        "tags": [
+          ""
+        ],
+        "capabilities": [
+          "completion"
+        ],
+        "parameters": "",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "",
+          "families": [
+            ""
+          ],
+          "parameter_size": "",
+          "quantization_level": ""
+        }
+      }
+    ],
+    "object": "list",
+    "data": [
+      {
+        "id": "visionapp-qwen35-qualification",
+        "aliases": [
+          "visionapp-qwen35-qualification"
+        ],
+        "tags": [],
+        "object": "model",
+        "architecture": {
+          "input_modalities": [
+            "text"
+          ],
+          "output_modalities": [
+            "text"
+          ]
+        },
+        "created": 1793298315,
+        "owned_by": "llamacpp",
+        "meta": {
+          "vocab_type": 2,
+          "n_vocab": 248320,
+          "n_ctx": 16384,
+          "n_ctx_train": 262144,
+          "n_embd": 4096,
+          "n_params": 8953803264,
+          "size": 7447332864,
+          "ftype": "Q6_K"
+        }
+      }
+    ]
+  },
+  "backend_properties": {
+    "default_generation_settings": {
+      "params": {
+        "seed": 4294967295,
+        "temperature": 0.800000011920929,
+        "dynatemp_range": 0.0,
+        "dynatemp_exponent": 1.0,
+        "top_k": 40,
+        "top_p": 0.949999988079071,
+        "min_p": 0.05000000074505806,
+        "top_n_sigma": -1.0,
+        "xtc_probability": 0.0,
+        "xtc_threshold": 0.10000000149011612,
+        "typical_p": 1.0,
+        "repeat_last_n": 64,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "dry_multiplier": 0.0,
+        "dry_base": 1.75,
+        "dry_allowed_length": 2,
+        "dry_penalty_last_n": 64,
+        "mirostat": 0,
+        "mirostat_tau": 5.0,
+        "mirostat_eta": 0.10000000149011612,
+        "adaptive_target": -1.0,
+        "adaptive_decay": 0.8999999761581421,
+        "max_tokens": -1,
+        "n_predict": -1,
+        "n_keep": 0,
+        "n_discard": 0,
+        "ignore_eos": false,
+        "stream": false,
+        "n_probs": 0,
+        "min_keep": 0,
+        "chat_format": "Content-only",
+        "reasoning_format": "none",
+        "reasoning_in_content": false,
+        "generation_prompt": "",
+        "samplers": [
+          "penalties",
+          "dry",
+          "top_n_sigma",
+          "top_k",
+          "typ_p",
+          "top_p",
+          "min_p",
+          "xtc",
+          "temperature"
+        ],
+        "speculative.types": "none",
+        "timings_per_token": false,
+        "post_sampling_probs": false,
+        "backend_sampling": false,
+        "lora": []
+      },
+      "n_ctx": 16384
+    },
+    "total_slots": 1,
+    "model_alias": "visionapp-qwen35-qualification",
+    "model_ftype": "Q6_K",
+    "model_path": ".visionapp/model-qualification/Qwen3.5-9B-Q6_K/Qwen3.5-9B-Q6_K.gguf",
+    "modalities": {
+      "vision": false,
+      "video": false,
+      "audio": false
+    },
+    "media_marker": "<__media_MnCpRiB1rpl1tSU7yv8QuUOp3sic6cL4__>",
+    "endpoint_slots": true,
+    "endpoint_props": false,
+    "endpoint_metrics": false,
+    "ui": false,
+    "ui_settings": {},
+    "chat_template": "{%- set image_count = namespace(value=0) %}\n{%- set video_count = namespace(value=0) %}\n{%- macro render_content(content, do_vision_count, is_system_content=false) %}\n    {%- if content is string %}\n        {{- content }}\n    {%- elif content is iterable and content is not mapping %}\n        {%- for item in content %}\n            {%- if 'image' in item or 'image_url' in item or item.type == 'image' %}\n                {%- if is_system_content %}\n                    {{- raise_exception('System message cannot contain images.') }}\n                {%- endif %}\n                {%- if do_vision_count %}\n                    {%- set image_count.value = image_count.value + 1 %}\n                {%- endif %}\n                {%- if add_vision_id %}\n                    {{- 'Picture ' ~ image_count.value ~ ': ' }}\n                {%- endif %}\n                {{- '<|vision_start|><|image_pad|><|vision_end|>' }}\n            {%- elif 'video' in item or item.type == 'video' %}\n                {%- if is_system_content %}\n                    {{- raise_exception('System message cannot contain videos.') }}\n                {%- endif %}\n                {%- if do_vision_count %}\n                    {%- set video_count.value = video_count.value + 1 %}\n                {%- endif %}\n                {%- if add_vision_id %}\n                    {{- 'Video ' ~ video_count.value ~ ': ' }}\n                {%- endif %}\n                {{- '<|vision_start|><|video_pad|><|vision_end|>' }}\n            {%- elif 'text' in item %}\n                {{- item.text }}\n            {%- else %}\n                {{- raise_exception('Unexpected item type in content.') }}\n            {%- endif %}\n        {%- endfor %}\n    {%- elif content is none or content is undefined %}\n        {{- '' }}\n    {%- else %}\n        {{- raise_exception('Unexpected content type.') }}\n    {%- endif %}\n{%- endmacro %}\n{%- if not messages %}\n    {{- raise_exception('No messages provided.') }}\n{%- endif %}\n{%- if tools and tools is iterable and tools is not mapping %}\n    {{- '<|im_start|>system\\n' }}\n    {{- \"# Tools\\n\\nYou have access to the following functions:\\n\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\" }}\n    {{- '\\n\\nIf you choose to call a function ONLY reply in the following format with NO suffix:\\n\\n<tool_call>\\n<function=example_function_name>\\n<parameter=example_parameter_1>\\nvalue_1\\n</parameter>\\n<parameter=example_parameter_2>\\nThis is the value for the second parameter\\nthat can span\\nmultiple lines\\n</parameter>\\n</function>\\n</tool_call>\\n\\n<IMPORTANT>\\nReminder:\\n- Function calls MUST follow the specified format: an inner <function=...></function> block must be nested within <tool_call></tool_call> XML tags\\n- Required parameters MUST be specified\\n- You may provide optional reasoning for your function call in natural language BEFORE the function call, but NOT after\\n- If there is no function call available, answer the question like normal with your current knowledge and do not tell the user about function calls\\n</IMPORTANT>' }}\n    {%- if messages[0].role == 'system' %}\n        {%- set content = render_content(messages[0].content, false, true)|trim %}\n        {%- if content %}\n            {{- '\\n\\n' + content }}\n        {%- endif %}\n    {%- endif %}\n    {{- '<|im_end|>\\n' }}\n{%- else %}\n    {%- if messages[0].role == 'system' %}\n        {%- set content = render_content(messages[0].content, false, true)|trim %}\n        {{- '<|im_start|>system\\n' + content + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for message in messages[::-1] %}\n    {%- set index = (messages|length - 1) - loop.index0 %}\n    {%- if ns.multi_step_tool and message.role == \"user\" %}\n        {%- set content = render_content(message.content, false)|trim %}\n        {%- if not(content.startswith('<tool_response>') and content.endswith('</tool_response>')) %}\n            {%- set ns.multi_step_tool = false %}\n            {%- set ns.last_query_index = index %}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if ns.multi_step_tool %}\n    {{- raise_exception('No user query found in messages.') }}\n{%- endif %}\n{%- for message in messages %}\n    {%- set content = render_content(message.content, true)|trim %}\n    {%- if message.role == \"system\" %}\n        {%- if not loop.first %}\n            {{- raise_exception('System message must be at the beginning.') }}\n        {%- endif %}\n    {%- elif message.role == \"user\" %}\n        {{- '<|im_start|>' + message.role + '\\n' + content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {%- set reasoning_content = '' %}\n        {%- if message.reasoning_content is string %}\n            {%- set reasoning_content = message.reasoning_content %}\n        {%- else %}\n            {%- if '</think>' in content %}\n                {%- set reasoning_content = content.split('</think>')[0].rstrip('\\n').split('<think>')[-1].lstrip('\\n') %}\n                {%- set content = content.split('</think>')[-1].lstrip('\\n') %}\n            {%- endif %}\n        {%- endif %}\n        {%- set reasoning_content = reasoning_content|trim %}\n        {%- if loop.index0 > ns.last_query_index %}\n            {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content + '\\n</think>\\n\\n' + content }}\n        {%- else %}\n            {{- '<|im_start|>' + message.role + '\\n' + content }}\n        {%- endif %}\n        {%- if message.tool_calls and message.tool_calls is iterable and message.tool_calls is not mapping %}\n            {%- for tool_call in message.tool_calls %}\n                {%- if tool_call.function is defined %}\n                    {%- set tool_call = tool_call.function %}\n                {%- endif %}\n                {%- if loop.first %}\n                    {%- if content|trim %}\n                        {{- '\\n\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                    {%- else %}\n                        {{- '<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                    {%- endif %}\n                {%- else %}\n                    {{- '\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                {%- endif %}\n                {%- if tool_call.arguments is mapping %}\n                    {%- for args_name in tool_call.arguments %}\n                        {%- set args_value = tool_call.arguments[args_name] %}\n                        {{- '<parameter=' + args_name + '>\\n' }}\n                        {%- set args_value = args_value | tojson | safe if args_value is mapping or (args_value is sequence and args_value is not string) else args_value | string %}\n                        {{- args_value }}\n                        {{- '\\n</parameter>\\n' }}\n                    {%- endfor %}\n                {%- endif %}\n                {{- '</function>\\n</tool_call>' }}\n            {%- endfor %}\n        {%- endif %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.previtem and loop.previtem.role != \"tool\" %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- content }}\n        {{- '\\n</tool_response>' }}\n        {%- if not loop.last and loop.nextitem.role != \"tool\" %}\n            {{- '<|im_end|>\\n' }}\n        {%- elif loop.last %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- else %}\n        {{- raise_exception('Unexpected message role.') }}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n    {%- if enable_thinking is defined and enable_thinking is true %}\n        {{- '<think>\\n' }}\n    {%- else %}\n        {{- '<think>\\n\\n</think>\\n\\n' }}\n    {%- endif %}\n{%- endif %}",
+    "chat_template_caps": {
+      "supports_object_arguments": true,
+      "supports_parallel_tool_calls": true,
+      "supports_preserve_reasoning": false,
+      "supports_reasoning_effort": false,
+      "supports_string_content": true,
+      "supports_system_role": true,
+      "supports_tool_calls": true,
+      "supports_tools": true,
+      "supports_typed_content": true,
+      "reasoning_effort_levels": []
+    },
+    "bos_token": ",",
+    "eos_token": "<|im_end|>",
+    "build_info": "b11963-39febd2ad",
+    "is_sleeping": false,
+    "cors_proxy_enabled": false
+  },
+  "wire_request_sha256": "a2bee42ab0773750a341b41c92b5de5af7a7d61a05f6f221b91ad8d140015cc2",
+  "wire_response_sha256": "31584f132241de8dfc8f69fa688d5eae9114b6583e3f0ec4ded37656b4efa2e6",
+  "wire_response_http_status": 200,
+  "elapsed_s": 105.09781062498223,
+  "source_after": "983d70a78951ed22652055fe2a9cae449dafdfa6548fca3cf7081c733e3fb62f",
+  "ledger_sha256_after": "b96e2246581f236d1bc6a72025d3d25d4354947b8f713441009b7f6abc52702d",
+  "source_unchanged": true,
+  "ledger_unchanged": true,
+  "comparison_inputs_unchanged": true
+}

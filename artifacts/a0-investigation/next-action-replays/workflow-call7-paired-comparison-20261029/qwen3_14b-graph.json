@@ -1,0 +1,19 @@
+{
+  "name": "Item Code Reader",
+  "nodes": [
+    {
+      "type": "frame_sample",
+      "id": "frame_sample_1",
+      "fps": 1
+    },
+    {
+      "type": "ocr",
+      "id": "ocr_1",
+      "image": "$frame_sample_1.frame",
+      "model_capability_id": "model.apple-vision",
+      "model_reason": "Extract text from the image to identify the item code."
+    }
+  ],
+  "metric": "text_accuracy",
+  "target": 1
+}

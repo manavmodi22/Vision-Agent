@@ -1,0 +1,33 @@
+{
+  "created_at": "2026-10-29T18:36:02.755385+00:00",
+  "source_identity": "97b7981cc76b0315dbb7dc7230ca1827e6525b94bdbbef00200d6e859a24ef65",
+  "workspace": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T170438Z/workspace",
+  "project_id": "a5c75eebf2574ccd",
+  "settings": {
+    "model_url": "http://127.0.0.1:1234/v1",
+    "planner_model": "visionapp-planner",
+    "vlm_model": "",
+    "vlm_url": "http://127.0.0.1:1235/v1",
+    "allow_agpl": false
+  },
+  "development_binary_sha256": "d874e69d5b30cbd3c948d1571543358e835aa0ea0fc5bfb359c3390cd758ebc8",
+  "canonical_binary_sha256": "baa31babbe6a0a47820a087f9face48fbebea25dd1ba653ad3d3ee93f5d65e0d",
+  "existing_project_files": {
+    "project.json": "1af088f0eff423d05fd4c0f4face7865f5db9b5046d839979cc205da4a11b40e",
+    "annotations.json": "f4774f9ec083dc272edee151dd0c110a7cea33d9a482bf1053d3ce4ee8749946",
+    "zones/lanes.json": "66d20fbda1df3be3d08de22d267b37ec298c72ac135984624c8f084080f6f2a4",
+    "investigations/71b3580f8d734b7d854a65f4cfcef549/task.json": "f99b345ae3942ad911274b0eebf964b1373bbce289113574a0b8d2a13cb7b28b",
+    "investigations/f052ca681d1945a0b3be2ada319ebc8a/task.json": "bf1e20f34160c7ced0b8b92e792628d5af4f10c3ae4f2f72ab6296023dbf7fb4"
+  },
+  "scope": "Native UI verification and new investigation on existing isolated generated-fixture project; reference not supplied to planner",
+  "reference": {
+    "expected_preview_texts": [
+      "QZ-4817"
+    ],
+    "excluded": [
+      "ITEM CODE",
+      "SHIP TO",
+      "IGNORE-552"
+    ]
+  }
+}

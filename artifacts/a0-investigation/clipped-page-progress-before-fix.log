@@ -1,0 +1,70 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_ test_size_clipped_retrieval_hints_eventually_reach_every_exact_long_reading __
+
+tmp_path = PosixPath('/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-309/test_size_clipped_retrieval_hi0')
+
+    def test_size_clipped_retrieval_hints_eventually_reach_every_exact_long_reading(tmp_path: Path) -> None:
+        service = WorkspaceService(tmp_path / "workspace")
+        project = service.create_project("Long saved-readings paging software test", "custom")
+        store = InvestigationStore(service)
+        task = store.create(project.id, "Page deterministic saved evidence without inference")
+        tools = InvestigationTools(service, store)
+    
+        def reserve(action: dict[str, Any]) -> Any:
+            decision = NextAction.model_validate({"state_revision": store.get(project.id, task.id).revision,
+                "decision_summary": "Scripted paging test; no language model", "action": action})
+            call = store.start_model_call(project.id, task.id, {}, "scripted-long-readings-test")
+            store.finish_model_call(project.id, task.id, call.id, {"decision": decision.model_dump(mode="json")})
+            return store.reserve_action(project.id, task.id, decision)
+    
+        items = [{"item_id": f"long-{index}", "text": f"Literal-{index:03}: " + "É" * 1987,
+                  "kind": "ocr", "source_box": [.1, .2, .3, .4]} for index in range(12)]
+        artifacts = Artifacts(store.root(project.id, task.id))
+        artifact_bytes = json.dumps({"software_fixture": True, "items": items}, sort_keys=True).encode()
+        reference = artifacts.write(artifact_bytes, "application/json")
+        receipt = reserve({"type": "run_probe", "capability_id": "model.apple-vision",
+            "inspected_descriptor_hash": "c" * 64, "media_id": "software-fixture", "source_sha256": "d" * 64,
+            "request": {"task": "ocr", "model_id": "apple-vision"}})
+        source = store.complete_action(project.id, task.id, receipt.id, {
+            "executed": False, "software_fixture": True, "input_refs": [], "result_artifact": reference,
+            "items": items, "total_items": len(items), "returned_items": len(items), "truncated": False,
+            "next_cursor": None})
+        original = source.model_dump(mode="json")
+        action = {"type": "inspect_observation", "observation_id": source.id,
+                  "view": "values", "limit": 5, "cursor": None}
+        requested: set[str] = set()
+        collected: dict[str, dict[str, Any]] = {}
+        for _ in range(14):
+            signature = json.dumps(action, sort_keys=True)
+>           assert signature not in requested, "Clipped-page retrieval repeats the same request without advancing"
+E           AssertionError: Clipped-page retrieval repeats the same request without advancing
+E           assert '{"cursor": null, "limit": 5, "observation_id": "5613f3652bc0412dac2245457253ccb5", "type": "inspect_observation", "view": "values"}' not in {'{"cursor": null, "limit": 5, "observation_id": "5613f3652bc0412dac2245457253ccb5", "type": "inspect_observation", "view": "values"}'}
+
+tests/test_investigation_projection_regressions.py:181: AssertionError
+_ test_single_oversize_inspection_row_is_explicitly_unprojectable_and_never_complete _
+
+    def test_single_oversize_inspection_row_is_explicitly_unprojectable_and_never_complete() -> None:
+        polygon = [[.2 + .1 * math.cos(2 * math.pi * i / 256), .3 + .1 * math.sin(2 * math.pi * i / 256)]
+                   for i in range(256)]
+        payload = {"executed": False, "observation_id": "a" * 32, "source_result_type": "run_probe",
+                   "view": "geometry", "source_cursor": None,
+                   "items": [{"item_id": "large-geometry", "source_polygon": polygon}],
+                   "total_items": 1, "returned_items": 1, "truncated": False, "next_cursor": None}
+        observation = Observation(id="b" * 32, action_id="c" * 32, result_type="inspect_observation",
+                                  status="completed", payload=payload, created_at="2026-10-29T00:00:00Z")
+        before = deepcopy(observation.model_dump(mode="json"))
+        projected = observation_projection(observation)["payload"]
+        assert projected["items"] == [] and projected["returned_items"] == 0
+        assert projected["total_items"] == 1 and projected["truncated"] is True
+        assert projected["next_cursor"] is None
+>       assert projected.get("omitted_for_size") is True
+E       AssertionError: assert None is True
+E        +  where None = <built-in method get of dict object at 0x10df4c500>('omitted_for_size')
+E        +    where <built-in method get of dict object at 0x10df4c500> = {'executed': False, 'observation_id': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'source_result_type': 'run_probe', 'view': 'geometry', ...}.get
+
+tests/test_investigation_projection_regressions.py:221: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_investigation_projection_regressions.py::test_size_clipped_retrieval_hints_eventually_reach_every_exact_long_reading
+FAILED tests/test_investigation_projection_regressions.py::test_single_oversize_inspection_row_is_explicitly_unprojectable_and_never_complete
+2 failed, 6 deselected in 0.83s

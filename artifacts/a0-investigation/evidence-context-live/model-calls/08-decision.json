@@ -1,0 +1,18 @@
+{
+  "type": "next_action",
+  "state_revision": 14,
+  "decision_summary": "The workflow construction failed because it lacks a required 'frame_sample' source node. The previous 'prepare_workflow' action did not include the necessary frame_sample configuration. I need to re-run 'prepare_workflow' with the correct structure that includes a frame_sample source pointing to the development media.",
+  "based_on_observation_ids": [
+    "3f9f351e92c0480b97976ee44b743508",
+    "2d065105ab794c7e87990845a7c99645"
+  ],
+  "action": {
+    "type": "prepare_workflow",
+    "summary": "Build an app that reads the item code from each image using OCR. The probe confirmed 'QZ-4817' was extracted correctly while ignoring the shipping label. The workflow will use model.apple-vision with task 'ocr' and language 'en-US' on the development media, including a required frame_sample source.",
+    "evidence_ids": [
+      "6b504f808f3d4b0db73327fa737cf48f",
+      "ebcbff419c664b21bf73e9e4346e67eb",
+      "32bcfd442fb84ef58a83211f291e686f"
+    ]
+  }
+}

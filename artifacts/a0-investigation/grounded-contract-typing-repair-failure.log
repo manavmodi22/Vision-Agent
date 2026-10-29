@@ -1,0 +1,140 @@
+
+==================================== ERRORS ====================================
+_____________ ERROR collecting tests/test_investigation_context.py _____________
+.venv/lib/python3.12/site-packages/_pytest/python.py:528: in importtestmodule
+    mod = import_path(
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:640: in import_path
+    importlib.import_module(module_name)
+../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+.venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:185: in exec_module
+    exec(co, module.__dict__)
+tests/test_investigation_context.py:10: in <module>
+    from mcp_server.investigations import investigation_context
+E     File "/Users/manavrakeshku.modi/vision-agent/mcp_server/investigations.py", line 135
+E       and isinstance(workflow_revision_id := item.payload.get("workflow_revision_id"), str)
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   SyntaxError: assignment expression cannot be used in a comprehension iterable expression
+____________ ERROR collecting tests/test_investigation_grounding.py ____________
+.venv/lib/python3.12/site-packages/_pytest/python.py:528: in importtestmodule
+    mod = import_path(
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:640: in import_path
+    importlib.import_module(module_name)
+../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+.venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:185: in exec_module
+    exec(co, module.__dict__)
+tests/test_investigation_grounding.py:9: in <module>
+    from test_investigation_loop import capture, reply, workspace
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+.venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:185: in exec_module
+    exec(co, module.__dict__)
+tests/test_investigation_loop.py:18: in <module>
+    from mcp_server.investigations import (
+E     File "/Users/manavrakeshku.modi/vision-agent/mcp_server/investigations.py", line 135
+E       and isinstance(workflow_revision_id := item.payload.get("workflow_revision_id"), str)
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   SyntaxError: assignment expression cannot be used in a comprehension iterable expression
+______________ ERROR collecting tests/test_investigation_loop.py _______________
+.venv/lib/python3.12/site-packages/_pytest/python.py:528: in importtestmodule
+    mod = import_path(
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:640: in import_path
+    importlib.import_module(module_name)
+../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+.venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:185: in exec_module
+    exec(co, module.__dict__)
+tests/test_investigation_loop.py:18: in <module>
+    from mcp_server.investigations import (
+E     File "/Users/manavrakeshku.modi/vision-agent/mcp_server/investigations.py", line 135
+E       and isinstance(workflow_revision_id := item.payload.get("workflow_revision_id"), str)
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   SyntaxError: assignment expression cannot be used in a comprehension iterable expression
+___________ ERROR collecting tests/test_investigation_projection.py ____________
+.venv/lib/python3.12/site-packages/_pytest/python.py:528: in importtestmodule
+    mod = import_path(
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:640: in import_path
+    importlib.import_module(module_name)
+../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+.venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:185: in exec_module
+    exec(co, module.__dict__)
+tests/test_investigation_projection.py:5: in <module>
+    from mcp_server.investigations import observation_projection
+E     File "/Users/manavrakeshku.modi/vision-agent/mcp_server/investigations.py", line 135
+E       and isinstance(workflow_revision_id := item.payload.get("workflow_revision_id"), str)
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   SyntaxError: assignment expression cannot be used in a comprehension iterable expression
+_____ ERROR collecting tests/test_investigation_projection_regressions.py ______
+.venv/lib/python3.12/site-packages/_pytest/python.py:528: in importtestmodule
+    mod = import_path(
+.venv/lib/python3.12/site-packages/_pytest/pathlib.py:640: in import_path
+    importlib.import_module(module_name)
+../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+.venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:185: in exec_module
+    exec(co, module.__dict__)
+tests/test_investigation_projection_regressions.py:14: in <module>
+    from mcp_server.investigations import observation_projection
+E     File "/Users/manavrakeshku.modi/vision-agent/mcp_server/investigations.py", line 135
+E       and isinstance(workflow_revision_id := item.payload.get("workflow_revision_id"), str)
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   SyntaxError: assignment expression cannot be used in a comprehension iterable expression
+=========================== short test summary info ============================
+ERROR tests/test_investigation_context.py
+ERROR tests/test_investigation_grounding.py
+ERROR tests/test_investigation_loop.py
+ERROR tests/test_investigation_projection.py
+ERROR tests/test_investigation_projection_regressions.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 5 errors during collection !!!!!!!!!!!!!!!!!!!!
+5 errors in 1.53s

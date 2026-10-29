@@ -70,3 +70,42 @@ the 9B failure: the original requests lacked OCR coordinates; corrected requests
 include them and fit the verified 16K budget. This is not a new model response
 or a completed adaptive build. Discovery also separates probe eligibility from
 installation readiness and distinguishes graph blocks from adapter models.
+
+The [frozen public bus scene](bus-original-frozen/README.md) also failed to produce
+a draft. Its actual OCR returned fourteen readings, but the automatic five-item
+sample hid the destination from the planner. The revised size-based projection
+keeps all fourteen without selecting them by task meaning. The reconstructed
+[request fits at 9,405 input tokens](bus-size-projection-replay.json). Route 43 was
+not recognized; retaining the destination does not fix that separate vision error.
+The old-source degraded variant is explicitly postponed, not a passing case.
+
+Three isolated next-decision diagnostics retain complete wire requests and
+responses. With corrected context, [temperature zero repeated the empty barcode
+probe and nonzero sampling asked for user guidance](next-action-replays/fixture-call10-pair-20261029/summary.json).
+[Removing only the prior action-purpose prose](next-action-replays/fixture-call10-omit-purpose-20261029/summary.json)
+changed the response to `prepare_workflow`. No proposed action was executed in
+these diagnostics. The runtime now retains that prose in the durable task/UI but
+supplies actual action arguments, outcomes and evidence to the next model call.
+The subsequent [full investigation](evidence-context-live/README.md) executed an
+empty barcode probe, then selected OCR and obtained all four actual readings.
+It requested construction, but omitted the required source node and connected
+text to an event input. The next response mistyped a supplied observation ID and
+was rejected before execution. No workflow preview or correct draft resulted.
+This is evidence of an observation-driven experiment change, not A0 acceptance.
+
+The preceding `d8872ea` checkpoint passed [CI](ci-d8872ea.json): 1,303 Python tests
+with two optional skips, Ruff, strict mypy and 291 native checks. The size-based
+projection then passed 168 investigation tests; the subsequent omission of
+prior rationale prose passed 49 focused context/projection/loop tests and strict
+mypy. Exact scope and source identities are recorded in the corresponding logs
+and [validation receipt](evidence-context-validation.json).
+
+The next checkpoint adds grounded observation/workflow handles, explicit graph
+semantics, omission of repeated preparation prose, and bounded saved-result pages
+that preserve cursor scope and make progress. The final
+[358-test integration run](grounded-contract-integration-tests.json) retained an
+unchanged source identity; repository Ruff and strict mypy on 200 files passed.
+The [paired workflow diagnostic](next-action-replays/workflow-call7-paired-comparison-20261029/README.md)
+retains both incorrect model proposals and the actual failed preview of the 9B
+graph. The [default planner was restored](default-planner-restored.json), and the
+rebuilt development app [started a fresh native investigation](native-grounded-run/launch-and-start.json).

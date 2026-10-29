@@ -83,11 +83,46 @@ records both failures and the resource change that prevents a controlled speed
 ranking. The default model is unchanged. Earlier traces and subsequent fixes remain in the
 [evidence index](../artifacts/a0-investigation/README.md).
 
+The next [9B run](../artifacts/a0-investigation/evidence-context-live/README.md)
+changed from an empty barcode probe to actual OCR, then attempted construction.
+Its graph lacked a source node; its recovery response mistyped an evidence ID.
+It produced no previewed draft. The runtime now constrains evidence and workflow
+revision references to host-supplied IDs, returns invalid references as captured
+model feedback before execution, and documents each graph node's actual behavior.
+Preparation prose stays in the ledger but is omitted from subsequent evidence
+context. Saved-result pagination preserves source/cursor identity and progresses
+through size-limited pages without altering literal readings.
+
+On source `97b7981cc76b0315dbb7dc7230ca1827e6525b94bdbbef00200d6e859a24ef65`,
+[358 targeted investigation/graph tests](../artifacts/a0-investigation/grounded-contract-integration-tests.json),
+repository Ruff and strict mypy on 200 source files pass. The
+[captured-context comparison](../artifacts/a0-investigation/next-action-replays/workflow-call7-paired-comparison-20261029/README.md)
+still found incorrect full-image OCR graphs from both local models. Actual
+execution of the 9B proposal returned all four readings. These diagnostics
+preceded the final preparation-context and workflow-ID fixes; they are not a
+successful adaptive build. The default 14B server has been restored on port1234.
+
 The development native app now has session-bound investigations, durable controls,
 actual probe regions/readings and exact draft previews. Its retained four-reading
 OCR observation was visibly verified, and a fresh goal was submitted through the
 composer. The canonical app remains at the composition checkpoint; experimental
 investigations do not yet hand drafts into the existing review/deployment flow.
+After the Mac was unlocked, the development app was rebuilt and restarted with
+the current engine. Saved OCR regions and exact readings were inspected, and the
+unchanged goal was submitted through the native composer for a fresh investigation.
+[The launch receipt](../artifacts/a0-investigation/native-grounded-run/launch-and-start.json)
+records the engine identity and task; starting that run is not a passing result.
+
+Subsequent live investigation found two context defects: repeated metadata could
+displace earlier vision evidence, and the fixed five-reading sample hid useful
+readings even when the full compact result fit. Search now distinguishes graph
+blocks from runnable adapters. Context keeps three distinct observations and up
+to twenty compact readings within a size bound. It supplies actual recent action
+arguments rather than replaying earlier rationale prose, which one controlled
+diagnostic showed could reinforce a failed plan. Full decisions remain in the
+task record and native history. These are usability fixes, not a demonstrated
+adaptive build; [all failures and diagnostics](../artifacts/a0-investigation/README.md)
+remain inspectable.
 
 ### Previous text-region checkpoint: `3751`
 

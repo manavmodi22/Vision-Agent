@@ -1,0 +1,63 @@
+{
+  "schema_version": "a0.grounding-validation.1",
+  "recorded_at": "2026-10-29T18:27:55.256319+00:00",
+  "scope": "Previously completed grounding validation. No tests were rerun to produce this record.",
+  "source": {
+    "root_reported_frozen_identity_prefix": "983d70a7",
+    "root_report_provenance": "Parent task message: whole-repo Ruff and strict mypy including evals passed on frozen983d70a7 (200 source files).",
+    "identity_observed_when_recording": "983d70a78951ed22652055fe2a9cae449dafdfa6548fca3cf7081c733e3fb62f",
+    "observed_identity_matches_reported_prefix": true,
+    "git_head_when_recording": "d8872ea243515f119a0879bd77d5e639c9c341ea",
+    "identity_method": "engine.runtime_identity.source_identity(repository_root)",
+    "limitation": "The original test invocations did not capture independent before/after source identities. The identity observed now and parent-reported frozen prefix are recorded separately; neither is presented as an independently captured test-time hash."
+  },
+  "checks": [
+    {
+      "name": "focused_grounding_tests",
+      "command": ".venv/bin/pytest -q tests/test_investigation_grounding.py",
+      "exit_code": 0,
+      "passed": 17,
+      "pytest_reported_seconds": 2.17,
+      "output": ".................                                                        [100%]\n17 passed in 2.17s\n",
+      "output_provenance": "Tool transcript only: exec session60099, completion chunk eea2d7. No standalone log was captured.",
+      "executed_at": null
+    },
+    {
+      "name": "combined_investigation_tests",
+      "command": ".venv/bin/pytest -q tests/test_investigation_grounding.py tests/test_investigation_loop.py tests/test_investigation_projection.py tests/test_investigation_store.py",
+      "exit_code": 0,
+      "passed": 98,
+      "pytest_reported_seconds": 17.16,
+      "output": "........................................................................ [ 73%]\n..........................                                               [100%]\n98 passed in 17.16s\n",
+      "output_provenance": "Tool transcript only: exec session84502, completion chunk4160ee. No standalone log was captured.",
+      "executed_at": null
+    },
+    {
+      "name": "focused_ruff",
+      "command": ".venv/bin/ruff check agent/investigation.py agent/investigation_grounding.py tests/test_investigation_grounding.py",
+      "exit_code": 0,
+      "output": "All checks passed!\n",
+      "output_provenance": "Tool transcript only, chunk6a3c4a. Ran sequentially with focused mypy in the same shell invocation; separate output lines are retained here.",
+      "executed_at": null
+    },
+    {
+      "name": "focused_strict_mypy",
+      "command": ".venv/bin/mypy agent/investigation.py agent/investigation_grounding.py",
+      "exit_code": 0,
+      "source_files": 2,
+      "output": "Success: no issues found in 2 source files\n",
+      "output_provenance": "Tool transcript only, chunk6a3c4a. Ran sequentially after focused Ruff in the same shell invocation.",
+      "executed_at": null
+    }
+  ],
+  "parent_reported_checks": {
+    "ruff": "passed",
+    "strict_mypy": "passed",
+    "strict_mypy_source_files": 200,
+    "includes_evals": true,
+    "provenance": "Parent task report only; exact command/output was not provided to this subagent and is not reconstructed."
+  },
+  "tests_rerun_for_record": false,
+  "production_source_edited": false,
+  "standalone_logs_created": false
+}
