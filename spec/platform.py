@@ -128,6 +128,11 @@ class EvaluationReport(PlatformModel):
     passed: bool
     sample_count: int
     metrics: dict[str, float | None]
+    protocol_id: str | None = None
+    protocol_hash: str | None = None
+    evidence_scope: str = "legacy"
+    promotion_eligible: bool = False
+    evidence_reasons: list[str] = Field(default_factory=list)
 
 
 class PlatformReplay(PlatformModel):

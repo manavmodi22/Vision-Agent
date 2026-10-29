@@ -12,9 +12,9 @@ def experiment_policy(candidates: list[PipelineSpec], phase: Phase) -> tuple[lis
         Phase.PLAN: ("Apply requested typed edits and preview affected candidates.", {"build_refine"}),
         Phase.COMPILE: ("Compile every candidate and preview up to five samples.", {"pipeline_validate", "pipeline_run"}),
         Phase.EVALUATE: ("Prepare the review set, then measure candidates once its labels are reviewed.",
-                         {"build_context", "build_prepare_review", "eval_run", "pipeline_run"} | ({"build_propose_labels"} if detector else set())),
+                         {"build_context", "build_prepare_review", "build_freeze_evaluation", "eval_run", "pipeline_run"} | ({"build_propose_labels"} if detector else set())),
         Phase.SPECIALIZE: ("Use the explicitly approved detector-training budget, then compare results.",
-                           {"build_train", "build_context", "eval_run", "pipeline_run"}),
+                           {"build_train", "build_context", "build_freeze_evaluation", "eval_run", "pipeline_run"}),
         Phase.OPERATE: ("Run the candidate bound to current human deployment approval.", {"build_operate"}),
     }
     stages = [phase] + ([Phase.EVALUATE] if phase in {Phase.PLAN, Phase.COMPILE} else [])
@@ -25,7 +25,7 @@ def experiment_policy(candidates: list[PipelineSpec], phase: Phase) -> tuple[lis
         checkpoints.append(HumanCheckpoint(id="labels", phase="evaluate",
             description="Before scoring, review any unreviewed labels in the chosen evaluation set."))
         checkpoints.append(HumanCheckpoint(id="deployment", phase="operate",
-            description="Only if you choose a recorded run: approve the evaluated candidate first."))
+            description="Choose independent acceptance for promotion, or explicitly approve a bounded local-only trial."))
     if phase == Phase.SPECIALIZE:
         checkpoints.append(HumanCheckpoint(id="training", phase="specialize",
             description="This training experiment requires the explicit, bounded human approval already requested."))

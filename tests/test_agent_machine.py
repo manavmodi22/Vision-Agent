@@ -12,7 +12,7 @@ def evaluated_state(passed: bool = True) -> AgentState:
     state.finish_compile(1)
     state.record_evaluation(EvaluationEvidence(
         spec_hash="pipeline-v1", dataset_hash="labels-v1", passed=passed,
-        sample_count=10, reviewed=True,
+        sample_count=10, reviewed=True, protocol_id="protocol-v1", protocol_hash="protocol-hash", promotion_eligible=passed,
     ))
     return state
 
@@ -31,21 +31,21 @@ def test_passing_metrics_still_require_a_human_click() -> None:
     state = evaluated_state()
     assert state.phase is Phase.DEPLOY
     with pytest.raises(AgentError, match="human deployment click"):
-        state.approve_deployment(spec_hash="pipeline-v1", dataset_hash="labels-v1", human_approved=False)
-    state.approve_deployment(spec_hash="pipeline-v1", dataset_hash="labels-v1", human_approved=True)
-    assert state.phase is Phase.OPERATE
+        state.approve_deployment(spec_hash="pipeline-v1", dataset_hash="labels-v1", protocol_id="protocol-v1", protocol_hash="protocol-hash", human_approved=False)
+    state.approve_deployment(spec_hash="pipeline-v1", dataset_hash="labels-v1", protocol_id="protocol-v1", protocol_hash="protocol-hash", human_approved=True)
+    assert state.phase.value == "operate"
     assert state.deployment_approved
 
 
 def test_failed_metrics_need_recorded_override_and_stale_hash_cannot_override() -> None:
     state = evaluated_state(False)
-    with pytest.raises(AgentError, match="override reason"):
-        state.approve_deployment(spec_hash="pipeline-v1", dataset_hash="labels-v1", human_approved=True)
+    with pytest.raises(AgentError, match="explicit reason"):
+        state.approve_deployment(spec_hash="pipeline-v1", dataset_hash="labels-v1", protocol_id="protocol-v1", protocol_hash="protocol-hash", human_approved=True, approval_scope="local_trial")
     with pytest.raises(AgentError, match="stale"):
-        state.approve_deployment(spec_hash="pipeline-v2", dataset_hash="labels-v1", human_approved=True,
-                                 override_reason="Accepting for supervised trial")
-    state.approve_deployment(spec_hash="pipeline-v1", dataset_hash="labels-v1", human_approved=True,
-                             override_reason="Accepting for supervised trial")
+        state.approve_deployment(spec_hash="pipeline-v2", dataset_hash="labels-v1", protocol_id="protocol-v1", protocol_hash="protocol-hash", human_approved=True,
+                                 override_reason="Accepting for supervised trial", approval_scope="local_trial")
+    state.approve_deployment(spec_hash="pipeline-v1", dataset_hash="labels-v1", protocol_id="protocol-v1", protocol_hash="protocol-hash", human_approved=True,
+                             override_reason="Accepting for supervised trial", approval_scope="local_trial")
     assert state.override_reason == "Accepting for supervised trial"
 
 
@@ -60,7 +60,7 @@ def test_unreviewed_labels_never_create_evidence() -> None:
 
 def test_invalidation_clears_approval_and_evidence() -> None:
     state = evaluated_state()
-    state.approve_deployment(spec_hash="pipeline-v1", dataset_hash="labels-v1", human_approved=True)
+    state.approve_deployment(spec_hash="pipeline-v1", dataset_hash="labels-v1", protocol_id="protocol-v1", protocol_hash="protocol-hash", human_approved=True)
     state.invalidate_evidence()
     assert state.phase is Phase.COMPILE
     assert state.evaluation is None
@@ -109,3 +109,20 @@ def test_every_candidate_must_compile() -> None:
         state.finish_compile(1)
     state.finish_compile(2)
     assert state.phase is Phase.EVALUATE
+
+
+def test_numeric_pass_does_not_promote_unknown_or_mismatched_protocol() -> None:
+    state = evaluated_state()
+    assert state.evaluation is not None
+    state.evaluation = state.evaluation.model_copy(update={"promotion_eligible": False})
+    with pytest.raises(AgentError, match="current frozen"):
+        state.approve_deployment(spec_hash="pipeline-v1", dataset_hash="labels-v1", human_approved=True,
+                                 protocol_id="other", protocol_hash="protocol-hash")
+    with pytest.raises(AgentError, match="does not qualify"):
+        state.approve_deployment(spec_hash="pipeline-v1", dataset_hash="labels-v1", human_approved=True,
+                                 protocol_id="protocol-v1", protocol_hash="protocol-hash")
+    assert not state.deployment_approved
+    state.approve_deployment(spec_hash="pipeline-v1", dataset_hash="labels-v1", human_approved=True,
+        protocol_id="protocol-v1", protocol_hash="protocol-hash", approval_scope="local_trial",
+        override_reason="Supervised local software trial")
+    assert state.approval_scope == "local_trial"

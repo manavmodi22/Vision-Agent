@@ -64,7 +64,7 @@ def fixture_app(root: Path) -> tuple[WorkspaceService, str, PipelineSpec]:
     spec = build_template("pallets", "media", "fixture-color-v1")[0]
     service.save_candidates(project.id, [spec], "Count pallets by lane")
     service.evaluate(project.id, 0)
-    service.deploy(project.id, 0, approved=True, override_reason="Isolated synthetic capability guard test")
+    service.deploy(project.id, 0, approved=True, override_reason="Isolated synthetic capability guard test", approval_scope="local_trial")
     return service, project.id, spec
 
 
@@ -162,7 +162,7 @@ async def test_manager_pauses_unchanged_then_explicit_vision_only_answer_can_app
         await manager.continue_build(project_id, BuildContinueRequest(prompt="Only change confidence to 0.6; skip email."))
         await manager.tasks[project_id]
         status = manager.status(project_id)
-        assert status.status in {"awaiting_approval", "awaiting_improvement"}, status.message
+        assert status.status in {"awaiting_review", "awaiting_improvement"}, status.message
         expected = original.model_copy(deep=True)
         next(block for block in expected.blocks if block.type == "detect").params["min_conf"] = .6
         assert service.candidate(project_id, 0) == expected

@@ -51,6 +51,8 @@ def propose_labels(spec: PipelineSpec, dataset: EvalDataset, project_root: Path,
     compiled = compile_pipeline(chain, project_root)
     fingerprint = spec_hash(chain, project_root)
     proposed = dataset.model_copy(deep=True)
+    from engine.eval.protocol import mark_usage, reserved_acceptance_paths
+    reserved = {(project_root / path).resolve() for path in reserved_acceptance_paths(project_root, dataset)}
     used = 0
     for annotation in proposed.annotations:
         # Preserve reviewed frames, existing manual boxes, and prior proposals.
@@ -59,9 +61,12 @@ def propose_labels(spec: PipelineSpec, dataset: EvalDataset, project_root: Path,
         if used >= max_frames:
             break
         path = (project_root / annotation.image_path).resolve()
+        if path in reserved:
+            continue
         if not path.is_relative_to(project_root.resolve()):
             raise ValueError("Label proposal images must be imported inside the project")
         before = file_hash(path)
+        mark_usage(project_root, [str(path)], "label_proposal")
         frame = execute_frame(compiled, path, 0, ExecutionState())
         if file_hash(path) != before:
             raise ValueError("Image changed during label proposal; suggestions discarded")

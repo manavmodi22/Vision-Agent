@@ -102,19 +102,24 @@ def build_server(data_dir: Path, *, service: WorkspaceService | None = None) -> 
         """List up to 50 previously imported image paths; does not read pixels."""
         if not 1 <= limit <= 50:
             raise ValueError("Frame limit must be between 1 and 50.")
-        return FramesResult(paths=service.get_project(project_id).media[:limit])
+        from mcp_server.evaluation import visible_dataset
+        rows = visible_dataset(service, project_id, service.annotations(project_id)).annotations
+        return FramesResult(paths=[row.image_path for row in rows[:limit]])
 
     @server.tool()
     def eval_create(project_id: str, dataset: EvalDataset) -> EvalDataset:
         """Propose unreviewed annotations; only a human-facing UI may confirm labels."""
-        if any(annotation.reviewed for annotation in dataset.annotations):
-            raise ValueError("Agents cannot mark labels reviewed. Request a human review in the app.")
-        return service.save_annotations(project_id, dataset)
+        from mcp_server.evaluation import save_unreviewed_dataset
+        return save_unreviewed_dataset(service, project_id, dataset)
 
     @server.tool()
-    def eval_run(project_id: str, candidate_index: int = 0) -> EvaluationResult:
+    def eval_run(project_id: str, candidate_index: int = 0, protocol_id: str | None = None) -> EvaluationResult:
         """Evaluate a saved candidate against reviewed project annotations."""
-        return service.evaluate(project_id, candidate_index)
+        if protocol_id is not None:
+            from engine.eval.protocol import read_protocol
+            if read_protocol(service.root(project_id), protocol_id).purpose != "validation":
+                raise ValueError("Reserved acceptance may only be evaluated by the explicit human-facing action")
+        return service.evaluate(project_id, candidate_index, protocol_id)
 
     @server.tool()
     def review_queue(project_id: str) -> RecordsResult:
@@ -144,16 +149,19 @@ def build_server(data_dir: Path, *, service: WorkspaceService | None = None) -> 
     def dataset_context(project_id: str) -> DatasetContext:
         """Read the user's class ontology, annotation progress and split counts."""
         from engine.datasets import DatasetService
+        from engine.eval.protocol import reserved_acceptance_paths
         from engine.zones import read_zone_state
 
         manifest = DatasetService(service).manifest(project_id)
+        reserved = reserved_acceptance_paths(service.root(project_id), service.annotations(project_id))
+        visible = [item for item in manifest.images if item.image_path not in reserved]
         zones = read_zone_state(service.root(project_id))
         splits: dict[str, int] = {}
-        for item in manifest.images:
+        for item in visible:
             splits[item.split] = splits.get(item.split, 0) + 1
         return DatasetContext(revision=manifest.revision, classes=[item.name for item in manifest.classes],
-                              image_count=len(manifest.images), reviewed_count=sum(item.reviewed for item in manifest.images),
-                              annotation_count=sum(item.annotation_count for item in manifest.images), split_counts=splits,
+                              image_count=len(visible), reviewed_count=sum(item.reviewed for item in visible),
+                              annotation_count=sum(item.annotation_count for item in visible), split_counts=splits,
                               saved_zone_ids=[zone.id for zone in zones.zones] if zones.confirmed else [],
                               zones_confirmed=zones.confirmed, zone_origin=zones.origin)
 
@@ -161,9 +169,11 @@ def build_server(data_dir: Path, *, service: WorkspaceService | None = None) -> 
     def suggest_labels(project_id: str, candidate_index: int = 0, max_frames: int = 5) -> EvalDataset:
         """Return unreviewed detector suggestions; never save, overwrite or approve user labels."""
         from engine.runtime.autolabel import propose_labels
+        from mcp_server.evaluation import visible_dataset
 
-        return propose_labels(service.candidate(project_id, candidate_index), service.annotations(project_id),
-                              service.root(project_id), max_frames=max_frames)
+        proposed = propose_labels(service.candidate(project_id, candidate_index), service.annotations(project_id),
+                                  service.root(project_id), max_frames=max_frames)
+        return visible_dataset(service, project_id, proposed)
 
     register_durable_tools(server, AgentStateStore(service))
     register_evidence_audit(server, EvidenceAuditStore(service))

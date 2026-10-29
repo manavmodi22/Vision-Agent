@@ -74,9 +74,13 @@ class PlatformStore:
         return None
 
     def snapshot(self, project_id: str, candidates: list[PipelineSpec]) -> PlanSnapshot:
+        from engine.eval.protocol import stable_configuration_hash
+        from engine.eval.recipe import recipe_hash
         project, root = self.service.get_project(project_id), self.service.root(project_id)
         documents = {name: (root / name).read_text() if (root / name).exists() else None
                      for name in ("dataset-metadata.json", "active-holdout.json")}
+        documents["evaluation_configuration"] = stable_configuration_hash(root, self.service.annotations(project_id))
+        documents["evaluation_recipe"] = recipe_hash()
         zones = {path.name: path.read_text() for path in sorted((root / "zones").glob("*.json"))}
         model_hashes = [spec_hash(candidate, root) for candidate in candidates]
         if any(block.type in {"ocr", "barcode"} for candidate in candidates for block in candidate.blocks):
@@ -276,6 +280,9 @@ class PlatformStore:
                     plan_id=run.plan_id, candidate_index=candidate_index if isinstance(candidate_index, int) else 0,
                     artifact_id=output_artifact.id, spec_hash=score.spec_hash, dataset_hash=score.dataset_hash,
                     metric=score.metric, target=score.target, passed=score.passed, sample_count=score.sample_count,
+                    protocol_id=score.protocol_id, protocol_hash=score.protocol_hash,
+                    evidence_scope=score.evidence_scope, promotion_eligible=score.promotion_eligible,
+                    evidence_reasons=score.evidence_reasons,
                     metrics={"count_mae": score.count_mae, "precision": score.precision, "recall": score.recall,
                              "text_accuracy": score.text_accuracy, "character_error_rate": score.character_error_rate,
                              "word_error_rate": score.word_error_rate})

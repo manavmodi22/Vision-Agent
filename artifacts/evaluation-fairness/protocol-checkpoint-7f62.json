@@ -1,0 +1,70 @@
+{
+  "source_identity": "7f621816c32bcfd849c3c1a8986aa86dbb72157e54b818455e24ed7384a41228",
+  "scope": "Generated geometric software fixtures only; not vision accuracy or human-reviewed data.",
+  "sample_evaluation": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "count_mae": 0.0,
+    "passed": true,
+    "metric": "count_mae",
+    "target": 0.5,
+    "sample_count": 16,
+    "failures": [],
+    "spec_hash": "e5dfdf4dba72e3891c1ff0bf6c5b600a98dbdbf74f599c15412d9077d4903eb4",
+    "dataset_hash": "0784ee363aa47567f6dbd0e1416ae283b8dc58778a5a14a8b4ace26210201f18",
+    "text_accuracy": 1.0,
+    "character_error_rate": null,
+    "word_error_rate": null,
+    "text_normalization": null,
+    "text_error_counts": {},
+    "warnings": [
+      "SYNTHETIC FIXTURE: colored rectangles only. This does not validate warehouse detection.",
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+    ],
+    "protocol_id": "02324b8c50fb4f87a94bb335cfc09f47",
+    "protocol_hash": "69f4a76c5e0dbb4a81df7b0f55ac7254598e20f983f110de2978ff64787b7b48",
+    "evidence_scope": "sample",
+    "promotion_eligible": false,
+    "evidence_reasons": [
+      "Validation informs model/threshold selection; it is not untouched acceptance",
+      "This image recipe does not score event correctness, false alarms or temporal duration; numeric image scores are diagnostic only",
+      "Unknown, synthetic or undeclared source grouping supports sample evidence only"
+    ]
+  },
+  "promotion_rejection": "Promotion requires passing independent acceptance evidence. Configure reserved acceptance groups or explicitly approve a bounded local trial.",
+  "trial_without_reason_rejection": "A bounded local trial requires an explicit reason of at least 10 characters, even when the numeric target passes",
+  "explicit_local_trial": {
+    "deployment_id": "4f75be0f7dea4ca5a6e1365677bc748e",
+    "status": "ready",
+    "approval_scope": "local_trial",
+    "trial_limits": {
+      "max_frames_per_run": 500,
+      "max_live_duration_s": 3600
+    },
+    "protocol_id": "02324b8c50fb4f87a94bb335cfc09f47",
+    "protocol_hash": "69f4a76c5e0dbb4a81df7b0f55ac7254598e20f983f110de2978ff64787b7b48",
+    "temporal_event_quality_measured": false,
+    "external_delivery_enabled_by_approval": false
+  },
+  "deployment": {
+    "id": "4f75be0f7dea4ca5a6e1365677bc748e",
+    "candidate_index": 0,
+    "spec_hash": "e5dfdf4dba72e3891c1ff0bf6c5b600a98dbdbf74f599c15412d9077d4903eb4",
+    "dataset_hash": "0784ee363aa47567f6dbd0e1416ae283b8dc58778a5a14a8b4ace26210201f18",
+    "approved_at": "2026-10-29T02:46:32.368792+00:00",
+    "override_reason": "Verify the bounded software fixture workflow locally.",
+    "synthetic": true,
+    "protocol_id": "02324b8c50fb4f87a94bb335cfc09f47",
+    "protocol_hash": "69f4a76c5e0dbb4a81df7b0f55ac7254598e20f983f110de2978ff64787b7b48",
+    "approval_scope": "local_trial",
+    "trial_limits": {
+      "max_frames_per_run": 500,
+      "max_live_duration_s": 3600
+    }
+  },
+  "renamed_duplicate_rejection": "Evaluation/training images must have unique byte and decoded-pixel content; duplicate inflation is not allowed",
+  "oversized_run_rejection": "Recorded runs are bounded to 1\u2013500 frames",
+  "recorded_events": 0,
+  "real_models_called": false,
+  "user_projects_modified": false
+}

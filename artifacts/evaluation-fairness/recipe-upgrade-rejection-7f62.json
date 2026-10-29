@@ -1,0 +1,7 @@
+{
+  "current_source_identity": "7f621816c32bcfd849c3c1a8986aa86dbb72157e54b818455e24ed7384a41228",
+  "prior_source_identity": "c4a2ac4a74473d676156d7e110c2c591130b271c29e3466da0ef34ee7d1a6d44",
+  "rejection": "Evaluation recipe changed; re-evaluate",
+  "recorded_events": 0,
+  "scope": "Read-only check of a generated software-fixture approval from the prior recipe; no user-project changes or inference."
+}

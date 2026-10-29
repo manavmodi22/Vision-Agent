@@ -96,6 +96,9 @@ def import_sample(service: WorkspaceService, project_id: str, sample_id: str) ->
             "revision": REVISION, "license": "CC-BY-4.0", "attribution": "NVIDIA Physical AI Smart Spaces",
             "synthetic": False, "frame_count": len(project.media), "reviewed": False,
             "source_timestamps_s": [33 + index * 0.75 for index in range(20)],
+            "frames": [{"image_path": Path(image).relative_to(service.root(project_id)).as_posix(),
+                        "timestamp_s": 33 + index * 0.75}
+                       for index, image in enumerate(project.media)],
         }, indent=2))
         return project
 

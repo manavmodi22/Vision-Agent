@@ -206,7 +206,7 @@ async def test_refinement_plan_exists_inside_real_preview_and_reports_actual_eva
         await manager.start(project_id, "Set confidence to 0.5")
         await manager.tasks[project_id]
         view = manager.status(project_id)
-        assert view.status in {"awaiting_approval", "awaiting_improvement"}, view.message
+        assert view.status in {"awaiting_review", "awaiting_improvement"}, view.message
         assert view.plan and view.execution
         events = view.tool_events
         refine = next(event for event in events if event.name == "build_refine" and event.stage == "started")
@@ -214,6 +214,9 @@ async def test_refinement_plan_exists_inside_real_preview_and_reports_actual_eva
         assert any(event.name == "eval_run" and event.stage == "completed" for event in events)
         reports = list((manager.store.platform.root(project_id) / "evaluations").glob("*.json"))
         assert reports and json.loads(reports[0].read_text())["spec_hash"] == view.evaluations[0].spec_hash
+        report = json.loads(reports[0].read_text())
+        assert report["protocol_id"] == view.evaluations[0].protocol_id
+        assert report["promotion_eligible"] is False and report["evidence_scope"] == "sample"
         assert not service.events(project_id) and not (service.root(project_id) / "deployment.json").exists()
     finally:
         await manager.close()

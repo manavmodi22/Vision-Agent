@@ -83,7 +83,8 @@ async def test_interrupted_training_resumes_at_evaluation_without_reusing_approv
     record = manager.store.create(project.id, "Count pallets")
     record.operation.state.phase = Phase.EVALUATE
     record.operation.state.record_evaluation(EvaluationEvidence(spec_hash=result.spec_hash, dataset_hash=result.dataset_hash,
-        passed=False, sample_count=result.sample_count, reviewed=True))
+        passed=False, sample_count=result.sample_count, reviewed=True,
+        protocol_id=result.protocol_id, protocol_hash=result.protocol_hash, promotion_eligible=False))
     record.operation.state.specialize(2)
     record.view.phase, record.view.status = "training", "interrupted"
     record.training_attempts = 1

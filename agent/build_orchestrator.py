@@ -6,6 +6,7 @@ from agent.machine import AgentState
 from agent.mcp_client import MCPTools, connect_tools
 from agent.planner import setting
 from spec.build import BuildContext
+from spec.evaluation import EvaluationProtocol
 from spec.models import EvalDataset, EvaluationResult, RunResult
 from spec.refinement import RefinementBatch, RefinementPatch, RefinementResult
 
@@ -18,6 +19,10 @@ def select_candidate(results: list[EvaluationResult]) -> int:
         raise ValueError("Candidates must use the same metric and target for a fair comparison")
     if len({item.dataset_hash for item in results}) != 1:
         raise ValueError("Candidates must use the same reviewed holdout dataset for comparison")
+    if any(not item.protocol_id or not item.protocol_hash or item.evidence_scope in {"legacy", "acceptance"} for item in results):
+        raise ValueError("Compare candidates only under a current frozen validation protocol, never acceptance or legacy evidence")
+    if len({(item.protocol_id, item.protocol_hash) for item in results}) != 1:
+        raise ValueError("Candidates must share the exact frozen evaluation protocol")
 
     def score(result: EvaluationResult) -> tuple[bool, float]:
         value = {"count_mae": result.count_mae, "precision": result.precision,
@@ -62,9 +67,10 @@ async def _evaluate_all(tools: MCPTools, project_id: str) -> tuple[list[Evaluati
     if len(context.comparison_scopes) != context.candidate_count or len(set(context.comparison_scopes)) > 1:
         raise ValueError("Candidates cover different object classes or zones. Align their detection scope before selecting a measured winner.")
     results = []
+    protocol = EvaluationProtocol.model_validate(await tools.call("build_freeze_evaluation", {"project_id": project_id}))
     for index in range(context.candidate_count):
         results.append(EvaluationResult.model_validate(await tools.call("eval_run", {
-            "project_id": project_id, "candidate_index": index,
+            "project_id": project_id, "candidate_index": index, "protocol_id": protocol.id,
         })))
     selected = select_candidate(results)
     preview = RunResult.model_validate(await tools.call("pipeline_run", {"project_id": project_id, "candidate_index": selected}))

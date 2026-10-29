@@ -105,13 +105,30 @@ def verify(bundle: Path, output: Path, image: Path | None, planner: str | None) 
                         call("POST", f"/projects/{project_id}/demo")
                         call("POST", f"/projects/{project_id}/plan", {"mode": "template", "model": "fixture-color-v1"})
                         result["fixture_preview"] = call("POST", f"/projects/{project_id}/preview", {})
-                        result["fixture_evaluation"] = call("POST", f"/projects/{project_id}/evaluate", {})
+                        evaluation = call("POST", f"/projects/{project_id}/evaluate", {})
+                        assert isinstance(evaluation, dict)
+                        assert evaluation.get("protocol_id") and evaluation.get("protocol_hash"), evaluation
+                        assert evaluation.get("promotion_eligible") is False, evaluation
+                        result["fixture_evaluation"] = evaluation
+                        rejection = client.post(f"/projects/{project_id}/deploy", json={"approved": True})
+                        assert rejection.status_code == 400 and "acceptance" in rejection.text.lower(), rejection.text
+                        result["fixture_promotion_rejected"] = rejection.json()
+                        rejection = client.post(f"/projects/{project_id}/deploy", json={
+                            "approved": True, "approval_scope": "local_trial"})
+                        assert rejection.status_code == 400 and "reason" in rejection.text.lower(), rejection.text
+                        result["trial_without_reason_rejected"] = rejection.json()
+                        trial = call("POST", f"/projects/{project_id}/deploy", {
+                            "approved": True, "approval_scope": "local_trial",
+                            "override_reason": "Verify the isolated packaged software fixture workflow locally.",
+                        })
+                        assert isinstance(trial, dict) and trial.get("approval_scope") == "local_trial", trial
+                        assert trial.get("external_delivery_enabled_by_approval") is False, trial
+                        result["explicit_local_trial"] = trial
                         if planner:
                             settings = call("GET", "/settings")
                             assert isinstance(settings, dict)
                             settings.update(planner_model=planner, model_url="http://127.0.0.1:1234/v1")
                             call("PUT", "/settings", settings)
-                            call("POST", f"/projects/{project_id}/deploy", {"approved": True})
                             call("POST", f"/projects/{project_id}/run", {"max_frames": 10})
                             stored = call("GET", f"/projects/{project_id}/events")
                             assert isinstance(stored, list)

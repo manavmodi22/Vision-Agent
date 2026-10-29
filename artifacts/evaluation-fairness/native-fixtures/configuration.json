@@ -1,0 +1,273 @@
+{
+  "revision": "71691f5da50442e2a8f860707b3b32051da7b383b6f025c009bcc98184ff2d96",
+  "images": [
+    {
+      "image_path": "media/a9eb8522-sample-0.png",
+      "scene_group": "development",
+      "split": "validation",
+      "data_origin": "real",
+      "source_asset_id": "sha256:687685553f39f2cd4e8b058e9a303b7677ad6ee2f135d9393d1edd9d384c167b",
+      "source_sha256": "687685553f39f2cd4e8b058e9a303b7677ad6ee2f135d9393d1edd9d384c167b",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": [
+        "Model use: preview_or_run"
+      ]
+    },
+    {
+      "image_path": "media/8c373ed8-sample-1.png",
+      "scene_group": "development",
+      "split": "validation",
+      "data_origin": "real",
+      "source_asset_id": "sha256:36b0461e3be45cbf770cf8c9e59a14c57ca219967fe3814a63fc978f6529ad02",
+      "source_sha256": "36b0461e3be45cbf770cf8c9e59a14c57ca219967fe3814a63fc978f6529ad02",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": [
+        "Model use: preview_or_run"
+      ]
+    },
+    {
+      "image_path": "media/612ee026-sample-2.png",
+      "scene_group": "development",
+      "split": "validation",
+      "data_origin": "real",
+      "source_asset_id": "sha256:f3d883f6b0d5e95dfdc7e30de0a4aa2ee8efd02df2e466c73e83c5734fc7b8b9",
+      "source_sha256": "f3d883f6b0d5e95dfdc7e30de0a4aa2ee8efd02df2e466c73e83c5734fc7b8b9",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": [
+        "Model use: preview_or_run"
+      ]
+    },
+    {
+      "image_path": "media/da7a872c-sample-3.png",
+      "scene_group": "development",
+      "split": "validation",
+      "data_origin": "real",
+      "source_asset_id": "sha256:a2bdc6ee5f5d1f976e402956de30bd2f8c0a0aeb2cdd7cf1b2949165cd3422f6",
+      "source_sha256": "a2bdc6ee5f5d1f976e402956de30bd2f8c0a0aeb2cdd7cf1b2949165cd3422f6",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": [
+        "Model use: preview_or_run"
+      ]
+    },
+    {
+      "image_path": "media/c926e638-sample-4.png",
+      "scene_group": "development",
+      "split": "validation",
+      "data_origin": "real",
+      "source_asset_id": "sha256:f60eeaaea2a987f20a87ad31a30512fe7fe05f0c00b1efe163f6c9fce4bf44f3",
+      "source_sha256": "f60eeaaea2a987f20a87ad31a30512fe7fe05f0c00b1efe163f6c9fce4bf44f3",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": [
+        "Model use: preview_or_run"
+      ]
+    },
+    {
+      "image_path": "media/d986b217-sample-5.png",
+      "scene_group": "development",
+      "split": "validation",
+      "data_origin": "real",
+      "source_asset_id": "sha256:f60c1e729ebd1c384e3b48ab623339ac1812e92a7e5ead1f6d86da51dc167843",
+      "source_sha256": "f60c1e729ebd1c384e3b48ab623339ac1812e92a7e5ead1f6d86da51dc167843",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": [
+        "Model use: preview_or_run"
+      ]
+    },
+    {
+      "image_path": "media/50054e28-sample-6.png",
+      "scene_group": "development",
+      "split": "validation",
+      "data_origin": "real",
+      "source_asset_id": "sha256:ab222fb55f95a966cbcce66b92452e6ec73c9868a6320e09b31a912ed0c0fce3",
+      "source_sha256": "ab222fb55f95a966cbcce66b92452e6ec73c9868a6320e09b31a912ed0c0fce3",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": [
+        "Model use: preview_or_run"
+      ]
+    },
+    {
+      "image_path": "media/1879c4c6-sample-7.png",
+      "scene_group": "development",
+      "split": "validation",
+      "data_origin": "real",
+      "source_asset_id": "sha256:5ba39e83e5473a1ddd891791be79c5fb8218812e3872ca8bb9d6bbedd6a4339a",
+      "source_sha256": "5ba39e83e5473a1ddd891791be79c5fb8218812e3872ca8bb9d6bbedd6a4339a",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": [
+        "Model use: preview_or_run"
+      ]
+    },
+    {
+      "image_path": "media/bee446a4-sample-8.png",
+      "scene_group": "development",
+      "split": "validation",
+      "data_origin": "real",
+      "source_asset_id": "sha256:7a30de9440864d18ac04c4037e073918bb494da42d007d5fa1d76e03656bab7d",
+      "source_sha256": "7a30de9440864d18ac04c4037e073918bb494da42d007d5fa1d76e03656bab7d",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": [
+        "Model use: preview_or_run"
+      ]
+    },
+    {
+      "image_path": "media/c212a7d5-sample-9.png",
+      "scene_group": "development",
+      "split": "validation",
+      "data_origin": "real",
+      "source_asset_id": "sha256:fbd002443d35454e1d6e6b05b6c8b6a9dbae42652d22aae1f67d7daf298852ed",
+      "source_sha256": "fbd002443d35454e1d6e6b05b6c8b6a9dbae42652d22aae1f67d7daf298852ed",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": [
+        "Model use: preview_or_run"
+      ]
+    },
+    {
+      "image_path": "media/963291b6-sample-10.png",
+      "scene_group": "reserved",
+      "split": "acceptance",
+      "data_origin": "real",
+      "source_asset_id": "sha256:a4b1ab630184beaee0dcea59b3f0ebc3929b0fb113ce07290a057b3f004955cf",
+      "source_sha256": "a4b1ab630184beaee0dcea59b3f0ebc3929b0fb113ce07290a057b3f004955cf",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": []
+    },
+    {
+      "image_path": "media/50e90cb7-sample-11.png",
+      "scene_group": "reserved",
+      "split": "acceptance",
+      "data_origin": "real",
+      "source_asset_id": "sha256:ebe07de4c439b9981e7a26ce9a04073b5590e2587db343c3ccfda12ebca3f08b",
+      "source_sha256": "ebe07de4c439b9981e7a26ce9a04073b5590e2587db343c3ccfda12ebca3f08b",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": []
+    },
+    {
+      "image_path": "media/b5aa19e0-sample-12.png",
+      "scene_group": "reserved",
+      "split": "acceptance",
+      "data_origin": "real",
+      "source_asset_id": "sha256:6ff6e6bc09ebb4ea2600d6a4569fc03a9ef05432e1ef4b77209b2a02c9d5f6e9",
+      "source_sha256": "6ff6e6bc09ebb4ea2600d6a4569fc03a9ef05432e1ef4b77209b2a02c9d5f6e9",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": []
+    },
+    {
+      "image_path": "media/212cf2d3-sample-13.png",
+      "scene_group": "reserved",
+      "split": "acceptance",
+      "data_origin": "real",
+      "source_asset_id": "sha256:40c6fefbe2874ac0f9e97aff132624b3e731bde240d39b8f0e3f8537e71859e3",
+      "source_sha256": "40c6fefbe2874ac0f9e97aff132624b3e731bde240d39b8f0e3f8537e71859e3",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": []
+    },
+    {
+      "image_path": "media/8b3ba9b6-sample-14.png",
+      "scene_group": "reserved",
+      "split": "acceptance",
+      "data_origin": "real",
+      "source_asset_id": "sha256:1427b3923ece4aeb3490cd7086f697a7835ec6a6c6004b6b90454d2a50be7fec",
+      "source_sha256": "1427b3923ece4aeb3490cd7086f697a7835ec6a6c6004b6b90454d2a50be7fec",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": []
+    },
+    {
+      "image_path": "media/638caf1c-sample-15.png",
+      "scene_group": "reserved",
+      "split": "acceptance",
+      "data_origin": "real",
+      "source_asset_id": "sha256:9a3211883c1532930620bd1df8a11411260a62d080dba0a550b14a14d0d18b40",
+      "source_sha256": "9a3211883c1532930620bd1df8a11411260a62d080dba0a550b14a14d0d18b40",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": []
+    },
+    {
+      "image_path": "media/43dd773a-sample-16.png",
+      "scene_group": "reserved",
+      "split": "acceptance",
+      "data_origin": "real",
+      "source_asset_id": "sha256:814d02ef0ebae9adfb0e571a01bb0c708d431847f297950cbaa44705f1537e78",
+      "source_sha256": "814d02ef0ebae9adfb0e571a01bb0c708d431847f297950cbaa44705f1537e78",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": []
+    },
+    {
+      "image_path": "media/34de95ed-sample-17.png",
+      "scene_group": "reserved",
+      "split": "acceptance",
+      "data_origin": "real",
+      "source_asset_id": "sha256:9f85ad1c02bd0683bea823fa53f8d45762b1dcd312c730cd4a6fb954e80d0d22",
+      "source_sha256": "9f85ad1c02bd0683bea823fa53f8d45762b1dcd312c730cd4a6fb954e80d0d22",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": []
+    },
+    {
+      "image_path": "media/06565407-sample-18.png",
+      "scene_group": "reserved",
+      "split": "acceptance",
+      "data_origin": "real",
+      "source_asset_id": "sha256:d38d4fec4c73b8dd0bba380178e6715ce92049063040205261f0c9bdaaa8812e",
+      "source_sha256": "d38d4fec4c73b8dd0bba380178e6715ce92049063040205261f0c9bdaaa8812e",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": []
+    },
+    {
+      "image_path": "media/c040be06-sample-19.png",
+      "scene_group": "reserved",
+      "split": "acceptance",
+      "data_origin": "real",
+      "source_asset_id": "sha256:7e3861b0f97abda1676a528f77d62bd8e7ac6fde0416d460f884c93f149740d1",
+      "source_sha256": "7e3861b0f97abda1676a528f77d62bd8e7ac6fde0416d460f884c93f149740d1",
+      "frame_index": null,
+      "timestamp_s": null,
+      "group_provenance": "human_declared",
+      "exposure_reasons": []
+    }
+  ],
+  "policy": {
+    "intended_use": "Software test of declared scope",
+    "independent_group_basis": "Separate declared imported sources in this test",
+    "coverage_rationale": "One explicitly required scene group; no generalization claim",
+    "required_acceptance_groups": [
+      "reserved"
+    ]
+  }
+}

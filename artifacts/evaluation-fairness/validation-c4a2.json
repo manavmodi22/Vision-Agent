@@ -1,0 +1,13 @@
+{
+  "source_identity": "c4a2ac4a74473d676156d7e110c2c591130b271c29e3466da0ef34ee7d1a6d44",
+  "ruff": "passed",
+  "mypy": {
+    "status": "passed",
+    "source_files": 151
+  },
+  "checkpoint_probe": "protocol-checkpoint-c4a2.json",
+  "legacy_sample_read_only_check": "legacy-sample-configuration-c4a2.json",
+  "full_python_suite": "pending",
+  "packaged_native_ui": "pending",
+  "scope": "Software gates and read-only legacy provenance; not representative model quality or full architecture completion."
+}

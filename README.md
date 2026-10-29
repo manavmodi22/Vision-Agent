@@ -28,8 +28,10 @@ downloaded model weights and full datasets are not stored in this repository.
 4. The agent evaluates candidates on reviewed examples and reports the measured
    result. Bounded local training requires an explicit approval; a trained candidate
    is evaluated against the same holdout. Changed inputs invalidate stale evidence.
-5. Approve the concrete application before recorded operation. A missed target
-   needs an explicit override. New-media runs preserve the development dataset.
+5. Review the evidence before recorded operation. Sample scores cannot qualify an
+   app for quality promotion: reserve independent examples, label them, and run the
+   selected candidate once. A bounded local trial needs a written reason and keeps
+   external alert delivery disabled. New-media runs preserve the development dataset.
 6. Refine the goal in the conversation. Workflow, dataset, zones and evaluation
    remain available as tools. Events store observations/crops; optional webhook,
    SMTP and MQTT alerts require explicit configuration. Credentials use Keychain.

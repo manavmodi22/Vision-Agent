@@ -28,7 +28,7 @@ def test_complete_workflow_and_restart(tmp_path: Path) -> None:
     assert result.passed and result.sample_count == 16
     with pytest.raises(ValueError, match="explicit user"):
         service.deploy(identifier, 0, False)
-    service.deploy(identifier, 0, True)
+    service.deploy(identifier, 0, True, "Isolated synthetic software trial", approval_scope="local_trial")
     resumed = WorkspaceService(tmp_path)
     actual = resumed.run(identifier, max_frames=3)
     assert len(actual.frames) == 3
@@ -41,15 +41,15 @@ def test_complete_workflow_and_restart(tmp_path: Path) -> None:
 def test_label_edits_revoke_approval(tmp_path: Path) -> None:
     service, identifier = prepared(tmp_path)
     service.evaluate(identifier)
-    service.deploy(identifier, 0, True)
+    service.deploy(identifier, 0, True, "Isolated synthetic software trial", approval_scope="local_trial")
     annotations = service.annotations(identifier)
     annotations.annotations[0].reviewed = False
     service.save_annotations(identifier, annotations)
     assert service.get_project(identifier).deployment_id is None
-    with pytest.raises(ValueError, match="Review every"):
-        service.evaluate(identifier)
     with pytest.raises(ValueError, match="Evaluate this"):
-        service.deploy(identifier, 0, True, "I approve anyway")
+        service.deploy(identifier, 0, True, "I approve anyway", approval_scope="local_trial")
+    # A new validation protocol may select only the remaining reviewed rows.
+    assert service.evaluate(identifier).sample_count == 15
 
 
 def test_media_bytes_and_zone_edits_reject_stale_evidence(tmp_path: Path) -> None:
@@ -75,9 +75,9 @@ def test_override_requires_real_evaluation_and_reason(tmp_path: Path) -> None:
         annotation.detections = []
     service.save_annotations(identifier, dataset)
     assert not service.evaluate(identifier).passed
-    with pytest.raises(ValueError, match="Target missed"):
+    with pytest.raises(ValueError, match="Promotion requires"):
         service.deploy(identifier, 0, True)
-    response = service.deploy(identifier, 0, True, "Reviewed false positives; synthetic test only")
+    response = service.deploy(identifier, 0, True, "Reviewed false positives; synthetic test only", approval_scope="local_trial")
     assert response["status"] == "ready"
 
 
@@ -105,7 +105,7 @@ def test_api_walkthrough_and_wire_aliases(tmp_path: Path) -> None:
     assert "in" in got["candidates"][0]["blocks"][0]
     assert client.post(f"/projects/{identifier}/evaluate", json={}).json()["passed"]
     assert client.post(f"/projects/{identifier}/deploy", json={"approved": False}).status_code == 400
-    assert client.post(f"/projects/{identifier}/deploy", json={"approved": True}).status_code == 200
+    assert client.post(f"/projects/{identifier}/deploy", json={"approved": True, "approval_scope": "local_trial", "override_reason": "Isolated API software trial"}).status_code == 200
     assert client.post(f"/projects/{identifier}/run", json={"max_frames": 1}).status_code == 200
     assert client.get(f"/projects/{identifier}/events.csv").text.startswith("id,created_at")
     answer = client.post(f"/projects/{identifier}/ask", json={"question": "How many pallets today?"})
@@ -124,7 +124,7 @@ def test_evidence_changes_during_run_do_not_persist_events(tmp_path: Path, monke
     from spec.models import PipelineSpec, RunResult
     service, identifier = prepared(tmp_path)
     service.evaluate(identifier)
-    service.deploy(identifier, 0, True)
+    service.deploy(identifier, 0, True, "Isolated synthetic software trial", approval_scope="local_trial")
     real_run = service_module.run_pipeline
 
     def changed_run(spec: PipelineSpec, root: Path, max_frames: int = 50) -> RunResult:
@@ -134,7 +134,7 @@ def test_evidence_changes_during_run_do_not_persist_events(tmp_path: Path, monke
         return result
 
     monkeypatch.setattr(service_module, "run_pipeline", changed_run)
-    with pytest.raises(ValueError, match="evidence changed during run"):
+    with pytest.raises(ValueError, match="changed|stale"):
         service.run(identifier, max_frames=2)
     assert service.events(identifier) == []
 
@@ -143,7 +143,7 @@ def test_approved_pipeline_runs_new_media_without_changing_dataset(tmp_path: Pat
     from engine.eval import dataset_hash
     service, identifier = prepared(tmp_path / "workspace")
     service.evaluate(identifier)
-    service.deploy(identifier, 0, True)
+    service.deploy(identifier, 0, True, "Isolated synthetic software trial", approval_scope="local_trial")
     original = service.get_project(identifier)
     original_labels = dataset_hash(service.annotations(identifier), service.root(identifier))
     outside = tmp_path / "production.png"
@@ -162,7 +162,7 @@ def test_approved_pipeline_runs_new_media_without_changing_dataset(tmp_path: Pat
 def test_new_media_run_rejects_stale_approval(tmp_path: Path) -> None:
     service, identifier = prepared(tmp_path / "workspace")
     service.evaluate(identifier)
-    service.deploy(identifier, 0, True)
+    service.deploy(identifier, 0, True, "Isolated synthetic software trial", approval_scope="local_trial")
     labels = service.annotations(identifier)
     labels.annotations[0].reviewed = False
     service.save_annotations(identifier, labels)

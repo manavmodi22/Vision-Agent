@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-10-29T03:02:48.677831+00:00",
+  "runtime_source_identity": "7f621816c32bcfd849c3c1a8986aa86dbb72157e54b818455e24ed7384a41228",
+  "project_id": "692e0290946d493a",
+  "status": "restored_and_real_preview_refreshed",
+  "actual_model": "owlv2-base-patch16",
+  "native_observation": {
+    "first_sample_detections": 0,
+    "second_sample_detections": 1,
+    "second_sample_label": "person",
+    "displayed_confidence_percent": 37,
+    "second_sample_elapsed_ms_displayed": 2572
+  },
+  "screenshot": "artifacts/evaluation-fairness/native-restored-warehouse.png",
+  "annotations_sha256": "0fb2b8c1200a8dafcd8bdfeb03dc0734109b800c861a7bb573ed66ffe61f5bea",
+  "annotations_unchanged_from": "artifacts/agent-experience/adapter-release/annotations.json",
+  "image_count": 20,
+  "reviewed_count": 0,
+  "recorded_events": 0,
+  "evaluations": 0,
+  "deployment_id": null,
+  "scope": "Actual packaged OWLv2 preview of retained real NVIDIA warehouse project. Model outputs remain hypotheses; no accuracy or unique-person-count claim. No planner was invoked for this preview."
+}

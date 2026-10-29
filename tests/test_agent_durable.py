@@ -132,7 +132,7 @@ def test_phase_comes_from_actual_evaluation_and_deployment_files(tmp_path: Path)
     service.evaluate(project_id)
     assert store.reconcile(project_id, "evaluate").state.phase is Phase.DEPLOY
     assert not store.get(project_id).state.deployment_approved
-    service.deploy(project_id, 0, True)
+    service.deploy(project_id, 0, True, "Isolated synthetic software trial", approval_scope="local_trial")
     assert store.reconcile(project_id, "deploy").state.phase is Phase.OPERATE
     assert store.get(project_id).state.deployment_approved
     labels = service.annotations(project_id)

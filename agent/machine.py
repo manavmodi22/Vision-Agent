@@ -2,6 +2,7 @@
 
 from enum import StrEnum
 from time import time
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -29,8 +30,8 @@ TOOLS: dict[Phase, frozenset[str]] = {
     Phase.CLARIFY: frozenset({"media_import", "frames_sample", "vlm_ask"}),
     Phase.PLAN: frozenset({"blocks_list", "block_schema", "planning_options", "detect_open_vocab", "dataset_context", "suggest_labels", "build_refine", "build_refinement_context"}),
     Phase.COMPILE: frozenset({"pipeline_validate", "pipeline_run"}),
-    Phase.EVALUATE: frozenset({"eval_create", "eval_run", "review_queue", "dataset_context", "suggest_labels", "build_context", "build_prepare_review", "build_propose_labels", "pipeline_run"}),
-    Phase.SPECIALIZE: frozenset({"train_start", "train_status", "eval_run", "build_context", "build_train", "pipeline_run"}),
+    Phase.EVALUATE: frozenset({"eval_create", "eval_run", "build_freeze_evaluation", "review_queue", "dataset_context", "suggest_labels", "build_context", "build_prepare_review", "build_propose_labels", "pipeline_run"}),
+    Phase.SPECIALIZE: frozenset({"train_start", "train_status", "eval_run", "build_freeze_evaluation", "build_context", "build_train", "pipeline_run"}),
     Phase.DEPLOY: frozenset(),  # Only the human-facing API may approve deployment.
     Phase.OPERATE: frozenset({"events_query", "report_make", "review_queue", "build_operate"}),
     Phase.QUERY: frozenset({"evidence_context", "evidence_execute"}),
@@ -79,6 +80,9 @@ class EvaluationEvidence(BaseModel):
     passed: bool
     sample_count: int = Field(ge=1)
     reviewed: bool
+    protocol_id: str | None = None
+    protocol_hash: str | None = None
+    promotion_eligible: bool = False
 
 
 class AgentState(BaseModel):
@@ -91,6 +95,7 @@ class AgentState(BaseModel):
     evaluation: EvaluationEvidence | None = None
     deployment_approved: bool = False
     override_reason: str | None = None
+    approval_scope: Literal["promotion", "local_trial"] | None = None
 
     def authorize_tool(self, name: str, now: float | None = None) -> None:
         if name not in TOOLS[self.phase]:
@@ -126,6 +131,7 @@ class AgentState(BaseModel):
         self.evaluation = evidence
         self.deployment_approved = False
         self.override_reason = None
+        self.approval_scope = None
         self.phase = Phase.DEPLOY if evidence.passed else Phase.EVALUATE
 
     def specialize(self, training_minutes: float) -> None:
@@ -138,6 +144,8 @@ class AgentState(BaseModel):
     def approve_deployment(
         self, *, spec_hash: str, dataset_hash: str, human_approved: bool,
         override_reason: str | None = None,
+        protocol_id: str | None = None, protocol_hash: str | None = None,
+        approval_scope: Literal["promotion", "local_trial"] = "promotion",
     ) -> None:
         if self.phase not in {Phase.DEPLOY, Phase.EVALUATE}:
             raise AgentError("Deployment is unavailable in the current phase.")
@@ -148,10 +156,18 @@ class AgentState(BaseModel):
             raise AgentError("Evaluation is stale: the pipeline or dataset has changed.")
         if not human_approved:
             raise AgentError("A human deployment click is required, including for passing models.")
+        if (not evidence.protocol_id or not evidence.protocol_hash
+                or (evidence.protocol_id, evidence.protocol_hash) != (protocol_id, protocol_hash)):
+            raise AgentError("A current frozen evaluation protocol is required before approval.")
         reason = override_reason.strip() if override_reason else None
-        if not evidence.passed and not reason:
-            raise AgentError("The target was missed; an explicit override reason is required.")
+        if approval_scope == "local_trial" and (not reason or len(reason) < 10):
+            raise AgentError("A bounded local trial requires an explicit reason of at least 10 characters.")
+        if approval_scope == "promotion" and not evidence.promotion_eligible:
+            raise AgentError("The evidence does not qualify for promotion; configure independent acceptance or explicitly approve a local trial.")
+        if not evidence.passed and approval_scope == "promotion":
+            raise AgentError("The target was missed; only an explicitly approved local trial is available.")
         self.override_reason = reason
+        self.approval_scope = approval_scope
         self.deployment_approved = True
         self.phase = Phase.OPERATE
 
@@ -159,6 +175,7 @@ class AgentState(BaseModel):
         self.evaluation = None
         self.deployment_approved = False
         self.override_reason = None
+        self.approval_scope = None
         self.compiled_count = 0
         self.phase = Phase.COMPILE if self.candidate_count else Phase.CLARIFY
 

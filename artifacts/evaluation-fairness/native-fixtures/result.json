@@ -1,0 +1,27 @@
+{
+  "precision": 1.0,
+  "recall": 1.0,
+  "count_mae": 0.0,
+  "passed": true,
+  "metric": "count_mae",
+  "target": 0.5,
+  "sample_count": 10,
+  "failures": [],
+  "spec_hash": "46daffc719265cc60611483ec73b2f930664e399ff803bd5e3e901711b52af97",
+  "dataset_hash": "4e7b58a5ab1417fe40fe0f8052e5360bfe3cf80003411a4d5cc36677e04ac895",
+  "text_accuracy": 1.0,
+  "character_error_rate": null,
+  "word_error_rate": null,
+  "text_normalization": null,
+  "text_error_counts": {},
+  "warnings": [
+    "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+  ],
+  "protocol_id": "325c1131262947f58457d60afc958225",
+  "protocol_hash": "b54447ad21e317ab67b316ac78edb73e419122c4324a944bd2bb0553b85f50fe",
+  "evidence_scope": "acceptance",
+  "promotion_eligible": true,
+  "evidence_reasons": [
+    "Acceptance is limited to the explicitly declared scene coverage; upstream pretraining overlap is unknown"
+  ]
+}

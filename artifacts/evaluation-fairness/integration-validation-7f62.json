@@ -1,0 +1,53 @@
+{
+  "runtime_source_sha256": "7f621816c32bcfd849c3c1a8986aa86dbb72157e54b818455e24ed7384a41228",
+  "validation_type": "Deterministic software/control-plane integration; no live LLM or learned-model inference",
+  "final_focused_suite": {
+    "passed": 73,
+    "failed": 0,
+    "elapsed_s": 58.63,
+    "files": [
+      "tests/test_evaluation_integration.py",
+      "tests/test_agent_machine.py",
+      "tests/test_jobs.py",
+      "tests/test_live_runtime.py",
+      "tests/test_model_registration.py",
+      "tests/test_platform_execution.py"
+    ]
+  },
+  "earlier_migration_suite": {
+    "passed": 178,
+    "failed": 1,
+    "elapsed_s": 192.6,
+    "failure": "Test attempted to mutate frozen EvaluationEvidence. Corrected with model_copy; corrected test is included in final passing suite."
+  },
+  "static_checks": {
+    "strict_mypy_scoped_files": 38,
+    "ruff": "passed"
+  },
+  "verified_behaviors": [
+    "Numeric fixture pass remains sample evidence; promotion rejected.",
+    "Explicit local_trial consent and reason required even when numeric target passes.",
+    "Batch and live local trial preserve approval scope in evidence and skip external delivery.",
+    "Each compared candidate uses the same frozen validation protocol.",
+    "Metadata/policy edits revoke approvals and invalidate build/platform snapshots while preserving labels.",
+    "Fresh import causes no model use; reserved rows are excluded from preview/MCP proposal access and training.",
+    "Explicit selected-candidate acceptance with mocked inference uses reserved reviewed data.",
+    "Exact acceptance replay invokes no inference and creates no duplicate measured work-log entry.",
+    "Candidate threshold change cannot reuse consumed acceptance groups.",
+    "Live preview retains only normalized pixel exposure tokens, no frames/events.",
+    "MCP cannot edit reserved labels or initiate acceptance/approval."
+  ],
+  "limitations": [
+    "Positive acceptance uses explicitly mocked inference on generated images; simulated data_origin=real is a software policy test, not accuracy or independent-scene evidence.",
+    "Independence is limited to declared project development/selection/training coverage; upstream pretraining overlap is unknown.",
+    "Image-only evaluation does not score event correctness, false alarms, temporal duration or deployment performance.",
+    "Rule/match/event-sink workflows remain local-trial-only under this recipe, so this gate does not authorize their automatic external delivery.",
+    "No existing user project, actual learned model, outgoing destination or packaged application was changed by these tests."
+  ],
+  "native_fixture_sha256": {
+    "build-status.json": "26d4b1929ae58fc10d06cb0a5abe40cb2b371d409d2655f06734d78d339957fe",
+    "configuration.json": "7b9426f06aaee757371fdbc7b97b45955b98a5ba42171e684c335104a20b604f",
+    "readiness.json": "42e666522e8679cfac85077916b74ce6d78bc827e38e289cba9c6976e011043a",
+    "result.json": "80dd11ee9d501418e495da38dfd2a9a5dded6a3147c7900fd291ff686e6b5089"
+  }
+}

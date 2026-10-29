@@ -1,0 +1,54 @@
+........................................................................ [ 10%]
+........................................................................ [ 21%]
+........................................................................ [ 32%]
+........................................................................ [ 42%]
+........................................................................ [ 53%]
+........................................................................ [ 64%]
+........................................................................ [ 75%]
+.....................................................................F.. [ 85%]
+....................................F................................... [ 96%]
+........................                                                 [100%]
+=================================== FAILURES ===================================
+_ test_reading_plan_has_only_relevant_experiments_and_conditional_checkpoints __
+
+    def test_reading_plan_has_only_relevant_experiments_and_conditional_checkpoints() -> None:
+        from agent.machine import Phase
+        from agent.templates import build_template
+        from engine.platform.experiments import experiment_policy
+        reading = build_template("labels", "media", "unused")[0]
+        experiments, checkpoints = experiment_policy([reading], Phase.COMPILE)
+        assert [experiment.phase for experiment in experiments] == ["compile", "evaluate"]
+        assert all("train" not in tool for experiment in experiments for tool in experiment.allowed_tools)
+        assert {checkpoint.id for checkpoint in checkpoints} == {"labels", "deployment"}
+>       assert "Only if" in next(checkpoint.description for checkpoint in checkpoints if checkpoint.id == "deployment")
+E       AssertionError: assert 'Only if' in 'Choose independent acceptance for promotion, or explicitly approve a bounded local-only trial.'
+E        +  where 'Choose independent acceptance for promotion, or explicitly approve a bounded local-only trial.' = next(<generator object test_reading_plan_has_only_relevant_experiments_and_conditional_checkpoints.<locals>.<genexpr> at 0x1281db370>)
+
+tests/test_model_selection.py:223: AssertionError
+_ test_class_addition_extends_ontology_preserves_boxes_and_requires_fresh_review _
+
+tmp_path = PosixPath('/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-179/test_class_addition_extends_on0')
+
+    def test_class_addition_extends_ontology_preserves_boxes_and_requires_fresh_review(tmp_path: Path) -> None:
+        service, project_id, original = authored_app(tmp_path)
+        datasets = DatasetService(service)
+        old_classes = datasets.manifest(project_id).classes
+        labels_before = service.annotations(project_id)
+        result = refine_app(service, project_id, RefinementPatch(kind="add_classes", classes=["carton"]))
+        expected = original.model_copy(deep=True)
+        next(block for block in expected.blocks if block.type == "detect").params["classes"] = ["pallet", "carton"]
+        assert service.candidate(project_id, 0) == expected and result.requires_review
+        for annotation in labels_before.annotations:
+            annotation.reviewed = False
+        assert service.annotations(project_id) == labels_before
+>       with pytest.raises(ValueError, match="Review every"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'Review every'
+E         Actual message: 'Assign a nonempty reviewed evaluation split first'
+
+tests/test_refinement.py:94: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_model_selection.py::test_reading_plan_has_only_relevant_experiments_and_conditional_checkpoints
+FAILED tests/test_refinement.py::test_class_addition_extends_ontology_preserves_boxes_and_requires_fresh_review
+2 failed, 670 passed in 273.82s (0:04:33)

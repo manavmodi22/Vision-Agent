@@ -34,13 +34,14 @@ class BuildStatus(BuildModel):
     status: Literal["running", "awaiting_clarification", "awaiting_review", "awaiting_improvement",
                     "awaiting_approval", "completed", "failed", "interrupted"]
     phase: str
-    next_action: Literal["none", "attach_media", "define_zones", "answer_questions", "review_labels", "approve_training", "approve_deployment", "retry"] = "none"
+    next_action: Literal["none", "attach_media", "define_zones", "answer_questions", "review_labels", "configure_evaluation", "approve_training", "approve_deployment", "retry"] = "none"
     message: str
     questions: list[str] = Field(default_factory=list)
     log: list[BuildLog] = Field(default_factory=list)
     preview: RunResult | None = None
     selected_candidate_index: int | None = None
     evaluations: list[EvaluationResult] = Field(default_factory=list)
+    acceptance_evaluation: EvaluationResult | None = None
     project: dict[str, JsonValue] = Field(default_factory=dict)
     created_at: str
     updated_at: str

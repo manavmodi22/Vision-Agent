@@ -11,6 +11,12 @@ from pydantic import Field, JsonValue
 
 from engine.blocks.params import DetectParams
 from engine.eval import dataset_hash, spec_hash
+from engine.eval.protocol import (
+    mark_usage,
+    read_configuration,
+    reserved_acceptance_paths,
+    stable_configuration_hash,
+)
 from engine.models.local_manifest import local_model_path
 from engine.models.manager import model_directory
 from engine.platform.model_registration import register_user_candidate
@@ -84,10 +90,11 @@ class JobManager:
                 job = Job(id=uuid.uuid4().hex)
                 original_hash = dataset_hash(dataset, service.root(project_id))
                 original_spec = spec_hash(candidate, service.root(project_id))
+                original_configuration = stable_configuration_hash(service.root(project_id), dataset)
                 atomic_model(self.path(project_id, job.id), job)
                 worker = threading.Thread(target=self._run,
                     args=(project_id, job.id, candidate_index, candidate.model_copy(deep=True),
-                          dataset, original_hash, original_spec, max_minutes, epochs, lease),
+                          dataset, original_hash, original_spec, original_configuration, max_minutes, epochs, lease),
                     daemon=True, name=f"training-{job.id[:8]}")
                 self.threads[job.id] = worker
                 worker.start()
@@ -101,6 +108,7 @@ class JobManager:
 
     def _run(self, project_id: str, job_id: str, candidate_index: int, candidate: PipelineSpec,
              dataset: EvalDataset, original_hash: str, original_spec: str,
+             original_configuration: str,
              max_minutes: float, epochs: int, lease: FileLock) -> None:
         service = self.service
         job = Job(id=job_id)
@@ -109,17 +117,22 @@ class JobManager:
             from engine.train import train_detector
 
             root = service.root(project_id)
-            ordered = [item for item in dataset.annotations if item.reviewed]
+            reserved = reserved_acceptance_paths(root, dataset)
+            ordered = [item for item in dataset.annotations if item.reviewed and item.image_path not in reserved]
             with service.repository.lock:
                 if (dataset_hash(service.annotations(project_id), root) != original_hash
-                        or spec_hash(service.candidate(project_id, candidate_index), root) != original_spec):
+                        or spec_hash(service.candidate(project_id, candidate_index), root) != original_spec
+                        or stable_configuration_hash(root, service.annotations(project_id)) != original_configuration):
                     raise ValueError("Project changed before the approved training job started")
-                if (root / "active-holdout.json").exists():
+                configuration = read_configuration(root, dataset)
+                if (root / "active-holdout.json").exists() or any(row.split == "validation" for row in configuration.images):
                     evaluation = service.evaluation_annotations(project_id)
                 else:
                     evaluation = EvalDataset(id=dataset.id + "-heldout", annotations=ordered[-10:])
             holdout_names = {item.image_path for item in evaluation.annotations}
-            training = EvalDataset(id=dataset.id + "-train", annotations=[item for item in ordered if item.image_path not in holdout_names])
+            declared_training = {(root / row.image_path).resolve() for row in configuration.images if row.split == "train"}
+            training = EvalDataset(id=dataset.id + "-train", annotations=[item for item in ordered
+                if item.image_path not in holdout_names and (not declared_training or (root / item.image_path).resolve() in declared_training)])
             detector = next(block for block in candidate.blocks if block.type in {"detect", "detect_open_vocab"})
             requested_classes = DetectParams.model_validate(detector.params).classes
             available_classes = {d.label for item in training.annotations for d in item.detections}
@@ -138,6 +151,10 @@ class JobManager:
             expected_training_hash = dataset_hash(training, root)
             expected_evaluation_hash = dataset_hash(evaluation, root)
             selected_model = next(str(block.params.get("model", "")) for block in candidate.blocks if block.type in {"detect", "detect_open_vocab"})
+            from engine.train.validation import validate_training_data
+            validate_training_data(training, evaluation, root)
+            mark_usage(root, [item.image_path for item in training.annotations], "training")
+            mark_usage(root, [item.image_path for item in evaluation.annotations], "training_validation")
             result = train_detector(training, evaluation, root, model_id,
                                     max_minutes=max_minutes, epochs=epochs,
                                     base_model_id=selected_model if selected_model.startswith("local-") else None)
@@ -146,6 +163,8 @@ class JobManager:
                     raise ValueError("Annotations changed during training; model saved but not attached")
                 if spec_hash(service.candidate(project_id, candidate_index), root) != original_spec:
                     raise ValueError("Pipeline changed during training; model saved but not attached")
+                if stable_configuration_hash(root, service.annotations(project_id)) != original_configuration:
+                    raise ValueError("Evidence grouping or policy changed during training; model saved but not attached")
                 registration = register_user_candidate(result, model_id, output_path,
                     expected_training_hash, expected_evaluation_hash, f"training-job:{project_id}:{job_id}")
                 job.result = {"registration":registration}
@@ -160,13 +179,14 @@ class JobManager:
                 atomic_model(root / "active-holdout.json", evaluation)
                 trained_index = len(project.candidates)
                 trained_spec = spec_hash(candidate, root)
-                holdout_fingerprint = dataset_hash(evaluation, root)
+                holdout_fingerprint = dataset_hash(evaluation.model_copy(update={"id": dataset.id}), root)
                 service.save_candidates(project_id, project.candidates + [candidate], project.brief)
             job.progress = 0.8
             job.message = "Scoring baseline and new candidate on the same held-out images"
             atomic_model(self.path(project_id, job_id), job)
-            baseline = service.evaluate(project_id, candidate_index)
-            trained = service.evaluate(project_id, trained_index)
+            protocol = service.freeze_evaluation(project_id, [candidate_index, trained_index])
+            baseline = service.evaluate(project_id, candidate_index, protocol.id)
+            trained = service.evaluate(project_id, trained_index, protocol.id)
             if (baseline.spec_hash != original_spec or trained.spec_hash != trained_spec
                     or baseline.dataset_hash != holdout_fingerprint
                     or trained.dataset_hash != holdout_fingerprint):

@@ -68,7 +68,8 @@ extension WorkspaceModel {
             else if build.running, preview != nil { previewIsPrevious = true }
             else { preview = nil }
             frameIndex = min(frameIndex, max(0, (preview?.frames.count ?? 0) - 1))
-            if let index = build.selectedCandidateIndex, build.evaluations.indices.contains(index) { evaluation = build.evaluations[index] }
+            if let acceptance = build.acceptanceEvaluation { evaluation = acceptance }
+            else if let index = build.selectedCandidateIndex, build.evaluations.indices.contains(index) { evaluation = build.evaluations[index] }
             else { evaluation = nil }
         }
         if let index = projects.firstIndex(where: { $0.id == build.projectID }) { projects[index] = build.project }

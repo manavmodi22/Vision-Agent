@@ -1,5 +1,32 @@
 # Implementation status
 
+The product remains describe → build and preview → correct examples or refine
+the goal → evaluate → explicitly approve a bounded operation. Evidence setup is
+a contextual checkpoint in that conversation, not a replacement for the builder.
+
+## Current software checkpoint
+
+Frozen runtime source
+`7f621816c32bcfd849c3c1a8986aa86dbb72157e54b818455e24ed7384a41228`
+passes **672 Python tests in 264.02 seconds**, strict mypy on **151 source files**,
+and repository Ruff. Debug and Release native binaries each pass **173 checks**:
+159 deterministic checks, 10 historical payload checks and four current API
+fixture checks. These verify software behavior and decoding; the positive
+acceptance fixture uses explicitly mocked inference and establishes no detector
+accuracy. See the [full test log](../artifacts/evaluation-fairness/full-tests-final-7f62.log),
+[integration receipt](../artifacts/evaluation-fairness/integration-validation-7f62.json)
+and [native contract report](../artifacts/native-evaluation-validation.json).
+
+The installed `dist/VisionApp.app` contains `7f62`. Relocation, isolated packaged
+imports, native OCR, fixture inference and signature verification passed. The
+native walkthrough saved evidence assignments, re-evaluated in the same
+conversation and checked explicit trial controls without changing annotations
+or approving the QA app. See [packaged verification](../artifacts/evaluation-fairness/bundle-verification-7f62-final.json)
+and [native walkthrough](../artifacts/evaluation-fairness/native-ui-qa-7f62.json).
+These generated-fixture checks establish software behavior only. A separate
+real-frame OWLv2 smoke executed and returned zero detections; it is not an
+accuracy pass. Earlier live-model observations remain historical evidence below.
+
 ## Working development slice
 
 - Machine-generated capability catalog separates installed, available-to-install
@@ -39,6 +66,20 @@
 - Agent evaluation shows candidate metrics, targets and failed examples that open
   directly for correction. Native region and expected-text corrections return to
   the same build.
+- Candidate comparison freezes one validation protocol with compatible task and
+  metric, every candidate fingerprint, reviewed membership, original-source/group
+  assignments, policy and scoring recipe. Changes invalidate scores, active plans
+  and approvals; duplicate bytes or decoded pixels cannot inflate sample counts.
+- Human evidence configuration is available in the same workspace. Fresh media
+  can be imported and reserved before model use, then manually labeled. Preview,
+  proposals and training exclude reserved acceptance; one selected candidate is
+  tested only through an explicit acceptance action. Exact captured-result replay
+  performs no new inference. Renaming groups cannot manufacture source independence.
+- Numeric success is separate from promotion eligibility. Unknown, correlated or
+  synthetic samples require explicit `local_trial` consent and a reason, even
+  when a target passes. Trial scope persists in evidence, is bounded to 500 frames
+  per batch run and 3,600 seconds per live session, and disables external delivery.
+  Legacy scores remain readable but cannot authorize a new recorded operation.
 - Native dataset workspace with custom class ontology, image grid/filter, drawing,
   selection/move/resize, zoom/pan, undo/redo, revisioned autosave and review status.
   COCO import/export, image-byte snapshots and selected validation holdouts.
@@ -62,7 +103,8 @@
 - Public NVIDIA sample acquisition with provenance and a locally signed Mac bundle.
 - Bounded camera, screen and timestamp-paced video ingress through shared memory.
   Actual native recorded-video replay is verified; camera/screen permission and
-  hardware flows are not yet verified. Preview retains no recorded event data.
+  hardware flows are not yet verified. Preview retains no recorded frames/events;
+  normalized pixel exposure hashes prevent later copies from appearing untouched.
 - Typed local-model evidence questions over complete-scope SQLite queries, with
   evidence records/crops. Five of six live semantic probes passed; one valid
   time-window phrasing requested unnecessary clarification rather than inventing a count.
@@ -86,15 +128,28 @@
   not a general code generator. SAM 3, YOLO and PaddleOCR are not callable in the
   app. YOLOX and PaddleOCR have actual isolated CPU probes, with runtime/license
   and packaging work still required for integration.
-- Enforced scene-group promotion gates, separate untouched acceptance data, task/
-  event-complete comparisons, failure-slice aggregates and standardized resource
-  measurements. The standalone second-scene person benchmark failed the recall
+- Representative independent acceptance data and broader task-complete recipes,
+  failure-slice aggregates and standardized resource measurements. The protocol
+  and promotion software gates are implemented; their tests are not evidence of
+  vision quality. The standalone second-scene person benchmark failed the recall
   gate for all three tested detectors; it creates no app approval.
+- Event correctness, false alarms and temporal-duration scoring. The current
+  image recipe cannot promote rule/match/event-sink workflows; those remain
+  explicit local trials with external delivery disabled. This gate therefore
+  does not authorize their automatic webhook/SMTP/MQTT delivery. Explicit
+  destination tests remain separate human actions.
 - Representative, independently reviewed pallet/damage/label benchmarks. Public
   person/forklift samples do not validate those customer use cases.
 - Release signing/notarization and CI on a dedicated Apple silicon runner.
 
 No release milestone requiring the full five MVP flows is claimed complete.
+
+Acceptance is limited to the user's declared scene coverage and recorded project
+development, selection and training history. Human ground-truth review is allowed
+before acceptance; model exposure consumes its untouched status. Unknown upstream
+pretraining overlap and unseen deployment conditions remain outside that evidence.
+
+## Historical checkpoints
 
 The retained 24-case conversational-edit baseline scored 17/24 with the small
 local planner. Explicit unit, metric and reading-value mismatches now reject
@@ -117,12 +172,12 @@ preceding `c19fac507670` package compiled the requested people count and crop-ev
 five OWLv2 preview images, and paused at review of 20 unverified annotation rows.
 No evaluation, recorded event, or deployment approval was created by that preview.
 
-The current packaged source is `e098c7f30c336ab8914ce584b6940795585847756be1d8d3608d260fbc02f77c`.
+The previously accepted packaged source was `e098c7f30c336ab8914ce584b6940795585847756be1d8d3608d260fbc02f77c`.
 The isolated planner transport fix passed 28 focused checks; the preceding
-`19f6` full suite passed 640. Current strict mypy covers 146 source files and Ruff
-passes. The bundle passed relocation, packaged OCR/fixture inference and deep
+`19f6` full suite passed 640. That checkpoint passed strict mypy on 146 source files
+and Ruff. Its bundle passed relocation, packaged OCR/fixture inference and deep
 signature verification, including after the native walkthrough. Native checks
-remain 138 deterministic plus 10 backend payload checks.
+then totaled 138 deterministic plus 10 backend payload checks.
 
 Actual native acceptance used the built-in 20-frame real NVIDIA warehouse sample.
 A written goal generated OWLv2 and pretrained RT-DETR candidates with the same
@@ -138,5 +193,5 @@ allows 150 seconds for the initial model response while retaining the 180-second
 planner and 900-second build budgets, without automatic retries. The native retry
 passed in 109.6 seconds for its model call using cached prompt state. This exposes
 a material latency limit; it is not a cold-start benchmark or evidence that the
-full architecture is complete. `artifacts/runtime-validation-final.json` points
-to the versioned report and preserves the failed run.
+full architecture is complete. The [versioned `e098` report](../artifacts/runtime-validation-e098.json)
+preserves that checkpoint and its failed run.

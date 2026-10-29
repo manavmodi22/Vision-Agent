@@ -18,6 +18,7 @@ struct AgentBuildStatus: Decodable, Identifiable {
     let preview: RunResult?
     let selectedCandidateIndex: Int?
     let evaluations: [Evaluation]
+    let acceptanceEvaluation: Evaluation?
     let project: Project
     let updatedAt: String
     let plan: PlatformBuildPlan?
@@ -26,6 +27,7 @@ struct AgentBuildStatus: Decodable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case id, projectID = "project_id", status, phase, nextAction = "next_action", message, questions, log, preview
         case selectedCandidateIndex = "selected_candidate_index", evaluations, project, updatedAt = "updated_at"
+        case acceptanceEvaluation = "acceptance_evaluation"
         case plan, execution, toolEvents = "tool_events"
     }
     var running: Bool { status == "running" }
@@ -84,6 +86,7 @@ enum AgentConversation {
         case "awaiting_media": return "Waiting for examples"
         case "awaiting_clarification": return "Waiting for your answer"
         case "awaiting_review": return "Waiting for review"
+        case "configure_evaluation", "awaiting_evaluation_configuration": return "Waiting for evaluation evidence"
         case "awaiting_improvement": return "Waiting for an improvement choice"
         case "awaiting_approval", "awaiting_commit": return "Waiting for approval"
         default: return phase.replacingOccurrences(of: "_", with: " ").capitalized

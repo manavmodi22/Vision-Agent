@@ -1,0 +1,15 @@
+{
+  "scope": "Read-only upgrade check on the existing real NVIDIA sample. No inference, label review, approval or project writes.",
+  "project_id": "692e0290946d493a",
+  "image_count": 20,
+  "unique_source_count": 1,
+  "images_with_prior_exposure_or_unknown_history": 20,
+  "reviewed_count": 0,
+  "elapsed_s": 0.9127026249771006,
+  "project_files_unchanged": true,
+  "exposure_reasons": [
+    "Legacy model-exposure history is unknown; this pre-protocol media is not certified untouched",
+    "Prior model-generated annotation proposal",
+    "Prior saved model preview"
+  ]
+}

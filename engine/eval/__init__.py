@@ -10,9 +10,11 @@ from engine.compiler import compile_pipeline
 from engine.eval.hashes import dataset_hash, spec_hash
 from engine.eval.metrics import count_errors, match_detections
 from engine.eval.reading import NORMALIZATION, error_rate, reading_errors
+from engine.eval.recipe import recipe_hash
 from engine.eval.scope import detection_scope
 from engine.runtime.executor import execute_frame
 from engine.runtime.values import ExecutionState
+from spec.evaluation import EvaluationProtocol
 from spec.models import EvalDataset, EvaluationResult, PipelineSpec
 
 
@@ -20,7 +22,20 @@ class EvaluationError(ValueError):
     """The supplied evaluation evidence cannot support a valid result."""
 
 
-def evaluate(spec: PipelineSpec, dataset: EvalDataset, project_root: Path) -> EvaluationResult:
+def evaluate(spec: PipelineSpec, dataset: EvalDataset, project_root: Path, *,
+             protocol: EvaluationProtocol | None = None) -> EvaluationResult:
+    recipe_hash()  # Pin loaded scoring/runtime semantics even for diagnostic calls.
+    from engine.eval.protocol import (
+        attach_evidence,
+        begin_evaluation,
+        mark_usage,
+        reserved_acceptance_paths,
+    )
+    from engine.evidence_metadata import unique_images
+    full_dataset = dataset
+    if protocol is not None:
+        # Consume acceptance before executing any learned model, including failed attempts.
+        dataset = begin_evaluation(project_root, dataset, spec, protocol)
     if not dataset.annotations:
         raise EvaluationError("Evaluation requires a nonempty labeled set")
     if len(dataset.annotations) > 500:
@@ -29,6 +44,12 @@ def evaluate(spec: PipelineSpec, dataset: EvalDataset, project_root: Path) -> Ev
         raise EvaluationError("Every evaluation image must be explicitly reviewed, including empty images")
     if len({(project_root / a.image_path).resolve() for a in dataset.annotations}) != len(dataset.annotations):
         raise EvaluationError("Evaluation images must be unique")
+    unique_images(project_root, [row.image_path for row in dataset.annotations])
+    if protocol is None:
+        reserved = reserved_acceptance_paths(project_root, dataset)
+        if any(str((project_root / row.image_path).resolve()) in reserved for row in dataset.annotations):
+            raise EvaluationError("Reserved acceptance requires one frozen selected-candidate protocol")
+        mark_usage(project_root, [row.image_path for row in dataset.annotations], "diagnostic evaluation")
     compiled = compile_pipeline(spec, project_root)
     if compiled.vlm_identities and any(identity.identity_scope == "server_metadata_only" for identity in compiled.vlm_identities.values()):
         raise EvaluationError("VLM evaluation needs verifiable model weights; this endpoint exposes only metadata. Use a server exposing a local GGUF model path or verified digest.")
@@ -98,7 +119,7 @@ def evaluate(spec: PipelineSpec, dataset: EvalDataset, project_root: Path) -> Ev
     # Detect concurrent edits during evaluation; never issue a score for mixed evidence.
     if evidence_hash != dataset_hash(dataset, project_root) or fingerprint != spec_hash(spec, project_root):
         raise EvaluationError("Evaluation evidence changed while the run was in progress; run it again")
-    return EvaluationResult(precision=precision, recall=recall, count_mae=mae, passed=passed,
+    score = EvaluationResult(precision=precision, recall=recall, count_mae=mae, passed=passed,
         metric=spec.eval.metric, target=spec.eval.target, sample_count=len(dataset.annotations),
         failures=sorted(failures, key=lambda item: float(str(item["severity"])), reverse=True),
         spec_hash=fingerprint, dataset_hash=evidence_hash, text_accuracy=text_accuracy,
@@ -106,6 +127,11 @@ def evaluate(spec: PipelineSpec, dataset: EvalDataset, project_root: Path) -> Ev
         text_error_counts={"expected_characters": expected_characters, "character_edits": character_edits,
                            "expected_words": expected_words, "word_edits": word_edits} if reading else {},
         warnings=warnings)
+    if protocol is not None:
+        return attach_evidence(project_root, full_dataset, spec, protocol, score)
+    score.evidence_scope = "sample"
+    score.evidence_reasons = ["Diagnostic image metrics have no frozen acceptance protocol; promotion is not qualified"]
+    return score
 
 
 __all__ = ["evaluate", "spec_hash", "dataset_hash", "EvaluationError"]

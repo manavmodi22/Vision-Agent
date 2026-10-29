@@ -35,6 +35,7 @@ from engine.api.contracts import (
     ZonesRequest,
 )
 from engine.api.dataset_routes import build_router as dataset_router
+from engine.api.evaluation_routes import evaluation_router
 from engine.api.live_routes import build_router as live_router
 from engine.api.sample_routes import build_router as sample_router
 from engine.builds.manager import BuildManager
@@ -73,6 +74,7 @@ def create_app(data_dir: Path) -> FastAPI:
     app.state.live = live
     app.state.builds = builds
     jobs = JobManager(service)
+    app.include_router(evaluation_router(service, builds))
     app.include_router(dataset_router(service))
     app.include_router(alert_router(alerts))
     app.include_router(agent_router(service))
@@ -218,7 +220,8 @@ def create_app(data_dir: Path) -> FastAPI:
 
     @app.post("/projects/{project_id}/deploy")
     def deploy(project_id: str, request: DeployRequest) -> dict[str, JsonValue]:
-        result = service.deploy(project_id, request.candidate_index, request.approved, request.override_reason)
+        result = service.deploy(project_id, request.candidate_index, request.approved, request.override_reason,
+                                approval_scope=request.approval_scope)
         agent_states.reconcile(project_id, "deploy")
         return result
 

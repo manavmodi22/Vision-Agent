@@ -1,0 +1,52 @@
+{
+  "checked_at": "2026-10-29T03:02:00.718807+00:00",
+  "source_identity": "7f621816c32bcfd849c3c1a8986aa86dbb72157e54b818455e24ed7384a41228",
+  "status": "packaged_evaluation_protocol_and_native_workflow_verified; overall_architecture_incomplete",
+  "python_tests": {
+    "passed": 672,
+    "duration_s": 264.02,
+    "tested_source_identity": "7f621816c32bcfd849c3c1a8986aa86dbb72157e54b818455e24ed7384a41228",
+    "log": "artifacts/evaluation-fairness/full-tests-final-7f62.log"
+  },
+  "mypy": {
+    "passed": true,
+    "source_files": 151,
+    "log": "artifacts/evaluation-fairness/7f62-mypy.log"
+  },
+  "ruff": {
+    "passed": true,
+    "log": "artifacts/evaluation-fairness/7f62-final-ruff.log"
+  },
+  "native_contracts": {
+    "passed_per_binary": 173,
+    "deterministic_checks": 159,
+    "historical_payloads": 10,
+    "current_api_fixtures": 4,
+    "current_api_inference": "mocked; not detector-quality evidence",
+    "evidence": "artifacts/native-evaluation-validation.json"
+  },
+  "native_release_sha256": "ecb9d8b6b746d6aa674af2d53456124a2a5d7e545fc6d0962565dc66387f646f",
+  "native_packaged_sha256": "d8500690916e271686b6424b8192bf3047c70403b75abf0055af1418a75103ab",
+  "portable_build": "artifacts/evaluation-fairness/portable-build-7f62-final.log",
+  "relocation": {
+    "passed": true,
+    "evidence": "artifacts/evaluation-fairness/bundle-verification-7f62-final.json"
+  },
+  "native_ui": "artifacts/evaluation-fairness/native-ui-qa-7f62.json",
+  "package_installation": "artifacts/evaluation-fairness/package-installation-7f62.json",
+  "protocol_regression": "artifacts/evaluation-fairness/protocol-checkpoint-7f62.json",
+  "actual_detector_smoke": {
+    "evidence": "artifacts/evaluation-fairness/bundle-verification-7f62.json",
+    "scope": "Actual OWLv2 execution on one real NVIDIA frame, returned zero detections. Not an accuracy pass. Python runtime identical, native executable predates Re-evaluate action."
+  },
+  "historical_real_native_flow": "artifacts/agent-experience/adapter-release/acceptance.json",
+  "previous_report": "artifacts/runtime-validation-e098.json",
+  "remaining": [
+    "Independent real reviewed acceptance data and representative vision benchmarks remain incomplete. Positive acceptance protocol tests use mocked inference.",
+    "Image scores do not establish temporal event correctness, false alarms or duration; rule/match/event-sink applications are local-trial-only and external delivery is suppressed.",
+    "Broad real-planner/refinement reliability and local-model latency remain limitations.",
+    "Unified provisioning, integrated new adapter families, segmentation, named-field/failure-slice metrics and resource acceptance remain incomplete.",
+    "Camera/screen hardware acceptance, release signing/notarization and full operational acceptance remain pending."
+  ],
+  "current_real_native_preview": "artifacts/evaluation-fairness/native-warehouse-restoration-7f62.json"
+}

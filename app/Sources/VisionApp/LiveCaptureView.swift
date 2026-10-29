@@ -16,7 +16,7 @@ struct LiveCaptureView: View {
                 } else {
                     Button(live.previewOnly ? "Start live preview" : "Start approved recording") { live.start(projectID: project.id, candidateIndex: candidateIndex) }
                         .buttonStyle(.borderedProminent)
-                        .disabled(!live.ready || project.candidates.isEmpty || (!live.previewOnly && project.deploymentId == nil))
+                        .disabled(!live.ready || project.candidates.isEmpty || (!live.previewOnly && !EvidenceApprovalPresentation.hasRecordingApproval(project)))
                 }
             }
             HStack(spacing: 16) {
@@ -38,7 +38,7 @@ struct LiveCaptureView: View {
                     Text("Preview only").tag(true)
                     Text("Record approved pipeline").tag(false)
                 }.pickerStyle(.segmented).frame(width: 340).disabled(live.active)
-                Text(live.previewOnly ? "Processes frames locally. Saves no evidence and sends no alerts." : "Saves accepted frames and rule events. Enabled alert destinations may receive rule messages.")
+                Text(live.previewOnly ? "Processes frames locally. Saves no evidence and sends no alerts." : project.approvalScope == "local_trial" ? "Local trial records local evidence only; external alert delivery is disabled." : "Saves accepted frames and rule events. Enabled alert destinations may receive rule messages.")
                     .font(.caption).foregroundStyle(Studio.muted).frame(maxWidth: .infinity, alignment: .leading)
             }
             if !live.previewOnly {

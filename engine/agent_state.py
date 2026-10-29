@@ -26,7 +26,7 @@ from agent.state_contracts import (
 )
 from engine.agent_traces import AgentTraceStore
 from engine.datasets import DatasetService
-from engine.eval import dataset_hash, spec_hash
+from engine.eval import spec_hash
 from engine.media import media_fingerprint
 from engine.models.manager import list_models
 from engine.platform.model_request import explicit_model_ids, request_hash
@@ -69,10 +69,14 @@ class AgentStateStore:
             return replay_operation(self.operation(project_id, operation_id))
 
     def _fingerprint(self, project_id: str) -> str:
+        from engine.eval.protocol import stable_configuration_hash
+        from engine.eval.recipe import recipe_hash
         project = self.service.get_project(project_id)
         root = self.service.root(project_id)
         classes = DatasetService(self.service).manifest(project_id).classes
         payload = {"media": media_fingerprint(project.media), "clarification_count": project.clarification_count,
+                   "evaluation_configuration": stable_configuration_hash(root, self.service.annotations(project_id)),
+                   "evaluation_recipe": recipe_hash(),
                    "ontology": [item.model_dump(mode="json") for item in sorted(classes, key=lambda item: item.id)],
                    "candidates": [item.model_dump(mode="json", by_alias=True) for item in project.candidates],
                    "annotations": (root / "annotations.json").read_text(),
@@ -102,30 +106,36 @@ class AgentStateStore:
         if not project.candidates:
             return state
         state.phase = Phase.EVALUATE
-        dataset = self.service.evaluation_annotations(project_id)
-        current_dataset = dataset_hash(dataset, root)
         hashes = {spec_hash(candidate, root) for candidate in project.candidates}
         media = media_fingerprint(project.media)
         evidence_file = root / "eval-media.json"
         media_evidence = json.loads(evidence_file.read_text()) if evidence_file.exists() else {}
         valid = [evaluation for evaluation in project.evaluations
-                 if evaluation.spec_hash in hashes and evaluation.dataset_hash == current_dataset
+                 if evaluation.spec_hash in hashes and self.service.evaluation_is_current(project_id, evaluation)
                  and media_evidence.get(evaluation.spec_hash) == media
-                 and all(item.reviewed for item in dataset.annotations)]
+                 ]
         if not valid:
             return state
         evaluation = valid[-1]
         deployment_path = root / "deployment.json"
         deployment = Deployment.model_validate_json(deployment_path.read_text()) if deployment_path.exists() else None
         if deployment:
-            evaluation = next((item for item in valid if item.spec_hash == deployment.spec_hash), evaluation)
+            evaluation = next((item for item in valid if item.spec_hash == deployment.spec_hash
+                               and item.protocol_id == deployment.protocol_id), evaluation)
         state.record_evaluation(EvaluationEvidence(spec_hash=evaluation.spec_hash,
             dataset_hash=evaluation.dataset_hash, passed=evaluation.passed,
-            sample_count=evaluation.sample_count, reviewed=True))
+            sample_count=evaluation.sample_count, reviewed=True, protocol_id=evaluation.protocol_id,
+            protocol_hash=evaluation.protocol_hash, promotion_eligible=evaluation.promotion_eligible))
         if (deployment and project.deployment_id == deployment.id and deployment.spec_hash == evaluation.spec_hash
-                and deployment.dataset_hash == current_dataset):
-            state.approve_deployment(spec_hash=deployment.spec_hash, dataset_hash=deployment.dataset_hash,
-                                      human_approved=True, override_reason=deployment.override_reason)
+                and deployment.protocol_id == evaluation.protocol_id):
+            try:
+                current = self.service.approved_deployment(project_id, deployment.candidate_index)
+            except (ValueError, OSError):
+                return state
+            if current.approval_scope != "legacy":
+                state.approve_deployment(spec_hash=deployment.spec_hash, dataset_hash=deployment.dataset_hash,
+                    human_approved=True, override_reason=deployment.override_reason, protocol_id=deployment.protocol_id,
+                    protocol_hash=deployment.protocol_hash, approval_scope=current.approval_scope)
         return state
 
     def _close(self, operation: AgentOperation, status: Literal["failed", "interrupted", "invalidated"], error: str) -> None:

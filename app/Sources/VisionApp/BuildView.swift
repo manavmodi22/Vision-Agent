@@ -8,6 +8,10 @@ struct BuildView: View {
     @NativeState<Bool> private var trainingApproval = false
     @NativeState<Bool> private var deploymentApproval = false
     @NativeState<Bool> private var annotationReview = false
+    @NativeState<Bool> private var evidenceEditor = false
+    @NativeState<Int> private var evidenceCandidate = 0
+    @NativeState<String> private var evidenceCandidateName = ""
+    @NativeState<Bool> private var reviewAfterEvidence = false
     init(store: AgentWorkspaceStore, dataset: DatasetWorkspace) {
         _agent = StateObject(wrappedValue: store); _reviewStore = StateObject(wrappedValue: dataset)
     }
@@ -53,7 +57,7 @@ struct BuildView: View {
                         }
                         if let warnings = model.preview?.warnings { ForEach(warnings, id: \.self) { Text($0).font(.caption).foregroundStyle(.orange) } }
                         if let build = agent.build, !build.evaluations.isEmpty {
-                            AgentEvaluationProof(build: build, busy: working || reviewStore.loading, approve: { deploymentApproval = true }, train: { trainingApproval = true }, correctImage: { openReview(imagePath: $0) }, reviewAnnotations: { openReview() })
+                            AgentEvaluationProof(build: build, busy: working || reviewStore.loading, approve: { deploymentApproval = true }, train: { trainingApproval = true }, correctImage: { openReview(imagePath: $0) }, reviewAnnotations: { openReview() }, editEvidence: { openEvidence() })
                         }
                     }
                 }.padding(24)
@@ -68,6 +72,14 @@ struct BuildView: View {
         }
         .task(id: model.frame?.imagePath) { if model.frame != nil { await reviewStore.load() } }
         .sheet(isPresented: $annotationReview) { AgentAnnotationReview(store: reviewStore) }
+        .sheet(isPresented: $evidenceEditor, onDismiss: { if reviewAfterEvidence { reviewAfterEvidence = false; openReview() } }) {
+            EvaluationEvidenceEditor(projectID: agent.projectID, client: model.client, candidateIndex: evidenceCandidate, candidateName: evidenceCandidateName, onChanged: {
+                try? await model.refresh()
+                await agent.refresh()
+                if let build = agent.build { model.applyBuild(build) }
+                await reviewStore.load()
+            }, onReview: { reviewAfterEvidence = true; evidenceEditor = false })
+        }
         .sheet(isPresented: $deploymentApproval) { DeploymentApprovalSheet { deploymentApproval = false } }
         .sheet(isPresented: $trainingApproval) {
             VStack(alignment: .leading, spacing: 18) {
@@ -119,6 +131,12 @@ struct BuildView: View {
                 }.panel()
             case "approve_deployment":
                 Button("Review results & approve app") { deploymentApproval = true }.buttonStyle(.borderedProminent)
+            case "configure_evaluation":
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Choose how to establish evidence for this application.").font(.caption).foregroundStyle(Studio.muted)
+                    HStack { Button("Edit evaluation evidence") { openEvidence() }.buttonStyle(.borderedProminent); Button("Review local trial") { deploymentApproval = true } }
+                    Button("Re-evaluate") { model.continueBuild() }.disabled(working || !model.supervisor.connected)
+                }
             case "approve_training":
                 Button("Review training request") { trainingApproval = true }.buttonStyle(.borderedProminent)
             case "retry":
@@ -139,6 +157,13 @@ struct BuildView: View {
             annotationReview = true
         }
     }
+    private func openEvidence() {
+        guard !working, let candidate = model.candidate else { return }
+        model.perform("Opening evaluation evidence") {
+            guard await reviewStore.saveNow() else { throw EngineError.protocolError(reviewStore.error ?? "Save annotation changes before editing evaluation evidence.") }
+            evidenceCandidate = model.selectedCandidate; evidenceCandidateName = candidate.name; evidenceEditor = true
+        }
+    }
     private var composer: some View {
         VStack(alignment: .leading, spacing: 12) {
             ZStack(alignment: .topLeading) {
@@ -155,7 +180,11 @@ struct BuildView: View {
     }
     private var application: some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack { Text("Your application").font(.headline); Spacer(); if model.project?.deploymentId != nil { StatusPill(text: "Approved") } else if model.candidate != nil { StatusPill(text: "Draft", color: Studio.muted) } }
+            HStack { Text("Your application").font(.headline); Spacer(); if model.project?.deploymentId != nil { StatusPill(text: EvidenceApprovalPresentation.projectStatus(model.project)) } else if model.candidate != nil { StatusPill(text: "Draft", color: Studio.muted) } }
+            if model.project?.approvalScope == "local_trial" {
+                Text("Local trial; external alert delivery disabled. Quality promotion has not been established.").font(.caption).foregroundStyle(.orange)
+                ForEach(EvidenceApprovalPresentation.trialLimits(model.project), id: \.self) { Text($0).font(.caption2).foregroundStyle(Studio.muted) }
+            }
             if let candidate = model.candidate {
                 Text(model.project?.messages.first(where: { $0.role == "user" })?.content ?? model.project?.name ?? candidate.name).font(.title3.weight(.medium))
                 HStack {

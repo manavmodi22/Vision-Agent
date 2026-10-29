@@ -40,6 +40,8 @@ def commit_refinement(root: Path, project: Project, dataset: EvalDataset,
                       classes_changed: bool) -> None:
     project.evaluations = []
     project.deployment_id = None
+    project.approval_scope = None
+    project.trial_limits = {}
     project.status = "building"
     project.updated_at = now()
     documents: dict[str, BaseModel] = {}

@@ -8,10 +8,11 @@ import uuid
 from pathlib import Path
 from typing import TYPE_CHECKING, Literal
 
-from PIL import Image, ImageOps
+from PIL import Image
 from pydantic import BaseModel, ConfigDict, Field, JsonValue, model_validator
 
 from engine.eval import dataset_hash
+from engine.evidence_metadata import pixel_hash as pixel_hash
 from engine.media import import_paths
 from engine.store.models import now
 from engine.store.repository import atomic_model
@@ -51,7 +52,14 @@ class DatasetImage(DataContract):
     height: int
     reviewed: bool
     annotation_count: int
-    split: Literal["train", "validation", "test", "unassigned"] = "unassigned"
+    split: Literal["train", "validation", "test", "acceptance", "unassigned"] = "unassigned"
+    source_asset_id: str | None = None
+    source_sha256: str | None = None
+    frame_index: int | None = None
+    timestamp_s: float | None = None
+    scene_group: str | None = None
+    data_origin: Literal["unknown", "real", "synthetic"] = "unknown"
+    group_provenance: Literal["unknown", "source_record", "human_declared"] = "unknown"
 
 
 class DatasetManifest(DataContract):
@@ -116,14 +124,6 @@ def image_id(path: str, root: Path) -> str:
     return hashlib.sha256(str(relative).encode()).hexdigest()[:16]
 
 
-def pixel_hash(path: Path) -> str:
-    with Image.open(path) as image:
-        pixels = ImageOps.exif_transpose(image).convert("RGB")
-        digest = hashlib.sha256(str(pixels.size).encode())
-        digest.update(pixels.tobytes())
-        return digest.hexdigest()
-
-
 class DatasetService:
     def __init__(self, service: WorkspaceService) -> None:
         self.service = service
@@ -154,6 +154,9 @@ class DatasetService:
         with self.service.repository.lock:
             metadata = self._sync(project_id)
             root = self.service.root(project_id)
+            from engine.eval.configuration import _read_configuration
+            evidence = {str((root / row.image_path).resolve()): row for row in
+                        _read_configuration(root, self.service.annotations(project_id)).images}
             annotations = {(root / a.image_path).resolve(): a for a in self.service.annotations(project_id).annotations}
             holdout_path = root / "active-holdout.json"
             holdout = ({(root / a.image_path).resolve() for a in EvalDataset.model_validate_json(holdout_path.read_text()).annotations}
@@ -164,10 +167,13 @@ class DatasetService:
                 with Image.open(path) as image:
                     width, height = image.size
                 annotation = annotations.get(path, Annotation(image_path=filename))
+                row = evidence.get(str(path))
                 images.append(DatasetImage(id=image_id(filename, root), image_path=str(path),
                     width=width, height=height, reviewed=annotation.reviewed,
                     annotation_count=len(annotation.detections),
-                    split="validation" if path in holdout else ("train" if holdout else "unassigned")))
+                    split=row.split if row and row.split != "unassigned" else ("validation" if path in holdout else ("train" if holdout else "unassigned")),
+                    **(row.model_dump(include={"source_asset_id", "source_sha256", "frame_index", "timestamp_s",
+                                               "scene_group", "data_origin", "group_provenance"}) if row else {})))
             return DatasetManifest(revision=metadata.revision, classes=metadata.classes, images=images)
 
     def image(self, project_id: str, selected_id: str) -> DatasetImageDocument:

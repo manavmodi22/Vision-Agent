@@ -217,7 +217,7 @@ def test_real_change_revokes_gate_but_noop_preview_preserves_it(tmp_path: Path, 
     service, project_id = workspace(tmp_path, candidates=1)
     assert service.evaluate(project_id).passed
     # Isolated generated-fixture approval, never a user project.
-    service.deploy(project_id, 0, approved=True)
+    service.deploy(project_id, 0, approved=True, override_reason="Isolated synthetic software trial", approval_scope="local_trial")
     root = service.root(project_id)
     before = {name: (root / name).read_bytes() for name in ("project.json", "deployment.json", "eval-media.json")}
     refine_app(service, project_id, RefinementPatch(kind="confidence", confidence=.5 if change else .4))
@@ -305,7 +305,7 @@ async def test_broad_followup_build_previews_and_evaluates_all_changed_alternati
         await manager.start(project_id, "Flag at least three pallets, sample at three frames per second, and require 95% recall")
         await asyncio.wait_for(manager.tasks[project_id], timeout=40)
         status = manager.status(project_id)
-        assert status.status == "awaiting_approval" and status.selected_candidate_index == 1, status
+        assert status.status == "awaiting_review" and status.selected_candidate_index == 1, status
         assert len(requests) == 1 and status.preview and status.preview.frames[0].detections
         assert len(status.evaluations) == 2 and not status.evaluations[0].passed and status.evaluations[1].passed
         project = service.get_project(project_id)

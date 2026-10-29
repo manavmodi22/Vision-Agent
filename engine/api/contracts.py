@@ -38,6 +38,7 @@ class RunMediaRequest(RunRequest):
 class DeployRequest(CandidateRequest):
     approved: bool
     override_reason: str | None = Field(default=None, max_length=1000)
+    approval_scope: Literal["promotion", "local_trial"] = "promotion"
 
 
 class Zone(RequestModel):

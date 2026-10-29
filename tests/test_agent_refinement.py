@@ -85,7 +85,7 @@ async def test_contextual_answer_preserves_original_request_and_actual_question(
         await manager.continue_build(project_id, BuildContinueRequest(prompt="At four pallets"))
         await manager.tasks[project_id]
         second = manager.status(project_id)
-        assert second.status == "awaiting_approval", second.message
+        assert second.status == "awaiting_review", second.message
         assert prompts == ["Change when the lane alert triggers", "Change when the lane alert triggers\nUser clarification: At four pallets"]
         changed = service.candidate(project_id, 0)
         assert next(block for block in changed.blocks if block.type == "rule").params["when"] == "count >= 4.0"
@@ -145,7 +145,7 @@ async def test_explicit_human_override_resumes_missed_target_to_run(tmp_path: Pa
     preview = service.preview(project_id, 0)
     manager._scored(project_id, record.view.id, [result], 0, preview)
     assert manager.status(project_id).status == "awaiting_improvement"
-    service.deploy(project_id, 0, approved=True, override_reason="Isolated synthetic fixture deployment test")
+    service.deploy(project_id, 0, approved=True, override_reason="Isolated synthetic fixture deployment test", approval_scope="local_trial")
     try:
         await manager.continue_build(project_id, BuildContinueRequest())
         await manager.tasks[project_id]

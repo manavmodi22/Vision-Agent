@@ -218,10 +218,12 @@ final class WorkspaceModel: ObservableObject {
             try await self.refresh()
         }
     }
-    func approveDeployment(override: String?) {
+    func approveDeployment(override: String?, scope: EvidenceApprovalScope = .promotion) {
         guard let id = selectedID else { return }
+        let index = selectedCandidate
         perform("Recording deployment approval") {
-            let _: JSONValue = try await self.client.request("POST", "/projects/\(id)/deploy", body: ["candidate_index": .number(Double(self.selectedCandidate)), "approved": .bool(true), "override_reason": override.map(JSONValue.string) ?? .null])
+            let request = EvidenceApprovalRequest(candidateIndex: index, approved: true, approvalScope: scope, overrideReason: override)
+            let _: JSONValue = try await self.client.send("POST", "/projects/\(id)/deploy", value: request, as: JSONValue.self)
             try await self.refresh()
             let agent = self.agentWorkspace(for: id)
             await agent.refresh()
@@ -229,7 +231,7 @@ final class WorkspaceModel: ObservableObject {
                 self.section = "Agent"
                 self.applyBuild(try await agent.resume())
             } else { self.section = "Run" }
-            self.notice = "Deployment approved."
+            self.notice = scope == .localTrial ? "Local trial approved; external alert delivery disabled." : "Quality promotion approved for the evaluated scope."
         }
     }
     func run() {

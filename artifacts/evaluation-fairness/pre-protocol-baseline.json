@@ -1,0 +1,33 @@
+{
+  "source_commit": "4ffa46653d1b6e16af146ecdf8363942fc21259c",
+  "source_identity": "e098c7f30c336ab8914ce584b6940795585847756be1d8d3608d260fbc02f77c",
+  "scope": "Generated geometric software fixtures only; not vision accuracy or human-reviewed data.",
+  "ordinary_approval_on_fixture": {
+    "numeric_passed": true,
+    "sample_count": 16,
+    "response": {
+      "deployment_id": "2d73e766a0ac47b99c9f71a18a03f6f0",
+      "status": "ready"
+    },
+    "deployment": {
+      "id": "2d73e766a0ac47b99c9f71a18a03f6f0",
+      "candidate_index": 0,
+      "spec_hash": "e5dfdf4dba72e3891c1ff0bf6c5b600a98dbdbf74f599c15412d9077d4903eb4",
+      "dataset_hash": "e63da71f14604d94096896c2622c4bb17226efa4cb7f7ecd3e2ef1f06b2715ad",
+      "approved_at": "2026-10-29T02:24:45.612481+00:00",
+      "override_reason": null,
+      "synthetic": true
+    },
+    "interpretation": "The legacy approval has no independent-acceptance versus local-trial distinction."
+  },
+  "renamed_identical_images": {
+    "unique_original_pixels": 1,
+    "distinct_filenames": 10,
+    "reported_sample_count": 10,
+    "numeric_passed": true,
+    "interpretation": "Legacy evaluation accepts repeated content under distinct paths."
+  },
+  "recorded_events": 0,
+  "real_models_called": false,
+  "user_projects_modified": false
+}

@@ -1,0 +1,235 @@
+{
+  "id": "44ad59a533ab44978fb857d54e264a40",
+  "project_id": "a88c5287a18140c0",
+  "status": "awaiting_approval",
+  "phase": "approval",
+  "next_action": "approve_deployment",
+  "message": "The selected candidate met the declared independent acceptance policy. Review its scope and explicitly approve before recording. Temporal event quality was not measured.",
+  "questions": [],
+  "log": [
+    {
+      "at": "2026-10-29T02:44:52.108284+00:00",
+      "phase": "planning",
+      "message": "Interpreting your goal and preparing a working preview"
+    },
+    {
+      "at": "2026-10-29T02:44:52.844233+00:00",
+      "phase": "acceptance",
+      "message": "Measured the selected candidate on 10 reserved acceptance images: count_mae 0.000; target 0.500."
+    },
+    {
+      "at": "2026-10-29T02:44:52.844296+00:00",
+      "phase": "approval",
+      "message": "The selected candidate met the declared independent acceptance policy. Review its scope and explicitly approve before recording. Temporal event quality was not measured."
+    }
+  ],
+  "preview": null,
+  "selected_candidate_index": 0,
+  "evaluations": [
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "count_mae": 0.0,
+      "passed": true,
+      "metric": "count_mae",
+      "target": 0.5,
+      "sample_count": 10,
+      "failures": [],
+      "spec_hash": "46daffc719265cc60611483ec73b2f930664e399ff803bd5e3e901711b52af97",
+      "dataset_hash": "40728ad9e55b77cab4e35d95abdcb9d7127d1d44305cd05c4a6fd26631dac4bc",
+      "text_accuracy": 1.0,
+      "character_error_rate": null,
+      "word_error_rate": null,
+      "text_normalization": null,
+      "text_error_counts": {},
+      "warnings": [
+        "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+      ],
+      "protocol_id": "d67e68a71b3949c78c1b370eeedd4adc",
+      "protocol_hash": "881a92e3ee948fdf72157eea6e100a548a023b1c929c51d1face250b4eb3eacf",
+      "evidence_scope": "validation",
+      "promotion_eligible": false,
+      "evidence_reasons": [
+        "Validation informs model/threshold selection; it is not untouched acceptance"
+      ]
+    }
+  ],
+  "acceptance_evaluation": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "count_mae": 0.0,
+    "passed": true,
+    "metric": "count_mae",
+    "target": 0.5,
+    "sample_count": 10,
+    "failures": [],
+    "spec_hash": "46daffc719265cc60611483ec73b2f930664e399ff803bd5e3e901711b52af97",
+    "dataset_hash": "4e7b58a5ab1417fe40fe0f8052e5360bfe3cf80003411a4d5cc36677e04ac895",
+    "text_accuracy": 1.0,
+    "character_error_rate": null,
+    "word_error_rate": null,
+    "text_normalization": null,
+    "text_error_counts": {},
+    "warnings": [
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+    ],
+    "protocol_id": "325c1131262947f58457d60afc958225",
+    "protocol_hash": "b54447ad21e317ab67b316ac78edb73e419122c4324a944bd2bb0553b85f50fe",
+    "evidence_scope": "acceptance",
+    "promotion_eligible": true,
+    "evidence_reasons": [
+      "Acceptance is limited to the explicitly declared scene coverage; upstream pretraining overlap is unknown"
+    ]
+  },
+  "project": {
+    "id": "a88c5287a18140c0",
+    "name": "Mocked independent acceptance workflow",
+    "use_case": "custom",
+    "status": "evaluated",
+    "created_at": "2026-10-29T02:44:51.296114+00:00",
+    "updated_at": "2026-10-29T02:44:52.704817+00:00",
+    "media": [
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/a9eb8522-sample-0.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/8c373ed8-sample-1.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/612ee026-sample-2.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/da7a872c-sample-3.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/c926e638-sample-4.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/d986b217-sample-5.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/50054e28-sample-6.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/1879c4c6-sample-7.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/bee446a4-sample-8.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/c212a7d5-sample-9.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/963291b6-sample-10.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/50e90cb7-sample-11.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/b5aa19e0-sample-12.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/212cf2d3-sample-13.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/8b3ba9b6-sample-14.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/638caf1c-sample-15.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/43dd773a-sample-16.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/34de95ed-sample-17.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/06565407-sample-18.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-178/test_positive_fresh_import_res0/workspace/projects/a88c5287a18140c0/media/c040be06-sample-19.png"
+    ],
+    "brief": "Count people",
+    "clarification_count": 0,
+    "candidates": [
+      {
+        "spec_version": "0.1",
+        "name": "Count person",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "sample",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2
+            },
+            "in": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "det",
+            "type": "detect",
+            "params": {
+              "model": "owlv2-base-patch16",
+              "classes": [
+                "person"
+              ],
+              "min_conf": 0.2
+            },
+            "in": {
+              "image": "$sample.frame"
+            }
+          },
+          {
+            "id": "count",
+            "type": "count_per_zone",
+            "params": {},
+            "in": {
+              "dets": "$det.dets"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "count_mae",
+          "target": 0.5
+        }
+      }
+    ],
+    "evaluations": [
+      {
+        "precision": 1.0,
+        "recall": 1.0,
+        "count_mae": 0.0,
+        "passed": true,
+        "metric": "count_mae",
+        "target": 0.5,
+        "sample_count": 10,
+        "failures": [],
+        "spec_hash": "46daffc719265cc60611483ec73b2f930664e399ff803bd5e3e901711b52af97",
+        "dataset_hash": "40728ad9e55b77cab4e35d95abdcb9d7127d1d44305cd05c4a6fd26631dac4bc",
+        "text_accuracy": 1.0,
+        "character_error_rate": null,
+        "word_error_rate": null,
+        "text_normalization": null,
+        "text_error_counts": {},
+        "warnings": [
+          "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+        ],
+        "protocol_id": "d67e68a71b3949c78c1b370eeedd4adc",
+        "protocol_hash": "881a92e3ee948fdf72157eea6e100a548a023b1c929c51d1face250b4eb3eacf",
+        "evidence_scope": "validation",
+        "promotion_eligible": false,
+        "evidence_reasons": [
+          "Validation informs model/threshold selection; it is not untouched acceptance"
+        ]
+      },
+      {
+        "precision": 1.0,
+        "recall": 1.0,
+        "count_mae": 0.0,
+        "passed": true,
+        "metric": "count_mae",
+        "target": 0.5,
+        "sample_count": 10,
+        "failures": [],
+        "spec_hash": "46daffc719265cc60611483ec73b2f930664e399ff803bd5e3e901711b52af97",
+        "dataset_hash": "4e7b58a5ab1417fe40fe0f8052e5360bfe3cf80003411a4d5cc36677e04ac895",
+        "text_accuracy": 1.0,
+        "character_error_rate": null,
+        "word_error_rate": null,
+        "text_normalization": null,
+        "text_error_counts": {},
+        "warnings": [
+          "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+        ],
+        "protocol_id": "325c1131262947f58457d60afc958225",
+        "protocol_hash": "b54447ad21e317ab67b316ac78edb73e419122c4324a944bd2bb0553b85f50fe",
+        "evidence_scope": "acceptance",
+        "promotion_eligible": true,
+        "evidence_reasons": [
+          "Acceptance is limited to the explicitly declared scene coverage; upstream pretraining overlap is unknown"
+        ]
+      }
+    ],
+    "messages": [],
+    "synthetic": false,
+    "fixture": false,
+    "data_origin": "User imported media",
+    "deployment_id": null,
+    "approval_scope": null,
+    "trial_limits": {}
+  },
+  "created_at": "2026-10-29T02:44:52.082990+00:00",
+  "updated_at": "2026-10-29T02:44:52.844301+00:00",
+  "plan": null,
+  "execution": null,
+  "tool_events": []
+}

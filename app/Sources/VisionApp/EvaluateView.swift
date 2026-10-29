@@ -42,6 +42,7 @@ struct EvaluateView: View {
                         Button("Review & approve deployment") { showApproval = true }.buttonStyle(.bordered).disabled(model.busy || labelsEdited)
                     }.panel()
                     if result.metric == "text_accuracy" { ReadingEvaluationDetails(evaluation: result) }
+                    EvaluationQualityView(result: result)
                     if let warnings = result.warnings { ForEach(warnings, id: \.self) { Text($0).font(.caption).foregroundStyle(.orange) } }
                     if !result.failures.isEmpty {
                         VStack(alignment: .leading, spacing: 9) { Eyebrow(text: "Worst failures first")

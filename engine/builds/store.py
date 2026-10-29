@@ -45,10 +45,14 @@ class BuildStore:
         self.platform = PlatformStore(service)
 
     def inputs_hash(self, project_id: str) -> str:
+        from engine.eval.protocol import stable_configuration_hash
+        from engine.eval.recipe import recipe_hash
         project, root = self.service.get_project(project_id), self.service.root(project_id)
         metadata_path = root / "dataset-metadata.json"
         metadata = json.loads(metadata_path.read_text()) if metadata_path.exists() else {}
         value = {"media": media_fingerprint(project.media),
+                 "evaluation_configuration": stable_configuration_hash(root, self.service.annotations(project_id)),
+                 "evaluation_recipe": recipe_hash(),
                  "candidates": [spec_hash(spec, root) for spec in project.candidates],
                  "classes": sorted(item["name"] for item in metadata.get("classes", [])),
                  "holdout": (root / "active-holdout.json").read_text() if (root / "active-holdout.json").exists() else None,
@@ -63,6 +67,7 @@ class BuildStore:
         record.operation.updated_at = time()
         record.view.project = {}  # Hydrated at response time, never replay an old project snapshot.
         record.view.plan, record.view.execution, record.view.tool_events = None, None, []
+        record.view.acceptance_evaluation = None
         root = self.service.root(record.view.project_id)
         atomic_model(root / "builds" / f"{record.view.id}.json", record)
         atomic_model(root / "build.json", record)
@@ -94,11 +99,18 @@ class BuildStore:
 
     def public(self, record: BuildRecord) -> BuildStatus:
         project_id = record.view.project_id
+        project = self.service.get_project(project_id)
+        selected = record.view.selected_candidate_index
+        acceptance = (self.service.current_acceptance(project_id, selected)
+                      if selected is not None and 0 <= selected < len(project.candidates) else None)
+        evaluations = record.view.evaluations if all(self.service.evaluation_is_current(project_id, score)
+                                                    for score in record.view.evaluations) else []
         plans = self.platform.plans(project_id, record.view.id)
         plan = plans[-1] if plans else None
         execution = self.platform.execution(project_id, plan.operation_id) if plan else None
-        return record.view.model_copy(update={"project": self.service.get_project(project_id).model_dump(mode="json", by_alias=True),
-            "plan": plan, "execution": execution, "tool_events": self.platform.events(project_id, record.view.id)}, deep=True)
+        return record.view.model_copy(update={"project": project.model_dump(mode="json", by_alias=True),
+            "plan": plan, "execution": execution, "tool_events": self.platform.events(project_id, record.view.id),
+            "evaluations": evaluations, "acceptance_evaluation": acceptance}, deep=True)
 
     def create(self, project_id: str, prompt: str) -> BuildRecord:
         with self.service.repository.lock:

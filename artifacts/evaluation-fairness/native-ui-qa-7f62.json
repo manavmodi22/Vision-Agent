@@ -1,0 +1,39 @@
+{
+  "project_id": "7418b98b38ae47ab",
+  "project_root": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/7418b98b38ae47ab",
+  "name": "QA \u00b7 evaluation controls \u00b7 synthetic",
+  "purpose": "Temporary generated software QA project; no human-authored data.",
+  "runtime_source_identity": "7f621816c32bcfd849c3c1a8986aa86dbb72157e54b818455e24ed7384a41228",
+  "annotations_sha256": "e08f9b1aa8aedf341ff2771af1943b4640adec0bbdfda3589227235965231de7",
+  "planner_calls": 0,
+  "learned_model_calls": 0,
+  "recorded_events": 0,
+  "expected_phase": "evidence",
+  "promotion_eligible": false,
+  "checked_at": "2026-10-29T03:01:00.135709+00:00",
+  "status": "passed",
+  "ui_checks": [
+    "Evidence sheet shows thumbnails and read-only source/exposure metadata",
+    "Known synthetic origin cannot be changed to real",
+    "Sixteen validation assignments saved in software-qa-scene",
+    "Re-evaluate resumes the same conversation and persists a plan and evaluation",
+    "Passing numeric fixture score remains sample evidence without quality promotion",
+    "Quality promotion disabled; local trial disabled until a written reason is entered",
+    "Trial dialog cancelled; no approval, deployment or recorded events"
+  ],
+  "configuration_revision": "1ccee90446edbb3c023f0a218e1326e63ff0440ce0a8b155c13fc9222474f3a1",
+  "protocol_id": "e556769707484955a18e58fb319a8523",
+  "annotation_bytes_unchanged": true,
+  "deployment_id": null,
+  "screenshots": [
+    "native-evidence-sheet.png",
+    "native-evidence-saved.png",
+    "native-reevaluated.png",
+    "native-trial-dialog.png"
+  ],
+  "scope": "Actual packaged native UI with generated fixture-color-v1 images and exact generator labels. No planner or learned model inference; not vision-quality evidence.",
+  "cleanup": {
+    "action": "Moved owned synthetic QA project out of app projects into ignored recoverable archive",
+    "archive": "/Users/manavrakeshku.modi/vision-agent/.visionapp/native-evaluation-ui-qa-7418b98b38ae47ab"
+  }
+}

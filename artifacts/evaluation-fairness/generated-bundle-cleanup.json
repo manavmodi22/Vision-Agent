@@ -1,0 +1,18 @@
+{
+  "removed_generated_backups": [
+    "VisionApp.app.previous-20261028T175021607319",
+    "VisionApp.app.previous-20261028T182328219651",
+    "VisionApp.app.previous-20261028T183052092300",
+    "VisionApp.app.previous-20261028T185700108397",
+    "VisionApp.app.previous-20261028T190548245714",
+    "VisionApp.app.previous-20261028T194313949824",
+    "VisionApp.app.previous-20261029T011802968238",
+    "VisionApp.app.previous-20261029T013952863406"
+  ],
+  "retained_current": "dist/VisionApp.app",
+  "retained_latest_backups": [
+    "VisionApp.app.previous-20261029T020102153217",
+    "VisionApp.app.previous-20261029T020710221459"
+  ],
+  "source_and_user_data_deleted": false
+}

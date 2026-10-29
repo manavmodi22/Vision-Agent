@@ -8,12 +8,16 @@ struct RunView: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 6) { Eyebrow(text: "04 / Run"); Text("Run the approved pipeline locally.").font(.title3.weight(.medium)) }
                     Spacer()
-                    Button("Run on new media…") { model.runOnNewMedia() }.buttonStyle(.borderedProminent).disabled(model.project?.deploymentId == nil || model.busy)
-                    Button { model.run() } label: { Label("Run project images", systemImage: "play.fill") }.buttonStyle(.borderedProminent).disabled(model.project?.deploymentId == nil || model.busy)
+                    Button("Run on new media…") { model.runOnNewMedia() }.buttonStyle(.borderedProminent).disabled(!EvidenceApprovalPresentation.hasRecordingApproval(model.project) || model.busy)
+                    Button { model.run() } label: { Label("Run project images", systemImage: "play.fill") }.buttonStyle(.borderedProminent).disabled(!EvidenceApprovalPresentation.hasRecordingApproval(model.project) || model.busy)
                 }
-                if model.project?.deploymentId == nil {
-                    HStack { Image(systemName: "lock.shield").foregroundStyle(.orange); Text("Evaluate a candidate and approve its deployment to enable runs.").font(.callout); Spacer(); Button("Go to Evaluate") { model.section = "Evaluate" } }.panel()
-                } else { StatusPill(text: "Deployment approved") }
+                if !EvidenceApprovalPresentation.hasRecordingApproval(model.project) {
+                    HStack { Image(systemName: "lock.shield").foregroundStyle(.orange); Text("Current evaluation and an explicit approval scope are required for recorded runs.").font(.callout); Spacer(); Button("Return to Agent") { model.section = "Agent" } }.panel()
+                } else { StatusPill(text: EvidenceApprovalPresentation.projectStatus(model.project)) }
+                if model.project?.approvalScope == "local_trial" {
+                    Text("Local trial; external alert delivery disabled. Temporal event quality remains unmeasured.").font(.callout).foregroundStyle(.orange)
+                    ForEach(EvidenceApprovalPresentation.trialLimits(model.project), id: \.self) { Text($0).font(.caption).foregroundStyle(Studio.muted) }
+                }
                 if let project = model.project { LiveCaptureView(live: model.liveCapture, project: project, candidateIndex: model.selectedCandidate) }
                 Text("Latest media run").font(.headline)
                 PreviewPanel().frame(minHeight: 350)

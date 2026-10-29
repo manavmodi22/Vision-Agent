@@ -91,7 +91,7 @@ def test_home_example_approved_fixture_run_saves_real_crop(tmp_path: Path) -> No
         service.run(project.id, max_frames=1)
     assert service.evaluate(project.id).passed
     # Explicit approval belongs only to this isolated temporary generated fixture.
-    service.deploy(project.id, 0, True)
+    service.deploy(project.id, 0, True, "Isolated synthetic software trial", approval_scope="local_trial")
     service.run(project.id, max_frames=1)
     evidence = service.events(project.id)
     crop = next(event for event in evidence if event.label == "damaged carton")

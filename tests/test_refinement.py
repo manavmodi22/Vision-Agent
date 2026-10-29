@@ -91,7 +91,7 @@ def test_class_addition_extends_ontology_preserves_boxes_and_requires_fresh_revi
     for annotation in labels_before.annotations:
         annotation.reviewed = False
     assert service.annotations(project_id) == labels_before
-    with pytest.raises(ValueError, match="Review every"):
+    with pytest.raises(ValueError, match="reviewed evaluation split"):
         service.evaluate(project_id)
     actual_classes = datasets.manifest(project_id).classes
     assert actual_classes[:len(old_classes)] == old_classes

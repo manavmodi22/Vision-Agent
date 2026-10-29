@@ -3,10 +3,13 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import uuid
 from pathlib import Path
 
 from PIL import Image, ImageOps
+
+from engine.models.artifacts import content_hash
 
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".tif", ".tiff", ".bmp"}
 VIDEO_EXTENSIONS = {".mp4", ".mov", ".avi", ".mkv", ".m4v"}
@@ -39,9 +42,10 @@ def import_paths(paths: list[str], destination: Path, limit: int = 50) -> list[s
                     ImageOps.exif_transpose(image).convert("RGB").save(target)
                 created.append(str(target))
                 imported_sources[target.name] = {"source_name": source.name, "source_path": str(source),
-                                                 "source_orientation": source_orientation}
+                    "source_orientation": source_orientation, "source_sha256": content_hash(source),
+                    "source_kind": "image", "data_origin": "unknown", "exposure_tracking_version": "1"}
             elif source.suffix.lower() in VIDEO_EXTENSIONS:
-                created.extend(sample_video(source, destination, limit - len(created)))
+                created.extend(sample_video(source, destination, limit - len(created), provenance=imported_sources))
             else:
                 raise ValueError(f"Unsupported media format: {source.suffix}")
         if imported_sources:
@@ -62,13 +66,15 @@ def import_paths(paths: list[str], destination: Path, limit: int = 50) -> list[s
     return created
 
 
-def sample_video(path: Path, destination: Path, limit: int) -> list[str]:
+def sample_video(path: Path, destination: Path, limit: int, *,
+                 provenance: dict[str, dict[str, str]] | None = None) -> list[str]:
     import cv2
 
     capture = cv2.VideoCapture(str(path))
     if not capture.isOpened():
         raise ValueError(f"Cannot decode video: {path.name}")
     paths: list[str] = []
+    source_hash = content_hash(path)
     try:
         count = int(capture.get(cv2.CAP_PROP_FRAME_COUNT))
         if count <= 0:
@@ -86,6 +92,14 @@ def sample_video(path: Path, destination: Path, limit: int) -> list[str]:
             if not cv2.imwrite(str(output), frame):
                 raise ValueError("Could not save sampled video frame")
             paths.append(str(output))
+            if provenance is not None:
+                record = {"source_name": path.name, "source_path": str(path), "source_sha256": source_hash,
+                          "source_kind": "recorded_video", "frame_index": str(index), "data_origin": "unknown",
+                          "exposure_tracking_version": "1"}
+                timestamp = float(capture.get(cv2.CAP_PROP_POS_MSEC)) / 1000
+                if math.isfinite(timestamp) and timestamp >= 0 and (index == 0 or timestamp > 0):
+                    record["timestamp_s"] = str(timestamp)
+                provenance[output.name] = record
     except (ValueError, cv2.error):
         for filename in paths:
             Path(filename).unlink(missing_ok=True)

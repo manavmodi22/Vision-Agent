@@ -171,3 +171,8 @@ class EvaluationResult(Contract):
     text_normalization: str | None = None
     text_error_counts: dict[str, int | None] = Field(default_factory=dict)
     warnings: list[str] = Field(default_factory=list)
+    protocol_id: str | None = None
+    protocol_hash: str | None = None
+    evidence_scope: Literal["legacy", "sample", "validation", "acceptance"] = "legacy"
+    promotion_eligible: bool = False
+    evidence_reasons: list[str] = Field(default_factory=list)

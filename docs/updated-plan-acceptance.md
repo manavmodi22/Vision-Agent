@@ -4,9 +4,24 @@ Source: `agent-platform-revision.md`, adopted by the user on 2026-10-28. This ma
 retains the full requested outcome; partial implementation is not completion.
 The original five describe/build/prove/run/improve flows remain acceptance flows.
 
+Current software source is
+`7f621816c32bcfd849c3c1a8986aa86dbb72157e54b818455e24ed7384a41228`.
+It passes **672 Python tests in 264.02 seconds**, strict mypy on **151 files** and
+Ruff. Debug and Release native binaries each pass **173 software/decoding checks**
+(159 deterministic, 10 historical payloads, four current API fixtures).
+The installed `7f62` package passed relocation, isolated imports, OCR/fixture
+inference and signature verification. A native generated-fixture walkthrough
+verified evidence editing, same-conversation re-evaluation and explicit trial
+controls. No release or full-architecture completion is claimed.
+
+The user still describes an outcome, receives a built preview, corrects examples
+or refines the application in conversation, and reviews measured evidence before
+explicit operation. Group/split configuration and acceptance appear only as
+contextual evidence checkpoints in that workflow.
+
 | Requirement | Authoritative completion evidence | Current work |
 | --- | --- | --- |
-| Accurate capability discovery and health | Current machine catalog; adapter/prerequisite/smoke receipts; native catalog matches API | 73-entry catalog/API and packaged native catalog inspected; per-candidate model options/routing verified; request-bound training-purpose eligibility verified; unknown local checkpoints require an explicit model experiment |
+| Accurate capability discovery and health | Current machine catalog; adapter/prerequisite/smoke receipts; native catalog matches API | Machine catalog/API and prior packaged native catalog inspected; per-candidate model options/routing verified; request-bound training-purpose eligibility verified; unknown local checkpoints require an explicit model experiment |
 | Compatible approved provisioning with source hashes | Reproducible installer, verified source/weight hashes, failure recovery and native result | Existing individual installers; unified provisioning pending |
 | Typed plan saved and shown before execution | Persisted immutable revision precedes first execution event; native plan visible | Saved-plan ordering and immutable revision contracts pass; actual Qwen/MCP exact-reading plan captured |
 | Separate bounded executor | Execution consumes stored revision; stale data/model/plan rejected; coded phase/tool authority tests | Phase, capability, snapshot and concurrent-action contracts pass |
@@ -14,15 +29,51 @@ The original five describe/build/prove/run/improve flows remain acceptance flows
 | Versioned Markdown playbooks | Packaged documents, typed metadata, exact hashes in actual plan/trace, selection and authority tests | Six packages ship in wheel; hashes captured in actual Qwen plan and verified before execution |
 | Common adapter contracts and new families | Actual detection/segmentation/reading outputs with timing/provenance; per-adapter hardware smoke | Typed evidence wrappers for existing detection and reading adapters pass contract tests and actual OWLv2/RT-DETR/native OCR runs; segmentation, VLM/training parity and new production families pending |
 | SAM 3, YOLO variant and OCR alternative comparison | Licensed pinned weights, supported hardware, actual same-task benchmark artifacts | Isolated YOLOX-s CPU and PaddleOCR CPU inference verified, neither registered; Paddle transitive runtime audited; SAM 3 unsupported on Mac pending hardware proof |
-| Comparable candidate evaluation | Same reviewed holdout/task, aggregate and failure-slice metrics, latency/resources, explicit selection gate | Existing detection/reading gates plus nullable CER/WER and EvaluationReport records; masks, field metrics and slices pending |
-| Reviewed scene-disjoint acceptance data | Provenance and split audit, independent reviewed labels, exact benchmark run | Public real/synthetic NVIDIA data retained; second synthetic scene Warehouse_016 acquired with fixed 30-frame protocol before inference. Automatic published labels remain unreviewed; independent real ground truth incomplete |
+| Comparable candidate evaluation | Same reviewed holdout/task, aggregate and failure-slice metrics, latency/resources, explicit selection gate | Shared immutable validation protocol binds all compared candidates, task/metric, reviewed membership, source/group/policy and recipe; changes invalidate results/approvals. Numeric pass is separate from promotion eligibility. Nullable CER/WER and EvaluationReport references retained; masks, named-field metrics, failure slices and standardized resource comparison pending |
+| Reviewed scene-disjoint acceptance data | Provenance and split audit, independent reviewed labels, exact benchmark run | Human configuration/reservation and selected-candidate acceptance are implemented, with exposure history, source/pixel separation, duplicate rejection and exact cached replay. Positive path is software-tested with mocked inference, not measured vision quality. Real independent reviewed ground truth remains incomplete; retained public NVIDIA labels are unreviewed, and the separate second-scene detector benchmark failed its recall gate |
 | Optional source acquisition | Isolated external tool authority; URL/time/license/access provenance; injection and content-boundary tests | Pending |
-| System acceptance | Native flows, sustained throughput/coexistence, offline behavior, camera/screen permissions, approved alerts | Prior bounded evidence retained; expanded acceptance pending |
+| System acceptance | Native flows, sustained throughput/coexistence, offline behavior, camera/screen permissions, approved alerts | Current software enforces protocol-bound approval, bounded local-only trials and disabled trial delivery; native contracts pass. Packaged evidence editing and re-evaluation UI verified with generated fixtures; broader hardware/operational acceptance remains pending |
 | Original local release requirements | Reproducible bundle, all required flows, signing/notarization and Apple silicon CI | Local ad-hoc bundle verified previously; release gates pending |
 
 Historical live-model failures and software reports remain in `artifacts/`.
 New contract tests do not replace model-quality or vision-quality benchmarks.
 Each update must name its tested source identity and exact evidence scope.
+
+## Evaluation evidence slice at `7f62`
+
+The prior correlated-frame software gate is closed: a passing sample/validation
+score cannot authorize promotion. A human can reserve fresh sources before model
+use, review their ground truth, declare intended scope/required groups, and run
+acceptance for one selected candidate. Preview, proposals and training exclude
+reserved data; exposure includes in-memory live pixels without retaining preview
+frames. Original-source, decoded-pixel and prior-use checks prevent renamed
+copies or scene groups from becoming independent evidence. A changed candidate
+requires fresh acceptance groups; viewing an exact captured result runs no model.
+
+Promotion requires current protocol-bound acceptance and numeric success.
+Unknown, correlated or fixture data can support an explicitly approved
+`local_trial` with a reason, limited to 500 frames per batch run and 3,600 seconds
+per live session. Trial evidence retains that scope and suppresses external
+delivery. Historical reports are readable, but historical approvals cannot
+silently authorize new recording. Scene/policy edits preserve annotation bytes
+and review flags while invalidating active plans and approval evidence.
+
+The image recipe does not measure event correctness, false alarms or temporal
+duration. Rule/match/event-sink apps therefore remain local-trial-only, and this
+quality gate does not authorize their automatic external alerts. Independent
+coverage is limited to declared project development/selection/training history;
+upstream pretraining overlap is unknown. No representative accuracy claim follows
+from the software protocol or its generated/mocked fixtures.
+
+Evidence: [full suite](../artifacts/evaluation-fairness/full-tests-final-7f62.log),
+[focused integration](../artifacts/evaluation-fairness/integration-validation-7f62.json),
+[before/after gate probe](../artifacts/evaluation-fairness/protocol-checkpoint-7f62.json),
+[native contracts](../artifacts/native-evaluation-validation.json),
+[packaged verification](../artifacts/evaluation-fairness/bundle-verification-7f62-final.json),
+[native UI walkthrough](../artifacts/evaluation-fairness/native-ui-qa-7f62.json), and
+[integration design and limits](../artifacts/evaluation-fairness/integration-design.md).
+
+## Historical checkpoints
 
 The frozen `d403b8dc578b7be2b33b9b1065bbf90a288d01eb60cdd71dbd06b902b611428b`
 checkpoint passed 581 Python tests and strict mypy on 135 files. Its native model
@@ -31,14 +82,14 @@ reading semantics and two-model detector routing. The latter selected weak local
 engineering checkpoints, so it is **not** evidence of useful model ranking.
 That failure is retained in `artifacts/stronger-planner/qwen14-selection-warehouse-execution.json`.
 The first relocation attempt hit intermittent extra OCR stdout; a diagnostic
-retry passed. Native stdout ownership and independent preview inspection are
-being hardened before the next package.
+retry passed. Later `e098` package verification and native preview inspection are
+recorded below; the original failure remains historical evidence.
 
-The source audit in `artifacts/evaluation-fairness/source-audit.md` identifies an
-outstanding product gate: current numeric passes on correlated reviewed images
-can still recommend deployment approval. A scene-group evaluation protocol must
-separate sample checks from promotion eligibility. No representative accuracy or
-full-architecture completion is claimed by these software checks.
+The source audit in `artifacts/evaluation-fairness/source-audit.md` identified the
+then-open gate allowing numeric passes on correlated images to recommend generic
+deployment approval. The `7f62` protocol/evidence slice above closes that software
+gate. The audit and pre-protocol reproduction remain retained; independent
+vision benchmarks and the wider architecture requirements are still incomplete.
 
 The `19f6e4115389679538f934d77a778d9b752952d49fb8d7256b72b91f61028367`
 checkpoint passed 640 Python checks, strict mypy on 146 files, Ruff, 148 native
@@ -48,14 +99,15 @@ RT-DETR on identical real images; their proposals remain unreviewed. Native
 20-frame warehouse acceptance then exposed a 100-second planner transport
 timeout before a plan was produced. That failed run is preserved under
 `artifacts/agent-experience/adapter-release/native-timeout`; the checkpoint is
-not a native-flow acceptance pass. A bounded transport fix is being validated.
+not a native-flow acceptance pass. The bounded transport fix was subsequently
+validated at the `e098` checkpoint below.
 
-The current packaged source is `e098c7f30c336ab8914ce584b6940795585847756be1d8d3608d260fbc02f77c`.
+The previously accepted packaged source was `e098c7f30c336ab8914ce584b6940795585847756be1d8d3608d260fbc02f77c`.
 The isolated planner transport fix passed 28 focused checks; the preceding
-`19f6` full suite passed 640. Current strict mypy covers 146 source files and Ruff
-passes. The bundle passed relocation, packaged OCR/fixture inference and deep
+`19f6` full suite passed 640. That checkpoint passed strict mypy on 146 source files
+and Ruff. Its bundle passed relocation, packaged OCR/fixture inference and deep
 signature verification, including after the native walkthrough. Native checks
-remain 138 deterministic plus 10 backend payload checks.
+then totaled 138 deterministic plus 10 backend payload checks.
 
 Actual native acceptance used the built-in 20-frame real NVIDIA warehouse sample.
 A written goal generated OWLv2 and pretrained RT-DETR candidates with the same
@@ -71,5 +123,5 @@ allows 150 seconds for the initial model response while retaining the 180-second
 planner and 900-second build budgets, without automatic retries. The native retry
 passed in 109.6 seconds for its model call using cached prompt state. This exposes
 a material latency limit; it is not a cold-start benchmark or evidence that the
-full architecture is complete. `artifacts/runtime-validation-final.json` points
-to the versioned report and preserves the failed run.
+full architecture is complete. The [versioned `e098` report](../artifacts/runtime-validation-e098.json)
+preserves that checkpoint and its failed run.

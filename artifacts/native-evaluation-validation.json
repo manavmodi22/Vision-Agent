@@ -1,0 +1,109 @@
+{
+  "checked_at": "2026-10-29T02:59:10.081145+00:00",
+  "scope": "Native evaluation-evidence presentation/state contracts, historical backend payload decoding, and four current actual API software-contract fixtures with mocked inference. No model calls, user-project mutation, packaging or native UI acceptance.",
+  "deterministic_checks": 159,
+  "results": {
+    "debug": {
+      "binary": "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Debug/VisionApp",
+      "sha256": "c7d990ed7c1e30b5e9d6e269805bb69fc0ba8480417f566f100ba6175499976d",
+      "result": {
+        "status": "passed",
+        "checks": 173
+      }
+    },
+    "release": {
+      "binary": "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Release/VisionApp",
+      "sha256": "ecb9d8b6b746d6aa674af2d53456124a2a5d7e545fc6d0962565dc66387f646f",
+      "result": {
+        "status": "passed",
+        "checks": 173
+      }
+    }
+  },
+  "payloads": [
+    {
+      "path": "artifacts/capability-catalog-local.json",
+      "flag": "--capability-catalog",
+      "sha256": "de0c8f166c2c0b19f8ea4ef8860e430961782dcded2ceeb4d4686689fd4d4cea"
+    },
+    {
+      "path": "artifacts/platform-fixture/build-status.json",
+      "flag": "--build-status",
+      "sha256": "4f936e653217fe7c11dcffc70aba3e9e52d0050bc0fd9d7a91ec02f355c73a8d"
+    },
+    {
+      "path": "artifacts/platform-fixture/17b29cb6a2fa1a0dfe0b2ba95ecb2603091a2a485b36dda67a0acbfff81c50ea.json",
+      "flag": "--build-artifact",
+      "sha256": "81fa96a8f1d71432d2113292078d79c54a15387bebad06a153be80d4d451e910"
+    },
+    {
+      "path": "artifacts/platform-fixture/4c21b8ff8448b356bdfdb39e5f3c3ea71904da2a560cfb7c22fe298087361a04.json",
+      "flag": "--build-artifact",
+      "sha256": "388cf8540a3ce2b5597078f02d1fa9792ecdb5c21e9368380852268f027317f0"
+    },
+    {
+      "path": "artifacts/platform-fixture/4d2b86fd7e73cd2ef6c7589bbd4b4fbd59ee68233736c9be666a226062a83cd6.json",
+      "flag": "--build-artifact",
+      "sha256": "9515c54a3244bd58635c8b0accd9abb1750b85ed76ff836e8bcb1b4508e7bfce"
+    },
+    {
+      "path": "artifacts/platform-fixture/773ddc2398eb475fc0849d8ba79ddaf262360a118ed213c1fb7890d8df536305.json",
+      "flag": "--build-artifact",
+      "sha256": "96bef535b87c0a1f488ef1bf7ad710069492992dbd670b9da1eb0e02933ce843"
+    },
+    {
+      "path": "artifacts/platform-fixture/86b39764ab1c3b002f21a0592c99812a9300f409d2b140cde1f0649a13479176.json",
+      "flag": "--build-artifact",
+      "sha256": "b19ec406df1ec72e13d3561cbd19fbb9946d90a8db7f69c6d1e4432d80424a5b"
+    },
+    {
+      "path": "artifacts/platform-fixture/c4c5426b9af3a433e33ff7b038fd49c4dcae55a16369fc4712ad3d61a96fb5c5.json",
+      "flag": "--build-artifact",
+      "sha256": "702b439aca6548cc30fb374f472a2d189911748e7fc8f6ff2858ab1b9fef6cea"
+    },
+    {
+      "path": "artifacts/platform-fixture/fcc7c1493e3d62e23131daa63813469930e7fb09a4e4e117be4a080d26406cec.json",
+      "flag": "--build-artifact",
+      "sha256": "1dac00e18228a9e8f2cc6da2a6dd5ec12e37749538648492c1416363894efbc9"
+    },
+    {
+      "path": "artifacts/stronger-planner/qwen14-selection-warehouse.json",
+      "flag": "--planning-probe",
+      "sha256": "60ee3b0e3f225198750e4de57914b28576f5b47c38cc7fb01920ebc2cc41d601"
+    },
+    {
+      "path": "artifacts/evaluation-fairness/native-fixtures/configuration.json",
+      "flag": "--evaluation-configuration",
+      "sha256": "7b9426f06aaee757371fdbc7b97b45955b98a5ba42171e684c335104a20b604f",
+      "provenance": "Actual API software-contract fixture; inference explicitly mocked, not detector quality."
+    },
+    {
+      "path": "artifacts/evaluation-fairness/native-fixtures/readiness.json",
+      "flag": "--evaluation-readiness",
+      "sha256": "42e666522e8679cfac85077916b74ce6d78bc827e38e289cba9c6976e011043a",
+      "provenance": "Actual API software-contract fixture; inference explicitly mocked, not detector quality."
+    },
+    {
+      "path": "artifacts/evaluation-fairness/native-fixtures/result.json",
+      "flag": "--evaluation-result",
+      "sha256": "80dd11ee9d501418e495da38dfd2a9a5dded6a3147c7900fd291ff686e6b5089",
+      "provenance": "Actual API software-contract fixture; inference explicitly mocked, not detector quality."
+    },
+    {
+      "path": "artifacts/evaluation-fairness/native-fixtures/build-status.json",
+      "flag": "--build-status",
+      "sha256": "26d4b1929ae58fc10d06cb0a5abe40cb2b371d409d2655f06734d78d339957fe",
+      "provenance": "Actual API software-contract fixture; inference explicitly mocked, not detector quality."
+    }
+  ],
+  "design": "docs/native-evaluation-evidence.md",
+  "limitations": [
+    "Current API payloads exercise software contracts with inference mocked; they do not establish detector quality.",
+    "Visual UI acceptance and release packaging belong to parent integration."
+  ],
+  "acceptance_attempt_failure": "Refreshes configuration and server readiness after failure; unavailable readiness disables another attempt.",
+  "current_api_fixture_checks": 4,
+  "historical_payload_checks": 10,
+  "api_fixture_runtime_source_identity": "7f621816c32bcfd849c3c1a8986aa86dbb72157e54b818455e24ed7384a41228",
+  "ui_revision": "Configure-evaluation checkpoint has an explicit Re-evaluate action using build resume, disabled while busy or disconnected."
+}

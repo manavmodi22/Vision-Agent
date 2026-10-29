@@ -11,7 +11,7 @@ from pydantic import JsonValue
 from engine.alerts.service import AlertService
 from engine.live.contracts import MAX_RECORDINGS, MAX_TOTAL_BYTES, LiveError, LiveStatus
 from engine.service import WorkspaceService
-from engine.store.models import EventRecord, Project, ReviewRecord
+from engine.store.models import Deployment, EventRecord, Project, ReviewRecord
 from engine.store.repository import atomic_model
 from spec.models import FrameResult
 
@@ -51,9 +51,14 @@ def persist(service: WorkspaceService, project: Project, status: LiveStatus, dep
     content = encoded.getvalue()
     crop_bytes: dict[Path, bytes] = {}
     events: list[EventRecord] = []
+    deployment = Deployment.model_validate_json((service.root(project.id) / "deployment.json").read_text())
+    if deployment.id != deployment_id:
+        raise LiveError("Approval changed before evidence persistence", 409)
     common: dict[str, JsonValue] = {"session_id": status.session_id, "source_kind": status.source_kind,
               "source_label": status.source_label, "timestamp_s": frame.timestamp_s,
-              "sequence": sequence, "synthetic": project.synthetic, "deployment_id": deployment_id}
+              "sequence": sequence, "synthetic": project.synthetic, "deployment_id": deployment_id,
+              "approval_scope": deployment.approval_scope, "evaluation_protocol_id": deployment.protocol_id,
+              "evaluation_protocol_hash": deployment.protocol_hash, "temporal_event_quality_measured": False}
     for index, detection in enumerate(frame.detections):
         x0, y0, x1, y1 = detection.box
         bounds = (int(x0 * image.width), int(y0 * image.height),
@@ -110,10 +115,15 @@ def persist(service: WorkspaceService, project: Project, status: LiveStatus, dep
         for crop_path in crop_bytes:
             crop_path.unlink(missing_ok=True)
         raise
-    try:
-        AlertService(service).enqueue_events(project.id, deployment_id, rules)
-    except Exception as error:
-        warning = f"Frame evidence was saved, but alert enqueue failed: {error}"[:500]
-        if warning not in status.warnings and len(status.warnings) < 32:
+    if deployment.approval_scope == "local_trial":
+        warning = "Local trial: evidence is saved locally; external alert delivery is disabled."
+        if warning not in status.warnings:
             status.warnings.append(warning)
+    else:
+        try:
+            AlertService(service).enqueue_events(project.id, deployment_id, rules)
+        except Exception as error:
+            warning = f"Frame evidence was saved, but alert enqueue failed: {error}"[:500]
+            if warning not in status.warnings and len(status.warnings) < 32:
+                status.warnings.append(warning)
     return logical_bytes

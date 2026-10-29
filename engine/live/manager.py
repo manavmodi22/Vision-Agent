@@ -122,6 +122,8 @@ class LiveManager:
             warnings = list(compiled.warnings)
             warnings.append("Preview only: no frames, events or alerts are saved." if request.preview_only else
                 "Recording stops after 240 frames, 256 MiB per session, or 2 GiB total; earlier evidence is retained.")
+            if approved.approval_scope == "local_trial":
+                warnings.append("Local trial: evidence is saved locally; external alert delivery is disabled.")
             status = LiveStatus(session_id=identifier, project_id=project_id, shared_memory_path=str(path),
                 preview_only=request.preview_only, source_kind=request.source_kind, source_label=request.source_label,
                 sample_fps=fps, warnings=warnings)
@@ -216,6 +218,9 @@ class LiveManager:
             with session.lock:
                 if status.state != "running":
                     raise LiveError("Live capture stopped before inference; frame discarded", 410)
+            from engine.eval.protocol import mark_pixel_usage
+            mark_pixel_usage(self.service.root(project_id), image,
+                             "live_preview" if status.preview_only else "live_recording")
             result = execute_image(session.compiled, image, f"live://{identifier}/{request.sequence}",
                                    request.timestamp_s, session.temporal)
             with self.service.repository.lock:

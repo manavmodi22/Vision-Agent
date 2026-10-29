@@ -40,6 +40,8 @@ class Project(Record):
     fixture: bool = False
     data_origin: str = "User imported media"
     deployment_id: str | None = None
+    approval_scope: Literal["promotion", "local_trial"] | None = None
+    trial_limits: dict[str, int] = Field(default_factory=dict)
 
 
 class EventRecord(Record):
@@ -68,6 +70,10 @@ class Deployment(Record):
     approved_at: str = Field(default_factory=now)
     override_reason: str | None = None
     synthetic: bool
+    protocol_id: str | None = None
+    protocol_hash: str | None = None
+    approval_scope: Literal["legacy", "promotion", "local_trial"] = "legacy"
+    trial_limits: dict[str, int] = Field(default_factory=dict)
 
 
 class Settings(Record):

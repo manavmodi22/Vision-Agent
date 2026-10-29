@@ -28,8 +28,9 @@ def test_agent_selects_measured_winner_in_metric_direction(tmp_path: Path, metri
     for block in bad.blocks:
         if block.type in {"detect", "detect_open_vocab"}:
             block.params["min_conf"] = 1.0
-    labels = service.annotations(project_id)
-    results = [evaluate(candidate, labels, service.root(project_id)) for candidate in (bad, good)]
+    service.save_candidates(project_id, [bad, good], "Compare fixture thresholds")
+    protocol = service.freeze_evaluation(project_id)
+    results = [service.evaluate(project_id, index, protocol.id) for index in range(2)]
     assert not results[0].passed and results[1].passed
     assert select_candidate(results) == 1
     assert select_candidate(list(reversed(results))) == 0
@@ -134,8 +135,8 @@ async def test_agent_build_evaluates_every_candidate_and_waits_for_human_deploym
         await manager.start(project_id, "Count pallets and show bounding boxes")
         status = await finish_build(manager, project_id)
         assert isinstance(status, BuildStatus)
-        assert status.status == "awaiting_approval", status.message
-        assert status.next_action == "approve_deployment" and status.selected_candidate_index == 1
+        assert status.status == "awaiting_review", status.message
+        assert status.next_action == "configure_evaluation" and status.selected_candidate_index == 1
         assert len(status.evaluations) == 2 and not status.evaluations[0].passed and status.evaluations[1].passed
         assert status.preview and status.preview.frames and status.preview.frames[0].detections
         assert all(Path(frame.image_path).is_file() for frame in status.preview.frames)
@@ -145,10 +146,11 @@ async def test_agent_build_evaluates_every_candidate_and_waits_for_human_deploym
         assert service.annotations(project_id) == original_labels
         assert service.get_project(project_id).deployment_id is None and not service.events(project_id)
         waiting = await manager.continue_build(project_id, BuildContinueRequest())
-        assert waiting.status == "awaiting_approval" and not service.events(project_id)
+        assert waiting.status in {"running", "awaiting_review"} and not service.events(project_id)
+        await finish_build(manager, project_id)
         # Explicit approval in this isolated geometric test is the only action
         # that may authorize persisted operation; the agent never supplies it.
-        service.deploy(project_id, 1, True)
+        service.deploy(project_id, 1, True, "Isolated synthetic software trial", approval_scope="local_trial")
         await manager.continue_build(project_id, BuildContinueRequest())
         completed = await finish_build(manager, project_id)
         assert isinstance(completed, BuildStatus) and completed.status == "completed", completed
@@ -187,7 +189,7 @@ async def test_review_flags_and_manual_boxes_survive_agent_build_and_review_resu
         service.save_annotations(project_id, reviewed)
         await manager.continue_build(project_id, BuildContinueRequest())
         resumed = await finish_build(manager, project_id)
-        assert isinstance(resumed, BuildStatus) and resumed.status == "awaiting_approval", resumed
+        assert isinstance(resumed, BuildStatus) and resumed.status == "awaiting_review", resumed
         assert len(resumed.evaluations) == 2 and service.annotations(project_id) == reviewed
     finally:
         await manager.close()
@@ -236,7 +238,7 @@ async def test_confidence_followup_edits_selected_winner_through_mcp_without_reb
         next(block for block in expected.blocks if block.type == "detect").params["min_conf"] = .5
         await manager.start(project_id, "raise confidence to0.5")
         changed = await finish_build(manager, project_id)
-        assert isinstance(changed, BuildStatus) and changed.status == "awaiting_approval", changed
+        assert isinstance(changed, BuildStatus) and changed.status == "awaiting_review", changed
         assert len(requests) == 1, "A bounded explicit edit should not regenerate the existing graph"
         assert service.candidate(project_id, 0) == originals[0] and service.candidate(project_id, 1) == expected
         assert service.annotations(project_id) == labels

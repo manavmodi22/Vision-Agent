@@ -96,7 +96,7 @@ def test_saved_reading_score_and_approval_are_stale_after_identity_change(
     score = service.evaluate(project.id)
     assert score.passed and score.sample_count >= 10
     # Explicit approval belongs only to this temporary synthetic test project.
-    service.deploy(project.id, 0, True)
+    service.deploy(project.id, 0, True, "Isolated software-only local trial", approval_scope="local_trial")
     change_identity(change, bridge, monkeypatch)
     assert score.spec_hash != spec_hash(pipeline(), service.root(project.id))
     with pytest.raises(ValueError, match="Evaluate this"):

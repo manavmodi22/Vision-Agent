@@ -106,7 +106,8 @@ class BuildManager:
                 record.training_approved_hash = record.operation.input_fingerprint + record.data_hash
                 record.view.phase = "training"
             elif record.view.status == "awaiting_approval" or (
-                record.view.status == "awaiting_improvement" and (self.service.root(project_id) / "deployment.json").exists()
+                (record.view.status == "awaiting_improvement" or record.view.phase == "evidence")
+                and (self.service.root(project_id) / "deployment.json").exists()
             ):
                 self.store.assert_current(record)
                 deployment_path = self.service.root(project_id) / "deployment.json"
@@ -122,6 +123,10 @@ class BuildManager:
                 record.operation.state = reconciled.state
                 record.operation.state.budget = old_budget
                 record.view.phase = "operating"
+            elif record.view.next_action == "configure_evaluation":
+                self.store.refresh_inputs(record)
+                record.operation.state.phase = Phase.EVALUATE
+                record.view.phase = "reviewing"
             elif record.view.status in {"awaiting_review", "awaiting_improvement"}:
                 self.store.assert_current(record, allow_labels=True)
                 record.data_hash = self.store.labels_hash(project_id)
@@ -145,6 +150,7 @@ class BuildManager:
                     record.operation.state.evaluation = None
                     record.operation.state.deployment_approved = False
                     record.operation.state.override_reason = None
+                    record.operation.state.approval_scope = None
                 record.operation.owner_pid, record.operation.deadline = os.getpid(), time() + 900
                 record.operation.state.budget.started_at = time()
                 record.operation.status = "running"
@@ -258,7 +264,7 @@ class BuildManager:
         with self.service.repository.lock:
             record = self.store.get(project_id, build_id)
             if len(set(context.comparison_scopes)) > 1:
-                message = "These candidates cover different object classes, zones or event rules, so their scores cannot be compared. Refine them to one common goal before continuing; the current graphs are preserved."
+                message = "These candidates cover different tasks, object classes, zones or event rules, so their scores cannot be compared. Refine them to one common goal before continuing; the current graphs are preserved."
                 record.view.questions = [message]
                 record.view.phase = "clarifying_scope"
                 project = self.service.get_project(project_id)
@@ -294,13 +300,19 @@ class BuildManager:
             record.operation.state = AgentState(phase=Phase.EVALUATE, budget=budget, brief_confirmed=True,
                                                 candidate_count=len(results), compiled_count=len(results))
             record.operation.state.record_evaluation(EvaluationEvidence(spec_hash=best.spec_hash, dataset_hash=best.dataset_hash,
-                passed=best.passed, sample_count=best.sample_count, reviewed=True))
+                passed=best.passed, sample_count=best.sample_count, reviewed=True, protocol_id=best.protocol_id,
+                protocol_hash=best.protocol_hash, promotion_eligible=best.promotion_eligible))
             self.store.refresh_inputs(record)
             value = getattr(best, best.metric)
             self.store.log(record, "evaluating", f"Evaluated all {len(results)} candidate(s). Candidate {selected + 1} achieved {best.metric} {value:.3f} against target {best.target:.3f} on {best.sample_count} reviewed images.")
-            if best.passed:
+            if best.passed and best.promotion_eligible:
                 record.view.phase = "approval"
                 self.store.pause(record, "awaiting_approval", "approve_deployment", "The selected candidate passed its declared target. Review its results and approve deployment to run and record evidence.")
+            elif best.passed:
+                record.view.phase = "evidence"
+                reasons = " ".join(best.evidence_reasons)
+                self.store.pause(record, "awaiting_review", "configure_evaluation",
+                    "The numeric target passed on this validation sample. Configure independent acceptance for the selected candidate, or explicitly approve a bounded local-only trial. " + reasons)
             else:
                 project = self.service.get_project(project_id)
                 ready = (not project.fixture and sum(row.reviewed for row in self.service.annotations(project_id).annotations) >= 20
@@ -310,6 +322,32 @@ class BuildManager:
                 message = "The target was missed. " + ("You can approve a two-minute local training attempt, followed by another comparison on reviewed held-out images."
                     if ready else "Correct or add representative reviewed examples, then continue. Training needs a real detector, 20 reviewed images, and an available candidate slot.")
                 self.store.pause(record, "awaiting_improvement", "approve_training" if ready else "review_labels", message)
+
+    def acceptance_scored(self, project_id: str, candidate_index: int, score: EvaluationResult) -> None:
+        """Publish an actual human-started acceptance result without approving or running it."""
+        with self.service.repository.lock:
+            try:
+                record = self.store.get(project_id)
+            except FileNotFoundError:
+                return
+            if record.view.selected_candidate_index != candidate_index:
+                return
+            self.service.validate_evaluation(project_id, score)
+            record.operation.state.phase = Phase.EVALUATE
+            record.operation.state.record_evaluation(EvaluationEvidence(spec_hash=score.spec_hash,
+                dataset_hash=score.dataset_hash, passed=score.passed, sample_count=score.sample_count, reviewed=True,
+                protocol_id=score.protocol_id, protocol_hash=score.protocol_hash, promotion_eligible=score.promotion_eligible))
+            self.store.refresh_inputs(record)
+            self.store.log(record, "acceptance", f"Measured the selected candidate on {score.sample_count} reserved acceptance images: {score.metric} {getattr(score, score.metric):.3f}; target {score.target:.3f}.")
+            if score.passed and score.promotion_eligible:
+                record.view.phase = "approval"
+                self.store.pause(record, "awaiting_approval", "approve_deployment",
+                    "The selected candidate met the declared independent acceptance policy. Review its scope and explicitly approve before recording. Temporal event quality was not measured.")
+            else:
+                record.view.phase = "evidence"
+                self.store.pause(record, "awaiting_review", "configure_evaluation",
+                    "Acceptance did not qualify this candidate for promotion. " + " ".join(score.evidence_reasons)
+                    + " A bounded local-only trial requires a separate explicit approval and reason.")
 
     async def _run(self, project_id: str, build_id: str) -> None:
         try:

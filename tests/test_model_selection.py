@@ -220,7 +220,9 @@ def test_reading_plan_has_only_relevant_experiments_and_conditional_checkpoints(
     assert [experiment.phase for experiment in experiments] == ["compile", "evaluate"]
     assert all("train" not in tool for experiment in experiments for tool in experiment.allowed_tools)
     assert {checkpoint.id for checkpoint in checkpoints} == {"labels", "deployment"}
-    assert "Only if" in next(checkpoint.description for checkpoint in checkpoints if checkpoint.id == "deployment")
+    approval = next(checkpoint for checkpoint in checkpoints if checkpoint.id == "deployment")
+    assert approval.requires_approval
+    assert "independent acceptance" in approval.description and "local-only trial" in approval.description
     with pytest.raises(ValueError, match="reading-only"):
         experiment_policy([reading], Phase.SPECIALIZE)
 

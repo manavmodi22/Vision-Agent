@@ -1,0 +1,8 @@
+{
+  "runtime_source_identity": "7f621816c32bcfd849c3c1a8986aa86dbb72157e54b818455e24ed7384a41228",
+  "installed_bundle": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app",
+  "prior_bundle": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app.previous-20261029T030114Z",
+  "native_packaged_sha256": "d8500690916e271686b6424b8192bf3047c70403b75abf0055af1418a75103ab",
+  "post_install_signature": "passed",
+  "ui_verified_before_move": true
+}

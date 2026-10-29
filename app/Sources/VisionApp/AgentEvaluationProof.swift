@@ -8,6 +8,7 @@ struct AgentEvaluationProof: View {
     let train: () -> Void
     var correctImage: ((String) -> Void)?
     var reviewAnnotations: (() -> Void)?
+    var editEvidence: (() -> Void)?
     @NativeState<Int?> private var inspectedIndex: Int?
     private var index: Int { let desired = inspectedIndex ?? build.selectedCandidateIndex ?? 0; return build.evaluations.indices.contains(desired) ? desired : 0 }
     private var result: Evaluation? { build.evaluations.indices.contains(index) ? build.evaluations[index] : nil }
@@ -20,6 +21,7 @@ struct AgentEvaluationProof: View {
                     .accessibilityLabel("Inspect evaluation for candidate \(candidateIndex + 1)")
             }
             if let result {
+                EvaluationQualityView(result: result, edit: editEvidence).disabled(busy)
                 if result.metric == "text_accuracy" { ReadingEvaluationDetails(evaluation: result) }
                 ForEach(result.warnings ?? [], id: \.self) { warning in Label(warning, systemImage: "exclamationmark.triangle").font(.caption).foregroundStyle(.orange).textSelection(.enabled) }
                 Divider()
@@ -34,15 +36,28 @@ struct AgentEvaluationProof: View {
                     if result.failures.count > 8 { Text("Showing the 8 worst reported failures.").font(.caption2).foregroundStyle(Studio.muted) }
                 }
             }
+            if let acceptance = build.acceptanceEvaluation {
+                Divider()
+                Text("Acceptance · selected candidate").font(.headline)
+                Text("\(EvaluationPresentation.metricName(acceptance.metric)): \(EvaluationPresentation.format(EvaluationPresentation.measuredValue(acceptance), metric: acceptance.metric)) · Target \(EvaluationPresentation.target(acceptance)) · \(acceptance.passed ? "met" : "missed") · \(acceptance.sampleCount) reviewed images").font(.caption.monospaced())
+                EvaluationQualityView(result: acceptance, edit: editEvidence).disabled(busy)
+                ForEach(acceptance.warnings ?? [], id: \.self) { Text($0).font(.caption).foregroundStyle(.orange) }
+                if !acceptance.failures.isEmpty {
+                    Text("Acceptance failures").font(.callout.weight(.semibold))
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 220), spacing: 12)], alignment: .leading, spacing: 12) {
+                        ForEach(Array(acceptance.failures.prefix(4).enumerated()), id: \.offset) { failureIndex, value in failureCard(EvaluatedFailure(value, index: failureIndex), metric: acceptance.metric) }
+                    }
+                }
+            }
             if build.status == "awaiting_improvement", let selected = build.selectedCandidateIndex, build.evaluations.indices.contains(selected) {
                 Divider()
-                Text("The selected candidate missed its target.").font(.callout.weight(.semibold)).foregroundStyle(.orange)
+                Text(build.evaluations[selected].passed ? "The selected candidate needs stronger evidence." : "The selected candidate missed its target.").font(.callout.weight(.semibold)).foregroundStyle(.orange)
                 Text("Improve examples and re-evaluate, allow a bounded training attempt when eligible, or explicitly review an override. None of these results grants approval automatically.").font(.caption).foregroundStyle(Studio.muted)
                 HStack {
                     Button("Review annotations") { if let reviewAnnotations { reviewAnnotations() } else { model.section = "Dataset" } }
                     if build.nextAction == "approve_training" { Button("Review training request", action: train) }
                     Spacer()
-                    Button("Review target-miss override", action: approve)
+                    Button("Review bounded local trial", action: approve)
                 }.disabled(busy)
             }
         }.panel().onChange(of: build.id) { _, _ in inspectedIndex = nil }
@@ -55,6 +70,7 @@ struct AgentEvaluationProof: View {
                 if candidateIndex == build.selectedCandidateIndex { Text("Agent selection").font(.caption2).foregroundStyle(Studio.accent) }
                 Text(evaluation.passed ? "Target met" : "Target missed").font(.caption).foregroundStyle(evaluation.passed ? Studio.accent : .orange)
             }
+            Text(EvaluationEvidencePresentation.scope(evaluation)).font(.caption2).foregroundStyle(Studio.muted)
             HStack(alignment: .top, spacing: 20) {
                 fact("Metric", EvaluationPresentation.metricName(evaluation.metric))
                 fact("Measured", EvaluationPresentation.format(EvaluationPresentation.measuredValue(evaluation), metric: evaluation.metric))

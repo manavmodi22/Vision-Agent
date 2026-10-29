@@ -86,6 +86,11 @@ struct Evaluation: Codable, Identifiable {
     var wordErrorRate: Double?
     var textNormalization: String?
     var textErrorCounts: [String: Int?]?
+    var protocolID: String?
+    var protocolHash: String?
+    var evidenceScope: String?
+    var promotionEligible: Bool?
+    var evidenceReasons: [String]?
     var id: String { specHash }
     enum CodingKeys: String, CodingKey {
         case precision, recall, countMae = "count_mae", passed, metric, target
@@ -93,6 +98,8 @@ struct Evaluation: Codable, Identifiable {
         case textAccuracy = "text_accuracy", warnings
         case characterErrorRate = "character_error_rate", wordErrorRate = "word_error_rate"
         case textNormalization = "text_normalization", textErrorCounts = "text_error_counts"
+        case protocolID = "protocol_id", protocolHash = "protocol_hash", evidenceScope = "evidence_scope"
+        case promotionEligible = "promotion_eligible", evidenceReasons = "evidence_reasons"
     }
 }
 struct ChatMessage: Codable, Identifiable {
@@ -116,9 +123,12 @@ struct Project: Codable, Identifiable {
     var fixture: Bool?
     var dataOrigin: String?
     var deploymentId: String?
+    var approvalScope: String?
+    var trialLimits: [String: Int]?
     enum CodingKeys: String, CodingKey {
         case id, name, useCase = "use_case", status, createdAt = "created_at", updatedAt = "updated_at"
         case media, brief, candidates, evaluations, messages, synthetic, fixture, dataOrigin = "data_origin", deploymentId = "deployment_id"
+        case approvalScope = "approval_scope", trialLimits = "trial_limits"
     }
 }
 struct Annotation: Codable, Identifiable, Equatable {

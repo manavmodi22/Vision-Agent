@@ -14,6 +14,7 @@ from agent.state_contracts import CapturedCall, ToolDispatchResult
 from engine.builds.store import BuildStore
 from engine.jobs import Job
 from spec.build import BuildContext
+from spec.evaluation import EvaluationProtocol
 from spec.models import EvalDataset, RunResult
 from spec.refinement import RefinementBatch, RefinementContext, RefinementPatch, RefinementResult
 from spec.skills import SkillReference
@@ -104,6 +105,11 @@ def register_build_tools(server: FastMCP[None], store: BuildStore) -> None:
         return record.operation.state
 
     @server.tool()
+    def build_freeze_evaluation(project_id: str) -> EvaluationProtocol:
+        """Freeze one validation protocol for all current alternatives; cannot consume acceptance."""
+        return service.freeze_evaluation(project_id)
+
+    @server.tool()
     def build_context(project_id: str) -> BuildContext:
         """Read sample/review readiness and candidate capabilities."""
         from engine.compiler import compile_pipeline
@@ -117,6 +123,8 @@ def register_build_tools(server: FastMCP[None], store: BuildStore) -> None:
         for candidate in project.candidates:
             scope = detection_scope(compile_pipeline(candidate, service.root(project_id)))
             payload = {"classes": sorted(scope.classes),
+                       "tasks": sorted({"detection" if block.type in {"detect", "detect_open_vocab"} else block.type for block in candidate.blocks
+                                        if block.type in {"detect", "detect_open_vocab", "ocr", "barcode", "vlm_judge"}}),
                        "zones": [[zone.model_dump(mode="json") for zone in stage] for stage in scope.zone_stages],
                        "behaviors": sorted(json.dumps({"type": block.type, "params": block.params}, sort_keys=True)
                                             for block in candidate.blocks if block.type in {"rule", "match"})}
@@ -134,7 +142,7 @@ def register_build_tools(server: FastMCP[None], store: BuildStore) -> None:
 
         created = False
         with service.repository.lock:
-            dataset = service.annotations(project_id)
+            dataset = service.evaluation_annotations(project_id)
             holdout_path = service.root(project_id) / "active-holdout.json"
             if len(dataset.annotations) > 50 and not holdout_path.exists():
                 atomic_model(holdout_path, EvalDataset(id=dataset.id + "-agent-evaluation", annotations=dataset.annotations[:10]))
@@ -147,7 +155,8 @@ def register_build_tools(server: FastMCP[None], store: BuildStore) -> None:
     @server.tool()
     def build_propose_labels(project_id: str, candidate_index: int = 0, max_frames: int = 50) -> EvalDataset:
         """Save only detector suggestions, preserving manual boxes and all human review flags."""
-        return service.propose_labels(project_id, candidate_index, max_frames)
+        from mcp_server.evaluation import visible_dataset
+        return visible_dataset(service, project_id, service.propose_labels(project_id, candidate_index, max_frames))
 
     @server.tool()
     async def build_train(project_id: str, build_id: str, candidate_index: int) -> Job:

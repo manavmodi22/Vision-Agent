@@ -19,12 +19,16 @@ from spec.refinement import RefinementBatch, RefinementPatch, RefinementResult
 
 
 def inputs_fingerprint(service: WorkspaceService, project_id: str) -> str:
+    from engine.eval.protocol import stable_configuration_hash
+    from engine.eval.recipe import recipe_hash
     root, project = service.root(project_id), service.get_project(project_id)
     documents = {name: (root / name).read_text() if (root / name).exists() else None
                  for name in ("project.json", "dataset-metadata.json", "active-holdout.json",
                               "deployment.json", "eval-media.json")}
     documents.update({str(path.relative_to(root)): path.read_text()
                       for path in sorted((root / "zones").glob("*.json"))})
+    documents["evaluation_configuration"] = stable_configuration_hash(root, service.annotations(project_id))
+    documents["evaluation_recipe"] = recipe_hash()
     value = {"documents": documents, "candidates": [spec_hash(spec, root) for spec in project.candidates],
              "annotations": dataset_hash(service.annotations(project_id), root),
              "media": media_fingerprint(project.media)}

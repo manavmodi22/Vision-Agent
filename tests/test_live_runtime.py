@@ -53,7 +53,7 @@ def write_frame(service: WorkspaceService, project_id: str, status: LiveStatus, 
 
 def approve(service: WorkspaceService, project_id: str) -> None:
     service.evaluate(project_id)
-    service.deploy(project_id, 0, True)
+    service.deploy(project_id, 0, True, "Isolated synthetic software trial", approval_scope="local_trial")
 
 
 def test_preview_stride_pixels_private_ingress_and_no_persistence(workspace: tuple[WorkspaceService, str], manager: LiveManager) -> None:
@@ -67,6 +67,10 @@ def test_preview_stride_pixels_private_ingress_and_no_persistence(workspace: tup
     assert response.result.image_path.startswith("live://")
     assert response.processed_frames == 1 and response.retained_frames == 0
     assert not service.events(project_id) and not (service.root(project_id) / "live").exists()
+    # Preview retains only a pixel-exposure token, not frames or observations.
+    from engine.eval.protocol import read_configuration
+    config = read_configuration(service.root(project_id), service.annotations(project_id))
+    assert any("Model use: live_preview" in row.exposure_reasons for row in config.images)
     assert manager.stop(project_id, status.session_id).state == "stopped" and not path.exists()
     with pytest.raises(LiveError) as error:
         manager.frame(project_id, status.session_id, request)
@@ -89,10 +93,13 @@ def test_recording_requires_current_explicit_approval(workspace: tuple[Workspace
     assert not service.events(project_id)
 
 
-def test_recording_persists_and_stops_at_visible_cap_without_deleting(workspace: tuple[WorkspaceService, str], manager: LiveManager) -> None:
+def test_recording_persists_and_stops_at_visible_cap_without_deleting(workspace: tuple[WorkspaceService, str], manager: LiveManager, monkeypatch: pytest.MonkeyPatch) -> None:
     service, project_id = workspace
     approve(service, project_id)
     status = start(manager, project_id, False)
+    def no_delivery(*args: object, **kwargs: object) -> None:
+        raise AssertionError("Local-trial live output must not enqueue external delivery")
+    monkeypatch.setattr("engine.alerts.service.AlertService.enqueue_events", no_delivery)
     manager.sessions[status.session_id].status.max_retained_frames = 2
     paths = []
     for index in range(2):
@@ -101,6 +108,8 @@ def test_recording_persists_and_stops_at_visible_cap_without_deleting(workspace:
         paths.append(Path(response.result.image_path))
     assert response.state == "limit_reached" and response.retained_frames == 2
     assert all(path.is_file() for path in paths) and service.events(project_id)
+    assert all(event.payload["approval_scope"] == "local_trial" for event in service.events(project_id))
+    assert any("external alert delivery is disabled" in warning for warning in manager.status(project_id, status.session_id).warnings)
     assert not Path(status.shared_memory_path).exists()
     assert manager.status(project_id, status.session_id).retained_bytes > 0
     manager.close()

@@ -69,7 +69,11 @@ def test_approved_job_records_purpose_before_scoring_without_quality_promotion(t
         trained.append(model_id)
         return result_for(path, training_fingerprint, evaluation_fingerprint)
 
-    def fake_score(identifier: str, candidate_index: int = 0) -> EvaluationResult:
+    def fake_score(identifier: str, candidate_index: int = 0, protocol_id: str | None = None) -> EvaluationResult:
+        from engine.eval.protocol import read_protocol
+        assert protocol_id is not None
+        protocol = read_protocol(service.root(identifier), protocol_id)
+        assert [row.candidate_index for row in protocol.candidates] == [0, 1]
         candidate = service.candidate(identifier, candidate_index)
         if candidate_index:
             record = read_manifest(trained[0], models)
@@ -77,6 +81,7 @@ def test_approved_job_records_purpose_before_scoring_without_quality_promotion(t
         scored.append(candidate_index)
         return EvaluationResult(precision=0, recall=0, count_mae=10, passed=False,
             metric=candidate.eval.metric, target=candidate.eval.target, sample_count=10,
+            protocol_id=protocol.id, protocol_hash=protocol.protocol_hash, evidence_scope="validation",
             spec_hash=spec_hash(candidate, service.root(identifier)),
             dataset_hash=dataset_hash(service.evaluation_annotations(identifier), service.root(identifier)))
 
