@@ -1,0 +1,4 @@
+[1/3] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/system.cpp.o
+[2/3] Linking CXX static library lib/libopencv_core.a
+[3/3] Linking CXX shared module lib/python3/cv2.cpython-312-darwin.so
+ld: warning: ignoring duplicate libraries: 'lib/libopencv_core.a'

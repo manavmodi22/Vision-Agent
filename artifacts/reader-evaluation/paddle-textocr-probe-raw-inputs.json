@@ -1,0 +1,502 @@
+[
+  {
+    "id": "0",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/abff7a10c0e23564_5.png",
+    "sha256": "2611115759c658192f7bba6c4d9bc31c8a5124d71e2cef6c35b9994d8f8e0d79"
+  },
+  {
+    "id": "1",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/abff7a10c0e23564_1.png",
+    "sha256": "44cd6cfdb35b236c67b81378306414c97abe2be386b2284d5bf67df4f7f20b8a"
+  },
+  {
+    "id": "2",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/abff7a10c0e23564_12.png",
+    "sha256": "c87b262dd36c80d56837033162929a24497b0377eb6ece30594820435fd925d5"
+  },
+  {
+    "id": "3",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/abff7a10c0e23564_3.png",
+    "sha256": "92a50cf58be47e0face25c0887ee88181c6df133d6ee998922b794a5714e3941"
+  },
+  {
+    "id": "4",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/abff7a10c0e23564_2.png",
+    "sha256": "1485609ec32f7d3f228b64e297c133aac2944363ca7f7688f9c302c819485981"
+  },
+  {
+    "id": "5",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/a96defddecf9155d_25.png",
+    "sha256": "5af773c203083760eaefb2bdf8e52dc397ba028d6b481c9b3865672b7d8e0431"
+  },
+  {
+    "id": "6",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/a96defddecf9155d_17.png",
+    "sha256": "982faf91f346886816160cae835b9d32232293576fc20d353f4363ccda181302"
+  },
+  {
+    "id": "7",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/a96defddecf9155d_27.png",
+    "sha256": "643335780bef763067f2f873d521ca452597110a672f16be8d6d48f2db15d9c2"
+  },
+  {
+    "id": "8",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/a96defddecf9155d_23.png",
+    "sha256": "a0f5c5cf424a721b721fa07490abf9d1cd068003780f9282ddd3fcef0073fc20"
+  },
+  {
+    "id": "9",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/a96defddecf9155d_19.png",
+    "sha256": "dc0ff286940310370952cb48fac5a23a19ef556c479b02c4d41e09b628857e5c"
+  },
+  {
+    "id": "10",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/b45fef2565bc76e4_5.png",
+    "sha256": "62fc85f9a6ec33e008863ca42f83f29a267490f85fa0ff23ecbd957bec0fa05a"
+  },
+  {
+    "id": "11",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/b45fef2565bc76e4_18.png",
+    "sha256": "4f9d32b4bfa8b60adf37bcebf11d124e3e4451aac3880d0501130e08739c0b3c"
+  },
+  {
+    "id": "12",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/b45fef2565bc76e4_1.png",
+    "sha256": "99a03136a635c95e2014fb8db58ecba5e6898a9222f58fb72aac4a49010a0612"
+  },
+  {
+    "id": "13",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/b45fef2565bc76e4_16.png",
+    "sha256": "20c6551792b002476f523efdd5edeae8648bbd034a6201953d86ba1e617791a8"
+  },
+  {
+    "id": "14",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/b45fef2565bc76e4_7.png",
+    "sha256": "1a03ad0740141674aaf3c7afeef1491743eea4481ec8c68f1f06dea70025f7ae"
+  },
+  {
+    "id": "15",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/211563903b4782e4_10.png",
+    "sha256": "b2e6578e14017524e484f073d710f4c4409ef8cba4a0396f01ef443aced92ac0"
+  },
+  {
+    "id": "16",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/211563903b4782e4_2.png",
+    "sha256": "7d184f76cc8a762a52537c0b127dd71fc7a2325ba53a35d698941645e646c020"
+  },
+  {
+    "id": "17",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/211563903b4782e4_1.png",
+    "sha256": "67f6dd9d1f45bc2d91676019cb7649a940d9ef13200cee692abf9059471bc32b"
+  },
+  {
+    "id": "18",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/211563903b4782e4_3.png",
+    "sha256": "3303e1ed6fdf9935d862d5ce72768893710b6423d2175372c2e71c8fe720f638"
+  },
+  {
+    "id": "19",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/211563903b4782e4_4.png",
+    "sha256": "fbeef652cade85dd78f02c28a808c7856c31c205a126f8528e5bc3b833ae2fbf"
+  },
+  {
+    "id": "20",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/c4ce9cd260acf0e8_51.png",
+    "sha256": "f0253fd967be431d7d004661e83ae9a5e77f105ad77ec5cd918ceae97f5c035e"
+  },
+  {
+    "id": "21",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/c4ce9cd260acf0e8_50.png",
+    "sha256": "df0f70e940fc5ceaac9fdf5b31cee7aafd3c4e628167155257b2023c1a094e72"
+  },
+  {
+    "id": "22",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/c4ce9cd260acf0e8_41.png",
+    "sha256": "b927824f25fb0a3567aaed25f2a5513338a7d6aad12939ea64485c45986afab2"
+  },
+  {
+    "id": "23",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/c4ce9cd260acf0e8_49.png",
+    "sha256": "702447fb1379ee2bae9edb33eaba7e05d508188c9fabcde65c26e10cefcbc649"
+  },
+  {
+    "id": "24",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/c4ce9cd260acf0e8_45.png",
+    "sha256": "851468656ddd5b2c4bb6b2ca3e0424d7b1cff4cbab1349200549ee2adc19b9df"
+  },
+  {
+    "id": "25",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/fc5e25716377e42c_16.png",
+    "sha256": "e97a9095ead654bc912e165bd300ed2df48b7c43cb8b0149ff0829de52c381cc"
+  },
+  {
+    "id": "26",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/fc5e25716377e42c_17.png",
+    "sha256": "e105df80236e43338c52f1d0d07efe8c9a217d0701a8e2809103ea7936eed2b8"
+  },
+  {
+    "id": "27",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/fc5e25716377e42c_93.png",
+    "sha256": "d3adbf20bcd54bf4c4c740f4e43a6ae3e95bdfbf32b49444faf81996c70a5f40"
+  },
+  {
+    "id": "28",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/fc5e25716377e42c_31.png",
+    "sha256": "846ca3527080f574980261f0f9045aeb239fc817779e27d30ee5064f214c5303"
+  },
+  {
+    "id": "29",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/fc5e25716377e42c_64.png",
+    "sha256": "4094504c8be8ec59174445e1b2535604041432d68aa91d1923a5cd1d9a4a3856"
+  },
+  {
+    "id": "30",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/0568d30600d5cf11_30.png",
+    "sha256": "82c59a9c8d1c3ff2c0ff237e44d516c2451f90272a4ada0d9996763ffa599db1"
+  },
+  {
+    "id": "31",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/0568d30600d5cf11_19.png",
+    "sha256": "0e77fb0aae821aaa10b621d0c11235923a017a9fa8c1a975c10a50058f404b02"
+  },
+  {
+    "id": "32",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/0568d30600d5cf11_51.png",
+    "sha256": "030d5266a5df3634ea2f73945e1849172e2c5bf3086a278bb479eefd76ceff0d"
+  },
+  {
+    "id": "33",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/0568d30600d5cf11_32.png",
+    "sha256": "cd7ae7bf532b7f2e7a4174304b21cf19e29b15fc48d17e02910cb08976d5ce8f"
+  },
+  {
+    "id": "34",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/0568d30600d5cf11_16.png",
+    "sha256": "d84cfefd3cf531ecd1e7eebc8c90f016f1bf3a852ead0161da1a285733d7780f"
+  },
+  {
+    "id": "35",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/01cc0f8a81d39848_24.png",
+    "sha256": "e3be831b711be17def6c08f25266fbe9c62b0d7d86b18539ed3343cdbbbd3dff"
+  },
+  {
+    "id": "36",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/01cc0f8a81d39848_20.png",
+    "sha256": "49f6305c46787584c3b6fdd5ca6dc0a94857e791445a273aa6dd78b6d65e887d"
+  },
+  {
+    "id": "37",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/01cc0f8a81d39848_30.png",
+    "sha256": "286bf5a07ed08add2c4fd91e83940ef50a030f2bdfbafea08705456a59f118d8"
+  },
+  {
+    "id": "38",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/01cc0f8a81d39848_11.png",
+    "sha256": "fc7a6f504e05bd3c4818b23d15485a2f130941da8803f67c2066bb854d0e8b5e"
+  },
+  {
+    "id": "39",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/01cc0f8a81d39848_23.png",
+    "sha256": "d510679b15497775f9b229be993272a417075d3855e9966cb83cfbf6e5743bbe"
+  },
+  {
+    "id": "40",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/bcae4b24082da442_21.png",
+    "sha256": "4d203dcb7c30393c7068eaec331dd5f5c4b7e1f56eb4ca54c7e8bf758058dd39"
+  },
+  {
+    "id": "41",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/bcae4b24082da442_18.png",
+    "sha256": "fb339551a6fc6d4284fe262d15e485d2f8b54c7ba99f6813022794b6426eb8ec"
+  },
+  {
+    "id": "42",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/bcae4b24082da442_12.png",
+    "sha256": "83712d9d0cee93235525f7f5643f944bf8678b3312e0359ce234bec12284eb4d"
+  },
+  {
+    "id": "43",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/bcae4b24082da442_29.png",
+    "sha256": "2bc060eb5794253eb026abf0c10df25e06bcf413bff1a62ddd354834927ba6dd"
+  },
+  {
+    "id": "44",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/bcae4b24082da442_8.png",
+    "sha256": "f894e80673ae50f510e4b894ad7b2644b76101d8ee5c97b0f839decec87b8099"
+  },
+  {
+    "id": "45",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/173ec59258b40567_3.png",
+    "sha256": "19894a382bb44310268c9257ae0a6d6683365d522f4dca80b75fdaa766042c1e"
+  },
+  {
+    "id": "46",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/173ec59258b40567_4.png",
+    "sha256": "13635ed2d0d8cf63bd3efd99b48fdddafeb69b23771ab7e63a01409579c9741f"
+  },
+  {
+    "id": "47",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/173ec59258b40567_1.png",
+    "sha256": "83c82de7fb57d0a413b9cd937308b3c8a0195cc051f633023e0cb5245e4b6ee5"
+  },
+  {
+    "id": "48",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/173ec59258b40567_7.png",
+    "sha256": "814295d712604794dd66954c0b931aa24b7e359dd5879501042d66a56ab3f3af"
+  },
+  {
+    "id": "49",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/173ec59258b40567_6.png",
+    "sha256": "18e2c1be092e9a3feb8e2d21cdb06ed2e0fb1f200aaf76c94b73d666b0438a7b"
+  },
+  {
+    "id": "50",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/fb8def9936391f5c_23.png",
+    "sha256": "e0f95beed035fd799839e3dc4238adf3c0caef53f4592c6820a0ef11c5ea0c7c"
+  },
+  {
+    "id": "51",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/fb8def9936391f5c_3.png",
+    "sha256": "26613bf985ccd8ceaba41c4c555d7b2661ab9ed2bdd1ed8a1487fc6ee0da3d97"
+  },
+  {
+    "id": "52",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/fb8def9936391f5c_4.png",
+    "sha256": "4adeb54848c82ed2df258fe6d36cb40dc4fab5df89fac3adbede8d1a0fb5f0a6"
+  },
+  {
+    "id": "53",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/fb8def9936391f5c_1.png",
+    "sha256": "82b6d0db2f369fc13419b9ed2b9e04777c832edb5d68e28e5fd5e8540dc659b3"
+  },
+  {
+    "id": "54",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/fb8def9936391f5c_29.png",
+    "sha256": "c67fad62eb36a3f6829fef408fe629d020f86cefc1035af57c56722e2641cdba"
+  },
+  {
+    "id": "55",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/311fc727efa87aa1_8.png",
+    "sha256": "76ea032554ce1de2c3277800151edc3c50e9b881678562ef894c09f02c4c6b48"
+  },
+  {
+    "id": "56",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/311fc727efa87aa1_12.png",
+    "sha256": "8e6aaafb34a2059cd7cf36f4c6077b104b4682e654f700152d9dde1856c7367e"
+  },
+  {
+    "id": "57",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/311fc727efa87aa1_13.png",
+    "sha256": "d6bf8e5baacdf121f55da1bc2bd11d86a6f8b203db0ad13fc51458fda994c964"
+  },
+  {
+    "id": "58",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/311fc727efa87aa1_6.png",
+    "sha256": "8eed7ebcbbba6a370e349808a9af3483e400fd31a2adac8a0af38d806ec1531d"
+  },
+  {
+    "id": "59",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/311fc727efa87aa1_7.png",
+    "sha256": "a8121a1f8400df6abaf9639947fc3f6b5ae37f60a33ed6661c3865e2b90cf042"
+  },
+  {
+    "id": "60",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/61780b5dc890589c_23.png",
+    "sha256": "5ba5e6256e6e6f5f78d248edf07f498c32f5e6e32bf98785996dbecfeb5c8f20"
+  },
+  {
+    "id": "61",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/61780b5dc890589c_66.png",
+    "sha256": "a6173057cefbcf93cbb20e5f903ea9e44b87e1c7a0fa66959cd9e94bb829a607"
+  },
+  {
+    "id": "62",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/61780b5dc890589c_14.png",
+    "sha256": "9702de3a56910f9706a238fdb9739a1338c2d0ccc932ea45e25119a5da94819f"
+  },
+  {
+    "id": "63",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/61780b5dc890589c_53.png",
+    "sha256": "377be0335c4b44a8bb93363c52fd70e5a4797f2abc4bf94bd6298724edd0e3be"
+  },
+  {
+    "id": "64",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/61780b5dc890589c_63.png",
+    "sha256": "3e61fcc9409866d940c554d4eb1ee44d5d999a76c4f27960e62bdb8a9ce224ad"
+  },
+  {
+    "id": "65",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/9a3382d727c7add1_18.png",
+    "sha256": "c52ff6290ccaceea21647b2c8598178f37041e5619767a32c7163a20cfd84b42"
+  },
+  {
+    "id": "66",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/9a3382d727c7add1_22.png",
+    "sha256": "a8db013975fa1291b1e93d85f627e4862430eb070274760fce58946198144e9b"
+  },
+  {
+    "id": "67",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/9a3382d727c7add1_6.png",
+    "sha256": "0c6830cb3d01f93c542f6456b84da733c62e1f7720f01f35201542dede991256"
+  },
+  {
+    "id": "68",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/9a3382d727c7add1_12.png",
+    "sha256": "21839c17a4c5d2273b95d8ce82f1099115239a2b2aff80e8c43147c9b5ca8a34"
+  },
+  {
+    "id": "69",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/9a3382d727c7add1_21.png",
+    "sha256": "b4d629f59e8c723d06b9f4d6b0d9b893c2f08f17c345cb2f1dc170456a6e3128"
+  },
+  {
+    "id": "70",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/523f4b68dcd52c3b_7.png",
+    "sha256": "2f14f62e15b7b7292b30c10a93b0152aa22b874433e7f89eb48fea39e65f1a85"
+  },
+  {
+    "id": "71",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/523f4b68dcd52c3b_8.png",
+    "sha256": "38774d1841d8976c8283adeafd30ba99345e3982d042e0b1c61e077ab272a5e3"
+  },
+  {
+    "id": "72",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/523f4b68dcd52c3b_1.png",
+    "sha256": "d398b7f0ed85eb44522d5eeb37f5fb877d5d6616c0a3f031638f720f40d39b17"
+  },
+  {
+    "id": "73",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/523f4b68dcd52c3b_11.png",
+    "sha256": "f4c7e51e7993cdd753df149ae0fc16e43d7c2f69c78b75d7ea587b1dc6f5138d"
+  },
+  {
+    "id": "74",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/523f4b68dcd52c3b_5.png",
+    "sha256": "dc80e84e0c50653a1f177145f5c9a6247bbd51b6f50db181c4a948fec0ba408c"
+  },
+  {
+    "id": "75",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/0f4f428ec2fc6133_1.png",
+    "sha256": "52aac96a119fdc4b7010ff6c85602a0709be723ecfe2bc167a8fa4bba7ea01b2"
+  },
+  {
+    "id": "76",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/0f4f428ec2fc6133_17.png",
+    "sha256": "c967b80fd71f4ab65e9989fb82a9771eea1f68d66a0654116507ca922bc1976f"
+  },
+  {
+    "id": "77",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/0f4f428ec2fc6133_3.png",
+    "sha256": "4ea26921113d5513cbe789fe7c8064cc4cdc46cf4cf8e657894ead2f2132a540"
+  },
+  {
+    "id": "78",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/0f4f428ec2fc6133_10.png",
+    "sha256": "afd629385b29b4fdda6eb7d885c0d4757c60e925e2ba28893d62d0ba8d5c8bba"
+  },
+  {
+    "id": "79",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/0f4f428ec2fc6133_23.png",
+    "sha256": "9a44f0b46eaabd2b655cba2f0fb85fd7288a965e0d48027335bba8efd78d30de"
+  },
+  {
+    "id": "80",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/76dc6a5cf82664e8_70.png",
+    "sha256": "dce798eec283c53ee9f077c9405a045ff077a0fdaeea59cacf5f17955a8d6ad3"
+  },
+  {
+    "id": "81",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/76dc6a5cf82664e8_2.png",
+    "sha256": "b3274ea7853b63dbce91111f2758e4382e08933003af7a623e4a3999a95c7f45"
+  },
+  {
+    "id": "82",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/76dc6a5cf82664e8_27.png",
+    "sha256": "17b7ce43d747a2abd8821da56e4ca5da57ebd1a41cb7011e96d33a570229be41"
+  },
+  {
+    "id": "83",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/76dc6a5cf82664e8_7.png",
+    "sha256": "52c5941f8482d8963fae96acfce32617971815f038aa2cc944c7f16c5107cb73"
+  },
+  {
+    "id": "84",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/76dc6a5cf82664e8_38.png",
+    "sha256": "fe58659ce64464d821ddfe0f0dd53cd49a3f5b969eb22c5a803d6c5d9bdc61c9"
+  },
+  {
+    "id": "85",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/17af356f6eae6f6c_1.png",
+    "sha256": "c4aa4ac8d38ade414ef6f8d3f5c024f316df3d92c0551f823a1c67af1a46b1a7"
+  },
+  {
+    "id": "86",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/17af356f6eae6f6c_2.png",
+    "sha256": "97e3cbe3faabfb7d5b38e077de6a8be20075084c8fd6d1f8890f661af9c71346"
+  },
+  {
+    "id": "87",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/17af356f6eae6f6c_3.png",
+    "sha256": "d8383110eb290bad6b1f1b4725193f5c68f1731ebfb852045ce3e1b21522041e"
+  },
+  {
+    "id": "88",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/17af356f6eae6f6c_5.png",
+    "sha256": "984936be3ab2b5dcbf799a04e716b43fa211537e0604ef68937fae797705fabd"
+  },
+  {
+    "id": "89",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/17af356f6eae6f6c_7.png",
+    "sha256": "e5a8e7b32f54fb288275910d1dabdef578b7244aba4cf1cce4c3652009819132"
+  },
+  {
+    "id": "90",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/2346ce571a0f0d8b_10.png",
+    "sha256": "37c48a53bbde4b00af8dcef09747578c2c4000e098e793a190fd9d567b7bd351"
+  },
+  {
+    "id": "91",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/2346ce571a0f0d8b_18.png",
+    "sha256": "d824ca12c2a80195951385113face4c791e52f40204c5a06345ae477f2407889"
+  },
+  {
+    "id": "92",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/2346ce571a0f0d8b_16.png",
+    "sha256": "3583e74026539641454105c95eefed3977694cfc6895f02b2b164aecd11e0464"
+  },
+  {
+    "id": "93",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/2346ce571a0f0d8b_1.png",
+    "sha256": "f1f71dee739c7c588d08397eb697caff683f1bde4e081ad230ab313d5d0866f9"
+  },
+  {
+    "id": "94",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/2346ce571a0f0d8b_14.png",
+    "sha256": "088a4932ec1e43772abba807101a849b16596c04233afd5353c0e01bcccdf144"
+  },
+  {
+    "id": "95",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/81a87534b54bb09c_2.png",
+    "sha256": "afdd427724bcd321c57eee135ab1243b1cad8e2e82a1291a6bfd2eb3826f8efc"
+  },
+  {
+    "id": "96",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/81a87534b54bb09c_11.png",
+    "sha256": "853ca098b55ee2fea2c32bafe4510f63d5dc06b6db7b2d079faa5fc96c0a8104"
+  },
+  {
+    "id": "97",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/81a87534b54bb09c_19.png",
+    "sha256": "6a5479db0e06eeefd85b3ba879a08ba7212ee32ec60cd28e38436e775b4f0736"
+  },
+  {
+    "id": "98",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/81a87534b54bb09c_1.png",
+    "sha256": "57d0dd0b86c5e669b74fcabf672c3c66f8cb4fc9bc511c88734371a96086156e"
+  },
+  {
+    "id": "99",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/crops/81a87534b54bb09c_3.png",
+    "sha256": "b3b9dc3b1e409498576fdcb62f80ae413248db51647a0ea5a5a0c83c34d05fff"
+  }
+]

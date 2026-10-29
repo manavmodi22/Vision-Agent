@@ -1,0 +1,13 @@
+{
+  "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/cv2.cpython-312-darwin.so",
+  "sha256": "39cc1914cd4638c64173d1c8835e43de49d8f057c4f00a3467d03a45521629cf",
+  "linkage": "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/cv2.cpython-312-darwin.so:\n\t/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.12)\n\t/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate (compatibility version 1.0.0, current version 4.0.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1359.0.0)\n\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 2200.27.0)\n",
+  "capabilities": {
+    "resize": true,
+    "findContours": true,
+    "warpPerspective": true,
+    "VideoCapture": false,
+    "imread": false,
+    "imshow": false
+  }
+}

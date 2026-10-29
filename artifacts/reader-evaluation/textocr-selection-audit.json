@@ -1,0 +1,16 @@
+{
+  "manifest_sha256": "f3064b1b6e22bd894abecc3564afd8f622d9b20acb87377d229724755954bef0",
+  "image_count": 20,
+  "crop_count": 100,
+  "duplicate_image_hashes": {},
+  "duplicate_crop_hashes": {},
+  "strata": {
+    "digits_only": 10,
+    "letters_and_digits": 1,
+    "punctuation": 12,
+    "crop_height_below_16px": 3
+  },
+  "scene_group_audit": "not performed",
+  "pretraining_overlap": "unknown",
+  "reviewed": false
+}

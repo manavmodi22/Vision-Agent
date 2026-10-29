@@ -22,6 +22,9 @@ struct ImageCanvas: View {
     let path: String?
     var detections: [Detection] = []
     var zones: [Zone] = []
+    var readings: [DisplayReading] = []
+    var selectedReadingID: String? = nil
+    var onReadingSelect: ((String) -> Void)? = nil
     var onDraw: (([Double]) -> Void)?
     var emptyTitle = "Your sample preview"
     var emptyDetail = "Import media and run a candidate to inspect detections and counts."
@@ -63,6 +66,7 @@ struct ImageCanvas: View {
                                 .foregroundStyle(.black).background(Studio.accent).offset(x: x, y: max(rect.minY, y-20))
                         }
                     }
+                    ReadingOverlay(readings: readings, rect: rect, selectedID: selectedReadingID, onSelect: onReadingSelect)
                     if let start = dragStart, let end = dragEnd {
                         Rectangle().fill(Studio.accent.opacity(0.2)).overlay(Rectangle().stroke(Studio.accent, lineWidth: 2))
                             .frame(width: abs(end.x-start.x), height: abs(end.y-start.y))
@@ -106,6 +110,7 @@ struct PreviewPanel: View {
     var agentContext = false
     var agentBuilding = false
     @NativeState<CGFloat> private var availableWidth = 0
+    @NativeState<String?> private var selectedReadingID: String?
     private var waitingMessage: String {
         if model.previewRequestID != nil { return "Running this candidate on your examples…" }
         if agentContext { return agentBuilding ? "The agent is building and testing your app. Preview results will appear here." : "No model output yet. Build progress and next steps appear in the conversation." }
@@ -114,7 +119,7 @@ struct PreviewPanel: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack { Eyebrow(text: agentContext && model.previewIsPrevious && model.frame != nil ? "Previous preview · updating app" : model.frame == nil ? "Input sample" : "Model output"); Spacer(); if let f = model.frame { Text(String(format: "%.0f ms / frame", f.elapsedMs)).font(.caption.monospaced()).foregroundStyle(Studio.muted) } }
-            ImageCanvas(path: model.frame?.imagePath ?? model.project?.media.first, detections: model.frame?.detections ?? [], zones: model.previewIsPrevious ? [] : PreviewPresentation.zones(for: model.displayedPreviewPipeline, savedZones: model.zonesConfirmed ? model.zones : []), emptyTitle: agentContext ? "Application preview" : "Your sample preview", emptyDetail: waitingMessage)
+            ImageCanvas(path: model.frame?.imagePath ?? model.project?.media.first, detections: model.frame?.detections ?? [], zones: model.previewIsPrevious ? [] : PreviewPresentation.zones(for: model.displayedPreviewPipeline, savedZones: model.zonesConfirmed ? model.zones : []), readings: ReadingPresentation.readings(ReadingPresentation.blocks(model.frame)), selectedReadingID: selectedReadingID, onReadingSelect: { selectedReadingID = $0 }, emptyTitle: agentContext ? "Application preview" : "Your sample preview", emptyDetail: waitingMessage)
                 .frame(minHeight: agentContext ? PreviewPresentation.agentCanvasHeight(width: availableWidth) : 260,
                        maxHeight: agentContext ? PreviewPresentation.agentCanvasHeight(width: availableWidth) : nil)
             if let frames = model.preview?.frames, !frames.isEmpty {
@@ -135,10 +140,13 @@ struct PreviewPanel: View {
                     }
                     let zones = frame.counts.filter { $0.key != "all" }
                     if !zones.isEmpty { Text("Zone totals · " + zones.keys.sorted().map { "\($0): \(zones[$0] ?? 0)" }.joined(separator: " · ")).font(.caption).foregroundStyle(Studio.muted) }
-                    if EvaluationPresentation.isReading(model.displayedPreviewPipeline) || !frame.texts.isEmpty {
+                    let readers = ReadingPresentation.blocks(frame)
+                    if !readers.isEmpty { ReadingEvidenceView(blocks: readers, selectedID: $selectedReadingID) }
+                    if let output = ReadingPresentation.workflowText(frame, pipeline: model.displayedPreviewPipeline) {
                         VStack(alignment: .leading, spacing: 6) {
-                            Text("Text output").font(.caption.weight(.medium))
-                            Text(frame.texts.isEmpty ? "No text recognized in this sample." : frame.texts.joined(separator: " · ")).font(.callout).textSelection(.enabled)
+                            Text("Workflow text output").font(.caption.weight(.medium))
+                            Text(output.values.isEmpty ? "No text output in this sample." : output.values.joined(separator: " · ")).font(.callout).textSelection(.enabled)
+                            if output.readerEvidenceUnavailable { Text("Reader region evidence is unavailable for this result.").font(.caption2).foregroundStyle(Studio.muted) }
                         }
                     }
                     if PreviewOutcomePresentation.hasEventSink(model.displayedPreviewPipeline) || !frame.events.isEmpty {
@@ -148,5 +156,6 @@ struct PreviewPanel: View {
             } else { Text(waitingMessage).font(.caption).foregroundStyle(Studio.muted) }
         }.panel()
             .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { availableWidth = $0 }
+            .onChange(of: model.frame?.imagePath) { _, _ in selectedReadingID = nil }
     }
 }

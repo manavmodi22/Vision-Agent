@@ -1,0 +1,81 @@
+{
+  "checked_at": "2026-10-29T04:01:15.940672+00:00",
+  "scope": "Actual CUA interaction in installed canonical app; generated retained reading fixtures, not representative vision accuracy",
+  "source_identity": "e523a04b24594a48710c716c333763de3824e7d4c37cdaed58e196f9fcfacd3f",
+  "health": {
+    "status": "ok",
+    "version": "0.1.0",
+    "model_server": {
+      "reachable": true,
+      "models": [
+        "visionapp-planner"
+      ],
+      "error": null
+    },
+    "runtime": {
+      "data_dir": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp",
+      "python": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/Resources/PythonRuntime/bin/python3.12",
+      "package_root": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+      "build_id": "e523a04b24594a48710c716c333763de3824e7d4c37cdaed58e196f9fcfacd3f",
+      "pid": 2054
+    },
+    "capabilities": {
+      "image_folder": true,
+      "recorded_video": true,
+      "apple_vision": true,
+      "camera": false,
+      "screen_capture": false,
+      "training": true,
+      "alerts": true,
+      "native_app": true,
+      "live_frame_ingress": true
+    }
+  },
+  "project_id": "70fca89f71a84d0f",
+  "new_package_relaunch_verified": true,
+  "native_window_visually_inspected": true,
+  "actions": [
+    "Opened retained unreviewed OCR project",
+    "Clicked Test preview and observed fresh apple-vision regions and native scores",
+    "Selected recognized region and raw text",
+    "Moved to second sample and expanded Unicode code points",
+    "Clicked Correct this image and verified exact substring filename and editable expected text"
+  ],
+  "observations": {
+    "exact_text": "ABC-990",
+    "substring_observed": "ХABC-990Y",
+    "substring_expected": "XABC-990Y",
+    "substring_first_codepoint": "U+0425",
+    "recognized_geometry": "Visible native quadrilateral on the matching input text",
+    "correction_image": "fafcff02-substring-only.png",
+    "reviewed_checkbox": false,
+    "native_score": 1.0,
+    "score_is_accuracy": false
+  },
+  "annotations_after": {
+    "id": "70fca89f71a84d0f-v1",
+    "annotations": [
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/70fca89f71a84d0f/media/f2a76670-exact-match.png",
+        "detections": [],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": null
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/70fca89f71a84d0f/media/fafcff02-substring-only.png",
+        "detections": [],
+        "reviewed": false,
+        "expected_texts": [
+          "XABC-990Y"
+        ],
+        "proposal": null
+      }
+    ]
+  },
+  "annotation_edits_performed": false,
+  "evaluations": 0,
+  "deployment_id": null,
+  "recorded_events": 0,
+  "capture_limitation": "Earlier old-process screen capture failed and one intermediate capture was partly blank. New canonical home, selected-region preview and correction-editor screenshots were visually inspected successfully in CUA; no screenshots were exported to disk."
+}

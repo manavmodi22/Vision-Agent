@@ -1,0 +1,599 @@
+[
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libXau.6.dylib",
+    "bytes": 69584,
+    "sha256": "c30323abc362ae0e5ff8b043e13a179a1bf6a9f76011ffc57195fd43020de535",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libXau.6.dylib (compatibility version 7.0.0, current version 7.0.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libavif.16.4.2.dylib",
+    "bytes": 2999136,
+    "sha256": "5e27779af8078c5586c045176db72779a09e5f87c6d516373913a6c092b76340",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libavif.16.4.2.dylib (compatibility version 16.0.0, current version 16.4.2)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libbrotlicommon.1.2.0.dylib",
+    "bytes": 183712,
+    "sha256": "3f4843c17f3cccc986279a4c9ac8a11dc3077c412fd856d1bad8231bf027a25f",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libbrotlicommon.1.2.0.dylib (compatibility version 1.0.0, current version 1.2.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libbrotlidec.1.2.0.dylib",
+    "bytes": 104080,
+    "sha256": "351fa4a2f4faed4147dfead81a8b0f5500ada31db64f74c8368bc1ab894f0dd1",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libbrotlidec.1.2.0.dylib (compatibility version 1.0.0, current version 1.2.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)",
+      "\t@loader_path/libbrotlicommon.1.2.0.dylib (compatibility version 1.0.0, current version 1.2.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libfreetype.6.dylib",
+    "bytes": 769872,
+    "sha256": "b1e5b0bd6f696d9458bbd370c1417f8b1a6bb6953c26c4c0543750f96ec32c33",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libfreetype.6.dylib (compatibility version 27.0.0, current version 27.6.0)",
+      "\t/usr/lib/libbz2.1.0.dylib (compatibility version 1.0.0, current version 1.0.8)",
+      "\t@loader_path/libpng16.16.dylib (compatibility version 75.0.0, current version 75.0.0)",
+      "\t@loader_path/libz.1.3.1.zlib-ng.dylib (compatibility version 1.0.0, current version 1.3.1)",
+      "\t@loader_path/libharfbuzz.0.dylib (compatibility version 61450.0.0, current version 61450.0.0)",
+      "\t@loader_path/libbrotlidec.1.2.0.dylib (compatibility version 1.0.0, current version 1.2.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libharfbuzz.0.dylib",
+    "bytes": 1625248,
+    "sha256": "2c88b14217bd5c823d615282dc79b860c79b7d066ddae72ad4d10e0ecca8bcb5",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libharfbuzz.0.dylib (compatibility version 61450.0.0, current version 61450.0.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)",
+      "\t@loader_path/libfreetype.6.dylib (compatibility version 27.0.0, current version 27.6.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libjpeg.62.4.0.dylib",
+    "bytes": 701120,
+    "sha256": "172444d18ef193c128e3f9f4323e9d22b0d824b8172a1389ecd048b279280629",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libjpeg.62.4.0.dylib (compatibility version 62.0.0, current version 62.4.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/liblcms2.2.dylib",
+    "bytes": 421168,
+    "sha256": "188685d4468afb124af58f471fb2382f94b98ef560995bc910eefab50134e8fb",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/liblcms2.2.dylib (compatibility version 3.0.0, current version 3.19.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/liblzma.5.dylib",
+    "bytes": 216944,
+    "sha256": "f08e18e2363a8e4fc8099de9c8b0b96b30a6a2e4a60e890f2cebb1a9e25a92fa",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/liblzma.5.dylib (compatibility version 14.0.0, current version 14.4.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libopenjp2.2.5.4.dylib",
+    "bytes": 430576,
+    "sha256": "2af52733d40803561752e12d6e917a5e16932a1fb7426760a2e6d8c10989c47a",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libopenjp2.2.5.4.dylib (compatibility version 7.0.0, current version 2.5.4)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libpng16.16.dylib",
+    "bytes": 257296,
+    "sha256": "4777ff2529c03d4181470fb9afa10081d36153055c2989aa16bb15d6b513e772",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libpng16.16.dylib (compatibility version 75.0.0, current version 75.0.0)",
+      "\t@loader_path/libz.1.3.1.zlib-ng.dylib (compatibility version 1.0.0, current version 1.3.1)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libsharpyuv.0.dylib",
+    "bytes": 85856,
+    "sha256": "6b2d464413fc35783c79936f1e6be631585448a37765cf79c238be2ea5e5505b",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libsharpyuv.0.dylib (compatibility version 2.0.0, current version 2.2.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libtiff.6.dylib",
+    "bytes": 572544,
+    "sha256": "d17ccc4d89a37c1db72aca63fdf26b2f07eaaeb737a5232a337585e3c920b3ed",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libtiff.6.dylib (compatibility version 10.0.0, current version 10.0.0)",
+      "\t@loader_path/liblzma.5.dylib (compatibility version 14.0.0, current version 14.4.0)",
+      "\t@loader_path/libjpeg.62.4.0.dylib (compatibility version 62.0.0, current version 62.4.0)",
+      "\t@loader_path/libz.1.3.1.zlib-ng.dylib (compatibility version 1.0.0, current version 1.3.1)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libwebp.7.dylib",
+    "bytes": 512672,
+    "sha256": "0a2ba0179e6bcc1bccc1a88c38b7d8efd0302d45a1bfc1eb4cf1f1f03ede73f0",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libwebp.7.dylib (compatibility version 10.0.0, current version 10.0.0)",
+      "\t@loader_path/libsharpyuv.0.dylib (compatibility version 2.0.0, current version 2.2.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libwebpdemux.2.dylib",
+    "bytes": 69616,
+    "sha256": "f5ec6b6750ee91ff032ba62b18afc5f37c7bc842bfc9b2d325df41bc656ea066",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libwebpdemux.2.dylib (compatibility version 3.0.0, current version 3.17.0)",
+      "\t@loader_path/libwebp.7.dylib (compatibility version 10.0.0, current version 10.0.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libwebpmux.3.dylib",
+    "bytes": 105792,
+    "sha256": "f9c291035190c3af29494ce9fb62987c25ee78c4365c92c323ccc5ec8740143d",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libwebpmux.3.dylib (compatibility version 5.0.0, current version 5.2.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)",
+      "\t@loader_path/libwebp.7.dylib (compatibility version 10.0.0, current version 10.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libxcb.1.1.0.dylib",
+    "bytes": 193760,
+    "sha256": "125bcffc8971652784b6a8b4061501f891aeafdf361aa4b777ba3bacc548bc84",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libxcb.1.1.0.dylib (compatibility version 3.0.0, current version 3.0.0)",
+      "\t@loader_path/libXau.6.dylib (compatibility version 7.0.0, current version 7.0.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/.dylibs/libz.1.3.1.zlib-ng.dylib",
+    "bytes": 176320,
+    "sha256": "39ffbe6a87460a579cf414c3ee668e449b32c2cdc2cc0b64921d53fd59cb56ed",
+    "linkage": [
+      "\t/DLC/PIL/.dylibs/libz.1.3.1.zlib-ng.dylib (compatibility version 1.0.0, current version 1.3.1)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/_avif.cpython-312-darwin.so",
+    "bytes": 73680,
+    "sha256": "e8a87d29c9ea3e81527efb1818ab7b6ead5bed54e4c2664c73e47f67746fd5f8",
+    "linkage": [
+      "\t@loader_path/.dylibs/libavif.16.4.2.dylib (compatibility version 16.0.0, current version 16.4.2)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/_imaging.cpython-312-darwin.so",
+    "bytes": 634480,
+    "sha256": "058a696be42c06bf77d5efd929c13f734a5e1a0c0a9e4b3e684ee5af13b4aa8f",
+    "linkage": [
+      "\t@loader_path/.dylibs/libtiff.6.dylib (compatibility version 10.0.0, current version 10.0.0)",
+      "\t@loader_path/.dylibs/libjpeg.62.4.0.dylib (compatibility version 62.0.0, current version 62.4.0)",
+      "\t@loader_path/.dylibs/libopenjp2.2.5.4.dylib (compatibility version 7.0.0, current version 2.5.4)",
+      "\t@loader_path/.dylibs/libz.1.3.1.zlib-ng.dylib (compatibility version 1.0.0, current version 1.3.1)",
+      "\t@loader_path/.dylibs/libxcb.1.1.0.dylib (compatibility version 3.0.0, current version 3.0.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/_imagingcms.cpython-312-darwin.so",
+    "bytes": 97856,
+    "sha256": "c940dbd46ca213366037fd958d11678497a5cd41971fc54126ac37baad396a81",
+    "linkage": [
+      "\t@loader_path/.dylibs/liblcms2.2.dylib (compatibility version 3.0.0, current version 3.19.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/_imagingft.cpython-312-darwin.so",
+    "bytes": 117344,
+    "sha256": "bbd5e4c25140c7c3b476e14ee613457c55da2694029e9a4b0805ed6711fdfd2c",
+    "linkage": [
+      "\t@loader_path/.dylibs/libfreetype.6.dylib (compatibility version 27.0.0, current version 27.6.0)",
+      "\t@loader_path/.dylibs/libharfbuzz.0.dylib (compatibility version 61450.0.0, current version 61450.0.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/_imagingmath.cpython-312-darwin.so",
+    "bytes": 72160,
+    "sha256": "3209a70da6bb99bc9f2dc4d98d168baae82440a5062e91a19acccf6c2b653ff6",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/_imagingmorph.cpython-312-darwin.so",
+    "bytes": 51472,
+    "sha256": "0237c1c8ca6ab8ad087d8c6cc929d8cfbd49396491b990503e47963f616a021d",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/_imagingtk.cpython-312-darwin.so",
+    "bytes": 52784,
+    "sha256": "1e11150b6f16eae297ea7da2193fa66ff4597d85db9e5d60c7238f190c5dd745",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/PIL/_webp.cpython-312-darwin.so",
+    "bytes": 75760,
+    "sha256": "3c4c8cb49c955900e361ca1bcaf44f8863ffa9edb9f7b3372e15e8938a053320",
+    "linkage": [
+      "\t@loader_path/.dylibs/libwebp.7.dylib (compatibility version 10.0.0, current version 10.0.0)",
+      "\t@loader_path/.dylibs/libwebpmux.3.dylib (compatibility version 5.0.0, current version 5.2.0)",
+      "\t@loader_path/.dylibs/libwebpdemux.2.dylib (compatibility version 3.0.0, current version 3.17.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/cv2.cpython-312-darwin.so",
+    "bytes": 8314824,
+    "sha256": "39cc1914cd4638c64173d1c8835e43de49d8f057c4f00a3467d03a45521629cf",
+    "linkage": [
+      "\t/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.12)",
+      "\t/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate (compatibility version 1.0.0, current version 4.0.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1359.0.0)",
+      "\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 2200.27.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/google/_upb/_message.abi3.so",
+    "bytes": 695714,
+    "sha256": "5fe9c5aa8c22f90136ea60aa2e46bdbd95d1953c1a35bdd3ca4cd643b1d74f6d",
+    "linkage": [
+      "\tbazel-out/k8-opt-ST-9e73343f3d22/bin/python/lib_message_binary.so (compatibility version 0.0.0, current version 0.0.0)",
+      "\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1300.23.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1311.100.3)",
+      "\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 1858.112.0)",
+      "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/google/_upb/_message.abi3.so (architecture arm64):",
+      "\tbazel-out/k8-opt-ST-d581c5370a66/bin/python/lib_message_binary.so (compatibility version 0.0.0, current version 0.0.0)",
+      "\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1300.23.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1311.100.3)",
+      "\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 1858.112.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/_core/_multiarray_tests.cpython-312-darwin.so",
+    "bytes": 120424,
+    "sha256": "9ea30d091a04bfd15cd757acd374d379b515b9f7353fb20861e27d0869c808e9",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/_core/_multiarray_umath.cpython-312-darwin.so",
+    "bytes": 3450392,
+    "sha256": "96ce8cda1e4f1a3107e5c945b68bcd970c3de09019fc19beda4cc0319609de09",
+    "linkage": [
+      "\t/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate (compatibility version 1.0.0, current version 4.0.0)",
+      "\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1700.255.5)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/_core/_operand_flag_tests.cpython-312-darwin.so",
+    "bytes": 51240,
+    "sha256": "725be6f7c285fe11df1feeb853b92b1cbed0785da0f8dd9aa8f455338f7aff69",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/_core/_rational_tests.cpython-312-darwin.so",
+    "bytes": 72808,
+    "sha256": "5bcd7851204cb2a01e4e80816d54e029f5e98403bf4e7d82f5597a807459e97e",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/_core/_simd.cpython-312-darwin.so",
+    "bytes": 339592,
+    "sha256": "4e5fbcd6f039dcc9d480a55a3705e9594ec7a2a890036c89c009935fc23492ae",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/_core/_struct_ufunc_tests.cpython-312-darwin.so",
+    "bytes": 51480,
+    "sha256": "cbc544ba97fd7cae853ad4b99bdc4f657eb183baa0c242a97874e5922c07f4bf",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/_core/_umath_tests.cpython-312-darwin.so",
+    "bytes": 71712,
+    "sha256": "9ed217a585e89c8d3b1d8171fe143db62f8c58e6596f4b0e1d9765ede196c1a0",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/fft/_pocketfft_umath.cpython-312-darwin.so",
+    "bytes": 329768,
+    "sha256": "7fe6b660b89ec45b41377bd1f96fd111829e6488859e404177ce7cf26f9def7a",
+    "linkage": [
+      "\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1700.255.5)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/linalg/_umath_linalg.cpython-312-darwin.so",
+    "bytes": 154752,
+    "sha256": "09cde0db10d0e4d8f25e0e207379cc449e9cd8bda44601e2ef049d5ab41400a2",
+    "linkage": [
+      "\t/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate (compatibility version 1.0.0, current version 4.0.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/linalg/lapack_lite.cpython-312-darwin.so",
+    "bytes": 52928,
+    "sha256": "91845df99a5e79b7880726883f38ac182d0a8ac90b8a6bce2b6b2220330d6e4f",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)",
+      "\t/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate (compatibility version 1.0.0, current version 4.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/random/_bounded_integers.cpython-312-darwin.so",
+    "bytes": 279912,
+    "sha256": "f429074be766ced3aead50bcbfe6852ffd1ee299d9d7ac648eb500b64520238f",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/random/_common.cpython-312-darwin.so",
+    "bytes": 215408,
+    "sha256": "c197a676539c0c017d0f8a63b2fb6055a20e80d3ff0d412401f61ea575ee2409",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/random/_generator.cpython-312-darwin.so",
+    "bytes": 651136,
+    "sha256": "9f8b2fc0d74e776a2a7f27a6f9254fd8383fc18d93d1233c8656d14d3b82403b",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/random/_mt19937.cpython-312-darwin.so",
+    "bytes": 132176,
+    "sha256": "f7844d5dc9f787345e9c4a6dd3ff4639560b342e82189380f939fc70e24d78b7",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/random/_pcg64.cpython-312-darwin.so",
+    "bytes": 133456,
+    "sha256": "b6d9c3ec05fba82d5441133291c8e603c83984056f9adb2902e8ef74d3340c01",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/random/_philox.cpython-312-darwin.so",
+    "bytes": 115648,
+    "sha256": "898d96f6d12bf6ca61625673d1afc61ee730c0c1a00f9df7ba19aaca05e826a7",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/random/_sfc64.cpython-312-darwin.so",
+    "bytes": 97328,
+    "sha256": "982b307ecd65888fc62f25be36d74dd47e67b1e792fb80848d1d2137b145765c",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/random/bit_generator.cpython-312-darwin.so",
+    "bytes": 189824,
+    "sha256": "fba73a76041c4117b3dd79bc629ab29ebbd06c01fd75454cd9f378d4b61b8d86",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/numpy/random/mtrand.cpython-312-darwin.so",
+    "bytes": 527568,
+    "sha256": "83cedfb5640314dbd30dc600ef6175959608f267705794b9867d2878425a7ea0",
+    "linkage": [
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/paddle/base/libpaddle.so",
+    "bytes": 228782944,
+    "sha256": "20b800acf787c3da91599aa492718e81257f8aa1ddc493e43a2f1b476faa0b63",
+    "linkage": [
+      "\t@loader_path/../libs/ (compatibility version 0.0.0, current version 0.0.0)",
+      "\t@rpath/libpir.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t@rpath/libphi.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t@rpath/libphi_core.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t@rpath/libcommon.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate (compatibility version 1.0.0, current version 4.0.0)",
+      "\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1700.255.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.100.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/paddle/libs/libblas.dylib",
+    "bytes": 20209296,
+    "sha256": "11274a9583192ed722e8dd3a657935d140697c868c0c350e9cc6352f89ec659a",
+    "linkage": [
+      "\t/opt/homebrew/opt/openblas/lib/libopenblas.0.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t/opt/homebrew/opt/gcc/lib/gcc/current/libgfortran.5.dylib (compatibility version 6.0.0, current version 6.0.0)",
+      "\t/opt/homebrew/opt/gcc/lib/gcc/current/libgomp.1.dylib (compatibility version 2.0.0, current version 2.0.0)",
+      "\t/opt/homebrew/opt/gcc/lib/gcc/current/libquadmath.0.dylib (compatibility version 1.0.0, current version 1.0.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1336.61.1)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/paddle/libs/libcommon.dylib",
+    "bytes": 773920,
+    "sha256": "447ef66caa04c69136e9228cdb02f880c14549917096d1f7961d03e56f252d7e",
+    "linkage": [
+      "\t@rpath/libcommon.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1700.255.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.100.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/paddle/libs/libgcc_s.1.dylib",
+    "bytes": 143664,
+    "sha256": "9a0ab463547a5456f4b01c05c3f42aa997f11ac5b00c14a59922d6cd12798ab4",
+    "linkage": [
+      "\t@rpath/libgcc_s.1.1.dylib (compatibility version 1.0.0, current version 1.1.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1292.60.1)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/paddle/libs/libgfortran.5.dylib",
+    "bytes": 3717456,
+    "sha256": "c7724789dc3d448a1ce247804a17a6e287f8cc758a9ca63ca3bb86106f48722f",
+    "linkage": [
+      "\t@rpath/libgfortran.5.dylib (compatibility version 6.0.0, current version 6.0.0)",
+      "\t@rpath/libquadmath.0.dylib (compatibility version 1.0.0, current version 1.0.0)",
+      "\t@rpath/libgcc_s.1.1.dylib (compatibility version 1.0.0, current version 1.1.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1292.60.1)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/paddle/libs/liblapack.dylib",
+    "bytes": 20209296,
+    "sha256": "11274a9583192ed722e8dd3a657935d140697c868c0c350e9cc6352f89ec659a",
+    "linkage": [
+      "\t/opt/homebrew/opt/openblas/lib/libopenblas.0.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t/opt/homebrew/opt/gcc/lib/gcc/current/libgfortran.5.dylib (compatibility version 6.0.0, current version 6.0.0)",
+      "\t/opt/homebrew/opt/gcc/lib/gcc/current/libgomp.1.dylib (compatibility version 2.0.0, current version 2.0.0)",
+      "\t/opt/homebrew/opt/gcc/lib/gcc/current/libquadmath.0.dylib (compatibility version 1.0.0, current version 1.0.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1336.61.1)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/paddle/libs/libphi.dylib",
+    "bytes": 16752,
+    "sha256": "f892ec70422cf46d10ebef26f8791223c0930b5d2f05f448c35aa1f82c63c162",
+    "linkage": [
+      "\t@rpath/libphi.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t@rpath/libphi_core.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate (compatibility version 1.0.0, current version 4.0.0)",
+      "\t@rpath/libcommon.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1700.255.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.100.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/paddle/libs/libphi_core.dylib",
+    "bytes": 83926288,
+    "sha256": "391032071ba3fbf850a57dd6daf59c8b5d56c923493b8d99024458a6d9c850ee",
+    "linkage": [
+      "\t@rpath/libphi_core.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t@rpath/libcommon.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate (compatibility version 1.0.0, current version 4.0.0)",
+      "\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1700.255.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.100.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/paddle/libs/libpir.dylib",
+    "bytes": 2288048,
+    "sha256": "6b91409b839112f0c5296669ea2db33e77ba2ce70d534003aa42df457f21c9df",
+    "linkage": [
+      "\t@rpath/libpir.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t@rpath/libcommon.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1700.255.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.100.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/paddle/libs/libquadmath.0.dylib",
+    "bytes": 371952,
+    "sha256": "60b690ec533e905411ce4502b66d25a877cfcd42eb89b61a64e5d560d1cbfcaf",
+    "linkage": [
+      "\t@rpath/libquadmath.0.dylib (compatibility version 1.0.0, current version 1.0.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1292.60.1)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/paddle/libs/libwarpctc.dylib",
+    "bytes": 70848,
+    "sha256": "333322e1fe66460b6355717821eb1a65ecdb7c121b28149cc6acf0cf4a25841b",
+    "linkage": [
+      "\t@rpath/libwarpctc.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1700.255.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.100.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/paddle/libs/libwarprnnt.dylib",
+    "bytes": 53920,
+    "sha256": "651f955e27b3c3f77486a1f50d5ef2a7b66fe4f57e0cafd21fe3d7548637e146",
+    "linkage": [
+      "\t@rpath/libwarprnnt.dylib (compatibility version 0.0.0, current version 0.0.0)",
+      "\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1700.255.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.100.2)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/pyclipper/_pyclipper.cpython-312-darwin.so",
+    "bytes": 727136,
+    "sha256": "f8d68d96ce795eabdb20e5d9dfa54e1139d477b575d6b623a1d0ea92ebcd7ff3",
+    "linkage": [
+      "\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1900.180.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1351.0.0)",
+      "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/pyclipper/_pyclipper.cpython-312-darwin.so (architecture arm64):",
+      "\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1900.180.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1351.0.0)"
+    ]
+  },
+  {
+    "path": "lib/python3.12/site-packages/safetensors/_safetensors_rust.abi3.so",
+    "bytes": 1091856,
+    "sha256": "bc2fe2bfd2264af61c12fdea6d32b44318c4701ace0f697b4f35110cb0a1e4af",
+    "linkage": [
+      "\t@rpath/safetensors._safetensors_rust.abi3.so (compatibility version 0.0.0, current version 0.0.0)",
+      "\t/System/Library/Frameworks/Metal.framework/Versions/A/Metal (compatibility version 1.0.0, current version 343.19.0)",
+      "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.120.2)",
+      "\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 2503.1.0)",
+      "\t/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 2503.1.0)",
+      "\t/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)",
+      "\t/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)"
+    ]
+  }
+]

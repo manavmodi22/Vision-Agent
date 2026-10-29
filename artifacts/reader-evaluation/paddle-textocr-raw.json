@@ -1,0 +1,2002 @@
+{
+  "schema_version": 1,
+  "model": "ppocr-v5-mobile-en",
+  "dataset_manifest_sha256": "f3064b1b6e22bd894abecc3564afd8f622d9b20acb87377d229724755954bef0",
+  "raw_probe_sha256": "1ef6cb7661828f86b1dab79c32344ee997ec1c94c3de9ef30c81cb3b3398a28d",
+  "execution_policy": "One serial isolated worker; per-crop timing includes decode/detect/recognize, excludes one-time startup; raw report preserves startup and native-library identities",
+  "network_policy": "(version 1)(allow default)(deny network*)",
+  "startup_ms": 1354.2439590091817,
+  "results": [
+    {
+      "id": "abff7a10c0e23564_5",
+      "input_sha256": "2611115759c658192f7bba6c4d9bc31c8a5124d71e2cef6c35b9994d8f8e0d79",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 30.244458001106977
+    },
+    {
+      "id": "abff7a10c0e23564_1",
+      "input_sha256": "44cd6cfdb35b236c67b81378306414c97abe2be386b2284d5bf67df4f7f20b8a",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.757791990414262
+    },
+    {
+      "id": "abff7a10c0e23564_12",
+      "input_sha256": "c87b262dd36c80d56837033162929a24497b0377eb6ece30594820435fd925d5",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.196082998532802
+    },
+    {
+      "id": "abff7a10c0e23564_3",
+      "input_sha256": "92a50cf58be47e0face25c0887ee88181c6df133d6ee998922b794a5714e3941",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 8.650708012282848
+    },
+    {
+      "id": "abff7a10c0e23564_2",
+      "input_sha256": "1485609ec32f7d3f228b64e297c133aac2944363ca7f7688f9c302c819485981",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.6913329968228936
+    },
+    {
+      "id": "a96defddecf9155d_25",
+      "input_sha256": "5af773c203083760eaefb2bdf8e52dc397ba028d6b481c9b3865672b7d8e0431",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.559042001143098
+    },
+    {
+      "id": "a96defddecf9155d_17",
+      "input_sha256": "982faf91f346886816160cae835b9d32232293576fc20d353f4363ccda181302",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.515582997351885
+    },
+    {
+      "id": "a96defddecf9155d_27",
+      "input_sha256": "643335780bef763067f2f873d521ca452597110a672f16be8d6d48f2db15d9c2",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.3244160003960133
+    },
+    {
+      "id": "a96defddecf9155d_23",
+      "input_sha256": "a0f5c5cf424a721b721fa07490abf9d1cd068003780f9282ddd3fcef0073fc20",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.517083008773625
+    },
+    {
+      "id": "a96defddecf9155d_19",
+      "input_sha256": "dc0ff286940310370952cb48fac5a23a19ef556c479b02c4d41e09b628857e5c",
+      "response": {
+        "texts": [
+          "uBa"
+        ],
+        "observations": [
+          {
+            "text": "uBa",
+            "recognition_score": 0.6217882633209229,
+            "detection_score": 0.7285791569116145,
+            "polygon_pixels": [
+              [
+                13,
+                0
+              ],
+              [
+                46,
+                7
+              ],
+              [
+                35,
+                86
+              ],
+              [
+                2,
+                75
+              ]
+            ],
+            "recognition_ms": 98.25191699201241
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 105.49833299592137
+    },
+    {
+      "id": "b45fef2565bc76e4_5",
+      "input_sha256": "62fc85f9a6ec33e008863ca42f83f29a267490f85fa0ff23ecbd957bec0fa05a",
+      "response": {
+        "texts": [
+          "Estrella Galicia",
+          "O",
+          "EXAGERA"
+        ],
+        "observations": [
+          {
+            "text": "Estrella Galicia",
+            "recognition_score": 0.9931062459945679,
+            "detection_score": 0.7466486141694647,
+            "polygon_pixels": [
+              [
+                5,
+                6
+              ],
+              [
+                187,
+                5
+              ],
+              [
+                188,
+                39
+              ],
+              [
+                5,
+                40
+              ]
+            ],
+            "recognition_ms": 77.0606659934856
+          },
+          {
+            "text": "O",
+            "recognition_score": 0.5342912673950195,
+            "detection_score": 0.6908237786857835,
+            "polygon_pixels": [
+              [
+                175,
+                9
+              ],
+              [
+                197,
+                9
+              ],
+              [
+                197,
+                24
+              ],
+              [
+                175,
+                24
+              ]
+            ],
+            "recognition_ms": 73.06604203768075
+          },
+          {
+            "text": "EXAGERA",
+            "recognition_score": 0.8445997834205627,
+            "detection_score": 0.7390479617360888,
+            "polygon_pixels": [
+              [
+                6,
+                31
+              ],
+              [
+                243,
+                20
+              ],
+              [
+                246,
+                70
+              ],
+              [
+                9,
+                81
+              ]
+            ],
+            "recognition_ms": 73.57312500244007
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 239.95391599601135
+    },
+    {
+      "id": "b45fef2565bc76e4_18",
+      "input_sha256": "4f9d32b4bfa8b60adf37bcebf11d124e3e4451aac3880d0501130e08739c0b3c",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.214250016957521
+    },
+    {
+      "id": "b45fef2565bc76e4_1",
+      "input_sha256": "99a03136a635c95e2014fb8db58ecba5e6898a9222f58fb72aac4a49010a0612",
+      "response": {
+        "texts": [
+          "Estrella"
+        ],
+        "observations": [
+          {
+            "text": "Estrella",
+            "recognition_score": 0.9990601539611816,
+            "detection_score": 0.802601048644732,
+            "polygon_pixels": [
+              [
+                2,
+                0
+              ],
+              [
+                112,
+                11
+              ],
+              [
+                107,
+                47
+              ],
+              [
+                0,
+                33
+              ]
+            ],
+            "recognition_ms": 74.33274999493733
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 82.09016697946936
+    },
+    {
+      "id": "b45fef2565bc76e4_16",
+      "input_sha256": "20c6551792b002476f523efdd5edeae8648bbd034a6201953d86ba1e617791a8",
+      "response": {
+        "texts": [
+          "L"
+        ],
+        "observations": [
+          {
+            "text": "L",
+            "recognition_score": 0.2889433801174164,
+            "detection_score": 0.7500602793693543,
+            "polygon_pixels": [
+              [
+                15,
+                11
+              ],
+              [
+                23,
+                11
+              ],
+              [
+                23,
+                17
+              ],
+              [
+                15,
+                17
+              ]
+            ],
+            "recognition_ms": 72.95616704504937
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 76.94079104112461
+    },
+    {
+      "id": "b45fef2565bc76e4_7",
+      "input_sha256": "1a03ad0740141674aaf3c7afeef1491743eea4481ec8c68f1f06dea70025f7ae",
+      "response": {
+        "texts": [
+          "BUENA"
+        ],
+        "observations": [
+          {
+            "text": "BUENA",
+            "recognition_score": 0.9463073015213013,
+            "detection_score": 0.6491021074004447,
+            "polygon_pixels": [
+              [
+                21,
+                21
+              ],
+              [
+                176,
+                19
+              ],
+              [
+                177,
+                51
+              ],
+              [
+                21,
+                54
+              ]
+            ],
+            "recognition_ms": 74.28633299423382
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 83.7544160312973
+    },
+    {
+      "id": "211563903b4782e4_10",
+      "input_sha256": "b2e6578e14017524e484f073d710f4c4409ef8cba4a0396f01ef443aced92ac0",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 5.733042024075985
+    },
+    {
+      "id": "211563903b4782e4_2",
+      "input_sha256": "7d184f76cc8a762a52537c0b127dd71fc7a2325ba53a35d698941645e646c020",
+      "response": {
+        "texts": [
+          "51"
+        ],
+        "observations": [
+          {
+            "text": "51",
+            "recognition_score": 0.9908052682876587,
+            "detection_score": 0.9280836758757576,
+            "polygon_pixels": [
+              [
+                3,
+                0
+              ],
+              [
+                219,
+                9
+              ],
+              [
+                210,
+                214
+              ],
+              [
+                0,
+                208
+              ]
+            ],
+            "recognition_ms": 76.6836249968037
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 106.24833399197087
+    },
+    {
+      "id": "211563903b4782e4_1",
+      "input_sha256": "67f6dd9d1f45bc2d91676019cb7649a940d9ef13200cee692abf9059471bc32b",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 5.424999981187284
+    },
+    {
+      "id": "211563903b4782e4_3",
+      "input_sha256": "3303e1ed6fdf9935d862d5ce72768893710b6423d2175372c2e71c8fe720f638",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 15.638791024684906
+    },
+    {
+      "id": "211563903b4782e4_4",
+      "input_sha256": "fbeef652cade85dd78f02c28a808c7856c31c205a126f8528e5bc3b833ae2fbf",
+      "response": {
+        "texts": [
+          "S"
+        ],
+        "observations": [
+          {
+            "text": "S",
+            "recognition_score": 0.7816238403320312,
+            "detection_score": 0.8273447580233085,
+            "polygon_pixels": [
+              [
+                7,
+                9
+              ],
+              [
+                57,
+                9
+              ],
+              [
+                57,
+                98
+              ],
+              [
+                7,
+                98
+              ]
+            ],
+            "recognition_ms": 76.78458304144442
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 84.79624998290092
+    },
+    {
+      "id": "c4ce9cd260acf0e8_51",
+      "input_sha256": "f0253fd967be431d7d004661e83ae9a5e77f105ad77ec5cd918ceae97f5c035e",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.8416250026784837
+    },
+    {
+      "id": "c4ce9cd260acf0e8_50",
+      "input_sha256": "df0f70e940fc5ceaac9fdf5b31cee7aafd3c4e628167155257b2023c1a094e72",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.979333956725895
+    },
+    {
+      "id": "c4ce9cd260acf0e8_41",
+      "input_sha256": "b927824f25fb0a3567aaed25f2a5513338a7d6aad12939ea64485c45986afab2",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.8737910110503435
+    },
+    {
+      "id": "c4ce9cd260acf0e8_49",
+      "input_sha256": "702447fb1379ee2bae9edb33eaba7e05d508188c9fabcde65c26e10cefcbc649",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.126999992877245
+    },
+    {
+      "id": "c4ce9cd260acf0e8_45",
+      "input_sha256": "851468656ddd5b2c4bb6b2ca3e0424d7b1cff4cbab1349200549ee2adc19b9df",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.7003339966759086
+    },
+    {
+      "id": "fc5e25716377e42c_16",
+      "input_sha256": "e97a9095ead654bc912e165bd300ed2df48b7c43cb8b0149ff0829de52c381cc",
+      "response": {
+        "texts": [
+          "cm"
+        ],
+        "observations": [
+          {
+            "text": "cm",
+            "recognition_score": 0.8141282796859741,
+            "detection_score": 0.8291788779059697,
+            "polygon_pixels": [
+              [
+                0,
+                35
+              ],
+              [
+                91,
+                10
+              ],
+              [
+                109,
+                54
+              ],
+              [
+                10,
+                79
+              ]
+            ],
+            "recognition_ms": 76.7479999922216
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 85.51674999762326
+    },
+    {
+      "id": "fc5e25716377e42c_17",
+      "input_sha256": "e105df80236e43338c52f1d0d07efe8c9a217d0701a8e2809103ea7936eed2b8",
+      "response": {
+        "texts": [
+          "tua"
+        ],
+        "observations": [
+          {
+            "text": "tua",
+            "recognition_score": 0.8561632037162781,
+            "detection_score": 0.8796654825017384,
+            "polygon_pixels": [
+              [
+                3,
+                31
+              ],
+              [
+                109,
+                13
+              ],
+              [
+                118,
+                60
+              ],
+              [
+                12,
+                78
+              ]
+            ],
+            "recognition_ms": 77.22541695693508
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 86.87708299839869
+    },
+    {
+      "id": "fc5e25716377e42c_93",
+      "input_sha256": "d3adbf20bcd54bf4c4c740f4e43a6ae3e95bdfbf32b49444faf81996c70a5f40",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.006000002846122
+    },
+    {
+      "id": "fc5e25716377e42c_31",
+      "input_sha256": "846ca3527080f574980261f0f9045aeb239fc817779e27d30ee5064f214c5303",
+      "response": {
+        "texts": [
+          "feriste"
+        ],
+        "observations": [
+          {
+            "text": "feriste",
+            "recognition_score": 0.999811053276062,
+            "detection_score": 0.8129981278502042,
+            "polygon_pixels": [
+              [
+                5,
+                18
+              ],
+              [
+                164,
+                5
+              ],
+              [
+                167,
+                52
+              ],
+              [
+                7,
+                64
+              ]
+            ],
+            "recognition_ms": 76.73383300425485
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 86.08508302131668
+    },
+    {
+      "id": "fc5e25716377e42c_64",
+      "input_sha256": "4094504c8be8ec59174445e1b2535604041432d68aa91d1923a5cd1d9a4a3856",
+      "response": {
+        "texts": [
+          "dizendo:"
+        ],
+        "observations": [
+          {
+            "text": "dizendo:",
+            "recognition_score": 0.9842792749404907,
+            "detection_score": 0.9120557580503595,
+            "polygon_pixels": [
+              [
+                9,
+                11
+              ],
+              [
+                171,
+                9
+              ],
+              [
+                172,
+                34
+              ],
+              [
+                9,
+                36
+              ]
+            ],
+            "recognition_ms": 76.67304098140448
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 85.78866702737287
+    },
+    {
+      "id": "0568d30600d5cf11_30",
+      "input_sha256": "82c59a9c8d1c3ff2c0ff237e44d516c2451f90272a4ada0d9996763ffa599db1",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.288124979007989
+    },
+    {
+      "id": "0568d30600d5cf11_19",
+      "input_sha256": "0e77fb0aae821aaa10b621d0c11235923a017a9fa8c1a975c10a50058f404b02",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.3807079889811575
+    },
+    {
+      "id": "0568d30600d5cf11_51",
+      "input_sha256": "030d5266a5df3634ea2f73945e1849172e2c5bf3086a278bb479eefd76ceff0d",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.8393750437535346
+    },
+    {
+      "id": "0568d30600d5cf11_32",
+      "input_sha256": "cd7ae7bf532b7f2e7a4174304b21cf19e29b15fc48d17e02910cb08976d5ce8f",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.233541956637055
+    },
+    {
+      "id": "0568d30600d5cf11_16",
+      "input_sha256": "d84cfefd3cf531ecd1e7eebc8c90f016f1bf3a852ead0161da1a285733d7780f",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.5177500103600323
+    },
+    {
+      "id": "01cc0f8a81d39848_24",
+      "input_sha256": "e3be831b711be17def6c08f25266fbe9c62b0d7d86b18539ed3343cdbbbd3dff",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.360916034784168
+    },
+    {
+      "id": "01cc0f8a81d39848_20",
+      "input_sha256": "49f6305c46787584c3b6fdd5ca6dc0a94857e791445a273aa6dd78b6d65e887d",
+      "response": {
+        "texts": [
+          "DO!"
+        ],
+        "observations": [
+          {
+            "text": "DO!",
+            "recognition_score": 0.999453067779541,
+            "detection_score": 0.8861913976560271,
+            "polygon_pixels": [
+              [
+                0,
+                0
+              ],
+              [
+                68,
+                0
+              ],
+              [
+                68,
+                61
+              ],
+              [
+                0,
+                61
+              ]
+            ],
+            "recognition_ms": 76.87895803246647
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 82.28529198095202
+    },
+    {
+      "id": "01cc0f8a81d39848_30",
+      "input_sha256": "286bf5a07ed08add2c4fd91e83940ef50a030f2bdfbafea08705456a59f118d8",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.507334040477872
+    },
+    {
+      "id": "01cc0f8a81d39848_11",
+      "input_sha256": "fc7a6f504e05bd3c4818b23d15485a2f130941da8803f67c2066bb854d0e8b5e",
+      "response": {
+        "texts": [
+          "AIRLINES,"
+        ],
+        "observations": [
+          {
+            "text": "AIRLINES,",
+            "recognition_score": 0.9981739521026611,
+            "detection_score": 0.8814727167177826,
+            "polygon_pixels": [
+              [
+                2,
+                8
+              ],
+              [
+                168,
+                0
+              ],
+              [
+                170,
+                53
+              ],
+              [
+                4,
+                62
+              ]
+            ],
+            "recognition_ms": 76.2507920153439
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 85.10979101993144
+    },
+    {
+      "id": "01cc0f8a81d39848_23",
+      "input_sha256": "d510679b15497775f9b229be993272a417075d3855e9966cb83cfbf6e5743bbe",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.3920829882845283
+    },
+    {
+      "id": "bcae4b24082da442_21",
+      "input_sha256": "4d203dcb7c30393c7068eaec331dd5f5c4b7e1f56eb4ca54c7e8bf758058dd39",
+      "response": {
+        "texts": [
+          "o"
+        ],
+        "observations": [
+          {
+            "text": "o",
+            "recognition_score": 0.17420893907546997,
+            "detection_score": 0.81272201570017,
+            "polygon_pixels": [
+              [
+                6,
+                5
+              ],
+              [
+                15,
+                5
+              ],
+              [
+                15,
+                13
+              ],
+              [
+                6,
+                13
+              ]
+            ],
+            "recognition_ms": 74.8800000292249
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 78.68250005412847
+    },
+    {
+      "id": "bcae4b24082da442_18",
+      "input_sha256": "fb339551a6fc6d4284fe262d15e485d2f8b54c7ba99f6813022794b6426eb8ec",
+      "response": {
+        "texts": [
+          "PETER"
+        ],
+        "observations": [
+          {
+            "text": "PETER",
+            "recognition_score": 0.9989581108093262,
+            "detection_score": 0.7940318740489678,
+            "polygon_pixels": [
+              [
+                1,
+                3
+              ],
+              [
+                73,
+                3
+              ],
+              [
+                73,
+                22
+              ],
+              [
+                1,
+                22
+              ]
+            ],
+            "recognition_ms": 79.5955000212416
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 84.54337500734255
+    },
+    {
+      "id": "bcae4b24082da442_12",
+      "input_sha256": "83712d9d0cee93235525f7f5643f944bf8678b3312e0359ce234bec12284eb4d",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 5.922791024204344
+    },
+    {
+      "id": "bcae4b24082da442_29",
+      "input_sha256": "2bc060eb5794253eb026abf0c10df25e06bcf413bff1a62ddd354834927ba6dd",
+      "response": {
+        "texts": [
+          "BRADBURY"
+        ],
+        "observations": [
+          {
+            "text": "BRADBURY",
+            "recognition_score": 0.9619237780570984,
+            "detection_score": 0.6804217315122378,
+            "polygon_pixels": [
+              [
+                1,
+                1
+              ],
+              [
+                131,
+                3
+              ],
+              [
+                130,
+                24
+              ],
+              [
+                1,
+                22
+              ]
+            ],
+            "recognition_ms": 76.52924995636567
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 81.58570900559425
+    },
+    {
+      "id": "bcae4b24082da442_8",
+      "input_sha256": "f894e80673ae50f510e4b894ad7b2644b76101d8ee5c97b0f839decec87b8099",
+      "response": {
+        "texts": [
+          "INTRODUCTION"
+        ],
+        "observations": [
+          {
+            "text": "INTRODUCTION",
+            "recognition_score": 0.9413557052612305,
+            "detection_score": 0.7660118676487018,
+            "polygon_pixels": [
+              [
+                2,
+                1
+              ],
+              [
+                219,
+                7
+              ],
+              [
+                219,
+                25
+              ],
+              [
+                2,
+                18
+              ]
+            ],
+            "recognition_ms": 137.12733297143131
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 143.80983397131786
+    },
+    {
+      "id": "173ec59258b40567_3",
+      "input_sha256": "19894a382bb44310268c9257ae0a6d6683365d522f4dca80b75fdaa766042c1e",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 6.836833024863154
+    },
+    {
+      "id": "173ec59258b40567_4",
+      "input_sha256": "13635ed2d0d8cf63bd3efd99b48fdddafeb69b23771ab7e63a01409579c9741f",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 6.250249978620559
+    },
+    {
+      "id": "173ec59258b40567_1",
+      "input_sha256": "83c82de7fb57d0a413b9cd937308b3c8a0195cc051f633023e0cb5245e4b6ee5",
+      "response": {
+        "texts": [
+          "cmd"
+        ],
+        "observations": [
+          {
+            "text": "cmd",
+            "recognition_score": 0.9715295433998108,
+            "detection_score": 0.9211684923932663,
+            "polygon_pixels": [
+              [
+                8,
+                32
+              ],
+              [
+                192,
+                32
+              ],
+              [
+                192,
+                94
+              ],
+              [
+                8,
+                94
+              ]
+            ],
+            "recognition_ms": 76.995084004011
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 90.66724998410791
+    },
+    {
+      "id": "173ec59258b40567_7",
+      "input_sha256": "814295d712604794dd66954c0b931aa24b7e359dd5879501042d66a56ab3f3af",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 5.3215420339256525
+    },
+    {
+      "id": "173ec59258b40567_6",
+      "input_sha256": "18e2c1be092e9a3feb8e2d21cdb06ed2e0fb1f200aaf76c94b73d666b0438a7b",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 5.903332959860563
+    },
+    {
+      "id": "fb8def9936391f5c_23",
+      "input_sha256": "e0f95beed035fd799839e3dc4238adf3c0caef53f4592c6820a0ef11c5ea0c7c",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.0554170263931155
+    },
+    {
+      "id": "fb8def9936391f5c_3",
+      "input_sha256": "26613bf985ccd8ceaba41c4c555d7b2661ab9ed2bdd1ed8a1487fc6ee0da3d97",
+      "response": {
+        "texts": [
+          "The"
+        ],
+        "observations": [
+          {
+            "text": "The",
+            "recognition_score": 0.7286890149116516,
+            "detection_score": 0.6928542688559505,
+            "polygon_pixels": [
+              [
+                26,
+                0
+              ],
+              [
+                63,
+                35
+              ],
+              [
+                44,
+                54
+              ],
+              [
+                4,
+                19
+              ]
+            ],
+            "recognition_ms": 76.54237502720207
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 81.76720899064094
+    },
+    {
+      "id": "fb8def9936391f5c_4",
+      "input_sha256": "4adeb54848c82ed2df258fe6d36cb40dc4fab5df89fac3adbede8d1a0fb5f0a6",
+      "response": {
+        "texts": [
+          "MARKUS",
+          "TA",
+          "RDINARY New"
+        ],
+        "observations": [
+          {
+            "text": "MARKUS",
+            "recognition_score": 0.9997653961181641,
+            "detection_score": 0.6803464237969548,
+            "polygon_pixels": [
+              [
+                53,
+                4
+              ],
+              [
+                267,
+                163
+              ],
+              [
+                231,
+                213
+              ],
+              [
+                17,
+                55
+              ]
+            ],
+            "recognition_ms": 76.6594170127064
+          },
+          {
+            "text": "TA",
+            "recognition_score": 0.71342933177948,
+            "detection_score": 0.6426013295503055,
+            "polygon_pixels": [
+              [
+                199,
+                0
+              ],
+              [
+                275,
+                77
+              ],
+              [
+                233,
+                138
+              ],
+              [
+                134,
+                29
+              ]
+            ],
+            "recognition_ms": 76.26679202076048
+          },
+          {
+            "text": "RDINARY New",
+            "recognition_score": 0.8190488219261169,
+            "detection_score": 0.6621380679719433,
+            "polygon_pixels": [
+              [
+                90,
+                113
+              ],
+              [
+                187,
+                184
+              ],
+              [
+                174,
+                204
+              ],
+              [
+                76,
+                132
+              ]
+            ],
+            "recognition_ms": 77.35954195959494
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 267.057457996998
+    },
+    {
+      "id": "fb8def9936391f5c_1",
+      "input_sha256": "82b6d0db2f369fc13419b9ed2b9e04777c832edb5d68e28e5fd5e8540dc659b3",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.950208018068224
+    },
+    {
+      "id": "fb8def9936391f5c_29",
+      "input_sha256": "c67fad62eb36a3f6829fef408fe629d020f86cefc1035af57c56722e2641cdba",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 6.068790971767157
+    },
+    {
+      "id": "311fc727efa87aa1_8",
+      "input_sha256": "76ea032554ce1de2c3277800151edc3c50e9b881678562ef894c09f02c4c6b48",
+      "response": {
+        "texts": [
+          "STRIND"
+        ],
+        "observations": [
+          {
+            "text": "STRIND",
+            "recognition_score": 0.9107940793037415,
+            "detection_score": 0.7718743353913615,
+            "polygon_pixels": [
+              [
+                1,
+                27
+              ],
+              [
+                125,
+                1
+              ],
+              [
+                131,
+                37
+              ],
+              [
+                7,
+                63
+              ]
+            ],
+            "recognition_ms": 76.11362502211705
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 83.9027920155786
+    },
+    {
+      "id": "311fc727efa87aa1_12",
+      "input_sha256": "8e6aaafb34a2059cd7cf36f4c6077b104b4682e654f700152d9dde1856c7367e",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 5.522832972928882
+    },
+    {
+      "id": "311fc727efa87aa1_13",
+      "input_sha256": "d6bf8e5baacdf121f55da1bc2bd11d86a6f8b203db0ad13fc51458fda994c964",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 5.634916014969349
+    },
+    {
+      "id": "311fc727efa87aa1_6",
+      "input_sha256": "8eed7ebcbbba6a370e349808a9af3483e400fd31a2adac8a0af38d806ec1531d",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 5.456459010019898
+    },
+    {
+      "id": "311fc727efa87aa1_7",
+      "input_sha256": "a8121a1f8400df6abaf9639947fc3f6b5ae37f60a33ed6661c3865e2b90cf042",
+      "response": {
+        "texts": [
+          "LIBRAIRY"
+        ],
+        "observations": [
+          {
+            "text": "LIBRAIRY",
+            "recognition_score": 0.8857057094573975,
+            "detection_score": 0.8728791572010326,
+            "polygon_pixels": [
+              [
+                0,
+                9
+              ],
+              [
+                116,
+                0
+              ],
+              [
+                120,
+                42
+              ],
+              [
+                2,
+                51
+              ]
+            ],
+            "recognition_ms": 83.84458301588893
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 91.20833297492936
+    },
+    {
+      "id": "61780b5dc890589c_23",
+      "input_sha256": "5ba5e6256e6e6f5f78d248edf07f498c32f5e6e32bf98785996dbecfeb5c8f20",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.076249955687672
+    },
+    {
+      "id": "61780b5dc890589c_66",
+      "input_sha256": "a6173057cefbcf93cbb20e5f903ea9e44b87e1c7a0fa66959cd9e94bb829a607",
+      "response": {
+        "texts": [
+          "Real"
+        ],
+        "observations": [
+          {
+            "text": "Real",
+            "recognition_score": 0.9099606275558472,
+            "detection_score": 0.8333085390385641,
+            "polygon_pixels": [
+              [
+                29,
+                2
+              ],
+              [
+                79,
+                0
+              ],
+              [
+                80,
+                30
+              ],
+              [
+                32,
+                33
+              ]
+            ],
+            "recognition_ms": 78.21629196405411
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 82.90862501598895
+    },
+    {
+      "id": "61780b5dc890589c_14",
+      "input_sha256": "9702de3a56910f9706a238fdb9739a1338c2d0ccc932ea45e25119a5da94819f",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.249709028750658
+    },
+    {
+      "id": "61780b5dc890589c_53",
+      "input_sha256": "377be0335c4b44a8bb93363c52fd70e5a4797f2abc4bf94bd6298724edd0e3be",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.737375013064593
+    },
+    {
+      "id": "61780b5dc890589c_63",
+      "input_sha256": "3e61fcc9409866d940c554d4eb1ee44d5d999a76c4f27960e62bdb8a9ce224ad",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.3529170216061175
+    },
+    {
+      "id": "9a3382d727c7add1_18",
+      "input_sha256": "c52ff6290ccaceea21647b2c8598178f37041e5619767a32c7163a20cfd84b42",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.281041979789734
+    },
+    {
+      "id": "9a3382d727c7add1_22",
+      "input_sha256": "a8db013975fa1291b1e93d85f627e4862430eb070274760fce58946198144e9b",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.928208025172353
+    },
+    {
+      "id": "9a3382d727c7add1_6",
+      "input_sha256": "0c6830cb3d01f93c542f6456b84da733c62e1f7720f01f35201542dede991256",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.697332973591983
+    },
+    {
+      "id": "9a3382d727c7add1_12",
+      "input_sha256": "21839c17a4c5d2273b95d8ce82f1099115239a2b2aff80e8c43147c9b5ca8a34",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.6030419869348407
+    },
+    {
+      "id": "9a3382d727c7add1_21",
+      "input_sha256": "b4d629f59e8c723d06b9f4d6b0d9b893c2f08f17c345cb2f1dc170456a6e3128",
+      "response": {
+        "texts": [
+          "mdo"
+        ],
+        "observations": [
+          {
+            "text": "mdo",
+            "recognition_score": 0.3971952497959137,
+            "detection_score": 0.719416469047532,
+            "polygon_pixels": [
+              [
+                5,
+                0
+              ],
+              [
+                19,
+                0
+              ],
+              [
+                19,
+                4
+              ],
+              [
+                5,
+                4
+              ]
+            ],
+            "recognition_ms": 77.88412499940023
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 81.61670801928267
+    },
+    {
+      "id": "523f4b68dcd52c3b_7",
+      "input_sha256": "2f14f62e15b7b7292b30c10a93b0152aa22b874433e7f89eb48fea39e65f1a85",
+      "response": {
+        "texts": [
+          "Buying"
+        ],
+        "observations": [
+          {
+            "text": "Buying",
+            "recognition_score": 0.8562646508216858,
+            "detection_score": 0.8454743932000566,
+            "polygon_pixels": [
+              [
+                0,
+                0
+              ],
+              [
+                106,
+                1
+              ],
+              [
+                106,
+                62
+              ],
+              [
+                0,
+                55
+              ]
+            ],
+            "recognition_ms": 77.00908300466835
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 83.74608401209116
+    },
+    {
+      "id": "523f4b68dcd52c3b_8",
+      "input_sha256": "38774d1841d8976c8283adeafd30ba99345e3982d042e0b1c61e077ab272a5e3",
+      "response": {
+        "texts": [
+          "Israeli"
+        ],
+        "observations": [
+          {
+            "text": "Israeli",
+            "recognition_score": 0.9221906065940857,
+            "detection_score": 0.9013877150620129,
+            "polygon_pixels": [
+              [
+                0,
+                0
+              ],
+              [
+                120,
+                4
+              ],
+              [
+                118,
+                62
+              ],
+              [
+                0,
+                57
+              ]
+            ],
+            "recognition_ms": 77.6680419803597
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 85.65445803105831
+    },
+    {
+      "id": "523f4b68dcd52c3b_1",
+      "input_sha256": "d398b7f0ed85eb44522d5eeb37f5fb877d5d6616c0a3f031638f720f40d39b17",
+      "response": {
+        "texts": [
+          "INDIA"
+        ],
+        "observations": [
+          {
+            "text": "INDIA",
+            "recognition_score": 0.9973152875900269,
+            "detection_score": 0.9060457683277082,
+            "polygon_pixels": [
+              [
+                6,
+                8
+              ],
+              [
+                140,
+                2
+              ],
+              [
+                143,
+                69
+              ],
+              [
+                9,
+                75
+              ]
+            ],
+            "recognition_ms": 77.13870797306299
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 84.89537501009181
+    },
+    {
+      "id": "523f4b68dcd52c3b_11",
+      "input_sha256": "f4c7e51e7993cdd753df149ae0fc16e43d7c2f69c78b75d7ea587b1dc6f5138d",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 5.329583014827222
+    },
+    {
+      "id": "523f4b68dcd52c3b_5",
+      "input_sha256": "dc80e84e0c50653a1f177145f5c9a6247bbd51b6f50db181c4a948fec0ba408c",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.273291978985071
+    },
+    {
+      "id": "0f4f428ec2fc6133_1",
+      "input_sha256": "52aac96a119fdc4b7010ff6c85602a0709be723ecfe2bc167a8fa4bba7ea01b2",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.4102079807780683
+    },
+    {
+      "id": "0f4f428ec2fc6133_17",
+      "input_sha256": "c967b80fd71f4ab65e9989fb82a9771eea1f68d66a0654116507ca922bc1976f",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.3909580088220537
+    },
+    {
+      "id": "0f4f428ec2fc6133_3",
+      "input_sha256": "4ea26921113d5513cbe789fe7c8064cc4cdc46cf4cf8e657894ead2f2132a540",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.42399999499321
+    },
+    {
+      "id": "0f4f428ec2fc6133_10",
+      "input_sha256": "afd629385b29b4fdda6eb7d885c0d4757c60e925e2ba28893d62d0ba8d5c8bba",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.23595798201859
+    },
+    {
+      "id": "0f4f428ec2fc6133_23",
+      "input_sha256": "9a44f0b46eaabd2b655cba2f0fb85fd7288a965e0d48027335bba8efd78d30de",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.4186249831691384
+    },
+    {
+      "id": "76dc6a5cf82664e8_70",
+      "input_sha256": "dce798eec283c53ee9f077c9405a045ff077a0fdaeea59cacf5f17955a8d6ad3",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.5089579760096967
+    },
+    {
+      "id": "76dc6a5cf82664e8_2",
+      "input_sha256": "b3274ea7853b63dbce91111f2758e4382e08933003af7a623e4a3999a95c7f45",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.3848329912871122
+    },
+    {
+      "id": "76dc6a5cf82664e8_27",
+      "input_sha256": "17b7ce43d747a2abd8821da56e4ca5da57ebd1a41cb7011e96d33a570229be41",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.5932089667767286
+    },
+    {
+      "id": "76dc6a5cf82664e8_7",
+      "input_sha256": "52c5941f8482d8963fae96acfce32617971815f038aa2cc944c7f16c5107cb73",
+      "response": {
+        "texts": [
+          "Touchbeing"
+        ],
+        "observations": [
+          {
+            "text": "Touchbeing",
+            "recognition_score": 0.9556881189346313,
+            "detection_score": 0.7959524094377158,
+            "polygon_pixels": [
+              [
+                4,
+                5
+              ],
+              [
+                47,
+                5
+              ],
+              [
+                47,
+                11
+              ],
+              [
+                4,
+                11
+              ]
+            ],
+            "recognition_ms": 82.97066600061953
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 87.12504099821672
+    },
+    {
+      "id": "76dc6a5cf82664e8_38",
+      "input_sha256": "fe58659ce64464d821ddfe0f0dd53cd49a3f5b969eb22c5a803d6c5d9bdc61c9",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.768999991938472
+    },
+    {
+      "id": "17af356f6eae6f6c_1",
+      "input_sha256": "c4aa4ac8d38ade414ef6f8d3f5c024f316df3d92c0551f823a1c67af1a46b1a7",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.260958987288177
+    },
+    {
+      "id": "17af356f6eae6f6c_2",
+      "input_sha256": "97e3cbe3faabfb7d5b38e077de6a8be20075084c8fd6d1f8890f661af9c71346",
+      "response": {
+        "texts": [
+          "7"
+        ],
+        "observations": [
+          {
+            "text": "7",
+            "recognition_score": 0.2292347252368927,
+            "detection_score": 0.6660873902057854,
+            "polygon_pixels": [
+              [
+                9,
+                40
+              ],
+              [
+                26,
+                40
+              ],
+              [
+                26,
+                51
+              ],
+              [
+                9,
+                51
+              ]
+            ],
+            "recognition_ms": 76.12429198343307
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 82.30066701071337
+    },
+    {
+      "id": "17af356f6eae6f6c_3",
+      "input_sha256": "d8383110eb290bad6b1f1b4725193f5c68f1731ebfb852045ce3e1b21522041e",
+      "response": {
+        "texts": [
+          "www.trxc"
+        ],
+        "observations": [
+          {
+            "text": "www.trxc",
+            "recognition_score": 0.9554909467697144,
+            "detection_score": 0.6167249119366781,
+            "polygon_pixels": [
+              [
+                13,
+                12
+              ],
+              [
+                50,
+                8
+              ],
+              [
+                52,
+                16
+              ],
+              [
+                15,
+                20
+              ]
+            ],
+            "recognition_ms": 77.3977090138942
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 82.0461250259541
+    },
+    {
+      "id": "17af356f6eae6f6c_5",
+      "input_sha256": "984936be3ab2b5dcbf799a04e716b43fa211537e0604ef68937fae797705fabd",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.768624970689416
+    },
+    {
+      "id": "17af356f6eae6f6c_7",
+      "input_sha256": "e5a8e7b32f54fb288275910d1dabdef578b7244aba4cf1cce4c3652009819132",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.28608397487551
+    },
+    {
+      "id": "2346ce571a0f0d8b_10",
+      "input_sha256": "37c48a53bbde4b00af8dcef09747578c2c4000e098e793a190fd9d567b7bd351",
+      "response": {
+        "texts": [
+          "OSE"
+        ],
+        "observations": [
+          {
+            "text": "OSE",
+            "recognition_score": 0.9958124160766602,
+            "detection_score": 0.8123927614653115,
+            "polygon_pixels": [
+              [
+                9,
+                2
+              ],
+              [
+                48,
+                2
+              ],
+              [
+                48,
+                22
+              ],
+              [
+                9,
+                22
+              ]
+            ],
+            "recognition_ms": 78.03662499645725
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 83.5076660150662
+    },
+    {
+      "id": "2346ce571a0f0d8b_18",
+      "input_sha256": "d824ca12c2a80195951385113face4c791e52f40204c5a06345ae477f2407889",
+      "response": {
+        "texts": [
+          "HORN"
+        ],
+        "observations": [
+          {
+            "text": "HORN",
+            "recognition_score": 0.9977236986160278,
+            "detection_score": 0.8095003168369428,
+            "polygon_pixels": [
+              [
+                0,
+                33
+              ],
+              [
+                250,
+                0
+              ],
+              [
+                262,
+                82
+              ],
+              [
+                2,
+                109
+              ]
+            ],
+            "recognition_ms": 78.06304097175598
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 93.9527089940384
+    },
+    {
+      "id": "2346ce571a0f0d8b_16",
+      "input_sha256": "3583e74026539641454105c95eefed3977694cfc6895f02b2b164aecd11e0464",
+      "response": {
+        "texts": [
+          "ook"
+        ],
+        "observations": [
+          {
+            "text": "ook",
+            "recognition_score": 0.8904692530632019,
+            "detection_score": 0.7937313446485876,
+            "polygon_pixels": [
+              [
+                1,
+                22
+              ],
+              [
+                112,
+                0
+              ],
+              [
+                121,
+                55
+              ],
+              [
+                10,
+                77
+              ]
+            ],
+            "recognition_ms": 77.2929170052521
+          }
+        ]
+      },
+      "error": null,
+      "wall_ms": 84.99408303759992
+    },
+    {
+      "id": "2346ce571a0f0d8b_1",
+      "input_sha256": "f1f71dee739c7c588d08397eb697caff683f1bde4e081ad230ab313d5d0866f9",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.595375037752092
+    },
+    {
+      "id": "2346ce571a0f0d8b_14",
+      "input_sha256": "088a4932ec1e43772abba807101a849b16596c04233afd5353c0e01bcccdf144",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.081957973539829
+    },
+    {
+      "id": "81a87534b54bb09c_2",
+      "input_sha256": "afdd427724bcd321c57eee135ab1243b1cad8e2e82a1291a6bfd2eb3826f8efc",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.342458967585117
+    },
+    {
+      "id": "81a87534b54bb09c_11",
+      "input_sha256": "853ca098b55ee2fea2c32bafe4510f63d5dc06b6db7b2d079faa5fc96c0a8104",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 4.4535830384120345
+    },
+    {
+      "id": "81a87534b54bb09c_19",
+      "input_sha256": "6a5479db0e06eeefd85b3ba879a08ba7212ee32ec60cd28e38436e775b4f0736",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 3.453915996942669
+    },
+    {
+      "id": "81a87534b54bb09c_1",
+      "input_sha256": "57d0dd0b86c5e669b74fcabf672c3c66f8cb4fc9bc511c88734371a96086156e",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 11.90866599790752
+    },
+    {
+      "id": "81a87534b54bb09c_3",
+      "input_sha256": "b3b9dc3b1e409498576fdcb62f80ae413248db51647a0ea5a5a0c83c34d05fff",
+      "response": {
+        "texts": [],
+        "observations": []
+      },
+      "error": null,
+      "wall_ms": 6.1912909732200205
+    }
+  ]
+}

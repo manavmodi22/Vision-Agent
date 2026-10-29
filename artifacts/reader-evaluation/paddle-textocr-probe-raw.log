@@ -1,0 +1,104 @@
+/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/paddle/utils/cpp_extension/extension_utils.py:718: UserWarning: No ccache found. Please be aware that recompiling all source files may be required. You can download and install ccache from: https://github.com/ccache/ccache/blob/master/doc/INSTALL.md
+  warnings.warn(warning_message)
+WARNING: OMP_NUM_THREADS set to 2, not 1. The computation speed will not be optimized if you use data parallel. It will fail if this PaddlePaddle binary is compiled with OpenBlas since OpenBlas does not support multi-threads.
+PLEASE USE OMP_NUM_THREADS WISELY.
+{"id": "0", "observations": []}
+{"id": "1", "observations": []}
+{"id": "2", "observations": []}
+{"id": "3", "observations": []}
+{"id": "4", "observations": []}
+{"id": "5", "observations": []}
+{"id": "6", "observations": []}
+{"id": "7", "observations": []}
+{"id": "8", "observations": []}
+{"id": "9", "observations": [{"text": "uBa", "recognition_score": 0.6217882633209229, "detection_score": 0.7285791569116145, "polygon_pixels": [[13, 0], [46, 7], [35, 86], [2, 75]], "recognition_ms": 98.25191699201241}]}
+{"id": "10", "observations": [{"text": "Estrella Galicia", "recognition_score": 0.9931062459945679, "detection_score": 0.7466486141694647, "polygon_pixels": [[5, 6], [187, 5], [188, 39], [5, 40]], "recognition_ms": 77.0606659934856}, {"text": "O", "recognition_score": 0.5342912673950195, "detection_score": 0.6908237786857835, "polygon_pixels": [[175, 9], [197, 9], [197, 24], [175, 24]], "recognition_ms": 73.06604203768075}, {"text": "EXAGERA", "recognition_score": 0.8445997834205627, "detection_score": 0.7390479617360888, "polygon_pixels": [[6, 31], [243, 20], [246, 70], [9, 81]], "recognition_ms": 73.57312500244007}]}
+{"id": "11", "observations": []}
+{"id": "12", "observations": [{"text": "Estrella", "recognition_score": 0.9990601539611816, "detection_score": 0.802601048644732, "polygon_pixels": [[2, 0], [112, 11], [107, 47], [0, 33]], "recognition_ms": 74.33274999493733}]}
+{"id": "13", "observations": [{"text": "L", "recognition_score": 0.2889433801174164, "detection_score": 0.7500602793693543, "polygon_pixels": [[15, 11], [23, 11], [23, 17], [15, 17]], "recognition_ms": 72.95616704504937}]}
+{"id": "14", "observations": [{"text": "BUENA", "recognition_score": 0.9463073015213013, "detection_score": 0.6491021074004447, "polygon_pixels": [[21, 21], [176, 19], [177, 51], [21, 54]], "recognition_ms": 74.28633299423382}]}
+{"id": "15", "observations": []}
+{"id": "16", "observations": [{"text": "51", "recognition_score": 0.9908052682876587, "detection_score": 0.9280836758757576, "polygon_pixels": [[3, 0], [219, 9], [210, 214], [0, 208]], "recognition_ms": 76.6836249968037}]}
+{"id": "17", "observations": []}
+{"id": "18", "observations": []}
+{"id": "19", "observations": [{"text": "S", "recognition_score": 0.7816238403320312, "detection_score": 0.8273447580233085, "polygon_pixels": [[7, 9], [57, 9], [57, 98], [7, 98]], "recognition_ms": 76.78458304144442}]}
+{"id": "20", "observations": []}
+{"id": "21", "observations": []}
+{"id": "22", "observations": []}
+{"id": "23", "observations": []}
+{"id": "24", "observations": []}
+{"id": "25", "observations": [{"text": "cm", "recognition_score": 0.8141282796859741, "detection_score": 0.8291788779059697, "polygon_pixels": [[0, 35], [91, 10], [109, 54], [10, 79]], "recognition_ms": 76.7479999922216}]}
+{"id": "26", "observations": [{"text": "tua", "recognition_score": 0.8561632037162781, "detection_score": 0.8796654825017384, "polygon_pixels": [[3, 31], [109, 13], [118, 60], [12, 78]], "recognition_ms": 77.22541695693508}]}
+{"id": "27", "observations": []}
+{"id": "28", "observations": [{"text": "feriste", "recognition_score": 0.999811053276062, "detection_score": 0.8129981278502042, "polygon_pixels": [[5, 18], [164, 5], [167, 52], [7, 64]], "recognition_ms": 76.73383300425485}]}
+{"id": "29", "observations": [{"text": "dizendo:", "recognition_score": 0.9842792749404907, "detection_score": 0.9120557580503595, "polygon_pixels": [[9, 11], [171, 9], [172, 34], [9, 36]], "recognition_ms": 76.67304098140448}]}
+{"id": "30", "observations": []}
+{"id": "31", "observations": []}
+{"id": "32", "observations": []}
+{"id": "33", "observations": []}
+{"id": "34", "observations": []}
+{"id": "35", "observations": []}
+{"id": "36", "observations": [{"text": "DO!", "recognition_score": 0.999453067779541, "detection_score": 0.8861913976560271, "polygon_pixels": [[0, 0], [68, 0], [68, 61], [0, 61]], "recognition_ms": 76.87895803246647}]}
+{"id": "37", "observations": []}
+{"id": "38", "observations": [{"text": "AIRLINES,", "recognition_score": 0.9981739521026611, "detection_score": 0.8814727167177826, "polygon_pixels": [[2, 8], [168, 0], [170, 53], [4, 62]], "recognition_ms": 76.2507920153439}]}
+{"id": "39", "observations": []}
+{"id": "40", "observations": [{"text": "o", "recognition_score": 0.17420893907546997, "detection_score": 0.81272201570017, "polygon_pixels": [[6, 5], [15, 5], [15, 13], [6, 13]], "recognition_ms": 74.8800000292249}]}
+{"id": "41", "observations": [{"text": "PETER", "recognition_score": 0.9989581108093262, "detection_score": 0.7940318740489678, "polygon_pixels": [[1, 3], [73, 3], [73, 22], [1, 22]], "recognition_ms": 79.5955000212416}]}
+{"id": "42", "observations": []}
+{"id": "43", "observations": [{"text": "BRADBURY", "recognition_score": 0.9619237780570984, "detection_score": 0.6804217315122378, "polygon_pixels": [[1, 1], [131, 3], [130, 24], [1, 22]], "recognition_ms": 76.52924995636567}]}
+{"id": "44", "observations": [{"text": "INTRODUCTION", "recognition_score": 0.9413557052612305, "detection_score": 0.7660118676487018, "polygon_pixels": [[2, 1], [219, 7], [219, 25], [2, 18]], "recognition_ms": 137.12733297143131}]}
+{"id": "45", "observations": []}
+{"id": "46", "observations": []}
+{"id": "47", "observations": [{"text": "cmd", "recognition_score": 0.9715295433998108, "detection_score": 0.9211684923932663, "polygon_pixels": [[8, 32], [192, 32], [192, 94], [8, 94]], "recognition_ms": 76.995084004011}]}
+{"id": "48", "observations": []}
+{"id": "49", "observations": []}
+{"id": "50", "observations": []}
+{"id": "51", "observations": [{"text": "The", "recognition_score": 0.7286890149116516, "detection_score": 0.6928542688559505, "polygon_pixels": [[26, 0], [63, 35], [44, 54], [4, 19]], "recognition_ms": 76.54237502720207}]}
+{"id": "52", "observations": [{"text": "MARKUS", "recognition_score": 0.9997653961181641, "detection_score": 0.6803464237969548, "polygon_pixels": [[53, 4], [267, 163], [231, 213], [17, 55]], "recognition_ms": 76.6594170127064}, {"text": "TA", "recognition_score": 0.71342933177948, "detection_score": 0.6426013295503055, "polygon_pixels": [[199, 0], [275, 77], [233, 138], [134, 29]], "recognition_ms": 76.26679202076048}, {"text": "RDINARY New", "recognition_score": 0.8190488219261169, "detection_score": 0.6621380679719433, "polygon_pixels": [[90, 113], [187, 184], [174, 204], [76, 132]], "recognition_ms": 77.35954195959494}]}
+{"id": "53", "observations": []}
+{"id": "54", "observations": []}
+{"id": "55", "observations": [{"text": "STRIND", "recognition_score": 0.9107940793037415, "detection_score": 0.7718743353913615, "polygon_pixels": [[1, 27], [125, 1], [131, 37], [7, 63]], "recognition_ms": 76.11362502211705}]}
+{"id": "56", "observations": []}
+{"id": "57", "observations": []}
+{"id": "58", "observations": []}
+{"id": "59", "observations": [{"text": "LIBRAIRY", "recognition_score": 0.8857057094573975, "detection_score": 0.8728791572010326, "polygon_pixels": [[0, 9], [116, 0], [120, 42], [2, 51]], "recognition_ms": 83.84458301588893}]}
+{"id": "60", "observations": []}
+{"id": "61", "observations": [{"text": "Real", "recognition_score": 0.9099606275558472, "detection_score": 0.8333085390385641, "polygon_pixels": [[29, 2], [79, 0], [80, 30], [32, 33]], "recognition_ms": 78.21629196405411}]}
+{"id": "62", "observations": []}
+{"id": "63", "observations": []}
+{"id": "64", "observations": []}
+{"id": "65", "observations": []}
+{"id": "66", "observations": []}
+{"id": "67", "observations": []}
+{"id": "68", "observations": []}
+{"id": "69", "observations": [{"text": "mdo", "recognition_score": 0.3971952497959137, "detection_score": 0.719416469047532, "polygon_pixels": [[5, 0], [19, 0], [19, 4], [5, 4]], "recognition_ms": 77.88412499940023}]}
+{"id": "70", "observations": [{"text": "Buying", "recognition_score": 0.8562646508216858, "detection_score": 0.8454743932000566, "polygon_pixels": [[0, 0], [106, 1], [106, 62], [0, 55]], "recognition_ms": 77.00908300466835}]}
+{"id": "71", "observations": [{"text": "Israeli", "recognition_score": 0.9221906065940857, "detection_score": 0.9013877150620129, "polygon_pixels": [[0, 0], [120, 4], [118, 62], [0, 57]], "recognition_ms": 77.6680419803597}]}
+{"id": "72", "observations": [{"text": "INDIA", "recognition_score": 0.9973152875900269, "detection_score": 0.9060457683277082, "polygon_pixels": [[6, 8], [140, 2], [143, 69], [9, 75]], "recognition_ms": 77.13870797306299}]}
+{"id": "73", "observations": []}
+{"id": "74", "observations": []}
+{"id": "75", "observations": []}
+{"id": "76", "observations": []}
+{"id": "77", "observations": []}
+{"id": "78", "observations": []}
+{"id": "79", "observations": []}
+{"id": "80", "observations": []}
+{"id": "81", "observations": []}
+{"id": "82", "observations": []}
+{"id": "83", "observations": [{"text": "Touchbeing", "recognition_score": 0.9556881189346313, "detection_score": 0.7959524094377158, "polygon_pixels": [[4, 5], [47, 5], [47, 11], [4, 11]], "recognition_ms": 82.97066600061953}]}
+{"id": "84", "observations": []}
+{"id": "85", "observations": []}
+{"id": "86", "observations": [{"text": "7", "recognition_score": 0.2292347252368927, "detection_score": 0.6660873902057854, "polygon_pixels": [[9, 40], [26, 40], [26, 51], [9, 51]], "recognition_ms": 76.12429198343307}]}
+{"id": "87", "observations": [{"text": "www.trxc", "recognition_score": 0.9554909467697144, "detection_score": 0.6167249119366781, "polygon_pixels": [[13, 12], [50, 8], [52, 16], [15, 20]], "recognition_ms": 77.3977090138942}]}
+{"id": "88", "observations": []}
+{"id": "89", "observations": []}
+{"id": "90", "observations": [{"text": "OSE", "recognition_score": 0.9958124160766602, "detection_score": 0.8123927614653115, "polygon_pixels": [[9, 2], [48, 2], [48, 22], [9, 22]], "recognition_ms": 78.03662499645725}]}
+{"id": "91", "observations": [{"text": "HORN", "recognition_score": 0.9977236986160278, "detection_score": 0.8095003168369428, "polygon_pixels": [[0, 33], [250, 0], [262, 82], [2, 109]], "recognition_ms": 78.06304097175598}]}
+{"id": "92", "observations": [{"text": "ook", "recognition_score": 0.8904692530632019, "detection_score": 0.7937313446485876, "polygon_pixels": [[1, 22], [112, 0], [121, 55], [10, 77]], "recognition_ms": 77.2929170052521}]}
+{"id": "93", "observations": []}
+{"id": "94", "observations": []}
+{"id": "95", "observations": []}
+{"id": "96", "observations": []}
+{"id": "97", "observations": []}
+{"id": "98", "observations": []}
+{"id": "99", "observations": []}

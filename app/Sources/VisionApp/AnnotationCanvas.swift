@@ -15,6 +15,8 @@ struct AnnotationCanvas: NSViewRepresentable {
     let onEdit: ([Detection]) -> Void
     let onCommand: (String) -> Void
     let onZoom: (Double) -> Void
+    var readings: [DisplayReading] = []
+    var selectedReadingID: String? = nil
     func makeNSView(context: Context) -> AnnotationCanvasView { AnnotationCanvasView() }
     func updateNSView(_ view: AnnotationCanvasView, context: Context) {
         view.configure(self)
@@ -29,6 +31,8 @@ final class AnnotationCanvasView: NSView {
     private var imagePath = ""
     private var boxes: [Detection] = []
     private var predictions: [Detection] = []
+    private var readings: [DisplayReading] = []
+    private var selectedReadingID: String?
     private var colors: [String: String] = [:]
     private var selectedIndex: Int?
     private var tool: AnnotationTool = .select
@@ -53,6 +57,7 @@ final class AnnotationCanvasView: NSView {
         }
         if input.fitToken != fitToken { fitToken = input.fitToken; pan = .zero; zoom = 1 }
         boxes = input.detections; predictions = input.predictions; colors = input.colors
+        readings = input.readings; selectedReadingID = input.selectedReadingID
         selectedIndex = input.selectedIndex; tool = input.tool; zoom = input.zoom
         onSelect = input.onSelect; onCreate = input.onCreate; onEdit = input.onEdit
         onCommand = input.onCommand; onZoom = input.onZoom
@@ -73,10 +78,29 @@ final class AnnotationCanvasView: NSView {
         image.draw(in: rect, from: .zero, operation: .sourceOver, fraction: 1, respectFlipped: true, hints: nil)
         for prediction in predictions { drawBox(prediction, rect: rect, selected: false, prediction: true) }
         for (index, detection) in boxes.enumerated() { drawBox(detection, rect: rect, selected: index == selectedIndex, prediction: false) }
+        drawReadings(rect: rect)
         if let box = newBox {
             let draft = AnnotationGeometry.boxRect(box, image: rect)
             NSColor(hex: "5BD6C0").withAlphaComponent(0.15).setFill(); draft.fill()
             NSColor(hex: "5BD6C0").setStroke(); let outline = NSBezierPath(rect: draft); outline.lineWidth = 1.5; outline.stroke()
+        }
+    }
+    private func drawReadings(rect: CGRect) {
+        for reading in readings {
+            guard let points = reading.observation.polygon, let box = reading.observation.box else { continue }
+            let path = NSBezierPath()
+            for (index, p) in points.enumerated() {
+                let point = CGPoint(x: rect.minX+p[0]*rect.width, y: rect.minY+p[1]*rect.height)
+                if index == 0 { path.move(to: point) } else { path.line(to: point) }
+            }
+            path.close(); path.setLineDash([5, 3], count: 2, phase: 0)
+            let selected = selectedReadingID == reading.id
+            path.lineWidth = selected ? 3 : 1.5
+            let color = selected ? NSColor.systemYellow : NSColor.systemCyan
+            color.setStroke(); path.stroke()
+            let label = "\(reading.index+1)" as NSString
+            label.draw(at: CGPoint(x: rect.minX+box[0]*rect.width, y: max(rect.minY, rect.minY+box[1]*rect.height-16)),
+                       withAttributes: [.foregroundColor: color, .backgroundColor: NSColor.black, .font: NSFont.monospacedSystemFont(ofSize: 11, weight: .semibold)])
         }
     }
     private func drawBox(_ detection: Detection, rect: CGRect, selected: Bool, prediction: Bool) {

@@ -50,7 +50,10 @@ def run_inference(image: Image.Image, request: InferenceRequest, *,
     if resolve_execution_identity(request).identity_hash != identity.identity_hash:
         raise InferenceAborted("Adapter identity changed while running; results were discarded")
     _check_active(deadline_monotonic_s, cancelled)
+    warnings = ["Synthetic color fixture; not a warehouse detector."] if request.model_id == "fixture-color-v1" else []
+    if readings and any(row.box is None for row in readings):
+        warnings.append("Some readings have no valid geometry; their raw text is retained without a fabricated region.")
     return InferenceResult(task=request.task, input_size=pixels.size, input_pixels_sha256=pixel_hash,
         detections=detections, readings=readings, identity=identity,
         timing=InferenceTiming(total_ms=(time.perf_counter() - started) * 1000),
-        warnings=["Synthetic color fixture; not a warehouse detector."] if request.model_id == "fixture-color-v1" else [])
+        warnings=warnings)

@@ -2,7 +2,10 @@
 from __future__ import annotations
 
 import os
+import sys
+from importlib.machinery import ModuleSpec
 from pathlib import Path
+from types import ModuleType, SimpleNamespace
 
 import pytest
 from PIL import Image
@@ -93,8 +96,6 @@ def test_changed_adapter_source_requires_process_restart(monkeypatch: pytest.Mon
 
 def test_owl_cache_uses_verified_content_not_file_timestamps(model_files: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     """Exercise the real loader cache with stub model construction, never inference."""
-    import transformers
-
     from engine.models import owlv2
 
     loads: list[str] = []
@@ -106,9 +107,13 @@ def test_owl_cache_uses_verified_content_not_file_timestamps(model_files: Path, 
     def construct(*args: object, **kwargs: object) -> FakeModel:
         loads.append((model_files / "model.safetensors").read_text())
         return FakeModel()
+    # The test concerns cache invalidation, not Transformers installation/construction.
+    transformers = ModuleType("transformers")
+    transformers.__spec__ = ModuleSpec("transformers", loader=None)
+    transformers.Owlv2Processor = SimpleNamespace(from_pretrained=lambda *a, **k: object())  # type: ignore[attr-defined]
+    transformers.Owlv2ForObjectDetection = SimpleNamespace(from_pretrained=construct)  # type: ignore[attr-defined]
+    monkeypatch.setitem(sys.modules, "transformers", transformers)
     monkeypatch.setattr(owlv2, "validate_model", lambda model: None)
-    monkeypatch.setattr(transformers.Owlv2Processor, "from_pretrained", lambda *a, **k: object())
-    monkeypatch.setattr(transformers.Owlv2ForObjectDetection, "from_pretrained", construct)
     owlv2._load.cache_clear()
     try:
         first = model_content_fingerprint("owlv2-base-patch16")

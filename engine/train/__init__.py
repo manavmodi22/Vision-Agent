@@ -81,7 +81,7 @@ def _train_ssdlite(training: EvalDataset, evaluation: EvalDataset, project_root:
             if not bool(torch.isfinite(loss)):
                 raise ValueError("Training produced a non-finite loss; no model was registered")
             optimizer.zero_grad()
-            loss.backward()  # type: ignore[no-untyped-call]
+            loss.backward()  # type: ignore[no-untyped-call,unused-ignore]
             torch.nn.utils.clip_grad_norm_(model.parameters(), 10.0)
             optimizer.step()
             steps += 1

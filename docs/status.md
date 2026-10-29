@@ -6,7 +6,55 @@ a contextual checkpoint in that conversation, not a replacement for the builder.
 
 ## Current software checkpoint
 
-The provisioning candidate is frozen at
+The reader update adds actual Apple Vision text/barcode quadrilaterals, OCR
+confidence, raw Unicode values and reader identity to the engine and native
+preview. Corrections remain image-level expected-text annotations; text-region
+geometry is evidence and is not yet editable/scored ground truth. Mixed OCR/VLM
+workflows retain both kinds of output. Legacy CLI/evidence remain readable, while
+fresh protocol-2 runs reject mismatched dimensions, policy and geometry.
+
+New planning-options version 0.3 binds the selected OCR model explicitly; old 0.1/0.2
+replay retains implicit Apple defaults. Unavailable readers reject without fallback.
+The native Debug/Release builds pass [237 checks](../artifacts/native-reading-v2/native-validation-final.json), including actual captured payload decoding. The
+[seven native image probes](../artifacts/native-reading-v2/report.json) retain real
+regions, rotation/skew behavior, QR payloads and the known Cyrillic-X confusion.
+The [isolated base-dependency suite](../artifacts/ci-baseonly/tests-final.log) passes
+785 tests with two optional training skips. The CI Swift initializer defect and
+mocked tests' accidental dependency on optional packages are corrected; fresh
+remote CI evidence is recorded with the published checkpoint.
+
+A [frozen public diagnostic](../artifacts/reader-evaluation/COMPARISON.md) ran both
+readers on 100 original-size word crops: Apple 33 exact, isolated Paddle 16 exact,
+zero execution failures. These are complete reader endpoints on cropped words,
+not pure recognition, full-scene spotting or warehouse acceptance. Neither result
+passes a product quality gate or changes the default. Paddle's [reduced runtime](../artifacts/adapter-probes/ocr-minimal/FEASIBILITY.md) is proven offline, including
+an image-only OpenCV build, but remains unregistered: production worker lifecycle,
+portable packaging, dependency notices and an approved installer are still pending.
+The existing app's OpenCV native dependency audit also prevents a blanket
+permissive-only runtime claim; model licenses and transitive binaries are separate.
+
+The frozen engine source is
+`e523a04b24594a48710c716c333763de3824e7d4c37cdaed58e196f9fcfacd3f`.
+The [actual Qwen/MCP describe-to-OCR check](../artifacts/reader-evaluation/agent-e523.json)
+passed with one response in 67.413 seconds, an explicit Apple reader, two public
+images and 11 actual text observations with geometry. No events, reviewed labels,
+evaluations or approval were created. Strict mypy covers 168 files in both base and
+installed environments; the [CI portability receipt](../artifacts/ci-baseonly/validation.json)
+distinguishes behavior-tested source from four AST-identical typing comments.
+
+The [packaged relocation check](../artifacts/reader-evaluation/bundle-e523.json)
+passed isolated imports, actual rich/native OCR, fixture gates and signatures.
+The [canonical installation](../artifacts/reader-evaluation/package-installation-e523.json)
+retains the previous app and the original project's checked files. A fresh native
+walkthrough verified the installed engine, selected OCR regions/raw Unicode and
+the exact-image correction editor with review unchecked and zero recorded events;
+see [UI evidence](../artifacts/reader-evaluation/native-ui-e523.json). Earlier capture
+failures remain recorded; successful later captures establish this specific flow.
+No annotation was changed or approved during this walkthrough.
+
+### Previous provisioning checkpoint: `2f08`
+
+The previous provisioning candidate was frozen at
 `2f0804da25ccbd6047d9dee2389127f13e3aa944b2596e1b0e7b577e1d5363a5`.
 It fixes the deterministic event-intent guard's handling of adjacent `or`/`nor`
 negation, preserving the original brief and conditional/conflicting instructions.
@@ -193,8 +241,9 @@ accuracy pass. Earlier live-model observations remain historical evidence below.
   a general code generator. YOLOX-s ONNX is integrated with one approved download
   recipe and actual CPU smoke/parity evidence. OWLv2/RT-DETR unified recipes need
   pinned multi-artifact manifests; dependency installation is not part of the API.
-  Other YOLO variants and SAM 3 remain unsupported. PaddleOCR has an isolated CPU
-  probe and runtime/license audit but no callable production adapter or recipe.
+  Other YOLO variants and SAM 3 remain unsupported. PaddleOCR has a reduced image-only CPU runtime proof, public cropped-word
+  diagnostic and runtime/license audit, but no callable production adapter or recipe.
+  OCR expected-text correction is implemented; region-ground-truth editing/scoring is not.
 - Representative independent acceptance data and broader task-complete recipes,
   failure-slice aggregates and standardized resource measurements. The protocol
   and promotion software gates are implemented; their tests are not evidence of

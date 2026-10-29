@@ -64,6 +64,7 @@ class CropParams(Contract):
 
 
 class ReadingParams(Contract):
+    model: Literal["apple-vision", "ppocr-v5-mobile-en"] = "apple-vision"
     languages: list[str] = Field(default_factory=lambda: ["en-US"])
 
 

@@ -1,0 +1,8 @@
+{
+  "staged_source_identity": "e523a04b24594a48710c716c333763de3824e7d4c37cdaed58e196f9fcfacd3f",
+  "matches_packaged_runtime": true,
+  "source_files": 169,
+  "large_new_files": [],
+  "credential_pattern_matches": [],
+  "whitespace_check": "Passed for source/docs/evidence except verbatim upstream license notices and captured build logs, whose source bytes/hashes are intentionally preserved."
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "id": "exact-match",
+    "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/agent-experience/reading-fixtures/exact-match.png",
+    "sha256": "fc676599ca501be77228487bc0f50736fbe7d1a1992aeb135593d5b02e3719f2"
+  },
+  {
+    "id": "substring-only",
+    "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/agent-experience/reading-fixtures/substring-only.png",
+    "sha256": "5928ade6b5f39ec7a6f276c8ec891cee8f61877bc0fd6b8df7119882d97d08ae"
+  },
+  {
+    "id": "leading-zeros",
+    "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/adapter-probes/ocr/fixtures/leading-zeros.png",
+    "sha256": "dcd11350d95ed26c059d71c1c89d6c3b29e2f57372508b4e9976e1b8728c0e27"
+  },
+  {
+    "id": "mixed-case",
+    "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/adapter-probes/ocr/fixtures/mixed-case.png",
+    "sha256": "ed5308a610d4baae2e384034fee3de505b44c46769e2d594f7a5c1e930d820e6"
+  },
+  {
+    "id": "real-public-label-crop",
+    "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/adapter-probes/ocr/fixtures/nvidia-real-label-crop.png",
+    "sha256": "7153cb6b64888a3ef328824545a6d9979edd2da7f6f744774808fa96baee75c7"
+  }
+]

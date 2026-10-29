@@ -1,0 +1,706 @@
+{
+  "status": "completed_actual_direct_cpu_inference",
+  "production_registered": false,
+  "representative_accuracy": null,
+  "model_id": "ppocr-v5-mobile-en",
+  "adapter_id": "paddle-ocr-cpu",
+  "cuda_compiled": false,
+  "host": {
+    "os": "macOS-26.7.1-arm64-arm-64bit",
+    "python": "3.12.14",
+    "architecture": "arm64"
+  },
+  "policy": "(version 1)(allow default)(deny network*)",
+  "network_checks": [
+    {
+      "connection_blocked": true,
+      "errno": 1,
+      "message": "[Errno 1] Operation not permitted"
+    },
+    {
+      "connection_blocked": true,
+      "errno": 1,
+      "message": "[Errno 1] Operation not permitted"
+    }
+  ],
+  "import_ms": 1174.734208965674,
+  "initialize_ms": 119.40504104131833,
+  "execution_ms": 2899.0466669783928,
+  "packages": {
+    "networkx": "3.7",
+    "protobuf": "7.36.2",
+    "certifi": "2026.10.23",
+    "opencv_image_only": "4.10.0+visionimage1",
+    "paddlepaddle": "3.2.1",
+    "numpy": "2.3.5",
+    "httpcore": "1.0.9",
+    "pillow": "13.0.0",
+    "safetensors": "0.8.0",
+    "h11": "0.16.0",
+    "setuptools": "80.9.0",
+    "packaging": "24.2",
+    "pyclipper": "1.4.0",
+    "opt-einsum": "3.3.0",
+    "httpx": "0.28.1",
+    "typing_extensions": "4.12.2",
+    "anyio": "4.15.1",
+    "idna": "3.20",
+    "jaraco.text": "3.12.1",
+    "jaraco.collections": "5.1.0",
+    "importlib_metadata": "8.0.0",
+    "jaraco.functools": "4.0.1",
+    "jaraco.context": "5.3.0",
+    "inflect": "7.3.1",
+    "autocommand": "2.2.2",
+    "backports.tarfile": "1.2.0",
+    "typeguard": "4.3.0",
+    "wheel": "0.45.1",
+    "zipp": "3.19.2",
+    "tomli": "2.0.1",
+    "more-itertools": "10.3.0",
+    "platformdirs": "4.2.2"
+  },
+  "prohibited_imports": [],
+  "results": [
+    {
+      "id": "exact-match",
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/agent-experience/reading-fixtures/exact-match.png",
+      "sha256": "fc676599ca501be77228487bc0f50736fbe7d1a1992aeb135593d5b02e3719f2",
+      "image_size": [
+        1200,
+        400
+      ],
+      "observations": [
+        {
+          "text": "ABC-990",
+          "recognition_score": 0.9999690055847168,
+          "detection_score": 0.9399292104324085,
+          "polygon_pixels": [
+            [
+              48,
+              128
+            ],
+            [
+              456,
+              128
+            ],
+            [
+              456,
+              238
+            ],
+            [
+              48,
+              238
+            ]
+          ],
+          "recognition_ms": 98.83899998385459
+        }
+      ],
+      "detection_ms": 172.3711250233464,
+      "total_ms": 278.4414999769069
+    },
+    {
+      "id": "substring-only",
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/agent-experience/reading-fixtures/substring-only.png",
+      "sha256": "5928ade6b5f39ec7a6f276c8ec891cee8f61877bc0fd6b8df7119882d97d08ae",
+      "image_size": [
+        1200,
+        400
+      ],
+      "observations": [
+        {
+          "text": "XABC-990Y",
+          "recognition_score": 0.9999047517776489,
+          "detection_score": 0.9195130232117966,
+          "polygon_pixels": [
+            [
+              47,
+              129
+            ],
+            [
+              584,
+              125
+            ],
+            [
+              585,
+              234
+            ],
+            [
+              48,
+              238
+            ]
+          ],
+          "recognition_ms": 76.14216598449275
+        }
+      ],
+      "detection_ms": 152.13595796376467,
+      "total_ms": 231.4459169865586
+    },
+    {
+      "id": "leading-zeros",
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/adapter-probes/ocr/fixtures/leading-zeros.png",
+      "sha256": "dcd11350d95ed26c059d71c1c89d6c3b29e2f57372508b4e9976e1b8728c0e27",
+      "image_size": [
+        900,
+        180
+      ],
+      "observations": [
+        {
+          "text": "001234567890",
+          "recognition_score": 0.9998798966407776,
+          "detection_score": 0.9354871428821149,
+          "polygon_pixels": [
+            [
+              40,
+              45
+            ],
+            [
+              480,
+              45
+            ],
+            [
+              480,
+              119
+            ],
+            [
+              40,
+              119
+            ]
+          ],
+          "recognition_ms": 75.95420902362093
+        }
+      ],
+      "detection_ms": 87.77325000846758,
+      "total_ms": 164.94541696738452
+    },
+    {
+      "id": "mixed-case",
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/adapter-probes/ocr/fixtures/mixed-case.png",
+      "sha256": "ed5308a610d4baae2e384034fee3de505b44c46769e2d594f7a5c1e930d820e6",
+      "image_size": [
+        900,
+        180
+      ],
+      "observations": [
+        {
+          "text": "AbC-009x",
+          "recognition_score": 0.9998563528060913,
+          "detection_score": 0.9415044283350006,
+          "polygon_pixels": [
+            [
+              38,
+              45
+            ],
+            [
+              339,
+              47
+            ],
+            [
+              338,
+              120
+            ],
+            [
+              37,
+              118
+            ]
+          ],
+          "recognition_ms": 76.91299996804446
+        }
+      ],
+      "detection_ms": 88.9516249881126,
+      "total_ms": 167.09733300376683
+    },
+    {
+      "id": "real-public-label-crop",
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/adapter-probes/ocr/fixtures/nvidia-real-label-crop.png",
+      "sha256": "7153cb6b64888a3ef328824545a6d9979edd2da7f6f744774808fa96baee75c7",
+      "image_size": [
+        800,
+        600
+      ],
+      "observations": [
+        {
+          "text": "ENTP0343",
+          "recognition_score": 0.9889252781867981,
+          "detection_score": 0.8582438200323693,
+          "polygon_pixels": [
+            [
+              473,
+              11
+            ],
+            [
+              603,
+              44
+            ],
+            [
+              587,
+              105
+            ],
+            [
+              457,
+              72
+            ]
+          ],
+          "recognition_ms": 75.66699996823445
+        },
+        {
+          "text": "BLI",
+          "recognition_score": 0.23144502937793732,
+          "detection_score": 0.6081795698006378,
+          "polygon_pixels": [
+            [
+              627,
+              164
+            ],
+            [
+              733,
+              198
+            ],
+            [
+              714,
+              258
+            ],
+            [
+              608,
+              224
+            ]
+          ],
+          "recognition_ms": 75.77749999472871
+        },
+        {
+          "text": "FMP012 15",
+          "recognition_score": 0.895196259021759,
+          "detection_score": 0.7125580194949528,
+          "polygon_pixels": [
+            [
+              589,
+              204
+            ],
+            [
+              712,
+              264
+            ],
+            [
+              692,
+              302
+            ],
+            [
+              570,
+              242
+            ]
+          ],
+          "recognition_ms": 75.33270795829594
+        },
+        {
+          "text": "W0",
+          "recognition_score": 0.23616284132003784,
+          "detection_score": 0.7267461352488805,
+          "polygon_pixels": [
+            [
+              514,
+              238
+            ],
+            [
+              652,
+              329
+            ],
+            [
+              624,
+              370
+            ],
+            [
+              486,
+              279
+            ]
+          ],
+          "recognition_ms": 77.28645799215883
+        }
+      ],
+      "detection_ms": 233.88929199427366,
+      "total_ms": 547.140832990408
+    }
+  ],
+  "loaded_native_libraries": [
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vImage.framework/Versions/A/vImage",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBNNS.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLAPACK.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLinearAlgebra.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libQuadrature.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libSparse.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libSparseBLAS.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvDSP.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvMisc.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/vecLib",
+    "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/Resources/libFontRegistry.dylib",
+    "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+    "/System/Library/Frameworks/CFNetwork.framework/Versions/A/CFNetwork",
+    "/System/Library/Frameworks/ColorSync.framework/Versions/A/ColorSync",
+    "/System/Library/Frameworks/Combine.framework/Versions/A/Combine",
+    "/System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio",
+    "/System/Library/Frameworks/CoreData.framework/Versions/A/CoreData",
+    "/System/Library/Frameworks/CoreDisplay.framework/Versions/A/CoreDisplay",
+    "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+    "/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics",
+    "/System/Library/Frameworks/CoreImage.framework/Versions/A/CoreImage",
+    "/System/Library/Frameworks/CoreMIDI.framework/Versions/A/CoreMIDI",
+    "/System/Library/Frameworks/CoreMedia.framework/Versions/A/CoreMedia",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/AE.framework/Versions/A/AE",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/CarbonCore",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/DictionaryServices.framework/Versions/A/DictionaryServices",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/FSEvents",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/LaunchServices",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Metadata",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/OSServices.framework/Versions/A/OSServices",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/SearchKit.framework/Versions/A/SearchKit",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/SharedFileList.framework/Versions/A/SharedFileList",
+    "/System/Library/Frameworks/CoreText.framework/Versions/A/CoreText",
+    "/System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo",
+    "/System/Library/Frameworks/DiscRecording.framework/Versions/A/DiscRecording",
+    "/System/Library/Frameworks/DiskArbitration.framework/Versions/A/DiskArbitration",
+    "/System/Library/Frameworks/ExtensionFoundation.framework/Versions/A/ExtensionFoundation",
+    "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+    "/System/Library/Frameworks/GSS.framework/Versions/A/GSS",
+    "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+    "/System/Library/Frameworks/IOSurface.framework/Versions/A/IOSurface",
+    "/System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO",
+    "/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libGIF.dylib",
+    "/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libJP2.dylib",
+    "/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libJPEG.dylib",
+    "/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libPng.dylib",
+    "/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libRadiance.dylib",
+    "/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libTIFF.dylib",
+    "/System/Library/Frameworks/Kerberos.framework/Versions/A/Kerberos",
+    "/System/Library/Frameworks/Kerberos.framework/Versions/A/Libraries/libHeimdalProxy.dylib",
+    "/System/Library/Frameworks/LDAP.framework/Versions/A/LDAP",
+    "/System/Library/Frameworks/LightweightCodeRequirements.framework/Versions/A/LightweightCodeRequirements",
+    "/System/Library/Frameworks/Metal.framework/Versions/A/Metal",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Versions/A/Frameworks/MPSBenchmarkLoop.framework/Versions/A/MPSBenchmarkLoop",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Versions/A/Frameworks/MPSCore.framework/Versions/A/MPSCore",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Versions/A/Frameworks/MPSFunctions.framework/Versions/A/MPSFunctions",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Versions/A/Frameworks/MPSHost.framework/Versions/A/MPSHost",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Versions/A/Frameworks/MPSImage.framework/Versions/A/MPSImage",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Versions/A/Frameworks/MPSMatrix.framework/Versions/A/MPSMatrix",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Versions/A/Frameworks/MPSNDArray.framework/Versions/A/MPSNDArray",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Versions/A/Frameworks/MPSNeuralNetwork.framework/Versions/A/MPSNeuralNetwork",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Versions/A/Frameworks/MPSRayIntersector.framework/Versions/A/MPSRayIntersector",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Versions/A/MetalPerformanceShaders",
+    "/System/Library/Frameworks/NetFS.framework/Versions/A/NetFS",
+    "/System/Library/Frameworks/Network.framework/Versions/A/Network",
+    "/System/Library/Frameworks/OSLog.framework/Versions/A/OSLog",
+    "/System/Library/Frameworks/OpenDirectory.framework/Versions/A/Frameworks/CFOpenDirectory.framework/Versions/A/CFOpenDirectory",
+    "/System/Library/Frameworks/OpenDirectory.framework/Versions/A/OpenDirectory",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libCVMSPluginSupport.dylib",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libCoreFSCache.dylib",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libCoreVMClient.dylib",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGFXShared.dylib",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLImage.dylib",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLU.dylib",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+    "/System/Library/Frameworks/QuartzCore.framework/Versions/A/QuartzCore",
+    "/System/Library/Frameworks/Security.framework/Versions/A/Security",
+    "/System/Library/Frameworks/SecurityFoundation.framework/Versions/A/SecurityFoundation",
+    "/System/Library/Frameworks/SwiftData.framework/Versions/A/SwiftData",
+    "/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration",
+    "/System/Library/Frameworks/UniformTypeIdentifiers.framework/Versions/A/UniformTypeIdentifiers",
+    "/System/Library/Frameworks/VideoToolbox.framework/Versions/A/VideoToolbox",
+    "/System/Library/PrivateFrameworks/AFKUser.framework/Versions/A/AFKUser",
+    "/System/Library/PrivateFrameworks/APFS.framework/Versions/A/APFS",
+    "/System/Library/PrivateFrameworks/ASEProcessing.framework/Versions/A/ASEProcessing",
+    "/System/Library/PrivateFrameworks/AggregateDictionary.framework/Versions/A/AggregateDictionary",
+    "/System/Library/PrivateFrameworks/AppServerSupport.framework/Versions/A/AppServerSupport",
+    "/System/Library/PrivateFrameworks/AppSupport.framework/Versions/A/AppSupport",
+    "/System/Library/PrivateFrameworks/AppleDeviceQuerySupport.framework/Versions/A/AppleDeviceQuerySupport",
+    "/System/Library/PrivateFrameworks/AppleFSCompression.framework/Versions/A/AppleFSCompression",
+    "/System/Library/PrivateFrameworks/AppleJPEG.framework/Versions/A/AppleJPEG",
+    "/System/Library/PrivateFrameworks/AppleKeyStore.framework/Versions/A/AppleKeyStore",
+    "/System/Library/PrivateFrameworks/AppleMobileFileIntegrity.framework/Versions/A/AppleMobileFileIntegrity",
+    "/System/Library/PrivateFrameworks/AppleSauce.framework/Versions/A/AppleSauce",
+    "/System/Library/PrivateFrameworks/AppleSystemInfo.framework/Versions/A/AppleSystemInfo",
+    "/System/Library/PrivateFrameworks/AppleVA.framework/Versions/A/AppleVA",
+    "/System/Library/PrivateFrameworks/AssertionServices.framework/Versions/A/AssertionServices",
+    "/System/Library/PrivateFrameworks/AtomicsInternal.framework/Versions/A/AtomicsInternal",
+    "/System/Library/PrivateFrameworks/AudioAnalytics.framework/Versions/A/AudioAnalytics",
+    "/System/Library/PrivateFrameworks/AudioSession.framework/Versions/A/AudioSession",
+    "/System/Library/PrivateFrameworks/AudioSession.framework/libSessionUtility.dylib",
+    "/System/Library/PrivateFrameworks/AudioToolboxCore.framework/Versions/A/AudioToolboxCore",
+    "/System/Library/PrivateFrameworks/BackBoardHIDEventFoundation.framework/Versions/A/BackBoardHIDEventFoundation",
+    "/System/Library/PrivateFrameworks/BackBoardServices.framework/Versions/A/BackBoardServices",
+    "/System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Versions/A/BackgroundTaskManagement",
+    "/System/Library/PrivateFrameworks/BaseBoard.framework/Versions/A/BaseBoard",
+    "/System/Library/PrivateFrameworks/BiomeDSL.framework/Versions/A/BiomeDSL",
+    "/System/Library/PrivateFrameworks/BiomeFoundation.framework/Versions/A/BiomeFoundation",
+    "/System/Library/PrivateFrameworks/BiomeLibrary.framework/Versions/A/BiomeLibrary",
+    "/System/Library/PrivateFrameworks/BiomePubSub.framework/Versions/A/BiomePubSub",
+    "/System/Library/PrivateFrameworks/BiomeStorage.framework/Versions/A/BiomeStorage",
+    "/System/Library/PrivateFrameworks/BiomeStreams.framework/Versions/A/BiomeStreams",
+    "/System/Library/PrivateFrameworks/BiomeSync.framework/Versions/A/BiomeSync",
+    "/System/Library/PrivateFrameworks/BoardServices.framework/Versions/A/BoardServices",
+    "/System/Library/PrivateFrameworks/CMCaptureCore.framework/Versions/A/CMCaptureCore",
+    "/System/Library/PrivateFrameworks/CascadeSets.framework/Versions/A/CascadeSets",
+    "/System/Library/PrivateFrameworks/CollectionsInternal.framework/Versions/A/CollectionsInternal",
+    "/System/Library/PrivateFrameworks/CommonAuth.framework/Versions/A/CommonAuth",
+    "/System/Library/PrivateFrameworks/ConfigProfileHelper.framework/Versions/A/ConfigProfileHelper",
+    "/System/Library/PrivateFrameworks/CoreAnalytics.framework/Versions/A/CoreAnalytics",
+    "/System/Library/PrivateFrameworks/CoreAutoLayout.framework/Versions/A/CoreAutoLayout",
+    "/System/Library/PrivateFrameworks/CoreNLP.framework/Versions/A/CoreNLP",
+    "/System/Library/PrivateFrameworks/CorePhoneNumbers.framework/Versions/A/CorePhoneNumbers",
+    "/System/Library/PrivateFrameworks/CoreServicesInternal.framework/Versions/A/CoreServicesInternal",
+    "/System/Library/PrivateFrameworks/CoreServicesStore.framework/Versions/A/CoreServicesStore",
+    "/System/Library/PrivateFrameworks/CoreSymbolication.framework/Versions/A/CoreSymbolication",
+    "/System/Library/PrivateFrameworks/CoreTime.framework/Versions/A/CoreTime",
+    "/System/Library/PrivateFrameworks/CrashReporterSupport.framework/Versions/A/CrashReporterSupport",
+    "/System/Library/PrivateFrameworks/DSExternalDisplay.framework/Versions/A/DSExternalDisplay",
+    "/System/Library/PrivateFrameworks/DebugSymbols.framework/Versions/A/DebugSymbols",
+    "/System/Library/PrivateFrameworks/DeviceRecovery.framework/Versions/A/DeviceRecovery",
+    "/System/Library/PrivateFrameworks/DiskImages.framework/Versions/A/DiskImages",
+    "/System/Library/PrivateFrameworks/FeatureFlags.framework/Versions/A/FeatureFlags",
+    "/System/Library/PrivateFrameworks/FontServices.framework/Versions/A/FontServices",
+    "/System/Library/PrivateFrameworks/FontServices.framework/libFontParser.dylib",
+    "/System/Library/PrivateFrameworks/FontServices.framework/libXTFontStaticRegistryData.dylib",
+    "/System/Library/PrivateFrameworks/FramePacing.framework/Versions/A/FramePacing",
+    "/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/32023/Libraries/libGPUCompilerUtils.dylib",
+    "/System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/32023/Libraries/libllvm-flatbuffers.dylib",
+    "/System/Library/PrivateFrameworks/GPURawCounter.framework/Versions/A/GPURawCounter",
+    "/System/Library/PrivateFrameworks/GPUWrangler.framework/Versions/A/GPUWrangler",
+    "/System/Library/PrivateFrameworks/GraphVisualizer.framework/Versions/A/GraphVisualizer",
+    "/System/Library/PrivateFrameworks/GraphicsServices.framework/Versions/A/GraphicsServices",
+    "/System/Library/PrivateFrameworks/HID.framework/Versions/A/HID",
+    "/System/Library/PrivateFrameworks/HIDDisplay.framework/Versions/A/HIDDisplay",
+    "/System/Library/PrivateFrameworks/Heimdal.framework/Versions/A/Heimdal",
+    "/System/Library/PrivateFrameworks/IOAccelMemoryInfo.framework/Versions/A/IOAccelMemoryInfo",
+    "/System/Library/PrivateFrameworks/IOAccelerator.framework/Versions/A/IOAccelerator",
+    "/System/Library/PrivateFrameworks/IOMobileFramebuffer.framework/Versions/A/IOMobileFramebuffer",
+    "/System/Library/PrivateFrameworks/IOPresentment.framework/Versions/A/IOPresentment",
+    "/System/Library/PrivateFrameworks/IOSurfaceAccelerator.framework/Versions/A/IOSurfaceAccelerator",
+    "/System/Library/PrivateFrameworks/InstalledContentLibrary.framework/Versions/A/InstalledContentLibrary",
+    "/System/Library/PrivateFrameworks/IntelligencePlatformLibrary.framework/Versions/A/IntelligencePlatformLibrary",
+    "/System/Library/PrivateFrameworks/InternalSwiftProtobuf.framework/Versions/A/InternalSwiftProtobuf",
+    "/System/Library/PrivateFrameworks/InternationalTextSearch.framework/Versions/A/InternationalTextSearch",
+    "/System/Library/PrivateFrameworks/Lexicon.framework/Versions/A/Lexicon",
+    "/System/Library/PrivateFrameworks/LinguisticData.framework/Versions/A/LinguisticData",
+    "/System/Library/PrivateFrameworks/LoggingSupport.framework/Versions/A/LoggingSupport",
+    "/System/Library/PrivateFrameworks/MIL.framework/Versions/A/MIL",
+    "/System/Library/PrivateFrameworks/MSUDataAccessor.framework/Versions/A/MSUDataAccessor",
+    "/System/Library/PrivateFrameworks/MallocStackLogging.framework/Versions/A/MallocStackLogging",
+    "/System/Library/PrivateFrameworks/MediaExperience.framework/Versions/A/MediaExperience",
+    "/System/Library/PrivateFrameworks/MediaKit.framework/Versions/A/MediaKit",
+    "/System/Library/PrivateFrameworks/MessageSecurity.framework/Versions/A/MessageSecurity",
+    "/System/Library/PrivateFrameworks/MetadataUtilities.framework/Versions/A/MetadataUtilities",
+    "/System/Library/PrivateFrameworks/MetalTools.framework/Versions/A/MetalTools",
+    "/System/Library/PrivateFrameworks/MobileAsset.framework/Versions/A/MobileAsset",
+    "/System/Library/PrivateFrameworks/MobileKeyBag.framework/Versions/A/MobileKeyBag",
+    "/System/Library/PrivateFrameworks/MobileSystemServices.framework/Versions/A/MobileSystemServices",
+    "/System/Library/PrivateFrameworks/MultitouchSupport.framework/Versions/A/MultitouchSupport",
+    "/System/Library/PrivateFrameworks/NetAuth.framework/Versions/A/NetAuth",
+    "/System/Library/PrivateFrameworks/OSAnalytics.framework/Versions/A/OSAnalytics",
+    "/System/Library/PrivateFrameworks/OSEligibility.framework/Versions/A/OSEligibility",
+    "/System/Library/PrivateFrameworks/OTSVG.framework/Versions/A/OTSVG",
+    "/System/Library/PrivateFrameworks/ParsingInternal.framework/Versions/A/ParsingInternal",
+    "/System/Library/PrivateFrameworks/PhotosensitivityProcessing.framework/Versions/A/PhotosensitivityProcessing",
+    "/System/Library/PrivateFrameworks/PlugInKit.framework/Versions/A/PlugInKit",
+    "/System/Library/PrivateFrameworks/PoirotSQLite.framework/Versions/A/PoirotSQLite",
+    "/System/Library/PrivateFrameworks/PoirotSchematizer.framework/Versions/A/PoirotSchematizer",
+    "/System/Library/PrivateFrameworks/PoirotUDFs.framework/Versions/A/PoirotUDFs",
+    "/System/Library/PrivateFrameworks/PowerLog.framework/Versions/A/PowerLog",
+    "/System/Library/PrivateFrameworks/ProDisplayLibrary.framework/Versions/A/ProDisplayLibrary",
+    "/System/Library/PrivateFrameworks/ProactiveSupport.framework/Versions/A/ProactiveSupport",
+    "/System/Library/PrivateFrameworks/ProtocolBuffer.framework/Versions/A/ProtocolBuffer",
+    "/System/Library/PrivateFrameworks/ReflectionInternal.framework/Versions/A/ReflectionInternal",
+    "/System/Library/PrivateFrameworks/RemoteServiceDiscovery.framework/Versions/A/RemoteServiceDiscovery",
+    "/System/Library/PrivateFrameworks/RemoteXPC.framework/Versions/A/RemoteXPC",
+    "/System/Library/PrivateFrameworks/RunningBoardServices.framework/Versions/A/RunningBoardServices",
+    "/System/Library/PrivateFrameworks/RuntimeInternal.framework/Versions/A/RuntimeInternal",
+    "/System/Library/PrivateFrameworks/SILManager.framework/Versions/A/SILManager",
+    "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight",
+    "/System/Library/PrivateFrameworks/SoftLinking.framework/Versions/A/SoftLinking",
+    "/System/Library/PrivateFrameworks/SoftwareUpdateCoreConnect.framework/Versions/A/SoftwareUpdateCoreConnect",
+    "/System/Library/PrivateFrameworks/SoftwareUpdateCoreSupport.framework/Versions/A/SoftwareUpdateCoreSupport",
+    "/System/Library/PrivateFrameworks/StreamingZip.framework/Versions/A/StreamingZip",
+    "/System/Library/PrivateFrameworks/SwiftASN1Internal.framework/Versions/A/SwiftASN1Internal",
+    "/System/Library/PrivateFrameworks/Symbolication.framework/Versions/A/Symbolication",
+    "/System/Library/PrivateFrameworks/SymptomDiagnosticReporter.framework/Versions/A/SymptomDiagnosticReporter",
+    "/System/Library/PrivateFrameworks/SystemPolicy.framework/Versions/A/SystemPolicy",
+    "/System/Library/PrivateFrameworks/TCC.framework/Versions/A/TCC",
+    "/System/Library/PrivateFrameworks/Tightbeam.framework/Versions/A/Tightbeam",
+    "/System/Library/PrivateFrameworks/TrustEvaluationAgent.framework/Versions/A/TrustEvaluationAgent",
+    "/System/Library/PrivateFrameworks/UserManagement.framework/Versions/A/UserManagement",
+    "/System/Library/PrivateFrameworks/VideoToolboxParavirtualizationSupport.framework/Versions/A/VideoToolboxParavirtualizationSupport",
+    "/System/Library/PrivateFrameworks/WatchdogClient.framework/Versions/A/WatchdogClient",
+    "/System/Library/PrivateFrameworks/caulk.framework/Versions/A/caulk",
+    "/System/Library/PrivateFrameworks/kperf.framework/Versions/A/kperf",
+    "/System/Library/PrivateFrameworks/login.framework/Versions/A/Frameworks/loginsupport.framework/Versions/A/loginsupport",
+    "/System/Library/PrivateFrameworks/perfdata.framework/Versions/A/perfdata",
+    "/Users/manavrakeshku.modi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/PIL/.dylibs/libXau.6.dylib",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/PIL/.dylibs/libjpeg.62.4.0.dylib",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/PIL/.dylibs/liblzma.5.dylib",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/PIL/.dylibs/libopenjp2.2.5.4.dylib",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/PIL/.dylibs/libtiff.6.dylib",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/PIL/.dylibs/libxcb.1.1.0.dylib",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/PIL/.dylibs/libz.1.3.1.zlib-ng.dylib",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/PIL/_imaging.cpython-312-darwin.so",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/cv2.cpython-312-darwin.so",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/google/_upb/_message.abi3.so",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/numpy/_core/_multiarray_umath.cpython-312-darwin.so",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/numpy/linalg/_umath_linalg.cpython-312-darwin.so",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/paddle/base/libpaddle.so",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/paddle/libs/libcommon.dylib",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/paddle/libs/libphi.dylib",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/paddle/libs/libphi_core.dylib",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/paddle/libs/libpir.dylib",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/pyclipper/_pyclipper.cpython-312-darwin.so",
+    "/usr/lib/libAppleArchive.dylib",
+    "/usr/lib/libAudioStatistics.dylib",
+    "/usr/lib/libAudioToolboxUtility.dylib",
+    "/usr/lib/libCRFSuite.dylib",
+    "/usr/lib/libCheckFix.dylib",
+    "/usr/lib/libCoreEntitlements.dylib",
+    "/usr/lib/libDiagnosticMessagesClient.dylib",
+    "/usr/lib/libFDR.dylib",
+    "/usr/lib/libMobileGestalt.dylib",
+    "/usr/lib/libReverseProxyDevice.dylib",
+    "/usr/lib/libRosetta.dylib",
+    "/usr/lib/libSMC.dylib",
+    "/usr/lib/libSystem.B.dylib",
+    "/usr/lib/libTLE.dylib",
+    "/usr/lib/libThaiTokenizer.dylib",
+    "/usr/lib/libamsupport.dylib",
+    "/usr/lib/libapp_launch_measurement.dylib",
+    "/usr/lib/libapple_nghttp2.dylib",
+    "/usr/lib/libarchive.2.dylib",
+    "/usr/lib/libate.dylib",
+    "/usr/lib/libbootpolicy.dylib",
+    "/usr/lib/libboringssl.dylib",
+    "/usr/lib/libbsm.0.dylib",
+    "/usr/lib/libbz2.1.0.dylib",
+    "/usr/lib/libc++.1.dylib",
+    "/usr/lib/libc++abi.dylib",
+    "/usr/lib/libcharset.1.dylib",
+    "/usr/lib/libcompression.dylib",
+    "/usr/lib/libcoretls.dylib",
+    "/usr/lib/libcoretls_cfhelpers.dylib",
+    "/usr/lib/libcrypto.46.dylib",
+    "/usr/lib/libcurl.4.dylib",
+    "/usr/lib/libdns_services.dylib",
+    "/usr/lib/libedit.3.dylib",
+    "/usr/lib/libenergytrace.dylib",
+    "/usr/lib/libexpat.1.dylib",
+    "/usr/lib/libfakelink.dylib",
+    "/usr/lib/libgermantok.dylib",
+    "/usr/lib/libheimdal-asn1.dylib",
+    "/usr/lib/libhvf.dylib",
+    "/usr/lib/libiconv.2.dylib",
+    "/usr/lib/libicucore.A.dylib",
+    "/usr/lib/liblangid.dylib",
+    "/usr/lib/liblzma.5.dylib",
+    "/usr/lib/libmecab.dylib",
+    "/usr/lib/libmis.dylib",
+    "/usr/lib/libncurses.5.4.dylib",
+    "/usr/lib/liboah.dylib",
+    "/usr/lib/libobjc.A.dylib",
+    "/usr/lib/libpam.2.dylib",
+    "/usr/lib/libpanel.5.4.dylib",
+    "/usr/lib/libpartition2_dynamic.dylib",
+    "/usr/lib/libperfcheck.dylib",
+    "/usr/lib/libquic.dylib",
+    "/usr/lib/libresolv.9.dylib",
+    "/usr/lib/libsasl2.2.dylib",
+    "/usr/lib/libspindump.dylib",
+    "/usr/lib/libsqlite3.dylib",
+    "/usr/lib/libssl.48.dylib",
+    "/usr/lib/libswiftPrespecialized.dylib",
+    "/usr/lib/libusrtcp.dylib",
+    "/usr/lib/libutil.dylib",
+    "/usr/lib/libxar.1.dylib",
+    "/usr/lib/libxml2.2.dylib",
+    "/usr/lib/libxslt.1.dylib",
+    "/usr/lib/libz.1.dylib",
+    "/usr/lib/swift/libswiftAccelerate.dylib",
+    "/usr/lib/swift/libswiftCompression.dylib",
+    "/usr/lib/swift/libswiftCore.dylib",
+    "/usr/lib/swift/libswiftCoreAudio.dylib",
+    "/usr/lib/swift/libswiftCoreFoundation.dylib",
+    "/usr/lib/swift/libswiftCoreMIDI.dylib",
+    "/usr/lib/swift/libswiftCoreMedia.dylib",
+    "/usr/lib/swift/libswiftDarwin.dylib",
+    "/usr/lib/swift/libswiftDispatch.dylib",
+    "/usr/lib/swift/libswiftDistributed.dylib",
+    "/usr/lib/swift/libswiftIOKit.dylib",
+    "/usr/lib/swift/libswiftMetal.dylib",
+    "/usr/lib/swift/libswiftOSLog.dylib",
+    "/usr/lib/swift/libswiftObjectiveC.dylib",
+    "/usr/lib/swift/libswiftObservation.dylib",
+    "/usr/lib/swift/libswiftQuartzCore.dylib",
+    "/usr/lib/swift/libswiftSynchronization.dylib",
+    "/usr/lib/swift/libswiftSystem.dylib",
+    "/usr/lib/swift/libswiftUniformTypeIdentifiers.dylib",
+    "/usr/lib/swift/libswiftVideoToolbox.dylib",
+    "/usr/lib/swift/libswiftXPC.dylib",
+    "/usr/lib/swift/libswift_Builtin_float.dylib",
+    "/usr/lib/swift/libswift_Concurrency.dylib",
+    "/usr/lib/swift/libswift_DarwinFoundation1.dylib",
+    "/usr/lib/swift/libswift_DarwinFoundation2.dylib",
+    "/usr/lib/swift/libswift_DarwinFoundation3.dylib",
+    "/usr/lib/swift/libswift_RegexParser.dylib",
+    "/usr/lib/swift/libswift_StringProcessing.dylib",
+    "/usr/lib/swift/libswiftos.dylib",
+    "/usr/lib/swift/libswiftsimd.dylib",
+    "/usr/lib/system/libcache.dylib",
+    "/usr/lib/system/libcommonCrypto.dylib",
+    "/usr/lib/system/libcompiler_rt.dylib",
+    "/usr/lib/system/libcopyfile.dylib",
+    "/usr/lib/system/libcorecrypto.dylib",
+    "/usr/lib/system/libdispatch.dylib",
+    "/usr/lib/system/libdyld.dylib",
+    "/usr/lib/system/libkeymgr.dylib",
+    "/usr/lib/system/libkxld.dylib",
+    "/usr/lib/system/libmacho.dylib",
+    "/usr/lib/system/libquarantine.dylib",
+    "/usr/lib/system/libremovefile.dylib",
+    "/usr/lib/system/libsystem_asl.dylib",
+    "/usr/lib/system/libsystem_blocks.dylib",
+    "/usr/lib/system/libsystem_c.dylib",
+    "/usr/lib/system/libsystem_collections.dylib",
+    "/usr/lib/system/libsystem_configuration.dylib",
+    "/usr/lib/system/libsystem_containermanager.dylib",
+    "/usr/lib/system/libsystem_coreservices.dylib",
+    "/usr/lib/system/libsystem_darwin.dylib",
+    "/usr/lib/system/libsystem_darwindirectory.dylib",
+    "/usr/lib/system/libsystem_dnssd.dylib",
+    "/usr/lib/system/libsystem_eligibility.dylib",
+    "/usr/lib/system/libsystem_featureflags.dylib",
+    "/usr/lib/system/libsystem_info.dylib",
+    "/usr/lib/system/libsystem_kernel.dylib",
+    "/usr/lib/system/libsystem_m.dylib",
+    "/usr/lib/system/libsystem_malloc.dylib",
+    "/usr/lib/system/libsystem_networkextension.dylib",
+    "/usr/lib/system/libsystem_notify.dylib",
+    "/usr/lib/system/libsystem_platform.dylib",
+    "/usr/lib/system/libsystem_pthread.dylib",
+    "/usr/lib/system/libsystem_sandbox.dylib",
+    "/usr/lib/system/libsystem_sanitizers.dylib",
+    "/usr/lib/system/libsystem_secinit.dylib",
+    "/usr/lib/system/libsystem_symptoms.dylib",
+    "/usr/lib/system/libsystem_trace.dylib",
+    "/usr/lib/system/libsystem_trial.dylib",
+    "/usr/lib/system/libunwind.dylib",
+    "/usr/lib/system/libxpc.dylib"
+  ],
+  "source_identity": {
+    "direct_ocr.py": "4d53124691a4cfa298dfe67ca7faee88283926ba32caa6b6569a673a37bc0e82",
+    "image_ops.py": "3b18fb49152f7e8848c46a56445650065ffc04a6a2438c7af621ab772e9d8e9f",
+    "run_offline.py": "6e0bc6c9a2fc88d242731dfde7f531120815dc6d97b5ae25b84a18f2c29ef7f7"
+  },
+  "limits": {
+    "wall_clock_seconds": 180,
+    "cpu_threads": 2,
+    "max_input_pixels": 24000000,
+    "max_input_side": 8192,
+    "max_text_regions": 128,
+    "recognition_batch": 1
+  }
+}

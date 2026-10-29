@@ -1,0 +1,9 @@
+{
+  "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv_image_only-4.10.0+visionimage1-cp312-cp312-macosx_11_0_arm64.whl",
+  "sha256": "9ab7ed1f8b09756cd97f4d9341e2ba304f17f28c703cfa3b4d82506531a10604",
+  "bytes": 3078514,
+  "extension_sha256": "fe14f9326086e42665070c4bfbf18a7136a5a83c4242ffcdb36d91bcd03da3a7",
+  "distribution": "opencv_image_only",
+  "version": "4.10.0+visionimage1",
+  "tag": "cp312-cp312-macosx_11_0_arm64"
+}

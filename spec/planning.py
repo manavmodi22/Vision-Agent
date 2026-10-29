@@ -48,7 +48,7 @@ class BlockedModelOption(Contract):
 
 
 class PlanningOptions(Contract):
-    schema_version: Literal["0.1", "0.2"] = "0.1"
+    schema_version: Literal["0.1", "0.2", "0.3"] = "0.1"
     snapshot_id: str
     project_id: str
     fixture_source: bool

@@ -6,6 +6,10 @@ enum PlatformContractChecks {
         var checks = 0
         for (flag, path) in zip(arguments, arguments.dropFirst()) {
             switch flag {
+            case "--reading-frame":
+                _ = try JSONDecoder().decode(FrameResult.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
+            case "--native-readings-v2":
+                _ = try JSONDecoder().decode(NativeReadingsV2.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
             case "--capability-catalog":
                 _ = try JSONDecoder().decode(CapabilityCatalog.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
             case "--build-status":

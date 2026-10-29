@@ -1,0 +1,56 @@
+Collecting paddlepaddle==3.2.1
+  Downloading paddlepaddle-3.2.1-cp312-cp312-macosx_11_0_arm64.whl.metadata (8.7 kB)
+Collecting numpy==2.3.5
+  Downloading numpy-2.3.5-cp312-cp312-macosx_14_0_arm64.whl.metadata (62 kB)
+Collecting Pillow==13.0.0
+  Downloading pillow-13.0.0-cp312-cp312-macosx_11_0_arm64.whl.metadata (9.1 kB)
+Collecting pyclipper==1.4.0
+  Downloading pyclipper-1.4.0-cp312-cp312-macosx_10_13_universal2.whl.metadata (8.6 kB)
+Collecting opencv-python-headless==4.10.0.84
+  Downloading opencv_python_headless-4.10.0.84-cp37-abi3-macosx_11_0_arm64.whl.metadata (20 kB)
+Collecting httpx (from paddlepaddle==3.2.1)
+  Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting protobuf>=3.20.2 (from paddlepaddle==3.2.1)
+  Downloading protobuf-7.36.2-cp310-abi3-macosx_10_9_universal2.whl.metadata (595 bytes)
+Collecting opt_einsum==3.3.0 (from paddlepaddle==3.2.1)
+  Downloading opt_einsum-3.3.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting networkx (from paddlepaddle==3.2.1)
+  Downloading networkx-3.7-py3-none-any.whl.metadata (6.7 kB)
+Collecting typing_extensions (from paddlepaddle==3.2.1)
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting safetensors>=0.6.0 (from paddlepaddle==3.2.1)
+  Downloading safetensors-0.8.0-cp310-abi3-macosx_11_0_arm64.whl.metadata (4.2 kB)
+Collecting anyio (from httpx->paddlepaddle==3.2.1)
+  Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting certifi (from httpx->paddlepaddle==3.2.1)
+  Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx->paddlepaddle==3.2.1)
+  Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx->paddlepaddle==3.2.1)
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx->paddlepaddle==3.2.1)
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Downloading paddlepaddle-3.2.1-cp312-cp312-macosx_11_0_arm64.whl (99.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 99.5/99.5 MB 72.9 MB/s  0:00:01
+Downloading numpy-2.3.5-cp312-cp312-macosx_14_0_arm64.whl (5.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.1/5.1 MB 115.7 MB/s  0:00:00
+Downloading pillow-13.0.0-cp312-cp312-macosx_11_0_arm64.whl (4.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.9/4.9 MB 91.1 MB/s  0:00:00
+Downloading pyclipper-1.4.0-cp312-cp312-macosx_10_13_universal2.whl (265 kB)
+Downloading opencv_python_headless-4.10.0.84-cp37-abi3-macosx_11_0_arm64.whl (54.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 54.8/54.8 MB 83.1 MB/s  0:00:00
+Downloading opt_einsum-3.3.0-py3-none-any.whl (65 kB)
+Downloading protobuf-7.36.2-cp310-abi3-macosx_10_9_universal2.whl (456 kB)
+Downloading safetensors-0.8.0-cp310-abi3-macosx_11_0_arm64.whl (484 kB)
+Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Downloading networkx-3.7-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 146.7 MB/s  0:00:00
+Installing collected packages: typing_extensions, safetensors, pyclipper, protobuf, Pillow, numpy, networkx, idna, h11, certifi, opt_einsum, opencv-python-headless, httpcore, anyio, httpx, paddlepaddle
+
+Successfully installed Pillow-13.0.0 anyio-4.15.1 certifi-2026.10.23 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 networkx-3.7 numpy-2.3.5 opencv-python-headless-4.10.0.84 opt_einsum-3.3.0 paddlepaddle-3.2.1 protobuf-7.36.2 pyclipper-1.4.0 safetensors-0.8.0 typing_extensions-4.16.0

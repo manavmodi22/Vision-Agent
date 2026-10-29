@@ -43,7 +43,7 @@ def detect_owlv2(image: Image.Image, classes: list[str], min_conf: float) -> lis
         inputs = processor(text=[classes], images=image.convert("RGB"), return_tensors="pt").to(device)
         with torch.inference_mode():
             output = model(**inputs)
-        results = processor.post_process_object_detection(  # type: ignore[no-untyped-call]
+        results = processor.post_process_object_detection(  # type: ignore[no-untyped-call,unused-ignore]
             outputs=output, threshold=min_conf,
             target_sizes=torch.tensor([image.size[::-1]], device=device))
     except (ImportError, RuntimeError, ValueError, OSError) as exc:

@@ -73,6 +73,18 @@ def verify(bundle: Path, output: Path, image: Path | None, planner: str | None,
             reading = json.loads(native_reading.stdout)
             assert "PALLET 12345" in reading["texts"] and "DOCK 4" in reading["texts"], reading
             result["apple_vision"] = reading
+            rich_reading = json.loads(subprocess.check_output(
+                [str(python), "-I", "-B", "-c",
+                 "from PIL import Image; import sys; "
+                 "from engine.adapters.contracts import OcrRequest; "
+                 "from engine.adapters.registry import run_inference; "
+                 "print(run_inference(Image.open(sys.argv[1]),OcrRequest()).model_dump_json())",
+                 str(label)], cwd=folder, env=environment, text=True, timeout=40))
+            assert {row["text"] for row in rich_reading["readings"]} == {"PALLET 12345", "DOCK 4"}, rich_reading
+            assert all(row["polygon"] and row["box"] and row["confidence"] is not None
+                       for row in rich_reading["readings"]), rich_reading
+            assert rich_reading["identity"]["system_identity"]["output_protocol"] == "2", rich_reading
+            result["apple_vision_common_adapter"] = rich_reading
             socket_dir = folder / "socket"
             socket_dir.mkdir(mode=0o700)
             sock = socket_dir / "engine.sock"

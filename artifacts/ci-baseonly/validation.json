@@ -1,0 +1,78 @@
+{
+  "scope": "Local locked base+dev CI reproduction and narrow optional-dependency test portability. No GitHub/Linux rerun or model-quality claim.",
+  "current_source_identity": "e523a04b24594a48710c716c333763de3824e7d4c37cdaed58e196f9fcfacd3f",
+  "full_test_source_identity": "0e28ce96f4a92c99b53a761495bfc4452c66e9ed493baf18cc1796c2400ae6f6",
+  "post_test_delta": {
+    "kind": "four approved type-ignore comment edits in three optional-model files",
+    "files": [
+      "engine/models/owlv2.py",
+      "engine/train/rtdetr.py",
+      "engine/train/__init__.py"
+    ],
+    "ast_unchanged": true,
+    "strict_global_configuration_unchanged": true
+  },
+  "full_base_tests": {
+    "command": ".visionapp/ci-base-env/bin/python -m pytest -q",
+    "passed": 785,
+    "skipped": 2,
+    "seconds": 285.35,
+    "skip_scope": "Existing Torch-dependent training tests; no new skips added",
+    "log": "artifacts/ci-baseonly/tests-final.log"
+  },
+  "installed_targeted_tests": {
+    "command": ".venv/bin/pytest -q tests/core/test_adapter_identity.py tests/test_model_provenance.py tests/test_model_registration.py tests/test_provisioning.py tests/test_provisioning_review.py",
+    "passed": 64,
+    "seconds": 7.88,
+    "scope": "Developer environment with optional vision dependencies installed; executed before comment-only delta"
+  },
+  "type_checks": [
+    {
+      "command": ".visionapp/ci-base-env/bin/python -m mypy spec engine agent mcp_server evals",
+      "files": 168,
+      "passed": true,
+      "log": "artifacts/ci-baseonly/mypy-base-final.log"
+    },
+    {
+      "command": ".venv/bin/python -m mypy spec engine agent mcp_server evals",
+      "files": 168,
+      "passed": true,
+      "log": "artifacts/ci-baseonly/mypy-installed-final.log"
+    }
+  ],
+  "lint": {
+    "command": ".visionapp/ci-base-env/bin/python -m ruff check .",
+    "passed": true,
+    "log": "artifacts/ci-baseonly/ruff-final.log"
+  },
+  "environment_evidence": "artifacts/ci-baseonly/environment.json",
+  "test_files_changed": [
+    "tests/core/test_adapter_identity.py",
+    "tests/test_model_provenance.py",
+    "tests/test_model_registration.py",
+    "tests/test_provisioning.py"
+  ],
+  "boundaries": [
+    "Production dependency readiness checks remain enforced, including an explicit missing-dependency approval rejection regression.",
+    "Real MCP transport remains exercised; unavailable local model dependencies stay blocked in base-only child process.",
+    "No main virtual environment, dependency lock, CI workflow, model server, package, Git commit, or user project changes.",
+    "Paddle OCR remains unregistered and non-callable; reader0.3 foundation is not a new production OCR adapter."
+  ],
+  "native_v2_readonly_review": {
+    "additional_concrete_defect_found": false,
+    "reviewed": [
+      "engine/blocks/reading.py",
+      "engine/adapters/legacy.py",
+      "engine/adapters/registry.py"
+    ],
+    "root_fix": "Metadata-free RGB PNG transport prevents inherited EXIF orientation from being applied twice; included in the full base suite.",
+    "remaining_limit": "Native subprocess output size is checked after capture, under the existing30-second timeout; this review did not add streaming capture."
+  },
+  "log_sha256": {
+    "tests-final.log": "01afd9687e15edc3ad8e62bf37a568b7c376d6f979f5866194c77cbd8a93d971",
+    "mypy-base-final.log": "e1be5ac0996c9dd0b2bc36114cadf3cae2d91fb826f51b5c320903700d684d75",
+    "mypy-installed-final.log": "e1be5ac0996c9dd0b2bc36114cadf3cae2d91fb826f51b5c320903700d684d75",
+    "ruff-final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "environment.json": "4921edd20c02efc051df6dc45501ce9d7a47cc9e2218e139df545e9d5f5ca7e6"
+  }
+}

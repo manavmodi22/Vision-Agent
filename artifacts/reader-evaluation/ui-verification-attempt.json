@@ -1,0 +1,8 @@
+{
+  "scope": "CUA service availability check against the previously running provisioning build, before reader package installation",
+  "accessibility_read": "Succeeded; existing review sheet reported all changes saved and reviewed=false",
+  "screen_capture": "Failed: ScreenCaptureKit SCStreamErrorDomain -3812 invalid parameter (CUA server -10005); an earlier capture returned mostly blank pixels",
+  "new_reader_ui_verified": false,
+  "annotation_edits_performed": false,
+  "interpretation": "Tool-service capture failure, not evidence of an app crash or a passed native visual walkthrough"
+}

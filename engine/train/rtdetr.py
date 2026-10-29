@@ -121,7 +121,7 @@ def train_rtdetr(training: EvalDataset, evaluation: EvalDataset, project_root: P
         raise ValueError("Source checkpoint changed while loading; training discarded")
     base_hash = source_fingerprint["model.safetensors"]
     device = "mps" if torch.backends.mps.is_available() else "cpu"
-    model.to(device).train()  # type: ignore[arg-type]  # Transformers device-move decorator has an incorrect stub.
+    model.to(device).train()  # type: ignore[arg-type,unused-ignore]  # Transformers device-move decorator has an incorrect stub.
     optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5, weight_decay=1e-4)
     steps = completed = 0
     final_loss = 0.0
@@ -137,7 +137,7 @@ def train_rtdetr(training: EvalDataset, evaluation: EvalDataset, project_root: P
             if not bool(torch.isfinite(loss)):
                 raise ValueError("RT-DETRv2 training produced a non-finite loss; no checkpoint registered")
             optimizer.zero_grad()
-            loss.backward()  # type: ignore[no-untyped-call]
+            loss.backward()  # type: ignore[no-untyped-call,unused-ignore]
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             optimizer.step()
             steps += 1

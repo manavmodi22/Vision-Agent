@@ -1,0 +1,49 @@
+{
+  "repository": "PaddlePaddle/PaddleX",
+  "revision": "ffb64904d23708863ff5b8da312a5cbd52a7f462",
+  "license": "Apache-2.0",
+  "files": [
+    {
+      "source_url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleX/ffb64904d23708863ff5b8da312a5cbd52a7f462/LICENSE",
+      "path": "artifacts/adapter-probes/ocr-minimal/upstream/LICENSE",
+      "sha256": "accc36c817ac5ede473d05732e14afc11cb6e55ef5919bc826b653f631165043",
+      "installed_matches": null
+    },
+    {
+      "source_url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleX/ffb64904d23708863ff5b8da312a5cbd52a7f462/paddlex/inference/models/text_detection/processors.py",
+      "path": "artifacts/adapter-probes/ocr-minimal/upstream/paddlex/inference/models/text_detection/processors.py.txt",
+      "sha256": "b23f2349e9e3439d748548730443459d7ed43a4f5e5beb04903f3e5ad58be7c1",
+      "installed_matches": true
+    },
+    {
+      "source_url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleX/ffb64904d23708863ff5b8da312a5cbd52a7f462/paddlex/inference/models/text_detection/predictor.py",
+      "path": "artifacts/adapter-probes/ocr-minimal/upstream/paddlex/inference/models/text_detection/predictor.py.txt",
+      "sha256": "145d99a714a6cfa7a5d95ce823a78b218de2d1a53cdf427e26e9190c2675b0e6",
+      "installed_matches": true
+    },
+    {
+      "source_url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleX/ffb64904d23708863ff5b8da312a5cbd52a7f462/paddlex/inference/models/text_recognition/processors.py",
+      "path": "artifacts/adapter-probes/ocr-minimal/upstream/paddlex/inference/models/text_recognition/processors.py.txt",
+      "sha256": "772f501de953ecc2f4d6ea7ff3b12500a7766c90dccac740b36de2b6f7cb577e",
+      "installed_matches": true
+    },
+    {
+      "source_url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleX/ffb64904d23708863ff5b8da312a5cbd52a7f462/paddlex/inference/models/text_recognition/predictor.py",
+      "path": "artifacts/adapter-probes/ocr-minimal/upstream/paddlex/inference/models/text_recognition/predictor.py.txt",
+      "sha256": "3a85baae080f8778f0a131d15ccd39c9985cca9905752b939867f1efb6bb0c22",
+      "installed_matches": true
+    },
+    {
+      "source_url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleX/ffb64904d23708863ff5b8da312a5cbd52a7f462/paddlex/inference/pipelines/components/common/crop_image_regions.py",
+      "path": "artifacts/adapter-probes/ocr-minimal/upstream/paddlex/inference/pipelines/components/common/crop_image_regions.py.txt",
+      "sha256": "46610b50f06b2d5e0969a9c0f3f71bbbddcc53e4e43eaa1d49811ef94cf0d0a5",
+      "installed_matches": true
+    },
+    {
+      "source_url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleX/ffb64904d23708863ff5b8da312a5cbd52a7f462/paddlex/inference/pipelines/components/common/sort_boxes.py",
+      "path": "artifacts/adapter-probes/ocr-minimal/upstream/paddlex/inference/pipelines/components/common/sort_boxes.py.txt",
+      "sha256": "a2a4d94f7bc253ef4a8db0bd4dd69343d661a1973fd4808653c8453409976094",
+      "installed_matches": true
+    }
+  ]
+}

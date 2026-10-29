@@ -1,0 +1,349 @@
+CMake Deprecation Warning at CMakeLists.txt:25 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Warning (dev) at CMakeLists.txt:127 (enable_language):
+  project() should be called prior to this enable_language() call.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- The CXX compiler identification is AppleClang 21.0.0.21000334
+-- The C compiler identification is AppleClang 21.0.0.21000334
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /Library/Developer/CommandLineTools/usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detected processor: arm64
+-- Found PythonInterp: /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/bin/python (found suitable exact version "3.12.14")
+-- Found PythonLibs: /Users/manavrakeshku.modi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/libpython3.12.dylib (found suitable exact version "3.12.14")
+-- Looking for ccache - not found
+-- Performing Test HAVE_CXX_FSIGNED_CHAR
+-- Performing Test HAVE_CXX_FSIGNED_CHAR - Success
+-- Performing Test HAVE_C_FSIGNED_CHAR
+-- Performing Test HAVE_C_FSIGNED_CHAR - Success
+-- Performing Test HAVE_CXX_W
+-- Performing Test HAVE_CXX_W - Success
+-- Performing Test HAVE_C_W
+-- Performing Test HAVE_C_W - Success
+-- Performing Test HAVE_CXX_WALL
+-- Performing Test HAVE_CXX_WALL - Success
+-- Performing Test HAVE_C_WALL
+-- Performing Test HAVE_C_WALL - Success
+-- Performing Test HAVE_CXX_WRETURN_TYPE
+-- Performing Test HAVE_CXX_WRETURN_TYPE - Success
+-- Performing Test HAVE_C_WRETURN_TYPE
+-- Performing Test HAVE_C_WRETURN_TYPE - Success
+-- Performing Test HAVE_CXX_WNON_VIRTUAL_DTOR
+-- Performing Test HAVE_CXX_WNON_VIRTUAL_DTOR - Success
+-- Performing Test HAVE_C_WNON_VIRTUAL_DTOR
+-- Performing Test HAVE_C_WNON_VIRTUAL_DTOR - Success
+-- Performing Test HAVE_CXX_WADDRESS
+-- Performing Test HAVE_CXX_WADDRESS - Success
+-- Performing Test HAVE_C_WADDRESS
+-- Performing Test HAVE_C_WADDRESS - Success
+-- Performing Test HAVE_CXX_WSEQUENCE_POINT
+-- Performing Test HAVE_CXX_WSEQUENCE_POINT - Success
+-- Performing Test HAVE_C_WSEQUENCE_POINT
+-- Performing Test HAVE_C_WSEQUENCE_POINT - Success
+-- Performing Test HAVE_CXX_WFORMAT
+-- Performing Test HAVE_CXX_WFORMAT - Success
+-- Performing Test HAVE_C_WFORMAT
+-- Performing Test HAVE_C_WFORMAT - Success
+-- Performing Test HAVE_CXX_WFORMAT_SECURITY
+-- Performing Test HAVE_CXX_WFORMAT_SECURITY - Success
+-- Performing Test HAVE_C_WFORMAT_SECURITY
+-- Performing Test HAVE_C_WFORMAT_SECURITY - Success
+-- Performing Test HAVE_CXX_WMISSING_DECLARATIONS
+-- Performing Test HAVE_CXX_WMISSING_DECLARATIONS - Success
+-- Performing Test HAVE_C_WMISSING_DECLARATIONS
+-- Performing Test HAVE_C_WMISSING_DECLARATIONS - Success
+-- Performing Test HAVE_CXX_WMISSING_PROTOTYPES
+-- Performing Test HAVE_CXX_WMISSING_PROTOTYPES - Success
+-- Performing Test HAVE_C_WMISSING_PROTOTYPES
+-- Performing Test HAVE_C_WMISSING_PROTOTYPES - Success
+-- Performing Test HAVE_CXX_WSTRICT_PROTOTYPES
+-- Performing Test HAVE_CXX_WSTRICT_PROTOTYPES - Success
+-- Performing Test HAVE_C_WSTRICT_PROTOTYPES
+-- Performing Test HAVE_C_WSTRICT_PROTOTYPES - Success
+-- Performing Test HAVE_CXX_WUNDEF
+-- Performing Test HAVE_CXX_WUNDEF - Success
+-- Performing Test HAVE_C_WUNDEF
+-- Performing Test HAVE_C_WUNDEF - Success
+-- Performing Test HAVE_CXX_WINIT_SELF
+-- Performing Test HAVE_CXX_WINIT_SELF - Success
+-- Performing Test HAVE_C_WINIT_SELF
+-- Performing Test HAVE_C_WINIT_SELF - Success
+-- Performing Test HAVE_CXX_WPOINTER_ARITH
+-- Performing Test HAVE_CXX_WPOINTER_ARITH - Success
+-- Performing Test HAVE_C_WPOINTER_ARITH
+-- Performing Test HAVE_C_WPOINTER_ARITH - Success
+-- Performing Test HAVE_CXX_WSHADOW
+-- Performing Test HAVE_CXX_WSHADOW - Success
+-- Performing Test HAVE_C_WSHADOW
+-- Performing Test HAVE_C_WSHADOW - Success
+-- Performing Test HAVE_CXX_WSIGN_PROMO
+-- Performing Test HAVE_CXX_WSIGN_PROMO - Success
+-- Performing Test HAVE_C_WSIGN_PROMO
+-- Performing Test HAVE_C_WSIGN_PROMO - Success
+-- Performing Test HAVE_CXX_WUNINITIALIZED
+-- Performing Test HAVE_CXX_WUNINITIALIZED - Success
+-- Performing Test HAVE_C_WUNINITIALIZED
+-- Performing Test HAVE_C_WUNINITIALIZED - Success
+-- Performing Test HAVE_CXX_WNO_DELETE_NON_VIRTUAL_DTOR
+-- Performing Test HAVE_CXX_WNO_DELETE_NON_VIRTUAL_DTOR - Success
+-- Performing Test HAVE_C_WNO_DELETE_NON_VIRTUAL_DTOR
+-- Performing Test HAVE_C_WNO_DELETE_NON_VIRTUAL_DTOR - Success
+-- Performing Test HAVE_CXX_WNO_UNNAMED_TYPE_TEMPLATE_ARGS
+-- Performing Test HAVE_CXX_WNO_UNNAMED_TYPE_TEMPLATE_ARGS - Success
+-- Performing Test HAVE_C_WNO_UNNAMED_TYPE_TEMPLATE_ARGS
+-- Performing Test HAVE_C_WNO_UNNAMED_TYPE_TEMPLATE_ARGS - Success
+-- Performing Test HAVE_CXX_WNO_COMMENT
+-- Performing Test HAVE_CXX_WNO_COMMENT - Success
+-- Performing Test HAVE_C_WNO_COMMENT
+-- Performing Test HAVE_C_WNO_COMMENT - Success
+-- Performing Test HAVE_CXX_FDIAGNOSTICS_SHOW_OPTION
+-- Performing Test HAVE_CXX_FDIAGNOSTICS_SHOW_OPTION - Success
+-- Performing Test HAVE_C_FDIAGNOSTICS_SHOW_OPTION
+-- Performing Test HAVE_C_FDIAGNOSTICS_SHOW_OPTION - Success
+-- Performing Test HAVE_CXX_QUNUSED_ARGUMENTS
+-- Performing Test HAVE_CXX_QUNUSED_ARGUMENTS - Success
+-- Performing Test HAVE_C_QUNUSED_ARGUMENTS
+-- Performing Test HAVE_C_QUNUSED_ARGUMENTS - Success
+-- Performing Test HAVE_CXX_WNO_SEMICOLON_BEFORE_METHOD_BODY
+-- Performing Test HAVE_CXX_WNO_SEMICOLON_BEFORE_METHOD_BODY - Success
+-- Performing Test HAVE_C_WNO_SEMICOLON_BEFORE_METHOD_BODY
+-- Performing Test HAVE_C_WNO_SEMICOLON_BEFORE_METHOD_BODY - Success
+-- Performing Test HAVE_CXX_FFUNCTION_SECTIONS
+-- Performing Test HAVE_CXX_FFUNCTION_SECTIONS - Success
+-- Performing Test HAVE_C_FFUNCTION_SECTIONS
+-- Performing Test HAVE_C_FFUNCTION_SECTIONS - Success
+-- Performing Test HAVE_CXX_FDATA_SECTIONS
+-- Performing Test HAVE_CXX_FDATA_SECTIONS - Success
+-- Performing Test HAVE_C_FDATA_SECTIONS
+-- Performing Test HAVE_C_FDATA_SECTIONS - Success
+-- Performing Test HAVE_CPU_NEON_SUPPORT (check file: cmake/checks/cpu_neon.cpp)
+-- Performing Test HAVE_CPU_NEON_SUPPORT - Success
+-- Performing Test HAVE_CPU_FP16_SUPPORT (check file: cmake/checks/cpu_fp16.cpp)
+-- Performing Test HAVE_CPU_FP16_SUPPORT - Success
+-- Performing Test HAVE_CXX_MARCH_ARMV8_2_A+DOTPROD (check file: cmake/checks/cpu_neon_dotprod.cpp)
+-- Performing Test HAVE_CXX_MARCH_ARMV8_2_A+DOTPROD - Success
+-- Performing Test HAVE_CXX_MARCH_ARMV8_2_A+FP16 (check file: cmake/checks/cpu_neon_fp16.cpp)
+-- Performing Test HAVE_CXX_MARCH_ARMV8_2_A+FP16 - Success
+-- Performing Test HAVE_CXX_MARCH_ARMV8_2_A+BF16 (check file: cmake/checks/cpu_neon_bf16.cpp)
+-- Performing Test HAVE_CXX_MARCH_ARMV8_2_A+BF16 - Success
+-- Performing Test HAVE_CPU_BASELINE_FLAGS
+-- Performing Test HAVE_CPU_BASELINE_FLAGS - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_NEON_DOTPROD
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_NEON_DOTPROD - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_NEON_FP16
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_NEON_FP16 - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_NEON_BF16
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_NEON_BF16 - Success
+-- Performing Test HAVE_CXX_FVISIBILITY_HIDDEN
+-- Performing Test HAVE_CXX_FVISIBILITY_HIDDEN - Success
+-- Performing Test HAVE_C_FVISIBILITY_HIDDEN
+-- Performing Test HAVE_C_FVISIBILITY_HIDDEN - Success
+-- Performing Test HAVE_CXX_FVISIBILITY_INLINES_HIDDEN
+-- Performing Test HAVE_CXX_FVISIBILITY_INLINES_HIDDEN - Success
+-- Performing Test HAVE_C_FVISIBILITY_INLINES_HIDDEN
+-- Performing Test HAVE_C_FVISIBILITY_INLINES_HIDDEN - Success
+-- Performing Test HAVE_LINK_AS_NEEDED
+-- Performing Test HAVE_LINK_AS_NEEDED - Failed
+-- Performing Test HAVE_LINK_NO_UNDEFINED
+-- Performing Test HAVE_LINK_NO_UNDEFINED - Failed
+-- Looking for posix_memalign
+-- Looking for posix_memalign - found
+-- Looking for malloc.h
+-- Looking for malloc.h - not found
+-- Found ZLIB: /Library/Developer/CommandLineTools/SDKs/MacOSX27.0.sdk/usr/lib/libz.tbd (found suitable version "1.2.12", minimum required is "1.2.3")
+-- Could not find OpenBLAS include. Turning OpenBLAS_FOUND off
+-- Could not find OpenBLAS lib. Turning OpenBLAS_FOUND off
+-- Could NOT find Atlas (missing: Atlas_CLAPACK_INCLUDE_DIR Atlas_BLAS_LIBRARY) 
+-- Looking for sgemm_
+-- Looking for sgemm_ - not found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Looking for dgemm_
+-- Looking for dgemm_ - found
+-- Found BLAS: /Library/Developer/CommandLineTools/SDKs/MacOSX27.0.sdk/System/Library/Frameworks/Accelerate.framework
+-- Looking for cheev_
+-- Looking for cheev_ - found
+-- Found LAPACK: /Library/Developer/CommandLineTools/SDKs/MacOSX27.0.sdk/System/Library/Frameworks/Accelerate.framework;-lm;-ldl
+-- LAPACK(LAPACK/Apple): LAPACK_LIBRARIES: /Library/Developer/CommandLineTools/SDKs/MacOSX27.0.sdk/System/Library/Frameworks/Accelerate.framework;-lm;-ldl
+-- Looking for Accelerate/Accelerate.h
+-- Looking for Accelerate/Accelerate.h - found
+-- Looking for Accelerate/Accelerate.h
+-- Looking for Accelerate/Accelerate.h - found
+-- LAPACK(LAPACK/Apple): Support is enabled.
+-- VTK is not found. Please set -DVTK_DIR in CMake to VTK build directory, or to VTK install subdirectory with VTKConfig.cmake file
+CMake Deprecation Warning at 3rdparty/carotene/hal/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- Performing Test HAVE_CXX_WNO_UNUSED_FUNCTION
+-- Performing Test HAVE_CXX_WNO_UNUSED_FUNCTION - Success
+CMake Deprecation Warning at 3rdparty/carotene/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- Using whitelist: opencv_core;opencv_imgproc;opencv_python3
+-- Module opencv_calib3d disabled by whitelist
+-- Module opencv_dnn disabled by whitelist
+-- Module opencv_features2d disabled by whitelist
+-- Module opencv_flann disabled by whitelist
+-- Module opencv_highgui disabled by whitelist
+-- Module opencv_imgcodecs disabled by whitelist
+-- Module opencv_java_bindings_generator disabled by whitelist
+-- Module opencv_js_bindings_generator disabled by whitelist
+-- Module opencv_ml disabled by whitelist
+-- Module opencv_objc_bindings_generator disabled by whitelist
+-- Module opencv_objdetect disabled by whitelist
+-- Module opencv_photo disabled by whitelist
+-- Module opencv_python_tests disabled by whitelist
+-- Module opencv_stitching disabled by whitelist
+-- Module opencv_video disabled by whitelist
+-- Module opencv_videoio disabled by whitelist
+-- Allocator metrics storage type: 'int'
+-- Excluding from source files list: modules/imgproc/src/corner.avx.cpp
+-- Excluding from source files list: modules/imgproc/src/imgwarp.avx2.cpp
+-- Excluding from source files list: modules/imgproc/src/imgwarp.lasx.cpp
+-- Excluding from source files list: modules/imgproc/src/imgwarp.sse4_1.cpp
+-- Excluding from source files list: modules/imgproc/src/resize.avx2.cpp
+-- Excluding from source files list: modules/imgproc/src/resize.lasx.cpp
+-- Excluding from source files list: modules/imgproc/src/resize.sse4_1.cpp
+-- Found 'misc' Python modules from /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-71d3237a093b60a27601c20e9ee6c3e52154e8b1/modules/python/package/extra_modules
+-- Found 'mat_wrapper;utils' Python modules from /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-71d3237a093b60a27601c20e9ee6c3e52154e8b1/modules/core/misc/python/package
+-- Performing Test HAVE_CXX_WNO_DEPRECATED_DECLARATIONS
+-- Performing Test HAVE_CXX_WNO_DEPRECATED_DECLARATIONS - Success
+-- Performing Test HAVE_CXX_WNO_OVERLOADED_VIRTUAL
+-- Performing Test HAVE_CXX_WNO_OVERLOADED_VIRTUAL - Success
+-- Performing Test HAVE_CXX_WNO_UNUSED_PRIVATE_FIELD
+-- Performing Test HAVE_CXX_WNO_UNUSED_PRIVATE_FIELD - Success
+-- Performing Test HAVE_CXX_WNO_UNDEF
+-- Performing Test HAVE_CXX_WNO_UNDEF - Success
+-- Found 'misc' Python modules from /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-71d3237a093b60a27601c20e9ee6c3e52154e8b1/modules/python/package/extra_modules
+-- Found 'mat_wrapper;utils' Python modules from /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-71d3237a093b60a27601c20e9ee6c3e52154e8b1/modules/core/misc/python/package
+CMake Warning (dev) at modules/python/python_loader.cmake:134 (add_custom_command):
+  Exactly one of PRE_BUILD, PRE_LINK, or POST_BUILD must be given.  Assuming
+  POST_BUILD to preserve backward compatibility.
+
+  Policy CMP0175 is not set: add_custom_command() rejects invalid arguments.
+  Run "cmake --help-policy CMP0175" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+Call Stack (most recent call first):
+  modules/python/common.cmake:169 (include)
+  modules/python/python3/CMakeLists.txt:11 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning at cmake/OpenCVGenSetupVars.cmake:54 (message):
+  CONFIGURATION IS NOT SUPPORTED: validate setupvars script in install
+  directory
+Call Stack (most recent call first):
+  CMakeLists.txt:1180 (include)
+
+
+-- 
+-- General configuration for OpenCV 4.10.0 =====================================
+--   Version control:               cdf4245-dirty
+-- 
+--   Platform:
+--     Timestamp:                   2026-10-29T03:47:11Z
+--     Host:                        Darwin 25.6.0 arm64
+--     CMake:                       3.31.6
+--     CMake generator:             Ninja
+--     CMake build tool:            /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/build-tools/bin/ninja
+--     Configuration:               Release
+-- 
+--   CPU/HW features:
+--     Baseline:                    NEON FP16
+--     Dispatched code generation:  NEON_DOTPROD NEON_FP16 NEON_BF16
+--       requested:                 NEON_FP16 NEON_BF16 NEON_DOTPROD
+--       NEON_DOTPROD (1 files):    + NEON_DOTPROD
+--       NEON_FP16 (0 files):       + NEON_FP16
+--       NEON_BF16 (0 files):       + NEON_BF16
+-- 
+--   C/C++:
+--     Built as dynamic libs?:      NO
+--     C++ standard:                11
+--     C++ Compiler:                /Library/Developer/CommandLineTools/usr/bin/c++  (ver 21.0.0.21000334)
+--     C++ flags (Release):         -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-unnamed-type-template-args -Wno-comment -fdiagnostics-show-option -Qunused-arguments -Wno-semicolon-before-method-body -ffunction-sections -fdata-sections    -fvisibility=hidden -fvisibility-inlines-hidden -O3 -DNDEBUG  -DNDEBUG
+--     C++ flags (Debug):           -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-unnamed-type-template-args -Wno-comment -fdiagnostics-show-option -Qunused-arguments -Wno-semicolon-before-method-body -ffunction-sections -fdata-sections    -fvisibility=hidden -fvisibility-inlines-hidden -g  -O0 -DDEBUG -D_DEBUG
+--     C Compiler:                  /Library/Developer/CommandLineTools/usr/bin/cc
+--     C flags (Release):           -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-unnamed-type-template-args -Wno-comment -fdiagnostics-show-option -Qunused-arguments -Wno-semicolon-before-method-body -ffunction-sections -fdata-sections    -fvisibility=hidden -fvisibility-inlines-hidden -O3 -DNDEBUG  -DNDEBUG
+--     C flags (Debug):             -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-unnamed-type-template-args -Wno-comment -fdiagnostics-show-option -Qunused-arguments -Wno-semicolon-before-method-body -ffunction-sections -fdata-sections    -fvisibility=hidden -fvisibility-inlines-hidden -g  -O0 -DDEBUG -D_DEBUG
+--     Linker flags (Release):      -Wl,-dead_strip  
+--     Linker flags (Debug):        -Wl,-dead_strip  
+--     ccache:                      NO
+--     Precompiled headers:         NO
+--     Extra dependencies:          /Library/Developer/CommandLineTools/SDKs/MacOSX27.0.sdk/usr/lib/libz.tbd /Library/Developer/CommandLineTools/SDKs/MacOSX27.0.sdk/System/Library/Frameworks/Accelerate.framework -lm -ldl
+--     3rdparty dependencies:       tegra_hal
+-- 
+--   OpenCV modules:
+--     To be built:                 core imgproc python3
+--     Disabled:                    world
+--     Disabled by dependency:      calib3d dnn features2d flann highgui imgcodecs java_bindings_generator js_bindings_generator ml objc_bindings_generator objdetect photo python_tests stitching video videoio
+--     Unavailable:                 gapi java python2 ts
+--     Applications:                -
+--     Documentation:               NO
+--     Non-free algorithms:         NO
+-- 
+--   GUI: 
+--     Cocoa:                       YES
+--     VTK support:                 NO
+-- 
+--   Media I/O: 
+--     ZLib:                        /Library/Developer/CommandLineTools/SDKs/MacOSX27.0.sdk/usr/lib/libz.tbd (ver 1.2.12)
+--     HDR:                         YES
+--     SUNRASTER:                   YES
+--     PXM:                         YES
+--     PFM:                         YES
+-- 
+--   Video I/O:
+--     DC1394:                      NO
+-- 
+--   Parallel framework:            GCD
+-- 
+--   Trace:                         YES (built-in)
+-- 
+--   Other third-party libraries:
+--     Lapack:                      YES (/Library/Developer/CommandLineTools/SDKs/MacOSX27.0.sdk/System/Library/Frameworks/Accelerate.framework -lm -ldl)
+--     Eigen:                       NO
+--     Custom HAL:                  YES (carotene (ver 0.0.1, Auto detected))
+--     Flatbuffers:                 builtin/3rdparty (23.5.9)
+-- 
+--   Python 3:
+--     Interpreter:                 /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/bin/python (ver 3.12.14)
+--     Libraries:                   /Users/manavrakeshku.modi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/libpython3.12.dylib (ver 3.12.14)
+--     Limited API:                 NO
+--     numpy:                       /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/numpy/_core/include (ver 2.3.5)
+--     install path:                /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-install/python/cv2/python-3.12
+-- 
+--   Python (for build):            /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/bin/python
+-- 
+--   Install to:                    /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-install
+-- -----------------------------------------------------------------
+-- 
+-- Configuring done (48.0s)
+-- Generating done (0.1s)
+-- Build files have been written to: /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-build

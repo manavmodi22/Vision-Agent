@@ -1,0 +1,9 @@
+{
+  "repository": "opencv/opencv",
+  "version": "4.10.0",
+  "revision": "71d3237a093b60a27601c20e9ee6c3e52154e8b1",
+  "archive_url": "https://codeload.github.com/opencv/opencv/tar.gz/71d3237a093b60a27601c20e9ee6c3e52154e8b1",
+  "archive_bytes": 95014458,
+  "archive_sha256": "4c7f5fb9c7e0b5fcac4363302212f11323509eccb3af0dd46783242b9bbc1da6",
+  "source_path": ".visionapp/adapter-probes/ocr-minimal/opencv-71d3237a093b60a27601c20e9ee6c3e52154e8b1"
+}

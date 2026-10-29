@@ -4,7 +4,15 @@ Source: `agent-platform-revision.md`, adopted by the user on 2026-10-28. This ma
 retains the full requested outcome; partial implementation is not completion.
 The original five describe/build/prove/run/improve flows remain acceptance flows.
 
-Current provisioning candidate source is
+The latest reader checkpoint adds actual native OCR/barcode regions and identity,
+explicit reader selection with legacy replay, and public same-input diagnostics.
+See [current status](status.md), [native validation](../artifacts/native-reading-v2/native-validation-final.json), [base-only tests](../artifacts/ci-baseonly/tests-final.log)
+and [the measured comparison](../artifacts/reader-evaluation/COMPARISON.md).
+Paddle remains an isolated runtime proof, not a callable app model. Image-level
+text correction is available; editable/scored text-region ground truth is pending.
+These checks do not complete the full architecture or establish warehouse quality.
+
+Previous provisioning candidate source is
 `2f0804da25ccbd6047d9dee2389127f13e3aa944b2596e1b0e7b577e1d5363a5`.
 The [full suite](../artifacts/provisioning/full-tests-2f08.log) passes **758 tests in
 391.25 seconds**, strict mypy on **168 files** and repository Ruff. Its coordinated-
@@ -58,7 +66,7 @@ contextual evidence checkpoints in that workflow.
 | Durable action timeline and artifacts | Matching start/finish events and content hashes for actual calls; crash/replay tests; native timeline | Actual MCP events, artifacts, evaluation references and replay tests pass; packaged native timeline, plan and contextual correction inspected |
 | Versioned Markdown playbooks | Packaged documents, typed metadata, exact hashes in actual plan/trace, selection and authority tests | Six packages ship in wheel; hashes captured in actual Qwen plan and verified before execution |
 | Common adapter contracts and new families | Actual detection/segmentation/reading outputs with timing/provenance; per-adapter hardware smoke | Common evidence wrappers cover existing detection/reading plus integrated YOLOX-s ONNX CPU. Actual OWLv2/RT-DETR/native OCR runs and YOLOX black-image/30-frame parity evidence exist; segmentation, VLM/training parity and further families remain pending |
-| SAM 3, YOLO variant and OCR alternative comparison | Licensed pinned weights, supported hardware, actual same-task benchmark artifacts | YOLOX-s ONNX is registered with exact COCO vocabulary, pinned official artifacts and a reviewed install recipe; integrated 30-frame outputs match the prior probe, including its failed 52.7% diagnostic recall. PaddleOCR remains an isolated CPU probe with transitive-runtime audit; SAM 3 and other YOLO variants remain unsupported |
+| SAM 3, YOLO variant and OCR alternative comparison | Licensed pinned weights, supported hardware, actual same-task benchmark artifacts | YOLOX-s ONNX is registered with exact COCO vocabulary, pinned official artifacts and a reviewed install recipe; integrated 30-frame outputs match the prior probe, including its failed 52.7% diagnostic recall. PaddleOCR remains an isolated reduced CPU runtime proof with transitive-runtime audit and 100 public crop diagnostics (16 exact versus Apple 33); SAM 3 and other YOLO variants remain unsupported |
 | Comparable candidate evaluation | Same reviewed holdout/task, aggregate and failure-slice metrics, latency/resources, explicit selection gate | Shared immutable validation protocol binds all compared candidates, task/metric, reviewed membership, source/group/policy and recipe; changes invalidate results/approvals. Numeric pass is separate from promotion eligibility. Nullable CER/WER and EvaluationReport references retained; masks, named-field metrics, failure slices and standardized resource comparison pending |
 | Reviewed scene-disjoint acceptance data | Provenance and split audit, independent reviewed labels, exact benchmark run | Human configuration/reservation and selected-candidate acceptance are implemented, with exposure history, source/pixel separation, duplicate rejection and exact cached replay. Positive path is software-tested with mocked inference, not measured vision quality. Real independent reviewed ground truth remains incomplete; retained public NVIDIA labels are unreviewed, and the separate second-scene detector benchmark failed its recall gate |
 | Optional source acquisition | Isolated external tool authority; URL/time/license/access provenance; injection and content-boundary tests | Pending |

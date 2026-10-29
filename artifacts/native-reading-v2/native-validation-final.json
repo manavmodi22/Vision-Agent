@@ -1,0 +1,181 @@
+{
+  "scope": "Native presentation-only mixed workflow text visibility correction. This change does not modify recognition, geometry, protocol or Python. No inference or benchmark repeated. Historical receipt remains intact.",
+  "previous_receipt": "/Users/manavrakeshku.modi/vision-agent/artifacts/native-reading-v2/native-validation.json",
+  "previous_receipt_sha256": "535bbcb8b48f6634f49323e267ce7219abe0d0e59b0e8edf01a0d2f2c33f17a3",
+  "deterministic_checks": 207,
+  "historical_payload_checks": 22,
+  "rich_cli_payload_checks": 7,
+  "actual_adapter_frame_checks": 1,
+  "payloads": [
+    {
+      "flag": "--capability-catalog",
+      "path": "artifacts/capability-catalog-local.json",
+      "sha256": "de0c8f166c2c0b19f8ea4ef8860e430961782dcded2ceeb4d4686689fd4d4cea"
+    },
+    {
+      "flag": "--build-status",
+      "path": "artifacts/platform-fixture/build-status.json",
+      "sha256": "4f936e653217fe7c11dcffc70aba3e9e52d0050bc0fd9d7a91ec02f355c73a8d"
+    },
+    {
+      "flag": "--build-artifact",
+      "path": "artifacts/platform-fixture/17b29cb6a2fa1a0dfe0b2ba95ecb2603091a2a485b36dda67a0acbfff81c50ea.json",
+      "sha256": "81fa96a8f1d71432d2113292078d79c54a15387bebad06a153be80d4d451e910"
+    },
+    {
+      "flag": "--build-artifact",
+      "path": "artifacts/platform-fixture/4c21b8ff8448b356bdfdb39e5f3c3ea71904da2a560cfb7c22fe298087361a04.json",
+      "sha256": "388cf8540a3ce2b5597078f02d1fa9792ecdb5c21e9368380852268f027317f0"
+    },
+    {
+      "flag": "--build-artifact",
+      "path": "artifacts/platform-fixture/4d2b86fd7e73cd2ef6c7589bbd4b4fbd59ee68233736c9be666a226062a83cd6.json",
+      "sha256": "9515c54a3244bd58635c8b0accd9abb1750b85ed76ff836e8bcb1b4508e7bfce"
+    },
+    {
+      "flag": "--build-artifact",
+      "path": "artifacts/platform-fixture/773ddc2398eb475fc0849d8ba79ddaf262360a118ed213c1fb7890d8df536305.json",
+      "sha256": "96bef535b87c0a1f488ef1bf7ad710069492992dbd670b9da1eb0e02933ce843"
+    },
+    {
+      "flag": "--build-artifact",
+      "path": "artifacts/platform-fixture/86b39764ab1c3b002f21a0592c99812a9300f409d2b140cde1f0649a13479176.json",
+      "sha256": "b19ec406df1ec72e13d3561cbd19fbb9946d90a8db7f69c6d1e4432d80424a5b"
+    },
+    {
+      "flag": "--build-artifact",
+      "path": "artifacts/platform-fixture/c4c5426b9af3a433e33ff7b038fd49c4dcae55a16369fc4712ad3d61a96fb5c5.json",
+      "sha256": "702b439aca6548cc30fb374f472a2d189911748e7fc8f6ff2858ab1b9fef6cea"
+    },
+    {
+      "flag": "--build-artifact",
+      "path": "artifacts/platform-fixture/fcc7c1493e3d62e23131daa63813469930e7fb09a4e4e117be4a080d26406cec.json",
+      "sha256": "1dac00e18228a9e8f2cc6da2a6dd5ec12e37749538648492c1416363894efbc9"
+    },
+    {
+      "flag": "--planning-probe",
+      "path": "artifacts/stronger-planner/qwen14-selection-warehouse.json",
+      "sha256": "60ee3b0e3f225198750e4de57914b28576f5b47c38cc7fb01920ebc2cc41d601"
+    },
+    {
+      "flag": "--evaluation-configuration",
+      "path": "artifacts/evaluation-fairness/native-fixtures/configuration.json",
+      "sha256": "7b9426f06aaee757371fdbc7b97b45955b98a5ba42171e684c335104a20b604f"
+    },
+    {
+      "flag": "--evaluation-readiness",
+      "path": "artifacts/evaluation-fairness/native-fixtures/readiness.json",
+      "sha256": "42e666522e8679cfac85077916b74ce6d78bc827e38e289cba9c6976e011043a"
+    },
+    {
+      "flag": "--evaluation-result",
+      "path": "artifacts/evaluation-fairness/native-fixtures/result.json",
+      "sha256": "80dd11ee9d501418e495da38dfd2a9a5dded6a3147c7900fd291ff686e6b5089"
+    },
+    {
+      "flag": "--build-status",
+      "path": "artifacts/evaluation-fairness/native-fixtures/build-status.json",
+      "sha256": "26d4b1929ae58fc10d06cb0a5abe40cb2b371d409d2655f06734d78d339957fe"
+    },
+    {
+      "flag": "--provisioning-options",
+      "path": "artifacts/provisioning/mocked-api-fixtures/options.json",
+      "sha256": "12b7837f0f6728c40a5c45b9b23b048ffff9f2ea824ee032abdb5d916041c4ba"
+    },
+    {
+      "flag": "--provisioning-plan",
+      "path": "artifacts/provisioning/mocked-api-fixtures/plan.json",
+      "sha256": "4ac338aa67c7cfbd5e7bdfb1b46d9d517c54c5fa3284e7ee48cce0682f2172b7"
+    },
+    {
+      "flag": "--provisioning-job",
+      "path": "artifacts/provisioning/mocked-api-fixtures/job.json",
+      "sha256": "5575a11255c5af0d3349efa64da9916934cd8f012e9982e4370cc93e5e9e2f89"
+    },
+    {
+      "flag": "--provisioning-health",
+      "path": "artifacts/provisioning/mocked-api-fixtures/health.json",
+      "sha256": "ae97b556440a3f7c471e3137b32aebb4be87b1c36cba8f5d068504a8f432492e"
+    },
+    {
+      "flag": "--provisioning-options",
+      "path": "artifacts/provisioning/native-fixtures/options.json",
+      "sha256": "fa7a889f625e4f603d9a5f8d6f020e96f45e452b925eae8762a6f942ad203b42"
+    },
+    {
+      "flag": "--provisioning-plan",
+      "path": "artifacts/provisioning/native-fixtures/plan.json",
+      "sha256": "dd4554d8b731a2d2d45b72296aceac4b5526128df73ac9e510e734c9df1ac9a0"
+    },
+    {
+      "flag": "--provisioning-job",
+      "path": "artifacts/provisioning/native-fixtures/job.json",
+      "sha256": "03f2986b5d907b3f9cca2e5068fd563a38bdbbe02788001fcf408b058169f133"
+    },
+    {
+      "flag": "--provisioning-health",
+      "path": "artifacts/provisioning/native-fixtures/health.json",
+      "sha256": "2c07e21caa30126ed3afd793918d5ea4843aee1b7458996902357b79d32d8b68"
+    },
+    {
+      "flag": "--native-readings-v2",
+      "path": "artifacts/native-reading-v2/exact.stdout.json",
+      "sha256": "12e7d72a3d3b7ad48b1c996a682d7c82bdf35e44e714a489accb44c2a792cd18"
+    },
+    {
+      "flag": "--native-readings-v2",
+      "path": "artifacts/native-reading-v2/mirrored-exif.stdout.json",
+      "sha256": "4e03972752fcc5ef3cb42fbeb2f48835a9db316ffa11f9c9a7d911aeebe856de"
+    },
+    {
+      "flag": "--native-readings-v2",
+      "path": "artifacts/native-reading-v2/pallet.stdout.json",
+      "sha256": "3d2162c5f8394c429f181206d58d90fe98b29ab9178f19344d98b963488141d9"
+    },
+    {
+      "flag": "--native-readings-v2",
+      "path": "artifacts/native-reading-v2/qr.stdout.json",
+      "sha256": "fb2cfe4f3cf2aa564354297218a69aebd9be757d3d8e48c54cfc2aaf50ae9326"
+    },
+    {
+      "flag": "--native-readings-v2",
+      "path": "artifacts/native-reading-v2/rotated-exif.stdout.json",
+      "sha256": "ba12d601a2bed1c31f1f491b1f627daa4cb7987cbaa691fb239ed89585d4cb50"
+    },
+    {
+      "flag": "--native-readings-v2",
+      "path": "artifacts/native-reading-v2/skewed.stdout.json",
+      "sha256": "628d13615f2060b968a111c9b44a8503d50cc735fe122bedafa704496b031855"
+    },
+    {
+      "flag": "--native-readings-v2",
+      "path": "artifacts/native-reading-v2/substring.stdout.json",
+      "sha256": "726336c00810110b637a56e91496c4d69c2d0e24358a90f2f8b747c7fb576183"
+    },
+    {
+      "flag": "--reading-frame",
+      "path": "artifacts/reader-evaluation/actual-native-frame.json",
+      "sha256": "7c16fe0755cec643ad160d147e60dfce62f2e66ed4573033a44429dd139b9e50"
+    }
+  ],
+  "results": {
+    "debug": {
+      "binary": "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Debug/VisionApp",
+      "sha256": "b8fab689eb51d89832b78da273cd15bd3132794dbd596af830a1c7785f4beeb4",
+      "elapsed_s": 0.46275795897236094,
+      "result": {
+        "status": "passed",
+        "checks": 237
+      }
+    },
+    "release": {
+      "binary": "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Release/VisionApp",
+      "sha256": "e18aa530bf17fce3e21818881e746aee65b447fc0a84d789426716c59da264d1",
+      "elapsed_s": 0.8253242499777116,
+      "result": {
+        "status": "passed",
+        "checks": 237
+      }
+    }
+  }
+}

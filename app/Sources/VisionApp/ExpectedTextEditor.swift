@@ -11,6 +11,7 @@ struct ExpectedTextEditor: View {
             TextEditor(text: $draft).font(.system(size: 12, design: .monospaced)).scrollContentBackground(.hidden)
                 .padding(6).frame(minHeight: 130).background(Studio.background).clipShape(RoundedRectangle(cornerRadius: 6))
             Text("Editing clears review. Check the image before marking it reviewed again.").font(.caption2).foregroundStyle(Studio.muted)
+            Text("Expected values are image-level labels. Reader regions and confidence remain model evidence; region geometry and reading order are not scored.").font(.caption2).foregroundStyle(Studio.muted)
         }
         .onAppear { draft = values.joined(separator: "\n") }
         .onChange(of: draft) { _, text in let parsed = ExpectedTextEditing.values(text); if parsed != values { onChange(parsed) } }

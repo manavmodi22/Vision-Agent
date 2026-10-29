@@ -60,8 +60,9 @@ struct FrameResult: Codable, Identifiable {
     var texts: [String]
     var events: [JSONValue]
     var elapsedMs: Double
+    var inferences: [FrameInference]? = nil
     var id: String { imagePath }
-    enum CodingKeys: String, CodingKey { case imagePath = "image_path", detections, counts, texts, events, elapsedMs = "elapsed_ms" }
+    enum CodingKeys: String, CodingKey { case imagePath = "image_path", detections, counts, texts, events, elapsedMs = "elapsed_ms", inferences }
 }
 struct RunResult: Codable {
     var frames: [FrameResult]

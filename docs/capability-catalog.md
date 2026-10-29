@@ -52,7 +52,7 @@ no learned-model inference or model downloads and is not a quality benchmark.
 
 ## First reviewed recipe: YOLOX-s ONNX
 
-At current runtime source
+At verified provisioning runtime source
 `2f0804da25ccbd6047d9dee2389127f13e3aa944b2596e1b0e7b577e1d5363a5`,
 `model.yolox-s-onnx-coco` uses adapter `yolox-onnx` and ONNX Runtime's
 `CPUExecutionProvider`. Its exact COCO vocabulary is closed: selecting this model
@@ -145,3 +145,23 @@ still need exact reviewed multi-artifact manifests before joining this API.
 Dependency installation, automatic destructive repair, further YOLO variants,
 PaddleOCR integration and SAM 3 hardware/adapter support remain outside this
 slice. The isolated PaddleOCR probe remains separate from callable app support.
+
+## Reader selection foundation in development
+
+New planning-options version `0.3` writes the selected OCR model into the
+candidate's `ocr.params.model`. Missing legacy parameters still mean
+`apple-vision`; saved `0.1`/`0.2` choices reconstruct their original implicit Apple
+graphs during effect-free replay. Barcode remains a separate Apple-only request.
+The candidate, saved selection, compiled adapter identity and evaluation hash must
+agree. Text/FPS/target refinements preserve that model choice; the task comparison
+binds OCR language and keeps OCR separate from barcode while allowing different
+OCR models to share one validation protocol.
+
+The intended alternative ID `ppocr-v5-mobile-en` is accepted by the typed OCR
+authoring contract, but **has no registered production adapter or callable
+capability in this slice**. Compilation/common execution rejects it; it cannot
+fall back to Apple Vision. New planner options require an installed, compatible
+catalog entry and a resolvable coded adapter. Tests using a mocked future reader
+identity establish only this selection/binding contract, not Paddle inference,
+installation, accuracy or readiness. The independent reduced-runtime probe must
+pass its runtime, output, artifact and license checks before integration is approved.

@@ -63,6 +63,7 @@ struct LiveFrameGate {
     private var origin: Double?
     private var lastTimestamp: Double?
     let fps: Double
+    init(fps: Double) { self.fps = fps }
     mutating func claim(timestamp: Double) -> (sequence: Int, timestamp: Double)? {
         guard accepting, timestamp.isFinite, timestamp >= 0 else { return nil }
         if origin == nil { origin = timestamp }

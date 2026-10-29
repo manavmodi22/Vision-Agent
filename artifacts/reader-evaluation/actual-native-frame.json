@@ -1,0 +1,101 @@
+{
+  "image_path": "/Users/manavrakeshku.modi/vision-agent/artifacts/adapter-probes/ocr/fixtures/leading-zeros.png",
+  "detections": [],
+  "counts": {},
+  "texts": [
+    "001234567890"
+  ],
+  "events": [],
+  "elapsed_ms": 286.5370839717798,
+  "timestamp_s": 0.0,
+  "judgements": [],
+  "inferences": [
+    {
+      "block_id": "read",
+      "result": {
+        "schema_version": 1,
+        "task": "ocr",
+        "input_size": [
+          900,
+          180
+        ],
+        "input_pixels_sha256": "a82f9ec17a110885f74e367956e6f5f6ce91696db7fa26a2121898fcedb267d3",
+        "detections": [],
+        "readings": [
+          {
+            "box": [
+              0.05111111314814821,
+              0.3333333327777779,
+              0.5400000020370371,
+              0.5999999994444445
+            ],
+            "polygon": [
+              [
+                0.05111111314814821,
+                0.3333333327777779
+              ],
+              [
+                0.5400000020370371,
+                0.3333333327777779
+              ],
+              [
+                0.5400000020370371,
+                0.5999999994444445
+              ],
+              [
+                0.05111111314814821,
+                0.5999999994444445
+              ]
+            ],
+            "text": "001234567890",
+            "kind": "ocr",
+            "confidence": 1.0,
+            "symbology": null
+          }
+        ],
+        "identity": {
+          "capability_id": "model.apple-vision",
+          "model_id": "apple-vision",
+          "adapter_id": "apple-vision",
+          "identity_scope": "system_framework_versioned",
+          "artifact_hashes": {
+            "native_bridge": "cbb096c96cbecddae97689e063d89491fe764a43d9e0ccec00f0356fc48488f3"
+          },
+          "unavailable_artifacts": [],
+          "adapter_code_sha256": "ca84378ee0c8b530e1ddaea18ef302c66333c557adb14fe017f94560ab96ad09",
+          "runtime_manifest_sha256": "e8b5a8e0e55e5eef5c9763b084e39f8192503076abcc3f15d59823f19c8e4d55",
+          "system_identity": {
+            "architecture": "arm64",
+            "adapter": "apple-vision",
+            "identity_scope": "system_framework_versioned",
+            "request_policy": "apple-vision-en-us-v2",
+            "output_protocol": "2",
+            "macos": "26.7.1",
+            "kernel": "25.6.0",
+            "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041"
+          },
+          "provider": "apple-vision-system",
+          "config_sha256": "81c8e6ffbf514841279646415e3eb3c651f68c976fee4df4c22617b3f14254c1",
+          "identity_hash": "09a36bfcf7070eabd565afc850a8917c3d791bfbc01959c87dfa82b18a20059a"
+        },
+        "timing": {
+          "total_ms": 286.5370839717798,
+          "startup_ms": null,
+          "load_ms": null,
+          "preprocess_ms": null,
+          "inference_ms": null,
+          "postprocess_ms": null,
+          "transport_ms": null,
+          "model_cached": null
+        },
+        "warnings": []
+      },
+      "input_to_frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ]
+    }
+  ]
+}

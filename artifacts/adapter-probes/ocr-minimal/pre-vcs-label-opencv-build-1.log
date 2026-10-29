@@ -1,0 +1,248 @@
+[1/222] Building CXX object 3rdparty/carotene/hal/CMakeFiles/tegra_hal.dir/dummy.cpp.o
+[2/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/absdiff.cpp.o
+[3/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/accumulate.cpp.o
+[4/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/add.cpp.o
+[5/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/add_weighted.cpp.o
+[6/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/bitwise.cpp.o
+[7/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/blur.cpp.o
+[8/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/canny.cpp.o
+[9/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/channel_extract.cpp.o
+[10/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/channels_combine.cpp.o
+[11/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/cmp.cpp.o
+[12/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/colorconvert.cpp.o
+[13/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/common.cpp.o
+[14/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/convert.cpp.o
+[15/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/convert_depth.cpp.o
+[16/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/convert_scale.cpp.o
+[17/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/convolution.cpp.o
+[18/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/count_nonzero.cpp.o
+[19/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/div.cpp.o
+[20/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/dummy.cpp.o
+[21/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/dot_product.cpp.o
+[22/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/fast.cpp.o
+[23/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/fill_minmaxloc.cpp.o
+[24/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/flip.cpp.o
+[25/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/gaussian_blur.cpp.o
+[26/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/in_range.cpp.o
+[27/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/integral.cpp.o
+[28/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/laplacian.cpp.o
+[29/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/magnitude.cpp.o
+[30/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/meanstddev.cpp.o
+[31/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/median_filter.cpp.o
+[32/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/min_max.cpp.o
+[33/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/minmaxloc.cpp.o
+[34/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/morph.cpp.o
+[35/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/norm.cpp.o
+[36/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/opticalflow.cpp.o
+[37/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/mul.cpp.o
+[38/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/phase.cpp.o
+[39/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/reduce.cpp.o
+[40/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/pyramid.cpp.o
+[41/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/remap.cpp.o
+[42/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/scharr.cpp.o
+[43/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/resize.cpp.o
+[44/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/sobel.cpp.o
+[45/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/separable_filter.cpp.o
+[46/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/sum.cpp.o
+[47/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/sub.cpp.o
+[48/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/template_matching.cpp.o
+[49/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/threshold.cpp.o
+[50/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/warp_affine.cpp.o
+[51/222] Building CXX object 3rdparty/carotene/hal/carotene/CMakeFiles/carotene_objs.dir/src/warp_perspective.cpp.o
+[52/222] Generate files for Python bindings and documentation
+/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-71d3237a093b60a27601c20e9ee6c3e52154e8b1/modules/python/src2/typing_stubs_generator.py:52: UserWarning: Typing stubs generation has failed.
+Traceback (most recent call last):
+  File "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-71d3237a093b60a27601c20e9ee6c3e52154e8b1/modules/python/src2/typing_stubs_generation/nodes/type_node.py", line 291, in resolve
+    self.value.resolve(root)
+  File "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-71d3237a093b60a27601c20e9ee6c3e52154e8b1/modules/python/src2/typing_stubs_generation/nodes/type_node.py", line 586, in resolve
+    raise TypeResolutionError('Failed to resolve "{}" exposed as "{}"'.format(
+typing_stubs_generation.nodes.type_node.TypeResolutionError: Failed to resolve "Feature2D" exposed as "Feature2D"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-71d3237a093b60a27601c20e9ee6c3e52154e8b1/modules/python/src2/typing_stubs_generator.py", line 49, in wrapped_func
+    ret_type = func(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-71d3237a093b60a27601c20e9ee6c3e52154e8b1/modules/python/src2/typing_stubs_generator.py", line 148, in _generate
+    generate_typing_stubs(self.cv_root, output_path)
+  File "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-71d3237a093b60a27601c20e9ee6c3e52154e8b1/modules/python/src2/typing_stubs_generation/generation.py", line 91, in generate_typing_stubs
+    _generate_typing_module(root, output_path)
+  File "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-71d3237a093b60a27601c20e9ee6c3e52154e8b1/modules/python/src2/typing_stubs_generation/generation.py", line 794, in _generate_typing_module
+    node.resolve(root)
+  File "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-71d3237a093b60a27601c20e9ee6c3e52154e8b1/modules/python/src2/typing_stubs_generation/nodes/type_node.py", line 293, in resolve
+    raise TypeResolutionError(
+typing_stubs_generation.nodes.type_node.TypeResolutionError: Failed to resolve alias "FeatureDetector" exposed as "FeatureDetector"
+
+  warnings.warn(
+[53/222] Linking CXX static library 3rdparty/lib/libtegra_hal.a
+[54/222] Processing OpenCL kernels (core)
+[55/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/alloc.cpp.o
+[56/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/algorithm.cpp.o
+[57/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/arithm.cpp.o
+[58/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/array.cpp.o
+[59/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/arithm.dispatch.cpp.o
+[60/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/async.cpp.o
+[61/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/bindings_utils.cpp.o
+[62/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/batch_distance.cpp.o
+[63/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/buffer_area.cpp.o
+[64/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/channels.cpp.o
+[65/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/check.cpp.o
+[66/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/command_line_parser.cpp.o
+[67/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/conjugate_gradient.cpp.o
+[68/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/convert_c.cpp.o
+[69/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/convert.dispatch.cpp.o
+[70/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/copy.cpp.o
+[71/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/convert_scale.dispatch.cpp.o
+[72/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_gpu_mat.cpp.o
+[73/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/count_non_zero.dispatch.cpp.o
+[74/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_gpu_mat_nd.cpp.o
+[75/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_host_mem.cpp.o
+[76/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_info.cpp.o
+[77/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_stream.cpp.o
+[78/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/directx.cpp.o
+[79/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/datastructs.cpp.o
+[80/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/downhill_simplex.cpp.o
+[81/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/gl_core_3_1.cpp.o
+[82/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/dxt.cpp.o
+[83/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/glob.cpp.o
+[84/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/has_non_zero.dispatch.cpp.o
+[85/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/hal_internal.cpp.o
+[86/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/kmeans.cpp.o
+[87/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/lapack.cpp.o
+[88/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/lda.cpp.o
+[89/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/logger.cpp.o
+[90/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/lpsolver.cpp.o
+[91/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/lut.cpp.o
+[92/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/mathfuncs.cpp.o
+[93/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/mathfuncs_core.dispatch.cpp.o
+[94/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix.cpp.o
+[95/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_c.cpp.o
+[96/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_decomp.cpp.o
+[97/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matmul.dispatch.cpp.o
+[98/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_iterator.cpp.o
+[99/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_expressions.cpp.o
+[100/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_sparse.cpp.o
+[101/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_transform.cpp.o
+[102/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_operations.cpp.o
+[103/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/mean.dispatch.cpp.o
+[104/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_wrap.cpp.o
+[105/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/merge.dispatch.cpp.o
+[106/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/minmax.cpp.o
+[107/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/ocl.cpp.o
+[108/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/norm.cpp.o
+[109/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/opencl/runtime/opencl_clblas.cpp.o
+[110/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/opencl/runtime/opencl_clfft.cpp.o
+[111/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/opencl/runtime/opencl_core.cpp.o
+[112/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/opengl.cpp.o
+[113/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/out.cpp.o
+[114/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/ovx.cpp.o
+[115/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/parallel.cpp.o
+[116/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/parallel/parallel_openmp.cpp.o
+[117/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/parallel/parallel.cpp.o
+[118/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/parallel/parallel_tbb.cpp.o
+[119/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/parallel_impl.cpp.o
+[120/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/pca.cpp.o
+[121/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence_base64_encoding.cpp.o
+[122/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence.cpp.o
+[123/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence_json.cpp.o
+[124/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence_types.cpp.o
+[125/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence_xml.cpp.o
+[126/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence_yml.cpp.o
+[127/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/rand.cpp.o
+[128/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/softfloat.cpp.o
+[129/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/stat.dispatch.cpp.o
+[130/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/split.dispatch.cpp.o
+[131/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/stl.cpp.o
+[132/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/stat_c.cpp.o
+[133/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/sum.dispatch.cpp.o
+[134/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/system.cpp.o
+[135/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/tables.cpp.o
+[136/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/trace.cpp.o
+[137/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/types.cpp.o
+[138/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/umatrix.cpp.o
+[139/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/utils/datafile.cpp.o
+[140/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/utils/filesystem.cpp.o
+[141/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/utils/logtagconfigparser.cpp.o
+[142/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/utils/logtagmanager.cpp.o
+[143/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/utils/samples.cpp.o
+[144/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/va_intel.cpp.o
+[145/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/opencl_kernels_core.cpp.o
+[146/222] Building CXX object modules/core/CMakeFiles/opencv_core.dir/matmul.neon_dotprod.cpp.o
+[147/222] Linking CXX static library lib/libopencv_core.a
+[148/222] Processing OpenCL kernels (imgproc)
+[149/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/accum.cpp.o
+[150/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/accum.dispatch.cpp.o
+[151/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/approx.cpp.o
+[152/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/blend.cpp.o
+[153/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/bilateral_filter.dispatch.cpp.o
+[154/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/canny.cpp.o
+[155/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/box_filter.dispatch.cpp.o
+[156/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/clahe.cpp.o
+[157/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color.cpp.o
+[158/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color_hsv.dispatch.cpp.o
+[159/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color_lab.cpp.o
+[160/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color_rgb.dispatch.cpp.o
+[161/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/colormap.cpp.o
+[162/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color_yuv.dispatch.cpp.o
+[163/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/contours.cpp.o
+[164/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/contours_approx.cpp.o
+[165/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/contours_common.cpp.o
+[166/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/contours_link.cpp.o
+[167/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/contours_new.cpp.o
+[168/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/connectedcomponents.cpp.o
+[169/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/convhull.cpp.o
+[170/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/corner.cpp.o
+[171/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/cornersubpix.cpp.o
+[172/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/demosaicing.cpp.o
+[173/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/deriv.cpp.o
+[174/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/distransform.cpp.o
+[175/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/drawing.cpp.o
+[176/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/emd.cpp.o
+[177/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/emd_new.cpp.o
+[178/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/featureselect.cpp.o
+[179/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/floodfill.cpp.o
+[180/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/gabor.cpp.o
+[181/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/filter.dispatch.cpp.o
+[182/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/generalized_hough.cpp.o
+[183/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/geometry.cpp.o
+[184/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/grabcut.cpp.o
+[185/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/hershey_fonts.cpp.o
+[186/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/histogram.cpp.o
+[187/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/hough.cpp.o
+[188/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/intelligent_scissors.cpp.o
+[189/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/intersection.cpp.o
+[190/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/linefit.cpp.o
+[191/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/imgwarp.cpp.o
+[192/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/lsd.cpp.o
+[193/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/main.cpp.o
+[194/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/matchcontours.cpp.o
+[195/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/min_enclosing_triangle.cpp.o
+[196/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/median_blur.dispatch.cpp.o
+[197/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/moments.cpp.o
+[198/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/phasecorr.cpp.o
+[199/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/morph.dispatch.cpp.o
+[200/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/pyramids.cpp.o
+[201/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/rotcalipers.cpp.o
+[202/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/samplers.cpp.o
+[203/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/resize.cpp.o
+[204/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/segmentation.cpp.o
+[205/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/shapedescr.cpp.o
+[206/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/spatialgradient.cpp.o
+[207/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/stackblur.cpp.o
+[208/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/smooth.dispatch.cpp.o
+[209/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/subdivision2d.cpp.o
+[210/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/sumpixels.dispatch.cpp.o
+[211/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/tables.cpp.o
+[212/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/templmatch.cpp.o
+[213/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/thresh.cpp.o
+[214/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/utils.cpp.o
+[215/222] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/opencl_kernels_imgproc.cpp.o
+[216/222] Linking CXX static library lib/libopencv_imgproc.a
+[217/222] Building CXX object modules/python3/CMakeFiles/opencv_python3.dir/__/src2/cv2_util.cpp.o
+[218/222] Building CXX object modules/python3/CMakeFiles/opencv_python3.dir/__/src2/cv2_numpy.cpp.o
+[219/222] Building CXX object modules/python3/CMakeFiles/opencv_python3.dir/__/src2/cv2_convert.cpp.o
+[220/222] Building CXX object modules/python3/CMakeFiles/opencv_python3.dir/__/src2/cv2_highgui.cpp.o
+[221/222] Building CXX object modules/python3/CMakeFiles/opencv_python3.dir/__/src2/cv2.cpp.o
+[222/222] Linking CXX shared module lib/python3/cv2.cpython-312-darwin.so
+ld: warning: ignoring duplicate libraries: 'lib/libopencv_core.a'

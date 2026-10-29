@@ -45,6 +45,10 @@ def requested_classes(choice: PatternChoice) -> list[str]:
     return ["damaged carton", "damaged pallet"] if choice.use_case == "damage" else ["pallet"]
 
 
+def selected_task(choice: PatternChoice) -> str:
+    return "ocr" if choice.use_case == "labels" and choice.pipeline_type == "detection" else choice.pipeline_type
+
+
 def selected_option(choice: PatternChoice, options: PlanningOptions) -> PlanningModelOption:
     identifier = choice.model_capability_id
     if not identifier or not choice.model_reason or not choice.model_reason.strip():
@@ -53,14 +57,18 @@ def selected_option(choice: PatternChoice, options: PlanningOptions) -> Planning
     if option is None:
         blocked = next((item.reason for item in options.blocked_options if item.capability_id == identifier), "Unknown or unsupported model capability")
         raise ValueError(f"Cannot select {identifier}: {blocked}. Choose an eligible option or ask about the blocker; do not substitute silently")
-    if options.schema_version == "0.2":
+    if options.schema_version != "0.1":
         if option.selection_basis not in {"default", "explicit_experiment"}:
             raise ValueError("This model is not authorized for the current selection mode")
         if option.selection_basis == "explicit_experiment" and (option.model_id not in options.explicit_model_ids or not options.request_hash):
             raise ValueError("An experimental model requires authorization captured from the originating user request")
-    task = "ocr" if choice.use_case == "labels" and choice.pipeline_type == "detection" else choice.pipeline_type
+    task = selected_task(choice)
     if task not in option.task_types:
         raise ValueError(f"{identifier} does not implement task {task}")
+    if task == "ocr" and options.schema_version != "0.3" and option.model_id != "apple-vision":
+        raise ValueError("Legacy planning options support only implicit Apple Vision OCR; capture new reader options")
+    if task == "barcode" and option.model_id != "apple-vision":
+        raise ValueError("Barcode reading supports only Apple Vision; do not substitute an OCR adapter")
     if option.synthetic and not options.fixture_source:
         raise ValueError("Synthetic fixture adapters cannot be selected for real project media")
     if task == "detection" and option.vocabulary == "closed":
@@ -72,7 +80,7 @@ def selected_option(choice: PatternChoice, options: PlanningOptions) -> Planning
 
 def validate_model_choices(decision: PlanDecision, options: PlanningOptions) -> list[CandidateModelSelection]:
     if len(decision.choices) > 1:
-        objectives = {(choice.pipeline_type, choice.metric, choice.target, tuple(sorted(requested_classes(choice))),
+        objectives = {(selected_task(choice), choice.metric, choice.target, tuple(sorted(requested_classes(choice))),
                        choice.use_zones, tuple(sorted(choice.zone_ids)), choice.count_threshold, choice.count_operator,
                        choice.hold_seconds, choice.expected_text, choice.match_mode, choice.match_emit)
                       for choice in decision.choices}

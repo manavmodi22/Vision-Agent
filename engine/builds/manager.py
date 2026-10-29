@@ -12,6 +12,7 @@ from agent.graph_summary import describe_pipeline
 from agent.machine import AgentConflict, AgentState, EvaluationEvidence, Phase
 from agent.planner import plan as agent_plan
 from agent.refinement import interpret_refinement, parse_refinement
+from engine.adapters.requests import request_for_block
 from engine.agent_state import AgentStateStore
 from engine.builds.store import BuildRecord, BuildStore
 from engine.service import WorkspaceService
@@ -251,10 +252,8 @@ class BuildManager:
             record.operation.state.budget = prior_budget
             detections = sum(len(frame.detections) for frame in record.view.preview.frames)
             self.store.log(record, "previewing", f"Compiled {len(result.candidates)} candidate(s) and previewed {len(record.view.preview.frames)} images; observed {detections} detections. {describe_pipeline(result.candidates[0])} Accuracy has not been evaluated.")
-            models = sorted({str(block.params.get("model", "owlv2-base-patch16")) for candidate in result.candidates
-                             for block in candidate.blocks if block.type in {"detect", "detect_open_vocab"}})
-            if any(block.type in {"ocr", "barcode"} for candidate in result.candidates for block in candidate.blocks):
-                models.append("Apple Vision")
+            models = sorted({request.model_id for candidate in result.candidates for block in candidate.blocks
+                             if (request := request_for_block(block)) is not None})
             policy = "Candidate adapters: " + ", ".join(models) + ". Their quality still requires evaluation on reviewed examples."
             self.store.log(record, "labeling", policy)
             self.store.save(record)

@@ -1,0 +1,81 @@
+
+General configuration for OpenCV 4.10.0 =====================================
+  Version control:               4.10.0-71d3237a093b60a27601c20e9ee6c3e52154e8b1
+
+  Platform:
+    Timestamp:                   2026-10-29T03:47:11Z
+    Host:                        Darwin 25.6.0 arm64
+    CMake:                       3.31.6
+    CMake generator:             Ninja
+    CMake build tool:            /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/build-tools/bin/ninja
+    Configuration:               Release
+
+  CPU/HW features:
+    Baseline:                    NEON FP16
+    Dispatched code generation:  NEON_DOTPROD NEON_FP16 NEON_BF16
+      requested:                 NEON_FP16 NEON_BF16 NEON_DOTPROD
+      NEON_DOTPROD (1 files):    + NEON_DOTPROD
+      NEON_FP16 (0 files):       + NEON_FP16
+      NEON_BF16 (0 files):       + NEON_BF16
+
+  C/C++:
+    Built as dynamic libs?:      NO
+    C++ standard:                11
+    C++ Compiler:                /Library/Developer/CommandLineTools/usr/bin/c++  (ver 21.0.0.21000334)
+    C++ flags (Release):         -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-unnamed-type-template-args -Wno-comment -fdiagnostics-show-option -Qunused-arguments -Wno-semicolon-before-method-body -ffunction-sections -fdata-sections    -fvisibility=hidden -fvisibility-inlines-hidden -O3 -DNDEBUG  -DNDEBUG
+    C++ flags (Debug):           -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-unnamed-type-template-args -Wno-comment -fdiagnostics-show-option -Qunused-arguments -Wno-semicolon-before-method-body -ffunction-sections -fdata-sections    -fvisibility=hidden -fvisibility-inlines-hidden -g  -O0 -DDEBUG -D_DEBUG
+    C Compiler:                  /Library/Developer/CommandLineTools/usr/bin/cc
+    C flags (Release):           -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-unnamed-type-template-args -Wno-comment -fdiagnostics-show-option -Qunused-arguments -Wno-semicolon-before-method-body -ffunction-sections -fdata-sections    -fvisibility=hidden -fvisibility-inlines-hidden -O3 -DNDEBUG  -DNDEBUG
+    C flags (Debug):             -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-unnamed-type-template-args -Wno-comment -fdiagnostics-show-option -Qunused-arguments -Wno-semicolon-before-method-body -ffunction-sections -fdata-sections    -fvisibility=hidden -fvisibility-inlines-hidden -g  -O0 -DDEBUG -D_DEBUG
+    Linker flags (Release):      -Wl,-dead_strip  
+    Linker flags (Debug):        -Wl,-dead_strip  
+    ccache:                      NO
+    Precompiled headers:         NO
+    Extra dependencies:          /Library/Developer/CommandLineTools/SDKs/MacOSX27.0.sdk/usr/lib/libz.tbd /Library/Developer/CommandLineTools/SDKs/MacOSX27.0.sdk/System/Library/Frameworks/Accelerate.framework -lm -ldl
+    3rdparty dependencies:       tegra_hal
+
+  OpenCV modules:
+    To be built:                 core imgproc python3
+    Disabled:                    world
+    Disabled by dependency:      calib3d dnn features2d flann highgui imgcodecs java_bindings_generator js_bindings_generator ml objc_bindings_generator objdetect photo python_tests stitching video videoio
+    Unavailable:                 gapi java python2 ts
+    Applications:                -
+    Documentation:               NO
+    Non-free algorithms:         NO
+
+  GUI: 
+    Cocoa:                       YES
+    VTK support:                 NO
+
+  Media I/O: 
+    ZLib:                        /Library/Developer/CommandLineTools/SDKs/MacOSX27.0.sdk/usr/lib/libz.tbd (ver 1.2.12)
+    HDR:                         YES
+    SUNRASTER:                   YES
+    PXM:                         YES
+    PFM:                         YES
+
+  Video I/O:
+    DC1394:                      NO
+
+  Parallel framework:            GCD
+
+  Trace:                         YES (built-in)
+
+  Other third-party libraries:
+    Lapack:                      YES (/Library/Developer/CommandLineTools/SDKs/MacOSX27.0.sdk/System/Library/Frameworks/Accelerate.framework -lm -ldl)
+    Eigen:                       NO
+    Custom HAL:                  YES (carotene (ver 0.0.1, Auto detected))
+    Flatbuffers:                 builtin/3rdparty (23.5.9)
+
+  Python 3:
+    Interpreter:                 /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/bin/python (ver 3.12.14)
+    Libraries:                   /Users/manavrakeshku.modi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/libpython3.12.dylib (ver 3.12.14)
+    Limited API:                 NO
+    numpy:                       /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/numpy/_core/include (ver 2.3.5)
+    install path:                /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-install/python/cv2/python-3.12
+
+  Python (for build):            /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/bin/python
+
+  Install to:                    /Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/opencv-install
+-----------------------------------------------------------------
+

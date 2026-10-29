@@ -17,14 +17,14 @@ class DetectionRequest(InferenceContract):
 
 class OcrRequest(InferenceContract):
     task: Literal["ocr"] = "ocr"
-    model_id: Literal["apple-vision"] = "apple-vision"
+    model_id: Literal["apple-vision", "ppocr-v5-mobile-en"] = "apple-vision"
     languages: list[str] = Field(default_factory=lambda: ["en-US"])
 
     @field_validator("languages")
     @classmethod
     def supported_language(cls, value: list[str]) -> list[str]:
         if value != ["en-US"]:
-            raise ValueError("This native bridge supports only en-US recognition")
+            raise ValueError("The supported OCR request language is en-US")
         return value
 
 

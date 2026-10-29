@@ -11,7 +11,8 @@ def request_for_block(block: BlockSpec) -> InferenceRequest | None:
         params = DetectParams.model_validate(block.params)
         return DetectionRequest(model_id=params.model, classes=params.classes, min_conf=params.min_conf)
     if block.type == "ocr":
-        return OcrRequest(languages=ReadingParams.model_validate(block.params).languages)
+        reading = ReadingParams.model_validate(block.params)
+        return OcrRequest(model_id=reading.model, languages=reading.languages)
     if block.type == "barcode":
         return BarcodeRequest()
     return None

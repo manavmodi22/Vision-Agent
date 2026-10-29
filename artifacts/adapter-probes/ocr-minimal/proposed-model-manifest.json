@@ -1,0 +1,57 @@
+{
+  "status": "isolated_feasibility_only",
+  "production_registered": false,
+  "model_id": "ppocr-v5-mobile-en",
+  "adapter_id": "paddle-ocr-cpu",
+  "task_types": [
+    "ocr"
+  ],
+  "device": "cpu",
+  "code_revision": {
+    "repository": "PaddlePaddle/PaddleX",
+    "commit": "ffb64904d23708863ff5b8da312a5cbd52a7f462"
+  },
+  "required_files": [
+    {
+      "path": "PP-OCRv5_mobile_det/config.json",
+      "bytes": 2871,
+      "sha256": "7ac1c33f377ba58561f4b89d3180b6add2b7c5c60a4edac90fa4e0ceccdc6665",
+      "source": "https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_det/resolve/0d63e78e2b680928f6b1747d76a08db6e645efb7/config.json"
+    },
+    {
+      "path": "PP-OCRv5_mobile_det/inference.json",
+      "bytes": 229777,
+      "sha256": "05feef1acb00aa4cd7362b15f7f501fc4f99d7b1fa73c1c871e0c7b1504b0f5c",
+      "source": "https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_det/resolve/0d63e78e2b680928f6b1747d76a08db6e645efb7/inference.json"
+    },
+    {
+      "path": "PP-OCRv5_mobile_det/inference.pdiparams",
+      "bytes": 4692937,
+      "sha256": "afa1820cb16c1fd0dad589d0f8b389139061c1ef6d68019685fd07be997dda5b",
+      "source": "https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_det/resolve/0d63e78e2b680928f6b1747d76a08db6e645efb7/inference.pdiparams"
+    },
+    {
+      "path": "en_PP-OCRv5_mobile_rec/config.json",
+      "bytes": 10455,
+      "sha256": "16103ac291a82fca50f0bb000d62a4b8168f6042f03c89c44cf32f241d1eb1f2",
+      "source": "https://huggingface.co/PaddlePaddle/en_PP-OCRv5_mobile_rec/resolve/267c36e24c331595590fe7bd72bde2436fd286f2/config.json"
+    },
+    {
+      "path": "en_PP-OCRv5_mobile_rec/inference.json",
+      "bytes": 217712,
+      "sha256": "fd1b6ec722ea841a72d3ba43e527df1d1066d5d7808e0503ee3eec7265188753",
+      "source": "https://huggingface.co/PaddlePaddle/en_PP-OCRv5_mobile_rec/resolve/267c36e24c331595590fe7bd72bde2436fd286f2/inference.json"
+    },
+    {
+      "path": "en_PP-OCRv5_mobile_rec/inference.pdiparams",
+      "bytes": 7772315,
+      "sha256": "3ec8a97ed6cefe8568d3e2ee90bb193299b566a7661aa4fd52d224b96b59f66b",
+      "source": "https://huggingface.co/PaddlePaddle/en_PP-OCRv5_mobile_rec/resolve/267c36e24c331595590fe7bd72bde2436fd286f2/inference.pdiparams"
+    }
+  ],
+  "license": {
+    "model": "Apache-2.0 publisher declarations in pinned model cards",
+    "adapted_code": "Apache-2.0 PaddleX; NOTICE and license retained",
+    "runtime": "Separate mixed dependency/native notices; no blanket permissive claim"
+  }
+}

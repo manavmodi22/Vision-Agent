@@ -21,10 +21,15 @@ def block_catalog(models: list[CapabilityManifest]) -> list[CapabilityManifest]:
     by_id = {item.id: item for item in models}
     result = []
     for name, definition in REGISTRY.items():
-        dependencies = ["model.apple-vision"] if name in {"ocr", "barcode"} else ["model.configured-vlm"] if name == "vlm_judge" else []
+        dependencies = ["model.apple-vision"] if name == "barcode" else ["model.configured-vlm"] if name == "vlm_judge" else []
         checks = [evidence("adapter", name, True, "Implemented registry contract; invocation still requires a valid graph and its inputs.")]
-        ready = all(by_id[item].installation_ready for item in dependencies)
-        learned = bool(dependencies) or name in {"detect", "detect_open_vocab"}
+        ready = all(item in by_id and by_id[item].installation_ready for item in dependencies)
+        if name == "ocr":
+            ready = any(model.implemented and model.availability == "installed" and model.installation_ready
+                        and "ocr" in model.task_types for model in models)
+            checks.append(evidence("adapter", "selected OCR model", ready,
+                "An installed OCR adapter is required; the selected graph model is checked during compilation."))
+        learned = bool(dependencies) or name in {"detect", "detect_open_vocab", "ocr"}
         state = "blocked" if not ready else "unchecked" if learned else "ready"
         contract = block_schema(name)
         result.append(CapabilityManifest.model_validate({
@@ -32,7 +37,7 @@ def block_catalog(models: list[CapabilityManifest]) -> list[CapabilityManifest]:
             "description": definition.description, "availability": "installed", "implemented": True,
             "installation_ready": ready, "callable": state == "ready", "task_types": TASKS[name], "version": "0.1",
             "license": app_license(), "provenance": code_provenance(Path(__file__).parents[1] / "blocks/registry.py"),
-            "hardware": CapabilityHardware(platforms=["Darwin"] if name in {"ocr", "barcode"} else ["host"],
+            "hardware": CapabilityHardware(platforms=["Darwin"] if name == "barcode" else ["host"],
                 notes=["Detector/model hardware requirements are selected and checked during compilation."] if learned else []),
             "side_effects": ["local_inference"] if learned else ["emit_pipeline_events"] if name == "sink_event" else [],
             "dependencies": dependencies, "input_schema": {"params": contract["params"], "ports": contract["inputs"]},

@@ -14,6 +14,7 @@ from pydantic import BaseModel, JsonValue
 
 from agent.machine import TOOLS, AgentConflict, Phase
 from agent.state_contracts import CapturedCall
+from engine.adapters.requests import request_for_block
 from engine.eval import dataset_hash, spec_hash
 from engine.eval.hashes import file_hash
 from engine.media import media_fingerprint
@@ -83,7 +84,8 @@ class PlatformStore:
         documents["evaluation_recipe"] = recipe_hash()
         zones = {path.name: path.read_text() for path in sorted((root / "zones").glob("*.json"))}
         model_hashes = [spec_hash(candidate, root) for candidate in candidates]
-        if any(block.type in {"ocr", "barcode"} for candidate in candidates for block in candidate.blocks):
+        if any(request.model_id == "apple-vision" for candidate in candidates for block in candidate.blocks
+               if (request := request_for_block(block)) is not None):
             bridge = Path(os.environ.get("VISION_APP_BINARY", ""))
             model_hashes.append(digest({"adapter": "apple-vision", "macos": platform.mac_ver()[0],
                 "kernel": platform.release(), "bridge_sha256": file_hash(bridge) if bridge.is_file() else "missing"}))
@@ -143,10 +145,8 @@ class PlatformStore:
             options_artifact = self.artifact(project_id, "planning_options", "Captured planning model options",
                 planning_options.model_dump(mode="json")) if planning_options else None
             capabilities = {"block." + block.type for candidate in candidates for block in candidate.blocks}
-            capabilities.update("model." + str(block.params.get("model", "owlv2-base-patch16")) for candidate in candidates
-                                for block in candidate.blocks if block.type in {"detect", "detect_open_vocab"})
-            if any(block.type in {"ocr", "barcode"} for candidate in candidates for block in candidate.blocks):
-                capabilities.add("model.apple-vision")
+            capabilities.update("model." + request.model_id for candidate in candidates for block in candidate.blocks
+                                if (request := request_for_block(block)) is not None)
             if any(block.type == "vlm_judge" for candidate in candidates for block in candidate.blocks):
                 capabilities.add("model.configured-vlm")
             if skills is None:

@@ -9,6 +9,7 @@ from pathlib import Path
 from pydantic import JsonValue
 
 READING_REQUEST_POLICY_VERSION = "apple-vision-en-us-v2"
+READING_OUTPUT_PROTOCOL = 2
 
 
 def native_reading_identity() -> dict[str, JsonValue]:
@@ -32,6 +33,7 @@ def native_reading_identity() -> dict[str, JsonValue]:
         "adapter": "apple-vision",
         "identity_scope": "system_framework_versioned",
         "request_policy": READING_REQUEST_POLICY_VERSION,
+        "output_protocol": READING_OUTPUT_PROTOCOL,
         "bridge_sha256": bridge_hash,
         "macos": platform.mac_ver()[0],
         "kernel": platform.release(),

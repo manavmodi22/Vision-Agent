@@ -1,0 +1,10 @@
+{
+  "ref": "refs/tags/v3.7.2",
+  "node_id": "MDM6UmVmMjQ2NTA5MDczOnJlZnMvdGFncy92My43LjI=",
+  "url": "https://api.github.com/repos/PaddlePaddle/PaddleX/git/refs/tags/v3.7.2",
+  "object": {
+    "sha": "ffb64904d23708863ff5b8da312a5cbd52a7f462",
+    "type": "commit",
+    "url": "https://api.github.com/repos/PaddlePaddle/PaddleX/git/commits/ffb64904d23708863ff5b8da312a5cbd52a7f462"
+  }
+}

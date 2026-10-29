@@ -1,0 +1,4 @@
+Built from OpenCV4.10.0 commit71d3237a093b60a27601c20e9ee6c3e52154e8b1.
+Only core,imgproc,python3 enabled. Static Carotene BSD-3-Clause HAL included.
+Build recipe and archive provenance are retained in the probe artifacts.
+No upstream sources were modified. This wheel is a local prototype artifact, not a published release.

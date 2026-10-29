@@ -1,0 +1,56 @@
+{
+  "checked_at": "2026-10-29T04:01:35.149024+00:00",
+  "source_identity": "e523a04b24594a48710c716c333763de3824e7d4c37cdaed58e196f9fcfacd3f",
+  "status": "native_reader_geometry_and_describe_to_OCR_verified; overall_architecture_incomplete",
+  "python_tests": {
+    "passed": 785,
+    "skipped": 2,
+    "duration_s": 285.35,
+    "scope": "Locked base+dev environment; optional Torch training tests skipped. Four later typing comments verified AST-identical. Installed targeted portability suite64 passed.",
+    "evidence": "artifacts/ci-baseonly/validation.json"
+  },
+  "mypy": {
+    "passed": true,
+    "source_files": 168,
+    "environments": [
+      "base-only",
+      "installed-vision"
+    ]
+  },
+  "ruff": {
+    "passed": true
+  },
+  "native_contracts": {
+    "passed_per_binary": 237,
+    "deterministic_checks": 207,
+    "retained_payload_checks": 30,
+    "evidence": "artifacts/native-reading-v2/native-validation-final.json"
+  },
+  "native_release_sha256": "e18aa530bf17fce3e21818881e746aee65b447fc0a84d789426716c59da264d1",
+  "native_packaged_sha256": "adc0dec04cb93574f5299aeef48791a2a0d39d476943414fc87b1fb981d9b198",
+  "relocation": {
+    "passed": true,
+    "evidence": "artifacts/reader-evaluation/bundle-e523.json",
+    "scope": "Relocated imports; legacy native OCR and actual protocol2 common adapter text/geometry; fixture evaluation and local-trial gates; signatures"
+  },
+  "package_installation": "artifacts/reader-evaluation/package-installation-e523.json",
+  "actual_planner_mcp": "artifacts/reader-evaluation/agent-e523.json",
+  "actual_native_walkthrough": "artifacts/reader-evaluation/native-ui-e523.json",
+  "public_reader_diagnostic": {
+    "evidence": "artifacts/reader-evaluation/COMPARISON.md",
+    "sample_count": 100,
+    "apple_exact": 33,
+    "isolated_paddle_exact": 16,
+    "quality_claim": "Cropped-word endpoints only, unreviewed external labels, no promotion"
+  },
+  "paddle_runtime_proof": "artifacts/adapter-probes/ocr-minimal/FEASIBILITY.md",
+  "previous_report": "artifacts/runtime-validation-2f08.json",
+  "remote_ci": "Local CI failures addressed and base-only reproduction passed; fresh GitHub status belongs to the published commit",
+  "remaining": [
+    "Paddle worker lifecycle, signed/relocatable optional runtime, dependency notices and approved installation recipe remain incomplete; no production adapter registered.",
+    "Text annotations are image-level expected values; editable/scored text-region ground truth remains pending.",
+    "Public cropped-word diagnostics do not establish warehouse accuracy or independent acceptance.",
+    "Existing app OpenCV includes GPL-enabled FFmpeg; no uniformly permissive runtime or release-compliance claim.",
+    "Broader graph creation/refinement, segmentation/tracking, event and failure-slice metrics, representative reviewed data, live hardware/sustained tests and release signing/notarization remain incomplete."
+  ]
+}

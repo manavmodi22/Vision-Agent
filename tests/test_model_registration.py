@@ -14,6 +14,7 @@ from engine.platform.planning_options import planning_options
 from engine.service import WorkspaceService
 from engine.store.repository import atomic_model
 from engine.train.contracts import TrainingResult
+from spec.capabilities import CapabilityManifest
 from spec.models import Annotation, Detection, EvalDataset, EvaluationResult
 
 
@@ -29,9 +30,29 @@ def write_model(root: Path, identifier: str, training: str = "a" * 64, evaluatio
 
 
 def setup_project(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[WorkspaceService, str, Path]:
+    import engine.compiler as compiler
+    import engine.platform.planning_options as selection
+
     models = tmp_path / "models"
     monkeypatch.setenv("VISION_MODELS_DIR", str(models))
     write_model(models, "local-existing")
+    def validate_fixture(model_id: str, *, allow_agpl: bool = False) -> None:
+        read_manifest(model_id, models)
+        assert (models / model_id / "model.safetensors").read_bytes() == b"Metadata fixture only; never loaded"
+    def fixture_catalog() -> list[CapabilityManifest]:
+        # This control-plane test mocks optimization/scoring and their runtime prerequisites.
+        # Provenance still comes from each real test manifest, not the declared readiness below.
+        return [CapabilityManifest.model_validate({
+            "id": "model." + path.parent.name, "name": path.parent.name, "kind": "model",
+            "description": "Software metadata fixture; inference and dependencies mocked",
+            "availability": "installed", "implemented": True, "installation_ready": True,
+            "callable": False, "task_types": ["detection"], "license": {"identifier": "MIT"},
+            "provenance": {"scope": "local_manifest"}, "hardware": {}, "install_method": "local_training",
+            "readiness": {"state": "unchecked", "reason": "Explicit software fixture",
+                "checked_at": "test", "evidence_scope": "prerequisites"},
+        }) for path in sorted(models.glob("local-*/manifest.json"))]
+    monkeypatch.setattr(compiler, "validate_model", validate_fixture)
+    monkeypatch.setattr(selection, "model_catalog", fixture_catalog)
     service = WorkspaceService(tmp_path / "workspace")
     project = service.create_project("Approved registration control-plane test", "custom")
     media = service.root(project.id) / "media"

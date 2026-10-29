@@ -37,8 +37,12 @@ def validate_experiment_capabilities(service: WorkspaceService, required_ids: li
             block = identifier.removeprefix("block.")
             if block not in REGISTRY:
                 raise ValueError(f"Unsupported capability {identifier}; no executable block is registered")
-            if block in {"ocr", "barcode"}:
+            if block == "barcode":
                 dependencies = ["model.apple-vision"]
+            elif block == "ocr":
+                dependencies = [key for key in required_ids if key in models and "ocr" in models[key].task_types]
+                if not dependencies:
+                    dependencies = ["model.apple-vision"]
             elif block == "detect_open_vocab":
                 dependencies = [key for key in required_ids if key in models and "detection" in models[key].task_types]
                 if not dependencies:
@@ -50,6 +54,8 @@ def validate_experiment_capabilities(service: WorkspaceService, required_ids: li
             else:
                 dependencies = []
             for dependency in dependencies:
+                if dependency not in models:
+                    raise ValueError(f"Capability {identifier} needs unavailable {dependency}")
                 if not models[dependency].installation_ready:
                     raise ValueError(f"Capability {identifier} needs {dependency}: {models[dependency].readiness.reason}")
             continue

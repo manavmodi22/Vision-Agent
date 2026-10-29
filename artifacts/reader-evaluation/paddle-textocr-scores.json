@@ -1,0 +1,1291 @@
+{
+  "model": "ppocr-v5-mobile-en",
+  "dataset_manifest_sha256": "f3064b1b6e22bd894abecc3564afd8f622d9b20acb87377d229724755954bef0",
+  "raw_results_sha256": "fae2b3b6e7c37de2159267328beb9b0d8583c4addfdba59d0095ab199a3ea46a",
+  "normalization": "Strip outer whitespace per text region, sort regions case-sensitively, join with newline; words split on whitespace.",
+  "scope": "Word crop recognition diagnostic. Full-image spotting, warehouse accuracy and independent acceptance are not established.",
+  "reviewed": false,
+  "quality_gate_passed": null,
+  "summary": {
+    "sample_count": 100,
+    "execution_failures": 0,
+    "exact_count": 16,
+    "character_error_rate": 0.7538126361655774,
+    "word_error_rate": 0.88,
+    "median_wall_ms": 5.150437995325774,
+    "p95_wall_ms": 93.9527089940384,
+    "exact_rate": 0.16
+  },
+  "cases": [
+    {
+      "id": "abff7a10c0e23564_5",
+      "expected": "W",
+      "observed": [],
+      "error": null,
+      "wall_ms": 30.244458001106977,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "abff7a10c0e23564_1",
+      "expected": "LULZBOT",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.757791990414262,
+      "exact_match": false,
+      "expected_characters": 7,
+      "character_edits": 7,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "abff7a10c0e23564_12",
+      "expected": "gul",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.196082998532802,
+      "exact_match": false,
+      "expected_characters": 3,
+      "character_edits": 3,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "abff7a10c0e23564_3",
+      "expected": "growerbot",
+      "observed": [],
+      "error": null,
+      "wall_ms": 8.650708012282848,
+      "exact_match": false,
+      "expected_characters": 9,
+      "character_edits": 9,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "abff7a10c0e23564_2",
+      "expected": "TAZ",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.6913329968228936,
+      "exact_match": false,
+      "expected_characters": 3,
+      "character_edits": 3,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "a96defddecf9155d_25",
+      "expected": "0",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.559042001143098,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "a96defddecf9155d_17",
+      "expected": "1060",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.515582997351885,
+      "exact_match": false,
+      "expected_characters": 4,
+      "character_edits": 4,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "a96defddecf9155d_27",
+      "expected": "0",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.3244160003960133,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "a96defddecf9155d_23",
+      "expected": "0",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.517083008773625,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "a96defddecf9155d_19",
+      "expected": "Regn",
+      "observed": [
+        "uBa"
+      ],
+      "error": null,
+      "wall_ms": 105.49833299592137,
+      "exact_match": false,
+      "expected_characters": 4,
+      "character_edits": 4,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "b45fef2565bc76e4_5",
+      "expected": "EXAGERA",
+      "observed": [
+        "Estrella Galicia",
+        "O",
+        "EXAGERA"
+      ],
+      "error": null,
+      "wall_ms": 239.95391599601135,
+      "exact_match": false,
+      "expected_characters": 7,
+      "character_edits": 19,
+      "expected_words": 1,
+      "word_edits": 3
+    },
+    {
+      "id": "b45fef2565bc76e4_18",
+      "expected": "G",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.214250016957521,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "b45fef2565bc76e4_1",
+      "expected": "Estrella",
+      "observed": [
+        "Estrella"
+      ],
+      "error": null,
+      "wall_ms": 82.09016697946936,
+      "exact_match": true,
+      "expected_characters": 8,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "b45fef2565bc76e4_16",
+      "expected": "la",
+      "observed": [
+        "L"
+      ],
+      "error": null,
+      "wall_ms": 76.94079104112461,
+      "exact_match": false,
+      "expected_characters": 2,
+      "character_edits": 2,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "b45fef2565bc76e4_7",
+      "expected": "BUENA",
+      "observed": [
+        "BUENA"
+      ],
+      "error": null,
+      "wall_ms": 83.7544160312973,
+      "exact_match": true,
+      "expected_characters": 5,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "211563903b4782e4_10",
+      "expected": "Coca-Cola",
+      "observed": [],
+      "error": null,
+      "wall_ms": 5.733042024075985,
+      "exact_match": false,
+      "expected_characters": 9,
+      "character_edits": 9,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "211563903b4782e4_2",
+      "expected": "51",
+      "observed": [
+        "51"
+      ],
+      "error": null,
+      "wall_ms": 106.24833399197087,
+      "exact_match": true,
+      "expected_characters": 2,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "211563903b4782e4_1",
+      "expected": "INDIANHAWKS",
+      "observed": [],
+      "error": null,
+      "wall_ms": 5.424999981187284,
+      "exact_match": false,
+      "expected_characters": 11,
+      "character_edits": 11,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "211563903b4782e4_3",
+      "expected": "Indians",
+      "observed": [],
+      "error": null,
+      "wall_ms": 15.638791024684906,
+      "exact_match": false,
+      "expected_characters": 7,
+      "character_edits": 7,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "211563903b4782e4_4",
+      "expected": "5",
+      "observed": [
+        "S"
+      ],
+      "error": null,
+      "wall_ms": 84.79624998290092,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "c4ce9cd260acf0e8_51",
+      "expected": "AU",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.8416250026784837,
+      "exact_match": false,
+      "expected_characters": 2,
+      "character_edits": 2,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "c4ce9cd260acf0e8_50",
+      "expected": "BOUTEILLE",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.979333956725895,
+      "exact_match": false,
+      "expected_characters": 9,
+      "character_edits": 9,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "c4ce9cd260acf0e8_41",
+      "expected": "2010",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.8737910110503435,
+      "exact_match": false,
+      "expected_characters": 4,
+      "character_edits": 4,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "c4ce9cd260acf0e8_49",
+      "expected": "EN",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.126999992877245,
+      "exact_match": false,
+      "expected_characters": 2,
+      "character_edits": 2,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "c4ce9cd260acf0e8_45",
+      "expected": "VIN",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.7003339966759086,
+      "exact_match": false,
+      "expected_characters": 3,
+      "character_edits": 3,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "fc5e25716377e42c_16",
+      "expected": "em",
+      "observed": [
+        "cm"
+      ],
+      "error": null,
+      "wall_ms": 85.51674999762326,
+      "exact_match": false,
+      "expected_characters": 2,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "fc5e25716377e42c_17",
+      "expected": "tua",
+      "observed": [
+        "tua"
+      ],
+      "error": null,
+      "wall_ms": 86.87708299839869,
+      "exact_match": true,
+      "expected_characters": 3,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "fc5e25716377e42c_93",
+      "expected": "do",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.006000002846122,
+      "exact_match": false,
+      "expected_characters": 2,
+      "character_edits": 2,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "fc5e25716377e42c_31",
+      "expected": "feriste",
+      "observed": [
+        "feriste"
+      ],
+      "error": null,
+      "wall_ms": 86.08508302131668,
+      "exact_match": true,
+      "expected_characters": 7,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "fc5e25716377e42c_64",
+      "expected": "dizendo:",
+      "observed": [
+        "dizendo:"
+      ],
+      "error": null,
+      "wall_ms": 85.78866702737287,
+      "exact_match": true,
+      "expected_characters": 8,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "0568d30600d5cf11_30",
+      "expected": "M53",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.288124979007989,
+      "exact_match": false,
+      "expected_characters": 3,
+      "character_edits": 3,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "0568d30600d5cf11_19",
+      "expected": "SKI",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.3807079889811575,
+      "exact_match": false,
+      "expected_characters": 3,
+      "character_edits": 3,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "0568d30600d5cf11_51",
+      "expected": "Transit",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.8393750437535346,
+      "exact_match": false,
+      "expected_characters": 7,
+      "character_edits": 7,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "0568d30600d5cf11_32",
+      "expected": "PLAXTON",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.233541956637055,
+      "exact_match": false,
+      "expected_characters": 7,
+      "character_edits": 7,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "0568d30600d5cf11_16",
+      "expected": "Freau",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.5177500103600323,
+      "exact_match": false,
+      "expected_characters": 5,
+      "character_edits": 5,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "01cc0f8a81d39848_24",
+      "expected": "www.ctj.org",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.360916034784168,
+      "exact_match": false,
+      "expected_characters": 11,
+      "character_edits": 11,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "01cc0f8a81d39848_20",
+      "expected": "DO!",
+      "observed": [
+        "DO!"
+      ],
+      "error": null,
+      "wall_ms": 82.28529198095202,
+      "exact_match": true,
+      "expected_characters": 3,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "01cc0f8a81d39848_30",
+      "expected": "tax",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.507334040477872,
+      "exact_match": false,
+      "expected_characters": 3,
+      "character_edits": 3,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "01cc0f8a81d39848_11",
+      "expected": "AIRLINES,",
+      "observed": [
+        "AIRLINES,"
+      ],
+      "error": null,
+      "wall_ms": 85.10979101993144,
+      "exact_match": true,
+      "expected_characters": 9,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "01cc0f8a81d39848_23",
+      "expected": "at",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.3920829882845283,
+      "exact_match": false,
+      "expected_characters": 2,
+      "character_edits": 2,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "bcae4b24082da442_21",
+      "expected": "BY",
+      "observed": [
+        "o"
+      ],
+      "error": null,
+      "wall_ms": 78.68250005412847,
+      "exact_match": false,
+      "expected_characters": 2,
+      "character_edits": 2,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "bcae4b24082da442_18",
+      "expected": "PETER",
+      "observed": [
+        "PETER"
+      ],
+      "error": null,
+      "wall_ms": 84.54337500734255,
+      "exact_match": true,
+      "expected_characters": 5,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "bcae4b24082da442_12",
+      "expected": "CAROL",
+      "observed": [],
+      "error": null,
+      "wall_ms": 5.922791024204344,
+      "exact_match": false,
+      "expected_characters": 5,
+      "character_edits": 5,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "bcae4b24082da442_29",
+      "expected": "BRADBURY,",
+      "observed": [
+        "BRADBURY"
+      ],
+      "error": null,
+      "wall_ms": 81.58570900559425,
+      "exact_match": false,
+      "expected_characters": 9,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "bcae4b24082da442_8",
+      "expected": "INTRODUCTION",
+      "observed": [
+        "INTRODUCTION"
+      ],
+      "error": null,
+      "wall_ms": 143.80983397131786,
+      "exact_match": true,
+      "expected_characters": 12,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "173ec59258b40567_3",
+      "expected": "C",
+      "observed": [],
+      "error": null,
+      "wall_ms": 6.836833024863154,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "173ec59258b40567_4",
+      "expected": "Z",
+      "observed": [],
+      "error": null,
+      "wall_ms": 6.250249978620559,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "173ec59258b40567_1",
+      "expected": "cmd",
+      "observed": [
+        "cmd"
+      ],
+      "error": null,
+      "wall_ms": 90.66724998410791,
+      "exact_match": true,
+      "expected_characters": 3,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "173ec59258b40567_7",
+      "expected": "D",
+      "observed": [],
+      "error": null,
+      "wall_ms": 5.3215420339256525,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "173ec59258b40567_6",
+      "expected": "S",
+      "observed": [],
+      "error": null,
+      "wall_ms": 5.903332959860563,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "fb8def9936391f5c_23",
+      "expected": "nd",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.0554170263931155,
+      "exact_match": false,
+      "expected_characters": 2,
+      "character_edits": 2,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "fb8def9936391f5c_3",
+      "expected": "THE",
+      "observed": [
+        "The"
+      ],
+      "error": null,
+      "wall_ms": 81.76720899064094,
+      "exact_match": false,
+      "expected_characters": 3,
+      "character_edits": 2,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "fb8def9936391f5c_4",
+      "expected": "MARKUS",
+      "observed": [
+        "MARKUS",
+        "TA",
+        "RDINARY New"
+      ],
+      "error": null,
+      "wall_ms": 267.057457996998,
+      "exact_match": false,
+      "expected_characters": 6,
+      "character_edits": 15,
+      "expected_words": 1,
+      "word_edits": 3
+    },
+    {
+      "id": "fb8def9936391f5c_1",
+      "expected": "A",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.950208018068224,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "fb8def9936391f5c_29",
+      "expected": "that",
+      "observed": [],
+      "error": null,
+      "wall_ms": 6.068790971767157,
+      "exact_match": false,
+      "expected_characters": 4,
+      "character_edits": 4,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "311fc727efa87aa1_8",
+      "expected": "STRAND",
+      "observed": [
+        "STRIND"
+      ],
+      "error": null,
+      "wall_ms": 83.9027920155786,
+      "exact_match": false,
+      "expected_characters": 6,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "311fc727efa87aa1_12",
+      "expected": "By",
+      "observed": [],
+      "error": null,
+      "wall_ms": 5.522832972928882,
+      "exact_match": false,
+      "expected_characters": 2,
+      "character_edits": 2,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "311fc727efa87aa1_13",
+      "expected": "A.",
+      "observed": [],
+      "error": null,
+      "wall_ms": 5.634916014969349,
+      "exact_match": false,
+      "expected_characters": 2,
+      "character_edits": 2,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "311fc727efa87aa1_6",
+      "expected": "THD",
+      "observed": [],
+      "error": null,
+      "wall_ms": 5.456459010019898,
+      "exact_match": false,
+      "expected_characters": 3,
+      "character_edits": 3,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "311fc727efa87aa1_7",
+      "expected": "LIBRARY",
+      "observed": [
+        "LIBRAIRY"
+      ],
+      "error": null,
+      "wall_ms": 91.20833297492936,
+      "exact_match": false,
+      "expected_characters": 7,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "61780b5dc890589c_23",
+      "expected": "on",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.076249955687672,
+      "exact_match": false,
+      "expected_characters": 2,
+      "character_edits": 2,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "61780b5dc890589c_66",
+      "expected": "-Real",
+      "observed": [
+        "Real"
+      ],
+      "error": null,
+      "wall_ms": 82.90862501598895,
+      "exact_match": false,
+      "expected_characters": 5,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "61780b5dc890589c_14",
+      "expected": "tests",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.249709028750658,
+      "exact_match": false,
+      "expected_characters": 5,
+      "character_edits": 5,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "61780b5dc890589c_53",
+      "expected": "Plugin",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.737375013064593,
+      "exact_match": false,
+      "expected_characters": 6,
+      "character_edits": 6,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "61780b5dc890589c_63",
+      "expected": "Plugin",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.3529170216061175,
+      "exact_match": false,
+      "expected_characters": 6,
+      "character_edits": 6,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "9a3382d727c7add1_18",
+      "expected": "10",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.281041979789734,
+      "exact_match": false,
+      "expected_characters": 2,
+      "character_edits": 2,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "9a3382d727c7add1_22",
+      "expected": "A",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.928208025172353,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "9a3382d727c7add1_6",
+      "expected": "DONATION",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.697332973591983,
+      "exact_match": false,
+      "expected_characters": 8,
+      "character_edits": 8,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "9a3382d727c7add1_12",
+      "expected": "TIME",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.6030419869348407,
+      "exact_match": false,
+      "expected_characters": 4,
+      "character_edits": 4,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "9a3382d727c7add1_21",
+      "expected": "MAKE",
+      "observed": [
+        "mdo"
+      ],
+      "error": null,
+      "wall_ms": 81.61670801928267,
+      "exact_match": false,
+      "expected_characters": 4,
+      "character_edits": 4,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "523f4b68dcd52c3b_7",
+      "expected": "BuyiNg",
+      "observed": [
+        "Buying"
+      ],
+      "error": null,
+      "wall_ms": 83.74608401209116,
+      "exact_match": false,
+      "expected_characters": 6,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "523f4b68dcd52c3b_8",
+      "expected": "Israeli",
+      "observed": [
+        "Israeli"
+      ],
+      "error": null,
+      "wall_ms": 85.65445803105831,
+      "exact_match": true,
+      "expected_characters": 7,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "523f4b68dcd52c3b_1",
+      "expected": "INDIA",
+      "observed": [
+        "INDIA"
+      ],
+      "error": null,
+      "wall_ms": 84.89537501009181,
+      "exact_match": true,
+      "expected_characters": 5,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "523f4b68dcd52c3b_11",
+      "expected": "By",
+      "observed": [],
+      "error": null,
+      "wall_ms": 5.329583014827222,
+      "exact_match": false,
+      "expected_characters": 2,
+      "character_edits": 2,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "523f4b68dcd52c3b_5",
+      "expected": "IDF",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.273291978985071,
+      "exact_match": false,
+      "expected_characters": 3,
+      "character_edits": 3,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "0f4f428ec2fc6133_1",
+      "expected": "Alice",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.4102079807780683,
+      "exact_match": false,
+      "expected_characters": 5,
+      "character_edits": 5,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "0f4f428ec2fc6133_17",
+      "expected": "I",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.3909580088220537,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "0f4f428ec2fc6133_3",
+      "expected": "Hey,",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.42399999499321,
+      "exact_match": false,
+      "expected_characters": 4,
+      "character_edits": 4,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "0f4f428ec2fc6133_10",
+      "expected": "tonight?",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.23595798201859,
+      "exact_match": false,
+      "expected_characters": 8,
+      "character_edits": 8,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "0f4f428ec2fc6133_23",
+      "expected": "I",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.4186249831691384,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "76dc6a5cf82664e8_70",
+      "expected": "NO",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.5089579760096967,
+      "exact_match": false,
+      "expected_characters": 2,
+      "character_edits": 2,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "76dc6a5cf82664e8_2",
+      "expected": "X",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.3848329912871122,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "76dc6a5cf82664e8_27",
+      "expected": "X",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.5932089667767286,
+      "exact_match": false,
+      "expected_characters": 1,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "76dc6a5cf82664e8_7",
+      "expected": "Touchbeing",
+      "observed": [
+        "Touchbeing"
+      ],
+      "error": null,
+      "wall_ms": 87.12504099821672,
+      "exact_match": true,
+      "expected_characters": 10,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "76dc6a5cf82664e8_38",
+      "expected": "International/",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.768999991938472,
+      "exact_match": false,
+      "expected_characters": 14,
+      "character_edits": 14,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "17af356f6eae6f6c_1",
+      "expected": "TRXC",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.260958987288177,
+      "exact_match": false,
+      "expected_characters": 4,
+      "character_edits": 4,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "17af356f6eae6f6c_2",
+      "expected": "542",
+      "observed": [
+        "7"
+      ],
+      "error": null,
+      "wall_ms": 82.30066701071337,
+      "exact_match": false,
+      "expected_characters": 3,
+      "character_edits": 3,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "17af356f6eae6f6c_3",
+      "expected": "www.tractiming.com",
+      "observed": [
+        "www.trxc"
+      ],
+      "error": null,
+      "wall_ms": 82.0461250259541,
+      "exact_match": false,
+      "expected_characters": 18,
+      "character_edits": 11,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "17af356f6eae6f6c_5",
+      "expected": "asics",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.768624970689416,
+      "exact_match": false,
+      "expected_characters": 5,
+      "character_edits": 5,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "17af356f6eae6f6c_7",
+      "expected": "TRX",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.28608397487551,
+      "exact_match": false,
+      "expected_characters": 3,
+      "character_edits": 3,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "2346ce571a0f0d8b_10",
+      "expected": "ROSE",
+      "observed": [
+        "OSE"
+      ],
+      "error": null,
+      "wall_ms": 83.5076660150662,
+      "exact_match": false,
+      "expected_characters": 4,
+      "character_edits": 1,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "2346ce571a0f0d8b_18",
+      "expected": "HORN",
+      "observed": [
+        "HORN"
+      ],
+      "error": null,
+      "wall_ms": 93.9527089940384,
+      "exact_match": true,
+      "expected_characters": 4,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "2346ce571a0f0d8b_16",
+      "expected": "ook",
+      "observed": [
+        "ook"
+      ],
+      "error": null,
+      "wall_ms": 84.99408303759992,
+      "exact_match": true,
+      "expected_characters": 3,
+      "character_edits": 0,
+      "expected_words": 1,
+      "word_edits": 0
+    },
+    {
+      "id": "2346ce571a0f0d8b_1",
+      "expected": "ESPN",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.595375037752092,
+      "exact_match": false,
+      "expected_characters": 4,
+      "character_edits": 4,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "2346ce571a0f0d8b_14",
+      "expected": "CHAMPIONSHIP",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.081957973539829,
+      "exact_match": false,
+      "expected_characters": 12,
+      "character_edits": 12,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "81a87534b54bb09c_2",
+      "expected": "CUPA",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.342458967585117,
+      "exact_match": false,
+      "expected_characters": 4,
+      "character_edits": 4,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "81a87534b54bb09c_11",
+      "expected": "CALIFORNIA",
+      "observed": [],
+      "error": null,
+      "wall_ms": 4.4535830384120345,
+      "exact_match": false,
+      "expected_characters": 10,
+      "character_edits": 10,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "81a87534b54bb09c_19",
+      "expected": "STATE",
+      "observed": [],
+      "error": null,
+      "wall_ms": 3.453915996942669,
+      "exact_match": false,
+      "expected_characters": 5,
+      "character_edits": 5,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "81a87534b54bb09c_1",
+      "expected": "93",
+      "observed": [],
+      "error": null,
+      "wall_ms": 11.90866599790752,
+      "exact_match": false,
+      "expected_characters": 2,
+      "character_edits": 2,
+      "expected_words": 1,
+      "word_edits": 1
+    },
+    {
+      "id": "81a87534b54bb09c_3",
+      "expected": "GRANDIS",
+      "observed": [],
+      "error": null,
+      "wall_ms": 6.1912909732200205,
+      "exact_match": false,
+      "expected_characters": 7,
+      "character_edits": 7,
+      "expected_words": 1,
+      "word_edits": 1
+    }
+  ]
+}

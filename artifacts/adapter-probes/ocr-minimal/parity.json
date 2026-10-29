@@ -1,0 +1,81 @@
+{
+  "scope": "Implementation parity on four synthetic fixtures and one unlabelled public real crop",
+  "representative_accuracy": null,
+  "reviewed_annotations_created": false,
+  "all_text_score_polygon_parity": false,
+  "results": [
+    {
+      "id": "exact-match",
+      "texts": [
+        "ABC-990"
+      ],
+      "text_equal": true,
+      "scores_exactly_equal": true,
+      "max_absolute_score_delta": 0.0,
+      "polygons_exactly_equal": true,
+      "expected_fixture_literal": "ABC-990",
+      "fixture_exact": true,
+      "official_ms": 294.5762909948826,
+      "direct_ms": 278.4414999769069
+    },
+    {
+      "id": "substring-only",
+      "texts": [
+        "XABC-990Y"
+      ],
+      "text_equal": true,
+      "scores_exactly_equal": true,
+      "max_absolute_score_delta": 0.0,
+      "polygons_exactly_equal": true,
+      "expected_fixture_literal": "XABC-990Y",
+      "fixture_exact": true,
+      "official_ms": 238.75520896399394,
+      "direct_ms": 231.4459169865586
+    },
+    {
+      "id": "leading-zeros",
+      "texts": [
+        "001234567890"
+      ],
+      "text_equal": true,
+      "scores_exactly_equal": true,
+      "max_absolute_score_delta": 0.0,
+      "polygons_exactly_equal": true,
+      "expected_fixture_literal": "001234567890",
+      "fixture_exact": true,
+      "official_ms": 173.04825002793223,
+      "direct_ms": 164.94541696738452
+    },
+    {
+      "id": "mixed-case",
+      "texts": [
+        "AbC-009x"
+      ],
+      "text_equal": true,
+      "scores_exactly_equal": true,
+      "max_absolute_score_delta": 0.0,
+      "polygons_exactly_equal": true,
+      "expected_fixture_literal": "AbC-009x",
+      "fixture_exact": true,
+      "official_ms": 171.22045799624175,
+      "direct_ms": 167.09733300376683
+    },
+    {
+      "id": "real-public-label-crop",
+      "texts": [
+        "ENTP0343",
+        "BLI",
+        "FMP012 15",
+        "W0"
+      ],
+      "text_equal": true,
+      "scores_exactly_equal": false,
+      "max_absolute_score_delta": 0.0005533397197723389,
+      "polygons_exactly_equal": true,
+      "expected_fixture_literal": null,
+      "fixture_exact": null,
+      "official_ms": 560.2029589936137,
+      "direct_ms": 547.140832990408
+    }
+  ]
+}

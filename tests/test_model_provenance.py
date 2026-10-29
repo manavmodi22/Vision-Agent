@@ -151,6 +151,7 @@ def test_legacy_options_hash_and_pure_reconstruction_remain_unchanged() -> None:
 
 
 async def test_real_mcp_binds_options_to_saved_brief_without_executing_local_weights(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    from engine.capabilities.models import model_catalog
     root = tmp_path / "models"
     path = root / "local-engineering" / "manifest.json"
     path.parent.mkdir(parents=True)
@@ -160,10 +161,18 @@ async def test_real_mcp_binds_options_to_saved_brief_without_executing_local_wei
     service = WorkspaceService(tmp_path / "workspace")
     project = service.create_project("Experimental permission transport", "custom")
     before = service.get_project(project.id), service.annotations(project.id)
+    ready = next(item for item in model_catalog() if item.id == "model.local-engineering").installation_ready
     async with connect_tools(str(tmp_path / "workspace"), AgentState()) as tools:
         await tools.start_run(project.id, "Use local-engineering for this experiment", "media", "owlv2-base-patch16")
         captured = PlanningOptions.model_validate(await tools.call("planning_options", {"project_id":project.id, "operation_id":tools.operation_id}))
-        assert next(item for item in captured.eligible_models if item.model_id == "local-engineering").selection_basis == "explicit_experiment"
+        if ready:
+            assert next(item for item in captured.eligible_models if item.model_id == "local-engineering").selection_basis == "explicit_experiment"
+        else:
+            # A real child process must retain production dependency gating in base-only CI.
+            assert not any(item.model_id == "local-engineering" for item in captured.eligible_models)
+            assert "Missing or invalid prerequisites" in next(item.reason for item in captured.blocked_options
+                if item.capability_id == "model.local-engineering")
+        assert captured.explicit_model_ids == ["local-engineering"]
         await tools.control("agent_record_options", {"snapshot_id":captured.snapshot_id})
     assert before == (service.get_project(project.id), service.annotations(project.id))
     assert not service.events(project.id)

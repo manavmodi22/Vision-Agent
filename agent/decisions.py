@@ -89,6 +89,8 @@ def compile_decision(decision: PlanDecision, source_path: str, detector_model: s
         for block in candidate.blocks:
             if block.type == "ocr" and choice.pipeline_type == "barcode":
                 block.type = "barcode"
+            if block.type == "ocr" and options is not None and options.schema_version == "0.3":
+                block.params["model"] = model
             if block.type == "detect":
                 block.params["min_conf"] = choice.min_confidence
                 if choice.objects:

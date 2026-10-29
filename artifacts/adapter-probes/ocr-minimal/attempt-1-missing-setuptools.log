@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/Users/manavrakeshku.modi/vision-agent/artifacts/adapter-probes/ocr-minimal/run_offline.py", line 89, in <module>
+    child(args.output) if args.child else launch(args.output)
+    ^^^^^^^^^^^^^^^^^^
+  File "/Users/manavrakeshku.modi/vision-agent/artifacts/adapter-probes/ocr-minimal/run_offline.py", line 35, in child
+    from direct_ocr import DirectOCR
+  File "/Users/manavrakeshku.modi/vision-agent/artifacts/adapter-probes/ocr-minimal/direct_ocr.py", line 11, in <module>
+    from paddle.inference import Config, create_predictor
+  File "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/paddle/__init__.py", line 44, in <module>
+    from .base import core  # noqa: F401
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/paddle/base/__init__.py", line 38, in <module>
+    from . import (  # noqa: F401
+  File "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/paddle/base/backward.py", line 28, in <module>
+    from . import core, framework, log_helper, unique_name
+  File "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/paddle/base/core.py", line 612, in <module>
+    __check_and_set_prim_all_enabled(print_flag=True)
+  File "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/paddle/base/core.py", line 594, in __check_and_set_prim_all_enabled
+    from paddle.utils.environments import strtobool
+  File "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/paddle/utils/__init__.py", line 16, in <module>
+    from . import (  # noqa: F401
+  File "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/paddle/utils/cpp_extension/__init__.py", line 15, in <module>
+    from .cpp_extension import (
+  File "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr-minimal/venv/lib/python3.12/site-packages/paddle/utils/cpp_extension/cpp_extension.py", line 23, in <module>
+    import setuptools
+ModuleNotFoundError: No module named 'setuptools'

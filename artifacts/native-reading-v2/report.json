@@ -1,0 +1,198 @@
+{
+  "scope": "Native Apple Vision on generated protocol fixtures; not a task-quality benchmark",
+  "binary": "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Debug/VisionApp",
+  "binary_sha256": "cbb096c96cbecddae97689e063d89491fe764a43d9e0ccec00f0356fc48488f3",
+  "schema_version": 2,
+  "request_policy": "apple-vision-en-us-v2",
+  "unsupported_protocol_rejected": true,
+  "results": [
+    {
+      "case": "exact",
+      "image": "/Users/manavrakeshku.modi/vision-agent/artifacts/agent-experience/reading-fixtures/exact-match.png",
+      "image_sha256": "fc676599ca501be77228487bc0f50736fbe7d1a1992aeb135593d5b02e3719f2",
+      "elapsed_s": 0.4159402080113068,
+      "texts": [
+        "ABC-990"
+      ],
+      "barcodes": [],
+      "codepoints": [
+        [
+          "U+0041",
+          "U+0042",
+          "U+0043",
+          "U+002D",
+          "U+0039",
+          "U+0039",
+          "U+0030"
+        ]
+      ],
+      "observation_count": 1,
+      "geometry_count": 1,
+      "warnings": [],
+      "legacy_projection_equal": true,
+      "overlay": "/Users/manavrakeshku.modi/vision-agent/artifacts/native-reading-v2/exact.overlay.png"
+    },
+    {
+      "case": "substring",
+      "image": "/Users/manavrakeshku.modi/vision-agent/artifacts/agent-experience/reading-fixtures/substring-only.png",
+      "image_sha256": "5928ade6b5f39ec7a6f276c8ec891cee8f61877bc0fd6b8df7119882d97d08ae",
+      "elapsed_s": 0.2359635000466369,
+      "texts": [
+        "\u0425ABC-990Y"
+      ],
+      "barcodes": [],
+      "codepoints": [
+        [
+          "U+0425",
+          "U+0041",
+          "U+0042",
+          "U+0043",
+          "U+002D",
+          "U+0039",
+          "U+0039",
+          "U+0030",
+          "U+0059"
+        ]
+      ],
+      "observation_count": 1,
+      "geometry_count": 1,
+      "warnings": [],
+      "legacy_projection_equal": true,
+      "overlay": "/Users/manavrakeshku.modi/vision-agent/artifacts/native-reading-v2/substring.overlay.png"
+    },
+    {
+      "case": "pallet",
+      "image": "/Users/manavrakeshku.modi/vision-agent/artifacts/native-ocr-stdout-investigation/label with spaces.png",
+      "image_sha256": "5ca4bbbdf3a8fb316d9322e784fa648fa521046f5a9ba963efaa23b3444cce70",
+      "elapsed_s": 0.27095045801252127,
+      "texts": [
+        "PALLET 12345",
+        "DOCK 4"
+      ],
+      "barcodes": [],
+      "codepoints": [
+        [
+          "U+0050",
+          "U+0041",
+          "U+004C",
+          "U+004C",
+          "U+0045",
+          "U+0054",
+          "U+0020",
+          "U+0031",
+          "U+0032",
+          "U+0033",
+          "U+0034",
+          "U+0035"
+        ],
+        [
+          "U+0044",
+          "U+004F",
+          "U+0043",
+          "U+004B",
+          "U+0020",
+          "U+0034"
+        ]
+      ],
+      "observation_count": 2,
+      "geometry_count": 2,
+      "warnings": [],
+      "legacy_projection_equal": true,
+      "overlay": "/Users/manavrakeshku.modi/vision-agent/artifacts/native-reading-v2/pallet.overlay.png"
+    },
+    {
+      "case": "rotated-exif",
+      "image": "/Users/manavrakeshku.modi/vision-agent/artifacts/native-reading-v2/rotated-exif.jpg",
+      "image_sha256": "c168e56feb9ce0b457a4d6a9bec81715436076f23984726aafb282b90e32364e",
+      "elapsed_s": 0.5192754590534605,
+      "texts": [
+        "ABC-990"
+      ],
+      "barcodes": [],
+      "codepoints": [
+        [
+          "U+0041",
+          "U+0042",
+          "U+0043",
+          "U+002D",
+          "U+0039",
+          "U+0039",
+          "U+0030"
+        ]
+      ],
+      "observation_count": 1,
+      "geometry_count": 1,
+      "warnings": [],
+      "legacy_projection_equal": null,
+      "overlay": "/Users/manavrakeshku.modi/vision-agent/artifacts/native-reading-v2/rotated-exif.overlay.png"
+    },
+    {
+      "case": "mirrored-exif",
+      "image": "/Users/manavrakeshku.modi/vision-agent/artifacts/native-reading-v2/mirrored-exif.jpg",
+      "image_sha256": "d27a23bc1813c0e68ae2bc5c13666773b110e6671a3a91045363af661a1e80ca",
+      "elapsed_s": 0.2627726659993641,
+      "texts": [
+        "ABC-990"
+      ],
+      "barcodes": [],
+      "codepoints": [
+        [
+          "U+0041",
+          "U+0042",
+          "U+0043",
+          "U+002D",
+          "U+0039",
+          "U+0039",
+          "U+0030"
+        ]
+      ],
+      "observation_count": 1,
+      "geometry_count": 1,
+      "warnings": [],
+      "legacy_projection_equal": null,
+      "overlay": "/Users/manavrakeshku.modi/vision-agent/artifacts/native-reading-v2/mirrored-exif.overlay.png"
+    },
+    {
+      "case": "skewed",
+      "image": "/Users/manavrakeshku.modi/vision-agent/artifacts/native-reading-v2/skewed.png",
+      "image_sha256": "01ab385c053d6a01e41521c76e8e82ed799fc17899d52ec5685459e5ef077eeb",
+      "elapsed_s": 0.2849150829715654,
+      "texts": [
+        "ABC-990"
+      ],
+      "barcodes": [],
+      "codepoints": [
+        [
+          "U+0041",
+          "U+0042",
+          "U+0043",
+          "U+002D",
+          "U+0039",
+          "U+0039",
+          "U+0030"
+        ]
+      ],
+      "observation_count": 1,
+      "geometry_count": 1,
+      "warnings": [],
+      "legacy_projection_equal": null,
+      "overlay": "/Users/manavrakeshku.modi/vision-agent/artifacts/native-reading-v2/skewed.overlay.png"
+    },
+    {
+      "case": "qr",
+      "image": "/Users/manavrakeshku.modi/vision-agent/artifacts/native-reading-v2/qr.png",
+      "image_sha256": "80f407c60f40ea8ed4f9b83f545f19f10c95adf5b6acc30761febd9faf87dff7",
+      "elapsed_s": 2.740023541962728,
+      "texts": [],
+      "barcodes": [
+        "NATIVE-READING-V2-QR"
+      ],
+      "codepoints": [],
+      "observation_count": 1,
+      "geometry_count": 1,
+      "warnings": [],
+      "legacy_projection_equal": null,
+      "overlay": "/Users/manavrakeshku.modi/vision-agent/artifacts/native-reading-v2/qr.overlay.png"
+    }
+  ]
+}

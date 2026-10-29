@@ -10,17 +10,20 @@ enum CLIOutputChecks {
             fputs("framework stdout before response\n", stdout)
             atexit { fputs("framework stdout at process exit\n", stdout) }
             if CommandLine.arguments.contains("--fail") { throw EngineError.protocolError("intentional child failure") }
-            try response.emit(NativeReadings(texts: ["protocol"], barcodes: []))
+            if CommandLine.arguments.contains("--rich") {
+                try response.emit(NativeReadingsV2(inputSize: [20,10], texts: ["protocol"], barcodes: [],
+                    readings: [ReadingObservation(text: "protocol", kind: "ocr")], warnings: []))
+            } else { try response.emit(NativeReadings(texts: ["protocol"], barcodes: [])) }
             exit(0)
         } catch {
             FileHandle.standardError.write(Data((error.localizedDescription + "\n").utf8)); exit(7)
         }
     }
     static func run() throws -> Int {
-        func child(fail: Bool) throws -> (Int32, Data, Data) {
+        func child(fail: Bool, rich: Bool = false) throws -> (Int32, Data, Data) {
             let process = Process()
             process.executableURL = URL(fileURLWithPath: CommandLine.arguments[0]).standardizedFileURL
-            process.arguments = ["--self-test-json-output"] + (fail ? ["--fail"] : [])
+            process.arguments = ["--self-test-json-output"] + (fail ? ["--fail"] : []) + (rich ? ["--rich"] : [])
             let output = Pipe(), errors = Pipe()
             process.standardOutput = output; process.standardError = errors
             try process.run()
@@ -44,6 +47,13 @@ enum CLIOutputChecks {
         guard failure.0 != 0, failure.1.isEmpty, String(decoding: failure.2, as: UTF8.self).contains("intentional child failure") else {
             throw EngineError.protocolError("CLI failure must use stderr and nonzero status without JSON output")
         }
-        return 3
+        let rich = try child(fail: false, rich: true)
+        let richDecoded = try JSONDecoder().decode(NativeReadingsV2.self, from: rich.1)
+        guard rich.0 == 0, richDecoded.schemaVersion == 2, richDecoded.readings.first?.text == "protocol",
+              richDecoded.readings.first?.confidence == nil, rich.1.filter({ $0 == 10 }).count == 1,
+              String(decoding: rich.2, as: UTF8.self).contains("framework stdout at process exit") else {
+            throw EngineError.protocolError("Rich CLI must preserve single-JSON stdout ownership and unavailable evidence")
+        }
+        return 4
     }
 }

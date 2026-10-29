@@ -237,7 +237,7 @@ class AgentStateStore:
             options = PlanningOptions.model_validate(result)
             if options.project_id != project_id or (operation.planning_options and operation.planning_options != options):
                 raise AgentConflict("The operation's capability snapshot cannot be replaced")
-            if options.schema_version == "0.2" and (options.request_hash != request_hash(operation.brief)
+            if options.schema_version != "0.1" and (options.request_hash != request_hash(operation.brief)
                     or options.explicit_model_ids != explicit_model_ids(operation.brief, [str(item["id"]) for item in list_models()])):
                 raise AgentConflict("Experimental model authorization must match this operation's originating user brief")
             validate_current_options(self.service, options, [])

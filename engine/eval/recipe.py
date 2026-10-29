@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from engine.blocks.params import ReadingParams
 from engine.compiler import compile_pipeline
 from engine.eval.scope import detection_scope
 from engine.models.artifacts import canonical_hash, content_hash
@@ -31,7 +32,9 @@ def task_signature(spec: PipelineSpec, root: Path) -> str:
     scope = detection_scope(compiled)
     return canonical_hash({"classes": sorted(scope.classes),
         "zones": [[zone.model_dump(mode="json") for zone in stage] for stage in scope.zone_stages],
-        "readers": sorted(block.type for block in spec.blocks if block.type in {"ocr", "barcode"}),
+        "readers": sorted(canonical_hash({"task": block.type,
+            "languages": ReadingParams.model_validate(block.params).languages if block.type == "ocr" else []})
+            for block in spec.blocks if block.type in {"ocr", "barcode"}),
         "behaviors": sorted(canonical_hash({"type": block.type,
             "params": compiled.params[block.id].model_dump(mode="json")})
             for block in spec.blocks if block.type in {"rule", "match"}),

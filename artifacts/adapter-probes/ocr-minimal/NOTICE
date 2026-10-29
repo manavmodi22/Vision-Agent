@@ -1,0 +1,15 @@
+This isolated prototype adapts image preprocessing, DB contour postprocessing,
+perspective cropping, text-box ordering and CTC decoding from PaddleX 3.7.2:
+Copyright (c) 2024 PaddlePaddle Authors. All Rights Reserved.
+Licensed under the Apache License, Version 2.0 (upstream/LICENSE).
+Pinned source: PaddlePaddle/PaddleX ffb64904d23708863ff5b8da312a5cbd52a7f462.
+Exact source URLs, hashes and installed-source parity are in upstream/sources.json.
+
+Changes: the functions are extracted into image-only modules, imports of PaddleX
+and Shapely are omitted, input/output bounds and artifact hash verification are
+added, detector scores follow their polygons during sorting, and the detector
+uses the same explicit max-side-960 settings as the retained official probe.
+No expected text is passed into inference; no correction or normalization occurs.
+
+This notice describes adapted code, not the licenses of every binary dependency.
+See the separately captured dependency and native-library license evidence.

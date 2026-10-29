@@ -8,14 +8,18 @@ struct DatasetStudio: View {
     @NativeState<Bool> private var holdoutSheet = false
     @NativeState<Bool> private var reloadSheet = false
     @NativeState<String> private var snapshotName = ""
+    @NativeState<String?> private var selectedReadingID: String?
     private let onContinue: (() -> Void)?
     init(store: DatasetWorkspace, onContinue: (() -> Void)? = nil) { _store = StateObject(wrappedValue: store); self.onContinue = onContinue }
     private var readingTask: Bool { EvaluationPresentation.isReading(workspace.candidate) }
     private var objectTask: Bool { EvaluationPresentation.hasDetector(workspace.candidate) }
-    private var predictions: [Detection] {
-        guard let image = store.activeImage else { return [] }
-        return workspace.preview?.frames.first(where: { $0.imagePath == image.imagePath || URL(fileURLWithPath: $0.imagePath).lastPathComponent == image.filename })?.detections ?? []
+    private var predictionFrame: FrameResult? {
+        guard let image = store.activeImage, !workspace.previewIsPrevious,
+              workspace.displayedPreviewPipeline == workspace.candidate else { return nil }
+        return ReadingPresentation.exactFrame(workspace.preview?.frames ?? [], imagePath: image.imagePath)
     }
+    private var predictions: [Detection] { predictionFrame?.detections ?? [] }
+    private var readers: [FrameInference] { ReadingPresentation.blocks(predictionFrame) }
     var body: some View {
         VStack(spacing: 0) {
             HStack { Text(readingTask ? "Review the expected text or barcode values, then continue the build." : "Review the agent’s proposed labels, then continue the build.").font(.caption).foregroundStyle(Studio.muted); Spacer(); Button("Continue building") { if let onContinue { onContinue() } else { workspace.returnToAgent() } }.buttonStyle(.borderedProminent).disabled(store.saving || workspace.busy) }.padding(.horizontal, 24).padding(.vertical, 10)
@@ -31,11 +35,14 @@ struct DatasetStudio: View {
                         if let image = store.activeImage, let annotation = store.annotation {
                             AnnotationCanvas(imagePath: image.imagePath, detections: annotation.detections,
                                 predictions: store.showPredictions ? predictions : [], colors: store.colors,
-                                selectedIndex: store.selectedBox, tool: store.tool, zoom: store.zoom, fitToken: store.fitToken,
+                                selectedIndex: store.selectedBox, tool: objectTask ? store.tool : .pan, zoom: store.zoom, fitToken: store.fitToken,
                                 onSelect: { index in store.selectedBox = index; if let index, annotation.detections.indices.contains(index) { store.activeClass = annotation.detections[index].label } },
-                                onCreate: store.createBox, onEdit: store.editBoxes, onCommand: store.command,
-                                onZoom: { store.zoom = $0 }).allowsHitTesting(!store.loading && !store.hasConflict)
-                                .overlay(alignment: .bottomLeading) { Text("V Select  ·  B Box  ·  H Pan  ·  Space-drag Pan  ·  ← → Images  ·  ⌘Z Undo").font(.system(size: 10, design: .monospaced)).foregroundStyle(.white.opacity(0.65)).padding(8).background(.black.opacity(0.65)).allowsHitTesting(false) }
+                                onCreate: { if objectTask { store.createBox($0) } }, onEdit: { if objectTask { store.editBoxes($0) } },
+                                onCommand: { if objectTask || !["b", "v", "delete"].contains($0) { store.command($0) } },
+                                onZoom: { store.zoom = $0 }, readings: ReadingPresentation.readings(readers), selectedReadingID: selectedReadingID)
+                                .allowsHitTesting(!store.loading && !store.hasConflict)
+                                .overlay(alignment: .bottomLeading) { Text(objectTask ? "V Select  ·  B Box  ·  H Pan  ·  Space-drag Pan  ·  ← → Images  ·  ⌘Z Undo" : "Drag to pan  ·  Pinch to zoom  ·  ← → Images  ·  Edit expected values in the inspector").font(.system(size: 10, design: .monospaced)).foregroundStyle(.white.opacity(0.65)).padding(8).background(.black.opacity(0.65)).allowsHitTesting(false) }
+                            if !readers.isEmpty { ReadingEvidenceView(blocks: readers, selectedID: $selectedReadingID, compact: true).padding(12).background(Studio.panel) }
                         }
                     }
                     Divider()
@@ -55,6 +62,7 @@ struct DatasetStudio: View {
             }
         }.task { await store.load() }
             .onChange(of: workspace.project?.media.count) { _, _ in Task { await store.load() } }
+            .onChange(of: store.activeImageID) { _, _ in selectedReadingID = nil }
             .onChange(of: workspace.busy) { _, busy in if !busy && store.activeImageID == nil { Task { await store.load() } } }
             .sheet(item: $editingClass) { item in DatasetClassEditor(item: item, existing: store.classes.contains(where: { $0.id == item.id }), onSave: { updated in
                 var classes = store.classes; if let index = classes.firstIndex(where: { $0.id == updated.id }) { classes[index] = updated } else { classes.append(updated) }
@@ -144,7 +152,9 @@ struct DatasetStudio: View {
     }
     private var canvasToolbar: some View {
         HStack(spacing: 12) {
-            Picker("Tool", selection: $store.tool) { Image(systemName: "cursorarrow").tag(AnnotationTool.select); Image(systemName: "rectangle.dashed").tag(AnnotationTool.box); Image(systemName: "hand.draw").tag(AnnotationTool.pan) }.pickerStyle(.segmented).frame(width: 150)
+            if objectTask {
+                Picker("Tool", selection: $store.tool) { Image(systemName: "cursorarrow").tag(AnnotationTool.select); Image(systemName: "rectangle.dashed").tag(AnnotationTool.box); Image(systemName: "hand.draw").tag(AnnotationTool.pan) }.pickerStyle(.segmented).frame(width: 150)
+            } else { Label("Read-only image regions", systemImage: "hand.draw").font(.caption).foregroundStyle(Studio.muted) }
             Button { store.undo() } label: { Image(systemName: "arrow.uturn.backward") }.disabled(store.undoStack.isEmpty)
             Button { store.redo() } label: { Image(systemName: "arrow.uturn.forward") }.disabled(store.redoStack.isEmpty)
             Spacer()

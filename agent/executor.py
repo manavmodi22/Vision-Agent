@@ -22,8 +22,12 @@ async def execute_candidates(tools: MCPTools, proposed: PlanResult, source_path:
         if any(block.type in {"detect", "detect_open_vocab"} and block.params.get("model") != expected_model
                for block in candidate.blocks):
             raise AgentError("The proposed detector differs from its saved model selection")
-        if selected and any(block.type in {"ocr", "barcode"} for block in candidate.blocks) and selected.model_id != "apple-vision":
-            raise AgentError("The saved model selection is not the installed reading adapter")
+        if selected and any(
+            (block.type == "ocr" and block.params.get("model", "apple-vision") != selected.model_id)
+            or (block.type == "barcode" and selected.model_id != "apple-vision")
+            for block in candidate.blocks
+        ):
+            raise AgentError("The proposed reader differs from its saved model selection")
         arguments: dict[str, JsonValue] = {"project_id": tools.project_id, "spec": candidate.model_dump(mode="json", by_alias=True)}
         validation = await tools.call("pipeline_validate", arguments)
         if validation.get("valid") is not True:

@@ -6,6 +6,7 @@ import hashlib
 import json
 from typing import Literal
 
+from engine.adapters.identity import adapter_id
 from engine.capabilities.models import model_catalog
 from engine.models.fixture import PALETTE
 from engine.models.manager import list_models, trained_classes
@@ -13,6 +14,8 @@ from engine.platform.model_provenance import default_exclusion, provenance
 from engine.platform.model_request import explicit_model_ids, request_hash
 from engine.service import WorkspaceService
 from spec.planning import BlockedModelOption, PlanningModelOption, PlanningOptions, TaskType
+
+SUPPORTED_TASKS: tuple[TaskType, ...] = ("detection", "ocr", "barcode")
 
 
 def options_digest(options: PlanningOptions) -> str:
@@ -40,12 +43,12 @@ def _project_options(service: WorkspaceService, project_id: str, detection_const
     eligible: list[PlanningModelOption] = []
     blocked: list[BlockedModelOption] = []
     experiments: list[PlanningModelOption] = []
-    backends = {str(item["id"]): str(item.get("backend", "unknown")) for item in list_models()}
     for capability in model_catalog():
         model_id = capability.id.removeprefix("model.")
         reason = None
         synthetic = model_id == "fixture-color-v1"
-        reading = model_id == "apple-vision"
+        tasks = [task for task in SUPPORTED_TASKS if task in capability.task_types]
+        reading = bool(set(tasks) & {"ocr", "barcode"})
         if (not capability.implemented or capability.availability != "installed" or not capability.installation_ready
                 or capability.readiness.state not in {"ready", "unchecked"}):
             reason = capability.readiness.reason
@@ -53,23 +56,23 @@ def _project_options(service: WorkspaceService, project_id: str, detection_const
             reason = "Synthetic fixture models cannot process real project media"
         elif detection_constraint and not reading and model_id != detection_constraint:
             reason = "Excluded by the explicit synthetic detection constraint"
+        elif not tasks or (reading and "detection" in tasks):
+            reason = "No unambiguous supported adapter task contract"
         if reason:
             blocked.append(BlockedModelOption(capability_id=capability.id, reason=reason))
             continue
         try:
             classes = list(PALETTE) if synthetic else [] if reading else trained_classes(model_id)
             facts = provenance(model_id)
+            adapter = adapter_id(model_id)
         except (OSError, ValueError) as error:
             blocked.append(BlockedModelOption(capability_id=capability.id, reason=str(error)))
             continue
         if classes == [] and not reading:
             blocked.append(BlockedModelOption(capability_id=capability.id, reason="Closed model has no verified class vocabulary"))
             continue
-        tasks: list[TaskType] = ["ocr", "barcode"] if reading else ["detection"]
-        # Model metadata already names a registered backend; model IDs never become paths or code.
-        adapter = "apple-vision" if reading else "fixture-color-v1" if synthetic else (
-            "owlv2" if model_id == "owlv2-base-patch16" else backends.get(model_id, "unknown"))
-        if adapter not in {"apple-vision", "fixture-color-v1", "owlv2", "rtdetr-v2-r18", "ssdlite320", "yolox-onnx"}:
+        # The coded registry must resolve the ID; catalog metadata cannot implement an adapter.
+        if adapter not in {"apple-vision", "fixture-color-v1", "owlv2", "rtdetr-v2-r18", "ssdlite320", "yolox-onnx", "paddle-ocr-cpu"}:
             blocked.append(BlockedModelOption(capability_id=capability.id, reason="No compatible registered adapter contract"))
             continue
         exclusion = default_exclusion(facts)
@@ -89,7 +92,7 @@ def _project_options(service: WorkspaceService, project_id: str, detection_const
             blocked.append(BlockedModelOption(capability_id=capability.id, reason=exclusion))
         else:
             eligible.append(option)
-    options = PlanningOptions(schema_version="0.2", snapshot_id="", project_id=project_id, fixture_source=project.fixture,
+    options = PlanningOptions(schema_version="0.3", snapshot_id="", project_id=project_id, fixture_source=project.fixture,
         detection_constraint=detection_constraint, eligible_models=sorted(eligible, key=lambda item: item.capability_id),
         blocked_options=sorted(blocked, key=lambda item: item.capability_id),
         experimental_models=sorted(experiments, key=lambda item: item.capability_id),

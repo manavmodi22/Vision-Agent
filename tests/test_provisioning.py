@@ -32,7 +32,8 @@ def mocked_install(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):  # type: ig
     contents = {"model.onnx": b"Explicit software fixture; not ONNX weights", "LICENSE.txt": b"Test license fixture"}
     artifacts = tuple(ProvisioningArtifact(filename=name, source_url="https://github.com/test/" + name,
         expected_sha256=hashlib.sha256(value).hexdigest(), expected_bytes=len(value)) for name, value in contents.items())
-    monkeypatch.setitem(RECIPES, YOLOX.model_id, replace(YOLOX, name="Software contract fixture; inference mocked", artifacts=artifacts))
+    monkeypatch.setitem(RECIPES, YOLOX.model_id, replace(YOLOX, name="Software contract fixture; inference mocked",
+        artifacts=artifacts, packages=()))
     requests: list[str] = []
     original_client = httpx.Client
     def response(request: httpx.Request) -> httpx.Response:
@@ -80,6 +81,17 @@ def test_options_review_and_exact_approval_have_no_implicit_effects(mocked_insta
     assert client.post("/provisioning/jobs", json={"plan_id": plan["id"], "plan_hash": plan["plan_hash"], "approved": False}).status_code == 400
     assert client.post("/provisioning/jobs", json={"plan_id": plan["id"], "plan_hash": "a" * 64, "approved": True}).status_code == 409
     assert not requests and manager.jobs() == []
+
+
+def test_missing_recipe_dependency_still_blocks_approval(mocked_install, monkeypatch: pytest.MonkeyPatch) -> None:  # type: ignore[no-untyped-def]
+    _, manager, _, requests = mocked_install
+    missing = "visionapp-explicitly-absent-test-runtime"
+    monkeypatch.setitem(RECIPES, YOLOX.model_id, replace(RECIPES[YOLOX.model_id], packages=(missing,)))
+    plan = manager.create_plan(YOLOX.model_id)
+    assert plan.readiness.state == "blocked" and plan.runtime_snapshot["package:" + missing] == "missing"
+    with pytest.raises(ProvisioningConflict, match="dependencies are missing"):
+        manager.start(ProvisioningJobRequest(plan_id=plan.id, plan_hash=plan.plan_hash, approved=True))
+    assert not requests and not Path(plan.target_directory).exists()
 
 
 def test_install_active_and_completed_idempotency_and_api_receipt(mocked_install, monkeypatch: pytest.MonkeyPatch) -> None:  # type: ignore[no-untyped-def]
