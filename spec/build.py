@@ -4,6 +4,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, JsonValue
 
+from spec.handoff import HandoffProposal, HandoffReceipt
 from spec.models import EvaluationResult, RunResult
 from spec.platform import BuildPlan, ExecutionRun, ToolEvent
 
@@ -48,6 +49,21 @@ class BuildStatus(BuildModel):
     plan: BuildPlan | None = None
     execution: ExecutionRun | None = None
     tool_events: list[ToolEvent] = Field(default_factory=list)
+    investigation_origin: HandoffReceipt | None = None
+
+
+class HandoffResult(BuildModel):
+    receipt: HandoffReceipt
+    build: BuildStatus
+
+
+class HandoffStatus(BuildModel):
+    status: Literal["none", "prepared", "committing", "completed", "interrupted", "conflict"]
+    proposal: HandoffProposal | None = None
+    receipt: HandoffReceipt | None = None
+    build: BuildStatus | None = None
+    message: str | None = None
+    can_abort: bool = False
 
 
 class BuildContext(BuildModel):

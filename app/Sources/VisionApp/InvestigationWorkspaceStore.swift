@@ -9,17 +9,30 @@ extension AgentWorkspaceStore {
     func resolveSession() async throws {
         guard !sessionResolved else { return }
         if runtime != nil { sessionResolved = true; return }
+        var buildConflict: EngineError?
         do {
             let response: AgentBuildStatus = try await client.request("GET", "/projects/\(projectID)/build")
             guard runtime == nil else { return }
-            build = response; bindRuntime(.legacy); return
+            build = response; retainInvestigationOrigin(response); bindRuntime(.legacy); return
         } catch EngineError.server(404, _) { }
+        catch EngineError.server(409, let message) { buildConflict = .server(409, message) }
         let tasks: [InvestigationState] = try await client.request("GET", investigationPath)
         guard runtime == nil else { return }
+        if let buildConflict {
+            // A durable handoff journal may intentionally block /build before
+            // the imported build exists. Recovery must not depend on local prefs.
+            for task in tasks {
+                do {
+                    let status: InvestigationHandoffStatus = try await client.request("GET", investigationPath + "/" + PlatformTimeline.pathComponent(task.id) + "/handoff")
+                    if try recoverHandoffSession(task: task, status: status) { return }
+                } catch EngineError.server(404, _) { continue }
+            }
+            throw buildConflict
+        }
         if let latest = tasks.first { bindRuntime(.investigation); retainTask(latest.id) }
         sessionResolved = true
     }
-    private func retainTask(_ id: String) {
+    func retainTask(_ id: String) {
         investigationTaskID = id
         UserDefaults.standard.set(id, forKey: "vision.investigationTask.\(projectID)")
     }
@@ -39,9 +52,13 @@ extension AgentWorkspaceStore {
         if let pending = UserDefaults.standard.dictionary(forKey: startKey), pending["objective"] as? String == snapshot.state.objective {
             UserDefaults.standard.removeObject(forKey: startKey)
         }
+        if ["draft_ready", "inconclusive"].contains(snapshot.state.status), snapshot.selectedDraft != nil,
+           handoffCheckedTaskID != id || handoffStatus?.status == "committing" {
+            do { try await refreshHandoffStatus(taskID: id) } catch { handoffError = error.localizedDescription }
+        }
     }
     func startInvestigation(objective: String) async throws {
-        guard !investigationRequestPending else { return }
+        guard !investigationRequestPending, !handoffInProgress else { return }
         guard investigation == nil || investigation?.state.terminal == true else {
             throw EngineError.protocolError("Resume or cancel the current investigation before starting another.")
         }
@@ -64,6 +81,7 @@ extension AgentWorkspaceStore {
         }
         guard response.projectID == projectID, response.supported else { throw EngineError.protocolError("Unexpected investigation response.") }
         retainTask(response.id)
+        handoffStatus = nil; handoffError = nil; handoffCheckedTaskID = nil
         investigation = InvestigationSnapshot(state: response, actions: [], observations: [])
         UserDefaults.standard.removeObject(forKey: key)
         retainSubmission(nil); error = nil

@@ -14,6 +14,8 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, PlainTextResponse
 from pydantic import JsonValue, ValidationError
 from starlette.concurrency import run_in_threadpool
+from starlette.middleware.base import RequestResponseEndpoint
+from starlette.responses import Response
 
 from engine.agent_state import AgentConflict, AgentStateStore
 from engine.alerts.service import AlertService
@@ -37,6 +39,7 @@ from engine.api.contracts import (
 )
 from engine.api.dataset_routes import build_router as dataset_router
 from engine.api.evaluation_routes import evaluation_router
+from engine.api.handoff_routes import handoff_router
 from engine.api.investigation_routes import build_router as investigation_router
 from engine.api.live_routes import build_router as live_router
 from engine.api.provisioning_routes import provisioning_router
@@ -44,6 +47,7 @@ from engine.api.sample_routes import build_router as sample_router
 from engine.builds.manager import BuildManager
 from engine.datasets import DatasetConflict, DatasetService
 from engine.evidence import events_csv
+from engine.investigations.handoff_guard import assert_handoff_mutable
 from engine.investigations.manager import InvestigationManager
 from engine.jobs import Job, JobManager
 from engine.live import LiveManager
@@ -95,8 +99,24 @@ def create_app(data_dir: Path) -> FastAPI:
     app.include_router(sample_router(service))
     app.include_router(build_workflow_router(service, builds))
     app.include_router(investigation_router(investigations))
+    app.include_router(handoff_router(service))
     app.include_router(capability_router(service))
     agent_states = AgentStateStore(service)
+
+    @app.middleware("http")
+    async def pending_handoff(request: Request, call_next: RequestResponseEndpoint) -> Response:
+        parts = request.url.path.strip("/").split("/")
+        if request.method in {"POST", "PUT", "PATCH", "DELETE"} and len(parts) >= 2 and parts[0] == "projects":
+            is_handoff = len(parts) >= 5 and parts[2] == "investigations" and parts[4] == "handoff"
+            if not is_handoff:
+                try:
+                    with service.repository.lock:
+                        assert_handoff_mutable(service.root(parts[1]))
+                except AgentConflict as error:
+                    return JSONResponse(status_code=409, content={"detail": str(error)})
+                except (ValueError, FileNotFoundError):
+                    pass  # Preserve the endpoint's normal identifier/not-found response.
+        return await call_next(request)
 
     @app.exception_handler(ProvisioningConflict)
     @app.exception_handler(DatasetConflict)

@@ -35,6 +35,24 @@ app/.build/debug/VisionApp --analyze-image /absolute/path/to/label.png
 The output contains `texts` and `barcodes`. Python receives the executable path
 through `VISION_APP_BINARY` when the application supervises the engine.
 
+By default, the supervisor uses its own app executable for Apple Vision. For an
+explicit development setup, it preserves an absolute executable path supplied in
+`VISION_APP_BINARY`; an invalid value stops engine launch with a clear error and
+does not fall back. The supervisor logs the selected vision executable. For example:
+
+```sh
+VISION_APP_BINARY="/absolute/path/to/pinned/VisionApp" \
+  VISION_REPO_ROOT="$PWD" \
+  dist/VisionApp-Development.app/Contents/MacOS/VisionApp
+```
+
+Use a separate `VISION_SOCKET` and `VISION_DATA_DIR` when testing this configuration
+so an already-running engine cannot retain a different environment. The backend
+still hashes and executes the exact configured binary. This can preserve a saved
+draft's actual vision runtime while testing a new UI; it does not declare two app
+builds equivalent or migrate old model identities. General upgrade migration and
+packaging a separate stable vision bridge remain separate work.
+
 Use the optional generated-fixture starter in **New project** to exercise import, template compilation,
 preview, reviewed labels, evaluation, explicit deployment approval, local runs and
 event evidence. Synthetic scores do not measure warehouse accuracy. Real pallet

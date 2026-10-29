@@ -1,0 +1,64 @@
+{
+  "working_directory": "/Users/manavrakeshku.modi/.codex/worktrees/investigation-review-handoff/vision-agent",
+  "git_head": "d8212a91b4fb47608fe4d2e7d468a7bdf8d4696d",
+  "native_source_sha256": "dd8117819f2cab44b2b4c36f3842819d3dc62acd1bc2e4db89a17219e82dc8b6",
+  "native_source_hash_method": "Sorted app/Sources/VisionApp/*.swift: repo-relative path, NUL, bytes, NUL; SHA256",
+  "debug_binary_path": "/Users/manavrakeshku.modi/.codex/worktrees/investigation-review-handoff/vision-agent/app/.build/out/Products/Debug/VisionApp",
+  "debug_binary_sha256": "04fde6d30b0cb75a98844d8787a93b2b1199aa759b62a699f4c52b04c4e1f953",
+  "checks": [
+    {
+      "command": "./app/test-native.sh",
+      "exit_code": 0,
+      "output": "Build complete! (9.35 sec)\n{\"status\":\"passed\",\"checks\":374}\n",
+      "scope": "Current isolated Debug build and native contract checks"
+    },
+    {
+      "command": "app/.build/out/Products/Debug/VisionApp --self-test --handoff-proposal /private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/handoff-wire/proposal.json --handoff-result /private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/handoff-wire/result.json --handoff-status /private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/handoff-wire/status.json",
+      "exit_code": 0,
+      "output": "{\"status\":\"passed\",\"checks\":377}\n",
+      "scope": "Same native checks plus real backend fixture HTTP proposal/result/status decoding and receipt/build matching"
+    },
+    {
+      "command": "git diff --check -- app",
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "output_provenance": "Copied from completed tool transcript outputs; separate raw full build logs were not captured. Counts overlap and are not additive.",
+  "backend_inputs": [
+    {
+      "kind": "proposal",
+      "captured_source": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/handoff-wire/proposal.json",
+      "preserved_path": "artifacts/a0-investigation/native-handoff-validation/proposal.json",
+      "sha256": "dca1a3c57ed55772357b63d5b0e2c5f6a902c23fe7ede9d5b60a4618aae20cd9"
+    },
+    {
+      "kind": "result",
+      "captured_source": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/handoff-wire/result.json",
+      "preserved_path": "artifacts/a0-investigation/native-handoff-validation/result.json",
+      "sha256": "964050188ce5f52bbefae5cadf260a5e65efaa3b84ac832dc368942d09019797"
+    },
+    {
+      "kind": "status",
+      "captured_source": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/handoff-wire/status.json",
+      "preserved_path": "artifacts/a0-investigation/native-handoff-validation/status.json",
+      "sha256": "47b342609ae68eedc646404b3dd8da2b7e33654a8c8fde096692090d89254b3c"
+    }
+  ],
+  "verified_scope": [
+    "Explicit proposal/source acknowledgment, exact selected-preview matching, original graph/model-binding presentation, and actual returned-build association.",
+    "Terminal inconclusive recovery preserves origin status and stop reason; active/cancelled tasks remain ineligible.",
+    "Stable acceptance request across retry/relaunch, uncertain-response status reconciliation, completed/superseded/mismatched states, and fresh-preferences recovery of a blocked build journal.",
+    "Returned configure_evaluation and review_labels route to their respective existing surfaces; no evaluation/deployment authority is added.",
+    "Conflict/can_abort exposes only a separately confirmed discard request; no automatic abort.",
+    "Explicit absolute executable VISION_APP_BINARY preserved; absent override uses own executable; invalid override fails clearly; path is logged."
+  ],
+  "limits": [
+    "No app was packaged, launched, quit, or replaced. The main checkout and running app were untouched.",
+    "No model or vision inference was invoked by this native validation. Backend wire inputs came from another agent's generated-fixture protocol test, with two original selected images, sixteen project images, and five actual new fixture-preview frames.",
+    "No visual verification or network UI flow has been performed by this agent. Root controls the native smoke and app lifecycle.",
+    "Bridge selection tests validate executable selection and invalid-path rejection without executing the bridge. Actual native engine environment and canonical vision binary identity still require the root-owned launch verification.",
+    "XCTest requires full Xcode; these checks used the existing CLI self-test harness. The build reported existing missing CommandLineTools linker search-directory warnings but succeeded.",
+    "General model-runtime migration across app upgrades remains outside this change."
+  ]
+}

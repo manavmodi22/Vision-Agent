@@ -134,7 +134,7 @@ struct InvestigationEvidenceView: View {
             HStack { Text("Investigation evidence").font(.headline); Spacer(); Text(snapshot.statusLabel).font(.caption).foregroundStyle(Studio.muted) }
             if let draft {
                 Button("Show selected draft preview") { selectedObservationID = draft.observation.id; frameIndex = 0 }
-                Text("Review handoff is not implemented in this experimental runtime. This draft has no measured quality or deployment approval.").font(.caption).foregroundStyle(Studio.muted)
+                Text("This is the saved investigation preview. It does not establish measured quality or deployment approval.").font(.caption).foregroundStyle(Studio.muted)
             } else if snapshot.state.selectedWorkflowRevision != nil || snapshot.state.status == "draft_ready" {
                 Text("The selected draft has no matching valid preview receipt. It cannot be presented as ready.").font(.caption).foregroundStyle(.orange)
             } else { Text("The agent can inspect examples and test vision capabilities before choosing a workflow.").font(.callout).foregroundStyle(Studio.muted) }

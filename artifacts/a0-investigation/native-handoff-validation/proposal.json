@@ -1,0 +1,28 @@
+{
+  "schema_version": "a0.handoff.1",
+  "id": "a6b7b455960e4b67a144a4575deaf2b7",
+  "project_id": "7fc9ad3fdc1844a1",
+  "task_id": "6185b0ab663c44f3870ad516e0e54a38",
+  "task_revision": 8,
+  "workflow_revision_id": "e23b1bd1fb4149b2b76b250dc61cf9bf",
+  "preview_observation_id": "d4b0395a63fa4bcd9efbc396d71071e8",
+  "proposal_hash": "d359ce1fdf10bf7baa57683027abaed8d9f0ae6709dd6e123f60da380b8e1139",
+  "origin_task_status": "draft_ready",
+  "origin_stop_reason": "Scripted protocol fixture only",
+  "original_spec_hash": "74f1e6367060c801516c780e0e904a1a8b715088b25d3a8639a8521288dee49f",
+  "candidate_spec_hash": "ae215a66d6c0a763de6d0221771bfa76600af747a2e76967c90ecaf6e58d791c",
+  "source_before": "investigations/6185b0ab663c44f3870ad516e0e54a38/workflows/e23b1bd1fb4149b2b76b250dc61cf9bf/media",
+  "source_after": "media",
+  "original_media_count": 2,
+  "project_media_count": 16,
+  "candidate_name": "Model-chosen software experiment",
+  "metric": "count_mae",
+  "target": 0.5,
+  "limitations": [
+    "The source changes from frozen examples to imported project media; all other graph fields and model bindings are preserved.",
+    "Acceptance runs a new preview on up to five available development images. Reserved acceptance images are excluded.",
+    "Static crops remain static; layout changes need separate validation.",
+    "Review the proposed metric, target and labels. This import supplies no measured quality or deployment approval."
+  ],
+  "created_at": "2026-10-29T20:28:25.911175+00:00"
+}

@@ -1,0 +1,1060 @@
+{
+  "status": "completed",
+  "proposal": {
+    "schema_version": "a0.handoff.1",
+    "id": "a6b7b455960e4b67a144a4575deaf2b7",
+    "project_id": "7fc9ad3fdc1844a1",
+    "task_id": "6185b0ab663c44f3870ad516e0e54a38",
+    "task_revision": 8,
+    "workflow_revision_id": "e23b1bd1fb4149b2b76b250dc61cf9bf",
+    "preview_observation_id": "d4b0395a63fa4bcd9efbc396d71071e8",
+    "proposal_hash": "d359ce1fdf10bf7baa57683027abaed8d9f0ae6709dd6e123f60da380b8e1139",
+    "origin_task_status": "draft_ready",
+    "origin_stop_reason": "Scripted protocol fixture only",
+    "original_spec_hash": "74f1e6367060c801516c780e0e904a1a8b715088b25d3a8639a8521288dee49f",
+    "candidate_spec_hash": "ae215a66d6c0a763de6d0221771bfa76600af747a2e76967c90ecaf6e58d791c",
+    "source_before": "investigations/6185b0ab663c44f3870ad516e0e54a38/workflows/e23b1bd1fb4149b2b76b250dc61cf9bf/media",
+    "source_after": "media",
+    "original_media_count": 2,
+    "project_media_count": 16,
+    "candidate_name": "Model-chosen software experiment",
+    "metric": "count_mae",
+    "target": 0.5,
+    "limitations": [
+      "The source changes from frozen examples to imported project media; all other graph fields and model bindings are preserved.",
+      "Acceptance runs a new preview on up to five available development images. Reserved acceptance images are excluded.",
+      "Static crops remain static; layout changes need separate validation.",
+      "Review the proposed metric, target and labels. This import supplies no measured quality or deployment approval."
+    ],
+    "created_at": "2026-10-29T20:28:25.911175+00:00"
+  },
+  "receipt": {
+    "schema_version": "a0.handoff.1",
+    "id": "20a438e12dad466184e2ccbae1e5b11d",
+    "project_id": "7fc9ad3fdc1844a1",
+    "task_id": "6185b0ab663c44f3870ad516e0e54a38",
+    "workflow_revision_id": "e23b1bd1fb4149b2b76b250dc61cf9bf",
+    "preview_observation_id": "d4b0395a63fa4bcd9efbc396d71071e8",
+    "proposal_id": "a6b7b455960e4b67a144a4575deaf2b7",
+    "proposal_hash": "d359ce1fdf10bf7baa57683027abaed8d9f0ae6709dd6e123f60da380b8e1139",
+    "client_request_id": "native-network-key",
+    "build_id": "e39a5ef002814689b6300ca4c809d78c",
+    "candidate_index": 0,
+    "original_spec_hash": "74f1e6367060c801516c780e0e904a1a8b715088b25d3a8639a8521288dee49f",
+    "candidate_spec_hash": "ae215a66d6c0a763de6d0221771bfa76600af747a2e76967c90ecaf6e58d791c",
+    "created_at": "2026-10-29T20:28:26.304769+00:00",
+    "origin_task_status": "draft_ready",
+    "origin_stop_reason": "Scripted protocol fixture only"
+  },
+  "build": {
+    "id": "e39a5ef002814689b6300ca4c809d78c",
+    "project_id": "7fc9ad3fdc1844a1",
+    "status": "awaiting_review",
+    "phase": "reviewing",
+    "next_action": "configure_evaluation",
+    "message": "Imported the saved workflow and previewed project development images. Review the proposed target and labels before evaluation; no deployment is approved.",
+    "questions": [],
+    "log": [
+      {
+        "at": "2026-10-29T20:28:27.345065+00:00",
+        "phase": "reviewing",
+        "message": "Imported the saved workflow and previewed project development images. Review the proposed target and labels before evaluation; no deployment is approved."
+      }
+    ],
+    "preview": {
+      "frames": [
+        {
+          "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-01.png",
+          "source_image_sha256": "75eac315845012afb7513554fe9ae64bc24803b542b08f0091f5a391a43e5370",
+          "detections": [
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.225,
+                0.4453125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.45,
+                0.4453125,
+                0.5875
+              ],
+              "zone": null
+            }
+          ],
+          "counts": {
+            "all": 2
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 33.32187497289851,
+          "timestamp_s": 0.0,
+          "judgements": [],
+          "inferences": [
+            {
+              "block_id": "det",
+              "result": {
+                "schema_version": 1,
+                "task": "detection",
+                "input_size": [
+                  320,
+                  400
+                ],
+                "input_pixels_sha256": "7cb0c4942b306ee130663e7bc783411ec16b7691fb6e096a1ee1287d37f8c7f4",
+                "detections": [
+                  {
+                    "box": [
+                      0.609375,
+                      0.225,
+                      0.890625,
+                      0.3625
+                    ],
+                    "polygon": null,
+                    "label": "pallet",
+                    "confidence": 0.99
+                  },
+                  {
+                    "box": [
+                      0.609375,
+                      0.45,
+                      0.890625,
+                      0.5875
+                    ],
+                    "polygon": null,
+                    "label": "pallet",
+                    "confidence": 0.99
+                  }
+                ],
+                "readings": [],
+                "identity": {
+                  "capability_id": "model.fixture-color-v1",
+                  "model_id": "fixture-color-v1",
+                  "adapter_id": "fixture-color-v1",
+                  "identity_scope": "synthetic_code",
+                  "artifact_hashes": {
+                    "fixture.py": "72365bce263b5f0aafd205a65784dd744efa87673e5ec906de6f69f91c857575"
+                  },
+                  "unavailable_artifacts": [],
+                  "adapter_code_sha256": "bc5bde8ab58bd9088ac1ec63fb4d39b1c6ead3f486f0b0291fd1daca05f1d541",
+                  "runtime_manifest_sha256": "c89a1440ed434e31e984a096917b62eb2c781d9ff8451bea048fb5f0cbdc1341",
+                  "system_identity": {
+                    "architecture": "arm64"
+                  },
+                  "provider": "cpu",
+                  "config_sha256": "a19024f20e6f0bd0cd145715a34d2e8857efecc9bb61f1091a74abd4970c14c2",
+                  "identity_hash": "0063cbd4a84371edb19978b1c939c4ff18c650915bace728ba5f664e2f08e102"
+                },
+                "timing": {
+                  "total_ms": 31.030707992613316,
+                  "startup_ms": null,
+                  "load_ms": null,
+                  "preprocess_ms": null,
+                  "inference_ms": null,
+                  "postprocess_ms": null,
+                  "transport_ms": null,
+                  "model_cached": null
+                },
+                "warnings": [
+                  "Synthetic color fixture; not a warehouse detector."
+                ]
+              },
+              "input_to_frame": [
+                0.0,
+                0.0,
+                0.5,
+                1.0
+              ]
+            }
+          ],
+          "comparisons": []
+        },
+        {
+          "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-02.png",
+          "source_image_sha256": "67a0b69fd1341905ba1f837ff9503d663e41265a17ccdd91c965da7f4fa04df8",
+          "detections": [
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.0546875,
+                0.225,
+                0.1953125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.225,
+                0.4453125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.45,
+                0.4453125,
+                0.5875
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.675,
+                0.4453125,
+                0.8125
+              ],
+              "zone": null
+            }
+          ],
+          "counts": {
+            "all": 4
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 46.10970901558176,
+          "timestamp_s": 0.0,
+          "judgements": [],
+          "inferences": [
+            {
+              "block_id": "det",
+              "result": {
+                "schema_version": 1,
+                "task": "detection",
+                "input_size": [
+                  320,
+                  400
+                ],
+                "input_pixels_sha256": "335f3eeddb2e88c17e2684224c5e10e7326f66ead08b8bfe5b9fb77c57034f2b",
+                "detections": [
+                  {
+                    "box": [
+                      0.109375,
+                      0.225,
+                      0.390625,
+                      0.3625
+                    ],
+                    "polygon": null,
+                    "label": "pallet",
+                    "confidence": 0.99
+                  },
+                  {
+                    "box": [
+                      0.609375,
+                      0.225,
+                      0.890625,
+                      0.3625
+                    ],
+                    "polygon": null,
+                    "label": "pallet",
+                    "confidence": 0.99
+                  },
+                  {
+                    "box": [
+                      0.609375,
+                      0.45,
+                      0.890625,
+                      0.5875
+                    ],
+                    "polygon": null,
+                    "label": "pallet",
+                    "confidence": 0.99
+                  },
+                  {
+                    "box": [
+                      0.609375,
+                      0.675,
+                      0.890625,
+                      0.8125
+                    ],
+                    "polygon": null,
+                    "label": "pallet",
+                    "confidence": 0.99
+                  }
+                ],
+                "readings": [],
+                "identity": {
+                  "capability_id": "model.fixture-color-v1",
+                  "model_id": "fixture-color-v1",
+                  "adapter_id": "fixture-color-v1",
+                  "identity_scope": "synthetic_code",
+                  "artifact_hashes": {
+                    "fixture.py": "72365bce263b5f0aafd205a65784dd744efa87673e5ec906de6f69f91c857575"
+                  },
+                  "unavailable_artifacts": [],
+                  "adapter_code_sha256": "bc5bde8ab58bd9088ac1ec63fb4d39b1c6ead3f486f0b0291fd1daca05f1d541",
+                  "runtime_manifest_sha256": "c89a1440ed434e31e984a096917b62eb2c781d9ff8451bea048fb5f0cbdc1341",
+                  "system_identity": {
+                    "architecture": "arm64"
+                  },
+                  "provider": "cpu",
+                  "config_sha256": "a19024f20e6f0bd0cd145715a34d2e8857efecc9bb61f1091a74abd4970c14c2",
+                  "identity_hash": "0063cbd4a84371edb19978b1c939c4ff18c650915bace728ba5f664e2f08e102"
+                },
+                "timing": {
+                  "total_ms": 44.41441601375118,
+                  "startup_ms": null,
+                  "load_ms": null,
+                  "preprocess_ms": null,
+                  "inference_ms": null,
+                  "postprocess_ms": null,
+                  "transport_ms": null,
+                  "model_cached": null
+                },
+                "warnings": [
+                  "Synthetic color fixture; not a warehouse detector."
+                ]
+              },
+              "input_to_frame": [
+                0.0,
+                0.0,
+                0.5,
+                1.0
+              ]
+            }
+          ],
+          "comparisons": []
+        },
+        {
+          "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-03.png",
+          "source_image_sha256": "9cdee3e2e4e667ce8ae1ec70eabea94b7ae806ba1fde346ee9550604df021326",
+          "detections": [
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.0546875,
+                0.225,
+                0.1953125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.0546875,
+                0.45,
+                0.1953125,
+                0.5875
+              ],
+              "zone": null
+            }
+          ],
+          "counts": {
+            "all": 2
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 30.229875002987683,
+          "timestamp_s": 0.0,
+          "judgements": [],
+          "inferences": [
+            {
+              "block_id": "det",
+              "result": {
+                "schema_version": 1,
+                "task": "detection",
+                "input_size": [
+                  320,
+                  400
+                ],
+                "input_pixels_sha256": "25f5de6a599a0fdf12cc055977e0605129407e9aff485ac492c6f59cc4f25acc",
+                "detections": [
+                  {
+                    "box": [
+                      0.109375,
+                      0.225,
+                      0.390625,
+                      0.3625
+                    ],
+                    "polygon": null,
+                    "label": "pallet",
+                    "confidence": 0.99
+                  },
+                  {
+                    "box": [
+                      0.109375,
+                      0.45,
+                      0.390625,
+                      0.5875
+                    ],
+                    "polygon": null,
+                    "label": "pallet",
+                    "confidence": 0.99
+                  }
+                ],
+                "readings": [],
+                "identity": {
+                  "capability_id": "model.fixture-color-v1",
+                  "model_id": "fixture-color-v1",
+                  "adapter_id": "fixture-color-v1",
+                  "identity_scope": "synthetic_code",
+                  "artifact_hashes": {
+                    "fixture.py": "72365bce263b5f0aafd205a65784dd744efa87673e5ec906de6f69f91c857575"
+                  },
+                  "unavailable_artifacts": [],
+                  "adapter_code_sha256": "bc5bde8ab58bd9088ac1ec63fb4d39b1c6ead3f486f0b0291fd1daca05f1d541",
+                  "runtime_manifest_sha256": "c89a1440ed434e31e984a096917b62eb2c781d9ff8451bea048fb5f0cbdc1341",
+                  "system_identity": {
+                    "architecture": "arm64"
+                  },
+                  "provider": "cpu",
+                  "config_sha256": "a19024f20e6f0bd0cd145715a34d2e8857efecc9bb61f1091a74abd4970c14c2",
+                  "identity_hash": "0063cbd4a84371edb19978b1c939c4ff18c650915bace728ba5f664e2f08e102"
+                },
+                "timing": {
+                  "total_ms": 28.583708975929767,
+                  "startup_ms": null,
+                  "load_ms": null,
+                  "preprocess_ms": null,
+                  "inference_ms": null,
+                  "postprocess_ms": null,
+                  "transport_ms": null,
+                  "model_cached": null
+                },
+                "warnings": [
+                  "Synthetic color fixture; not a warehouse detector."
+                ]
+              },
+              "input_to_frame": [
+                0.0,
+                0.0,
+                0.5,
+                1.0
+              ]
+            }
+          ],
+          "comparisons": []
+        },
+        {
+          "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-04.png",
+          "source_image_sha256": "8683caa5535a10d8012655272cdb110327829841b6138af95144d993f3818e11",
+          "detections": [
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.0546875,
+                0.225,
+                0.1953125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.0546875,
+                0.45,
+                0.1953125,
+                0.5875
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.0546875,
+                0.675,
+                0.1953125,
+                0.8125
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.225,
+                0.4453125,
+                0.3625
+              ],
+              "zone": null
+            }
+          ],
+          "counts": {
+            "all": 4
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 41.721458022948354,
+          "timestamp_s": 0.0,
+          "judgements": [],
+          "inferences": [
+            {
+              "block_id": "det",
+              "result": {
+                "schema_version": 1,
+                "task": "detection",
+                "input_size": [
+                  320,
+                  400
+                ],
+                "input_pixels_sha256": "99ffa31529ed8d7a85c586bbe1fc687168a9762fe1b9c58defc5e2c446059d0f",
+                "detections": [
+                  {
+                    "box": [
+                      0.109375,
+                      0.225,
+                      0.390625,
+                      0.3625
+                    ],
+                    "polygon": null,
+                    "label": "pallet",
+                    "confidence": 0.99
+                  },
+                  {
+                    "box": [
+                      0.109375,
+                      0.45,
+                      0.390625,
+                      0.5875
+                    ],
+                    "polygon": null,
+                    "label": "pallet",
+                    "confidence": 0.99
+                  },
+                  {
+                    "box": [
+                      0.109375,
+                      0.675,
+                      0.390625,
+                      0.8125
+                    ],
+                    "polygon": null,
+                    "label": "pallet",
+                    "confidence": 0.99
+                  },
+                  {
+                    "box": [
+                      0.609375,
+                      0.225,
+                      0.890625,
+                      0.3625
+                    ],
+                    "polygon": null,
+                    "label": "pallet",
+                    "confidence": 0.99
+                  }
+                ],
+                "readings": [],
+                "identity": {
+                  "capability_id": "model.fixture-color-v1",
+                  "model_id": "fixture-color-v1",
+                  "adapter_id": "fixture-color-v1",
+                  "identity_scope": "synthetic_code",
+                  "artifact_hashes": {
+                    "fixture.py": "72365bce263b5f0aafd205a65784dd744efa87673e5ec906de6f69f91c857575"
+                  },
+                  "unavailable_artifacts": [],
+                  "adapter_code_sha256": "bc5bde8ab58bd9088ac1ec63fb4d39b1c6ead3f486f0b0291fd1daca05f1d541",
+                  "runtime_manifest_sha256": "c89a1440ed434e31e984a096917b62eb2c781d9ff8451bea048fb5f0cbdc1341",
+                  "system_identity": {
+                    "architecture": "arm64"
+                  },
+                  "provider": "cpu",
+                  "config_sha256": "a19024f20e6f0bd0cd145715a34d2e8857efecc9bb61f1091a74abd4970c14c2",
+                  "identity_hash": "0063cbd4a84371edb19978b1c939c4ff18c650915bace728ba5f664e2f08e102"
+                },
+                "timing": {
+                  "total_ms": 39.92904198821634,
+                  "startup_ms": null,
+                  "load_ms": null,
+                  "preprocess_ms": null,
+                  "inference_ms": null,
+                  "postprocess_ms": null,
+                  "transport_ms": null,
+                  "model_cached": null
+                },
+                "warnings": [
+                  "Synthetic color fixture; not a warehouse detector."
+                ]
+              },
+              "input_to_frame": [
+                0.0,
+                0.0,
+                0.5,
+                1.0
+              ]
+            }
+          ],
+          "comparisons": []
+        },
+        {
+          "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-05.png",
+          "source_image_sha256": "df9ea3df53aed76aa361754d67ed0941e430d030fbf58cbe7edd31cc7121e415",
+          "detections": [
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.225,
+                0.4453125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.45,
+                0.4453125,
+                0.5875
+              ],
+              "zone": null
+            }
+          ],
+          "counts": {
+            "all": 2
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 27.428333007264882,
+          "timestamp_s": 0.0,
+          "judgements": [],
+          "inferences": [
+            {
+              "block_id": "det",
+              "result": {
+                "schema_version": 1,
+                "task": "detection",
+                "input_size": [
+                  320,
+                  400
+                ],
+                "input_pixels_sha256": "970517a186def0de593aa310158f6ac60d9d8a029c98f7374096df7b011709a5",
+                "detections": [
+                  {
+                    "box": [
+                      0.609375,
+                      0.225,
+                      0.890625,
+                      0.3625
+                    ],
+                    "polygon": null,
+                    "label": "pallet",
+                    "confidence": 0.99
+                  },
+                  {
+                    "box": [
+                      0.609375,
+                      0.45,
+                      0.890625,
+                      0.5875
+                    ],
+                    "polygon": null,
+                    "label": "pallet",
+                    "confidence": 0.99
+                  }
+                ],
+                "readings": [],
+                "identity": {
+                  "capability_id": "model.fixture-color-v1",
+                  "model_id": "fixture-color-v1",
+                  "adapter_id": "fixture-color-v1",
+                  "identity_scope": "synthetic_code",
+                  "artifact_hashes": {
+                    "fixture.py": "72365bce263b5f0aafd205a65784dd744efa87673e5ec906de6f69f91c857575"
+                  },
+                  "unavailable_artifacts": [],
+                  "adapter_code_sha256": "bc5bde8ab58bd9088ac1ec63fb4d39b1c6ead3f486f0b0291fd1daca05f1d541",
+                  "runtime_manifest_sha256": "c89a1440ed434e31e984a096917b62eb2c781d9ff8451bea048fb5f0cbdc1341",
+                  "system_identity": {
+                    "architecture": "arm64"
+                  },
+                  "provider": "cpu",
+                  "config_sha256": "a19024f20e6f0bd0cd145715a34d2e8857efecc9bb61f1091a74abd4970c14c2",
+                  "identity_hash": "0063cbd4a84371edb19978b1c939c4ff18c650915bace728ba5f664e2f08e102"
+                },
+                "timing": {
+                  "total_ms": 25.94883303390816,
+                  "startup_ms": null,
+                  "load_ms": null,
+                  "preprocess_ms": null,
+                  "inference_ms": null,
+                  "postprocess_ms": null,
+                  "transport_ms": null,
+                  "model_cached": null
+                },
+                "warnings": [
+                  "Synthetic color fixture; not a warehouse detector."
+                ]
+              },
+              "input_to_frame": [
+                0.0,
+                0.0,
+                0.5,
+                1.0
+              ]
+            }
+          ],
+          "comparisons": []
+        }
+      ],
+      "elapsed_s": 0.2915380830527283,
+      "warnings": [
+        "SYNTHETIC FIXTURE: colored rectangles only. This does not validate warehouse detection.",
+        "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+      ]
+    },
+    "selected_candidate_index": 0,
+    "evaluations": [],
+    "acceptance_evaluation": null,
+    "project": {
+      "id": "7fc9ad3fdc1844a1",
+      "name": "Workflow software fixture",
+      "use_case": "custom",
+      "status": "building",
+      "created_at": "2026-10-29T20:28:23.962565+00:00",
+      "updated_at": "2026-10-29T20:28:26.899312+00:00",
+      "media": [
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-01.png",
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-02.png",
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-03.png",
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-04.png",
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-05.png",
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-06.png",
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-07.png",
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-08.png",
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-09.png",
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-10.png",
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-11.png",
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-12.png",
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-13.png",
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-14.png",
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-15.png",
+        "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-332/test_http_handoff_returns_dura0/workspace/projects/7fc9ad3fdc1844a1/media/synthetic-16.png"
+      ],
+      "brief": "Investigate a useful visual application",
+      "clarification_count": 0,
+      "candidates": [
+        {
+          "spec_version": "0.1",
+          "name": "Model-chosen software experiment",
+          "inputs": {
+            "source": {
+              "type": "image_folder",
+              "path": "media"
+            }
+          },
+          "blocks": [
+            {
+              "id": "sample",
+              "type": "frame_sample",
+              "params": {
+                "fps": 2.0
+              },
+              "in": {
+                "frames": "$inputs.source"
+              }
+            },
+            {
+              "id": "crop",
+              "type": "crop",
+              "params": {
+                "box": [
+                  0.0,
+                  0.0,
+                  0.5,
+                  1.0
+                ]
+              },
+              "in": {
+                "image": "$sample.frame"
+              }
+            },
+            {
+              "id": "resize",
+              "type": "resize",
+              "params": {
+                "height": 400,
+                "width": 320
+              },
+              "in": {
+                "image": "$crop.image"
+              }
+            },
+            {
+              "id": "det",
+              "type": "detect",
+              "params": {
+                "classes": [
+                  "pallet"
+                ],
+                "min_conf": 0.4,
+                "model": "fixture-color-v1"
+              },
+              "in": {
+                "image": "$resize.image"
+              }
+            },
+            {
+              "id": "count",
+              "type": "count_per_zone",
+              "params": {
+                "include_unassigned": false
+              },
+              "in": {
+                "dets": "$det.dets"
+              }
+            }
+          ],
+          "eval": {
+            "set": "reviewed-v1",
+            "metric": "count_mae",
+            "target": 0.5
+          }
+        }
+      ],
+      "evaluations": [],
+      "messages": [],
+      "synthetic": true,
+      "fixture": true,
+      "data_origin": "Generated geometric fixtures; not warehouse imagery",
+      "deployment_id": null,
+      "approval_scope": null,
+      "trial_limits": {}
+    },
+    "created_at": "2026-10-29T20:28:26.304769+00:00",
+    "updated_at": "2026-10-29T20:28:27.345082+00:00",
+    "plan": {
+      "id": "1142ba9fe376447fb84344817df72a30",
+      "project_id": "7fc9ad3fdc1844a1",
+      "build_id": "e39a5ef002814689b6300ca4c809d78c",
+      "operation_id": "e39a5ef002814689b6300ca4c809d78c",
+      "revision": 1,
+      "parent_plan_id": null,
+      "created_at": "2026-10-29T20:28:27.384846+00:00",
+      "content_hash": "d8ffdea85dc6f371b954c32d9a0dee8a6691d3ed5220a3eb3b72b0504f4d40e1",
+      "goal": "Investigate a useful visual application",
+      "assumptions": [
+        "Use the project's imported media and saved region geometry.",
+        "A sample preview does not establish accuracy.",
+        "Evaluation requires reviewed labels on the same held-out data for every candidate."
+      ],
+      "candidates": [
+        {
+          "spec_version": "0.1",
+          "name": "Model-chosen software experiment",
+          "inputs": {
+            "source": {
+              "type": "image_folder",
+              "path": "media"
+            }
+          },
+          "blocks": [
+            {
+              "id": "sample",
+              "type": "frame_sample",
+              "params": {
+                "fps": 2.0
+              },
+              "in": {
+                "frames": "$inputs.source"
+              }
+            },
+            {
+              "id": "crop",
+              "type": "crop",
+              "params": {
+                "box": [
+                  0.0,
+                  0.0,
+                  0.5,
+                  1.0
+                ]
+              },
+              "in": {
+                "image": "$sample.frame"
+              }
+            },
+            {
+              "id": "resize",
+              "type": "resize",
+              "params": {
+                "height": 400,
+                "width": 320
+              },
+              "in": {
+                "image": "$crop.image"
+              }
+            },
+            {
+              "id": "det",
+              "type": "detect",
+              "params": {
+                "classes": [
+                  "pallet"
+                ],
+                "min_conf": 0.4,
+                "model": "fixture-color-v1"
+              },
+              "in": {
+                "image": "$resize.image"
+              }
+            },
+            {
+              "id": "count",
+              "type": "count_per_zone",
+              "params": {
+                "include_unassigned": false
+              },
+              "in": {
+                "dets": "$det.dets"
+              }
+            }
+          ],
+          "eval": {
+            "set": "reviewed-v1",
+            "metric": "count_mae",
+            "target": 0.5
+          }
+        }
+      ],
+      "required_capabilities": [
+        "block.count_per_zone",
+        "block.crop",
+        "block.detect",
+        "block.frame_sample",
+        "block.resize",
+        "model.fixture-color-v1"
+      ],
+      "experiments": [
+        {
+          "id": "evaluate",
+          "phase": "evaluate",
+          "description": "Prepare the review set, then measure candidates once its labels are reviewed.",
+          "allowed_tools": [
+            "build_context",
+            "build_freeze_evaluation",
+            "build_prepare_review",
+            "build_propose_labels",
+            "eval_run",
+            "pipeline_run"
+          ],
+          "candidate_indices": [
+            0
+          ]
+        }
+      ],
+      "metrics": [
+        {
+          "candidate_index": 0,
+          "metric": "count_mae",
+          "target": 0.5,
+          "direction": "minimize"
+        }
+      ],
+      "stop_conditions": [
+        "Stop on changed data, models, settings or workflow.",
+        "Stop if a required capability is unavailable or a tool fails.",
+        "Respect existing call, time and training budgets.",
+        "Pause at human review and approval checkpoints."
+      ],
+      "human_checkpoints": [
+        {
+          "id": "labels",
+          "phase": "evaluate",
+          "description": "Before scoring, review any unreviewed labels in the chosen evaluation set.",
+          "requires_approval": true
+        },
+        {
+          "id": "deployment",
+          "phase": "operate",
+          "description": "Choose independent acceptance for promotion, or explicitly approve a bounded local-only trial.",
+          "requires_approval": true
+        }
+      ],
+      "snapshot": {
+        "workspace_hash": "c94b00ec62c2345afcde82e02ffe2db0102fb6ab79ea370105d5bd26ca08d4e0",
+        "dataset_hash": "4b7600310a249a9b57dfc2b83af9357c9df841b52d79180d5bb33a74a3ba83c6",
+        "model_hashes": [
+          "ae215a66d6c0a763de6d0221771bfa76600af747a2e76967c90ecaf6e58d791c"
+        ],
+        "settings_hash": "600f0aac9fdf309ecede14e054ac093aaace3c77eb51c22623b20863dad18fd8"
+      },
+      "skills": [],
+      "revision_reason": "Human-imported investigation workflow; source rebind and actual preview are recorded in 20a438e12dad466184e2ccbae1e5b11d",
+      "planning_options_artifact_id": "98156aadb60cb5a9f830333a88452648ef707f68abc24bbdb6a6d4a7e9268a68",
+      "model_selections": [
+        {
+          "candidate_index": 0,
+          "block_id": "det",
+          "capability_id": "model.fixture-color-v1",
+          "model_id": "fixture-color-v1",
+          "adapter_id": "fixture-color-v1",
+          "proposed_reason": "Synthetic software fixture; no measured model quality",
+          "options_snapshot_id": "577416cacac47dda4e913feb5596b183086bed5532e7c0a17b2ad434f053fb48",
+          "status": "proposed"
+        }
+      ]
+    },
+    "execution": {
+      "id": "720ca0cadc7443ef843fe7e5373f4b3a",
+      "project_id": "7fc9ad3fdc1844a1",
+      "build_id": "e39a5ef002814689b6300ca4c809d78c",
+      "operation_id": "e39a5ef002814689b6300ca4c809d78c",
+      "plan_id": "1142ba9fe376447fb84344817df72a30",
+      "plan_hash": "d8ffdea85dc6f371b954c32d9a0dee8a6691d3ed5220a3eb3b72b0504f4d40e1",
+      "status": "paused",
+      "phase": "evaluate",
+      "created_at": "2026-10-29T20:28:27.386240+00:00",
+      "updated_at": "2026-10-29T20:28:27.389191+00:00",
+      "accepted_snapshot": {
+        "workspace_hash": "c94b00ec62c2345afcde82e02ffe2db0102fb6ab79ea370105d5bd26ca08d4e0",
+        "dataset_hash": "4b7600310a249a9b57dfc2b83af9357c9df841b52d79180d5bb33a74a3ba83c6",
+        "model_hashes": [
+          "ae215a66d6c0a763de6d0221771bfa76600af747a2e76967c90ecaf6e58d791c"
+        ],
+        "settings_hash": "600f0aac9fdf309ecede14e054ac093aaace3c77eb51c22623b20863dad18fd8"
+      },
+      "error": null
+    },
+    "tool_events": [],
+    "investigation_origin": {
+      "schema_version": "a0.handoff.1",
+      "id": "20a438e12dad466184e2ccbae1e5b11d",
+      "project_id": "7fc9ad3fdc1844a1",
+      "task_id": "6185b0ab663c44f3870ad516e0e54a38",
+      "workflow_revision_id": "e23b1bd1fb4149b2b76b250dc61cf9bf",
+      "preview_observation_id": "d4b0395a63fa4bcd9efbc396d71071e8",
+      "proposal_id": "a6b7b455960e4b67a144a4575deaf2b7",
+      "proposal_hash": "d359ce1fdf10bf7baa57683027abaed8d9f0ae6709dd6e123f60da380b8e1139",
+      "client_request_id": "native-network-key",
+      "build_id": "e39a5ef002814689b6300ca4c809d78c",
+      "candidate_index": 0,
+      "original_spec_hash": "74f1e6367060c801516c780e0e904a1a8b715088b25d3a8639a8521288dee49f",
+      "candidate_spec_hash": "ae215a66d6c0a763de6d0221771bfa76600af747a2e76967c90ecaf6e58d791c",
+      "created_at": "2026-10-29T20:28:26.304769+00:00",
+      "origin_task_status": "draft_ready",
+      "origin_stop_reason": "Scripted protocol fixture only"
+    }
+  },
+  "message": null
+}
