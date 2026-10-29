@@ -37,6 +37,21 @@ struct InvestigationState: Codable, Identifiable {
     var resumable: Bool { supported && ["awaiting_input", "paused", "interrupted"].contains(status) }
     var cancellable: Bool { supported && ["running", "awaiting_input", "paused", "interrupted"].contains(status) }
     var terminal: Bool { ["blocked", "inconclusive", "failed", "cancelled", "draft_ready"].contains(status) }
+    var awaitingInput: Bool { supported && status == "awaiting_input" }
+    var pendingQuestion: String? { awaitingInput ? question : nil }
+    var composerPlaceholder: String {
+        guard supported else { return "Investigation status is unavailable." }
+        if awaitingInput { return "Answer the agent’s question…" }
+        if resumable { return "Add context before continuing the investigation…" }
+        if terminal { return "Describe a new goal for this app…" }
+        return "Describe what to detect and what should happen…"
+    }
+    var composerButtonTitle: String {
+        if awaitingInput { return "Answer and continue" }
+        if resumable { return "Continue investigation" }
+        if terminal { return "Start new investigation" }
+        return "Build my app"
+    }
     var statusLabel: String {
         guard supported else { return "Unsupported investigation version" }
         if running, pendingModelCallID != nil { return "Agent choosing an action" }
@@ -84,7 +99,7 @@ struct InvestigationObservation: Codable, Identifiable {
         }
         if let summary = payload["summary"]?.string { return summary }
         if let question = payload["question"]?.string { return question }
-        if let total = payload["total_items"] { return "\(InvestigationPresentation.count(total)) observations returned" }
+        if let counts = InvestigationPresentation.resultCounts(resultType: resultType, payload: payload) { return counts }
         if let name = payload["descriptor"]?.object["name"]?.string { return name }
         return "\(resultType.replacingOccurrences(of: "_", with: " ")) · \(status)"
     }
@@ -131,6 +146,38 @@ enum InvestigationPresentation {
             return String(format: "%.0f", number)
         }
         return value.display
+    }
+    private static func itemCount(_ value: JSONValue?) -> Double? {
+        guard case .number(let number) = value, number.isFinite, number >= 0, number.rounded() == number else { return nil }
+        return number
+    }
+    private static func quantity(_ number: Double, singular: String, plural: String) -> String {
+        "\(count(.number(number))) \(number == 1 ? singular : plural)"
+    }
+    static func resultCounts(resultType: String, payload: [String: JSONValue]) -> String? {
+        let returned = itemCount(payload["returned_items"]), total = itemCount(payload["total_items"])
+        var parts: [String] = []
+        if let returned {
+            let noun = resultType == "run_probe" ? "observation" : "result"
+            parts.append(quantity(returned, singular: noun, plural: noun + "s") + " returned")
+        }
+        if let total {
+            if resultType == "discover_capabilities", let query = payload["query"]?.string {
+                let inventory = query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                parts.append(quantity(total, singular: inventory ? "catalog entry" : "metadata match", plural: inventory ? "catalog entries" : "metadata matches"))
+            } else if returned == nil || returned != total {
+                parts.append("\(count(.number(total))) total")
+            }
+        }
+        return parts.isEmpty ? nil : parts.joined(separator: " · ")
+    }
+    static func shownValues(_ shown: Int, total: JSONValue?) -> String {
+        let displayed = "Showing \(quantity(Double(shown), singular: "value", plural: "values"))."
+        guard let total = itemCount(total) else { return displayed }
+        return displayed + " Recorded total: \(count(.number(total)))."
+    }
+    static func sampleImageCount(_ count: Int) -> String {
+        "\(count) sample \(count == 1 ? "image" : "images")"
     }
     static func decode<T: Decodable>(_ value: JSONValue?) -> T? {
         guard let value, let data = try? JSONEncoder().encode(value) else { return nil }

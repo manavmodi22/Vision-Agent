@@ -1,0 +1,7 @@
+{
+  "captured_at": "2026-10-29T18:55:27.428203+00:00",
+  "scope": "Post-load process/system sample; RSS is not a complete Metal allocation measurement",
+  "processes": "  PID     ELAPSED    RSS COMMAND\n43886       00:35 12266928 /Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server --model /Users/manavrakeshku.modi/vision-agent/.visionapp/model-qualification/gpt-oss-20b-MXFP4/gpt-oss-20b-MXFP4.gguf --alias gpt-oss-20b-MXFP4-qualification --host 127.0.0.1 --port 1236 --ctx-size 16384 --parallel 1 --gpu-layers all --flash-attn on --batch-size 1024 --ubatch-size 512 --jinja --reasoning on --reasoning-effort low --reasoning-budget 512 --reasoning-format deepseek --no-webui -lv 4\n45543 01-00:11:30  14912 /Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server -m /Users/manavrakeshku.modi/.lmstudio/models/prithivMLmods/Cosmos-Reason2-8B-GGUF/Cosmos-Reason2-8B.Q8_0.gguf --mmproj /Users/manavrakeshku.modi/.lmstudio/models/prithivMLmods/Cosmos-Reason2-8B-GGUF/Cosmos-Reason2-8B.mmproj-f16.gguf --host 127.0.0.1 --port 1235 --alias visionapp-vlm --ctx-size 8192 --parallel 1 --reasoning off --image-max-tokens 1024 --no-webui\n",
+  "memory_pressure_level": "kern.memorystatus_vm_pressure_level: 1\n",
+  "swap": "vm.swapusage: total = 12288.00M  used = 10900.94M  free = 1387.06M  (encrypted)\n"
+}

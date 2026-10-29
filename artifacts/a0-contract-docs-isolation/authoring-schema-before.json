@@ -1,0 +1,582 @@
+{
+  "$defs": {
+    "BarcodeNode": {
+      "additionalProperties": false,
+      "description": "Decode supported machine-readable codes in the input image. Ordinary printed text requires a text reader. Decoded text is included in preview output without an event sink.",
+      "properties": {
+        "type": {
+          "const": "barcode",
+          "title": "Type",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "image": {
+          "description": "Reference to an image output of another graph node, never a media ID or filename. Use the upstream node's exact output port.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "title": "Image",
+          "type": "string"
+        },
+        "model_capability_id": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Model Capability Id",
+          "type": "string"
+        },
+        "model_reason": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Model Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "image",
+        "model_capability_id",
+        "model_reason"
+      ],
+      "title": "BarcodeNode",
+      "type": "object"
+    },
+    "CountNode": {
+      "additionalProperties": false,
+      "description": "Aggregate detections into counts by region; consumes the final zone-filtered detections when a zone filter is present.",
+      "properties": {
+        "type": {
+          "const": "count_per_zone",
+          "title": "Type",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "dets": {
+          "description": "Reference to a detections output: $node_id.dets.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "title": "Dets",
+          "type": "string"
+        },
+        "include_unassigned": {
+          "title": "Include Unassigned",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "dets",
+        "include_unassigned"
+      ],
+      "title": "CountNode",
+      "type": "object"
+    },
+    "CropNode": {
+      "additionalProperties": false,
+      "description": "Extract a static rectangular region before inference. The box is relative to this node's input image, not necessarily the original source. This does not locate objects dynamically.",
+      "properties": {
+        "type": {
+          "const": "crop",
+          "title": "Type",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "image": {
+          "description": "Reference to an image output of another node: $node_id.port.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "title": "Image",
+          "type": "string"
+        },
+        "box": {
+          "description": "Normalized [left, top, right, bottom] with positive area within [0,1].",
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Box",
+          "type": "array"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "image",
+        "box"
+      ],
+      "title": "CropNode",
+      "type": "object"
+    },
+    "DetectNode": {
+      "additionalProperties": false,
+      "description": "Run the selected detector on the input image and return detections for the requested supported classes.",
+      "properties": {
+        "type": {
+          "const": "detect",
+          "title": "Type",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "image": {
+          "description": "Reference to an image output of another graph node, never a media ID or filename. Use the upstream node's exact output port.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "title": "Image",
+          "type": "string"
+        },
+        "model_capability_id": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Model Capability Id",
+          "type": "string"
+        },
+        "model_reason": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Model Reason",
+          "type": "string"
+        },
+        "classes": {
+          "items": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Classes",
+          "type": "array"
+        },
+        "min_confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Min Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "image",
+        "model_capability_id",
+        "model_reason",
+        "classes",
+        "min_confidence"
+      ],
+      "title": "DetectNode",
+      "type": "object"
+    },
+    "EventNode": {
+      "additionalProperties": false,
+      "description": "Receive an event produced by match or rule. Text is not an event. Optional for plain detection, counting or reading output; investigation previews never dispatch external events.",
+      "properties": {
+        "type": {
+          "const": "sink_event",
+          "title": "Type",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "event": {
+          "description": "Reference to an event output: $node_id.event; never a text, image or detections output.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "title": "Event",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "event"
+      ],
+      "title": "EventNode",
+      "type": "object"
+    },
+    "MatchNode": {
+      "additionalProperties": false,
+      "description": "Compare text readings with a fixed expected string and produce match events. This does not filter or replace the original text readings in preview output.",
+      "properties": {
+        "type": {
+          "const": "match",
+          "title": "Type",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "text": {
+          "description": "Reference to a text output: $node_id.text.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "title": "Text",
+          "type": "string"
+        },
+        "expected": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Expected",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "contains",
+            "exact"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "emit": {
+          "enum": [
+            "all",
+            "matched",
+            "mismatched"
+          ],
+          "title": "Emit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "text",
+        "expected",
+        "mode",
+        "emit"
+      ],
+      "title": "MatchNode",
+      "type": "object"
+    },
+    "OCRNode": {
+      "additionalProperties": false,
+      "description": "Read all detected text in the input image. This node does not semantically select a requested field or discard unrelated text. Its text readings are included in preview output without requiring an event sink.",
+      "properties": {
+        "type": {
+          "const": "ocr",
+          "title": "Type",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "image": {
+          "description": "Reference to an image output of another graph node, never a media ID or filename. Use the upstream node's exact output port.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "title": "Image",
+          "type": "string"
+        },
+        "model_capability_id": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Model Capability Id",
+          "type": "string"
+        },
+        "model_reason": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Model Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "image",
+        "model_capability_id",
+        "model_reason"
+      ],
+      "title": "OCRNode",
+      "type": "object"
+    },
+    "ResizeNode": {
+      "additionalProperties": false,
+      "description": "Resize an image to the given pixel dimensions before downstream inference.",
+      "properties": {
+        "type": {
+          "const": "resize",
+          "title": "Type",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "image": {
+          "description": "Reference to an image output of another node: $node_id.port.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "title": "Image",
+          "type": "string"
+        },
+        "width": {
+          "exclusiveMinimum": 0,
+          "maximum": 8192,
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "exclusiveMinimum": 0,
+          "maximum": 8192,
+          "title": "Height",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "image",
+        "width",
+        "height"
+      ],
+      "title": "ResizeNode",
+      "type": "object"
+    },
+    "RuleNode": {
+      "additionalProperties": false,
+      "description": "Test counts against a threshold and produce an event. Connect its event output to a sink_event node. Count-only applications do not need a rule.",
+      "properties": {
+        "type": {
+          "const": "rule",
+          "title": "Type",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "counts": {
+          "description": "Reference to a counts output: $node_id.counts.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "title": "Counts",
+          "type": "string"
+        },
+        "operator": {
+          "enum": [
+            ">=",
+            "<=",
+            ">",
+            "<",
+            "==",
+            "!="
+          ],
+          "title": "Operator",
+          "type": "string"
+        },
+        "threshold": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Threshold",
+          "type": "integer"
+        },
+        "hold_seconds": {
+          "maximum": 3600,
+          "minimum": 0,
+          "title": "Hold Seconds",
+          "type": "number"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "counts",
+        "operator",
+        "threshold",
+        "hold_seconds"
+      ],
+      "title": "RuleNode",
+      "type": "object"
+    },
+    "SampleNode": {
+      "additionalProperties": false,
+      "description": "The graph's single source. The host supplies selected media; no path or media ID belongs in a node reference. Its frame output has image type.",
+      "properties": {
+        "type": {
+          "const": "frame_sample",
+          "title": "Type",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "fps": {
+          "exclusiveMinimum": 0,
+          "maximum": 60,
+          "title": "Fps",
+          "type": "number"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "fps"
+      ],
+      "title": "SampleNode",
+      "type": "object"
+    },
+    "ZoneNode": {
+      "additionalProperties": false,
+      "description": "Filter detections using the project's already confirmed region geometry.",
+      "properties": {
+        "type": {
+          "const": "zone_filter",
+          "title": "Type",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "dets": {
+          "description": "Reference to a detections output: $node_id.dets.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "title": "Dets",
+          "type": "string"
+        },
+        "zone_ids": {
+          "items": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Zone Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "dets",
+        "zone_ids"
+      ],
+      "title": "ZoneNode",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "One connected, acyclic vision graph. Output references must resolve to compatible ports on nodes in this graph. The host binds source media separately.",
+  "properties": {
+    "name": {
+      "maxLength": 120,
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "nodes": {
+      "description": "Include exactly one frame_sample source and one to four detector/reader nodes. Connect each image operation to inference. References use $node_id.port and must match the source port's type. At most one detect, zone_filter, count_per_zone and rule node. An event sink is optional for plain reader/detection/count output.",
+      "items": {
+        "discriminator": {
+          "mapping": {
+            "barcode": "#/$defs/BarcodeNode",
+            "count_per_zone": "#/$defs/CountNode",
+            "crop": "#/$defs/CropNode",
+            "detect": "#/$defs/DetectNode",
+            "frame_sample": "#/$defs/SampleNode",
+            "match": "#/$defs/MatchNode",
+            "ocr": "#/$defs/OCRNode",
+            "resize": "#/$defs/ResizeNode",
+            "rule": "#/$defs/RuleNode",
+            "sink_event": "#/$defs/EventNode",
+            "zone_filter": "#/$defs/ZoneNode"
+          },
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/SampleNode"
+          },
+          {
+            "$ref": "#/$defs/CropNode"
+          },
+          {
+            "$ref": "#/$defs/ResizeNode"
+          },
+          {
+            "$ref": "#/$defs/DetectNode"
+          },
+          {
+            "$ref": "#/$defs/OCRNode"
+          },
+          {
+            "$ref": "#/$defs/BarcodeNode"
+          },
+          {
+            "$ref": "#/$defs/ZoneNode"
+          },
+          {
+            "$ref": "#/$defs/CountNode"
+          },
+          {
+            "$ref": "#/$defs/RuleNode"
+          },
+          {
+            "$ref": "#/$defs/MatchNode"
+          },
+          {
+            "$ref": "#/$defs/EventNode"
+          }
+        ]
+      },
+      "maxItems": 16,
+      "minItems": 2,
+      "title": "Nodes",
+      "type": "array"
+    },
+    "metric": {
+      "enum": [
+        "count_mae",
+        "precision",
+        "recall",
+        "text_accuracy"
+      ],
+      "title": "Metric",
+      "type": "string"
+    },
+    "target": {
+      "minimum": 0,
+      "title": "Target",
+      "type": "number"
+    }
+  },
+  "required": [
+    "name",
+    "nodes",
+    "metric",
+    "target"
+  ],
+  "title": "GraphCandidate",
+  "type": "object"
+}

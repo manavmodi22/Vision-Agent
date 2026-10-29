@@ -1,0 +1,16 @@
+{
+  "captured_at": "2026-10-29T18:53:00.489460+00:00",
+  "scope": "Native-only count wording; no new model run",
+  "checks": 302,
+  "new_count_checks": 11,
+  "native_binary_sha256": "8d66dfd17d22f4283a30a6123ea5a69dceca194d70f838fd0983f2150c8b4481",
+  "observed_via": "CUA actual reopened project, accessibility state and screenshot",
+  "visible_labels": [
+    "1 sample image",
+    "8 results returned \u00b7 13 metadata matches",
+    "1 result returned"
+  ],
+  "retained_task": "c539bc6fcc2e4d1c929ea0ac7c700c3f",
+  "build_log": ".visionapp/logs/native-counts-build.log",
+  "canonical_app_replaced": false
+}

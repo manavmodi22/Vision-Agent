@@ -230,7 +230,7 @@ class InvestigationManager:
             settings = self.service.repository.settings()
             async with asyncio.timeout(remaining):
                 await investigate(str(self.service.repository.root), project_id, task_id,
-                                  settings.model_url, settings.planner_model)
+                                  settings.model_url, settings.planner_model, transport=settings.investigation_transport)
             if self.store.get(project_id, task_id).status == "running":
                 self.store.stop(project_id, task_id, "Runner returned without a terminal or paused observation", status="interrupted")
         except asyncio.CancelledError:

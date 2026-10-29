@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import json
 from collections.abc import Awaitable, Callable
 from typing import Any
@@ -9,19 +10,20 @@ from typing import Any
 import httpx
 from openai import AsyncOpenAI, DefaultAsyncHttpxClient, Timeout
 from openai.types.chat import ChatCompletionMessageParam
-from openai.types.shared_params import ResponseFormatJSONSchema
 from pydantic import JsonValue, TypeAdapter, ValidationError
 
 from agent.graph_structure import OUTPUTS
 from agent.investigation_client import InvestigationClient
 from agent.investigation_docs import graph_contract_schema
 from agent.investigation_grounding import DecisionGrounding
+from agent.investigation_response import completion_failure, function_decision, generation_options
 from agent.machine import AgentError, AgentState
 from agent.mcp_client import connect_tools
 from agent.planner import check_model, local_model_url
 from spec.investigation import (
     BuilderDecision,
     ConstructWorkflow,
+    InvestigationTransport,
     NextAction,
     TaskState,
     WorkflowDecision,
@@ -85,6 +87,15 @@ JSON response, with a short decision_summary, not a hidden reasoning transcript.
 """
 
 Decider = Callable[[dict[str, JsonValue]], Awaitable[dict[str, JsonValue]]]
+
+
+def transport_system(transport: InvestigationTransport) -> str:
+    if transport == "structured_json":
+        return SYSTEM
+    return SYSTEM.replace("Return only the typed\nJSON response, with a short decision_summary, not a hidden reasoning transcript.",
+        "Call submit_decision exactly once with the typed decision as arguments and a short decision_summary. "
+        "This is an independent decision submission; the host separately validates and dispatches it. "
+        "It is not a continuation of a native tool-call conversation.")
 
 
 def _compact_schema(value: Any) -> Any:
@@ -153,18 +164,28 @@ def workflow_action_contracts() -> dict[str, JsonValue]:
     return {"construct_workflow": {"required_fields": action["required"], "fields": fields}}
 
 
-def prompt_transport_fits(context: dict[str, JsonValue], output_tokens: int) -> bool:
-    prompt_chars = len(SYSTEM) + len(json.dumps(context, ensure_ascii=False))
+def prompt_transport_fits(context: dict[str, JsonValue], output_tokens: int, *, system: str = SYSTEM) -> bool:
+    prompt_chars = len(system) + len(json.dumps(context, ensure_ascii=False))
     return prompt_chars + 4 * (output_tokens + PROMPT_TOKEN_MARGIN) <= MAX_PROMPT_AND_OUTPUT_CHARS
 
 
 async def verify_prompt_budget(client: httpx.AsyncClient, url: str, model_name: str,
-                               messages: list[ChatCompletionMessageParam], output_tokens: int) -> dict[str, JsonValue]:
+                               messages: list[ChatCompletionMessageParam], output_tokens: int, *,
+                               request_options: dict[str, JsonValue] | None = None) -> dict[str, JsonValue]:
     """Use the selected llama model's real template/tokenizer when advertised.
 
     Generic OpenAI-compatible servers retain an explicit conservative estimate,
     never an assertion that their tokenizer or context window was verified.
     """
+    options = request_options or {}
+    if {"model", "messages"} & options.keys():
+        raise ValueError("Template options cannot replace the selected model or messages")
+    if any(key in options and options[key] != output_tokens
+           for key in ("max_tokens", "max_completion_tokens", "n_predict")):
+        raise ValueError("Explicit generation limits must match the reserved total output allowance")
+    template_request = {"model": model_name, "messages": messages, **options}
+    template_hash = hashlib.sha256(json.dumps(template_request, ensure_ascii=False,
+                                             sort_keys=True, separators=(",", ":")).encode()).hexdigest()
     response = await client.get(f"{url}/models")
     response.raise_for_status()
     catalog = response.json()
@@ -188,8 +209,7 @@ async def verify_prompt_budget(client: httpx.AsyncClient, url: str, model_name: 
         if alias != model_name or not isinstance(actual_window, int) or isinstance(actual_window, bool) or actual_window <= 0:
             raise ValueError("Cannot verify the selected llama model's active context window")
         window = min(window, actual_window)
-        template_response = await client.post(f"{base}/apply-template", json={
-            "model": model_name, "messages": messages, "add_generation_prompt": True})
+        template_response = await client.post(f"{base}/apply-template", json=template_request)
         template_response.raise_for_status()
         template = template_response.json()
         prompt = template.get("prompt") if isinstance(template, dict) else None
@@ -204,27 +224,31 @@ async def verify_prompt_budget(client: httpx.AsyncClient, url: str, model_name: 
             raise ValueError("Local tokenizer preflight returned invalid token IDs")
         input_tokens = len(tokens)
         evidence: dict[str, JsonValue] = {"mode": "backend_tokenizer", "model": model_name,
-            "input_tokens": input_tokens, "backend_context_tokens": actual_window, "context_verified": True}
+            "input_tokens": input_tokens, "backend_context_tokens": actual_window, "context_verified": True,
+            "rendered_prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest()}
     else:
         if reported is None:
             window = UNKNOWN_BACKEND_CONTEXT_FALLBACK
-        byte_count = sum(len(str(message.get("content", "")).encode()) for message in messages)
+        option_bytes = len(json.dumps(options, ensure_ascii=False).encode()) if options else 0
+        byte_count = sum(len(str(message.get("content", "")).encode()) for message in messages) + option_bytes
         input_tokens = (byte_count + 1) // 2
         evidence = {"mode": "conservative_estimate", "model": model_name,
             "estimated_input_tokens": input_tokens, "backend_context_tokens": reported,
-            "context_verified": False,
-            "limitation": "Backend has no advertised llama template/tokenizer contract; two UTF-8 bytes per token is a conservative estimate, not an exact count. Missing context metadata uses an 8192-token fallback budget, not a verified backend capacity."}
-    evidence.update(output_tokens=output_tokens, margin_tokens=PROMPT_TOKEN_MARGIN, effective_context_tokens=window)
+            "context_verified": False, "explicit_request_option_bytes": option_bytes,
+            "limitation": "Backend has no advertised llama template/tokenizer contract; message content and serialized explicit request options are counted at two UTF-8 bytes per token as a conservative estimate, not an exact count. Missing context metadata uses an 8192-token fallback budget, not a verified backend capacity."}
+    evidence.update(output_tokens=output_tokens, margin_tokens=PROMPT_TOKEN_MARGIN, effective_context_tokens=window,
+                    output_budget_scope="total_generated_tokens_including_reasoning", template_request_sha256=template_hash)
     if input_tokens + output_tokens + PROMPT_TOKEN_MARGIN > window:
         raise ValueError(f"Planner prompt budget exceeded: {input_tokens} input + {output_tokens} output + "
                          f"{PROMPT_TOKEN_MARGIN} margin exceeds {window} tokens ({evidence['mode']})")
     return evidence
 
 
-async def run_steps(client: InvestigationClient, decide: Decider, model_name: str) -> TaskState:
+async def run_steps(client: InvestigationClient, decide: Decider, model_name: str, *,
+                    transport: InvestigationTransport = "structured_json") -> TaskState:
     """Host control only: capture, validate, dispatch, observe. No task routing."""
     try:
-        return await _run_steps(client, decide, model_name)
+        return await _run_steps(client, decide, model_name, transport)
     except AgentError as error:
         context = await client.context()
         state = TaskState.model_validate(context["state"])
@@ -233,7 +257,11 @@ async def run_steps(client: InvestigationClient, decide: Decider, model_name: st
         return await client.stop(f"Investigation action could not continue: {error}")
 
 
-async def _run_steps(client: InvestigationClient, decide: Decider, model_name: str) -> TaskState:
+async def _run_steps(client: InvestigationClient, decide: Decider, model_name: str,
+                     transport: InvestigationTransport) -> TaskState:
+    if transport not in {"structured_json", "decision_function"}:
+        raise ValueError("Unknown investigation response transport")
+    system = transport_system(transport)
     while True:
         context = await client.context()
         state = TaskState.model_validate(context["state"])
@@ -259,16 +287,19 @@ async def _run_steps(client: InvestigationClient, decide: Decider, model_name: s
         output_schema["required"] = [key for key in output_schema["properties"] if key in required]
         output_tokens = 2600 if state.stage == "workflow" else 1400
         request: dict[str, JsonValue] = {
-            "system": SYSTEM, "context": context, "schema": output_schema,
-            "temperature": 0, "max_tokens": output_tokens,
+            "system": system, "context": context, "schema": output_schema,
+            "temperature": 0, "max_tokens": output_tokens, "transport": transport,
         }
-        if not prompt_transport_fits(context, output_tokens):
+        if not prompt_transport_fits(context, output_tokens, system=system):
             return await client.stop("The model-visible prompt and reserved output exceed the bounded local transport budget.")
         call_id = await client.model_start(request, model_name)
         try:
             response = await decide(request)
+            if failure := completion_failure(response, transport):
+                await client.model_finish(call_id, response, failure)
+                return await client.stop(failure)
             try:
-                raw = response["decision"]
+                raw = function_decision(response) if transport == "decision_function" else response["decision"]
                 if not isinstance(raw, dict):
                     raise TypeError("Decision must be a JSON object")
                 if "based_on_observation_ids" not in raw:
@@ -291,7 +322,10 @@ async def _run_steps(client: InvestigationClient, decide: Decider, model_name: s
 
 
 async def investigate(data_dir: str, project_id: str, task_id: str,
-                      model_url: str, model_name: str) -> TaskState:
+                      model_url: str, model_name: str, *,
+                      transport: InvestigationTransport = "structured_json") -> TaskState:
+    if transport not in {"structured_json", "decision_function"}:
+        raise ValueError("Unknown investigation response transport")
     url = local_model_url(model_url)
     await check_model(url, model_name)
     timeout = Timeout(read=150, connect=4, write=15, pool=4)
@@ -300,31 +334,31 @@ async def investigate(data_dir: str, project_id: str, task_id: str,
         async def decide(request: dict[str, JsonValue]) -> dict[str, JsonValue]:
             schema = request["schema"]
             tokens = request["max_tokens"]
-            if not isinstance(schema, dict) or not isinstance(tokens, int):
+            system = request["system"]
+            if not isinstance(schema, dict) or not isinstance(tokens, int) or not isinstance(system, str):
                 raise ValueError("Invalid host-owned model output contract")
-            response_format: ResponseFormatJSONSchema = {"type": "json_schema", "json_schema": {
-                "name": "InvestigationDecision", "strict": True,
-                "schema": {key: value for key, value in schema.items()},
-            }}
             messages: list[ChatCompletionMessageParam] = [
-                {"role": "system", "content": SYSTEM},
+                {"role": "system", "content": system},
                 {"role": "user", "content": json.dumps(request["context"], ensure_ascii=False)},
             ]
+            # One body of options drives template rendering and generation. A
+            # schema or explicit reasoning option may alter the rendered prompt.
+            options = generation_options(schema, tokens, transport)
             async with httpx.AsyncClient(timeout=4, trust_env=False) as budget_client:
-                budget = await verify_prompt_budget(budget_client, url, model_name, messages, tokens)
+                budget = await verify_prompt_budget(budget_client, url, model_name, messages, tokens,
+                                                    request_options=options)
             response = await model.chat.completions.create(
-                model=model_name,
-                messages=messages,
-                response_format=response_format, temperature=0, max_tokens=tokens,
+                model=model_name, messages=messages, extra_body=options,
             )
-            content = response.choices[0].message.content
             result = JSON_OBJECT.validate_python(response.model_dump(mode="json"))
             result["context_budget"] = budget
+            content = response.choices[0].message.content if response.choices else None
             try:
-                result["decision"] = JSON_OBJECT.validate_json(content or "")
+                result["decision"] = function_decision(result) if transport == "decision_function" else JSON_OBJECT.validate_json(content or "")
             except (ValueError, TypeError):
                 result["decision"] = None
             return result
 
-        async with connect_tools(data_dir, AgentState()) as transport:
-            return await run_steps(InvestigationClient(transport.session, project_id, task_id), decide, model_name)
+        async with connect_tools(data_dir, AgentState()) as connection:
+            return await run_steps(InvestigationClient(connection.session, project_id, task_id), decide, model_name,
+                                   transport=transport)

@@ -1,0 +1,83 @@
+{
+  "time": "2026-10-29T18:41:14.597059+00:00",
+  "health_after_restart": {
+    "status": "ok",
+    "version": "0.1.0",
+    "model_server": {
+      "reachable": true,
+      "models": [
+        "visionapp-planner"
+      ],
+      "error": null
+    },
+    "runtime": {
+      "data_dir": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T170438Z/workspace",
+      "python": "/Users/manavrakeshku.modi/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "package_root": "/Users/manavrakeshku.modi/vision-agent/engine",
+      "build_id": "97b7981cc76b0315dbb7dc7230ca1827e6525b94bdbbef00200d6e859a24ef65",
+      "pid": 41668
+    },
+    "capabilities": {
+      "image_folder": true,
+      "recorded_video": true,
+      "apple_vision": true,
+      "camera": false,
+      "screen_capture": false,
+      "training": true,
+      "alerts": true,
+      "native_app": true,
+      "live_frame_ingress": true
+    }
+  },
+  "state_after_resume": {
+    "schema_version": "a0.1",
+    "id": "c539bc6fcc2e4d1c929ea0ac7c700c3f",
+    "project_id": "a5c75eebf2574ccd",
+    "objective": "Build an app that reads only the item code from each image. Ignore the shipping label. Use the supplied image to figure out how.",
+    "revision": 9,
+    "status": "running",
+    "stage": "investigating",
+    "selected_workflow_revision": null,
+    "preview_observation_id": null,
+    "budget": {
+      "max_model_calls": 20,
+      "max_actions": 16,
+      "max_probes": 6,
+      "max_elapsed_s": 900.0,
+      "model_calls": 5,
+      "actions": 3,
+      "probes": 1,
+      "elapsed_s": 208.32305191695923
+    },
+    "pending_action_id": null,
+    "pending_model_call_id": "5850f2c32fef49bda17baf1acc83120d",
+    "latest_observation_ids": [
+      "c3d2e26895634c2d902b6a04f02949eb"
+    ],
+    "question": null,
+    "stop_reason": null,
+    "user_answers": [],
+    "created_at": "2026-10-29T18:36:40.219459+00:00",
+    "updated_at": "2026-10-29T18:40:55.424714+00:00"
+  },
+  "preserved_action_ids": [
+    "56777613f2d44b5cb52f2b9a79a4ac92",
+    "288af4ee12f7491c95847f07cc394ee6",
+    "eef6582664274bb28b2f003e08954fbe"
+  ],
+  "actions_after_resume": [
+    "56777613f2d44b5cb52f2b9a79a4ac92",
+    "288af4ee12f7491c95847f07cc394ee6",
+    "eef6582664274bb28b2f003e08954fbe"
+  ],
+  "completed_actions_preserved": true,
+  "original_model_calls_preserved": true,
+  "ui_observations": [
+    "Clicked Pause and observed paused controls.",
+    "Quit native development app; confirmed both native and owned engine processes exited.",
+    "Relaunched same bundle and isolated workspace.",
+    "Reopened project; paused status and4/20modelcalls,3/16actions,1/6probeattempts,208/900seconds persisted.",
+    "Clicked Resume; same3completedactions remained while model call5started."
+  ],
+  "intervention_scope": "One deliberate pause/app-restart/resume during live qualification; no model answer, coordinates or requested action was injected."
+}

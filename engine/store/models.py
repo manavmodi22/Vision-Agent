@@ -7,6 +7,7 @@ from urllib.parse import urlparse
 
 from pydantic import BaseModel, ConfigDict, Field, JsonValue, field_validator
 
+from spec.investigation import InvestigationTransport
 from spec.models import EvaluationResult, PipelineSpec
 
 
@@ -79,6 +80,7 @@ class Deployment(Record):
 class Settings(Record):
     model_url: str = "http://localhost:1234/v1"
     planner_model: str = ""
+    investigation_transport: InvestigationTransport = "structured_json"
     vlm_model: str = ""
     vlm_url: str = "http://127.0.0.1:1235/v1"
     allow_agpl: bool = False

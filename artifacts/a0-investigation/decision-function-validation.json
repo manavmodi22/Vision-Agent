@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-29T19:36:22.769083+00:00",
+  "source_identity": "70bca8f6dec09eb3496f50c168550ac03ecf643efc550176e68def71c52d6d51",
+  "broader_backend_tests": {
+    "passed": 155,
+    "elapsed_s": 48.34,
+    "log": "decision-function-tests.log"
+  },
+  "final_transport_loop_tests": {
+    "passed": 65,
+    "elapsed_s": 14.58,
+    "log": "decision-function-final-transport-tests.log"
+  },
+  "native_checks": 322,
+  "native_log": "native-decision-format-checks.log",
+  "repository_ruff": "All checks passed!",
+  "repository_mypy": "Success: no issues found in 202 source files",
+  "default_transport": "structured_json",
+  "candidate_transport": "decision_function",
+  "semantics": "Independent typed decision RPC; host validation and actual tool execution remain separate.",
+  "native_binary_sha256": "10e7109d9e2fe689e178f56aac102c0e6a0f3c6d9366eac0e7fa78784bc1573f",
+  "live_qualification": "In progress separately; software checks do not establish task success."
+}

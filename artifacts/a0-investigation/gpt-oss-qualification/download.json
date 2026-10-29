@@ -1,0 +1,14 @@
+{
+  "repo": "ggml-org/gpt-oss-20b-GGUF",
+  "revision": "15dcfc7e7c608c6161507211ed43c5b590801b4b",
+  "filename": "gpt-oss-20b-MXFP4.gguf",
+  "url": "https://huggingface.co/ggml-org/gpt-oss-20b-GGUF/resolve/15dcfc7e7c608c6161507211ed43c5b590801b4b/gpt-oss-20b-MXFP4.gguf",
+  "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/model-qualification/gpt-oss-20b-MXFP4/gpt-oss-20b-MXFP4.gguf",
+  "bytes": 12109566624,
+  "sha256": "27cd6c432c7672cb812a92f611cf3ba7bbc35928262bb1e1253ff4ee6ae35901",
+  "license": "Apache-2.0",
+  "elapsed_s": 121.11325204197783,
+  "free_bytes_after": 15564988416,
+  "downloaded_at": "2026-10-29T18:54:37.522962+00:00",
+  "qualification": "Downloaded and hash-verified only; not loaded or promoted."
+}

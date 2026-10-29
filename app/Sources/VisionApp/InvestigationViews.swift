@@ -43,7 +43,7 @@ struct InvestigationControls: View {
         VStack(alignment: .leading, spacing: 8) {
             if let error = agent.error { Text(error).font(.caption).foregroundStyle(.orange).textSelection(.enabled) }
             if let state = agent.investigation?.state {
-                if let question = state.question { Text(question).font(.callout.weight(.medium)).textSelection(.enabled) }
+                if let question = state.pendingQuestion { Text(question).font(.callout.weight(.medium)).textSelection(.enabled) }
                 HStack {
                     if state.running, state.supported { Button("Pause") { model.controlInvestigation(agent, action: "pause") } }
                     if state.resumable, state.status != "awaiting_input" { Button("Resume") { model.resumeInvestigation(agent) } }
@@ -142,8 +142,8 @@ struct InvestigationEvidenceView: View {
     }
     private var probeValues: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Returned values").font(.caption.weight(.semibold))
-            Text("Showing \(probeItems.count) returned values. \(observation?.payload["total_items"].map { "Recorded total: \(InvestigationPresentation.count($0))." } ?? "")").font(.caption2).foregroundStyle(Studio.muted)
+            Text("Recorded values").font(.caption.weight(.semibold))
+            Text(InvestigationPresentation.shownValues(probeItems.count, total: observation?.payload["total_items"])).font(.caption2).foregroundStyle(Studio.muted)
             ForEach(Array(probeItems.enumerated()), id: \.offset) { index, item in
                 let reading = readings.first(where: { $0.index == index })
                 VStack(alignment: .leading, spacing: 4) {

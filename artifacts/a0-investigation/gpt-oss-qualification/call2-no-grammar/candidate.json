@@ -1,0 +1,5 @@
+{
+  "shape_and_provenance_valid": false,
+  "error": "Model completion returned no final content; no action executed",
+  "action_dispatched": false
+}

@@ -1,0 +1,65 @@
+{
+  "kind": "read_only_artifact_feasibility",
+  "checked_at": "2026-10-29T18:52:37.822181+00:00",
+  "publisher": "ggml-org/gpt-oss-20b-GGUF",
+  "publisher_role": "llama.cpp maintainer conversion; not an OpenAI-published GGUF",
+  "revision": "15dcfc7e7c608c6161507211ed43c5b590801b4b",
+  "metadata_url": "https://huggingface.co/api/models/ggml-org/gpt-oss-20b-GGUF/revision/15dcfc7e7c608c6161507211ed43c5b590801b4b?blobs=true",
+  "card_data": {
+    "license": "apache-2.0",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "gguf",
+      "quantized"
+    ],
+    "base_model": [
+      "openai/gpt-oss-20b"
+    ]
+  },
+  "artifact": {
+    "rfilename": "gpt-oss-20b-MXFP4.gguf",
+    "blobId": "deda3c25c5da45a23db1c5d52a49e6c509da659b",
+    "size": 12109566624,
+    "lfs": {
+      "sha256": "27cd6c432c7672cb812a92f611cf3ba7bbc35928262bb1e1253ff4ee6ae35901",
+      "size": 12109566624,
+      "pointerSize": 136
+    }
+  },
+  "download_url": "https://huggingface.co/ggml-org/gpt-oss-20b-GGUF/resolve/15dcfc7e7c608c6161507211ed43c5b590801b4b/gpt-oss-20b-MXFP4.gguf",
+  "upstream_repo": "openai/gpt-oss-20b",
+  "upstream_revision": "6cee5e81ee83917806bbde320786a8fb61efebee",
+  "conversion_source_binding": "Publisher .src_sha PRIMARY field; not an independent conversion reproduction",
+  "sources": {
+    "publisher_source_revision": {
+      "url": "https://huggingface.co/ggml-org/gpt-oss-20b-GGUF/raw/15dcfc7e7c608c6161507211ed43c5b590801b4b/.src_sha",
+      "bytes": 97,
+      "sha256": "24a05560f23a0c44d6f2632ad39a95e0551fe0a37b0743e34f5fe649cbf7daa0",
+      "text": "EAGLE3=c2825cb49c32649bab8fb012df38df50a0a43db1\nPRIMARY=6cee5e81ee83917806bbde320786a8fb61efebee\n"
+    },
+    "publisher_readme": {
+      "url": "https://huggingface.co/ggml-org/gpt-oss-20b-GGUF/raw/15dcfc7e7c608c6161507211ed43c5b590801b4b/README.md",
+      "bytes": 501,
+      "sha256": "bc2128d8465343a21181e43f753f96481b88a11b268fdfed4801390a4cfb5d0f",
+      "text": "---\nlicense: apache-2.0\npipeline_tag: text-generation\ntags:\n- gguf\n- quantized\nbase_model:\n- openai/gpt-oss-20b\n---\n\n# gpt-oss-20b\n\nRun it in the Llama app: https://llama.app\n\nOr from the terminal:\n\n```bash\nllama serve -hf ggml-org/gpt-oss-20b-GGUF\n```\n\n### Source models\n- https://huggingface.co/openai/gpt-oss-20b\n- https://huggingface.co/RedHatAI/gpt-oss-20b-speculator.eagle3\n\n### TODOs\n\n- add info\n\n> [!IMPORTANT]\n> This model is automatically converted using https://github.com/ggml-org/convert\n"
+    },
+    "upstream_license": {
+      "url": "https://huggingface.co/openai/gpt-oss-20b/raw/6cee5e81ee83917806bbde320786a8fb61efebee/LICENSE",
+      "bytes": 11357,
+      "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd"
+    },
+    "upstream_chat_template": {
+      "url": "https://huggingface.co/openai/gpt-oss-20b/raw/6cee5e81ee83917806bbde320786a8fb61efebee/chat_template.jinja",
+      "bytes": 16738,
+      "sha256": "a4c9919cbbd4acdd51ccffe22da049264b1b73e59055fa58811a99efbd7c8146"
+    },
+    "runtime_gptoss_parser": {
+      "url": "https://raw.githubusercontent.com/ggml-org/llama.cpp/39febd2ad/common/parsers/gpt-oss.cpp",
+      "bytes": 7820,
+      "sha256": "b2cde5948a6a461a7c77b72e8f01a81df6838a76ac3be6bb9b7d1811d579e298"
+    }
+  },
+  "weight_downloaded": false,
+  "weight_hash_locally_verified": false,
+  "inference_run": false
+}

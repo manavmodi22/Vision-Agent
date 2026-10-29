@@ -1,0 +1,36 @@
+{
+  "captured_at": "2026-10-29T18:50:23.673395+00:00",
+  "method": "Actual native Cancel investigation button via CUA; UI displayed Cancelled, controls removed, receipts retained.",
+  "state": {
+    "schema_version": "a0.1",
+    "id": "c539bc6fcc2e4d1c929ea0ac7c700c3f",
+    "project_id": "a5c75eebf2574ccd",
+    "objective": "Build an app that reads only the item code from each image. Ignore the shipping label. Use the supplied image to figure out how.",
+    "revision": 16,
+    "status": "cancelled",
+    "stage": "investigating",
+    "selected_workflow_revision": null,
+    "preview_observation_id": null,
+    "budget": {
+      "max_model_calls": 20,
+      "max_actions": 16,
+      "max_probes": 6,
+      "max_elapsed_s": 900.0,
+      "model_calls": 7,
+      "actions": 6,
+      "probes": 2,
+      "elapsed_s": 533.3243890840095
+    },
+    "pending_action_id": null,
+    "pending_model_call_id": null,
+    "latest_observation_ids": [
+      "24b728fa8b374c128e20762bb5d1bd5d"
+    ],
+    "question": "Do you have access to labeled data for 'item code' to fine-tune the model, or would you like to explore other models or methods for detecting the item code?",
+    "stop_reason": "Cancelled by the user",
+    "user_answers": [],
+    "created_at": "2026-10-29T18:36:40.219459+00:00",
+    "updated_at": "2026-10-29T18:50:00.809836+00:00"
+  },
+  "original_failure_report": "report.json"
+}

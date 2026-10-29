@@ -1,0 +1,16 @@
+{
+  "shape_and_provenance_valid": true,
+  "decision": {
+    "type": "next_action",
+    "state_revision": 2,
+    "decision_summary": "Inspect capability model.apple-vision to get descriptor hash",
+    "based_on_observation_ids": [],
+    "action": {
+      "type": "inspect_capability",
+      "capability_id": "model.apple-vision"
+    }
+  },
+  "authority_validated": false,
+  "action_dispatched": false,
+  "scope": "Shape, revision and evidence references only; not task correctness, executable authorization or A0 success."
+}

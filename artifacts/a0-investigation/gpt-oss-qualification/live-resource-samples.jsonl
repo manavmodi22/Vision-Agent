@@ -1,0 +1,11 @@
+{"at": "2026-10-29T18:55:54.303868+00:00", "planner_rss_kib": 12333600, "memory_pressure_level": "1", "task_status": "running", "model_calls": 2, "actions": 1}
+{"at": "2026-10-29T18:55:59.375072+00:00", "planner_rss_kib": 12333472, "memory_pressure_level": "1", "task_status": "running", "model_calls": 2, "actions": 1}
+{"at": "2026-10-29T18:56:04.452241+00:00", "planner_rss_kib": 12333472, "memory_pressure_level": "1", "task_status": "running", "model_calls": 2, "actions": 1}
+{"at": "2026-10-29T18:56:09.551803+00:00", "planner_rss_kib": 12333360, "memory_pressure_level": "1", "task_status": "running", "model_calls": 2, "actions": 1}
+{"at": "2026-10-29T18:56:14.687790+00:00", "planner_rss_kib": 12333376, "memory_pressure_level": "1", "task_status": "running", "model_calls": 2, "actions": 1}
+{"at": "2026-10-29T18:56:19.830347+00:00", "planner_rss_kib": 12333376, "memory_pressure_level": "1", "task_status": "running", "model_calls": 2, "actions": 1}
+{"at": "2026-10-29T18:56:24.999443+00:00", "planner_rss_kib": 12333392, "memory_pressure_level": "1", "task_status": "running", "model_calls": 2, "actions": 1}
+{"at": "2026-10-29T18:56:30.302675+00:00", "planner_rss_kib": 12333408, "memory_pressure_level": "1", "task_status": "running", "model_calls": 2, "actions": 1}
+{"at": "2026-10-29T18:56:35.411118+00:00", "planner_rss_kib": 12333504, "memory_pressure_level": "1", "task_status": "running", "model_calls": 2, "actions": 1}
+{"at": "2026-10-29T18:56:40.605062+00:00", "planner_rss_kib": 12333488, "memory_pressure_level": "1", "task_status": "running", "model_calls": 2, "actions": 1}
+{"at": "2026-10-29T18:56:45.660442+00:00", "planner_rss_kib": 12333712, "memory_pressure_level": "1", "task_status": "inconclusive", "model_calls": 2, "actions": 1}

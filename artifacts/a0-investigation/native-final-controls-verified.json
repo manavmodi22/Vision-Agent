@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-10-29T19:31:27.750531+00:00",
+  "native_checks": 317,
+  "binary_sha256": "9b72af1bb39bfc01f1c43e1a63b3e4c496810456653ebdc5e790b9d3005074a1",
+  "actual_native_observations": [
+    "Reopened cancelled investigation",
+    "1 sample image",
+    "8 results returned \u00b7 13 metadata matches",
+    "Obsolete question no longer displayed above composer",
+    "Describe a new goal for this app\u2026",
+    "Start new investigation"
+  ],
+  "method": "CUA native accessibility inspection after fresh Release build and launch",
+  "canonical_app_replaced": false
+}

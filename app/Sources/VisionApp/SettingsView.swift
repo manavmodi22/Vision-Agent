@@ -18,6 +18,18 @@ struct SettingsView: View {
                         VStack(alignment: .leading, spacing: 8) { Text("Planner model").font(.caption); TextField("Loaded planner model ID", text: $model.settings.plannerModel).textFieldStyle(.roundedBorder) }
                         VStack(alignment: .leading, spacing: 8) { Text("Vision-language API base URL").font(.caption); TextField("http://127.0.0.1:1235/v1", text: $model.settings.vlmUrl).textFieldStyle(.roundedBorder) }
                         VStack(alignment: .leading, spacing: 8) { Text("Vision-language model").font(.caption); TextField("Loaded VLM ID", text: $model.settings.vlmModel).textFieldStyle(.roundedBorder) }
+                        DisclosureGroup("Advanced compatibility") {
+                            VStack(alignment: .leading, spacing: 8) {
+                                Picker("Agent decision format", selection: $model.settings.investigationTransport) {
+                                    Text("JSON schema").tag("structured_json")
+                                    Text("Function call").tag("decision_function")
+                                    if !["structured_json", "decision_function"].contains(model.settings.investigationTransport) {
+                                        Text("Current format: \(model.settings.investigationTransport)").tag(model.settings.investigationTransport)
+                                    }
+                                }.pickerStyle(.menu)
+                                Text("Use the format your local model supports for investigations. Function call submits one typed agent decision; the engine validates it before executing the selected action.").font(.caption).foregroundStyle(Studio.muted)
+                            }.padding(.top, 8)
+                        }.font(.callout)
                         if let error = server["error"]?.string, !error.isEmpty { Text(error).font(.caption).foregroundStyle(.orange).textSelection(.enabled) }
                         HStack { Button("Check connection") { model.perform("Checking model server") { try await model.refresh() } }; Spacer(); Button("Save settings") { model.saveSettings() }.buttonStyle(.borderedProminent) }.disabled(model.busy)
                     }.frame(maxWidth: .infinity).panel()

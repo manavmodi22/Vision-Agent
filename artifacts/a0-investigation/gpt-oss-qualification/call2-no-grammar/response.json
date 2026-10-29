@@ -1,0 +1,51 @@
+{
+  "id": "chatcmpl-SNSmMq14vMU56si5RciCSztW1Hjz70zY",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null,
+        "reasoning_content": "We need to inspect media to get hash. Then inspect capability model.apple-vision descriptor hash. Then run probe OCR on image. Let's inspect media."
+      }
+    }
+  ],
+  "created": 1793300366,
+  "model": "gpt-oss-20b-MXFP4-qualification",
+  "object": "chat.completion",
+  "metadata": null,
+  "moderation": null,
+  "service_tier": null,
+  "system_fingerprint": "b11963-39febd2ad",
+  "usage": {
+    "completion_tokens": 66,
+    "prompt_tokens": 3784,
+    "total_tokens": 3850,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 3779,
+      "image_tokens": null,
+      "text_tokens": null
+    }
+  },
+  "timings": {
+    "cache_n": 3779,
+    "prompt_n": 5,
+    "prompt_ms": 73.704,
+    "prompt_per_token_ms": 14.740799999999998,
+    "prompt_per_second": 67.83892326061002,
+    "predicted_n": 66,
+    "predicted_ms": 2287.223,
+    "predicted_per_token_ms": 35.18804615384615,
+    "predicted_per_second": 28.41874185420486
+  }
+}

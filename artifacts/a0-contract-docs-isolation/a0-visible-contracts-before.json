@@ -1,0 +1,473 @@
+{
+  "node_contracts": {
+    "barcode": {
+      "required_fields": [
+        "type",
+        "id",
+        "image",
+        "model_capability_id",
+        "model_reason"
+      ],
+      "fields": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        "image": {
+          "description": "Reference to an image output of another graph node, never a media ID or filename. Use the upstream node's exact output port.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "type": "string"
+        },
+        "model_capability_id": {
+          "maxLength": 120,
+          "minLength": 1,
+          "type": "string"
+        },
+        "model_reason": {
+          "maxLength": 500,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "description": "Decode supported machine-readable codes in the input image. Ordinary printed text requires a text reader. Decoded text is included in preview output without an event sink.",
+      "outputs": {
+        "text": "text"
+      }
+    },
+    "count_per_zone": {
+      "required_fields": [
+        "type",
+        "id",
+        "dets",
+        "include_unassigned"
+      ],
+      "fields": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        "dets": {
+          "description": "Reference to a detections output: $node_id.dets.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "type": "string"
+        },
+        "include_unassigned": {
+          "type": "boolean"
+        }
+      },
+      "description": "Aggregate detections into counts by region; consumes the final zone-filtered detections when a zone filter is present.",
+      "outputs": {
+        "counts": "counts"
+      }
+    },
+    "crop": {
+      "required_fields": [
+        "type",
+        "id",
+        "image",
+        "box"
+      ],
+      "fields": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        "image": {
+          "description": "Reference to an image output of another node: $node_id.port.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "type": "string"
+        },
+        "box": {
+          "description": "Normalized [left, top, right, bottom] with positive area within [0,1].",
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "type": "array"
+        }
+      },
+      "description": "Extract a static rectangular region before inference. The box is relative to this node's input image, not necessarily the original source. This does not locate objects dynamically.",
+      "outputs": {
+        "image": "image"
+      }
+    },
+    "detect": {
+      "required_fields": [
+        "type",
+        "id",
+        "image",
+        "model_capability_id",
+        "model_reason",
+        "classes",
+        "min_confidence"
+      ],
+      "fields": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        "image": {
+          "description": "Reference to an image output of another graph node, never a media ID or filename. Use the upstream node's exact output port.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "type": "string"
+        },
+        "model_capability_id": {
+          "maxLength": 120,
+          "minLength": 1,
+          "type": "string"
+        },
+        "model_reason": {
+          "maxLength": 500,
+          "minLength": 1,
+          "type": "string"
+        },
+        "classes": {
+          "items": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "type": "array"
+        },
+        "min_confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        }
+      },
+      "description": "Run the selected detector on the input image and return detections for the requested supported classes.",
+      "outputs": {
+        "dets": "detections"
+      }
+    },
+    "frame_sample": {
+      "required_fields": [
+        "type",
+        "id",
+        "fps"
+      ],
+      "fields": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        "fps": {
+          "exclusiveMinimum": 0,
+          "maximum": 60,
+          "type": "number"
+        }
+      },
+      "description": "The graph's single source. The host supplies selected media; no path or media ID belongs in a node reference. Its frame output has image type.",
+      "outputs": {
+        "frame": "image"
+      }
+    },
+    "match": {
+      "required_fields": [
+        "type",
+        "id",
+        "text",
+        "expected",
+        "mode",
+        "emit"
+      ],
+      "fields": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        "text": {
+          "description": "Reference to a text output: $node_id.text.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "type": "string"
+        },
+        "expected": {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "contains",
+            "exact"
+          ],
+          "type": "string"
+        },
+        "emit": {
+          "enum": [
+            "all",
+            "matched",
+            "mismatched"
+          ],
+          "type": "string"
+        }
+      },
+      "description": "Compare text readings with a fixed expected string and produce match events. This does not filter or replace the original text readings in preview output.",
+      "outputs": {
+        "event": "event"
+      }
+    },
+    "ocr": {
+      "required_fields": [
+        "type",
+        "id",
+        "image",
+        "model_capability_id",
+        "model_reason"
+      ],
+      "fields": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        "image": {
+          "description": "Reference to an image output of another graph node, never a media ID or filename. Use the upstream node's exact output port.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "type": "string"
+        },
+        "model_capability_id": {
+          "maxLength": 120,
+          "minLength": 1,
+          "type": "string"
+        },
+        "model_reason": {
+          "maxLength": 500,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "description": "Read all detected text in the input image. This node does not semantically select a requested field or discard unrelated text. Its text readings are included in preview output without requiring an event sink.",
+      "outputs": {
+        "text": "text"
+      }
+    },
+    "resize": {
+      "required_fields": [
+        "type",
+        "id",
+        "image",
+        "width",
+        "height"
+      ],
+      "fields": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        "image": {
+          "description": "Reference to an image output of another node: $node_id.port.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "type": "string"
+        },
+        "width": {
+          "exclusiveMinimum": 0,
+          "maximum": 8192,
+          "type": "integer"
+        },
+        "height": {
+          "exclusiveMinimum": 0,
+          "maximum": 8192,
+          "type": "integer"
+        }
+      },
+      "description": "Resize an image to the given pixel dimensions before downstream inference.",
+      "outputs": {
+        "image": "image"
+      }
+    },
+    "rule": {
+      "required_fields": [
+        "type",
+        "id",
+        "counts",
+        "operator",
+        "threshold",
+        "hold_seconds"
+      ],
+      "fields": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        "counts": {
+          "description": "Reference to a counts output: $node_id.counts.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "type": "string"
+        },
+        "operator": {
+          "enum": [
+            ">=",
+            "<=",
+            ">",
+            "<",
+            "==",
+            "!="
+          ],
+          "type": "string"
+        },
+        "threshold": {
+          "maximum": 10000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "hold_seconds": {
+          "maximum": 3600,
+          "minimum": 0,
+          "type": "number"
+        }
+      },
+      "description": "Test counts against a threshold and produce an event. Connect its event output to a sink_event node. Count-only applications do not need a rule.",
+      "outputs": {
+        "event": "event"
+      }
+    },
+    "sink_event": {
+      "required_fields": [
+        "type",
+        "id",
+        "event"
+      ],
+      "fields": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        "event": {
+          "description": "Reference to an event output: $node_id.event; never a text, image or detections output.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "type": "string"
+        }
+      },
+      "description": "Receive an event produced by match or rule. Text is not an event. Optional for plain detection, counting or reading output; investigation previews never dispatch external events.",
+      "outputs": {
+        "event": "event"
+      }
+    },
+    "zone_filter": {
+      "required_fields": [
+        "type",
+        "id",
+        "dets",
+        "zone_ids"
+      ],
+      "fields": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "type": "string"
+        },
+        "dets": {
+          "description": "Reference to a detections output: $node_id.dets.",
+          "pattern": "^\\$[A-Za-z][A-Za-z0-9_-]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "type": "string"
+        },
+        "zone_ids": {
+          "items": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 20,
+          "type": "array"
+        }
+      },
+      "description": "Filter detections using the project's already confirmed region geometry.",
+      "outputs": {
+        "dets": "detections"
+      }
+    }
+  },
+  "workflow_action_contracts": {
+    "construct_workflow": {
+      "required_fields": [
+        "type",
+        "graph",
+        "media_ids"
+      ],
+      "fields": {
+        "graph": {
+          "type": "object",
+          "description": "One connected, acyclic vision graph. Output references must resolve to compatible ports on nodes in this graph. The host binds source media separately.",
+          "required": [
+            "name",
+            "nodes",
+            "metric",
+            "target"
+          ],
+          "properties": {
+            "name": {
+              "maxLength": 120,
+              "minLength": 1,
+              "type": "string"
+            },
+            "nodes": {
+              "description": "Include exactly one frame_sample source and one to four detector/reader nodes. Connect each image operation to inference. References use $node_id.port and must match the source port's type. At most one detect, zone_filter, count_per_zone and rule node. An event sink is optional for plain reader/detection/count output.",
+              "items": {
+                "type": "object",
+                "description": "A typed node from node_contracts; its type selects its fields and ports."
+              },
+              "maxItems": 16,
+              "minItems": 2,
+              "type": "array"
+            },
+            "metric": {
+              "enum": [
+                "count_mae",
+                "precision",
+                "recall",
+                "text_accuracy"
+              ],
+              "type": "string"
+            },
+            "target": {
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        },
+        "media_ids": {
+          "items": {
+            "pattern": "^[A-Za-z0-9_-]{1,128}$",
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "type": "array"
+        },
+        "evidence_ids": {
+          "items": {
+            "pattern": "^[0-9a-f]{32}$",
+            "type": "string"
+          },
+          "maxItems": 16,
+          "type": "array"
+        },
+        "parent_revision_id": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{32}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      }
+    }
+  }
+}

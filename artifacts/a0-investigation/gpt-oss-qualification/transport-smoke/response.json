@@ -1,0 +1,37 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"count\":39,\"check\":\"Start with 17 blue + 23 red = 40 parts. Remove 9 red → 40 – 9 = 31 parts. Add 8 blue → 31 + 8 = 39 parts remaining.\"}",
+        "reasoning_content": "We need total parts after operations. Initially 17+23=40. Remove 9 red: 40-9=31. Add 8 blue: 31+8=39. Return count 39 and brief arithmetic check."
+      }
+    }
+  ],
+  "created": 1793300123,
+  "model": "gpt-oss-20b-MXFP4-qualification",
+  "system_fingerprint": "b11963-39febd2ad",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 115,
+    "prompt_tokens": 125,
+    "total_tokens": 240,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  },
+  "id": "chatcmpl-sCu6AP8nFGwCNRRJWCqZYJE0O6H7GU2I",
+  "timings": {
+    "cache_n": 0,
+    "prompt_n": 125,
+    "prompt_ms": 577.242,
+    "prompt_per_token_ms": 4.617935999999999,
+    "prompt_per_second": 216.54695950745096,
+    "predicted_n": 115,
+    "predicted_ms": 3815.416,
+    "predicted_per_token_ms": 33.46856140350877,
+    "predicted_per_second": 29.878786480949913
+  }
+}

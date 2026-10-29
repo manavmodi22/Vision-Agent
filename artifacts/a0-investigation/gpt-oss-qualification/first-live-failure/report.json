@@ -1,0 +1,180 @@
+{
+  "source_before": "b3092bf6bc36f1a1880b15c3467396845795e7146f2a657e29b5b1b5c39c93b8",
+  "source_after": "b3092bf6bc36f1a1880b15c3467396845795e7146f2a657e29b5b1b5c39c93b8",
+  "model_url": "http://127.0.0.1:1236/v1",
+  "model": "gpt-oss-20b-MXFP4-qualification",
+  "label": "gpt-oss-20b MXFP4 low reasoning 512 per block",
+  "elapsed_s": 64.55757249996532,
+  "workspace": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T185540Z",
+  "snapshot": {
+    "state": {
+      "schema_version": "a0.1",
+      "id": "b80453df3dd14751b9b090a77d661554",
+      "project_id": "99bd3774a12c46a7",
+      "objective": "Build an app that reads only the item code from each image. Ignore the shipping label. Use the supplied image to figure out how.",
+      "revision": 3,
+      "status": "inconclusive",
+      "stage": "investigating",
+      "selected_workflow_revision": null,
+      "preview_observation_id": null,
+      "budget": {
+        "max_model_calls": 20,
+        "max_actions": 16,
+        "max_probes": 6,
+        "max_elapsed_s": 900.0,
+        "model_calls": 2,
+        "actions": 1,
+        "probes": 0,
+        "elapsed_s": 63.97688199998811
+      },
+      "pending_action_id": null,
+      "pending_model_call_id": null,
+      "latest_observation_ids": [
+        "e877721ec3894c0b8fa909aa25974a6d"
+      ],
+      "question": null,
+      "stop_reason": "Model completion exhausted its total output allowance (finish_reason=length); no action executed",
+      "user_answers": [],
+      "created_at": "2026-10-29T18:55:40.135180+00:00",
+      "updated_at": "2026-10-29T18:56:44.114618+00:00"
+    },
+    "actions": [
+      {
+        "id": "a26b1198208b469fb90081729a4267ea",
+        "model_call_id": "d3349302f2084182ad0ec8bf987ea6c9",
+        "decision": {
+          "type": "next_action",
+          "state_revision": 0,
+          "decision_summary": "Discover OCR model capabilities",
+          "based_on_observation_ids": [],
+          "action": {
+            "type": "discover_capabilities",
+            "query": "",
+            "kind": "model",
+            "task_type": "ocr",
+            "limit": 5,
+            "cursor": null
+          }
+        },
+        "status": "completed",
+        "observation_id": "e877721ec3894c0b8fa909aa25974a6d",
+        "started_at": "2026-10-29T18:55:50.888216+00:00",
+        "ended_at": "2026-10-29T18:55:51.284359+00:00"
+      }
+    ],
+    "observations": [
+      {
+        "id": "e877721ec3894c0b8fa909aa25974a6d",
+        "action_id": "a26b1198208b469fb90081729a4267ea",
+        "result_type": "discover_capabilities",
+        "status": "completed",
+        "payload": {
+          "executed": false,
+          "items": [
+            {
+              "capability_id": "model.apple-vision",
+              "name": "Apple Vision OCR and barcode",
+              "description": "Native macOS OCR and barcode bridge.",
+              "kind": "model",
+              "task_types": [
+                "ocr",
+                "barcode"
+              ],
+              "availability": "installed",
+              "readiness": "unchecked",
+              "installation_ready": true,
+              "probe_tasks": [
+                "ocr",
+                "barcode"
+              ],
+              "probe_eligible": true,
+              "execution_role": "typed_adapter_model",
+              "matched_terms": [],
+              "unmatched_terms": [],
+              "match_score": 0
+            },
+            {
+              "capability_id": "model.paddleocr",
+              "name": "PaddleOCR alternative",
+              "description": "No PaddleOCR adapter, supported-weight manifest or OCR benchmark is implemented.",
+              "kind": "model",
+              "task_types": [
+                "ocr"
+              ],
+              "availability": "unsupported",
+              "readiness": "unsupported",
+              "installation_ready": false,
+              "probe_tasks": [],
+              "probe_eligible": false,
+              "execution_role": "catalogue_model",
+              "matched_terms": [],
+              "unmatched_terms": [],
+              "match_score": 0
+            }
+          ],
+          "total_items": 2,
+          "returned_items": 2,
+          "truncated": false,
+          "next_cursor": null,
+          "query": "",
+          "active_filters": {
+            "kind": "model",
+            "task_type": "ocr"
+          },
+          "query_terms": [],
+          "available_kinds": [
+            "model",
+            "tool"
+          ],
+          "available_task_types": [
+            "annotation",
+            "barcode",
+            "counting",
+            "detection",
+            "evaluation",
+            "event_logic",
+            "events",
+            "evidence",
+            "image_transform",
+            "instance_segmentation",
+            "media",
+            "ocr",
+            "orchestration",
+            "planning",
+            "source_acquisition",
+            "spatial_filter",
+            "text_comparison",
+            "training",
+            "visual_judgement"
+          ],
+          "filter_diagnostics": [],
+          "suggestions": [],
+          "suggestion_ignored_filters": [],
+          "suggestion_semantics": "Suggestions are labelled catalogue alternatives, not exact query results or execution recommendations; related terms use generic substring/character similarity. Inventory suggestions have no measured query relevance.",
+          "search_semantics": "Empty query lists inventory. Otherwise match any casefolded alphanumeric metadata token; punctuation, one-character tokens and common function words are ignored. Rank weighted ID/name/task/description matches, then capability ID. Explicit kind/task filters remain exact.",
+          "warnings": [
+            "Discovery metadata grants no execution or installation authority."
+          ]
+        },
+        "error": null,
+        "created_at": "2026-10-29T18:55:51.284315+00:00"
+      }
+    ]
+  },
+  "reference": {
+    "origin": "Generated software fixture; these expected values were not supplied to the planner",
+    "expected_preview_texts": [
+      "QZ-4817"
+    ],
+    "excluded_readings": [
+      "ITEM CODE",
+      "SHIP TO",
+      "IGNORE-552"
+    ]
+  },
+  "reference_check": {
+    "actual_preview_texts": [],
+    "exact": null
+  },
+  "scope": "Exploratory local planner and real local adapters on a generated software fixture. No A0 milestone or representative quality acceptance claim. Native integration is verified separately."
+}

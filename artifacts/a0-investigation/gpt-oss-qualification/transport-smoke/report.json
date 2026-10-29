@@ -1,0 +1,35 @@
+{
+  "scope": "Actual local arithmetic transport test only, no vision or planner quality claim",
+  "model": "gpt-oss-20b-MXFP4-qualification",
+  "elapsed_s": 4.395614375011064,
+  "input_tokens_preflight": 125,
+  "template_sha256": "913b163f4450218c6db88f9db847787517fbfc5b58e421573484d0c37a3b35e3",
+  "finish_reason": "stop",
+  "final_content_separate": true,
+  "reasoning_content_present": true,
+  "reasoning_content_characters": 145,
+  "parsed_final": {
+    "count": 39,
+    "check": "Start with 17 blue + 23 red = 40 parts. Remove 9 red → 40 – 9 = 31 parts. Add 8 blue → 31 + 8 = 39 parts remaining."
+  },
+  "correct": true,
+  "usage": {
+    "completion_tokens": 115,
+    "prompt_tokens": 125,
+    "total_tokens": 240,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  },
+  "timings": {
+    "cache_n": 0,
+    "prompt_n": 125,
+    "prompt_ms": 577.242,
+    "prompt_per_token_ms": 4.617935999999999,
+    "prompt_per_second": 216.54695950745096,
+    "predicted_n": 115,
+    "predicted_ms": 3815.416,
+    "predicted_per_token_ms": 33.46856140350877,
+    "predicted_per_second": 29.878786480949913
+  }
+}

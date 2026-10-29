@@ -113,13 +113,14 @@ def write_json(path: Path, value: Any) -> None:
 
 async def run(args: argparse.Namespace) -> int:
     # These imports and all service operations occur only after CLI parsing.
-    from agent.investigation import SYSTEM
+    from agent.investigation import transport_system
     from engine.investigations.manager import InvestigationManager
     from engine.runtime_identity import source_identity
     from engine.service import WorkspaceService
     from spec.investigation import InvestigationBudget
 
     manifest, media, prompt = load_case(args.variant, args.media)
+    system = transport_system(args.transport)
     native = args.native_binary.resolve(strict=True)
     folder = args.output_dir or ROOT / ".visionapp/a0-investigation" / datetime.now(UTC).strftime(
         f"case-{manifest['case_id']}-{args.variant}-%Y%m%dT%H%M%S%fZ")
@@ -135,7 +136,7 @@ async def run(args: argparse.Namespace) -> int:
     evaluator.mkdir()
     shutil.copy2(CASE / "manifest.json", evaluator / "manifest.json")
     (folder / "planner-prompt.txt").write_text(prompt + "\n")
-    (folder / "system-prompt.txt").write_text(SYSTEM)
+    (folder / "system-prompt.txt").write_text(system)
     input_dir = folder / "input"
     input_dir.mkdir()
     frozen_media = input_dir / "scene.jpg"
@@ -143,6 +144,7 @@ async def run(args: argparse.Namespace) -> int:
     service = WorkspaceService(folder / "workspace")
     settings = service.repository.settings()
     settings.model_url, settings.planner_model = args.model_url, args.model
+    settings.investigation_transport = args.transport
     service.repository.save_settings(settings)
     project = service.create_project("Public scene investigation", "custom")
     service.import_media(project.id, [str(frozen_media)])
@@ -156,10 +158,10 @@ async def run(args: argparse.Namespace) -> int:
     setup = {"case_id": manifest["case_id"], "variant": args.variant, "input": image_identity(frozen_media),
              "imported_input": imported_identity, "project_id": project.id, "source_before": source_before,
              "manifest_sha256": sha256((CASE / "manifest.json").read_bytes()),
-             "planner_prompt_sha256": sha256(prompt.encode()), "system_prompt_sha256": sha256(SYSTEM.encode()),
+             "planner_prompt_sha256": sha256(prompt.encode()), "system_prompt_sha256": sha256(system.encode()),
              "harness_sha256": sha256(Path(__file__).read_bytes()), "native_binary": str(native),
              "native_binary_sha256": sha256(native.read_bytes()), "model_url": args.model_url,
-             "model": args.model, "label": args.label, "model_identity_scope": "Configured alias; model weights are not independently verified by this harness.",
+             "model": args.model, "label": args.label, "transport": args.transport, "model_identity_scope": "Configured alias; model weights are not independently verified by this harness.",
              "budget": budget.model_dump(mode="json"), "workspace": str(folder / "workspace"),
              "reference_boundary": "Only the objective and one imported image enter the project. Evaluator reference stays outside workspace and is scored after the runner stops."}
     write_json(folder / "setup.json", setup)
@@ -243,6 +245,7 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument("--media", type=Path, help="Optional copy of the chosen frozen variant; exact bytes and pixels must match")
     result.add_argument("--model-url", default="http://127.0.0.1:1234/v1")
     result.add_argument("--model", default="visionapp-planner")
+    result.add_argument("--transport", choices=["structured_json", "decision_function"], default="structured_json")
     result.add_argument("--label", default="Real-scene qualification")
     result.add_argument("--output-dir", type=Path, help="Fresh output directory; default is ignored .visionapp/a0-investigation")
     result.add_argument("--native-binary", type=Path, default=ROOT / "dist/VisionApp.app/Contents/MacOS/VisionApp")

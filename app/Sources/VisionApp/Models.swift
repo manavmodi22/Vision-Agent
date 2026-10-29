@@ -178,7 +178,8 @@ struct AppSettings: Codable {
     var vlmModel = ""
     var vlmUrl = "http://127.0.0.1:1235/v1"
     var allowAgpl = false
-    enum CodingKeys: String, CodingKey { case modelUrl = "model_url", plannerModel = "planner_model", vlmModel = "vlm_model", vlmUrl = "vlm_url", allowAgpl = "allow_agpl" }
+    var investigationTransport = "structured_json"
+    enum CodingKeys: String, CodingKey { case modelUrl = "model_url", plannerModel = "planner_model", vlmModel = "vlm_model", vlmUrl = "vlm_url", allowAgpl = "allow_agpl", investigationTransport = "investigation_transport" }
     init() {}
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -187,6 +188,7 @@ struct AppSettings: Codable {
         vlmModel = try c.decodeIfPresent(String.self, forKey: .vlmModel) ?? ""
         vlmUrl = try c.decodeIfPresent(String.self, forKey: .vlmUrl) ?? "http://127.0.0.1:1235/v1"
         allowAgpl = try c.decodeIfPresent(Bool.self, forKey: .allowAgpl) ?? false
+        investigationTransport = try c.decodeIfPresent(String.self, forKey: .investigationTransport) ?? "structured_json"
     }
 }
 struct Zone: Codable, Identifiable {

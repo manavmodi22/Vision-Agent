@@ -106,7 +106,7 @@ struct BuildView: View {
             HStack { Text("Your examples").font(.caption.weight(.medium)).foregroundStyle(Studio.muted); Spacer(); Button { model.importMedia() } label: { Label("Add media", systemImage: "plus") }.disabled(working) }
             if let images = model.project?.media, !images.isEmpty {
                 ScrollView(.horizontal) { HStack(spacing: 8) { ForEach(Array(images.prefix(5).enumerated()), id: \.offset) { _, path in ImageCanvas(path: path).frame(width: 86, height: 59) } } }
-                Text("\(images.count) sample images").font(.caption2).foregroundStyle(Studio.muted)
+                Text(InvestigationPresentation.sampleImageCount(images.count)).font(.caption2).foregroundStyle(Studio.muted)
             } else { Text("Add photos or a short clip so the agent can test your goal.").font(.callout).foregroundStyle(Studio.muted) }
         }
     }
@@ -179,13 +179,13 @@ struct BuildView: View {
     private var composer: some View {
         VStack(alignment: .leading, spacing: 12) {
             ZStack(alignment: .topLeading) {
-                if model.prompt.isEmpty { Text(hasStarted ? "Answer the agent or describe what to change…" : "Describe what to detect and what should happen…").font(.callout).foregroundStyle(Studio.muted).padding(14).allowsHitTesting(false) }
+                if model.prompt.isEmpty { Text(agent.usingInvestigation ? agent.investigation?.state.composerPlaceholder ?? "Describe what to detect and what should happen…" : (hasStarted ? "Answer the agent or describe what to change…" : "Describe what to detect and what should happen…")).font(.callout).foregroundStyle(Studio.muted).padding(14).allowsHitTesting(false) }
                 TextEditor(text: $model.prompt).font(.callout).scrollContentBackground(.hidden).padding(8).frame(height: 90)
             }.background(Studio.panel).clipShape(RoundedRectangle(cornerRadius: 9))
             HStack {
                 if working { ProgressView().controlSize(.small); Text(agent.running ? (agent.usingInvestigation ? agent.investigation?.state.statusLabel ?? "Investigating" : agent.build.map { AgentConversation.phaseLabel($0.phase) } ?? "Working") : model.activity).font(.caption).foregroundStyle(Studio.muted).lineLimit(2) }
                 Spacer()
-                Button(agent.usingInvestigation ? (agent.investigation?.state.terminal == true ? "Start new investigation" : agent.investigation?.state.resumable == true ? "Answer and continue" : "Build my app") : (messages.isEmpty && agent.build == nil ? "Build my app" : "Continue building")) { model.buildApp() }
+                Button(agent.usingInvestigation ? agent.investigation?.state.composerButtonTitle ?? "Build my app" : (messages.isEmpty && agent.build == nil ? "Build my app" : "Continue building")) { model.buildApp() }
                     .buttonStyle(.borderedProminent).disabled(working || agent.investigationRequestPending || (agent.usingInvestigation && agent.investigation != nil && agent.investigation?.state.resumable != true && agent.investigation?.state.terminal != true) || model.prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }
         }

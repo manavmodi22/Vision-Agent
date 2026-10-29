@@ -10,6 +10,7 @@ from spec.models import Contract, RunResult
 
 OpaqueId = Annotated[str, Field(pattern=r"^[A-Za-z0-9_-]{1,128}$")]
 RecordId = Annotated[str, Field(pattern=r"^[0-9a-f]{32}$")]
+InvestigationTransport = Literal["structured_json", "decision_function"]
 
 
 class DiscoverCapabilities(Contract):

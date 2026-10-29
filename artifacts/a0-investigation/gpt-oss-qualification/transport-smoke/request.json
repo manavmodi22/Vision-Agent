@@ -1,0 +1,38 @@
+{
+  "model": "gpt-oss-20b-MXFP4-qualification",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Solve the task and return the requested JSON object in your final answer."
+    },
+    {
+      "role": "user",
+      "content": "A box contains 17 blue and 23 red parts. Remove 9 red parts and add 8 blue parts. How many parts remain? Return count and a brief arithmetic check."
+    }
+  ],
+  "temperature": 0,
+  "max_tokens": 1400,
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "name": "TransportSmoke",
+      "strict": true,
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "count": {
+            "type": "integer"
+          },
+          "check": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "count",
+          "check"
+        ]
+      }
+    }
+  }
+}

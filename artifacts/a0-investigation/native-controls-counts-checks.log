@@ -1,0 +1,11 @@
+Building for debugging...
+[1 / 4]
+[2 / 5] VisionApp-product
+[7 / 10] VisionApp-product
+[11 / 14] VisionApp-product
+[12 / 14] VisionApp-product
+/Users/manavrakeshku.modi/vision-agent/app/Package.swift: VisionApp-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/manavrakeshku.modi/vision-agent/app/Package.swift: VisionApp-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[14 / 16] VisionApp-product
+Build complete! (3.62 sec)
+{"status":"passed","checks":317}

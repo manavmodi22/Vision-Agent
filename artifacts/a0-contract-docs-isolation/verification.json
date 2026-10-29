@@ -1,0 +1,24 @@
+{
+  "base_commit": "713046b68b5134ba13c5ea2c6e54396ede402e8d",
+  "cwd": "/Users/manavrakeshku.modi/.codex/worktrees/a0-contract-docs-isolation/vision-agent",
+  "python": "/Users/manavrakeshku.modi/vision-agent/.venv/bin/python",
+  "all_project_imports_in_worktree": true,
+  "project_module_count": 97,
+  "a0_visible_contracts_exactly_equal": true,
+  "shared_authoring_file_exact_pre713046b": true,
+  "legacy_schema_character_reduction": 3303,
+  "patch_path": "/Users/manavrakeshku.modi/.codex/worktrees/a0-contract-docs-isolation/vision-agent/artifacts/a0-contract-docs-isolation/a0-contract-docs.patch",
+  "patch_sha256": "11762cb5d13cb19b6d560fd91fe9b1980b0017375a257111c3a612467c60735c",
+  "production_root_modified": false,
+  "inference_started": false,
+  "server_changes": false,
+  "tests": {
+    "result": "passed",
+    "count": 162,
+    "elapsed_seconds": 23.9,
+    "includes_all_five_failing_legacy_budget_cases": true,
+    "log": "tests.log"
+  },
+  "ruff": "passed",
+  "mypy": "passed:3 source files"
+}

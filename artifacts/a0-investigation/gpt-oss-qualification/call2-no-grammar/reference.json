@@ -1,0 +1,70 @@
+{
+  "historical_call_id": "11049f3cd20e474ab06ee140e6080266",
+  "historical_response": {
+    "id": "chatcmpl-UxPGAIBk3SZYtc4jnJs7JDKTr8or2x8z",
+    "choices": [
+      {
+        "finish_reason": "length",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": "We need to inspect media to get hash. Then inspect capability model.apple-vision descriptor hash. Then run probe OCR on image. Let's inspect media.We need media_ids empty to list.Let's request inspect_media with media_ids=[] to list.We need to output action.We should call inspect_media.Let's produce.We need to output JSON.Let's output.We need to produce action.Let's output.We will output:We need to produce JSON.Let's output.We will output the action.We need to output.Ok.We output.Let's produce final.We output.Ok.We output.We need to output.Let's output.We output.Ok.We output.We output.Let's output.We output.Ok.We output.Let's output.We output.Ok.We output.Let's output.We output.Ok.We output.Let's output.We output.Ok.We output.Let's output.We output.Ok.We output.Let's output.We output.Ok.We output.Let's output.We output.Ok.We output.Let's output.We output.Ok.We output.Let's output.We output."
+        }
+      }
+    ],
+    "created": 1793300203,
+    "model": "gpt-oss-20b-MXFP4-qualification",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b11963-39febd2ad",
+    "usage": {
+      "completion_tokens": 1400,
+      "prompt_tokens": 3784,
+      "total_tokens": 5184,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 2468,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 2468,
+      "prompt_n": 1316,
+      "prompt_ms": 2689.938,
+      "prompt_per_token_ms": 2.0440258358662615,
+      "prompt_per_second": 489.2306068020899,
+      "predicted_n": 1400,
+      "predicted_ms": 49805.086,
+      "predicted_per_token_ms": 35.60049035025018,
+      "predicted_per_second": 28.089500738940597
+    },
+    "context_budget": {
+      "mode": "backend_tokenizer",
+      "model": "gpt-oss-20b-MXFP4-qualification",
+      "input_tokens": 3784,
+      "backend_context_tokens": 16384,
+      "context_verified": true,
+      "rendered_prompt_sha256": "55a959283974624fde86ae7434c43cef5c21e098ec53f75edd0fb52ff6e7b74d",
+      "output_tokens": 1400,
+      "margin_tokens": 128,
+      "effective_context_tokens": 16384,
+      "output_budget_scope": "total_generated_tokens_including_reasoning",
+      "template_request_sha256": "7aa6a273c1724b3c254f828997e47424e5211418acf5d287719bfec36a219712"
+    },
+    "decision": null
+  },
+  "historical_error": "Model completion exhausted its total output allowance (finish_reason=length); no action executed",
+  "scope": "Historical output is a comparison reference, not ground truth and never included in the prompt."
+}

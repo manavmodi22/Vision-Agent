@@ -26,6 +26,8 @@ async def main() -> None:
     parser.add_argument('--model-url', default='http://127.0.0.1:1234/v1')
     parser.add_argument('--model', default='visionapp-planner')
     parser.add_argument('--label', default='Qwen14 baseline')
+    parser.add_argument('--transport', choices=['structured_json', 'decision_function'], default='structured_json',
+                        help='Explicit response transport; saved only in this run\'s isolated workspace settings')
     args = parser.parse_args()
     started = monotonic()
     folder = ROOT / '.visionapp/a0-investigation' / datetime.now(UTC).strftime('run-%Y%m%dT%H%M%SZ')
@@ -45,6 +47,7 @@ async def main() -> None:
     service = WorkspaceService(folder / 'workspace')
     settings = service.repository.settings()
     settings.model_url, settings.planner_model = args.model_url, args.model
+    settings.investigation_transport = args.transport
     service.repository.save_settings(settings)
     project = service.create_project('A0 model qualification: ' + args.label, 'custom')
     service.import_media(project.id, [str(fixture)])
@@ -68,7 +71,7 @@ async def main() -> None:
                     if item.id == snapshot.state.preview_observation_id), None)
     preview_texts = [text for frame in preview.get('frames', []) for text in frame.get('texts', [])] if isinstance(preview, dict) else []
     report = {'source_before': source_before, 'source_after': source_identity(ROOT),
-              'model_url': args.model_url, 'model': args.model, 'label': args.label,
+              'model_url': args.model_url, 'model': args.model, 'label': args.label, 'transport': args.transport,
               'elapsed_s': monotonic()-started, 'workspace': str(folder), 'snapshot': snapshot.model_dump(mode='json'),
               'reference': {'origin': 'Generated software fixture; these expected values were not supplied to the planner',
                             'expected_preview_texts': ['QZ-4817'], 'excluded_readings': ['ITEM CODE', 'SHIP TO', 'IGNORE-552']},

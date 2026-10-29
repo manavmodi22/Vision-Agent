@@ -28,6 +28,7 @@ from agent.investigation import (  # noqa: E402
     PROMPT_TOKEN_MARGIN,
     SYSTEM,
     action_contracts,
+    completion_failure,
     node_contracts,
     verify_prompt_budget,
     workflow_action_contracts,
@@ -258,6 +259,8 @@ def arguments() -> argparse.Namespace:
     parser.add_argument("--contracts", choices=("captured", "current"), default="captured",
                         help="Captured preserves historical contracts; current explicitly regenerates prompt/schema/docs and grounding")
     parser.add_argument("--omit-recent-purpose", action="store_true", help="Diagnostic-only removal of purpose from recent_actions; all other context retained")
+    parser.add_argument("--omit-response-format", action="store_true", help="Diagnostic-only grammar ablation; retain original schema for post-hoc validation, dispatch nothing")
+    parser.add_argument("--native-decision-function", action="store_true", help="Diagnostic-only single submit_decision function instead of final JSON; no action dispatch")
     parser.add_argument("--sampling-json", help="Explicit sampling-only JSON override; omitted preserves captured temperature 0")
     parser.add_argument("--model-url", default="http://127.0.0.1:1236/v1")
     parser.add_argument("--model", help="Defaults to the captured model alias")
@@ -296,6 +299,15 @@ async def main() -> None:
     request = {"model": model_name, "messages": messages, "max_tokens": captured["max_tokens"],
                "response_format": {"type": "json_schema", "json_schema": {
                    "name": "InvestigationDecision", "strict": True, "schema": captured["schema"]}}, **sampling}
+    if args.omit_response_format:
+        request.pop("response_format")
+    if args.native_decision_function:
+        request.pop("response_format", None)
+        request["tools"] = [{"type": "function", "function": {"name": "submit_decision",
+            "description": "Submit one typed next-action decision for host validation. This only proposes an action.",
+            "strict": True, "parameters": captured["schema"]}}]
+        request["tool_choice"] = {"type": "function", "function": {"name": "submit_decision"}}
+        request["parallel_tool_calls"] = False
     folder = (args.output_dir or ROOT / "artifacts/a0-investigation/next-action-replays" /
               (datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ") + f"-call{args.call}-{args.context}-{uuid.uuid4().hex[:6]}")).resolve()
     protected_ledger_root = ledger.parents[2] if ledger.parent.parent.name == "investigations" else ledger.parent
@@ -316,6 +328,8 @@ async def main() -> None:
                "contracts_mode": args.contracts, "changed_input_diagnostic": args.contracts == "current",
                "changed_input_paths": [item["path"] for item in changed_inputs],
                "sampling_override_explicit": args.sampling_json is not None, "sampling": sampling,
+               "response_format_omitted": args.omit_response_format,
+               "native_decision_function": args.native_decision_function,
                "omit_recent_purpose": args.omit_recent_purpose, "omitted_purpose_count": len(context_changes),
                "unmodified_context_sha256": unmodified_context_sha256,
                "captured_sampling": {"temperature": captured["temperature"]}, "model_url": args.model_url,
@@ -337,7 +351,10 @@ async def main() -> None:
     try:
         if args.run:
             async with httpx.AsyncClient(timeout=4, trust_env=False) as client:
-                receipt["context_budget"] = await verify_prompt_budget(client, args.model_url, model_name, messages, captured["max_tokens"])
+                options = {key: value for key, value in request.items() if key not in {"model", "messages", "extra_body"}}
+                options.update(request.get("extra_body", {}))
+                receipt["context_budget"] = await verify_prompt_budget(
+                    client, args.model_url, model_name, messages, captured["max_tokens"], request_options=options)
                 for key, url in (("backend_models", args.model_url + "/models"),
                                  ("backend_properties", args.model_url.removesuffix("/v1") + "/props")):
                     response = await client.get(url)
@@ -366,7 +383,16 @@ async def main() -> None:
             raw = response.model_dump(mode="json")
             save(folder, "response.json", raw)
             try:
-                decision = json.loads(response.choices[0].message.content or "")
+                if args.native_decision_function:
+                    choice = response.choices[0]
+                    calls = choice.message.tool_calls or []
+                    if choice.finish_reason != "tool_calls" or len(calls) != 1 or calls[0].function.name != "submit_decision":
+                        raise ValueError("Expected one complete submit_decision function call")
+                    decision = json.loads(calls[0].function.arguments)
+                else:
+                    if failure := completion_failure(raw, "structured_json"):
+                        raise ValueError(failure)
+                    decision = json.loads(response.choices[0].message.content or "")
                 result = validate_candidate(decision, prefix, context, args.contracts)
             except (ValueError, IndexError) as error:
                 result = {"shape_and_provenance_valid": False, "error": str(error), "action_dispatched": False}

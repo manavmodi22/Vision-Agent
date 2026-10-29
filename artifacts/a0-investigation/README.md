@@ -109,3 +109,27 @@ The [paired workflow diagnostic](next-action-replays/workflow-call7-paired-compa
 retains both incorrect model proposals and the actual failed preview of the 9B
 graph. The [default planner was restored](default-planner-restored.json), and the
 rebuilt development app [started a fresh native investigation](native-grounded-run/launch-and-start.json).
+
+The [completed native test](native-grounded-run/report.json) made seven model calls,
+six actions and two failed probe attempts, with zero completed vision probes and
+no workflow. It asked for detector training labels for the text-reading task.
+Source identity and the checked existing project files remained unchanged. The
+native pause/restart/resume checks and [cancellation](native-grounded-run/cancellation.json)
+are retained separately from that failed planner outcome. The raw ledger and
+immutable artifacts were copied before cancellation; the reference was not sent
+to the planner.
+
+The [713046b CI failure](ci-713046b.json) is retained. Fix `16dcc52` restores the
+legacy schema budget while keeping A0 documentation unchanged; its isolated
+[validation](../a0-contract-docs-isolation/validation.json) includes all five
+previously failing cases. This software repair does not change the failed model
+qualification result.
+
+The pinned gpt-oss candidate's [first full run](gpt-oss-qualification/first-live-failure/report.json)
+stopped at a repeated reasoning-channel loop before any vision probe. Removing
+the final-JSON grammar produced no usable final response. A separate captured
+call using one native decision function returned a valid proposal; neither
+diagnostic dispatched an action. The [review](gpt-oss-first-fixture-review/verdict.md)
+keeps these boundaries explicit. The new optional decision-function transport
+has [software validation](decision-function-validation.json), with defaults
+unchanged; it still needs actual complete vision-task qualification.

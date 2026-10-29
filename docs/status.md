@@ -113,6 +113,51 @@ unchanged goal was submitted through the native composer for a fresh investigati
 [The launch receipt](../artifacts/a0-investigation/native-grounded-run/launch-and-start.json)
 records the engine identity and task; starting that run is not a passing result.
 
+That [native run has now finished](../artifacts/a0-investigation/native-grounded-run/report.json)
+without a draft. Across seven model calls and six actions, its two probe attempts
+failed before producing vision results: first an invalid model ID, then a detector
+that was not trained for the requested class. It asked for training data instead
+of exploring the available reader. The generated fixture reference remained
+outside the planner, the source stayed fixed, and the checked existing project
+files were unchanged. Actual native pause, app/engine restart, durable reload,
+resume and cancellation were verified. These controls and real saved OCR regions
+work; autonomous task completion remains unqualified.
+
+Commit `713046b` failed remote CI on five legacy planner prompt-budget checks.
+The A0 graph descriptions had enlarged the shared schema. Commit `16dcc52` moves
+that documentation into the investigation-specific schema projection, preserving
+its exact visible contracts while restoring the shared schema. All 162 targeted
+checks, Ruff and strict mypy passed in the isolated fix; see the
+[validation receipt](../artifacts/a0-contract-docs-isolation/validation.json).
+The published fix [passed full CI](../artifacts/a0-investigation/ci-16dcc.json):
+1,342 Python tests with two optional skips, Ruff, strict mypy on 201 files, and
+291 native checks. Subsequent native wording and transport checks are recorded
+separately; this CI result applies to the exact published commit.
+
+The native investigation UI now distinguishes returned results from total search
+matches and clears obsolete questions after cancellation. Its latest contract
+suite passes 317 checks, and the rebuilt screen was
+[visibly verified](../artifacts/a0-investigation/native-final-controls-verified.json).
+The model client also preflights the same options used for generation and stops
+on truncated or missing final output, preserving the raw response and usage.
+
+An isolated gpt-oss-20b MXFP4 candidate was downloaded with pinned provenance and
+verified SHA256; defaults were not changed. Its first full fixture run stopped
+after one discovery action when the final-JSON transport repeatedly entered
+reasoning blocks. A captured-call diagnostic using a single native decision
+function returned a valid proposal, but dispatched no action. See the
+[review](../artifacts/a0-investigation/gpt-oss-first-fixture-review/verdict.md).
+This establishes a transport candidate, not a correct vision app or a promotion.
+
+The explicit `decision_function` option now submits one typed decision through
+`submit_decision`, then applies the same host validation and execution boundary.
+Each request is an independent decision RPC with current observations; it is not
+a native tool conversation. Structured JSON remains the default. The native
+advanced compatibility setting preserves this choice across settings saves.
+[Validation](../artifacts/a0-investigation/decision-function-validation.json)
+records 155 broader tests, 65 final transport/loop tests, repository Ruff/strict
+mypy, and 322 native checks. A fresh full model run is recorded separately.
+
 Subsequent live investigation found two context defects: repeated metadata could
 displace earlier vision evidence, and the fixed five-reading sample hid useful
 readings even when the full compact result fit. Search now distinguishes graph

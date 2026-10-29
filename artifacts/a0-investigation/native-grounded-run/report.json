@@ -1,0 +1,104 @@
+{
+  "scope": "Actual native-submitted local planner run on generated fixture; one deliberate pause/restart/resume intervention. Failed planner qualification, not A0 acceptance.",
+  "captured_at": "2026-10-29T18:47:45.749142+00:00",
+  "source_before": "97b7981cc76b0315dbb7dc7230ca1827e6525b94bdbbef00200d6e859a24ef65",
+  "source_after": "97b7981cc76b0315dbb7dc7230ca1827e6525b94bdbbef00200d6e859a24ef65",
+  "task_id": "c539bc6fcc2e4d1c929ea0ac7c700c3f",
+  "model": "visionapp-planner",
+  "model_url": "http://127.0.0.1:1234/v1",
+  "state": {
+    "schema_version": "a0.1",
+    "id": "c539bc6fcc2e4d1c929ea0ac7c700c3f",
+    "project_id": "a5c75eebf2574ccd",
+    "objective": "Build an app that reads only the item code from each image. Ignore the shipping label. Use the supplied image to figure out how.",
+    "revision": 15,
+    "status": "awaiting_input",
+    "stage": "investigating",
+    "selected_workflow_revision": null,
+    "preview_observation_id": null,
+    "budget": {
+      "max_model_calls": 20,
+      "max_actions": 16,
+      "max_probes": 6,
+      "max_elapsed_s": 900.0,
+      "model_calls": 7,
+      "actions": 6,
+      "probes": 2,
+      "elapsed_s": 533.3243890840095
+    },
+    "pending_action_id": null,
+    "pending_model_call_id": null,
+    "latest_observation_ids": [
+      "24b728fa8b374c128e20762bb5d1bd5d"
+    ],
+    "question": "Do you have access to labeled data for 'item code' to fine-tune the model, or would you like to explore other models or methods for detecting the item code?",
+    "stop_reason": null,
+    "user_answers": [],
+    "created_at": "2026-10-29T18:36:40.219459+00:00",
+    "updated_at": "2026-10-29T18:46:19.387955+00:00"
+  },
+  "probe_outcomes": [
+    {
+      "id": "c3d2e26895634c2d902b6a04f02949eb",
+      "status": "failed",
+      "executed": false,
+      "error": {
+        "code": "tool_rejected",
+        "message": "Probe capability_id='model.local-detector-rtdetr-prior001-20261028' does not match request.model_id='model.local-detector-rtdetr-prior001-20261028'. capability_id must equal 'model.' + request.model_id. Copy the exact request.model_id from the inspected capability's probe_request_schemas, not the catalogue capability ID.",
+        "retryable": false,
+        "failed_stage": "authorization_or_preparation"
+      }
+    },
+    {
+      "id": "bdf91b629e6049a5b20a2d5eca6028fa",
+      "status": "failed",
+      "executed": true,
+      "error": {
+        "code": "adapter_failed",
+        "message": "This RT-DETRv2 checkpoint has not been trained for: item code. Use open-vocabulary proposals and fine-tune reviewed labels.",
+        "retryable": false,
+        "failed_stage": "inference"
+      }
+    }
+  ],
+  "completed_vision_probe_count": 0,
+  "workflow_constructed": false,
+  "reference": {
+    "expected_preview_texts": [
+      "QZ-4817"
+    ],
+    "excluded": [
+      "ITEM CODE",
+      "SHIP TO",
+      "IGNORE-552"
+    ]
+  },
+  "reference_check": {
+    "preview_available": false,
+    "exact": null
+  },
+  "existing_project_file_checks": {
+    "project.json": {
+      "before": "1af088f0eff423d05fd4c0f4face7865f5db9b5046d839979cc205da4a11b40e",
+      "after": "1af088f0eff423d05fd4c0f4face7865f5db9b5046d839979cc205da4a11b40e"
+    },
+    "annotations.json": {
+      "before": "f4774f9ec083dc272edee151dd0c110a7cea33d9a482bf1053d3ce4ee8749946",
+      "after": "f4774f9ec083dc272edee151dd0c110a7cea33d9a482bf1053d3ce4ee8749946"
+    },
+    "zones/lanes.json": {
+      "before": "66d20fbda1df3be3d08de22d267b37ec298c72ac135984624c8f084080f6f2a4",
+      "after": "66d20fbda1df3be3d08de22d267b37ec298c72ac135984624c8f084080f6f2a4"
+    },
+    "investigations/71b3580f8d734b7d854a65f4cfcef549/task.json": {
+      "before": "f99b345ae3942ad911274b0eebf964b1373bbce289113574a0b8d2a13cb7b28b",
+      "after": "f99b345ae3942ad911274b0eebf964b1373bbce289113574a0b8d2a13cb7b28b"
+    },
+    "investigations/f052ca681d1945a0b3be2ada319ebc8a/task.json": {
+      "before": "bf1e20f34160c7ced0b8b92e792628d5af4f10c3ae4f2f72ab6296023dbf7fb4",
+      "after": "bf1e20f34160c7ced0b8b92e792628d5af4f10c3ae4f2f72ab6296023dbf7fb4"
+    }
+  },
+  "existing_project_files_unchanged": true,
+  "native_controls": "Actual pause, graceful app+engine restart, durable paused-state reload and resume verified. A following cancellation is recorded separately."
+}

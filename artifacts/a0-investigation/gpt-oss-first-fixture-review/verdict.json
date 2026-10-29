@@ -1,0 +1,67 @@
+{
+  "checked_at": "2026-10-29T18:58:24.798635+00:00",
+  "review_type": "read_only_completed_run_evidence_review",
+  "verdict": "inconclusive_before_vision_execution",
+  "source_identity": "b3092bf6bc36f1a1880b15c3467396845795e7146f2a657e29b5b1b5c39c93b8",
+  "task_id": "b80453df3dd14751b9b090a77d661554",
+  "elapsed_s": 64.55757249996532,
+  "facts": {
+    "model_calls": 2,
+    "completed_actions": 1,
+    "probes": 0,
+    "workflows": 0,
+    "previews": 0,
+    "completed_action": "discover_capabilities task_type=ocr kind=model",
+    "discovery_observation": "e877721ec3894c0b8fa909aa25974a6d",
+    "failed_call_id": "11049f3cd20e474ab06ee140e6080266",
+    "failed_call_received_actual_discovery": true,
+    "failed_call_finish_reason": "length",
+    "failed_call_completion_tokens": 1400,
+    "failed_call_final_content_empty": true,
+    "failed_call_status": "failed",
+    "failed_call_error": "Model completion exhausted its total output allowance (finish_reason=length); no action executed",
+    "no_action_for_failed_call": true,
+    "reference_check_exact": null
+  },
+  "not_tested": [
+    "observation-driven crop selection",
+    "provisional OCR inference",
+    "workflow construction",
+    "actual preview exclusion",
+    "final readiness evidence"
+  ],
+  "unsupported_success_claims": [],
+  "proposed_diagnostic": {
+    "run": false,
+    "captured_call_number": 2,
+    "only_generation_change": "omit response_format",
+    "unchanged": [
+      "captured messages",
+      "temperature 0",
+      "max_tokens 1400",
+      "low reasoning",
+      "512 reasoning tokens per block"
+    ],
+    "validate_afterward": "Original captured schema, DTO and grounding; no dispatch",
+    "preflight": "Compare actual rendered prompt hash; any difference is a confound",
+    "interpretation": "Successful final without grammar implicates structured-output interaction; continued loop does not distinguish greedy/model/runtime causes."
+  },
+  "inputs": [
+    {
+      "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T185540Z/report.json",
+      "bytes": 6500,
+      "sha256": "39edc2c15214d9aaca9476301c552c21364d3b11aea6eff58946d148f46e50ca"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T185540Z/workspace/projects/99bd3774a12c46a7/investigations/b80453df3dd14751b9b090a77d661554/task.json",
+      "bytes": 95334,
+      "sha256": "b11e5c14835305baf1a5d81efe818cf68e91177755d5b8119336e4242d6505d0"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T185540Z/item-and-shipping.png",
+      "bytes": 21509,
+      "sha256": "36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051"
+    }
+  ],
+  "mutations": "Only this review artifact directory; no ledger, backend, server or inference mutation."
+}

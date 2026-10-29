@@ -1,0 +1,9 @@
+{
+  "verified_at": "2026-10-29T18:38:19.652351+00:00",
+  "commit": "713046b68b5134ba13c5ea2c6e54396ede402e8d",
+  "remote_sha": "713046b68b5134ba13c5ea2c6e54396ede402e8d",
+  "status": "verified_published",
+  "initial_push": "SSH receiver accepted unpack and refs/heads/main; immediate API read lagged. Subsequent no-cache API read matched exact commit. No second push or force update.",
+  "ci_run_id": 40932628959,
+  "ci_status": "in_progress"
+}

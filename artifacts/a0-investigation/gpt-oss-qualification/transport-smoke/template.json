@@ -1,0 +1,3 @@
+{
+  "prompt": "<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutoff: 2024-06\nCurrent date: 2026-10-29\n\nReasoning: low\n\n# Valid channels: analysis, commentary, final. Channel must be included for every message.<|end|><|start|>developer<|message|># Instructions\n\nSolve the task and return the requested JSON object in your final answer.\n\n<|end|><|start|>user<|message|>A box contains 17 blue and 23 red parts. Remove 9 red parts and add 8 blue parts. How many parts remain? Return count and a brief arithmetic check.<|end|><|start|>assistant"
+}
