@@ -153,8 +153,12 @@ def build_server(data_dir: Path, *, service: WorkspaceService | None = None) -> 
         from engine.zones import read_zone_state
 
         manifest = DatasetService(service).manifest(project_id)
-        reserved = reserved_acceptance_paths(service.root(project_id), service.annotations(project_id))
+        dataset = service.annotations(project_id)
+        reserved = reserved_acceptance_paths(service.root(project_id), dataset)
         visible = [item for item in manifest.images if item.image_path not in reserved]
+        visible_paths = {item.image_path for item in visible}
+        visible_annotations = [row for row in dataset.annotations
+                               if str((service.root(project_id) / row.image_path).resolve()) in visible_paths]
         zones = read_zone_state(service.root(project_id))
         splits: dict[str, int] = {}
         for item in visible:
@@ -162,6 +166,8 @@ def build_server(data_dir: Path, *, service: WorkspaceService | None = None) -> 
         return DatasetContext(revision=manifest.revision, classes=[item.name for item in manifest.classes],
                               image_count=len(visible), reviewed_count=sum(item.reviewed for item in visible),
                               annotation_count=sum(item.annotation_count for item in visible), split_counts=splits,
+                              text_region_count=sum(len(row.text_regions) for row in visible_annotations),
+                              expected_text_count=sum(len(row.expected_texts) for row in visible_annotations),
                               saved_zone_ids=[zone.id for zone in zones.zones] if zones.confirmed else [],
                               zones_confirmed=zones.confirmed, zone_origin=zones.origin)
 

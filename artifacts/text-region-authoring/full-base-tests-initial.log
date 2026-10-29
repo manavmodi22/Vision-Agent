@@ -1,0 +1,70 @@
+........................................................................ [  8%]
+........................................................................ [ 16%]
+......s..s.............................................................. [ 25%]
+........................................................................ [ 33%]
+........................................................................ [ 42%]
+........................................................................ [ 50%]
+........................................................................ [ 59%]
+........................................................................ [ 67%]
+........................................................................ [ 76%]
+........................................................................ [ 84%]
+........................................................................ [ 93%]
+......F........F.....FF...................................               [100%]
+=================================== FAILURES ===================================
+______ test_real_packages_have_versioned_complete_contracts_and_examples _______
+
+    def test_real_packages_have_versioned_complete_contracts_and_examples() -> None:
+        skills = catalog()
+        assert {skill.manifest.id for skill in skills} == {
+            "authoring", "detection", "reading", "segmentation", "tracking", "alerting"}
+        for skill in skills:
+            assert skill.reference.id == skill.manifest.id
+>           assert skill.reference.version == "1.0.0"
+E           AssertionError: assert '1.1.0' == '1.0.0'
+E             
+E             - 1.0.0
+E             + 1.1.0
+
+tests/test_skill_packages.py:25: AssertionError
+____________ test_content_and_metadata_changes_both_change_identity ____________
+
+    def test_content_and_metadata_changes_both_change_identity() -> None:
+        raw = files("agent.skills").joinpath("packages", "reading", "SKILL.md").read_bytes()
+        original = parse_skill(raw, "reading")
+        changed_body = parse_skill(raw + b"\nAn additional validation requirement.\n", "reading")
+        changed_version = parse_skill(raw.replace(b'"1.0.0"', b'"1.0.1"'), "reading")
+>       assert len({original.reference.sha256, changed_body.reference.sha256, changed_version.reference.sha256}) == 3
+E       AssertionError: assert 2 == 3
+E        +  where 2 = len({'33679c8209cf7a6ad3c17f8b062f015528f9369deefeeb9f9aa5798fcf1d57ca', '67559266f279f5bcfaf523fe25a1d7ffa18b34890e3beb4775beb301f7ae8a0a'})
+
+tests/test_skill_packages.py:55: AssertionError
+____ test_wrong_identity_unknown_phase_and_oversized_documents_fail_closed _____
+
+    def test_wrong_identity_unknown_phase_and_oversized_documents_fail_closed() -> None:
+        raw = files("agent.skills").joinpath("packages", "reading", "SKILL.md").read_bytes()
+        with pytest.raises(ValueError, match="identity"):
+            parse_skill(raw, "detection")
+        with pytest.raises(ValueError, match="size budget"):
+            parse_skill(raw + b"x" * 16000, "reading")
+        with pytest.raises(ValueError):
+            select_skills("Read codes", phase="approve-everything")
+>       with pytest.raises(ValidationError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValidationError
+
+tests/test_skill_packages.py:84: Failed
+_______ test_prompt_is_bounded_and_contains_selected_version_references ________
+
+    def test_prompt_is_bounded_and_contains_selected_version_references() -> None:
+        chosen = select_skills("Read printed labels")
+        text = render_skills(chosen)
+>       assert "reading@1.0.0" in text
+E       assert 'reading@1.0.0' in 'Application playbook: Describe, plan, execute and measure (authoring@1.0.0; sha256 68dea50aabed360e591c70ec2f1e992067...xpected SKU": ask for its value; do not use the words expected SKU as the value unless explicitly quoted as a literal.'
+
+tests/test_skill_packages.py:91: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_skill_packages.py::test_real_packages_have_versioned_complete_contracts_and_examples
+FAILED tests/test_skill_packages.py::test_content_and_metadata_changes_both_change_identity
+FAILED tests/test_skill_packages.py::test_wrong_identity_unknown_phase_and_oversized_documents_fail_closed
+FAILED tests/test_skill_packages.py::test_prompt_is_bounded_and_contains_selected_version_references
+4 failed, 844 passed, 2 skipped in 286.72s (0:04:46)

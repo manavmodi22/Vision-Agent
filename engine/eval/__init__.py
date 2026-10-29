@@ -108,6 +108,8 @@ def evaluate(spec: PipelineSpec, dataset: EvalDataset, project_root: Path, *,
     value = metrics[spec.eval.metric]
     passed = value <= spec.eval.target if spec.eval.metric == "count_mae" else value >= spec.eval.target
     warnings = list(compiled.warnings)
+    if reading and any(annotation.text_regions for annotation in dataset.annotations):
+        warnings.append("Text-region annotations supply image-level transcripts only. These metrics do not score localization, polygon IoU, reading order or duplicate-instance geometry.")
     cer = error_rate(character_edits, expected_characters) if reading else None
     wer = error_rate(word_edits, expected_words) if reading else None
     if reading and (character_edits is None or word_edits is None):

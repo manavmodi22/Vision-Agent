@@ -1,0 +1,32 @@
+{
+  "socket": "/tmp/visionapp-502/756d188154e6-3751f55e26bb.sock",
+  "health": {
+    "status": "ok",
+    "version": "0.1.0",
+    "model_server": {
+      "reachable": true,
+      "models": [
+        "visionapp-planner"
+      ],
+      "error": null
+    },
+    "runtime": {
+      "data_dir": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp",
+      "python": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/Resources/PythonRuntime/bin/python3.12",
+      "package_root": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+      "build_id": "3751f55e26bb8f270c3bd38ba4c51c4081d833b57effde506653c3298b864e6b",
+      "pid": 11835
+    },
+    "capabilities": {
+      "image_folder": true,
+      "recorded_video": true,
+      "apple_vision": true,
+      "camera": false,
+      "screen_capture": false,
+      "training": true,
+      "alerts": true,
+      "native_app": true,
+      "live_frame_ingress": true
+    }
+  }
+}

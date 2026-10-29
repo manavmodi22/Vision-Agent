@@ -6,6 +6,10 @@ enum PlatformContractChecks {
         var checks = 0
         for (flag, path) in zip(arguments, arguments.dropFirst()) {
             switch flag {
+            case "--text-region-annotation":
+                _ = try JSONDecoder().decode(ImageAnnotationResponse.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
+            case "--dataset-manifest":
+                _ = try JSONDecoder().decode(DatasetManifest.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
             case "--reading-frame":
                 _ = try JSONDecoder().decode(FrameResult.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
             case "--native-readings-v2":

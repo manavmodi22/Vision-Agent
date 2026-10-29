@@ -33,14 +33,14 @@ so OCR plus visual-judgement graphs retain both actual outputs. Missing reader
 regions are described as unavailable; current judgement output is not labelled
 legacy merely because it has no OCR inference record.
 
-Contextual image review retains the existing image-level expected text editor.
-Reading-only workflows expose pan/zoom rather than object-box authoring. Editing
-expected text clears `reviewed` while preserving proposal provenance and existing
-object labels. Opening a preview or review performs no inference and never marks
-an image reviewed. Region predictions are read-only; the current annotation schema
-does not support region-level text ground truth. Text accuracy, CER and WER remain
-the existing normalized image-level metrics, not spatial OCR or reading-order
-quality. The legacy trimming/sorting policy is unchanged.
+Contextual review now supports separate editable text regions and object boxes.
+Reading workflows default to text regions. Prediction regions remain read-only;
+explicit copying creates unreviewed labels with the original observation and
+execution provenance retained. Manual image-level expected text stays compatible;
+an explicit review sheet can instead link those values to region transcripts.
+Opening a preview or review performs no inference and never marks an image reviewed.
+Text accuracy, CER and WER remain image-level metrics, not spatial OCR or
+reading-order quality. See [text-region editing](text-region-editor.md).
 
 Checks cover geometry conversion/envelopes, crop mapping, missing confidence,
 duplicate text IDs, Unicode distinction, legacy decoding, strict stdout and review

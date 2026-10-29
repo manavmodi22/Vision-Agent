@@ -183,7 +183,11 @@ class WorkspaceService:
             raise ValueError("The frozen holdout is missing images; restore its annotations")
         return EvalDataset(id=full.id, annotations=[item for item in selected if (root / item.image_path).resolve() not in reserved])
 
-    def save_annotations(self, project_id: str, dataset: EvalDataset) -> EvalDataset:
+    def save_annotations(self, project_id: str, dataset: EvalDataset, *,
+                         imported_exposures: dict[str, list[str]] | None = None) -> EvalDataset:
+        from engine.annotation_edits import normalize_annotation_edits
+        from engine.eval.usage import preserve_annotation_usage
+
         with self.repository.lock:
             project = self.get_project(project_id)
             allowed = {Path(path).resolve() for path in project.media}
@@ -197,6 +201,9 @@ class WorkspaceService:
                 seen.add(path)
             if seen != allowed:
                 raise ValueError("Annotation edits must preserve every imported image")
+            previous = self.annotations(project_id)
+            dataset = normalize_annotation_edits(self.root(project_id), previous, dataset)
+            preserve_annotation_usage(self.root(project_id), previous, dataset, imported_exposures=imported_exposures)
             atomic_model(self.root(project_id) / "annotations.json", dataset)
             self.invalidate(project)
             self.repository.save(project)

@@ -12,11 +12,11 @@ from engine.eval.configuration import (
     group_keys,
     project_dataset,
 )
-from engine.eval.history import legacy_exposures
+from engine.eval.history import annotation_model_reasons, legacy_exposures
 from engine.evidence_metadata import image_identity, pixel_hash_image, relative_image, source_record
 from engine.store.repository import atomic_model
 from spec.evaluation import EvidenceImage
-from spec.models import Contract
+from spec.models import Contract, EvalDataset
 
 
 class UsageLedger(Contract):
@@ -84,6 +84,56 @@ def exposure_map(root: Path, images: list[EvidenceImage]) -> dict[str, list[str]
 def preserve_legacy_usage(root: Path, images: list[EvidenceImage]) -> None:
     """Caller holds evidence_lock; retain unknown legacy identity across reimports."""
     atomic_model(root / "evaluation/usage.json", ExposureSnapshot(root, images).ledger)
+
+
+def preserve_annotation_usage(root: Path, previous: EvalDataset, incoming: EvalDataset, *,
+                              imported_exposures: dict[str, list[str]] | None = None) -> None:
+    """After caller validation, append old/new seed history before replacing labels.
+
+    Caller holds the project write lock and has checked image membership, edit CAS,
+    classes and the complete incoming payload. This function finishes all parsing
+    and content reads before its single ledger write. A later filesystem failure
+    may conservatively retain exposure, but must never lose known model use.
+    """
+    previous = EvalDataset.model_validate(previous.model_dump(mode="json"))
+    incoming = EvalDataset.model_validate(incoming.model_dump(mode="json"))
+    reasons: dict[str, set[str]] = {}
+    allowed = {relative_image(root, row.image_path) for row in incoming.annotations}
+    if len(allowed) != len(incoming.annotations):
+        raise ValueError("Incoming annotations must refer to unique images")
+    for dataset in (previous, incoming):
+        for annotation in dataset.annotations:
+            path = relative_image(root, annotation.image_path)
+            reasons.setdefault(path, set()).update(annotation_model_reasons(annotation))
+    imported = imported_exposures or {}
+    if len(imported) > 5000:
+        raise ValueError("Imported model history exceeds the image bound")
+    seen: set[str] = set()
+    for raw, values in imported.items():
+        path = relative_image(root, raw)
+        if path not in allowed or path in seen:
+            raise ValueError("Imported model history must refer to unique incoming images")
+        seen.add(path)
+        if (not isinstance(values, list) or len(values) > 1000
+                or any(not isinstance(value, str) or not value.strip() or len(value) > 1000 for value in values)):
+            raise ValueError("Imported model history requires at most 1000 nonempty bounded reasons per image")
+        reasons.setdefault(path, set()).update(values)
+    # A manual label edit removes no source/build history. With no seed or
+    # imported model use to preserve, do not decode the dataset on each autosave.
+    if not any(reasons.values()):
+        return
+    with evidence_lock(root):
+        ledger = read_usage(root)
+        before = ledger.model_dump_json()
+        images = {row.image_path: row for dataset in (previous, incoming)
+                  for row in _read_configuration(root, dataset).images}
+        snapshot = ExposureSnapshot(root, list(images.values()), ledger)
+        for path, reason_set in reasons.items():
+            if reason_set:
+                for token in snapshot.tokens[path]:
+                    ledger.uses[token] = sorted(set(ledger.uses.get(token, [])) | reason_set)
+        if ledger.model_dump_json() != before:
+            atomic_model(root / "evaluation/usage.json", ledger)
 
 
 def image_exposures(root: Path, image: EvidenceImage, images: list[EvidenceImage],

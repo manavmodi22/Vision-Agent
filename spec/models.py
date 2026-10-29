@@ -6,7 +6,8 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, JsonValue, field_validator, model_validator
 
-from spec.inference import BlockInference
+from spec.inference import SHA256, BlockInference
+from spec.text_annotations import TextRegion
 
 
 class Contract(BaseModel):
@@ -116,6 +117,7 @@ class JudgementEvidence(Contract):
 
 class FrameResult(Contract):
     image_path: str
+    source_image_sha256: SHA256 | None = None
     detections: list[Detection] = Field(default_factory=list)
     counts: dict[str, int] = Field(default_factory=dict)
     texts: list[str] = Field(default_factory=list)
@@ -147,6 +149,21 @@ class Annotation(Contract):
     reviewed: bool = False
     expected_texts: list[str] = Field(default_factory=list)
     proposal: ProposalEvidence | None = None
+    text_regions: list[TextRegion] = Field(default_factory=list, max_length=2000)
+    expected_text_source: Literal["manual", "regions"] = "manual"
+
+    @model_validator(mode="after")
+    def valid_text_labels(self) -> Annotation:
+        if len({region.id for region in self.text_regions}) != len(self.text_regions):
+            raise ValueError("Text-region IDs must be unique within an image")
+        if sum(len((region.transcript or "").encode()) for region in self.text_regions) > 1024 * 1024:
+            raise ValueError("Text-region transcripts exceed 1 MiB")
+        if self.reviewed and any(region.transcript is None or not region.transcript.strip()
+                                 for region in self.text_regions):
+            raise ValueError("Complete every text-region transcript before marking the image reviewed")
+        if self.expected_text_source == "regions":
+            self.expected_texts = [region.transcript for region in self.text_regions if region.transcript is not None]
+        return self
 
 
 class EvalDataset(Contract):

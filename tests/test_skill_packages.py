@@ -22,7 +22,8 @@ def test_real_packages_have_versioned_complete_contracts_and_examples() -> None:
         "authoring", "detection", "reading", "segmentation", "tracking", "alerting"}
     for skill in skills:
         assert skill.reference.id == skill.manifest.id
-        assert skill.reference.version == "1.0.0"
+        assert skill.reference.version == skill.manifest.version
+        assert skill.reference.version == ("1.1.0" if skill.reference.id == "reading" else "1.0.0")
         assert len(skill.reference.sha256) == 64
         assert skill.manifest.required_inputs and skill.manifest.validation_recipe
         assert skill.manifest.failure_modes and "## Examples" in skill.body
@@ -51,9 +52,10 @@ def test_content_and_metadata_changes_both_change_identity() -> None:
     raw = files("agent.skills").joinpath("packages", "reading", "SKILL.md").read_bytes()
     original = parse_skill(raw, "reading")
     changed_body = parse_skill(raw + b"\nAn additional validation requirement.\n", "reading")
-    changed_version = parse_skill(raw.replace(b'"1.0.0"', b'"1.0.1"'), "reading")
+    current_version = f'version = "{original.reference.version}"'.encode()
+    changed_version = parse_skill(raw.replace(current_version, b'version = "999.0.0"'), "reading")
     assert len({original.reference.sha256, changed_body.reference.sha256, changed_version.reference.sha256}) == 3
-    assert changed_version.reference.version == "1.0.1"
+    assert changed_version.reference.version == "999.0.0"
     assert original.reference == load_skill("reading").reference
 
 
@@ -82,13 +84,14 @@ def test_wrong_identity_unknown_phase_and_oversized_documents_fail_closed() -> N
     with pytest.raises(ValueError):
         select_skills("Read codes", phase="approve-everything")
     with pytest.raises(ValidationError):
-        parse_skill(raw.replace(b'version = "1.0.0"', b'version = "latest"'), "reading")
+        current_version = f'version = "{load_skill("reading").reference.version}"'.encode()
+        parse_skill(raw.replace(current_version, b'version = "latest"'), "reading")
 
 
 def test_prompt_is_bounded_and_contains_selected_version_references() -> None:
     chosen = select_skills("Read printed labels")
     text = render_skills(chosen)
-    assert "reading@1.0.0" in text
+    assert f"reading@{load_skill('reading').reference.version}" in text
     assert chosen[-1].reference.sha256 in text
     assert len(text) < 8000
     huge = replace(chosen[0], body="x" * 18001)

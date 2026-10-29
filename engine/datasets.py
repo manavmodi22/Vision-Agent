@@ -52,6 +52,7 @@ class DatasetImage(DataContract):
     height: int
     reviewed: bool
     annotation_count: int
+    text_region_count: int = 0
     split: Literal["train", "validation", "test", "acceptance", "unassigned"] = "unassigned"
     source_asset_id: str | None = None
     source_sha256: str | None = None
@@ -80,6 +81,7 @@ class DatasetMetadata(DataContract):
 
 
 class DatasetVersion(DataContract):
+    format_version: Literal["1", "2"] = "1"
     id: str
     name: str
     created_at: str
@@ -87,6 +89,7 @@ class DatasetVersion(DataContract):
     image_count: int
     reviewed_count: int
     annotation_count: int
+    text_region_count: int = 0
     dataset_hash: str
     source_dataset_hash: str | None = None
     classes: list[DatasetClass]
@@ -171,6 +174,7 @@ class DatasetService:
                 images.append(DatasetImage(id=image_id(filename, root), image_path=str(path),
                     width=width, height=height, reviewed=annotation.reviewed,
                     annotation_count=len(annotation.detections),
+                    text_region_count=len(annotation.text_regions),
                     split=row.split if row and row.split != "unassigned" else ("validation" if path in holdout else ("train" if holdout else "unassigned")),
                     **(row.model_dump(include={"source_asset_id", "source_sha256", "frame_index", "timestamp_s",
                                                "scene_group", "data_origin", "group_provenance"}) if row else {})))
@@ -295,7 +299,8 @@ class DatasetService:
                 raise ValueError("Media source provenance is invalid")
             pixel_hashes: dict[str, str] = {}
             claimed_paths: set[Path] = set()
-            rows = {(root / a.image_path).resolve(): a for a in self.service.annotations(project_id).annotations}
+            previous = self.service.annotations(project_id)
+            rows = {(root / a.image_path).resolve(): a for a in previous.annotations}
             planned: dict[int, tuple[Path, Annotation, bool]] = {}
             for item in coco.images:
                 relative = Path(item.file_name)
@@ -339,7 +344,9 @@ class DatasetService:
                 old = rows.get(target.resolve())
                 if old and (old.detections or old.reviewed) and not replace_existing:
                     raise ValueError("Existing labels would be replaced; choose replace_existing explicitly")
-                planned[item.id] = (target, Annotation(image_path=str(target)), bool(matched))
+                replacement = (old.model_copy(deep=True, update={"detections": [], "reviewed": False, "proposal": None})
+                               if old else Annotation(image_path=str(target)))
+                planned[item.id] = (target, replacement, bool(matched))
             dims = {i.id: (i.width, i.height) for i in coco.images}
             for box in coco.annotations:
                 if box.image_id not in planned or box.category_id not in category_names:
@@ -361,7 +368,13 @@ class DatasetService:
                         project.media.append(imported)
                         annotation.image_path = imported
                     rows[Path(annotation.image_path).resolve()] = annotation
-                atomic_model(root / "annotations.json", EvalDataset(id=f"{project_id}-v1", annotations=list(rows.values())))
+                from engine.annotation_edits import normalize_annotation_edits
+                from engine.eval.usage import preserve_annotation_usage
+
+                updated = normalize_annotation_edits(root, previous,
+                    EvalDataset(id=f"{project_id}-v1", annotations=list(rows.values())))
+                preserve_annotation_usage(root, previous, updated)
+                atomic_model(root / "annotations.json", updated)
                 self.service.invalidate(project)
                 self.service.repository.save(project)
             except Exception:
@@ -384,10 +397,11 @@ class DatasetService:
             dataset = self.service.annotations(project_id)
             if not dataset.annotations:
                 raise ValueError("Import images before creating a dataset version")
-            version = DatasetVersion(id=uuid.uuid4().hex[:16], name=name.strip(), created_at=now(),
+            version = DatasetVersion(format_version="2", id=uuid.uuid4().hex[:16], name=name.strip(), created_at=now(),
                 revision=manifest.revision, image_count=len(manifest.images),
                 reviewed_count=sum(i.reviewed for i in manifest.images),
                 annotation_count=sum(i.annotation_count for i in manifest.images),
+                text_region_count=sum(i.text_region_count for i in manifest.images),
                 dataset_hash="", source_dataset_hash=dataset_hash(dataset, root), classes=manifest.classes)
             folder = root / "dataset-versions" / version.id
             temporary = folder.with_name("." + version.id + ".tmp")
@@ -400,6 +414,9 @@ class DatasetService:
                     row.image_path = "images/" + Path(row.image_path).name
                 atomic_model(temporary / "annotations.json", portable)
                 version.dataset_hash = dataset_hash(portable, temporary)
+                from engine.dataset_archive import LabelArchiveService
+
+                atomic_model(temporary / "labels.vision-labels.json", LabelArchiveService(self.service).export_labels(project_id))
                 coco = self.export_coco(project_id)
                 coco_images = coco["images"]
                 assert isinstance(coco_images, list)

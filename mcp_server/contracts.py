@@ -38,6 +38,8 @@ class DatasetContext(ToolModel):
     image_count: int
     reviewed_count: int
     annotation_count: int
+    text_region_count: int = 0
+    expected_text_count: int = 0
     split_counts: dict[str, int]
     saved_zone_ids: list[str] = Field(default_factory=list)
     zones_confirmed: bool = False

@@ -13,8 +13,9 @@ struct DatasetImage: Codable, Identifiable, Equatable {
     var reviewed: Bool
     var annotationCount: Int
     var split: String
+    var textRegionCount: Int? = nil
     var filename: String { URL(fileURLWithPath: imagePath).lastPathComponent }
-    enum CodingKeys: String, CodingKey { case id, width, height, reviewed, split, imagePath = "image_path", annotationCount = "annotation_count" }
+    enum CodingKeys: String, CodingKey { case id, width, height, reviewed, split, imagePath = "image_path", annotationCount = "annotation_count", textRegionCount = "text_region_count" }
 }
 struct DatasetManifest: Codable {
     var revision: Int
@@ -36,5 +37,5 @@ struct DatasetClassesRequest: Encodable {
     enum CodingKeys: String, CodingKey { case baseRevision = "base_revision", classes }
 }
 enum DatasetFilter: String, CaseIterable {
-    case all = "All images", unreviewed = "Needs review", reviewed = "Reviewed", empty = "No boxes"
+    case all = "All images", unreviewed = "Needs review", reviewed = "Reviewed", empty = "No regions or boxes"
 }

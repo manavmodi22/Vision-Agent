@@ -19,6 +19,7 @@ from engine.agent_state import AgentConflict, AgentStateStore
 from engine.alerts.service import AlertService
 from engine.api.agent_routes import build_router as agent_router
 from engine.api.alert_routes import build_router as alert_router
+from engine.api.annotation_routes import annotation_router
 from engine.api.build_routes import build_router as build_workflow_router
 from engine.api.capability_routes import build_router as capability_router
 from engine.api.contracts import (
@@ -82,6 +83,7 @@ def create_app(data_dir: Path) -> FastAPI:
     app.include_router(provisioning_router(provisioning))
     app.include_router(evaluation_router(service, builds))
     app.include_router(dataset_router(service))
+    app.include_router(annotation_router(service))
     app.include_router(alert_router(alerts))
     app.include_router(agent_router(service))
     app.include_router(live_router(live))

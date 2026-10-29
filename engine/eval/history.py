@@ -7,6 +7,15 @@ from pathlib import Path
 from engine.eval.configuration import project_dataset
 from engine.evidence_metadata import relative_image, source_record
 from spec.evaluation import EvidenceImage
+from spec.models import Annotation
+
+
+def annotation_model_reasons(annotation: Annotation) -> list[str]:
+    """Model provenance remains exposure after a person edits or reviews its label."""
+    reasons = ["Prior model-generated annotation proposal"] if annotation.proposal is not None else []
+    if any(region.seed is not None for region in annotation.text_regions):
+        reasons.append("Prior model-generated text-region seed")
+    return reasons
 
 
 def legacy_exposures(root: Path, images: list[EvidenceImage]) -> dict[str, list[str]]:
@@ -16,9 +25,10 @@ def legacy_exposures(root: Path, images: list[EvidenceImage]) -> dict[str, list[
     for path in legacy:
         result[path] = ["Legacy model-exposure history is unknown; this pre-protocol media is not certified untouched"]
     for row in project_dataset(root).annotations:
-        if row.proposal is not None:
+        reasons = annotation_model_reasons(row)
+        if reasons:
             path = relative_image(root, row.image_path)
-            result.setdefault(path, []).append("Prior model-generated annotation proposal")
+            result.setdefault(path, []).extend(reasons)
     files = [root / "build.json", root / "project.json"]
     files.extend(sorted((root / "builds").glob("*.json")))
     for history_path in files:

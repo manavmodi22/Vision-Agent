@@ -71,3 +71,6 @@ receipts for webhook, SMTP and MQTT; credentials are write-only in the UI.
 OCR and barcode previews retain actual reader regions, raw Unicode values and
 execution identity separately from object annotations. See [reading evidence](reading-evidence.md)
 for the compatible CLI protocol, correction behavior and validation boundaries.
+The contextual editor supports [editable text regions](text-region-editor.md),
+including transcript correction, four-corner geometry, explicit prediction copying,
+separate review and portable all-label JSON transfer.

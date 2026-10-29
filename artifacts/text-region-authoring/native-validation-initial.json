@@ -1,0 +1,14 @@
+{
+  "source_identity": "3751f55e26bb8f270c3bd38ba4c51c4081d833b57effde506653c3298b864e6b",
+  "debug": {
+    "status": "passed",
+    "checks": 240
+  },
+  "release": {
+    "status": "passed",
+    "checks": 240
+  },
+  "debug_binary_sha256": "758575a44726a053cb8899803f20e4f1a24313352cc61aa4c98ed1474bab7e12",
+  "release_binary_sha256": "fd5aa27dc420328da72d13f9a5435a55ece723366068c3c7d7b0c9f3fd630934",
+  "scope": "Deterministic native contracts and real offscreen AppKit canvas gestures; visible packaged walkthrough recorded separately"
+}

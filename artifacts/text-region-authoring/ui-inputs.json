@@ -1,0 +1,23 @@
+{
+  "scope": "Native software interaction QA; no production quality or human ground-truth claim",
+  "images": [
+    {
+      "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/text-region-qa-inputs/01-label.png",
+      "source": "/Users/manavrakeshku.modi/vision-agent/artifacts/agent-experience/reading-fixtures/exact-match.png",
+      "origin": "generated software fixture",
+      "sha256": "fc676599ca501be77228487bc0f50736fbe7d1a1992aeb135593d5b02e3719f2"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/text-region-qa-inputs/02-lookalike.png",
+      "source": "/Users/manavrakeshku.modi/vision-agent/artifacts/agent-experience/reading-fixtures/substring-only.png",
+      "origin": "generated software fixture",
+      "sha256": "5928ade6b5f39ec7a6f276c8ec891cee8f61877bc0fd6b8df7119882d97d08ae"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/text-region-qa-inputs/03-scene.jpg",
+      "source": "/Users/manavrakeshku.modi/vision-agent/.visionapp/datasets/textocr-v0.1/images/abff7a10c0e23564.jpg",
+      "origin": "public TextOCR/Open Images photo; unreviewed",
+      "sha256": "8b4194932201e07626e6c6ba427860e0cb1a46d938012962b9d841e855507e73"
+    }
+  ]
+}

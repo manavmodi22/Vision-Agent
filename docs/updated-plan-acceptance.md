@@ -8,8 +8,10 @@ The latest reader checkpoint adds actual native OCR/barcode regions and identity
 explicit reader selection with legacy replay, and public same-input diagnostics.
 See [current status](status.md), [native validation](../artifacts/native-reading-v2/native-validation-final.json), [base-only tests](../artifacts/ci-baseonly/tests-final.log)
 and [the measured comparison](../artifacts/reader-evaluation/COMPARISON.md).
-Paddle remains an isolated runtime proof, not a callable app model. Image-level
-text correction is available; editable/scored text-region ground truth is pending.
+Paddle remains an isolated runtime proof, not a callable app model. The subsequent
+text-region authoring update implements editable quadrilaterals, raw transcripts,
+explicit prediction copying and complete-label transfer. Its [full suite](../artifacts/text-region-authoring/software-validation.json) passes 848 tests with two optional skips and static checks; [native Debug/Release builds](../artifacts/text-region-authoring/native-validation.json) each pass 242 checks. [Bundle relocation, actual OCR and signatures](../artifacts/text-region-authoring/bundle-verification.json) also pass.
+The [installed native walkthrough](../artifacts/text-region-authoring/native-ui.json) verifies describe/build, explicit prediction copying, raw transcript correction, main-canvas drawing/corner/move editing, undo/redo, saves and native label roundtrip. Corrections return to the same conversation; review remains required. Scored text-region localization remains pending.
 These checks do not complete the full architecture or establish warehouse quality.
 
 Previous provisioning candidate source is
@@ -70,7 +72,7 @@ contextual evidence checkpoints in that workflow.
 | Comparable candidate evaluation | Same reviewed holdout/task, aggregate and failure-slice metrics, latency/resources, explicit selection gate | Shared immutable validation protocol binds all compared candidates, task/metric, reviewed membership, source/group/policy and recipe; changes invalidate results/approvals. Numeric pass is separate from promotion eligibility. Nullable CER/WER and EvaluationReport references retained; masks, named-field metrics, failure slices and standardized resource comparison pending |
 | Reviewed scene-disjoint acceptance data | Provenance and split audit, independent reviewed labels, exact benchmark run | Human configuration/reservation and selected-candidate acceptance are implemented, with exposure history, source/pixel separation, duplicate rejection and exact cached replay. Positive path is software-tested with mocked inference, not measured vision quality. Real independent reviewed ground truth remains incomplete; retained public NVIDIA labels are unreviewed, and the separate second-scene detector benchmark failed its recall gate |
 | Optional source acquisition | Isolated external tool authority; URL/time/license/access provenance; injection and content-boundary tests | Pending |
-| System acceptance | Native flows, sustained throughput/coexistence, offline behavior, camera/screen permissions, approved alerts | Protocol-bound approval and bounded local-only trials remain enforced. Candidate `2f08` native goal→preview and exact-image editor opening pass; the new box edit is unverified due to CUA failure. Prior generated-fixture evidence-editing checks remain historical. Canonical relaunch, broader hardware and operational acceptance remain pending |
+| System acceptance | Native flows, sustained throughput/coexistence, offline behavior, camera/screen permissions, approved alerts | Protocol-bound approval and bounded local-only trials remain enforced. Current `3751` canonical relaunch, describe→OCR preview, transcript/geometry correction in the main annotation view, label roundtrip and return to the same conversation pass. Contextual-sheet coordinate dragging hit an automation error; main-canvas dragging passed. Independent review, broader hardware and operational acceptance remain pending |
 | Original local release requirements | Reproducible bundle, all required flows, signing/notarization and Apple silicon CI | Local ad-hoc bundle verified previously; release gates pending |
 
 Historical live-model failures and software reports remain in `artifacts/`.

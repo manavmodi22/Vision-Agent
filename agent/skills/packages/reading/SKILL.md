@@ -10,7 +10,7 @@ allowed_tools = ["blocks_list","block_schema","dataset_context","pipeline_valida
 output_artifacts = ["Reading pipeline","Recognized text with source image","Field comparison evaluation"]
 validation_recipe = ["Score reviewed expected text with declared normalization","Preserve exact versus substring matching and event polarity","Report measured CER/WER, exact text-list accuracy and recognition failures"]
 failure_modes = ["Missing comparison value","Leading zeros lost","Exact/contains confusion","Unsupported language or unreadable text"]
-version = "1.0.0"
+version = "1.1.0"
 +++
 
 # Read the requested fields
@@ -19,6 +19,15 @@ Use an implemented OCR or barcode adapter appropriate to the media. Reading-only
 The model must explicitly state match_mode and match_emit. Exact equality uses exact; substring search uses contains. Emit matched for events only on a match, mismatched for only failed comparisons, and all for ordinary check-whether output. Do not add an object detector or spatial count rule to a reading-only pipeline.
 
 Benchmark OCR candidates on the project's text, language, lighting and scale. Keep raw recognition separate from field normalization. Report character/word error rates only when the evaluator returns them, with its saved normalization policy and counts. Exact text-list accuracy is not a named-field semantic score.
+
+Users can draw and correct text quadrilaterals and exact transcripts in the image
+editor, or explicitly copy a recognized region as an unreviewed label. A copied
+prediction is not ground truth until human review. Keep raw Unicode and repeated
+instances intact. The user chooses whether image-level expected values come from
+the region transcripts or remain manually entered. Dataset context reports text
+regions separately from object boxes and image-level expected values. Region
+geometry, reading order and repeated-instance localization are not scored by the
+current image-level text evaluator; do not claim those capabilities from its score.
 
 ## Examples
 - "Read package codes": return decoded text without a match block.

@@ -35,9 +35,10 @@ struct EvaluatedFailure: Identifiable {
 }
 
 enum ExpectedTextEditing {
-    static func values(_ text: String) -> [String] { text.components(separatedBy: .newlines).map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty } }
+    static func values(_ text: String) -> [String] { text.components(separatedBy: .newlines).filter { !$0.isEmpty } }
+    static func same(_ lhs: [String], _ rhs: [String]) -> Bool { lhs.map { Data($0.utf8) } == rhs.map { Data($0.utf8) } }
     static func update(_ annotation: Annotation, values: [String]) -> Annotation {
-        guard annotation.expectedTexts != values else { return annotation }
+        guard !same(annotation.expectedTexts, values) else { return annotation }
         var updated = annotation; updated.expectedTexts = values; updated.reviewed = false; return updated
     }
 }

@@ -1,0 +1,12 @@
+{
+  "source_identity": "3751f55e26bb8f270c3bd38ba4c51c4081d833b57effde506653c3298b864e6b",
+  "scope": "Final native-only update after literal Unicode correction; bundled Python source verified identical to frozen checkout",
+  "previous_packaged_native_sha256": "cda1f4012d63bfd0121cafa1abe165695df69ab289a51687565cd8dc022449fc",
+  "release_binary_sha256": "2f32425d16506f31cbd7ff37755568421abb606e1f08b17c612bbf28e6f887ab",
+  "native_checks": {
+    "status": "passed",
+    "checks": 242
+  },
+  "packaged_native_sha256": "146881e5c2529fb9b6faa363e5bde4a1694b55bf293abfb58d1b03f3c2cb4c1a",
+  "signature_verified": true
+}

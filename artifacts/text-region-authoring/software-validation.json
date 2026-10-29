@@ -1,0 +1,34 @@
+{
+  "started_at": "2026-10-29T15:33:03.416996+00:00",
+  "source_identity": "3751f55e26bb8f270c3bd38ba4c51c4081d833b57effde506653c3298b864e6b",
+  "scope": "Software regression and static checks; actual app walkthrough is separate",
+  "checks": [
+    {
+      "name": "full-base-tests",
+      "exit_code": 0,
+      "seconds": 267.9213605420082,
+      "log": "artifacts/text-region-authoring/full-base-tests.log"
+    },
+    {
+      "name": "mypy-linux",
+      "exit_code": 0,
+      "seconds": 9.351312917016912,
+      "log": "artifacts/text-region-authoring/mypy-linux.log"
+    },
+    {
+      "name": "mypy-macos",
+      "exit_code": 0,
+      "seconds": 13.281868874968495,
+      "log": "artifacts/text-region-authoring/mypy-macos.log"
+    },
+    {
+      "name": "ruff",
+      "exit_code": 0,
+      "seconds": 0.09668020898243412,
+      "log": "artifacts/text-region-authoring/ruff.log"
+    }
+  ],
+  "final_source_identity": "3751f55e26bb8f270c3bd38ba4c51c4081d833b57effde506653c3298b864e6b",
+  "source_unchanged": true,
+  "passed": true
+}

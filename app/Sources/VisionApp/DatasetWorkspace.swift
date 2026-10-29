@@ -7,6 +7,10 @@ final class DatasetWorkspace: ObservableObject {
     @Published var activeImageID: String?
     @Published var annotation: Annotation?
     @Published var selectedBox: Int?
+    @Published var selectedTextRegionID: String?
+    @Published var labelMode = AnnotationLabelMode.objects
+    @Published var showReadingPredictions = true
+    private var labelModeChosen = false
     @Published var activeClass = ""
     @Published var tool = AnnotationTool.select
     @Published var zoom: Double = 1
@@ -42,7 +46,7 @@ final class DatasetWorkspace: ObservableObject {
             case .all: return matches
             case .unreviewed: return matches && !image.reviewed
             case .reviewed: return matches && image.reviewed
-            case .empty: return matches && image.annotationCount == 0
+            case .empty: return matches && image.annotationCount == 0 && (image.textRegionCount ?? 0) == 0
             }
         }
     }
@@ -56,7 +60,7 @@ final class DatasetWorkspace: ObservableObject {
             if let id = activeImageID, previousRevision != manifest?.revision {
                 let current: ImageAnnotationResponse = try await client.request("GET", route + "/images/\(id)")
                 annotation = current.annotation; savedAnnotation = current.annotation
-                manifest?.revision = current.revision; selectedBox = nil; undoStack = []; redoStack = []
+                manifest?.revision = current.revision; selectedBox = nil; selectedTextRegionID = nil; undoStack = []; redoStack = []
             }
             versions = try await client.request("GET", route + "/versions")
             if !classes.contains(where: { $0.name == activeClass }) { activeClass = classes.first?.name ?? "" }
@@ -71,13 +75,13 @@ final class DatasetWorkspace: ObservableObject {
             let result: ImageAnnotationResponse = try await client.request("GET", route + "/images/\(id)")
             manifest?.revision = result.revision; activeImageID = id
             annotation = result.annotation; savedAnnotation = result.annotation
-            selectedBox = nil; undoStack = []; redoStack = []; hasConflict = false
+            selectedBox = nil; selectedTextRegionID = nil; undoStack = []; redoStack = []; hasConflict = false
             zoom = 1; fitToken += 1
         } catch { self.error = error.localizedDescription }
     }
     func returnToGrid() async {
         guard await saveNow() else { return }
-        activeImageID = nil; annotation = nil; savedAnnotation = nil; selectedBox = nil
+        activeImageID = nil; annotation = nil; savedAnnotation = nil; selectedBox = nil; selectedTextRegionID = nil
     }
     func reloadSavedImage() async {
         guard let id = activeImageID else { return }
@@ -86,6 +90,7 @@ final class DatasetWorkspace: ObservableObject {
         await load(); await openImage(id)
     }
     func change(_ updated: Annotation) {
+        let updated = TextRegionEditing.projected(updated)
         guard let current = annotation, current != updated, !hasConflict else { return }
         undoStack.append(current); if undoStack.count > 100 { undoStack.removeFirst() }
         redoStack = []; annotation = updated; scheduleSave()
@@ -114,20 +119,22 @@ final class DatasetWorkspace: ObservableObject {
         updated.detections.append(label); updated.reviewed = false; change(updated); selectedBox = updated.detections.count-1
     }
     func editExpectedTexts(_ values: [String]) {
-        guard let annotation else { return }
+        guard let annotation, annotation.expectedTextSource == "manual" else { return }
         change(ExpectedTextEditing.update(annotation, values: values))
     }
     func setReviewed(_ reviewed: Bool) {
         guard var updated = annotation else { return }
+        guard !reviewed || (!isDirty && !saving) else { error = "Wait for pending edits to save before marking this image reviewed."; return }
+        guard !reviewed || TextRegionEditing.isComplete(updated) else { error = "Transcribe every text region before marking this image reviewed. Empty transcripts remain drafts."; return }
         updated.reviewed = reviewed; change(updated)
     }
     func undo() {
         guard !hasConflict, let previous = undoStack.popLast(), let current = annotation else { return }
-        redoStack.append(current); annotation = previous; selectedBox = nil; scheduleSave()
+        redoStack.append(current); annotation = TextRegionEditing.restoring(previous, from: current); selectedBox = nil; selectedTextRegionID = nil; scheduleSave()
     }
     func redo() {
         guard !hasConflict, let next = redoStack.popLast(), let current = annotation else { return }
-        undoStack.append(current); annotation = next; selectedBox = nil; scheduleSave()
+        undoStack.append(current); annotation = TextRegionEditing.restoring(next, from: current); selectedBox = nil; selectedTextRegionID = nil; scheduleSave()
     }
     func navigate(_ offset: Int) {
         guard let id = activeImageID, let index = filteredImages.firstIndex(where: { $0.id == id }), filteredImages.indices.contains(index+offset) else { return }
@@ -142,12 +149,12 @@ final class DatasetWorkspace: ObservableObject {
         case "f": zoom = 1; fitToken += 1
         case "+", "=": zoom = min(12, zoom*1.25)
         case "-": zoom = max(0.25, zoom/1.25)
-        case "delete": deleteSelected()
+        case "delete": if labelMode == .textRegions { deleteTextRegion() } else { deleteSelected() }
         case "undo": undo()
         case "redo": redo()
         case "next": navigate(1)
         case "previous": navigate(-1)
-        case "cancel": selectedBox = nil
+        case "cancel": selectedBox = nil; selectedTextRegionID = nil
         default: break
         }
     }
@@ -176,6 +183,7 @@ final class DatasetWorkspace: ObservableObject {
             if let index = manifest?.images.firstIndex(where: { $0.id == id }) {
                 manifest?.images[index].reviewed = result.annotation.reviewed
                 manifest?.images[index].annotationCount = result.annotation.detections.count
+                manifest?.images[index].textRegionCount = result.annotation.textRegions.count
             }
             saving = false
             if isDirty { return await saveNow() }
@@ -183,6 +191,12 @@ final class DatasetWorkspace: ObservableObject {
         } catch EngineError.server(409, let message) {
             hasConflict = true; error = "\(message) Your unsaved annotation remains on screen. Reload saved labels only when you are ready to discard it."; return false
         } catch { self.error = error.localizedDescription; return false }
+    }
+    func configureLabelMode(reading: Bool) {
+        if !labelModeChosen { labelMode = reading ? .textRegions : .objects }
+    }
+    func chooseLabelMode(_ mode: AnnotationLabelMode) {
+        labelModeChosen = true; labelMode = mode; selectedBox = nil; selectedTextRegionID = nil; tool = .select
     }
     func saveClasses(_ updated: [DatasetClass]) async {
         guard await saveNow(), let revision = manifest?.revision else { return }

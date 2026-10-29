@@ -15,9 +15,13 @@ enum EvaluationContractChecks {
         let provenance = JSONValue.object(["status": .string("model_hypothesis"), "model": .string("native-reader")])
         let original = Annotation(imagePath: "/project/media/example.png", detections: [], reviewed: true, expectedTexts: ["OLD"], proposal: provenance)
         let updated = ExpectedTextEditing.update(original, values: ExpectedTextEditing.values(" SKU-1\nCODE-2\n"))
-        try require(updated.expectedTexts == ["SKU-1", "CODE-2"] && !updated.reviewed, "reading edits store normalized values and require new review")
+        try require(updated.expectedTexts == [" SKU-1", "CODE-2"] && !updated.reviewed, "reading edits preserve literal whitespace and require new review")
         try require(updated.proposal == provenance && updated.imagePath == original.imagePath, "reading edits preserve actual proposal provenance and source")
         try require(ExpectedTextEditing.update(original, values: original.expectedTexts) == original, "unchanged expected values retain explicit review")
+        var composed = original; composed.expectedTexts = ["é"]; composed.reviewed = false
+        let decomposed = ExpectedTextEditing.update(composed, values: ["e\u{301}"])
+        try require(composed != decomposed && decomposed.expectedTexts[0].utf8.count == 3, "literal Unicode corrections remain dirty even when Swift strings are canonically equivalent")
+        try require(ExpectedTextEditing.same([" A  B "], ExpectedTextEditing.values(" A  B \n")), "manual expected values preserve leading, trailing and repeated spaces")
         let evaluation = Evaluation(precision: 0.8, recall: 0.6, countMae: 1.25, passed: false, metric: "count_mae", target: 0.5, sampleCount: 10, failures: [], specHash: "spec", datasetHash: "data", textAccuracy: nil)
         try require(EvaluationPresentation.measuredValue(evaluation) == 1.25 && EvaluationPresentation.target(evaluation).hasPrefix("≤"), "count error uses its measured value and lower-is-better target")
         var textEvaluation = evaluation; textEvaluation.metric = "text_accuracy"

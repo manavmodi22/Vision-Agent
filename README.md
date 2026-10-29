@@ -31,6 +31,9 @@ downloaded model weights and full datasets are not stored in this repository.
 3. Use **Correct this image** or the agent's review request to open annotation
    review, then return to the conversation and **Continue building**. Proposals remain unreviewed until a person
    checks them. Draw/select/move/resize, undo/redo, and COCO import/export are available.
+   Reading workflows also support editable four-corner text regions, exact transcripts,
+   and explicit copying of OCR/barcode predictions into unreviewed labels. Use
+   **Export all labels** to preserve text regions and provenance; COCO exports object boxes.
 4. The agent evaluates candidates on reviewed examples and reports the measured
    result. Bounded local training requires an explicit approval; a trained candidate
    is evaluated against the same holdout. Changed inputs invalidate stale evidence.

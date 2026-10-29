@@ -17,6 +17,12 @@ struct AnnotationCanvas: NSViewRepresentable {
     let onZoom: (Double) -> Void
     var readings: [DisplayReading] = []
     var selectedReadingID: String? = nil
+    var labelMode: AnnotationLabelMode = .objects
+    var textRegions: [TextRegion] = []
+    var selectedTextRegionID: String? = nil
+    var onTextSelect: (String?) -> Void = { _ in }
+    var onTextCreate: ([Double]) -> Void = { _ in }
+    var onTextEdit: ([TextRegion]) -> Void = { _ in }
     func makeNSView(context: Context) -> AnnotationCanvasView { AnnotationCanvasView() }
     func updateNSView(_ view: AnnotationCanvasView, context: Context) {
         view.configure(self)
@@ -26,6 +32,7 @@ struct AnnotationCanvas: NSViewRepresentable {
 final class AnnotationCanvasView: NSView {
     enum Gesture {
         case none, create(CGPoint), move(Int, CGPoint, [Double]), resize(Int, BoxHandle, CGPoint, [Double]), pan(CGPoint, CGPoint)
+        case moveText(Int, CGPoint, [[Double]]), cornerText(Int, Int, CGPoint, [[Double]])
     }
     private var image: NSImage?
     private var imagePath = ""
@@ -33,6 +40,12 @@ final class AnnotationCanvasView: NSView {
     private var predictions: [Detection] = []
     private var readings: [DisplayReading] = []
     private var selectedReadingID: String?
+    private var labelMode: AnnotationLabelMode = .objects
+    private var textRegions: [TextRegion] = []
+    private var selectedTextRegionID: String?
+    private var onTextSelect: (String?) -> Void = { _ in }
+    private var onTextCreate: ([Double]) -> Void = { _ in }
+    private var onTextEdit: ([TextRegion]) -> Void = { _ in }
     private var colors: [String: String] = [:]
     private var selectedIndex: Int?
     private var tool: AnnotationTool = .select
@@ -58,6 +71,11 @@ final class AnnotationCanvasView: NSView {
         if input.fitToken != fitToken { fitToken = input.fitToken; pan = .zero; zoom = 1 }
         boxes = input.detections; predictions = input.predictions; colors = input.colors
         readings = input.readings; selectedReadingID = input.selectedReadingID
+        if labelMode != input.labelMode { gesture = .none; newBox = nil }
+        labelMode = input.labelMode
+        switch gesture { case .moveText, .cornerText: break; default: textRegions = input.textRegions }
+        selectedTextRegionID = input.selectedTextRegionID
+        onTextSelect = input.onTextSelect; onTextCreate = input.onTextCreate; onTextEdit = input.onTextEdit
         selectedIndex = input.selectedIndex; tool = input.tool; zoom = input.zoom
         onSelect = input.onSelect; onCreate = input.onCreate; onEdit = input.onEdit
         onCommand = input.onCommand; onZoom = input.onZoom
@@ -79,10 +97,32 @@ final class AnnotationCanvasView: NSView {
         for prediction in predictions { drawBox(prediction, rect: rect, selected: false, prediction: true) }
         for (index, detection) in boxes.enumerated() { drawBox(detection, rect: rect, selected: index == selectedIndex, prediction: false) }
         drawReadings(rect: rect)
+        drawTextRegions(rect: rect)
         if let box = newBox {
             let draft = AnnotationGeometry.boxRect(box, image: rect)
             NSColor(hex: "5BD6C0").withAlphaComponent(0.15).setFill(); draft.fill()
             NSColor(hex: "5BD6C0").setStroke(); let outline = NSBezierPath(rect: draft); outline.lineWidth = 1.5; outline.stroke()
+        }
+    }
+    private func drawTextRegions(rect: CGRect) {
+        for (index, region) in textRegions.enumerated() {
+            guard TextRegionGeometry.valid(region.polygon), let box = ReadingGeometry.envelope(region.polygon) else { continue }
+            let selected = labelMode == .textRegions && region.id == selectedTextRegionID
+            let color = NSColor(hex: "B9A4FF")
+            let path = TextRegionGeometry.path(region.polygon, rect: rect)
+            path.lineWidth = selected ? 2.5 : 1.5; color.setStroke(); path.stroke()
+            if selected { color.withAlphaComponent(0.12).setFill(); path.fill() }
+            let transcript = region.transcript?.isEmpty == false ? String(region.transcript!.prefix(32)) : "Untranscribed"
+            let label = "\(index+1) · \(transcript)" as NSString
+            label.draw(at: CGPoint(x: rect.minX+box[0]*rect.width, y: max(rect.minY, rect.minY+box[1]*rect.height-18)),
+                       withAttributes: [.foregroundColor: color, .backgroundColor: NSColor.black, .font: NSFont.monospacedSystemFont(ofSize: 11, weight: .medium)])
+            if selected {
+                for point in region.polygon {
+                    let center = TextRegionGeometry.screenPoint(point, rect: rect)
+                    let handle = CGRect(x: center.x-4, y: center.y-4, width: 8, height: 8)
+                    NSColor.white.setFill(); handle.fill(); color.setStroke(); NSBezierPath(rect: handle).stroke()
+                }
+            }
         }
     }
     private func drawReadings(rect: CGRect) {
@@ -136,6 +176,16 @@ final class AnnotationCanvasView: NSView {
             guard rect.contains(point) else { return }
             gesture = .create(AnnotationGeometry.point(point, image: rect)); newBox = nil; return
         }
+        if labelMode == .textRegions {
+            if let index = textRegions.firstIndex(where: { $0.id == selectedTextRegionID }),
+               let corner = TextRegionGeometry.corner(at: point, polygon: textRegions[index].polygon, rect: rect) {
+                gesture = .cornerText(index, corner, point, textRegions[index].polygon); return
+            }
+            let index = textRegions.indices.reversed().first { TextRegionGeometry.path(textRegions[$0].polygon, rect: rect).contains(point) }
+            selectedTextRegionID = index.map { textRegions[$0].id }; onTextSelect(selectedTextRegionID)
+            if let index { gesture = .moveText(index, point, textRegions[index].polygon) } else { gesture = .none }
+            needsDisplay = true; return
+        }
         if let index = selectedIndex, boxes.indices.contains(index), let handle = AnnotationGeometry.handle(at: point, box: AnnotationGeometry.boxRect(boxes[index].box, image: rect)) {
             gesture = .resize(index, handle, point, boxes[index].box); return
         }
@@ -159,14 +209,23 @@ final class AnnotationCanvasView: NSView {
         case .resize(let index, let handle, let start, let original):
             guard boxes.indices.contains(index) else { return }
             boxes[index].box = AnnotationGeometry.resize(original, handle: handle, dx: (point.x-start.x)/rect.width, dy: (point.y-start.y)/rect.height)
+        case .moveText(let index, let start, let original):
+            guard textRegions.indices.contains(index) else { return }
+            textRegions[index].setPolygon(TextRegionGeometry.move(original, dx: (point.x-start.x)/rect.width, dy: (point.y-start.y)/rect.height))
+        case .cornerText(let index, let corner, let start, let original):
+            guard textRegions.indices.contains(index) else { return }
+            textRegions[index].setPolygon(TextRegionGeometry.moveCorner(original, index: corner, dx: (point.x-start.x)/rect.width, dy: (point.y-start.y)/rect.height))
         }
         needsDisplay = true
     }
     override func mouseUp(with event: NSEvent) {
         switch gesture {
         case .create:
-            if let box = newBox, box[2]-box[0] >= AnnotationGeometry.minimumSize, box[3]-box[1] >= AnnotationGeometry.minimumSize { onCreate(box) }
+            if let box = newBox, box[2]-box[0] >= AnnotationGeometry.minimumSize, box[3]-box[1] >= AnnotationGeometry.minimumSize {
+                if labelMode == .textRegions { onTextCreate(box) } else { onCreate(box) }
+            }
         case .move, .resize: onEdit(boxes)
+        case .moveText, .cornerText: onTextEdit(textRegions)
         case .none, .pan: break
         }
         gesture = .none; newBox = nil; needsDisplay = true; window?.invalidateCursorRects(for: self)

@@ -1,0 +1,109 @@
+{
+  "id": "60416874647640eb-v1",
+  "annotations": [
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/60416874647640eb/media/6248e209-01-label.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null,
+      "text_regions": [],
+      "expected_text_source": "manual"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/60416874647640eb/media/0ddb7804-02-lookalike.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [
+        "XABC-990Y"
+      ],
+      "proposal": null,
+      "text_regions": [
+        {
+          "box": [
+            0.04666666792857138,
+            0.3599999993035714,
+            0.4833333345952381,
+            0.5549999993035715
+          ],
+          "polygon": [
+            [
+              0.04666666792857138,
+              0.3599999993035714
+            ],
+            [
+              0.4833333345952381,
+              0.3599999993035714
+            ],
+            [
+              0.4833333345952381,
+              0.5549999993035715
+            ],
+            [
+              0.04666666792857138,
+              0.5549999993035715
+            ]
+          ],
+          "id": "1965c66e-6e7d-456a-a8d9-abbf41c6426d",
+          "transcript": "XABC-990Y",
+          "seed": {
+            "source": "model_reading",
+            "model_id": "apple-vision",
+            "adapter_id": "apple-vision",
+            "identity_hash": "24a4e8d2b6d5755f88a9c526a3073b6a8f40d4845be43bd7c48678d40f585bdc",
+            "block_id": "read",
+            "observation_index": 0,
+            "observation": {
+              "box": [
+                0.04666666792857138,
+                0.3599999993035714,
+                0.4833333345952381,
+                0.5549999993035715
+              ],
+              "polygon": [
+                [
+                  0.04666666792857138,
+                  0.3599999993035714
+                ],
+                [
+                  0.4833333345952381,
+                  0.3599999993035714
+                ],
+                [
+                  0.4833333345952381,
+                  0.5549999993035715
+                ],
+                [
+                  0.04666666792857138,
+                  0.5549999993035715
+                ]
+              ],
+              "text": "ХABC-990Y",
+              "kind": "ocr",
+              "confidence": 1.0,
+              "symbology": null
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "image_sha256": "5928ade6b5f39ec7a6f276c8ec891cee8f61877bc0fd6b8df7119882d97d08ae",
+            "created_at": "2026-10-29T15:39:30Z"
+          }
+        }
+      ],
+      "expected_text_source": "regions"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/60416874647640eb/media/e552b0da-03-scene.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null,
+      "text_regions": [],
+      "expected_text_source": "manual"
+    }
+  ]
+}

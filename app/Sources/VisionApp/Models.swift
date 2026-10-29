@@ -61,8 +61,9 @@ struct FrameResult: Codable, Identifiable {
     var events: [JSONValue]
     var elapsedMs: Double
     var inferences: [FrameInference]? = nil
+    var sourceImageSHA256: String? = nil
     var id: String { imagePath }
-    enum CodingKeys: String, CodingKey { case imagePath = "image_path", detections, counts, texts, events, elapsedMs = "elapsed_ms", inferences }
+    enum CodingKeys: String, CodingKey { case imagePath = "image_path", detections, counts, texts, events, elapsedMs = "elapsed_ms", inferences, sourceImageSHA256 = "source_image_sha256" }
 }
 struct RunResult: Codable {
     var frames: [FrameResult]
@@ -138,8 +139,15 @@ struct Annotation: Codable, Identifiable, Equatable {
     var reviewed: Bool
     var expectedTexts: [String]
     var proposal: JSONValue?
+    var textRegions: [TextRegion] = []
+    var expectedTextSource = "manual"
     var id: String { imagePath }
-    enum CodingKeys: String, CodingKey { case imagePath = "image_path", detections, reviewed, expectedTexts = "expected_texts", proposal }
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.imagePath == rhs.imagePath && lhs.detections == rhs.detections && lhs.reviewed == rhs.reviewed &&
+            lhs.expectedTexts.map { Data($0.utf8) } == rhs.expectedTexts.map { Data($0.utf8) } &&
+            lhs.proposal == rhs.proposal && lhs.textRegions == rhs.textRegions && lhs.expectedTextSource == rhs.expectedTextSource
+    }
+    enum CodingKeys: String, CodingKey { case imagePath = "image_path", detections, reviewed, expectedTexts = "expected_texts", proposal, textRegions = "text_regions", expectedTextSource = "expected_text_source" }
 }
 struct EvalDataset: Codable {
     var id: String

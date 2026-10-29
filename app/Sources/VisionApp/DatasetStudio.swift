@@ -9,6 +9,7 @@ struct DatasetStudio: View {
     @NativeState<Bool> private var reloadSheet = false
     @NativeState<String> private var snapshotName = ""
     @NativeState<String?> private var selectedReadingID: String?
+    @NativeState<Bool> private var readingDetails = false
     private let onContinue: (() -> Void)?
     init(store: DatasetWorkspace, onContinue: (() -> Void)? = nil) { _store = StateObject(wrappedValue: store); self.onContinue = onContinue }
     private var readingTask: Bool { EvaluationPresentation.isReading(workspace.candidate) }
@@ -35,18 +36,31 @@ struct DatasetStudio: View {
                         if let image = store.activeImage, let annotation = store.annotation {
                             AnnotationCanvas(imagePath: image.imagePath, detections: annotation.detections,
                                 predictions: store.showPredictions ? predictions : [], colors: store.colors,
-                                selectedIndex: store.selectedBox, tool: objectTask ? store.tool : .pan, zoom: store.zoom, fitToken: store.fitToken,
+                                selectedIndex: store.labelMode == .objects ? store.selectedBox : nil, tool: store.tool, zoom: store.zoom, fitToken: store.fitToken,
                                 onSelect: { index in store.selectedBox = index; if let index, annotation.detections.indices.contains(index) { store.activeClass = annotation.detections[index].label } },
-                                onCreate: { if objectTask { store.createBox($0) } }, onEdit: { if objectTask { store.editBoxes($0) } },
-                                onCommand: { if objectTask || !["b", "v", "delete"].contains($0) { store.command($0) } },
-                                onZoom: { store.zoom = $0 }, readings: ReadingPresentation.readings(readers), selectedReadingID: selectedReadingID)
+                                onCreate: store.createBox, onEdit: store.editBoxes, onCommand: store.command,
+                                onZoom: { store.zoom = $0 }, readings: store.showReadingPredictions ? ReadingPresentation.readings(readers) : [], selectedReadingID: selectedReadingID,
+                                labelMode: store.labelMode, textRegions: annotation.textRegions, selectedTextRegionID: store.selectedTextRegionID,
+                                onTextSelect: { store.selectedTextRegionID = $0 }, onTextCreate: store.createTextRegion, onTextEdit: store.editTextRegions)
                                 .allowsHitTesting(!store.loading && !store.hasConflict)
-                                .overlay(alignment: .bottomLeading) { Text(objectTask ? "V Select  ·  B Box  ·  H Pan  ·  Space-drag Pan  ·  ← → Images  ·  ⌘Z Undo" : "Drag to pan  ·  Pinch to zoom  ·  ← → Images  ·  Edit expected values in the inspector").font(.system(size: 10, design: .monospaced)).foregroundStyle(.white.opacity(0.65)).padding(8).background(.black.opacity(0.65)).allowsHitTesting(false) }
-                            if !readers.isEmpty { ReadingEvidenceView(blocks: readers, selectedID: $selectedReadingID, compact: true).padding(12).background(Studio.panel) }
+                                .overlay(alignment: .bottomLeading) { Text(store.labelMode == .textRegions ? "V Select  ·  B Text rectangle  ·  Drag corners to fit  ·  H Pan  ·  ⌘Z Undo" : "V Select  ·  B Object box  ·  H Pan  ·  Space-drag Pan  ·  ← → Images  ·  ⌘Z Undo").font(.system(size: 10, design: .monospaced)).foregroundStyle(.white.opacity(0.65)).padding(8).background(.black.opacity(0.65)).allowsHitTesting(false) }
+                            if !readers.isEmpty {
+                                DisclosureGroup("Reader predictions · \(readers.reduce(0) { $0+$1.result.readings.count }) observations", isExpanded: $readingDetails) {
+                                    ReadingEvidenceView(blocks: readers, selectedID: $selectedReadingID, compact: true)
+                                    HStack {
+                                        Button("Copy selected prediction to unreviewed labels") { copySelectedReading() }.disabled(selectedReadingID == nil || store.hasConflict || store.loading || !TextRegionPredictionCopy.hasSourceIdentity(predictionFrame?.sourceImageSHA256))
+                                        Spacer()
+                                    }.padding(.top, 6)
+                                    if !TextRegionPredictionCopy.hasSourceIdentity(predictionFrame?.sourceImageSHA256) { Text("This result has no verified image identity. Run a new preview before copying a prediction.").font(.caption2).foregroundStyle(.orange) }
+                                }.font(.caption).padding(12).background(Studio.panel)
+                            }
                         }
                     }
                     Divider()
-                    AnnotationInspector(store: store, predictions: predictions, editClasses: { editingClass = DatasetClass(id: UUID().uuidString.lowercased(), name: "", color: "#5BD6C0") }, readingTask: readingTask, supportsObjects: objectTask).frame(width: 238).disabled(store.loading || store.hasConflict)
+                    Group {
+                        if store.labelMode == .textRegions { TextRegionInspector(store: store) }
+                        else { AnnotationInspector(store: store, predictions: predictions, editClasses: { editingClass = DatasetClass(id: UUID().uuidString.lowercased(), name: "", color: "#5BD6C0") }, readingTask: false, supportsObjects: true) }
+                    }.frame(width: 270).disabled(store.loading || store.hasConflict)
                 }
             } else {
                 gridHeader
@@ -55,12 +69,13 @@ struct DatasetStudio: View {
                     if readingTask && !objectTask {
                         VStack(alignment: .leading, spacing: 12) {
                             Text("Text and barcode review").font(.headline)
-                            Text("Open each example, enter its expected text or barcode values, and mark it reviewed after checking the image. No object classes are needed for this workflow.").font(.callout).foregroundStyle(Studio.muted)
+                            Text("Open an example to draw text regions and transcribe them, or enter image-level expected values. Check the image before marking it reviewed. No object classes are needed.").font(.callout).foregroundStyle(Studio.muted)
                         }.padding(18).frame(width: 238).background(Studio.panel).clipShape(RoundedRectangle(cornerRadius: 10))
                     } else { classPanel.frame(width: 238).disabled(store.loading) }
                 }.padding(.horizontal, 24).padding(.bottom, 20)
             }
-        }.task { await store.load() }
+        }.task { store.configureLabelMode(reading: readingTask); await store.load() }
+            .onChange(of: readingTask) { _, reading in store.configureLabelMode(reading: reading) }
             .onChange(of: workspace.project?.media.count) { _, _ in Task { await store.load() } }
             .onChange(of: store.activeImageID) { _, _ in selectedReadingID = nil }
             .onChange(of: workspace.busy) { _, busy in if !busy && store.activeImageID == nil { Task { await store.load() } } }
@@ -87,8 +102,11 @@ struct DatasetStudio: View {
             Button("Suggest labels") { workspace.suggestLabels() }.disabled(!objectTask).help("Creates unreviewed proposals using the selected workflow. Reviewed labels are preserved.")
             Menu("Dataset") {
                 Button("Refresh") { Task { await store.load() } }
-                Button("Import COCO annotations…") { Task { await store.importCOCO() } }
-                Button("Export COCO annotations…") { Task { await store.exportCOCO() } }
+                Button("Import all labels…") { Task { await store.importAllLabels() } }
+                Button("Export all labels…") { Task { await store.exportAllLabels() } }
+                Divider()
+                Button("Import COCO object boxes…") { Task { await store.importCOCO() } }
+                Button("Export COCO object boxes…") { Task { await store.exportCOCO() } }
                 Divider()
                 Button("Save dataset version…") { snapshotName = "Revision \(store.manifest?.revision ?? 0)"; snapshotSheet = true }
                 if !store.holdoutSelection.isEmpty { Button("Clear image selection") { store.holdoutSelection = [] } }
@@ -107,7 +125,7 @@ struct DatasetStudio: View {
                         Text(image.filename).font(.system(size: 11, weight: .medium)).lineLimit(1).help(image.filename)
                         HStack {
                             Toggle("Select", isOn: Binding(get: { store.holdoutSelection.contains(image.id) }, set: { if $0 { store.holdoutSelection.insert(image.id) } else { store.holdoutSelection.remove(image.id) } })).labelsHidden().toggleStyle(.checkbox)
-                            Text("\(image.annotationCount) boxes · \(image.width)×\(image.height)").font(.system(size: 10, design: .monospaced)).foregroundStyle(Studio.muted)
+                            Text("\(image.annotationCount) boxes · \(image.textRegionCount ?? 0) text regions").font(.system(size: 10, design: .monospaced)).foregroundStyle(Studio.muted)
                             Spacer(minLength: 0)
                         }
                         Text(image.split == "unassigned" ? (image.reviewed ? "Reviewed" : "Needs review") : image.split.capitalized).font(.system(size: 10)).foregroundStyle(image.split == "validation" ? .orange : Studio.muted)
@@ -148,21 +166,31 @@ struct DatasetStudio: View {
             Button { store.navigate(-1) } label: { Image(systemName: "chevron.left") }
             Button { store.navigate(1) } label: { Image(systemName: "chevron.right") }
             Toggle("Reviewed", isOn: Binding(get: { store.annotation?.reviewed ?? false }, set: store.setReviewed)).toggleStyle(.checkbox)
+                .disabled(store.isDirty || store.saving).help("Save pending changes before marking this image reviewed.")
         }.padding(.horizontal, 20).padding(.bottom, 14).disabled(store.loading)
     }
     private var canvasToolbar: some View {
-        HStack(spacing: 12) {
-            if objectTask {
-                Picker("Tool", selection: $store.tool) { Image(systemName: "cursorarrow").tag(AnnotationTool.select); Image(systemName: "rectangle.dashed").tag(AnnotationTool.box); Image(systemName: "hand.draw").tag(AnnotationTool.pan) }.pickerStyle(.segmented).frame(width: 150)
-            } else { Label("Read-only image regions", systemImage: "hand.draw").font(.caption).foregroundStyle(Studio.muted) }
+        VStack(spacing: 8) {
+        HStack(spacing: 10) {
+            Picker("Label mode", selection: Binding(get: { store.labelMode }, set: store.chooseLabelMode)) { ForEach(AnnotationLabelMode.allCases, id: \.self) { Text($0.rawValue).tag($0) } }.labelsHidden().frame(width: 125)
+            Picker("Tool", selection: $store.tool) { Image(systemName: "cursorarrow").tag(AnnotationTool.select); Image(systemName: "rectangle.dashed").tag(AnnotationTool.box); Image(systemName: "hand.draw").tag(AnnotationTool.pan) }.pickerStyle(.segmented).frame(width: 120)
+            Spacer(minLength: 4)
             Button { store.undo() } label: { Image(systemName: "arrow.uturn.backward") }.disabled(store.undoStack.isEmpty)
             Button { store.redo() } label: { Image(systemName: "arrow.uturn.forward") }.disabled(store.redoStack.isEmpty)
+        }
+        HStack(spacing: 10) {
             Spacer()
             Button { store.command("-") } label: { Image(systemName: "minus.magnifyingglass") }
             Text("\(Int(store.zoom*100))%").font(.caption.monospaced()).frame(width: 42)
             Button { store.command("+") } label: { Image(systemName: "plus.magnifyingglass") }
             Button("Fit") { store.command("f") }
-        }.padding(10).background(Studio.panel)
+        }
+        }.padding(10).background(Studio.panel).disabled(store.loading || store.hasConflict)
+    }
+    private func copySelectedReading() {
+        guard let selected = ReadingPresentation.readings(readers).first(where: { $0.id == selectedReadingID }),
+              let block = readers.first(where: { $0.blockID == selected.blockID }) else { return }
+        store.copyReading(block: block, index: selected.index, sourceImageSHA256: predictionFrame?.sourceImageSHA256)
     }
     private var snapshotDialog: some View {
         VStack(alignment: .leading, spacing: 18) {

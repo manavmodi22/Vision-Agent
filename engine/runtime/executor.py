@@ -22,6 +22,7 @@ from engine.blocks.params import (
 )
 from engine.blocks.spatial import assign_zones
 from engine.compiler import CompiledPipeline
+from engine.models.artifacts import content_hash
 from engine.runtime.values import (
     CountsValue,
     DetectionsValue,
@@ -39,12 +40,16 @@ from spec.models import BlockSpec, Detection, FrameResult
 def execute_frame(compiled: CompiledPipeline, path: Path, timestamp: float,
                   state: ExecutionState) -> FrameResult:
     started = time.perf_counter()
+    source_hash = content_hash(path)
     try:
         with Image.open(path) as source:
             image = ImageOps.exif_transpose(source).convert("RGB")
     except (OSError, ValueError) as exc:
         raise ValueError(f"Cannot read image {path.name}: {exc}") from exc
     result = execute_image(compiled, image, str(path), timestamp, state)
+    if content_hash(path) != source_hash:
+        raise ValueError("Source image changed during inference; discard this preview and run it again")
+    result.source_image_sha256 = source_hash
     result.elapsed_ms = (time.perf_counter() - started) * 1000
     return result
 

@@ -6,6 +6,34 @@ a contextual checkpoint in that conversation, not a replacement for the builder.
 
 ## Current software checkpoint
 
+The text-region authoring update adds drawing, four-corner editing, transcripts,
+undo/redo and autosave to the contextual image editor. OCR/barcode predictions can
+be explicitly copied into unreviewed labels after the source image hash is checked.
+Users choose whether image-level expected values remain manual or derive from
+region transcripts. Complete-label JSON transfer and dataset snapshots preserve
+geometry, raw values and known model-exposure history; COCO remains object-box-only.
+See [annotation contracts](text-region-annotations.md), [native editor](../app/text-region-editor.md)
+and [portable labels](portable-labels.md). The [full base-dependency suite](../artifacts/text-region-authoring/software-validation.json) passes **848 tests with two optional skips**, strict mypy on 172 files for Linux and macOS, and Ruff.
+[Debug and Release native builds](../artifacts/text-region-authoring/native-validation.json) each pass **242 checks**, including offscreen AppKit editing gestures. The [packaged relocation check](../artifacts/text-region-authoring/bundle-verification.json) passes isolated imports, actual Apple OCR and signature verification.
+The installed engine source is `3751f55e26bb8f270c3bd38ba4c51c4081d833b57effde506653c3298b864e6b`.
+Spatial text-localization scoring and the broader platform requirements remain open.
+
+The [installed native walkthrough](../artifacts/text-region-authoring/native-ui.json)
+built the three-image OCR workflow from a description using one local planner call
+(60.754 seconds) and produced seven real reader observations with zero events.
+It verified explicit prediction copying, a Cyrillic-to-Latin correction retaining
+the original seed, transcript and geometry undo/redo, manual drawing, autosave and
+navigation, expected-value projection, and native complete-label export/import.
+The contextual sheet rejected coordinate dragging in the automation service;
+the main Annotations view accepted the same canvas actions. This distinction is
+retained in the evidence. Both edited images remain unreviewed. Returning to the
+same conversation leaves evaluation gated on reviewed data. The original project's
+four checked files remain unchanged. These are software acceptance examples,
+not independent labels or measured product accuracy.
+
+
+### Previous reader checkpoint: `e523`
+
 The reader update adds actual Apple Vision text/barcode quadrilaterals, OCR
 confidence, raw Unicode values and reader identity to the engine and native
 preview. Corrections remain image-level expected-text annotations; text-region
