@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-29T19:48:31.280724+00:00",
+  "source_identity": "71e9e24fa4cf376e6292421863bc3b5d624d65a9a9153b0c08579d8ed6974da1",
+  "root_tests": {
+    "passed": 91,
+    "elapsed_s": 87.79,
+    "scope": [
+      "API transport harness and bounded waits",
+      "selected workflow context",
+      "investigation loop",
+      "actual fixture workflow preview"
+    ],
+    "log": "selected-context-final-tests.log"
+  },
+  "agent_checks": {
+    "final_focused_passed": 54,
+    "final_focused_elapsed_s": 16.6,
+    "other_broader_passed": 128,
+    "note": "Initial scripted test assumed selected preview stayed in recent observations; updated to consume separate selected_workflow anchor."
+  },
+  "ruff": "All checks passed!",
+  "mypy": "Success: no issues found in 202 source files",
+  "low_reasoning_live_outcome": "Awaiting input after OCR; no draft, no pass. Medium reasoning qualification separate."
+}

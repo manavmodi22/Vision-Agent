@@ -80,6 +80,7 @@ $node_id.port. frame_sample owns the host-bound source. Model IDs must be inspec
 capability IDs. The engine compiles and actually previews this draft and returns
 the result for your next decision; you may revise or run another experiment.
 Draft evaluation settings are proposals, not user-approved acceptance criteria.
+Successful provisional probes do not change the saved workflow; assess the actual selected workflow preview before finishing.
 finish(draft_ready) requires the exact selected workflow revision and its preview
 observation ID in evidence_ids. It means a previewed draft, never a proven or
 approved production app. Return only the typed

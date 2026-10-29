@@ -5,8 +5,86 @@ import json
 
 from pydantic import JsonValue
 
+from engine.models.artifacts import canonical_hash
+from spec.investigation import (
+    ActionReceipt,
+    ConstructWorkflow,
+    Observation,
+    TaskState,
+    WorkflowPreviewEvidence,
+)
+
 IDENTITY_FIELDS = {"capability_id", "model_id", "adapter_id", "identity_hash", "identity_scope", "provider"}
 VALUES_PROJECTION_CHARS = 5000
+
+
+def selected_workflow_projection(state: TaskState, observations: list[Observation],
+                                 actions: list[ActionReceipt]) -> dict[str, JsonValue] | None:
+    """Anchor the selected draft to its own saved execution, never a later probe.
+
+    The graph comes from the exact successful construction action. Host source
+    rebinding and runtime transforms remain evidenced by its actual preview.
+    """
+    if state.selected_workflow_revision is None and state.preview_observation_id is None:
+        return None
+    result: dict[str, JsonValue] = {
+        "workflow_revision_id": state.selected_workflow_revision,
+        "preview_observation_id": state.preview_observation_id,
+        "status": "unavailable",
+        "scope": "Selected saved workflow only. Later provisional probes do not change this draft.",
+        "context_char_limit": VALUES_PROJECTION_CHARS,
+    }
+    observation = next((row for row in observations if row.id == state.preview_observation_id), None)
+    receipt = next((row for row in actions if observation and row.id == observation.action_id), None)
+    if (observation is None or observation.status != "completed" or observation.result_type != "construct_workflow"
+            or receipt is None or receipt.status != "completed" or receipt.observation_id != observation.id
+            or not isinstance(receipt.action, ConstructWorkflow)):
+        result["reason"] = "The selected revision has no matching completed construction and preview receipt."
+        return result
+    try:
+        evidence = WorkflowPreviewEvidence.model_validate({key: value for key, value in observation.payload.items()
+                                                          if key in WorkflowPreviewEvidence.model_fields})
+    except ValueError:
+        result["reason"] = "The saved selected preview is unvalidated or its evidence is inconsistent."
+        return result
+    if (evidence.workflow_revision_id != state.selected_workflow_revision
+            or evidence.preview_media_ids != receipt.action.media_ids or observation.payload.get("executed") is not True):
+        result["reason"] = "The saved preview does not match the selected revision, executed status or requested media."
+        return result
+
+    graph = receipt.action.graph.model_dump(mode="json")
+    nodes: list[JsonValue] = [
+        {key: value for key, value in node.model_dump(mode="json").items() if key != "model_reason"}
+        for node in receipt.action.graph.nodes
+    ]
+    applied_graph: dict[str, JsonValue] = {
+        "source": "validated_construct_workflow_action", "action_id": receipt.id,
+        "graph_sha256": canonical_hash(graph), "nodes": nodes, "total_nodes": len(nodes),
+        "metric": receipt.action.graph.metric, "target": receipt.action.graph.target,
+    }
+    projected = workflow_projection(observation.payload)
+    result.update(status="available", preview_status=observation.status,
+                  validated=True, preview_success=True, executed=True,
+                  spec_hash=evidence.spec_hash, preview_spec_hash=evidence.preview_spec_hash,
+                  preview_media_ids=list(evidence.preview_media_ids), preview=projected["preview"],
+                  applied_graph=applied_graph, projection_note=projected["projection_note"],
+                  retrieve_saved_values={"type": "inspect_observation", "observation_id": observation.id,
+                                         "view": "values", "limit": 5, "cursor": None})
+    # Omit whole structures, never shorten a text reading into a different value.
+    # Every fallback retains the same preview ID and exact revision/hash binding.
+    if len(json.dumps(result, ensure_ascii=False)) > VALUES_PROJECTION_CHARS:
+        applied_graph.pop("nodes")
+        applied_graph.update(nodes_omitted_for_size=True,
+                             source_note="Exact graph remains in this saved construction action; the draft is unchanged.")
+    if len(json.dumps(result, ensure_ascii=False)) > VALUES_PROJECTION_CHARS:
+        preview = result["preview"]
+        assert isinstance(preview, dict)
+        result["preview"] = {
+            "frames": [], "frames_page": {"total_items": len(evidence.preview.frames), "returned_items": 0,
+                                           "truncated": True, "omitted_for_size": True},
+        }
+        result["projection_note"] = "Selected preview values and metadata exceed the context budget and are omitted. Use retrieve_saved_values; the complete immutable receipt is unchanged."
+    return result
 
 
 def _page(row: dict[str, JsonValue], key: str, limit: int) -> None:

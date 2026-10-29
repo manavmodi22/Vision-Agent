@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-29T19:41:45.459723+00:00",
+  "method": "Actual rebuilt development app opened same completed isolated workspace; inspected via CUA",
+  "engine_pid": 46739,
+  "engine_socket": "/tmp/visionapp-502/e7614a1bc046-70bca8f6dec0.sock",
+  "native_state": "Draft ready \u00b7 review required",
+  "selected_workflow_revision": "548eddbbbcb94de59e3bc0bcff962a20",
+  "visible_actual_workflow_texts": [
+    "ITEM CODE",
+    "QZ-4817",
+    "SHIP TO",
+    "IGNORE-552"
+  ],
+  "actual_reader_regions_visible": 4,
+  "comparison_pass_scope": "Contains expected text ITEM CODE, not objective success or OCR accuracy",
+  "objective_check": "Failed: workflow retains unwanted readings",
+  "advanced_setting_visible": "Agent decision format: Function call",
+  "settings_saved_or_changed": false,
+  "native_app_closed_after_inspection": true
+}

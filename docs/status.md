@@ -158,6 +158,30 @@ advanced compatibility setting preserves this choice across settings saves.
 records 155 broader tests, 65 final transport/loop tests, repository Ruff/strict
 mypy, and 322 native checks. A fresh full model run is recorded separately.
 
+That [function-transport run](../artifacts/a0-investigation/gpt-oss-qualification/function-live/report.json)
+completed in 250.57 seconds with ten model calls and five actual probes. It
+adapted from an empty barcode result to OCR and an evidence-derived crop that
+read only `QZ-4817`. **Its saved workflow still returned all four readings.**
+The model declared `draft_ready` without incorporating the crop into the graph;
+the withheld reference check failed. The native app displayed those exact four
+workflow readings. This is useful experimental adaptation, not a correct app.
+
+The final decision context had retained the selected revision/preview IDs but
+omitted their graph and values behind newer probes. The new bounded
+`selected_workflow` projection retains the exact saved graph and actual preview
+separately from provisional experiments, with explicit missing/oversized-evidence
+handling. [91 focused tests](../artifacts/a0-investigation/selected-context-validation.json)
+pass after that repair, including the API harness and actual fixture preview.
+The [same-task low-reasoning repeat](../artifacts/a0-investigation/gpt-oss-qualification/selected-context-low/report.json)
+read the four strings, then asked the user to confirm the item code; it produced
+no draft. A separate medium-reasoning trial keeps the task, source and reference
+unchanged. Neither run has been promoted to the default model configuration.
+
+CI for `4507d2b` was cancelled after an omitted test-harness signature update
+left an old mock unable to receive the new transport argument. The harness
+update and bounded waits are included with the context fix; the cancelled run
+is not a passing verification result.
+
 Subsequent live investigation found two context defects: repeated metadata could
 displace earlier vision evidence, and the fixed five-reading sample hid useful
 readings even when the full compact result fit. Search now distinguishes graph

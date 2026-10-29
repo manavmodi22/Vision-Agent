@@ -400,6 +400,12 @@ async def test_model_selected_workflow_stage_previews_in_worker_before_draft_rea
         if not observations:
             return reply(context, {"type": "inspect_capability", "capability_id": "model.fixture-color-v1"})
         latest = observations[-1]
+        selected = context.get("selected_workflow")
+        if selected is not None and selected["status"] == "available":
+            # The saved draft has its own persistent context, separate from
+            # recent experimental observations (and without duplicate values).
+            latest = {"id": selected["preview_observation_id"], "status": selected["preview_status"],
+                      "result_type": "construct_workflow", "payload": selected}
         assert latest["status"] == "completed", latest.get("error")
         if latest["result_type"] == "inspect_capability":
             return reply(context, {"type": "inspect_media", "limit": 1}, [latest["id"]])

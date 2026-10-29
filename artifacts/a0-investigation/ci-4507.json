@@ -1,0 +1,10 @@
+{
+  "captured_at": "2026-10-29T19:46:49.246054+00:00",
+  "commit": "4507d2bfc6afeac876debab7688151ba2a2c55d7",
+  "run_id": 40941710906,
+  "url": "https://github.com/manavmodi22/Vision-Agent/actions/runs/40941710906",
+  "conclusion": "cancelled",
+  "native": "passed",
+  "python": "Not a passing result; cancelled during pytest",
+  "reason": "API test harness transport-signature update was omitted from this commit. Old mock could not accept new keyword; a later test waited without deadline. Updated harness and bounded waits are retained for next checkpoint."
+}

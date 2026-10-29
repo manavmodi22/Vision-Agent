@@ -134,6 +134,25 @@ def test_event_outputs_are_preview_values_without_persisted_effects(harness: Har
     assert harness.service.get_project(harness.project_id).candidates == []
 
 
+def test_selected_context_binds_actual_fixture_preview_transforms_and_applied_graph(harness: Harness) -> None:
+    from mcp_server.investigations import investigation_context
+
+    harness.inspect()
+    observation = harness.construct()
+    context = investigation_context(harness.store, harness.project_id, harness.task_id)
+    selected = context["selected_workflow"]
+    assert selected["preview_observation_id"] == observation.id
+    assert selected["spec_hash"] == selected["preview_spec_hash"] == observation.payload["spec_hash"]
+    assert selected["preview_media_ids"] == harness.media_ids
+    inference = selected["preview"]["frames"][0]["inferences"][0]
+    assert inference["input_to_frame"] == [0, 0, .5, 1]
+    assert inference["result"]["input_size"] == [320, 400]
+    nodes = selected["applied_graph"]["nodes"]
+    assert nodes[1]["box"] == [0, 0, .5, 1] and nodes[2]["width"] == 320 and nodes[2]["height"] == 400
+    assert selected["applied_graph"]["action_id"] == observation.action_id
+    assert not harness.service.events(harness.project_id)
+
+
 def test_uninspected_capability_cannot_construct_or_execute(harness: Harness, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr("engine.investigations.workflows.run_pipeline", lambda *_a, **_k: pytest.fail("Uninspected inference"))
     observation = harness.construct()

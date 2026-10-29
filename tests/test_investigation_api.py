@@ -13,7 +13,7 @@ from engine.api.investigation_routes import build_router
 from engine.investigations.manager import InvestigationManager
 from engine.investigations.store import InvestigationConflict, InvestigationStore
 from engine.service import WorkspaceService
-from spec.investigation import InvestigationBudget, NextAction, TaskState
+from spec.investigation import InvestigationBudget, InvestigationTransport, NextAction, TaskState
 
 
 class Harness:
@@ -27,9 +27,12 @@ class Harness:
         self.url = f"/projects/{self.project.id}/investigations"
         self.calls = 0
         self.entered = asyncio.Event()
+        self.transports: list[InvestigationTransport] = []
 
-    async def loop(self, _root: str, _project: str, _task: str, _url: str, _model: str) -> TaskState:
+    async def loop(self, _root: str, _project: str, _task: str, _url: str, _model: str, *,
+                   transport: InvestigationTransport = "structured_json") -> TaskState:
         self.calls += 1
+        self.transports.append(transport)
         self.entered.set()
         await asyncio.Event().wait()
         raise AssertionError("The scripted loop should be cancelled")
@@ -74,7 +77,7 @@ async def test_start_is_prompt_idempotent_and_project_exclusive(api: Harness) ->
 
 async def test_duplicate_after_restart_returns_saved_task_without_execution(api: Harness) -> None:
     created = (await api.start()).json()
-    await api.entered.wait()
+    await asyncio.wait_for(api.entered.wait(), 5)
     await api.manager.close()
     replacement = InvestigationManager(api.service)
     try:
@@ -85,18 +88,29 @@ async def test_duplicate_after_restart_returns_saved_task_without_execution(api:
         await replacement.close()
 
 
+async def test_manager_passes_explicit_response_transport_from_saved_settings(api: Harness) -> None:
+    settings = api.service.repository.settings()
+    assert settings.investigation_transport == "structured_json"
+    settings.investigation_transport = "decision_function"
+    api.service.repository.save_settings(settings)
+    await api.start()
+    await asyncio.wait_for(api.entered.wait(), .5)
+    assert api.transports == ["decision_function"]
+
+
 async def test_pause_waits_for_teardown_preserves_budget_and_resumes(api: Harness, monkeypatch: pytest.MonkeyPatch) -> None:
     cleanup_started, allow_cleanup, cleanup_done = asyncio.Event(), asyncio.Event(), asyncio.Event()
-    async def loop(root: str, project: str, task: str, url: str, model: str) -> TaskState:
+    async def loop(root: str, project: str, task: str, url: str, model: str, *,
+                   transport: InvestigationTransport = "structured_json") -> TaskState:
         try:
-            return await api.loop(root, project, task, url, model)
+            return await api.loop(root, project, task, url, model, transport=transport)
         finally:
             cleanup_started.set()
             await allow_cleanup.wait()
             cleanup_done.set()
     monkeypatch.setattr("engine.investigations.manager.investigate", loop)
     created = (await api.start()).json()
-    await api.entered.wait()
+    await asyncio.wait_for(api.entered.wait(), 5)
     endpoint = api.url + "/" + created["id"]
     stale = await api.client.post(endpoint + "/control", json={"expected_revision": 10, "action": "pause"})
     assert stale.status_code == 409 and not cleanup_started.is_set()
@@ -113,7 +127,7 @@ async def test_pause_waits_for_teardown_preserves_budget_and_resumes(api: Harnes
     resumed = await api.client.post(endpoint + "/resume", json={"expected_revision": paused["revision"]})
     assert resumed.status_code == 200 and resumed.json()["status"] == "running"
     assert resumed.json()["budget"]["elapsed_s"] >= paused["budget"]["elapsed_s"]
-    await api.entered.wait()
+    await asyncio.wait_for(api.entered.wait(), 5)
     assert api.calls == 2
     state = api.manager.store.get(api.project.id, created["id"])
     cancelled = await api.client.post(endpoint + "/control", json={"expected_revision": state.revision, "action": "cancel"})
@@ -123,15 +137,16 @@ async def test_pause_waits_for_teardown_preserves_budget_and_resumes(api: Harnes
 
 async def test_close_waits_for_cleanup_and_releases_all_owned_leases(api: Harness, monkeypatch: pytest.MonkeyPatch) -> None:
     cleanup_started, cleanup_allowed = asyncio.Event(), asyncio.Event()
-    async def loop(root: str, project: str, task: str, url: str, model: str) -> TaskState:
+    async def loop(root: str, project: str, task: str, url: str, model: str, *,
+                   transport: InvestigationTransport = "structured_json") -> TaskState:
         try:
-            return await api.loop(root, project, task, url, model)
+            return await api.loop(root, project, task, url, model, transport=transport)
         finally:
             cleanup_started.set()
             await cleanup_allowed.wait()
     monkeypatch.setattr("engine.investigations.manager.investigate", loop)
     created = (await api.start()).json()
-    await api.entered.wait()
+    await asyncio.wait_for(api.entered.wait(), 5)
     closing = asyncio.create_task(api.manager.close())
     await cleanup_started.wait()
     assert not closing.done()
@@ -169,7 +184,8 @@ async def test_get_never_recovers_or_executes_crashed_pending_attempt(api: Harne
     snapshot = await api.client.get(api.url + "/" + task.id)
     assert snapshot.json()["state"]["pending_" + ("model_call" if pending == "model" else "action") + "_id"]
     assert path.read_bytes() == before and api.calls == 0
-    async def resumed(root: str, project: str, identifier: str, _url: str, _model: str) -> TaskState:
+    async def resumed(root: str, project: str, identifier: str, _url: str, _model: str, *,
+                      transport: InvestigationTransport = "structured_json") -> TaskState:
         recovered = InvestigationStore(WorkspaceService(Path(root)))
         state = recovered.get(project, identifier)
         assert state.pending_model_call_id is state.pending_action_id is None and state.budget.model_calls == 1
@@ -207,12 +223,12 @@ async def test_awaiting_input_resume_requires_answer_and_retains_call_budget(api
     assert resumed.status_code == 200
     assert resumed.json()["user_answers"] == ["The package identifier"]
     assert resumed.json()["budget"]["model_calls"] == resumed.json()["budget"]["actions"] == 1
-    await api.entered.wait()
+    await asyncio.wait_for(api.entered.wait(), 5)
 
 
 async def test_second_manager_cannot_resume_or_control_an_owned_runner(api: Harness) -> None:
     created = (await api.start()).json()
-    await api.entered.wait()
+    await asyncio.wait_for(api.entered.wait(), 5)
     other = InvestigationManager(api.service)
     try:
         with pytest.raises(InvestigationConflict, match="already owns"):

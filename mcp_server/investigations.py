@@ -20,6 +20,7 @@ from mcp_server.investigation_projection import (
     bounded_values_projection,
     compact_identity,
     probe_projection,
+    selected_workflow_projection,
     workflow_projection,
 )
 from spec.investigation import (
@@ -97,6 +98,9 @@ def investigation_context(store: InvestigationStore, project_id: str, task_id: s
     observations = store.observations(project_id, task_id)
     actions = store.actions(project_id, task_id)
     calls = store.model_calls(project_id, task_id)
+    selected_workflow = selected_workflow_projection(state, observations, actions)
+    anchored_id = (state.preview_observation_id if selected_workflow is not None
+                   and selected_workflow.get("status") == "available" else None)
     known_capabilities: dict[str, JsonValue] = {}
     workflow_revisions: set[str] = set()
     for observation in observations:
@@ -118,6 +122,8 @@ def investigation_context(store: InvestigationStore, project_id: str, task_id: s
     # Deduplicate before applying the three-observation bound: repeated metadata
     # must not evict a distinct actual probe and its geometry from the next call.
     for observation in reversed(observations):
+        if observation.id == anchored_id:
+            continue
         projection = observation_projection(observation)
         if observation.status == "completed" and observation.result_type in {
             "discover_capabilities", "inspect_capability", "inspect_media"
@@ -130,7 +136,9 @@ def investigation_context(store: InvestigationStore, project_id: str, task_id: s
         visible.insert(0, observation.id)
         if len(projected) == 3:
             break
-    return {
+    if anchored_id is not None:
+        visible.append(anchored_id)
+    context: dict[str, JsonValue] = {
         "state": state.model_dump(mode="json"),
         "observations": projected,
         "visible_observation_ids": [identifier for identifier in visible],
@@ -146,6 +154,10 @@ def investigation_context(store: InvestigationStore, project_id: str, task_id: s
         "development_media": development_media_summary(store, project_id),
         "planner_modality": "text_only; image paths are references, not supplied image pixels",
     }
+    if selected_workflow is not None:
+        context["selected_workflow"] = selected_workflow
+        context["context_note"] = str(context["context_note"]) + " The selected_workflow separately anchors the saved draft and its actual preview; recent provisional experiments do not modify it."
+    return context
 
 
 def development_media_summary(store: InvestigationStore, project_id: str) -> dict[str, JsonValue]:

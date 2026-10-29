@@ -1,0 +1,6 @@
+{
+  "captured_at": "2026-10-29T19:39:10.314013+00:00",
+  "scope": "During real function-transport investigation; process RSS does not include a complete Metal allocation measure",
+  "process": "  PID ELAPSED    RSS COMMAND\n43886   44:18 13458160 /Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server --model /Users/manavrakeshku.modi/vision-agent/.visionapp/model-qualification/gpt-oss-20b-MXFP4/gpt-oss-20b-MXFP4.gguf --alias gpt-oss-20b-MXFP4-qualification --host 127.0.0.1 --port 1236 --ctx-size 16384 --parallel 1 --gpu-layers all --flash-attn on --batch-size 1024 --ubatch-size 512 --jinja --reasoning on --reasoning-effort low --reasoning-budget 512 --reasoning-format deepseek --no-webui -lv 4\n",
+  "pressure": "kern.memorystatus_vm_pressure_level: 1\nvm.swapusage: total = 11264.00M  used = 9676.19M  free = 1587.81M  (encrypted)\n"
+}
