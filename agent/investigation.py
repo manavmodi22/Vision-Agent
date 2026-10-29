@@ -28,6 +28,7 @@ from spec.investigation import (
     TaskState,
     WorkflowDecision,
 )
+from spec.workflow_ports import WORKFLOW_INPUT_PORTS
 
 JSON_OBJECT = TypeAdapter(dict[str, JsonValue])
 DECISION = TypeAdapter(BuilderDecision)
@@ -153,6 +154,31 @@ def node_contracts() -> dict[str, JsonValue]:
             for kind, reference in variants.items()}
 
 
+WORKFLOW_INVENTORY_CHARS = 3500
+WORKFLOW_INVENTORY_OPERATORS = 16
+
+
+def workflow_capabilities() -> dict[str, JsonValue]:
+    """A bounded graph inventory, not model readiness or full authoring schemas."""
+    contracts = node_contracts()
+    operators: list[JsonValue] = []
+    for kind, contract in list(contracts.items())[:WORKFLOW_INVENTORY_OPERATORS]:
+        assert isinstance(contract, dict)
+        operators.append({"type": kind, "inputs": JSON_OBJECT.validate_python(dict(WORKFLOW_INPUT_PORTS[kind])),
+                          "outputs": contract["outputs"], "description": contract.get("description", "")})
+    result: dict[str, JsonValue] = {
+        "scope": "Supported saved-graph operations; this is not model availability or readiness. "
+                 "Model discovery and inspection remain separate. prepare_workflow loads the full authoring schemas; "
+                 "successful probes do not automatically save a workflow.",
+        "operators": operators, "total_operators": len(contracts), "returned_operators": len(operators),
+        "truncated": len(operators) < len(contracts), "context_char_limit": WORKFLOW_INVENTORY_CHARS,
+    }
+    while operators and len(json.dumps(result, ensure_ascii=False)) > WORKFLOW_INVENTORY_CHARS:
+        operators.pop()
+        result.update(returned_operators=len(operators), truncated=True)
+    return result
+
+
 def workflow_action_contracts() -> dict[str, JsonValue]:
     """Only construction is legal in this stage; node docs provide its variants."""
     action = ConstructWorkflow.model_json_schema()
@@ -275,10 +301,12 @@ async def _run_steps(client: InvestigationClient, decide: Decider, model_name: s
         }
         if state.stage == "workflow":
             stable["node_contracts"] = node_contracts()
+        else:
+            stable["workflow_capabilities"] = workflow_capabilities()
         if "planner_modality" in context:
             stable["planner_modality"] = context["planner_modality"]
         context = {**stable, **{key: value for key, value in context.items()
-                               if key not in {"action_contracts", "node_contracts", "planner_modality"}}}
+                               if key not in {"action_contracts", "node_contracts", "workflow_capabilities", "planner_modality"}}}
         output_type = WorkflowDecision if state.stage == "workflow" else NextAction
         grounding = DecisionGrounding.from_context(context, state.revision)
         output_schema = grounding.schema(output_type.model_json_schema())

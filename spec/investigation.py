@@ -90,6 +90,14 @@ class InspectObservation(Contract):
 
 
 class PrepareWorkflow(Contract):
+    """Load full graph-authoring schemas for a subsequent typed workflow submission.
+
+    The host then compiles and previews that submitted graph as a saved draft.
+    workflow_capabilities lists supported operations, including crop and resize.
+    This request itself creates no graph; successful probes do not automatically
+    become saved workflows.
+    """
+
     type: Literal["prepare_workflow"]
     evidence_ids: list[RecordId] = Field(default_factory=list, max_length=16)
     summary: str = Field(min_length=1, max_length=1000)

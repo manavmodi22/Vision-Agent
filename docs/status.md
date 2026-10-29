@@ -174,13 +174,30 @@ handling. [91 focused tests](../artifacts/a0-investigation/selected-context-vali
 pass after that repair, including the API harness and actual fixture preview.
 The [same-task low-reasoning repeat](../artifacts/a0-investigation/gpt-oss-qualification/selected-context-low/report.json)
 read the four strings, then asked the user to confirm the item code; it produced
-no draft. A separate medium-reasoning trial keeps the task, source and reference
-unchanged. Neither run has been promoted to the default model configuration.
+no draft. The [medium-reasoning trial](../artifacts/a0-investigation/gpt-oss-qualification/medium-live/report.json)
+also stopped for clarification after three actual probes, with no workflow or
+preview, in 246.35 seconds. Both preserved the task, source and withheld reference.
+The default Qwen14 server was restored and verified at 16K; no candidate was
+promoted. The baseline launcher now defaults to 16K and exposes an explicit
+8K/16K context option, matching the measured setup.
 
 CI for `4507d2b` was cancelled after an omitted test-harness signature update
 left an old mock unable to receive the new transport argument. The harness
 update and bounded waits are included with the context fix; the cancelled run
 is not a passing verification result.
+The subsequent [CI run for `08e3f46`](https://github.com/manavmodi22/Vision-Agent/actions/runs/40943441030)
+passed 1,384 Python tests with two optional skips, Ruff, strict mypy on 202
+files, and 322 native checks. The [receipt](../artifacts/a0-investigation/ci-08e3.json)
+is scoped to that commit; later operator-visibility changes have separate evidence.
+
+A compact investigation-stage inventory now exposes the 11 existing saved-graph
+operations before the agent requests the full authoring schema. It describes
+actual semantics and ports, separates model readiness from graph support, and
+explains that probes do not save workflows. A [single captured-call diagnostic](../artifacts/a0-investigation/gpt-oss-qualification/workflow-visibility-call7/candidate.json)
+changed the medium run's post-crop decision from a regex preference question to
+preparing a crop → OCR graph. Only the inventory and preparation descriptions
+changed; the replay dispatched no action. This is a positive next-step result,
+not a completed app. A fresh end-to-end run is in progress.
 
 Subsequent live investigation found two context defects: repeated metadata could
 displace earlier vision evidence, and the fixed five-reading sample hid useful

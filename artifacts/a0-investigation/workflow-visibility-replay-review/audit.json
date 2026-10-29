@@ -1,0 +1,85 @@
+{
+  "checked_at": "2026-10-29T20:03:11.481014+00:00",
+  "verdict": "promising_next_decision_only",
+  "source_identity": "6a7d932897faf376a2b7f1360eaf1c3479741cd1ef73eda34f6ee4a3ff05ae6c",
+  "changed_paths_independently_reconstructed": [
+    "/context/action_contracts/prepare_workflow/description",
+    "/context/workflow_capabilities",
+    "/schema/$defs/PrepareWorkflow/description"
+  ],
+  "baseline_action": {
+    "type": "ask_user",
+    "question": "Do you want to use a regex pattern to filter the OCR results for the item code, or would you prefer a different approach?"
+  },
+  "candidate": {
+    "type": "next_action",
+    "state_revision": 12,
+    "decision_summary": "Prepare a workflow that uses frame_sample, crop, and ocr to isolate the item code, using the crop probe observation as evidence.",
+    "based_on_observation_ids": [
+      "fd6fda6b9f5c484785dd9538378d1343"
+    ],
+    "action": {
+      "type": "prepare_workflow",
+      "evidence_ids": [
+        "fd6fda6b9f5c484785dd9538378d1343"
+      ],
+      "summary": "Use frame_sample -> crop (box from OCR crop probe) -> ocr to read item code only."
+    }
+  },
+  "candidate_executable_authority_validated": false,
+  "dispatched": false,
+  "workflow_constructed": false,
+  "actual_preview": false,
+  "elapsed_s": 46.293635624984745,
+  "completion_tokens": 659,
+  "input_tokens": 7917,
+  "budget": {
+    "mode": "backend_tokenizer",
+    "model": "gpt-oss-20b-MXFP4-medium-qualification",
+    "input_tokens": 7917,
+    "backend_context_tokens": 16384,
+    "context_verified": true,
+    "rendered_prompt_sha256": "f5f111e5f66680b9aeb1e9423a2097291a4f9ed1c209fa70dd6502f2119c98cc",
+    "output_tokens": 1400,
+    "margin_tokens": 128,
+    "effective_context_tokens": 16384,
+    "output_budget_scope": "total_generated_tokens_including_reasoning",
+    "template_request_sha256": "b59b80efad9e1569d22c23bb784bb22dd4b4f64a9324320d0abf1bb55b7fa4dc"
+  },
+  "source_and_ledger_unchanged": true,
+  "new_inventory_contains_fixture_answer_or_task_routing": false,
+  "scope": "Single captured post-crop decision, historical control, no statistical or A0 acceptance claim.",
+  "next_qualification": "Fresh bounded full investigation from original objective and media, same profile and limits; no replay answer injection. Require model-authored graph, actual selected preview exact reference, appropriate fixture-layout limitation, valid evidence and no undesired effects.",
+  "inputs": [
+    {
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/a0-investigation/gpt-oss-qualification/medium-live/task.json",
+      "bytes": 487642,
+      "sha256": "4b5b37d38fe9891b0a15b35a06bb920c8faf684b978383178e844f1708c592a6"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/a0-investigation/gpt-oss-qualification/workflow-visibility-call7/receipt.json",
+      "bytes": 26425,
+      "sha256": "43d909f912ff625b6b9397d12e7d9d8cb8817e4ae710d601e646afcabe4153ff"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/a0-investigation/gpt-oss-qualification/workflow-visibility-call7/input-diff.json",
+      "bytes": 5593,
+      "sha256": "fba47a0489b467acad566f5916eca653e09e168e5e05d53f750208e80485c47f"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/a0-investigation/gpt-oss-qualification/workflow-visibility-call7/wire-request.json",
+      "bytes": 50290,
+      "sha256": "fea6e94054148786c78907acb8e651d7d4c6190bd9b64a9b5f39425cea6a3866"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/a0-investigation/gpt-oss-qualification/workflow-visibility-call7/response.json",
+      "bytes": 4255,
+      "sha256": "07b12227ec613596a337b783dcfd6c6f55095cb3b7a0b8c68552c8f15673357f"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/a0-investigation/gpt-oss-qualification/workflow-visibility-call7/candidate.json",
+      "bytes": 770,
+      "sha256": "39edb33e80546d2b298bcd775ee1d7a2517bbc14bcfbcc189371f6f6e7832c3c"
+    }
+  ]
+}

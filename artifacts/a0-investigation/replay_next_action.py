@@ -26,12 +26,14 @@ from agent.graph_structure import ordered_nodes  # noqa: E402
 from agent.investigation import (  # noqa: E402
     MAX_PROMPT_AND_OUTPUT_CHARS,
     PROMPT_TOKEN_MARGIN,
-    SYSTEM,
     action_contracts,
     completion_failure,
+    generation_options,
     node_contracts,
+    transport_system,
     verify_prompt_budget,
     workflow_action_contracts,
+    workflow_capabilities,
 )
 from agent.planner import local_model_url  # noqa: E402
 from engine.investigations.store import InvestigationRecord  # noqa: E402
@@ -169,7 +171,7 @@ def reconstruct(ledger: Path, call_index: int, mode: str,
         # Avoid WorkspaceService initialization, SQLite writes, locks and pixel reads.
         with patch.object(projection, "development_media_summary", return_value=deepcopy(original["development_media"])):
             current = projection.investigation_context(prefix, prefix.state.project_id, prefix.state.id)
-        stable = {key: deepcopy(original[key]) for key in ("action_contracts", "node_contracts", "planner_modality") if key in original}
+        stable = {key: deepcopy(original[key]) for key in ("action_contracts", "node_contracts", "workflow_capabilities", "planner_modality") if key in original}
         captured["context"] = {**stable, **{key: value for key, value in current.items() if key not in stable}}
         assert captured["context"]["state"] == original["state"]
     elif mode != "original":
@@ -186,11 +188,13 @@ def reconstruct(ledger: Path, call_index: int, mode: str,
         stable = {"action_contracts": workflow_action_contracts() if prefix.state.stage == "workflow" else action_contracts()}
         if prefix.state.stage == "workflow":
             stable["node_contracts"] = node_contracts()
+        else:
+            stable["workflow_capabilities"] = workflow_capabilities()
         if "planner_modality" in context:
             stable["planner_modality"] = context["planner_modality"]
         captured["context"] = {**stable, **{key: value for key, value in context.items()
-                                          if key not in {"action_contracts", "node_contracts", "planner_modality"}}}
-        captured["system"] = SYSTEM
+                                          if key not in {"action_contracts", "node_contracts", "workflow_capabilities", "planner_modality"}}}
+        captured["system"] = transport_system(captured.get("transport", "structured_json"))
         captured["schema"] = DecisionGrounding.from_context(captured["context"], prefix.state.revision).schema(schema)
     elif contracts != "captured":
         raise ValueError("Contracts must be captured or current")
@@ -303,11 +307,7 @@ async def main() -> None:
         request.pop("response_format")
     if args.native_decision_function:
         request.pop("response_format", None)
-        request["tools"] = [{"type": "function", "function": {"name": "submit_decision",
-            "description": "Submit one typed next-action decision for host validation. This only proposes an action.",
-            "strict": True, "parameters": captured["schema"]}}]
-        request["tool_choice"] = {"type": "function", "function": {"name": "submit_decision"}}
-        request["parallel_tool_calls"] = False
+        request.update({**generation_options(captured["schema"], captured["max_tokens"], "decision_function"), **sampling})
     folder = (args.output_dir or ROOT / "artifacts/a0-investigation/next-action-replays" /
               (datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ") + f"-call{args.call}-{args.context}-{uuid.uuid4().hex[:6]}")).resolve()
     protected_ledger_root = ledger.parents[2] if ledger.parent.parent.name == "investigations" else ledger.parent

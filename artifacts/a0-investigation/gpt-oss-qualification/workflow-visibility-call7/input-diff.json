@@ -1,0 +1,140 @@
+{
+  "contracts": "current",
+  "context": "original",
+  "changed_input_diagnostic": true,
+  "changes": [
+    {
+      "op": "add",
+      "path": "/context/action_contracts/prepare_workflow/description",
+      "after": "Load full graph-authoring schemas for a subsequent typed workflow submission.\n\nThe host then compiles and previews that submitted graph as a saved draft.\nworkflow_capabilities lists supported operations, including crop and resize.\nThis request itself creates no graph; successful probes do not automatically\nbecome saved workflows."
+    },
+    {
+      "op": "add",
+      "path": "/context/workflow_capabilities",
+      "after": {
+        "scope": "Supported saved-graph operations; this is not model availability or readiness. Model discovery and inspection remain separate. prepare_workflow loads the full authoring schemas; successful probes do not automatically save a workflow.",
+        "operators": [
+          {
+            "type": "barcode",
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "text": "text"
+            },
+            "description": "Decode supported machine-readable codes in the input image. Ordinary printed text requires a text reader. Decoded text is included in preview output without an event sink."
+          },
+          {
+            "type": "count_per_zone",
+            "inputs": {
+              "dets": "detections"
+            },
+            "outputs": {
+              "counts": "counts"
+            },
+            "description": "Aggregate detections into counts by region; consumes the final zone-filtered detections when a zone filter is present."
+          },
+          {
+            "type": "crop",
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "image": "image"
+            },
+            "description": "Extract a static rectangular region before inference. The box is relative to this node's input image, not necessarily the original source. This does not locate objects dynamically."
+          },
+          {
+            "type": "detect",
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "dets": "detections"
+            },
+            "description": "Run the selected detector on the input image and return detections for the requested supported classes."
+          },
+          {
+            "type": "frame_sample",
+            "inputs": {
+              "frames": "frames"
+            },
+            "outputs": {
+              "frame": "image"
+            },
+            "description": "The graph's single source. The host supplies selected media; no path or media ID belongs in a node reference. Its frame output has image type."
+          },
+          {
+            "type": "match",
+            "inputs": {
+              "text": "text"
+            },
+            "outputs": {
+              "event": "event"
+            },
+            "description": "Compare text readings with a fixed expected string and produce match events. This does not filter or replace the original text readings in preview output."
+          },
+          {
+            "type": "ocr",
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "text": "text"
+            },
+            "description": "Read all detected text in the input image. This node does not semantically select a requested field or discard unrelated text. Its text readings are included in preview output without requiring an event sink."
+          },
+          {
+            "type": "resize",
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "image": "image"
+            },
+            "description": "Resize an image to the given pixel dimensions before downstream inference."
+          },
+          {
+            "type": "rule",
+            "inputs": {
+              "value": "counts"
+            },
+            "outputs": {
+              "event": "event"
+            },
+            "description": "Test counts against a threshold and produce an event. Connect its event output to a sink_event node. Count-only applications do not need a rule."
+          },
+          {
+            "type": "sink_event",
+            "inputs": {
+              "event": "event"
+            },
+            "outputs": {
+              "event": "event"
+            },
+            "description": "Receive an event produced by match or rule. Text is not an event. Optional for plain detection, counting or reading output; investigation previews never dispatch external events."
+          },
+          {
+            "type": "zone_filter",
+            "inputs": {
+              "dets": "detections"
+            },
+            "outputs": {
+              "dets": "detections"
+            },
+            "description": "Filter detections using the project's already confirmed region geometry."
+          }
+        ],
+        "total_operators": 11,
+        "returned_operators": 11,
+        "truncated": false,
+        "context_char_limit": 3500
+      }
+    },
+    {
+      "op": "add",
+      "path": "/schema/$defs/PrepareWorkflow/description",
+      "after": "Load full graph-authoring schemas for a subsequent typed workflow submission.\n\nThe host then compiles and previews that submitted graph as a saved draft.\nworkflow_capabilities lists supported operations, including crop and resize.\nThis request itself creates no graph; successful probes do not automatically\nbecome saved workflows."
+    }
+  ]
+}

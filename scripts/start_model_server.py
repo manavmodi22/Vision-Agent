@@ -19,6 +19,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", type=Path, default=DEFAULT_MODEL,
                         help="Local licensed GGUF; defaults to the measured official Qwen3-14B Q4_K_M")
+    parser.add_argument("--ctx-size", type=int, choices=(8192, 16384), default=16384,
+                        help="Context window for the baseline local server; investigations use a 16K ceiling")
     args = parser.parse_args()
     if not args.model.is_file():
         parser.error("Supply --model with a local, licensed tool-capable GGUF model")
@@ -47,7 +49,7 @@ def main() -> None:
     log_path = ROOT / ".visionapp/planner.log"
     with log_path.open("a") as log:
         process = subprocess.Popen([str(binary), "-m", str(args.model), "--host", "127.0.0.1",
-            "--port", "1234", "--alias", "visionapp-planner", "--ctx-size", "8192", "--parallel", "1",
+            "--port", "1234", "--alias", "visionapp-planner", "--ctx-size", str(args.ctx_size), "--parallel", "1",
             "--reasoning", "off", "--chat-template-kwargs", '{"enable_thinking":false}',
             "--no-webui", "-lv", "4"], stdout=log, stderr=subprocess.STDOUT,
             start_new_session=True)

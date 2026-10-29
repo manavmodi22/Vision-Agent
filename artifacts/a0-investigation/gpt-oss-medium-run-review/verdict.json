@@ -1,0 +1,98 @@
+{
+  "checked_at": "2026-10-29T19:53:56.117618+00:00",
+  "kind": "read_only_completed_run_review",
+  "verdict": "incomplete_awaiting_implementation_preference_no_workflow",
+  "task_id": "a006b3b662da4b3a8970989f3321692b",
+  "source_identity": "71e9e24fa4cf376e6292421863bc3b5d624d65a9a9153b0c08579d8ed6974da1",
+  "model": "gpt-oss-20b-MXFP4-medium-qualification",
+  "transport": "decision_function",
+  "elapsed_s": 246.34840637497837,
+  "counts": {
+    "model_calls": 7,
+    "actions": 7,
+    "actual_probes": 3,
+    "workflows": 0,
+    "previews": 0,
+    "verified_content_addressed_artifacts": 6
+  },
+  "state": {
+    "status": "awaiting_input",
+    "question": "Do you want to use a regex pattern to filter the OCR results for the item code, or would you prefer a different approach?",
+    "stop_reason": null,
+    "budget": {
+      "max_model_calls": 20,
+      "max_actions": 16,
+      "max_probes": 6,
+      "max_elapsed_s": 900.0,
+      "model_calls": 7,
+      "actions": 7,
+      "probes": 3,
+      "elapsed_s": 244.56140116701135
+    }
+  },
+  "reference": {
+    "origin": "Generated software fixture; these expected values were not supplied to the planner",
+    "expected_preview_texts": [
+      "QZ-4817"
+    ],
+    "excluded_readings": [
+      "ITEM CODE",
+      "SHIP TO",
+      "IGNORE-552"
+    ]
+  },
+  "reference_check": {
+    "actual_preview_texts": [],
+    "exact": null
+  },
+  "crop_probe": {
+    "observation_id": "fd6fda6b9f5c484785dd9538378d1343",
+    "box": [
+      0.050781,
+      0.383333,
+      0.21875,
+      0.491667
+    ],
+    "actual_texts": [
+      "QZ-4817"
+    ],
+    "box_matches_observed_item_code_region": true,
+    "based_on_observation_ids": [
+      "943734237f7442baade448b148389f88"
+    ],
+    "applicability": "Only supplied fixed-layout generated fixture tested. No relocated labels, different item codes, scale/rotation variation or independent images tested."
+  },
+  "grounding": {
+    "all_action_ids_and_state_revisions_valid": true,
+    "all_citations_known_and_citable": true,
+    "ocr_switch_summary_references_actual_empty_barcode_result": true,
+    "ocr_switch_cites_barcode_observation": false,
+    "ocr_switch_actual_citations": [
+      "7d354ecc8e8642caaa3c492c9ec43be3"
+    ],
+    "ocr_switch_cited_result_type": "inspect_capability",
+    "final_context_contains_successful_crop_and_full_image_readings": true
+  },
+  "unsupported_or_unverified": [
+    "Regex filtering was offered without a discovered/inspected/executed regex-filter capability.",
+    "Fixed crop applicability beyond the supplied layout remains untested."
+  ],
+  "inputs": [
+    {
+      "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T194839Z/report.json",
+      "bytes": 71245,
+      "sha256": "8631afa5ebdc867b6296325021b265c7966c398d4949c000600cd9dc6b92fce8"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T194839Z/workspace/projects/f0aa8cbaa3ec4985/investigations/a006b3b662da4b3a8970989f3321692b/task.json",
+      "bytes": 487642,
+      "sha256": "4b5b37d38fe9891b0a15b35a06bb920c8faf684b978383178e844f1708c592a6"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/a0-investigation/run-20261029T194839Z/item-and-shipping.png",
+      "bytes": 21509,
+      "sha256": "36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051"
+    }
+  ],
+  "scope": "One generated fixture. No model promotion/A0 acceptance. No inference or backend edits by reviewer."
+}

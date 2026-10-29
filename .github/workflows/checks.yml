@@ -3,6 +3,7 @@ on: [push, pull_request]
 jobs:
   python:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
@@ -14,6 +15,7 @@ jobs:
       - run: uv run mypy spec engine agent mcp_server evals
   native:
     runs-on: macos-15
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - run: ./app/test-native.sh

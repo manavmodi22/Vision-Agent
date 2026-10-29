@@ -111,10 +111,16 @@ async def test_action_contracts_are_supplied_in_actual_model_context(tmp_path: P
         context = request["context"]
         assert request["schema"]["required"][0] == "type"
         assert "based_on_observation_ids" in request["schema"]["required"]
-        assert list(context)[:2] == ["action_contracts", "planner_modality"]
+        assert list(context)[:3] == ["action_contracts", "workflow_capabilities", "planner_modality"]
         assert "run_probe" in context["action_contracts"]
         assert "media_id" in context["action_contracts"]["run_probe"]["required_fields"]
         assert "media_ids" in context["action_contracts"]["inspect_media"]["fields"]
+        assert context["state"]["stage"] == "investigating" and not store.actions(project, task)
+        operators = {row["type"]: row for row in context["workflow_capabilities"]["operators"]}
+        assert operators["crop"]["inputs"] == {"image": "image"}
+        assert operators["resize"]["outputs"] == {"image": "image"}
+        assert "node_contracts" not in context
+        assert "successful probes do not automatically" in context["action_contracts"]["prepare_workflow"]["description"]
         return reply(context, {"type": "finish", "outcome": "inconclusive", "summary": "Protocol test only"})
 
     result = await run_steps(client, decide, "scripted-protocol-test")
@@ -419,6 +425,7 @@ async def test_model_selected_workflow_stage_previews_in_worker_before_draft_rea
             assert request["schema"]["required"][0] == "type"
             assert "based_on_observation_ids" in request["schema"]["required"]
             assert list(context)[:3] == ["action_contracts", "node_contracts", "planner_modality"]
+            assert "workflow_capabilities" not in context
             assert {"frame_sample", "crop", "resize", "detect", "count_per_zone", "rule", "sink_event"} <= set(context["node_contracts"])
             assert "model_capability_id" in context["node_contracts"]["detect"]["required_fields"]
             assert "dets" in context["node_contracts"]["detect"]["outputs"]

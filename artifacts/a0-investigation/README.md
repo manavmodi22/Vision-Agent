@@ -133,3 +133,18 @@ diagnostic dispatched an action. The [review](gpt-oss-first-fixture-review/verdi
 keeps these boundaries explicit. The new optional decision-function transport
 has [software validation](decision-function-validation.json), with defaults
 unchanged; it still needs actual complete vision-task qualification.
+
+The first full [function-transport trace](gpt-oss-qualification/function-live/report.json)
+reached `draft_ready`, but its saved graph returned all four readings; successful
+crop probes had not been incorporated. The exact selected graph and preview now
+remain visible alongside recent experiments. Low and medium repeats still asked
+for unnecessary clarification, so neither qualified. The [medium review](gpt-oss-medium-run-review/verdict.md)
+and [next experiment](next-planner-experiment.md) separate model errors, missing
+output primitives and documentation visibility.
+
+The [workflow-visibility replay](gpt-oss-qualification/workflow-visibility-call7/receipt.json)
+changes only generic operator/preparation documentation at the captured post-crop
+boundary. It returned a valid construction-stage request in 46.29 seconds, with
+unchanged historical state/evidence and no dispatch. Full-task qualification is
+separate. [CI `08e3f46`](ci-08e3.json) passed 1,384 Python tests, two optional skips,
+Ruff, strict mypy on 202 files and 322 native checks before this documentation change.

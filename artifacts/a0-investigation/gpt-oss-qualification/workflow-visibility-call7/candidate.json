@@ -1,0 +1,21 @@
+{
+  "shape_and_provenance_valid": true,
+  "decision": {
+    "type": "next_action",
+    "state_revision": 12,
+    "decision_summary": "Prepare a workflow that uses frame_sample, crop, and ocr to isolate the item code, using the crop probe observation as evidence.",
+    "based_on_observation_ids": [
+      "fd6fda6b9f5c484785dd9538378d1343"
+    ],
+    "action": {
+      "type": "prepare_workflow",
+      "evidence_ids": [
+        "fd6fda6b9f5c484785dd9538378d1343"
+      ],
+      "summary": "Use frame_sample -> crop (box from OCR crop probe) -> ocr to read item code only."
+    }
+  },
+  "authority_validated": false,
+  "action_dispatched": false,
+  "scope": "Shape, revision and evidence references only; not task correctness, executable authorization or A0 success."
+}

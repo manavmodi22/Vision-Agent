@@ -1,0 +1,56 @@
+{
+  "schema_version": "1",
+  "scope": "Documentation visibility and dependency-boundary validation; not planner acceptance or measured vision accuracy.",
+  "source_identity": "eccdf45df253baccdd3bc3a73f56b1746865b5f95823629664cd3cf5b5c49801",
+  "replay_pre_boundary_source_identity": "6a7d932897faf376a2b7f1360eaf1c3479741cd1ef73eda34f6ee4a3ff05ae6c",
+  "boundary_change": {
+    "description": "Moved authorable graph input-port metadata into pure spec/workflow_ports.py and replaced the agent's direct engine registry import. No operators, execution semantics, model settings or response transport changed.",
+    "behavior_preserving_evidence": "The complete serialized workflow_capabilities inventory is byte-identical before and after the metadata move; exhaustive tests compare its operation vocabulary and input ports with authoring schema variants and the runtime registry.",
+    "production_files": [
+      "agent/investigation.py",
+      "spec/workflow_ports.py"
+    ],
+    "test_file": "tests/test_investigation_docs.py"
+  },
+  "inventory": {
+    "operators": 11,
+    "characters": 3033,
+    "character_limit": 3500,
+    "truncated": false,
+    "serialization": "json.dumps(workflow_capabilities(), ensure_ascii=False).encode()",
+    "sha256_before": "ff4cd6b999c6eba4c8acfb45331bae680bbaa81b4e3b57955b9f16fde08496f9",
+    "sha256_after": "ff4cd6b999c6eba4c8acfb45331bae680bbaa81b4e3b57955b9f16fde08496f9",
+    "byte_parity": true
+  },
+  "checks": [
+    {
+      "command": ".venv/bin/python -B -m pytest -q tests/test_investigation_docs.py tests/test_investigation_loop.py tests/test_planner_context_budget.py tests/test_investigation_transport.py",
+      "exit_code": 0,
+      "passed": 78,
+      "elapsed_seconds": 15.94
+    },
+    {
+      "command": ".venv/bin/python -B -m ruff check agent/investigation.py spec/workflow_ports.py tests/test_investigation_docs.py",
+      "exit_code": 0,
+      "result": "All checks passed!"
+    },
+    {
+      "command": ".venv/bin/python -B -m mypy agent/investigation.py spec/workflow_ports.py",
+      "exit_code": 0,
+      "source_files_checked": 2,
+      "result": "Success: no issues found in 2 source files"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "working_directory": "/Users/manavrakeshku.modi/vision-agent",
+  "validation_inference_calls": 0,
+  "server_or_default_model_changes": false,
+  "limitations": [
+    "Tests use scripted protocol decisions and software fixtures; they do not demonstrate autonomous planner success.",
+    "The preceding live replay used the pre-boundary source. Inventory byte parity supports preserving its model-visible documentation, but no model inference was repeated as part of this boundary validation.",
+    "This receipt records completed checks; it does not claim an outcome for the separately running full investigation."
+  ]
+}
