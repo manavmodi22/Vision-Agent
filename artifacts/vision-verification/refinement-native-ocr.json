@@ -1,0 +1,55 @@
+{
+  "kind": "actual_native_apple_vision_refinement_preview",
+  "input_origin": "Generated text fixture, not warehouse imagery",
+  "workspace": "/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/vision-refinement-ocr-u9jns50l",
+  "result": {
+    "preview": {
+      "frames": [
+        {
+          "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/vision-refinement-ocr-u9jns50l/workspace/projects/f4a434078a374ed5/media/c7ea8cbd-sku.png",
+          "detections": [],
+          "counts": {},
+          "texts": [
+            "SKU-002"
+          ],
+          "events": [
+            {
+              "type": "label_check",
+              "matched": true,
+              "expected": "SKU-002",
+              "observed": [
+                "SKU-002"
+              ]
+            }
+          ],
+          "elapsed_ms": 398.9350000047125,
+          "timestamp_s": 0.0,
+          "judgements": []
+        }
+      ],
+      "elapsed_s": 0.3993077909690328,
+      "warnings": [
+        "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+      ]
+    },
+    "candidate_index": 0,
+    "message": "Applied 1 requested changes to 1 candidate(s), with an actual preview of every affected candidate. Preserved unrelated settings and human labels.",
+    "base_spec_hash": "ddf8a074abd55fb15f35b6f29886fc90b0d253902994d2e53b2324b50601d2fd",
+    "spec_hash": "9f2af06a88ebe30d13db5c4d3a88928dd560efbad8a2eae096fa9cb283a31395",
+    "requires_review": false,
+    "affected_candidate_indices": [
+      0
+    ],
+    "previewed_candidate_indices": [
+      0
+    ],
+    "base_spec_hashes": {
+      "0": "ddf8a074abd55fb15f35b6f29886fc90b0d253902994d2e53b2324b50601d2fd"
+    },
+    "spec_hashes": {
+      "0": "9f2af06a88ebe30d13db5c4d3a88928dd560efbad8a2eae096fa9cb283a31395"
+    }
+  },
+  "persisted_events": 0,
+  "deployment_approved": false
+}

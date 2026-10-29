@@ -1,0 +1,254 @@
+{
+  "project_id": "77a75e08732b43fd",
+  "goal": "Count people inside region A in this warehouse footage. Show their boxes and the count, with no alerts.",
+  "zones": {
+    "zones": [
+      {
+        "id": "A",
+        "polygon": [
+          [
+            0.30078125,
+            0.20601851851851852
+          ],
+          [
+            0.6002604166666666,
+            0.20601851851851852
+          ],
+          [
+            0.6002604166666666,
+            0.9467592592592593
+          ],
+          [
+            0.30078125,
+            0.9467592592592593
+          ]
+        ]
+      }
+    ]
+  },
+  "build": {
+    "id": "18e8b005ca6a4de9b9a61ba50750ff97",
+    "project_id": "77a75e08732b43fd",
+    "status": "awaiting_review",
+    "phase": "reviewing",
+    "next_action": "review_labels",
+    "message": "Review the labels on 20 evaluation images, then continue. 0 are reviewed. Evaluation requires 10\u201350 reviewed images; suggestions are not ground truth.",
+    "questions": [],
+    "log": [
+      {
+        "at": "2026-10-28T18:08:50.436317+00:00",
+        "phase": "planning",
+        "message": "Interpreting your goal and preparing a working preview"
+      },
+      {
+        "at": "2026-10-28T18:09:20.313076+00:00",
+        "phase": "awaiting_zones",
+        "message": "I need the actual region boundaries to build the requested spatial counts."
+      },
+      {
+        "at": "2026-10-28T18:12:10.943170+00:00",
+        "phase": "previewing",
+        "message": "Compiled 1 candidate(s) and previewed 5 images; observed 1 detections. Accuracy has not been evaluated."
+      },
+      {
+        "at": "2026-10-28T18:12:10.944050+00:00",
+        "phase": "labeling",
+        "message": "Using OWLv2 as the default open-vocabulary detector for arbitrary object classes; reading pipelines use their native reading adapter."
+      },
+      {
+        "at": "2026-10-28T18:13:20.967237+00:00",
+        "phase": "reviewing",
+        "message": "20 images have unverified detector suggestions. Existing manual labels and prior proposals were retained; reviewed labels were not overwritten."
+      },
+      {
+        "at": "2026-10-28T18:13:20.967395+00:00",
+        "phase": "reviewing",
+        "message": "Review the labels on 20 evaluation images, then continue. 0 are reviewed. Evaluation requires 10\u201350 reviewed images; suggestions are not ground truth."
+      }
+    ],
+    "preview": {
+      "frames": [
+        {
+          "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/77a75e08732b43fd/media/10c7c095-warehouse-044.25s.png",
+          "detections": [],
+          "counts": {
+            "A": 0
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 26969.850375026,
+          "timestamp_s": 0.0,
+          "judgements": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/77a75e08732b43fd/media/224b63ee-warehouse-039.75s.png",
+          "detections": [],
+          "counts": {
+            "A": 0
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 1600.714209023863,
+          "timestamp_s": 0.0,
+          "judgements": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/77a75e08732b43fd/media/3694d4b1-warehouse-037.50s.png",
+          "detections": [],
+          "counts": {
+            "A": 0
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 1546.4464999968186,
+          "timestamp_s": 0.0,
+          "judgements": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/77a75e08732b43fd/media/375c155c-warehouse-046.50s.png",
+          "detections": [],
+          "counts": {
+            "A": 0
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 1644.0809589694254,
+          "timestamp_s": 0.0,
+          "judgements": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/77a75e08732b43fd/media/41c22d49-warehouse-036.75s.png",
+          "detections": [
+            {
+              "label": "person",
+              "confidence": 0.41919100284576416,
+              "box": [
+                0.34637120564778645,
+                0.42612934818974246,
+                0.4149155298868815,
+                0.5717201515480325
+              ],
+              "zone": "A"
+            }
+          ],
+          "counts": {
+            "A": 1
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 1724.251416977495,
+          "timestamp_s": 0.0,
+          "judgements": []
+        }
+      ],
+      "elapsed_s": 33.5028518330073,
+      "warnings": [
+        "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+      ]
+    },
+    "selected_candidate_index": 0,
+    "evaluations": [],
+    "project": {},
+    "created_at": "2026-10-28T18:08:50.311666+00:00",
+    "updated_at": "2026-10-28T18:13:20.967409+00:00"
+  },
+  "candidate": {
+    "spec_version": "0.1",
+    "name": "custom-candidate-1",
+    "inputs": {
+      "source": {
+        "type": "image_folder",
+        "path": "media"
+      }
+    },
+    "blocks": [
+      {
+        "id": "sample",
+        "type": "frame_sample",
+        "params": {
+          "fps": 2
+        },
+        "inputs": {
+          "frames": "$inputs.source"
+        }
+      },
+      {
+        "id": "det",
+        "type": "detect",
+        "params": {
+          "model": "owlv2-base-patch16",
+          "classes": [
+            "person"
+          ],
+          "min_conf": 0.4
+        },
+        "inputs": {
+          "image": "$sample.frame"
+        }
+      },
+      {
+        "id": "zones",
+        "type": "zone_filter",
+        "params": {
+          "zones": "zones/lanes.json",
+          "include_ids": [
+            "A"
+          ]
+        },
+        "inputs": {
+          "dets": "$det.dets"
+        }
+      },
+      {
+        "id": "count",
+        "type": "count_per_zone",
+        "params": {},
+        "inputs": {
+          "dets": "$zones.dets"
+        }
+      }
+    ],
+    "eval": {
+      "set": "reviewed-v1",
+      "metric": "count_mae",
+      "target": 0.5
+    }
+  },
+  "clarification_count": 0,
+  "source": {
+    "sample_id": "nvidia-warehouse-real",
+    "source_url": "https://huggingface.co/datasets/nvidia/PhysicalAI-SmartSpaces/tree/2cbe9563cbe9f47f846e5c871ee994572bbbc60e",
+    "video": "MTMC_Tracking_2026/test/Warehouse_026/videos/Camera_0000.mp4",
+    "sha256": "83ed232a2f5fe3031807ed19020e1a44fe386e89b68f9bea621797f1552c9cda",
+    "revision": "2cbe9563cbe9f47f846e5c871ee994572bbbc60e",
+    "license": "CC-BY-4.0",
+    "attribution": "NVIDIA Physical AI Smart Spaces",
+    "synthetic": false,
+    "frame_count": 20,
+    "reviewed": false,
+    "source_timestamps_s": [
+      33.0,
+      33.75,
+      34.5,
+      35.25,
+      36.0,
+      36.75,
+      37.5,
+      38.25,
+      39.0,
+      39.75,
+      40.5,
+      41.25,
+      42.0,
+      42.75,
+      43.5,
+      44.25,
+      45.0,
+      45.75,
+      46.5,
+      47.25
+    ]
+  },
+  "deployment_created": false,
+  "note": "Actual nativeUI region draw/save/resume; local planner and OWLv2 preview; predictions unreviewed, no accuracy claim."
+}

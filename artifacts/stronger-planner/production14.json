@@ -1,0 +1,28 @@
+{
+  "pid": 46319,
+  "argv": [
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server",
+    "-m",
+    "/Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/Qwen3-14B-Q4_K_M.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "1234",
+    "--alias",
+    "visionapp-planner",
+    "--ctx-size",
+    "8192",
+    "--parallel",
+    "1",
+    "--reasoning",
+    "off",
+    "--chat-template-kwargs",
+    "{\"enable_thinking\":false}",
+    "--no-webui",
+    "-lv",
+    "4"
+  ],
+  "provisional": true,
+  "started_at": "2026-10-28T18:49:46.454867+00:00",
+  "cosmos_pid": 45543
+}

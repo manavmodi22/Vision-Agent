@@ -1,0 +1,446 @@
+{
+  "scope": "Actual local Qwen request and MCP compile/preview; not native UI or accuracy acceptance",
+  "project_id": "071347f505234f5b",
+  "plan": {
+    "id": "c57279cfdf2e4b7ab1b6723f7bb7f27a",
+    "project_id": "071347f505234f5b",
+    "build_id": null,
+    "operation_id": "f6050bac0fad4177889262059ca478df",
+    "revision": 1,
+    "parent_plan_id": null,
+    "created_at": "2026-10-29T01:13:55.976903+00:00",
+    "content_hash": "bd0230257feea3777cad1ecafe1bfc378358235120ee77601b7608069e34f4ec",
+    "goal": "Read printed labels and create a local event only when the text exactly equals \"ABC-990\".",
+    "assumptions": [
+      "Use the project's imported media and saved region geometry.",
+      "A sample preview does not establish accuracy.",
+      "Evaluation requires reviewed labels on the same held-out data for every candidate."
+    ],
+    "candidates": [
+      {
+        "spec_version": "0.1",
+        "name": "custom-candidate-1",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "sample",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2
+            },
+            "inputs": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "read",
+            "type": "ocr",
+            "params": {},
+            "inputs": {
+              "image": "$sample.frame"
+            }
+          },
+          {
+            "id": "check",
+            "type": "match",
+            "params": {
+              "expected": "ABC-990",
+              "mode": "exact",
+              "emit": "matched"
+            },
+            "inputs": {
+              "text": "$read.text"
+            }
+          },
+          {
+            "id": "out",
+            "type": "sink_event",
+            "params": {},
+            "inputs": {
+              "event": "$check.event"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "text_accuracy",
+          "target": 0.95
+        }
+      }
+    ],
+    "required_capabilities": [
+      "block.frame_sample",
+      "block.match",
+      "block.ocr",
+      "block.sink_event",
+      "model.apple-vision"
+    ],
+    "experiments": [
+      {
+        "id": "plan",
+        "phase": "plan",
+        "description": "Apply the requested typed edit and preview affected candidates.",
+        "allowed_tools": [
+          "block_schema",
+          "blocks_list",
+          "build_refine",
+          "build_refinement_context",
+          "dataset_context",
+          "detect_open_vocab",
+          "suggest_labels"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "compile",
+        "phase": "compile",
+        "description": "Compile every candidate and preview up to five samples.",
+        "allowed_tools": [
+          "pipeline_run",
+          "pipeline_validate"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "evaluate",
+        "phase": "evaluate",
+        "description": "Prepare review data, then measure every candidate on the reviewed holdout.",
+        "allowed_tools": [
+          "build_context",
+          "build_prepare_review",
+          "build_propose_labels",
+          "dataset_context",
+          "eval_create",
+          "eval_run",
+          "pipeline_run",
+          "review_queue",
+          "suggest_labels"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "specialize",
+        "phase": "specialize",
+        "description": "After human approval, train and compare measured results.",
+        "allowed_tools": [
+          "build_context",
+          "build_train",
+          "eval_run",
+          "pipeline_run",
+          "train_start",
+          "train_status"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "operate",
+        "phase": "operate",
+        "description": "Run only with current human deployment approval.",
+        "allowed_tools": [
+          "build_operate",
+          "events_query",
+          "report_make",
+          "review_queue"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      }
+    ],
+    "metrics": [
+      {
+        "candidate_index": 0,
+        "metric": "text_accuracy",
+        "target": 0.95,
+        "direction": "maximize"
+      }
+    ],
+    "stop_conditions": [
+      "Stop on changed data, models, settings or workflow.",
+      "Stop if a required capability is unavailable or a tool fails.",
+      "Respect existing call, time and training budgets.",
+      "Pause at human review and approval checkpoints."
+    ],
+    "human_checkpoints": [
+      {
+        "id": "labels",
+        "phase": "evaluate",
+        "description": "Review labels before scoring.",
+        "requires_approval": true
+      },
+      {
+        "id": "training",
+        "phase": "specialize",
+        "description": "Approve the bounded training attempt.",
+        "requires_approval": true
+      },
+      {
+        "id": "deployment",
+        "phase": "operate",
+        "description": "Approve this evaluated candidate before recording a run.",
+        "requires_approval": true
+      },
+      {
+        "id": "delivery",
+        "phase": "operate",
+        "description": "Configure and approve delivery separately in Alerts.",
+        "requires_approval": true
+      }
+    ],
+    "snapshot": {
+      "workspace_hash": "92ee885a4a0b78885692a355ade3b2edc3ed43933e2588d5d5a15c018f46dca9",
+      "dataset_hash": "e1eb506d4f6c75386d6173d660dc21cf801b20431aa2664bbb1328e9ca0064f0",
+      "model_hashes": [
+        "7047131e0930965904389b2a861ae690b72ddbdf2504074424d7c7eb344201aa",
+        "b4708c09b3667ad7d0f76a0df8de7f73b65ca996bcc2170cd265795ca01cfe30"
+      ],
+      "settings_hash": "2bcc5ca8a706171d53fd1b58f92f4beea09876ab946804f26bd60589b3b44108"
+    },
+    "skills": [
+      {
+        "id": "authoring",
+        "version": "1.0.0",
+        "sha256": "68dea50aabed360e591c70ec2f1e99206780a01c2dcf3ab90ed427f2c9bac108"
+      },
+      {
+        "id": "reading",
+        "version": "1.0.0",
+        "sha256": "1b3054a9d0b0f0e7544431624a76655824c2ec34474a6a43e110f446abb4690c"
+      },
+      {
+        "id": "alerting",
+        "version": "1.0.0",
+        "sha256": "3d0031531408e56f99c93aec804066d872fc58b4f7949954e5bd9ac09f49deb1"
+      }
+    ],
+    "revision_reason": "Initial typed proposal before compilation"
+  },
+  "events": [
+    {
+      "id": "79ba14163023650eac5734d88a10c3c144c7da7322959f5533c6e4e4a3cf757b",
+      "sequence": 1,
+      "project_id": "071347f505234f5b",
+      "build_id": null,
+      "operation_id": "f6050bac0fad4177889262059ca478df",
+      "execution_id": null,
+      "plan_id": null,
+      "call_id": "42fadf85d13f49cf8f2e27fd979eb522",
+      "kind": "tool",
+      "stage": "started",
+      "name": "blocks_list",
+      "phase": "plan",
+      "at": "2026-10-29T01:13:14.826596+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "57d2c92a2818ad025c874c037e82690ef6021dde8d3a8919104f64bc582221fc",
+      "sequence": 2,
+      "project_id": "071347f505234f5b",
+      "build_id": null,
+      "operation_id": "f6050bac0fad4177889262059ca478df",
+      "execution_id": null,
+      "plan_id": null,
+      "call_id": "42fadf85d13f49cf8f2e27fd979eb522",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "blocks_list",
+      "phase": "plan",
+      "at": "2026-10-29T01:13:14.847800+00:00",
+      "duration_ms": 21.204,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "output_artifact_id": "016c510bbafdb458ed6e3390b5f546c4584d8a2d5e2189c3821309d8a0e8d3c4",
+      "error": null
+    },
+    {
+      "id": "8b37ffc6583aefbe8775e9ed4bca7b48563a0fdbded832bcac1d9ad7d3241b5f",
+      "sequence": 3,
+      "project_id": "071347f505234f5b",
+      "build_id": null,
+      "operation_id": "f6050bac0fad4177889262059ca478df",
+      "execution_id": null,
+      "plan_id": null,
+      "call_id": "6b47afff05d548f99530b435ebf53b24",
+      "kind": "tool",
+      "stage": "started",
+      "name": "dataset_context",
+      "phase": "plan",
+      "at": "2026-10-29T01:13:14.878708+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "82b1215f115a24a70eaa33aae40d45a6f2873dc2d079b54f1cc2429dd9ab5fdf",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "684ca941a035727b47cab75893a6d52378a639b6364af458844af05978503523",
+      "sequence": 4,
+      "project_id": "071347f505234f5b",
+      "build_id": null,
+      "operation_id": "f6050bac0fad4177889262059ca478df",
+      "execution_id": null,
+      "plan_id": null,
+      "call_id": "6b47afff05d548f99530b435ebf53b24",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "dataset_context",
+      "phase": "plan",
+      "at": "2026-10-29T01:13:14.900112+00:00",
+      "duration_ms": 21.404,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "82b1215f115a24a70eaa33aae40d45a6f2873dc2d079b54f1cc2429dd9ab5fdf",
+      "output_artifact_id": "a13bb1182508f5d1fce48a748ea87d25416b5e3cee2c12d404dc2cdab1ed4d0f",
+      "error": null
+    },
+    {
+      "id": "1ceeaf74b819f17e8a4ff272fb5da90820620e2c3b649bc1d674869b3c94e45c",
+      "sequence": 5,
+      "project_id": "071347f505234f5b",
+      "build_id": null,
+      "operation_id": "f6050bac0fad4177889262059ca478df",
+      "execution_id": null,
+      "plan_id": null,
+      "call_id": "ed386060c1b140c49992626a4d1b13ad",
+      "kind": "llm",
+      "stage": "started",
+      "name": "visionapp-planner",
+      "phase": "plan",
+      "at": "2026-10-29T01:13:15.041770+00:00",
+      "duration_ms": null,
+      "model_identity": "Reported model alias: visionapp-planner",
+      "cost_usd": null,
+      "input_artifact_id": "ab8b5baca65e393bb2ed13152ba1e89ab02a9d17493798e1b74819b11766efde",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "0ff779877e173af3de7db240a322adf0b5853cfa997e120ccd32b8b9e6ca8383",
+      "sequence": 6,
+      "project_id": "071347f505234f5b",
+      "build_id": null,
+      "operation_id": "f6050bac0fad4177889262059ca478df",
+      "execution_id": null,
+      "plan_id": null,
+      "call_id": "ed386060c1b140c49992626a4d1b13ad",
+      "kind": "llm",
+      "stage": "completed",
+      "name": "visionapp-planner",
+      "phase": "plan",
+      "at": "2026-10-29T01:13:55.624285+00:00",
+      "duration_ms": 40582.515,
+      "model_identity": "Reported model alias: visionapp-planner",
+      "cost_usd": null,
+      "input_artifact_id": "ab8b5baca65e393bb2ed13152ba1e89ab02a9d17493798e1b74819b11766efde",
+      "output_artifact_id": "07ec3c1c18868c09142256cacfae4dab57bdde4bc39ca923d82de53569c6587a",
+      "error": null
+    },
+    {
+      "id": "56d84843ac730064020faf0cf7e10872d8fcb18cb95e85265b4b78491791f851",
+      "sequence": 7,
+      "project_id": "071347f505234f5b",
+      "build_id": null,
+      "operation_id": "f6050bac0fad4177889262059ca478df",
+      "execution_id": "816c984e386f42958d9f7316af0791e3",
+      "plan_id": "c57279cfdf2e4b7ab1b6723f7bb7f27a",
+      "call_id": "34dd2c01bdb74e95bdaec1e945b4e53f",
+      "kind": "tool",
+      "stage": "started",
+      "name": "pipeline_validate",
+      "phase": "compile",
+      "at": "2026-10-29T01:13:56.140022+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "aaafff709aaa6c5357069ec7c6a96913bf5445a2d09e5d36828c05b48b18638a",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "d93a93ea21198a1a141c8f8b9b817d87b63a3d93109e7176277978c8ba419729",
+      "sequence": 8,
+      "project_id": "071347f505234f5b",
+      "build_id": null,
+      "operation_id": "f6050bac0fad4177889262059ca478df",
+      "execution_id": "816c984e386f42958d9f7316af0791e3",
+      "plan_id": "c57279cfdf2e4b7ab1b6723f7bb7f27a",
+      "call_id": "34dd2c01bdb74e95bdaec1e945b4e53f",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "pipeline_validate",
+      "phase": "compile",
+      "at": "2026-10-29T01:13:56.181556+00:00",
+      "duration_ms": 41.534,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "aaafff709aaa6c5357069ec7c6a96913bf5445a2d09e5d36828c05b48b18638a",
+      "output_artifact_id": "f2e6221bac7112ea123f706c89500b263e72f0f9bc7068fb74bdbaf8c51fbc38",
+      "error": null
+    },
+    {
+      "id": "a45b9c372411dbf2149727dd78fc130d947b4064a98c7441aece950ca8b83555",
+      "sequence": 9,
+      "project_id": "071347f505234f5b",
+      "build_id": null,
+      "operation_id": "f6050bac0fad4177889262059ca478df",
+      "execution_id": "816c984e386f42958d9f7316af0791e3",
+      "plan_id": "c57279cfdf2e4b7ab1b6723f7bb7f27a",
+      "call_id": "d90d7b33591640068fc2d8cc2b35b497",
+      "kind": "tool",
+      "stage": "started",
+      "name": "pipeline_run",
+      "phase": "compile",
+      "at": "2026-10-29T01:13:56.273088+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "aaafff709aaa6c5357069ec7c6a96913bf5445a2d09e5d36828c05b48b18638a",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "96e5dfc2791bbef9b5a43db835932c9633ce554ea8f8e62449ea41bc922622dd",
+      "sequence": 10,
+      "project_id": "071347f505234f5b",
+      "build_id": null,
+      "operation_id": "f6050bac0fad4177889262059ca478df",
+      "execution_id": "816c984e386f42958d9f7316af0791e3",
+      "plan_id": "c57279cfdf2e4b7ab1b6723f7bb7f27a",
+      "call_id": "d90d7b33591640068fc2d8cc2b35b497",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "pipeline_run",
+      "phase": "compile",
+      "at": "2026-10-29T01:13:58.194041+00:00",
+      "duration_ms": 1920.953,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "aaafff709aaa6c5357069ec7c6a96913bf5445a2d09e5d36828c05b48b18638a",
+      "output_artifact_id": "a598feb88e883a71e9aae77060b11e41a0d89dfb5b91a766a35fda41ea21d7bf",
+      "error": null
+    }
+  ],
+  "plan_precedes_execution": true,
+  "skill_identity_captured": true,
+  "recorded_events": 0
+}

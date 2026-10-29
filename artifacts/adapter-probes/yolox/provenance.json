@@ -1,0 +1,56 @@
+{
+  "code_commit": "6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+  "source_files": [
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/6ddff4824372906469a7fae2dc3206c7aa4bbaee/LICENSE",
+      "sha256": "0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088",
+      "bytes": 11371
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/6ddff4824372906469a7fae2dc3206c7aa4bbaee/README.md",
+      "sha256": "023dbf0a5f2c48c944cc6220f9c4750febe2ceafc535445278455186bec7ec6b",
+      "bytes": 13314
+    },
+    {
+      "path": "demo/ONNXRuntime/README.md",
+      "url": "https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/6ddff4824372906469a7fae2dc3206c7aa4bbaee/demo/ONNXRuntime/README.md",
+      "sha256": "587068c99b5685a27c8b3460bb28b21a2ac51b3de0a157c9e087241f03d51b35",
+      "bytes": 3177
+    },
+    {
+      "path": "demo/ONNXRuntime/onnx_inference.py",
+      "url": "https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/6ddff4824372906469a7fae2dc3206c7aa4bbaee/demo/ONNXRuntime/onnx_inference.py",
+      "sha256": "c51aa9e9a86d8561fe9e318e119a4fbe80d1f93639527b039f403d6adc65d68f",
+      "bytes": 2536
+    },
+    {
+      "path": "yolox/utils/demo_utils.py",
+      "url": "https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/6ddff4824372906469a7fae2dc3206c7aa4bbaee/yolox/utils/demo_utils.py",
+      "sha256": "e1d6e1d263691ac15fdaa4f891efa83707da4af0fd895be122459105df3ee601",
+      "bytes": 5101
+    },
+    {
+      "path": "yolox/data/data_augment.py",
+      "url": "https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/6ddff4824372906469a7fae2dc3206c7aa4bbaee/yolox/data/data_augment.py",
+      "sha256": "f99b0b1568dafde0acd99f0a1e27a33644885349834d55a9dc632fe691ee352d",
+      "bytes": 7360
+    },
+    {
+      "path": "yolox/data/datasets/coco_classes.py",
+      "url": "https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/6ddff4824372906469a7fae2dc3206c7aa4bbaee/yolox/data/datasets/coco_classes.py",
+      "sha256": "b38193c481a73f1f674cedab9e551b15b39b1a7aaed3e09e16505362cc54ad51",
+      "bytes": 1296
+    }
+  ],
+  "checkpoint": {
+    "url": "https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_s.onnx",
+    "asset_id": 42724906,
+    "release_tag": "0.1.1rc0",
+    "published_at": "2021-08-18T12:34:07Z",
+    "bytes": 35858002,
+    "sha256": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+    "server_digest": null
+  }
+}

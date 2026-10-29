@@ -1,0 +1,77 @@
+{
+  "trace": ".visionapp/stronger-planner-qwen14-initial4/projects/4f7a480371164047/agent-runs/de4de317921c4b30878707ee75bf0dab.json",
+  "calls": [
+    {
+      "kind": "tool",
+      "name": "blocks_list",
+      "status": "completed",
+      "elapsed_s": 0.019595
+    },
+    {
+      "kind": "tool",
+      "name": "dataset_context",
+      "status": "completed",
+      "elapsed_s": 0.032407
+    },
+    {
+      "kind": "llm",
+      "name": "visionapp-planner-qwen3-14b",
+      "status": "completed",
+      "elapsed_s": 77.242002,
+      "usage": {
+        "input_tokens": 1271,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 4,
+        "output_tokens": 355,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "output": "{\n  \"message\": \"Count pallets in each saved lane and trigger a local event when a lane has at least 5 pallets.\",\n  \"questions\": [],\n  \"choices\": [\n    {\n      \"metric\": \"count_mae\",\n      \"target\": 0.5,\n      \"use_case\": \"custom\",\n      \"pipeline_type\": \"detection\",\n      \"objects\": [\"pallet\"],\n      \"min_confidence\": 0.4,\n      \"count_threshold\": 1,\n      \"hold_seconds\": 0,\n      \"expected_text\": null,\n      \"use_zones\": true,\n      \"zone_ids\": [\"A\", \"B\", \"C\", \"D\"]\n    },\n    {\n      \"metric\": \"recall\",\n      \"target\": 0.9,\n      \"use_case\": \"custom\",\n      \"pipeline_type\": \"detection\",\n      \"objects\": [\"pallet\"],\n      \"min_confidence\": 0.4,\n      \"count_threshold\": null,\n      \"hold_seconds\": 0,\n      \"expected_text\": null,\n      \"use_zones\": true,\n      \"zone_ids\": [\"A\", \"B\", \"C\", \"D\"]\n    },\n    {\n      \"metric\": \"count_mae\",\n      \"target\": 0.5,\n      \"use_case\": \"custom\",\n      \"pipeline_type\": \"detection\",\n      \"objects\": [\"pallet\"],\n      \"min_confidence\": 0.4,\n      \"count_threshold\": 5,\n      \"hold_seconds\": 0,\n      \"expected_text\": null,\n      \"use_zones\": true,\n      \"zone_ids\": [\"A\", \"B\", \"C\", \"D\"]\n    }\n  ]\n}",
+      "retry_messages": []
+    },
+    {
+      "kind": "llm",
+      "name": "visionapp-planner-qwen3-14b",
+      "status": "completed",
+      "elapsed_s": 27.715533,
+      "usage": {
+        "input_tokens": 1670,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 1267,
+        "output_tokens": 148,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "output": "{\n  \"message\": \"Count pallets in each saved lane and trigger a local event when a lane has at least 5 pallets.\",\n  \"questions\": [],\n  \"choices\": [\n    {\n      \"metric\": \"count_mae\",\n      \"target\": 0.5,\n      \"use_case\": \"custom\",\n      \"pipeline_type\": \"detection\",\n      \"objects\": [\"pallet\"],\n      \"min_confidence\": 0.4,\n      \"count_threshold\": 5,\n      \"hold_seconds\": 0,\n      \"expected_text\": null,\n      \"use_zones\": true,\n      \"zone_ids\": [\"A\", \"B\", \"C\", \"D\"]\n    }\n  ]\n}",
+      "retry_messages": [
+        "This is a counting task; use count_mae target 0.5 unless the user specifies another evaluation metric or target."
+      ]
+    },
+    {
+      "kind": "tool",
+      "name": "pipeline_validate",
+      "status": "completed",
+      "elapsed_s": 0.031378
+    },
+    {
+      "kind": "tool",
+      "name": "pipeline_run",
+      "status": "completed",
+      "elapsed_s": 0.214717
+    }
+  ],
+  "server_timing_lines": [
+    "2.59.713.161 I slot launch_slot_: id  0 | task 322 | processing task, is_child = 0",
+    "4.16.674.104 I slot print_timing: id  0 | task 322 | prompt eval time =   17682.32 ms /  1267 tokens (   13.96 ms per token,    71.65 tokens per second)",
+    "4.16.674.110 I slot print_timing: id  0 | task 322 |        eval time =   59278.59 ms /   355 tokens (  167.45 ms per token,     5.97 tokens per second)",
+    "4.16.674.111 I slot print_timing: id  0 | task 322 |       total time =   76960.91 ms /  1622 tokens",
+    "4.17.043.839 I slot launch_slot_: id  0 | task 678 | processing task, is_child = 0",
+    "4.44.678.378 I slot print_timing: id  0 | task 678 | prompt eval time =    5861.94 ms /   403 tokens (   14.55 ms per token,    68.75 tokens per second)",
+    "4.44.678.384 I slot print_timing: id  0 | task 678 |        eval time =   21772.58 ms /   148 tokens (  148.11 ms per token,     6.75 tokens per second)",
+    "4.44.678.385 I slot print_timing: id  0 | task 678 |       total time =   27634.52 ms /   551 tokens"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "source": "Previously retained public NVIDIA Warehouse 026 media; CC BY 4.0 source receipt retained with acquisition",
+  "scope": "Real public footage, three correlated frames; unreviewed, no accuracy claim",
+  "inputs": [
+    {
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/efee680b7955431b/media/84bfce01-warehouse-033.00s.png",
+      "sha256": "be828e8ab0cacf40eff8ad47d1b8bf72df5ba8a731ca7c5727bb22d4694c7daf"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/efee680b7955431b/media/603d0b4d-warehouse-033.75s.png",
+      "sha256": "4f1192f2eef2f3056ae2d3d7f551e333e3f03b341bb5a426355a47794746b3c3"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/efee680b7955431b/media/ec1288e3-warehouse-034.50s.png",
+      "sha256": "2d65189f76dc29de969a11300c7431c5053c07041ea8546e80ecdf28c90c5a5d"
+    }
+  ]
+}

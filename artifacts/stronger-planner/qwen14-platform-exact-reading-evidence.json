@@ -1,0 +1,264 @@
+{
+  "before": {
+    "source_identity": "d42048535b5d68e2dc863b265eb89415b60a056155567570b96b1ef5730caeee",
+    "server_pid": 46319,
+    "server_command": "/Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server -m /Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/Qwen3-14B-Q4_K_M.gguf --host 127.0.0.1 --port 1234 --alias visionapp-planner --ctx-size 8192 --parallel 1 --reasoning off --chat-template-kwargs {\"enable_thinking\":false} --no-webui -lv 4",
+    "models_response": {
+      "models": [
+        {
+          "name": "visionapp-planner",
+          "model": "visionapp-planner",
+          "modified_at": "",
+          "size": "",
+          "digest": "",
+          "type": "model",
+          "description": "",
+          "tags": [
+            ""
+          ],
+          "capabilities": [
+            "completion"
+          ],
+          "parameters": "",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "",
+            "families": [
+              ""
+            ],
+            "parameter_size": "",
+            "quantization_level": ""
+          }
+        }
+      ],
+      "object": "list",
+      "data": [
+        {
+          "id": "visionapp-planner",
+          "aliases": [
+            "visionapp-planner"
+          ],
+          "tags": [],
+          "object": "model",
+          "architecture": {
+            "input_modalities": [
+              "text"
+            ],
+            "output_modalities": [
+              "text"
+            ]
+          },
+          "created": 1793236392,
+          "owned_by": "llamacpp",
+          "meta": {
+            "vocab_type": 2,
+            "n_vocab": 151936,
+            "n_ctx": 8192,
+            "n_ctx_train": 40960,
+            "n_embd": 5120,
+            "n_params": 14768307200,
+            "size": 8995793920,
+            "ftype": "Q4_K - Medium"
+          }
+        }
+      ]
+    },
+    "at": "2026-10-29T01:13:13.005272+00:00"
+  },
+  "argv": [
+    "/Users/manavrakeshku.modi/vision-agent/.venv/bin/python",
+    "-m",
+    "evals.run_custom_goals",
+    "--workdir",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/qwen14-platform-exact-reading",
+    "--output",
+    "/Users/manavrakeshku.modi/vision-agent/artifacts/stronger-planner/qwen14-platform-exact-reading.json",
+    "--model",
+    "visionapp-planner",
+    "--url",
+    "http://127.0.0.1:1234/v1",
+    "--cases-file",
+    "/Users/manavrakeshku.modi/vision-agent/artifacts/stronger-planner/native-exact-reading-goal.json"
+  ],
+  "planned_cases": 1,
+  "selected_cases": [
+    "native-exact-ocr-matched"
+  ],
+  "targeted": true,
+  "model_provenance": {
+    "repo": "Qwen/Qwen3-14B-GGUF",
+    "revision": "530227a7d994db8eca5ab5ced2fb692b614357fd",
+    "license": "Apache-2.0",
+    "source": "https://huggingface.co/Qwen/Qwen3-14B-GGUF",
+    "elapsed_download_and_hash_s": 97.03655054199044,
+    "files": [
+      {
+        "name": "LICENSE",
+        "path": "/Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/LICENSE",
+        "bytes": 11544,
+        "sha256": "5de36594c10839788a8c589443a8ef9d8b8d17c65a1b5807206ae037fc36c6bd"
+      },
+      {
+        "name": "README.md",
+        "path": "/Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/README.md",
+        "bytes": 7497,
+        "sha256": "3e0df8a0e59bc900f7bcbc943b3163830abec87a19d2bca94651868362def947"
+      },
+      {
+        "name": "Qwen3-14B-Q4_K_M.gguf",
+        "path": "/Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/Qwen3-14B-Q4_K_M.gguf",
+        "bytes": 9001752960,
+        "sha256": "500a8806e85ee9c83f3ae08420295592451379b4f8cf2d0f41c15dffeb6b81f0"
+      }
+    ]
+  },
+  "file_hashes": {
+    "artifacts/stronger-planner/native-exact-reading-goal.json": "1c2b08c60018e14f756da6654a4fdde43e6c54398cc8c7e52b1c58b06a4fc97b",
+    "evals/run_custom_goals.py": "0c9698cdc119984c9365e77a955e425fda0a181b1eb17a014842bf0fbed4f844"
+  },
+  "after": {
+    "source_identity": "d42048535b5d68e2dc863b265eb89415b60a056155567570b96b1ef5730caeee",
+    "server_pid": 46319,
+    "server_command": "/Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server -m /Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/Qwen3-14B-Q4_K_M.gguf --host 127.0.0.1 --port 1234 --alias visionapp-planner --ctx-size 8192 --parallel 1 --reasoning off --chat-template-kwargs {\"enable_thinking\":false} --no-webui -lv 4",
+    "models_response": {
+      "models": [
+        {
+          "name": "visionapp-planner",
+          "model": "visionapp-planner",
+          "modified_at": "",
+          "size": "",
+          "digest": "",
+          "type": "model",
+          "description": "",
+          "tags": [
+            ""
+          ],
+          "capabilities": [
+            "completion"
+          ],
+          "parameters": "",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "",
+            "families": [
+              ""
+            ],
+            "parameter_size": "",
+            "quantization_level": ""
+          }
+        }
+      ],
+      "object": "list",
+      "data": [
+        {
+          "id": "visionapp-planner",
+          "aliases": [
+            "visionapp-planner"
+          ],
+          "tags": [],
+          "object": "model",
+          "architecture": {
+            "input_modalities": [
+              "text"
+            ],
+            "output_modalities": [
+              "text"
+            ]
+          },
+          "created": 1793236441,
+          "owned_by": "llamacpp",
+          "meta": {
+            "vocab_type": 2,
+            "n_vocab": 151936,
+            "n_ctx": 8192,
+            "n_ctx_train": 40960,
+            "n_embd": 5120,
+            "n_params": 14768307200,
+            "size": 8995793920,
+            "ftype": "Q4_K - Medium"
+          }
+        }
+      ]
+    },
+    "at": "2026-10-29T01:14:01.527513+00:00"
+  },
+  "exit_code": 0,
+  "aborted": null,
+  "samples": [
+    {
+      "elapsed_s": 0.04554679099237546,
+      "pressure_level": 1,
+      "swapouts_pages": 945407
+    },
+    {
+      "elapsed_s": 3.1053780000074767,
+      "pressure_level": 1,
+      "swapouts_pages": 945407
+    },
+    {
+      "elapsed_s": 6.167664624983445,
+      "pressure_level": 1,
+      "swapouts_pages": 945407
+    },
+    {
+      "elapsed_s": 9.397514790995046,
+      "pressure_level": 1,
+      "swapouts_pages": 945407
+    },
+    {
+      "elapsed_s": 12.494881958002225,
+      "pressure_level": 1,
+      "swapouts_pages": 945407
+    },
+    {
+      "elapsed_s": 15.542113665957004,
+      "pressure_level": 1,
+      "swapouts_pages": 945407
+    },
+    {
+      "elapsed_s": 18.74468608299503,
+      "pressure_level": 1,
+      "swapouts_pages": 945407
+    },
+    {
+      "elapsed_s": 22.28138116595801,
+      "pressure_level": 1,
+      "swapouts_pages": 945407
+    },
+    {
+      "elapsed_s": 25.664564458013047,
+      "pressure_level": 1,
+      "swapouts_pages": 945407
+    },
+    {
+      "elapsed_s": 29.24603720800951,
+      "pressure_level": 1,
+      "swapouts_pages": 945407
+    },
+    {
+      "elapsed_s": 33.46841808297904,
+      "pressure_level": 1,
+      "swapouts_pages": 945407
+    },
+    {
+      "elapsed_s": 37.841093124996405,
+      "pressure_level": 1,
+      "swapouts_pages": 945407
+    },
+    {
+      "elapsed_s": 42.38789991597878,
+      "pressure_level": 1,
+      "swapouts_pages": 945407
+    },
+    {
+      "elapsed_s": 45.43759695801418,
+      "pressure_level": 1,
+      "swapouts_pages": 945407
+    }
+  ],
+  "elapsed_s": 48.52043033298105,
+  "unchanged_source": true,
+  "unchanged_server": true
+}

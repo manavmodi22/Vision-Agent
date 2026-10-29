@@ -1,0 +1,109 @@
+{
+  "scope": "Unmodified native OCR CLI, relocation label and environment, path with spaces, strict JSON decoder",
+  "fixture": "/tmp/vision-ocr Path with spaces-ti5asc3r/label with spaces.png",
+  "fixture_sha256": "5ca4bbbdf3a8fb316d9322e784fa648fa521046f5a9ba963efaa23b3444cce70",
+  "results": [
+    {
+      "binary": "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Release/VisionApp",
+      "binary_sha256": "1738918addd6d05c71adfc05c1c5b014a81cc0bfce4448de058e5d1d87ce5145",
+      "attempt": 1,
+      "returncode": 0,
+      "stdout_repr": "b'{\"texts\":[\"PALLET 12345\",\"DOCK 4\"],\"barcodes\":[]}\\n'",
+      "stderr_repr": "b''",
+      "json": {
+        "texts": [
+          "PALLET 12345",
+          "DOCK 4"
+        ],
+        "barcodes": []
+      },
+      "error": null,
+      "elapsed_s": 0.24970391701208428
+    },
+    {
+      "binary": "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Release/VisionApp",
+      "binary_sha256": "1738918addd6d05c71adfc05c1c5b014a81cc0bfce4448de058e5d1d87ce5145",
+      "attempt": 2,
+      "returncode": 0,
+      "stdout_repr": "b'{\"texts\":[\"PALLET 12345\",\"DOCK 4\"],\"barcodes\":[]}\\n'",
+      "stderr_repr": "b''",
+      "json": {
+        "texts": [
+          "PALLET 12345",
+          "DOCK 4"
+        ],
+        "barcodes": []
+      },
+      "error": null,
+      "elapsed_s": 0.2392868329770863
+    },
+    {
+      "binary": "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Release/VisionApp",
+      "binary_sha256": "1738918addd6d05c71adfc05c1c5b014a81cc0bfce4448de058e5d1d87ce5145",
+      "attempt": 3,
+      "returncode": 0,
+      "stdout_repr": "b'{\"barcodes\":[],\"texts\":[\"PALLET 12345\",\"DOCK 4\"]}\\n'",
+      "stderr_repr": "b''",
+      "json": {
+        "barcodes": [],
+        "texts": [
+          "PALLET 12345",
+          "DOCK 4"
+        ]
+      },
+      "error": null,
+      "elapsed_s": 0.23686179105425254
+    },
+    {
+      "binary": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/MacOS/VisionApp",
+      "binary_sha256": "e3a6fc6ee0c54936cd043b92c85424b774aeb4b31b636eea0e956077a82c9d97",
+      "attempt": 1,
+      "returncode": 0,
+      "stdout_repr": "b'{\"barcodes\":[],\"texts\":[\"PALLET 12345\",\"DOCK 4\"]}\\n'",
+      "stderr_repr": "b''",
+      "json": {
+        "barcodes": [],
+        "texts": [
+          "PALLET 12345",
+          "DOCK 4"
+        ]
+      },
+      "error": null,
+      "elapsed_s": 0.2629827499622479
+    },
+    {
+      "binary": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/MacOS/VisionApp",
+      "binary_sha256": "e3a6fc6ee0c54936cd043b92c85424b774aeb4b31b636eea0e956077a82c9d97",
+      "attempt": 2,
+      "returncode": 0,
+      "stdout_repr": "b'{\"texts\":[\"PALLET 12345\",\"DOCK 4\"],\"barcodes\":[]}\\n'",
+      "stderr_repr": "b''",
+      "json": {
+        "texts": [
+          "PALLET 12345",
+          "DOCK 4"
+        ],
+        "barcodes": []
+      },
+      "error": null,
+      "elapsed_s": 0.2529145840089768
+    },
+    {
+      "binary": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/MacOS/VisionApp",
+      "binary_sha256": "e3a6fc6ee0c54936cd043b92c85424b774aeb4b31b636eea0e956077a82c9d97",
+      "attempt": 3,
+      "returncode": 0,
+      "stdout_repr": "b'{\"barcodes\":[],\"texts\":[\"PALLET 12345\",\"DOCK 4\"]}\\n'",
+      "stderr_repr": "b''",
+      "json": {
+        "barcodes": [],
+        "texts": [
+          "PALLET 12345",
+          "DOCK 4"
+        ]
+      },
+      "error": null,
+      "elapsed_s": 0.24709362495923415
+    }
+  ]
+}

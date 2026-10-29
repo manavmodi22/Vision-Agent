@@ -1,0 +1,145 @@
+{
+  "id": "692e0290946d493a-v1",
+  "annotations": [
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/6bbde703-warehouse-033.00s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/66a2d701-warehouse-033.75s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/e525240a-warehouse-034.50s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/73910641-warehouse-035.25s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/a6f7b585-warehouse-036.00s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/2a9fe57c-warehouse-036.75s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/b07672d8-warehouse-037.50s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/61f86196-warehouse-038.25s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/60524125-warehouse-039.00s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/21eb8666-warehouse-039.75s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/b1cb0a50-warehouse-040.50s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/41705a98-warehouse-041.25s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/dc98fe6e-warehouse-042.00s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/61048b99-warehouse-042.75s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/4fafcab5-warehouse-043.50s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/afb7925a-warehouse-044.25s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/1cfd68d2-warehouse-045.00s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/8c7df621-warehouse-045.75s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/6933babd-warehouse-046.50s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/1a95ac9d-warehouse-047.25s.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    }
+  ]
+}

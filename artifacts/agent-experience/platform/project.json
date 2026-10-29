@@ -1,0 +1,86 @@
+{
+  "id": "70fca89f71a84d0f",
+  "name": "Read printed labels and create a local event only when the t",
+  "use_case": "custom",
+  "status": "building",
+  "created_at": "2026-10-29T01:21:47.382906+00:00",
+  "updated_at": "2026-10-29T01:23:24.466513+00:00",
+  "media": [
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/70fca89f71a84d0f/media/f2a76670-exact-match.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/70fca89f71a84d0f/media/fafcff02-substring-only.png"
+  ],
+  "brief": "Read printed labels and create a local event only when the text exactly equals \"ABC-990\".",
+  "clarification_count": 0,
+  "candidates": [
+    {
+      "spec_version": "0.1",
+      "name": "custom-candidate-1",
+      "inputs": {
+        "source": {
+          "type": "image_folder",
+          "path": "media"
+        }
+      },
+      "blocks": [
+        {
+          "id": "sample",
+          "type": "frame_sample",
+          "params": {
+            "fps": 2
+          },
+          "inputs": {
+            "frames": "$inputs.source"
+          }
+        },
+        {
+          "id": "read",
+          "type": "ocr",
+          "params": {},
+          "inputs": {
+            "image": "$sample.frame"
+          }
+        },
+        {
+          "id": "check",
+          "type": "match",
+          "params": {
+            "expected": "ABC-990",
+            "mode": "exact",
+            "emit": "matched"
+          },
+          "inputs": {
+            "text": "$read.text"
+          }
+        },
+        {
+          "id": "out",
+          "type": "sink_event",
+          "params": {},
+          "inputs": {
+            "event": "$check.event"
+          }
+        }
+      ],
+      "eval": {
+        "set": "reviewed-v1",
+        "metric": "text_accuracy",
+        "target": 0.95
+      }
+    }
+  ],
+  "evaluations": [],
+  "messages": [
+    {
+      "role": "user",
+      "content": "Read printed labels and create a local event only when the text exactly equals \"ABC-990\"."
+    },
+    {
+      "role": "assistant",
+      "content": "Reads printed text. Checks whether the read text exactly matches \"ABC-990\". Creates a local event only when that comparison matches."
+    }
+  ],
+  "synthetic": false,
+  "fixture": false,
+  "data_origin": "User imported media",
+  "deployment_id": null
+}

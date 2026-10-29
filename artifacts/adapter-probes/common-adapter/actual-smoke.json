@@ -1,0 +1,258 @@
+{
+  "status": "actual_inference_smoke_not_accuracy_evidence",
+  "source_hash_before": "2263a8b2e6af45ec6dfadb0be23b526e0fe1f4f5b947c5670ea6cd9f1e2e9d15",
+  "source_hash_after": "2263a8b2e6af45ec6dfadb0be23b526e0fe1f4f5b947c5670ea6cd9f1e2e9d15",
+  "spec_hash_before": "4aa537e1a045fb8b02f3b0ae7288accc94c7b26366c36aced33f5d9c8a35ebd2",
+  "spec_hash_after": "4aa537e1a045fb8b02f3b0ae7288accc94c7b26366c36aced33f5d9c8a35ebd2",
+  "input_sha256": "a89bf58762b307e383f33bcb871b44737654de4a229f41d67d8eab81175a25ef",
+  "input_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/Warehouse_026-preview.jpg",
+  "provenance": {
+    "dataset": "nvidia/PhysicalAI-SmartSpaces",
+    "license": "CC-BY-4.0",
+    "attribution": "NVIDIA",
+    "revision": "2cbe9563cbe9f47f846e5c871ee994572bbbc60e",
+    "scope": "Previously acquired real Warehouse_026 preview; no new annotation or review"
+  },
+  "pipeline": {
+    "spec_version": "0.1",
+    "name": "Common adapter real person smoke",
+    "inputs": {
+      "source": {
+        "type": "image_file",
+        "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/Warehouse_026-preview.jpg"
+      }
+    },
+    "blocks": [
+      {
+        "id": "sample",
+        "type": "frame_sample",
+        "params": {},
+        "in": {
+          "frames": "$inputs.source"
+        }
+      },
+      {
+        "id": "roi",
+        "type": "crop",
+        "params": {
+          "box": [
+            0.1,
+            0,
+            0.95,
+            1
+          ]
+        },
+        "in": {
+          "image": "$sample.frame"
+        }
+      },
+      {
+        "id": "size",
+        "type": "resize",
+        "params": {
+          "width": 960,
+          "height": 600
+        },
+        "in": {
+          "image": "$roi.image"
+        }
+      },
+      {
+        "id": "detector",
+        "type": "detect_open_vocab",
+        "params": {
+          "model": "owlv2-base-patch16",
+          "classes": [
+            "person"
+          ],
+          "min_conf": 0.15
+        },
+        "in": {
+          "image": "$size.image"
+        }
+      }
+    ],
+    "eval": {
+      "set": "eval/default",
+      "metric": "recall",
+      "target": 0.8
+    }
+  },
+  "run": {
+    "frames": [
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/Warehouse_026-preview.jpg",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.16192840039730072,
+            "box": [
+              0.5436581675211588,
+              0.0390640926361084,
+              0.5588374106089274,
+              0.10416341145833333
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.3248403072357178,
+            "box": [
+              0.3063121755917867,
+              0.2969902801513672,
+              0.3468403752644857,
+              0.42304896036783857
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.4764900207519531,
+            "box": [
+              0.3569133408864339,
+              0.312820790608724,
+              0.3978534587224325,
+              0.5173023986816406
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.44618353247642517,
+            "box": [
+              0.4432385476430257,
+              0.31282201131184895,
+              0.4823246081670125,
+              0.5355170694986979
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {},
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 4843.172000022605,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "detector",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                960,
+                600
+              ],
+              "input_pixels_sha256": "c826458f4a7b9c37260262dc4b6b2b16bb6ddffd9d0689bdc498f183171b6d64",
+              "detections": [
+                {
+                  "box": [
+                    0.5219507853190104,
+                    0.0390640926361084,
+                    0.539808718363444,
+                    0.10416341145833333
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.16192840039730072
+                },
+                {
+                  "box": [
+                    0.2427202065785726,
+                    0.2969902801513672,
+                    0.2904004414876302,
+                    0.42304896036783857
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.3248403072357178
+                },
+                {
+                  "box": [
+                    0.3022509892781576,
+                    0.312820790608724,
+                    0.35041583379109703,
+                    0.5173023986816406
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.4764900207519531
+                },
+                {
+                  "box": [
+                    0.4038100560506185,
+                    0.31282201131184895,
+                    0.44979365666707355,
+                    0.5355170694986979
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.44618353247642517
+                }
+              ],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.owlv2-base-patch16",
+                "model_id": "owlv2-base-patch16",
+                "adapter_id": "owlv2",
+                "identity_scope": "local_artifacts_verified",
+                "artifact_hashes": {
+                  "VISIONAPP_REVISION.txt": "073ed5bcc2468fb94e80948845a776c9e89a1ad3a07aa05624d56916a50570b5",
+                  "added_tokens.json": "e5dc0da35d20111e8ff3fdfc03682beca23d5f94ed74331bce81786b2636a24f",
+                  "config.json": "ba9df8c25a4b8461887dd0a93d9252c9cd84697fe8d49a9d8794ce409af9acb2",
+                  "merges.txt": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+                  "model.safetensors": "e1e130b9e404cf91a75ad45644c1da9d7fa5284085eecc864266a6923efb99e7",
+                  "preprocessor_config.json": "cf3e396635b797ee1a464e1b2836e98748f8edac19e89aaa2c93b55ac15b0064",
+                  "special_tokens_map.json": "d6e2b9cf664efbad2d22998b8d3da986abcbeed3e0825ad33605c9401f9cf73e",
+                  "tokenizer_config.json": "b55cda6198e152ded427c8a9b3faf1cccf27a7fa080697a62f6ff143f511f44f",
+                  "vocab.json": "e089ad92ba36837a0d31433e555c8f45fe601ab5c221d4f607ded32d9f7a4349"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "8aa9843d9c436a090471bad423bd9f239fdc18057089a8b9151275d19347b148",
+                "runtime_manifest_sha256": "14c14ab7aa0f384d248d048884946496b16fd9c216c077e6bb0d65334eb23a0c",
+                "system_identity": {
+                  "architecture": "arm64",
+                  "os": "Darwin",
+                  "kernel": "25.6.0",
+                  "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                  "macos": "26.7.1"
+                },
+                "provider": "mps",
+                "config_sha256": "47570ab9e0eb2899e00f5d107e1bee58b74d055fffe0a2b9046285c7b57d87aa",
+                "identity_hash": "3cabf9233c0c75ef8adc5a4fb63f0285c6e680d9ccf05377c28e003b3d1e1ea2"
+              },
+              "timing": {
+                "total_ms": 4813.55770904338,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": []
+            },
+            "input_to_frame": [
+              0.1,
+              0.0,
+              0.85,
+              1.0
+            ]
+          }
+        ]
+      }
+    ],
+    "elapsed_s": 4.865705750009511,
+    "warnings": [
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+    ]
+  },
+  "script_sha256": "887fa99a4cc20d12008e3f06351d1d919eea1fc436b2865958f39490388f28cc",
+  "limitations": [
+    "One image is a routing/identity/geometry smoke, not accuracy or throughput evidence.",
+    "No project, human review, evaluation score or approval was created.",
+    "Component timing and model-cache state are unmeasured and remain null."
+  ]
+}

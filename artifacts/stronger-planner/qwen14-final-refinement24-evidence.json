@@ -1,0 +1,913 @@
+{
+  "before": {
+    "source_identity": "c19fac5076701e673f0f6cca843619382dd195d32fdf0bb5dc68f9488346b639",
+    "server_pid": 46319,
+    "server_command": "/Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server -m /Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/Qwen3-14B-Q4_K_M.gguf --host 127.0.0.1 --port 1234 --alias visionapp-planner --ctx-size 8192 --parallel 1 --reasoning off --chat-template-kwargs {\"enable_thinking\":false} --no-webui -lv 4",
+    "models_response": {
+      "models": [
+        {
+          "name": "visionapp-planner",
+          "model": "visionapp-planner",
+          "modified_at": "",
+          "size": "",
+          "digest": "",
+          "type": "model",
+          "description": "",
+          "tags": [
+            ""
+          ],
+          "capabilities": [
+            "completion"
+          ],
+          "parameters": "",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "",
+            "families": [
+              ""
+            ],
+            "parameter_size": "",
+            "quantization_level": ""
+          }
+        }
+      ],
+      "object": "list",
+      "data": [
+        {
+          "id": "visionapp-planner",
+          "aliases": [
+            "visionapp-planner"
+          ],
+          "tags": [],
+          "object": "model",
+          "architecture": {
+            "input_modalities": [
+              "text"
+            ],
+            "output_modalities": [
+              "text"
+            ]
+          },
+          "created": 1793215368,
+          "owned_by": "llamacpp",
+          "meta": {
+            "vocab_type": 2,
+            "n_vocab": 151936,
+            "n_ctx": 8192,
+            "n_ctx_train": 40960,
+            "n_embd": 5120,
+            "n_params": 14768307200,
+            "size": 8995793920,
+            "ftype": "Q4_K - Medium"
+          }
+        }
+      ]
+    },
+    "at": "2026-10-28T19:22:49.548359+00:00"
+  },
+  "argv": [
+    "/Users/manavrakeshku.modi/vision-agent/.venv/bin/python",
+    "-m",
+    "evals.run_refinement_live",
+    "--workspace",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/qwen14-final-refinement24",
+    "--output",
+    "/Users/manavrakeshku.modi/vision-agent/artifacts/stronger-planner/qwen14-final-refinement24.json",
+    "--model",
+    "visionapp-planner",
+    "--url",
+    "http://127.0.0.1:1234/v1"
+  ],
+  "planned_cases": 24,
+  "model_provenance": {
+    "repo": "Qwen/Qwen3-14B-GGUF",
+    "revision": "530227a7d994db8eca5ab5ced2fb692b614357fd",
+    "license": "Apache-2.0",
+    "source": "https://huggingface.co/Qwen/Qwen3-14B-GGUF",
+    "elapsed_download_and_hash_s": 97.03655054199044,
+    "files": [
+      {
+        "name": "LICENSE",
+        "path": "/Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/LICENSE",
+        "bytes": 11544,
+        "sha256": "5de36594c10839788a8c589443a8ef9d8b8d17c65a1b5807206ae037fc36c6bd"
+      },
+      {
+        "name": "README.md",
+        "path": "/Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/README.md",
+        "bytes": 7497,
+        "sha256": "3e0df8a0e59bc900f7bcbc943b3163830abec87a19d2bca94651868362def947"
+      },
+      {
+        "name": "Qwen3-14B-Q4_K_M.gguf",
+        "path": "/Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/Qwen3-14B-Q4_K_M.gguf",
+        "bytes": 9001752960,
+        "sha256": "500a8806e85ee9c83f3ae08420295592451379b4f8cf2d0f41c15dffeb6b81f0"
+      }
+    ]
+  },
+  "file_hashes": {
+    "evals/refinement_cases.json": "21454b993c436a9e7addc6c7aefc7b28717d75459f63ec619485deea413a0d82",
+    "evals/run_refinement_live.py": "cf8f8bbd720050a94208c7b4f4d74b48a3b38ac1a3378ad8a964915326159ed3"
+  },
+  "after": {
+    "source_identity": "c19fac5076701e673f0f6cca843619382dd195d32fdf0bb5dc68f9488346b639",
+    "server_pid": 46319,
+    "server_command": "/Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server -m /Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/Qwen3-14B-Q4_K_M.gguf --host 127.0.0.1 --port 1234 --alias visionapp-planner --ctx-size 8192 --parallel 1 --reasoning off --chat-template-kwargs {\"enable_thinking\":false} --no-webui -lv 4",
+    "models_response": {
+      "models": [
+        {
+          "name": "visionapp-planner",
+          "model": "visionapp-planner",
+          "modified_at": "",
+          "size": "",
+          "digest": "",
+          "type": "model",
+          "description": "",
+          "tags": [
+            ""
+          ],
+          "capabilities": [
+            "completion"
+          ],
+          "parameters": "",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "",
+            "families": [
+              ""
+            ],
+            "parameter_size": "",
+            "quantization_level": ""
+          }
+        }
+      ],
+      "object": "list",
+      "data": [
+        {
+          "id": "visionapp-planner",
+          "aliases": [
+            "visionapp-planner"
+          ],
+          "tags": [],
+          "object": "model",
+          "architecture": {
+            "input_modalities": [
+              "text"
+            ],
+            "output_modalities": [
+              "text"
+            ]
+          },
+          "created": 1793215862,
+          "owned_by": "llamacpp",
+          "meta": {
+            "vocab_type": 2,
+            "n_vocab": 151936,
+            "n_ctx": 8192,
+            "n_ctx_train": 40960,
+            "n_embd": 5120,
+            "n_params": 14768307200,
+            "size": 8995793920,
+            "ftype": "Q4_K - Medium"
+          }
+        }
+      ]
+    },
+    "at": "2026-10-28T19:31:02.410475+00:00"
+  },
+  "exit_code": 0,
+  "aborted": null,
+  "samples": [
+    {
+      "elapsed_s": 0.35308099997928366,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 3.545700291986577,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 6.88021354196826,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 10.708745750016533,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 15.058273250004277,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 18.48828183300793,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 21.575268291984685,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 24.63346579199424,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 27.692924792005215,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 30.76820183300879,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 33.82666458300082,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 37.05061420798302,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 40.26190858299378,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 44.805999292002525,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 47.9206483750022,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 52.28018195799086,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 56.851264374970924,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 63.55552145797992,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 66.8142086250009,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 70.11601366702234,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 73.20525841700146,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 76.99719700001879,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 80.3599582919851,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 84.47605749999639,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 87.78193287499016,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 91.26944687496871,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 94.44633449998219,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 97.73978695797268,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 101.4363420829759,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 104.66510762501275,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 109.14452491700649,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 112.18636674998561,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 115.24821799999336,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 118.31163137499243,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 121.36508962500375,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 124.42626779200509,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 127.4877903329907,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 130.55003024998587,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 133.6224023749819,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 136.67935599997872,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 139.73595887498232,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 142.78814512497047,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 145.99963691696757,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 149.1519084579777,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 152.38485779199982,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 155.8883780830074,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 158.94474741700105,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 162.19053458300186,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 165.24703337496612,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 168.94996524997987,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 172.41437304200372,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 175.7518992080004,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 179.0975304999738,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 182.25767037499463,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 185.3212276250124,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 188.37528037501033,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 191.77850333298557,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 196.0079462499707,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 199.05077966698445,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 203.02970133296913,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 206.54555833298946,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 209.6417679169681,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 212.76784154202323,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 215.83570333296666,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 218.89182537497254,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 222.24050129199168,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 225.34259195800405,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 228.40689749998273,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 231.46434274996864,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 234.64357554196613,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 237.7149567080196,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 240.7767270419863,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 244.08146229200065,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 247.37785245798295,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 250.5657140419935,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 253.67091916699428,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 256.7295846249908,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 259.7836575830006,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 263.38759054197,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 266.7785486250068,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 270.35223199997563,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 274.243663457979,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 278.41955808299826,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 282.25403254199773,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 287.5505302079837,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 291.3757636669907,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 296.0400644579786,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 299.14298041700386,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 302.2002039999934,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 305.2717564579798,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 308.55524270801106,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 311.6280080419965,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 314.69033354200656,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 317.76033170800656,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 320.83480404200964,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 325.0128312499728,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 328.0803485420183,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 331.1959514580085,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 334.2678799579735,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 337.4645131250145,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 342.26649170799647,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 345.8424766670214,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 348.89921800000593,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 353.40373079199344,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 358.071943707997,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 361.269433791982,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 364.3268009169842,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 368.22440683300374,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 371.5914820419857,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 374.7723131669918,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 377.98791012499714,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 381.50373654201394,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 385.3291774580139,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 388.42438300000504,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 391.94572179199895,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 395.39428754197434,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 398.5488961249939,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 402.0797049169778,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 405.1334092079778,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 408.1946803330211,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 411.24787862499943,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 414.56847816699883,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 417.63813754200237,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 420.74273295799503,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 423.8015897499863,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 426.87727854197146,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 430.0171427919995,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 433.14341041701846,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 436.3293325830018,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 439.58887691696873,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 442.8052175830235,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 447.74927658296656,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 450.8288160000229,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 453.9869101669756,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 457.09642274997896,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 460.2925824999693,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 463.4101692920085,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 466.4880277499906,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 470.14421404199675,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 473.2056689580204,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 476.2584159169928,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 479.31816387496656,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 482.5720128749963,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 486.0826880829991,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 489.6848385829944,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    }
+  ],
+  "elapsed_s": 492.7856664999854,
+  "unchanged_source": true,
+  "unchanged_server": true
+}

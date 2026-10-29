@@ -1,0 +1,312 @@
+{
+  "source": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2026/test/Warehouse_026/videos/Camera_0000.mp4",
+  "source_kind": "recorded_video",
+  "model": "owlv2-base-patch16",
+  "claim_status": "Real recorded-video frames through BGRA mmap and HTTP metadata; model hypotheses, not accuracy validation",
+  "preview_only": true,
+  "frames": [
+    {
+      "sequence": 1,
+      "source_timestamp_s": 0.0,
+      "bytes_copied": 8294400,
+      "wall_seconds": 5.676294707984198,
+      "session_id": "7e4e33cb836d4a40b1d2bb08f53ac2dd",
+      "state": "running",
+      "result": {
+        "image_path": "live://7e4e33cb836d4a40b1d2bb08f53ac2dd/1",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.15099897980690002,
+            "box": [
+              0.5472883860270182,
+              0.029413053724500867,
+              0.5636140823364257,
+              0.13811186331289785
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.18538489937782288,
+            "box": [
+              0.5290551821390788,
+              0.06324217761004412,
+              0.5537171045939128,
+              0.1886845624005353
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.23820407688617706,
+            "box": [
+              0.554313850402832,
+              0.028010329493769894,
+              0.5666650136311849,
+              0.12950818097149885
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.1818404197692871,
+            "box": [
+              0.0,
+              0.00831339094373915,
+              0.3526717821756999,
+              0.833642578125
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.1922694444656372,
+            "box": [
+              0.5219011942545573,
+              0.05733898657339591,
+              0.5496712366739909,
+              0.1919481771963614
+            ],
+            "zone": null
+          },
+          {
+            "label": "forklift",
+            "confidence": 0.1963464915752411,
+            "box": [
+              0.5226566950480144,
+              0.025972014886361583,
+              0.5604890823364258,
+              0.19634725782606338
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.4142551124095917,
+            "box": [
+              0.3708958943684896,
+              0.25980809529622395,
+              0.40628074010213217,
+              0.40060529355649593
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.17259229719638824,
+            "box": [
+              0.3384584426879883,
+              0.3820654127332899,
+              0.3821957270304362,
+              0.40253310026945893
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.4026262164115906,
+            "box": [
+              0.431491756439209,
+              0.3095239144784433,
+              0.4747312863667806,
+              0.524805591724537
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.3976491689682007,
+            "box": [
+              0.3795415242513021,
+              0.37085124828197336,
+              0.4285977045694987,
+              0.5853389598705151
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.18447045981884003,
+            "box": [
+              0.30999348958333334,
+              0.5426501803927951,
+              0.43003870646158854,
+              0.7300103081597222
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.17646247148513794,
+            "box": [
+              0.5840017954508464,
+              0.015691386328803167,
+              0.8202285766601562,
+              0.9929247820818866
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {},
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 5642.611416988075,
+        "timestamp_s": 0.0,
+        "judgements": []
+      },
+      "processing_ms": 5656.144208973274,
+      "processed_frames": 1,
+      "retained_frames": 0,
+      "retained_bytes": 0
+    },
+    {
+      "sequence": 2,
+      "source_timestamp_s": 1.0,
+      "bytes_copied": 8294400,
+      "wall_seconds": 0.732060874986928,
+      "session_id": "7e4e33cb836d4a40b1d2bb08f53ac2dd",
+      "state": "running",
+      "result": {
+        "image_path": "live://7e4e33cb836d4a40b1d2bb08f53ac2dd/2",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.1923791915178299,
+            "box": [
+              0.5542023976643881,
+              0.022760193436234085,
+              0.5656824747721354,
+              0.1168044125592267
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.18248291313648224,
+            "box": [
+              0.5317303975423177,
+              0.04682289406105324,
+              0.5540901184082031,
+              0.1744502032244647
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.18519780039787292,
+            "box": [
+              0.5440245310465495,
+              0.02367846171061198,
+              0.5611377080281575,
+              0.1361114501953125
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.15676681697368622,
+            "box": [
+              0.0,
+              0.004717217551337348,
+              0.3542714754740397,
+              0.8559130633318865
+            ],
+            "zone": null
+          },
+          {
+            "label": "forklift",
+            "confidence": 0.1965624839067459,
+            "box": [
+              0.5274458567301432,
+              0.020237585350319193,
+              0.5617046991984049,
+              0.18378297311288339
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.4297633767127991,
+            "box": [
+              0.3708293914794922,
+              0.2579787925437645,
+              0.4052700996398926,
+              0.42697968659577545
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.15816070139408112,
+            "box": [
+              0.3384936014811198,
+              0.3825339705855758,
+              0.3806670506795247,
+              0.4026087725604022
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.40470924973487854,
+            "box": [
+              0.4303930600484212,
+              0.30818829006618925,
+              0.4743726094563802,
+              0.5254496256510417
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.39990487694740295,
+            "box": [
+              0.3799977620442708,
+              0.37135368629738136,
+              0.4272840181986491,
+              0.5860552187319155
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.17527957260608673,
+            "box": [
+              0.5822341283162434,
+              0.006059010823567708,
+              0.8071203231811523,
+              0.9854618778935185
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.20100659132003784,
+            "box": [
+              0.3106480916341146,
+              0.5411924574110243,
+              0.4303457260131836,
+              0.7304074887876157
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {},
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 715.1338330004364,
+        "timestamp_s": 1.0,
+        "judgements": []
+      },
+      "processing_ms": 720.255125022959,
+      "processed_frames": 2,
+      "retained_frames": 0,
+      "retained_bytes": 0
+    }
+  ],
+  "stopped_state": "stopped",
+  "ingress_removed": true,
+  "events_persisted": 0,
+  "deployment_approved": false
+}

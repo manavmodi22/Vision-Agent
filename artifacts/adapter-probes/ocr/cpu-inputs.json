@@ -1,0 +1,58 @@
+[
+  {
+    "id": "exact-match",
+    "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/agent-experience/reading-fixtures/exact-match.png",
+    "expected": "ABC-990",
+    "kind": "existing synthetic acceptance fixture",
+    "sha256": "fc676599ca501be77228487bc0f50736fbe7d1a1992aeb135593d5b02e3719f2",
+    "reviewed": false
+  },
+  {
+    "id": "substring-only",
+    "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/agent-experience/reading-fixtures/substring-only.png",
+    "expected": "XABC-990Y",
+    "kind": "existing synthetic acceptance fixture",
+    "sha256": "5928ade6b5f39ec7a6f276c8ec891cee8f61877bc0fd6b8df7119882d97d08ae",
+    "reviewed": false
+  },
+  {
+    "id": "leading-zeros",
+    "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/adapter-probes/ocr/fixtures/leading-zeros.png",
+    "expected": "001234567890",
+    "kind": "new original synthetic text fixture",
+    "font_path": "/System/Library/Fonts/Supplemental/Arial.ttf",
+    "font_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+    "sha256": "dcd11350d95ed26c059d71c1c89d6c3b29e2f57372508b4e9976e1b8728c0e27",
+    "reviewed": false
+  },
+  {
+    "id": "mixed-case",
+    "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/adapter-probes/ocr/fixtures/mixed-case.png",
+    "expected": "AbC-009x",
+    "kind": "new original synthetic text fixture",
+    "font_path": "/System/Library/Fonts/Supplemental/Arial.ttf",
+    "font_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+    "sha256": "ed5308a610d4baae2e384034fee3de505b44c46769e2d594f7a5c1e930d820e6",
+    "reviewed": false
+  },
+  {
+    "id": "real-public-label-crop",
+    "path": "/Users/manavrakeshku.modi/vision-agent/artifacts/adapter-probes/ocr/fixtures/nvidia-real-label-crop.png",
+    "expected": null,
+    "kind": "real public warehouse image crop; no transcript ground truth or human review",
+    "source_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/Warehouse_026-preview.jpg",
+    "source_sha256": "a89bf58762b307e383f33bcb871b44737654de4a229f41d67d8eab81175a25ef",
+    "crop_xyxy": [
+      1120,
+      0,
+      1920,
+      600
+    ],
+    "dataset": "nvidia/PhysicalAI-SmartSpaces",
+    "revision": "2cbe9563cbe9f47f846e5c871ee994572bbbc60e",
+    "license": "CC-BY-4.0",
+    "attribution": "NVIDIA Physical AI Smart Spaces",
+    "sha256": "7153cb6b64888a3ef328824545a6d9979edd2da7f6f744774808fa96baee75c7",
+    "reviewed": false
+  }
+]

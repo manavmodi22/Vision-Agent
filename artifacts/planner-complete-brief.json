@@ -1,0 +1,86 @@
+{
+  "message": "Local model selected a pipeline pattern and parameters. Count pallets in the saved four lane polygons A, B, C, D. Emit a local event if a lane count is at least 3, with zero hold seconds. Evaluate using count_mae target 0.5. Use the explicitly synthetic fixture-color-v1 model and media folder. All details are confirmed; produce one candidate now.",
+  "questions": [],
+  "candidates": [
+    {
+      "spec_version": "0.1",
+      "name": "pallets-candidate-1",
+      "inputs": {
+        "source": {
+          "type": "image_folder",
+          "path": "media"
+        }
+      },
+      "blocks": [
+        {
+          "id": "sample",
+          "type": "frame_sample",
+          "params": {
+            "fps": 2
+          },
+          "in": {
+            "frames": "$inputs.source"
+          }
+        },
+        {
+          "id": "det",
+          "type": "detect",
+          "params": {
+            "model": "fixture-color-v1",
+            "classes": [
+              "pallet"
+            ],
+            "min_conf": 0.4
+          },
+          "in": {
+            "image": "$sample.frame"
+          }
+        },
+        {
+          "id": "zones",
+          "type": "zone_filter",
+          "params": {
+            "zones": "zones/lanes.json"
+          },
+          "in": {
+            "dets": "$det.dets"
+          }
+        },
+        {
+          "id": "count",
+          "type": "count_per_zone",
+          "params": {},
+          "in": {
+            "dets": "$zones.dets"
+          }
+        },
+        {
+          "id": "full",
+          "type": "rule",
+          "params": {
+            "when": "count >= 3",
+            "hold_s": 0.0
+          },
+          "in": {
+            "value": "$count.counts"
+          }
+        },
+        {
+          "id": "out",
+          "type": "sink_event",
+          "params": {},
+          "in": {
+            "event": "$full.event"
+          }
+        }
+      ],
+      "eval": {
+        "set": "reviewed-v1",
+        "metric": "count_mae",
+        "target": 0.5
+      }
+    }
+  ],
+  "tool_calls": 3,
+  "elapsed_s": 9.497449207992759
+}

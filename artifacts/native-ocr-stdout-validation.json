@@ -1,0 +1,194 @@
+{
+  "checked_at": "2026-10-29T01:47:41.210957+00:00",
+  "scope": "Actual OCR on identical relocation fixture, three repetitions, exact/substring fixtures, and missing image. Controlled delayed stdout diagnostic probe is separate from actual Vision. No parser relaxation.",
+  "binary_sha256": "ced2cda1d05299fedac5f0490ae92a4725519dc5c7e40916724ca37afcd2c09f",
+  "macos": "26.7.1",
+  "executable_and_image_paths_contain_spaces": true,
+  "results": [
+    {
+      "case": "pallet-1",
+      "input_sha256": "5ca4bbbdf3a8fb316d9322e784fa648fa521046f5a9ba963efaa23b3444cce70",
+      "output": {
+        "texts": [
+          "PALLET 12345",
+          "DOCK 4"
+        ],
+        "barcodes": []
+      },
+      "text_codepoints": [
+        [
+          "U+0050",
+          "U+0041",
+          "U+004C",
+          "U+004C",
+          "U+0045",
+          "U+0054",
+          "U+0020",
+          "U+0031",
+          "U+0032",
+          "U+0033",
+          "U+0034",
+          "U+0035"
+        ],
+        [
+          "U+0044",
+          "U+004F",
+          "U+0043",
+          "U+004B",
+          "U+0020",
+          "U+0034"
+        ]
+      ],
+      "stdout_repr": "b'{\"texts\":[\"PALLET 12345\",\"DOCK 4\"],\"barcodes\":[]}\\n'",
+      "stderr_repr": "b''",
+      "returncode": 0,
+      "strict_json": true,
+      "elapsed_s": 0.5815355830127373
+    },
+    {
+      "case": "pallet-2",
+      "input_sha256": "5ca4bbbdf3a8fb316d9322e784fa648fa521046f5a9ba963efaa23b3444cce70",
+      "output": {
+        "texts": [
+          "PALLET 12345",
+          "DOCK 4"
+        ],
+        "barcodes": []
+      },
+      "text_codepoints": [
+        [
+          "U+0050",
+          "U+0041",
+          "U+004C",
+          "U+004C",
+          "U+0045",
+          "U+0054",
+          "U+0020",
+          "U+0031",
+          "U+0032",
+          "U+0033",
+          "U+0034",
+          "U+0035"
+        ],
+        [
+          "U+0044",
+          "U+004F",
+          "U+0043",
+          "U+004B",
+          "U+0020",
+          "U+0034"
+        ]
+      ],
+      "stdout_repr": "b'{\"texts\":[\"PALLET 12345\",\"DOCK 4\"],\"barcodes\":[]}\\n'",
+      "stderr_repr": "b''",
+      "returncode": 0,
+      "strict_json": true,
+      "elapsed_s": 0.2456029590102844
+    },
+    {
+      "case": "pallet-3",
+      "input_sha256": "5ca4bbbdf3a8fb316d9322e784fa648fa521046f5a9ba963efaa23b3444cce70",
+      "output": {
+        "barcodes": [],
+        "texts": [
+          "PALLET 12345",
+          "DOCK 4"
+        ]
+      },
+      "text_codepoints": [
+        [
+          "U+0050",
+          "U+0041",
+          "U+004C",
+          "U+004C",
+          "U+0045",
+          "U+0054",
+          "U+0020",
+          "U+0031",
+          "U+0032",
+          "U+0033",
+          "U+0034",
+          "U+0035"
+        ],
+        [
+          "U+0044",
+          "U+004F",
+          "U+0043",
+          "U+004B",
+          "U+0020",
+          "U+0034"
+        ]
+      ],
+      "stdout_repr": "b'{\"barcodes\":[],\"texts\":[\"PALLET 12345\",\"DOCK 4\"]}\\n'",
+      "stderr_repr": "b''",
+      "returncode": 0,
+      "strict_json": true,
+      "elapsed_s": 0.2143131669727154
+    },
+    {
+      "case": "exact-match",
+      "input_sha256": "fc676599ca501be77228487bc0f50736fbe7d1a1992aeb135593d5b02e3719f2",
+      "output": {
+        "texts": [
+          "ABC-990"
+        ],
+        "barcodes": []
+      },
+      "text_codepoints": [
+        [
+          "U+0041",
+          "U+0042",
+          "U+0043",
+          "U+002D",
+          "U+0039",
+          "U+0039",
+          "U+0030"
+        ]
+      ],
+      "stdout_repr": "b'{\"texts\":[\"ABC-990\"],\"barcodes\":[]}\\n'",
+      "stderr_repr": "b''",
+      "returncode": 0,
+      "strict_json": true,
+      "elapsed_s": 0.21648320800159127
+    },
+    {
+      "case": "substring-only",
+      "input_sha256": "5928ade6b5f39ec7a6f276c8ec891cee8f61877bc0fd6b8df7119882d97d08ae",
+      "output": {
+        "barcodes": [],
+        "texts": [
+          "ХABC-990Y"
+        ]
+      },
+      "text_codepoints": [
+        [
+          "U+0425",
+          "U+0041",
+          "U+0042",
+          "U+0043",
+          "U+002D",
+          "U+0039",
+          "U+0039",
+          "U+0030",
+          "U+0059"
+        ]
+      ],
+      "stdout_repr": "b'{\"barcodes\":[],\"texts\":[\"\\xd0\\xa5ABC-990Y\"]}\\n'",
+      "stderr_repr": "b''",
+      "returncode": 0,
+      "strict_json": true,
+      "elapsed_s": 0.22308258397970349
+    }
+  ],
+  "missing_image_failure": {
+    "returncode": 1,
+    "stdout_repr": "b''",
+    "stderr_repr": "b'CRImage Reader Detector was given zero-dimensioned image (0 x 0)\\n'"
+  },
+  "controlled_diagnostic_probe": {
+    "stdout_repr": "b'{\"texts\":[\"protocol\"],\"barcodes\":[]}\\n'",
+    "stderr_repr": "b'framework stdout before response\\nframework stdout at process exit\\n'",
+    "returncode": 0
+  },
+  "limitation": "Original intermittent spill was not reproduced; hardened ownership isolates process stdout. Cyrillic U+0425 in substring-only OCR remains unchanged."
+}

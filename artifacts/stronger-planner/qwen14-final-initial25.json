@@ -1,0 +1,764 @@
+{
+  "model": "visionapp-planner",
+  "mode": "actual-local-planner-custom-entrypoint",
+  "data_dir": "/Users/manavrakeshku.modi/vision-agent/.visionapp/qwen14-final-initial25",
+  "provenance": "Original geometric software fixtures. Actual local LLM, MCP, compiler and previews; each case states its detector adapter. Unsupported fixture classes use real local OWLv2 on the same synthetic images. Native readers handle text cases. Not warehouse accuracy.",
+  "eval_metric_reached": null,
+  "cases": [
+    {
+      "id": "count-plain",
+      "brief": "Count pallets across each image. Just show the count, with no alert or event trigger.",
+      "project_id": "308fdcf9047b47b1",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "pallet"
+        ],
+        "metric": "count_mae"
+      },
+      "observed": [
+        {
+          "metric": "count_mae",
+          "target": 0.5,
+          "regions": [],
+          "classes": [
+            "pallet"
+          ],
+          "confidence": 0.4
+        }
+      ],
+      "questions": [],
+      "message": "Displays counts of \"pallet\" in each processed frame.",
+      "tool_calls": 4,
+      "actual_model_calls": 2,
+      "operation_id": "10ad41dcd1994d07847c8b9906bdab4b",
+      "elapsed_s": 37.728
+    },
+    {
+      "id": "count-all-regions",
+      "brief": "Count pallets in the saved lanes A, B, C and D, separately for each lane. No alerts.",
+      "project_id": "71c9b27eda2043a6",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "pallet"
+        ],
+        "regions": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "metric": "count_mae"
+      },
+      "observed": [
+        {
+          "metric": "count_mae",
+          "target": 0.5,
+          "regions": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "classes": [
+            "pallet"
+          ],
+          "confidence": 0.4
+        }
+      ],
+      "questions": [],
+      "message": "Displays counts of \"pallet\" in each of regions \"A\", \"B\", \"C\" and \"D\".",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "95b4743c825f42589bf141e17fe96b2d",
+      "elapsed_s": 30.616
+    },
+    {
+      "id": "count-one-region",
+      "brief": "Count only pallets whose centers are inside lane B. Use its saved boundary; do not count the other lanes.",
+      "project_id": "622bf630b63e4681",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "pallet"
+        ],
+        "regions": [
+          "B"
+        ]
+      },
+      "observed": [
+        {
+          "metric": "count_mae",
+          "target": 0.5,
+          "regions": [
+            "B"
+          ],
+          "classes": [
+            "pallet"
+          ],
+          "confidence": 0.4
+        }
+      ],
+      "questions": [],
+      "message": "Displays counts of \"pallet\" in region \"B\".",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "ab634b1c3c984bd1b438bd87c3e13885",
+      "elapsed_s": 38.463
+    },
+    {
+      "id": "count-capacity",
+      "brief": "Count pallets in each saved lane and create a local event when a lane has at least 5 pallets.",
+      "project_id": "6c895a6a8e4a48a8",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "pallet"
+        ],
+        "regions": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "rule": "count >= 5",
+        "hold_s": 0
+      },
+      "observed": [
+        {
+          "metric": "count_mae",
+          "target": 0.5,
+          "regions": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "classes": [
+            "pallet"
+          ],
+          "confidence": 0.4,
+          "rule": "count >= 5",
+          "hold_s": 0.0
+        }
+      ],
+      "questions": [],
+      "message": "Displays counts of \"pallet\" in each of regions \"A\", \"B\", \"C\" and \"D\". Creates a local event when that count is at least 5.",
+      "tool_calls": 4,
+      "actual_model_calls": 2,
+      "operation_id": "2ef46963e369408cb0d7ca0a9cb02d7a",
+      "elapsed_s": 55.642
+    },
+    {
+      "id": "count-duration",
+      "brief": "Count pallets in saved lanes A and B and flag a lane when it has at least 8 pallets for 12 seconds.",
+      "project_id": "346199084e424edc",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "regions": [
+          "A",
+          "B"
+        ],
+        "rule": "count >= 8",
+        "hold_s": 12
+      },
+      "observed": [
+        {
+          "metric": "count_mae",
+          "target": 0.5,
+          "regions": [
+            "A",
+            "B"
+          ],
+          "classes": [
+            "pallet"
+          ],
+          "confidence": 0.4,
+          "rule": "count >= 8",
+          "hold_s": 12.0
+        }
+      ],
+      "questions": [],
+      "message": "Displays counts of \"pallet\" in each of regions \"A\" and \"B\". Creates a local event when that count stays at least 8 for 12 seconds.",
+      "tool_calls": 4,
+      "actual_model_calls": 2,
+      "operation_id": "51ee3541861942efa9de362924fd6525",
+      "elapsed_s": 50.9
+    },
+    {
+      "id": "count-metric",
+      "brief": "Count pallets per saved lane. Evaluate count_mae target 0.25. No event trigger.",
+      "project_id": "2bf573d560c94113",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "metric": "count_mae",
+        "target": 0.25,
+        "regions": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "observed": [
+        {
+          "metric": "count_mae",
+          "target": 0.25,
+          "regions": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "classes": [
+            "pallet"
+          ],
+          "confidence": 0.4
+        }
+      ],
+      "questions": [],
+      "message": "Displays counts of \"pallet\" in each of regions \"A\", \"B\", \"C\" and \"D\".",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "0481f4c104b84b0ab84d48766edd8f2a",
+      "elapsed_s": 17.229
+    },
+    {
+      "id": "count-missing-capacity",
+      "brief": "Count pallets in each saved lane and alert when a lane is full.",
+      "project_id": "4ef83d3708fb4995",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "clarification",
+      "expected": {},
+      "observed": [],
+      "questions": [
+        "What count makes a lane full?"
+      ],
+      "message": "Clarification needed. Count pallets in each saved lane and alert when a lane is full.",
+      "tool_calls": 2,
+      "actual_model_calls": 2,
+      "operation_id": "025012e7261b473e8fe432cd5acb7297",
+      "elapsed_s": 37.499
+    },
+    {
+      "id": "count-missing-regions",
+      "brief": "Count pallets in lanes A and B separately. No alerts.",
+      "project_id": "045257948e4f441a",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "regions",
+      "expected": {},
+      "observed": [],
+      "questions": [
+        "Mark and save A, B on a representative image, then continue building."
+      ],
+      "message": "I need the actual region boundaries to build the requested spatial counts.",
+      "tool_calls": 2,
+      "actual_model_calls": 1,
+      "operation_id": "c8ba1b0be74b42c1930fe7a36f6bd214",
+      "elapsed_s": 16.367
+    },
+    {
+      "id": "count-new-region",
+      "brief": "Count pallets only inside lane E. Use its actual boundary. No alerts.",
+      "project_id": "765729bcbcfc4ef2",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "regions",
+      "expected": {},
+      "observed": [],
+      "questions": [
+        "Mark and save E on a representative image, then continue building."
+      ],
+      "message": "I need the actual region boundaries to build the requested spatial counts.",
+      "tool_calls": 2,
+      "actual_model_calls": 1,
+      "operation_id": "f2d6cb7d41684749b8fcfae7dcdd7558",
+      "elapsed_s": 20.602
+    },
+    {
+      "id": "detect-person",
+      "brief": "Detect people in each image and show their bounding boxes. Use confidence 0.3 and evaluate recall target 0.85. No event trigger.",
+      "project_id": "727871225b244165",
+      "detector_model": "owlv2-base-patch16",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "person"
+        ],
+        "confidence": 0.3,
+        "metric": "recall",
+        "target": 0.85
+      },
+      "observed": [
+        {
+          "metric": "recall",
+          "target": 0.85,
+          "regions": [],
+          "classes": [
+            "person"
+          ],
+          "confidence": 0.3
+        }
+      ],
+      "questions": [],
+      "message": "Displays counts of \"person\" in each processed frame.",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "e371285e9b9e41d4a21dae61ee630068",
+      "elapsed_s": 30.694
+    },
+    {
+      "id": "detect-forklift",
+      "brief": "Detect forklifts and create a local evidence event whenever at least one forklift appears.",
+      "project_id": "f10b7952bfce42e7",
+      "detector_model": "owlv2-base-patch16",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "forklift"
+        ],
+        "rule": "count >= 1"
+      },
+      "observed": [
+        {
+          "metric": "recall",
+          "target": 0.9,
+          "regions": [],
+          "classes": [
+            "forklift"
+          ],
+          "confidence": 0.4,
+          "rule": "count >= 1",
+          "hold_s": 0.0
+        }
+      ],
+      "questions": [],
+      "message": "Displays counts of \"forklift\" in each processed frame. Creates a local event when that count is at least 1.",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "8732475d8f6446d3a5cdb0fc6064638c",
+      "elapsed_s": 30.554
+    },
+    {
+      "id": "detect-components",
+      "brief": "Detect bolts and washers using the exact saved classes bolt and washer. Use confidence 0.25. Do not create events.",
+      "project_id": "e0b9278b6a234c38",
+      "detector_model": "owlv2-base-patch16",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "bolt",
+          "washer"
+        ],
+        "confidence": 0.25
+      },
+      "observed": [
+        {
+          "metric": "recall",
+          "target": 0.9,
+          "regions": [],
+          "classes": [
+            "bolt",
+            "washer"
+          ],
+          "confidence": 0.25
+        }
+      ],
+      "questions": [],
+      "message": "Displays the combined count of \"bolt\" and \"washer\" in each processed frame.",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "012ea108c34c49809c9f4e2dd6393106",
+      "elapsed_s": 25.992
+    },
+    {
+      "id": "detect-explicit-label",
+      "brief": "Detect the object class person. The annotation label is person; do not read printed text. Use precision target 0.9.",
+      "project_id": "63c51c05a0d64cba",
+      "detector_model": "owlv2-base-patch16",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "person"
+        ],
+        "metric": "precision",
+        "target": 0.9
+      },
+      "observed": [
+        {
+          "metric": "precision",
+          "target": 0.9,
+          "regions": [],
+          "classes": [
+            "person"
+          ],
+          "confidence": 0.5
+        }
+      ],
+      "questions": [],
+      "message": "Displays counts of \"person\" in each processed frame.",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "fba8b020924740cab61571e52f3a88a8",
+      "elapsed_s": 24.279
+    },
+    {
+      "id": "damage-carton",
+      "brief": "Detect damaged cartons using class damaged carton and create a local event for each frame with at least one. Evaluate recall target 0.9.",
+      "project_id": "ab7827e2eca04b14",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "damaged carton"
+        ],
+        "rule": "count >= 1",
+        "metric": "recall",
+        "target": 0.9
+      },
+      "observed": [
+        {
+          "metric": "recall",
+          "target": 0.9,
+          "regions": [],
+          "classes": [
+            "damaged carton"
+          ],
+          "confidence": 0.5,
+          "rule": "count >= 1",
+          "hold_s": 0.0
+        }
+      ],
+      "questions": [],
+      "message": "Displays counts of \"damaged carton\" in each processed frame. Creates a local event when that count is at least 1.",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "f026e31fb2cd4ea28000b6201fd909aa",
+      "elapsed_s": 18.475
+    },
+    {
+      "id": "damage-both",
+      "brief": "Find damaged cartons and damaged pallets for review; use the saved classes damaged carton and damaged pallet. Save evidence when either appears.",
+      "project_id": "86a501f41b114ec9",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "damaged carton",
+          "damaged pallet"
+        ],
+        "rule": "count >= 1",
+        "metric": "recall"
+      },
+      "observed": [
+        {
+          "metric": "recall",
+          "target": 0.9,
+          "regions": [],
+          "classes": [
+            "damaged carton",
+            "damaged pallet"
+          ],
+          "confidence": 0.4,
+          "rule": "count >= 1",
+          "hold_s": 0.0
+        }
+      ],
+      "questions": [],
+      "message": "Displays the combined count of \"damaged carton\" and \"damaged pallet\" in each processed frame. Creates a local event when that count is at least 1.",
+      "tool_calls": 4,
+      "actual_model_calls": 2,
+      "operation_id": "113e2160f2e3447aa3a5d19345ec071e",
+      "elapsed_s": 51.005
+    },
+    {
+      "id": "damage-crushed",
+      "brief": "Detect crushed cartons using the class crushed carton. Use confidence 0.2 and recall target 0.95. Show boxes only, without events.",
+      "project_id": "fec67b6f445841a5",
+      "detector_model": "owlv2-base-patch16",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "crushed carton"
+        ],
+        "confidence": 0.2,
+        "metric": "recall",
+        "target": 0.95
+      },
+      "observed": [
+        {
+          "metric": "recall",
+          "target": 0.95,
+          "regions": [],
+          "classes": [
+            "crushed carton"
+          ],
+          "confidence": 0.2
+        }
+      ],
+      "questions": [],
+      "message": "Displays counts of \"crushed carton\" in each processed frame.",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "ccb227218fd748ac91fc500b64c5f4ad",
+      "elapsed_s": 33.518
+    },
+    {
+      "id": "ocr-read",
+      "brief": "Read the printed text on these package labels and show the recognized text. No comparison is needed.",
+      "project_id": "5d51f89573664607",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "reader": "ocr"
+      },
+      "observed": [
+        {
+          "metric": "text_accuracy",
+          "target": 0.95,
+          "regions": [],
+          "reader": "ocr"
+        }
+      ],
+      "questions": [],
+      "message": "Reads printed text.",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "2262ed7f7a9d448e9c7d84c4c1ee24d0",
+      "elapsed_s": 20.328
+    },
+    {
+      "id": "barcode-read",
+      "brief": "Read the barcodes on these packages and show the decoded codes. No expected code or comparison.",
+      "project_id": "35dc4cfb4e8e4483",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "reader": "barcode"
+      },
+      "observed": [
+        {
+          "metric": "text_accuracy",
+          "target": 0.95,
+          "regions": [],
+          "reader": "barcode"
+        }
+      ],
+      "questions": [],
+      "message": "Reads barcodes.",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "5d05f949617c461eae04675e75e8ed63",
+      "elapsed_s": 20.393
+    },
+    {
+      "id": "ocr-match",
+      "brief": "Read the printed label and create a local event when it contains SKU-001.",
+      "project_id": "bdfc98badd7f4b58",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "reader": "ocr",
+        "expected_text": "SKU-001",
+        "metric": "text_accuracy"
+      },
+      "observed": [
+        {
+          "metric": "text_accuracy",
+          "target": 0.95,
+          "regions": [],
+          "reader": "ocr",
+          "expected_text": "SKU-001"
+        }
+      ],
+      "questions": [],
+      "message": "Reads printed text. Checks whether the read text contains \"SKU-001\".",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "a3868bb2042f4c45b17da14fa66b1039",
+      "elapsed_s": 29.727
+    },
+    {
+      "id": "barcode-match",
+      "brief": "Read package barcodes and check whether the decoded value contains ABC-990.",
+      "project_id": "81fd12dc6741438e",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "reader": "barcode",
+        "expected_text": "ABC-990"
+      },
+      "observed": [
+        {
+          "metric": "text_accuracy",
+          "target": 0.95,
+          "regions": [],
+          "reader": "barcode",
+          "expected_text": "ABC-990"
+        }
+      ],
+      "questions": [],
+      "message": "Reads barcodes. Checks whether the read text contains \"ABC-990\".",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "5b6fec9bd7de409883ab79ea712c0a3b",
+      "elapsed_s": 23.665
+    },
+    {
+      "id": "ocr-missing-value",
+      "brief": "Read these labels and compare them against the expected SKU.",
+      "project_id": "597cb1cfca6f480b",
+      "detector_model": "fixture-color-v1",
+      "passed": false,
+      "outcome": "pipeline",
+      "expected": {},
+      "observed": [
+        {
+          "metric": "text_accuracy",
+          "target": 0.95,
+          "regions": [],
+          "reader": "ocr",
+          "expected_text": "expected SKU"
+        }
+      ],
+      "questions": [],
+      "message": "Reads printed text. Checks whether the read text contains \"expected SKU\".",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "423bd531d627466bae5a4fe2a6d60dbf",
+      "elapsed_s": 24.209
+    },
+    {
+      "id": "barcode-missing-value",
+      "brief": "Check whether each barcode matches the correct package code.",
+      "project_id": "2a38bfaa73f64fa3",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "clarification",
+      "expected": {},
+      "observed": [],
+      "questions": [
+        "What text or barcode value should the app check against?"
+      ],
+      "message": "I need the expected value before adding the comparison.",
+      "tool_calls": 2,
+      "actual_model_calls": 1,
+      "operation_id": "31aa530296414faebb6992b18ff205be",
+      "elapsed_s": 17.633
+    },
+    {
+      "id": "ocr-metric",
+      "brief": "Read printed labels and check for ITEM-882. Evaluate text_accuracy target 0.97.",
+      "project_id": "dd341a08a7fa48b5",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "reader": "ocr",
+        "expected_text": "ITEM-882",
+        "metric": "text_accuracy",
+        "target": 0.97
+      },
+      "observed": [
+        {
+          "metric": "text_accuracy",
+          "target": 0.97,
+          "regions": [],
+          "reader": "ocr",
+          "expected_text": "ITEM-882"
+        }
+      ],
+      "questions": [],
+      "message": "Reads printed text. Checks whether the read text contains \"ITEM-882\".",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "ca3268b13fdc49909e2bda7acca89841",
+      "elapsed_s": 19.585
+    },
+    {
+      "id": "ocr-read-simple",
+      "brief": "Read package labels and show their codes.",
+      "project_id": "533ff482809d4b42",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "reader": "ocr"
+      },
+      "observed": [
+        {
+          "metric": "text_accuracy",
+          "target": 0.95,
+          "regions": [],
+          "reader": "ocr"
+        }
+      ],
+      "questions": [],
+      "message": "Reads printed text.",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "f01de6ec689d4869a34103f02fa89d2f",
+      "elapsed_s": 19.7
+    },
+    {
+      "id": "damage-crop-review",
+      "brief": "Find damaged cartons and save a crop for review.",
+      "project_id": "a3bb869f2437449f",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "damaged carton"
+        ],
+        "rule": "count >= 1",
+        "hold_s": 0
+      },
+      "observed": [
+        {
+          "metric": "recall",
+          "target": 0.9,
+          "regions": [],
+          "classes": [
+            "damaged carton"
+          ],
+          "confidence": 0.4,
+          "rule": "count >= 1",
+          "hold_s": 0.0
+        }
+      ],
+      "questions": [],
+      "message": "Displays counts of \"damaged carton\" in each processed frame. Creates a local event when that count is at least 1.",
+      "tool_calls": 4,
+      "actual_model_calls": 2,
+      "operation_id": "c9d1f2b2f530494497d3d20ec944d27b",
+      "elapsed_s": 71.607
+    }
+  ]
+}

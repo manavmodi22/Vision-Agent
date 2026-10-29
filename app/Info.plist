@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleIdentifier</key><string>com.visionapp.local</string>
+<key>CFBundleName</key><string>VisionApp</string>
+<key>CFBundleDisplayName</key><string>VisionApp</string>
+<key>CFBundleExecutable</key><string>VisionApp</string>
+<key>CFBundleVersion</key><string>1</string>
+<key>CFBundleShortVersionString</key><string>0.1.0</string>
+<key>CFBundlePackageType</key><string>APPL</string>
+<key>LSMinimumSystemVersion</key><string>15.0</string>
+<key>NSHighResolutionCapable</key><true/>
+<key>NSCameraUsageDescription</key><string>Use a selected camera as a local vision source.</string>
+<key>NSScreenCaptureUsageDescription</key><string>Process only the display or window you select as a local vision source.</string>
+</dict></plist>

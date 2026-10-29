@@ -1,0 +1,62 @@
+{
+  "source_identity": "c19fac5076701e673f0f6cca843619382dd195d32fdf0bb5dc68f9488346b639",
+  "status": "full_suites_complete_with_known_failures; superseded by pending reading and refinement corrections",
+  "python_tests": {
+    "passed": 355,
+    "duration_s": 128.07,
+    "log": "artifacts/full-tests-crop-corrected.log"
+  },
+  "mypy": {
+    "passed": true,
+    "source_files": 113
+  },
+  "ruff": {
+    "passed": true
+  },
+  "native_checks": {
+    "passed": 83
+  },
+  "portable_build": {
+    "passed": true,
+    "log": "artifacts/portable-build-crop-corrected.log"
+  },
+  "prior_real_bundle_inference": {
+    "source_identity": "7cfbe90c3fb1b3f5e4d7974f801274d3f2d9b9a533bd35632b757185b90aaa36",
+    "report": "artifacts/bundle-verification-corrected.json"
+  },
+  "relocated_bundle": {
+    "passed": true,
+    "report": "artifacts/bundle-verification-final.json",
+    "isolated_imports": true,
+    "native_ocr": true,
+    "fixture_preview_evaluation": true,
+    "signature_after_execution": "passed"
+  },
+  "native_actual_build": {
+    "passed": true,
+    "report": "artifacts/agent-experience/final-build.json",
+    "preview_frames": 5,
+    "person_predictions": 4,
+    "reviewed_images": 0,
+    "evaluation_created": false,
+    "deployment_approved": false
+  },
+  "live_planner_suites": {
+    "initial": {
+      "passed": 24,
+      "total": 25,
+      "report": "artifacts/stronger-planner/qwen14-final-initial25.json",
+      "failure": "Missing expected SKU was filled with placeholder text instead of clarification."
+    },
+    "refinement": {
+      "passed": 19,
+      "total": 24,
+      "report": "artifacts/stronger-planner/qwen14-final-refinement24.json",
+      "failures": {
+        "request_timeout": 4,
+        "unsupported_email_request_misinterpreted": 1
+      }
+    },
+    "scope": "Actual Qwen3-14B local interpretation and typed graph checks on synthetic fixtures; no detector accuracy or general language reliability claim."
+  }
+}

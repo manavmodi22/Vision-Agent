@@ -1,0 +1,101 @@
+{
+  "sha": "6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+  "node_id": "C_kwDOFw5GXtoAKDZkZGZmNDgyNDM3MjkwNjQ2OWE3ZmFlMmRjMzIwNmM3YWE0YmJhZWU",
+  "commit": {
+    "author": {
+      "name": "Luiz Eduardo Amaral",
+      "email": "luizamaral306@gmail.com",
+      "date": "2025-06-08T03:52:54Z"
+    },
+    "committer": {
+      "name": "GitHub",
+      "email": "noreply@github.com",
+      "date": "2025-06-08T03:52:54Z"
+    },
+    "message": "fix: typo in index.rst (#1804)\n\nfix: typo in index.rst (#1804)",
+    "tree": {
+      "sha": "af8a2d5d05d6989497f1eae2b4d4290eccbcc1db",
+      "url": "https://api.github.com/repos/Megvii-BaseDetection/YOLOX/git/trees/af8a2d5d05d6989497f1eae2b4d4290eccbcc1db"
+    },
+    "url": "https://api.github.com/repos/Megvii-BaseDetection/YOLOX/git/commits/6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJoRQkWCRC1aQ7uu5UhlAAAhnYQALIbtJlJZMTRm6pKPW7d47nG\noj8U0GYHX7pAMk/x3DX9OxJVRsUXkuHzNpd4qGOCgyehK5z8Z6MkxFpJazoicwl7\nSIwNtUVsmNCWuDlVLstoD8teONtYNIImkIlI6c76IITYZJCP7MTWcoSYP2wC+mXh\n0ocHroP0NRVdJ4NPsm51mNGx0b2xlINX0nUZOXPBSb4nnVVgHLX6Say12SWlixkm\nK+uZ8QEvOWv/Vc9QxrHEGclOmziom2Hn/BtA+JSgpWXAySG9KQAPNlBjoN82JR45\n7mkbbRwtH3s/SrtmkIuydx3NZQwe7leN4YDhUp2rj92ayrNj19oXo5EXsIihs+bf\nSYHn2GwK/pGOblrSjLdpHJJWnZnVc9ri88QF5RCBwVnF4n9EcC+ucojzdTTJA1RF\ntALtlv/bU5aIFwDw5GH8S/pbBHzK1pLXE8z3ERv2mdNVRpj//R/SWMZXWOipMI5B\nPQtcLkOEuV9ww3cY/adGFu3rrMJIO2kzWAAsYn1+Uy9TBqx7RzZWDcpzYF0D0j8x\nyhE9w3Y7Wy3sorM/Wso8X/SSDBMohdHGctcsWSOMVXbygK6oh0lXtwDOqlhpdXN3\nO1nYtneBayEd2WG4LA/A5xnV4tBaFUajS3718S5B3sL0oAZA4u+PBBnP+fZ/opoN\ng4Lmo2ex5j1EXTGJQXMA\n=al/M\n-----END PGP SIGNATURE-----\n",
+      "payload": "tree af8a2d5d05d6989497f1eae2b4d4290eccbcc1db\nparent 81f7dc3c18c50231e449ac17f59c8b862570efdd\nauthor Luiz Eduardo Amaral <luizamaral306@gmail.com> 1749354774 -0300\ncommitter GitHub <noreply@github.com> 1749354774 +0800\n\nfix: typo in index.rst (#1804)\n\nfix: typo in index.rst (#1804)",
+      "verified_at": "2025-06-08T03:52:57Z"
+    }
+  },
+  "url": "https://api.github.com/repos/Megvii-BaseDetection/YOLOX/commits/6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+  "html_url": "https://github.com/Megvii-BaseDetection/YOLOX/commit/6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+  "comments_url": "https://api.github.com/repos/Megvii-BaseDetection/YOLOX/commits/6ddff4824372906469a7fae2dc3206c7aa4bbaee/comments",
+  "author": {
+    "login": "luxedo",
+    "id": 14118472,
+    "node_id": "MDQ6VXNlcjE0MTE4NDcy",
+    "avatar_url": "https://avatars.githubusercontent.com/u/14118472?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/luxedo",
+    "html_url": "https://github.com/luxedo",
+    "followers_url": "https://api.github.com/users/luxedo/followers",
+    "following_url": "https://api.github.com/users/luxedo/following{/other_user}",
+    "gists_url": "https://api.github.com/users/luxedo/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/luxedo/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/luxedo/subscriptions",
+    "organizations_url": "https://api.github.com/users/luxedo/orgs",
+    "repos_url": "https://api.github.com/users/luxedo/repos",
+    "events_url": "https://api.github.com/users/luxedo/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/luxedo/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "web-flow",
+    "id": 19864447,
+    "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+    "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/web-flow",
+    "html_url": "https://github.com/web-flow",
+    "followers_url": "https://api.github.com/users/web-flow/followers",
+    "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+    "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+    "organizations_url": "https://api.github.com/users/web-flow/orgs",
+    "repos_url": "https://api.github.com/users/web-flow/repos",
+    "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/web-flow/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "81f7dc3c18c50231e449ac17f59c8b862570efdd",
+      "url": "https://api.github.com/repos/Megvii-BaseDetection/YOLOX/commits/81f7dc3c18c50231e449ac17f59c8b862570efdd",
+      "html_url": "https://github.com/Megvii-BaseDetection/YOLOX/commit/81f7dc3c18c50231e449ac17f59c8b862570efdd"
+    }
+  ],
+  "stats": {
+    "total": 4,
+    "additions": 2,
+    "deletions": 2
+  },
+  "files": [
+    {
+      "sha": "5106ce60f012c97d449a4359b82bb4b2c1686c8e",
+      "filename": "docs/index.rst",
+      "status": "modified",
+      "additions": 2,
+      "deletions": 2,
+      "changes": 4,
+      "blob_url": "https://github.com/Megvii-BaseDetection/YOLOX/blob/6ddff4824372906469a7fae2dc3206c7aa4bbaee/docs%2Findex.rst",
+      "raw_url": "https://github.com/Megvii-BaseDetection/YOLOX/raw/6ddff4824372906469a7fae2dc3206c7aa4bbaee/docs%2Findex.rst",
+      "contents_url": "https://api.github.com/repos/Megvii-BaseDetection/YOLOX/contents/docs%2Findex.rst?ref=6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+      "patch": "@@ -19,7 +19,7 @@ Welcome to YOLOX's documentation!\n \n .. toctree::\n    :maxdepth: 2\n-   :caption: Demployment\n+   :caption: Deployment\n \n    demo/trt_py_readme\n    demo/trt_cpp_readme\n@@ -29,4 +29,4 @@ Welcome to YOLOX's documentation!\n    demo/ncnn_cpp_readme\n    demo/onnx_readme\n    demo/openvino_py_readme\n-   demo/openvino_cpp_readme\n\\ No newline at end of file\n+   demo/openvino_cpp_readme"
+    }
+  ]
+}

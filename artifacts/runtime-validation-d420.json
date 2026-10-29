@@ -1,0 +1,50 @@
+{
+  "source_identity": "d42048535b5d68e2dc863b265eb89415b60a056155567570b96b1ef5730caeee",
+  "status": "packaged_foundation_and_native_reading_workflow_verified; overall_architecture_incomplete",
+  "python_tests": {
+    "passed": 540,
+    "duration_s": 140.63,
+    "log": "artifacts/full-tests-platform-foundation.log"
+  },
+  "mypy": {
+    "passed": true,
+    "source_files": 130,
+    "log": "artifacts/platform-mypy.log"
+  },
+  "ruff": {
+    "passed": true,
+    "log": "artifacts/platform-ruff.log"
+  },
+  "native_checks": {
+    "passed": 129,
+    "scope": "120 deterministic plus9 actual payload checks",
+    "evidence": "artifacts/native-platform-validation.json"
+  },
+  "portable_build": {
+    "passed": true,
+    "log": "artifacts/portable-build-platform.log",
+    "native_finalization": "artifacts/portable-native-catalog-finalization.json"
+  },
+  "relocated_bundle": {
+    "passed": true,
+    "report": "artifacts/bundle-verification-platform.json",
+    "scope": "Python dependency relocation, signature, actual Apple Vision and fixture execution; subsequent catalog-only native correction verified separately"
+  },
+  "actual_planner_targeted_case": "artifacts/stronger-planner/qwen14-platform-exact-reading.json",
+  "native_reading_workflow": "artifacts/agent-experience/platform/acceptance.json",
+  "native_binary_sha256": "5e0b0df1891d744e88da89c11c11f5237b18054d42c441c318b4c954c8cbef57",
+  "historical_full_model_suites": {
+    "source_identity": "c19fac5076701e673f0f6cca843619382dd195d32fdf0bb5dc68f9488346b639",
+    "initial": "24/25",
+    "refinement": "19/24",
+    "report": "artifacts/runtime-validation-c19.json",
+    "scope": "Retained unchanged; targeted correction tests do not replace full scores"
+  },
+  "prior_native_failure": "artifacts/runtime-validation-44a46.json",
+  "remaining": [
+    "Per-candidate catalog model choice is in newer checkout work, not this package.",
+    "Generic host-authored plan steps need task-specific projection.",
+    "YOLOX and PaddleOCR are isolated probes, not production adapters.",
+    "SAM3, independent scene holdouts, broader benchmarks and original release gates remain incomplete."
+  ]
+}

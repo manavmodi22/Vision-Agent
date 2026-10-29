@@ -1,0 +1,53 @@
+{
+  "project_id": "70fca89f71a84d0f",
+  "source_identity": "d42048535b5d68e2dc863b265eb89415b60a056155567570b96b1ef5730caeee",
+  "native_binary_sha256": "0407c08202910ed1c3128064931617b2865185a5237628f25eaf49fe78097fea",
+  "goal": "Read printed labels and create a local event only when the text exactly equals \"ABC-990\".",
+  "status": "native_goal_build_preview_and_contextual_annotation_passed",
+  "scope": "Actual local Qwen and Apple Vision on two generated text fixtures; not representative OCR accuracy",
+  "preview_events": [
+    1,
+    0
+  ],
+  "observed_texts": [
+    [
+      "ABC-990"
+    ],
+    [
+      "ХABC-990Y"
+    ]
+  ],
+  "annotation_saved": {
+    "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/70fca89f71a84d0f/media/fafcff02-substring-only.png",
+    "detections": [],
+    "reviewed": false,
+    "expected_texts": [
+      "XABC-990Y"
+    ],
+    "proposal": null
+  },
+  "reviewed_images": 0,
+  "evaluations": [],
+  "deployment_file_exists": false,
+  "saved_plan_revisions": 2,
+  "tool_event_records": 12,
+  "limitations": [
+    "Apple Vision read leading Latin X as Cyrillic U+0425 on substring fixture.",
+    "Only two images; minimum reviewed evaluation set not met.",
+    "Planner model selection and generic plan-step projection remain limited in this package."
+  ],
+  "recorded_events": 0,
+  "final_catalog_native_sha256": "5e0b0df1891d744e88da89c11c11f5237b18054d42c441c318b4c954c8cbef57",
+  "final_native_preview_retested": true,
+  "final_native_preview_event_counts": [
+    1,
+    0
+  ],
+  "final_native_preview_ms": [
+    303,
+    401
+  ],
+  "catalog_eligibility_ui_verified": true,
+  "catalog_correction": "Initial UI confused installed/unchecked with blocked; corrected and verified on final native binary.",
+  "actual_model_calls": 1
+}

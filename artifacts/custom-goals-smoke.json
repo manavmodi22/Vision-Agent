@@ -1,0 +1,85 @@
+{
+  "model": "visionapp-planner",
+  "mode": "actual-local-planner-custom-entrypoint",
+  "data_dir": "/Users/manavrakeshku.modi/vision-agent/.visionapp/custom-goal-benchmark",
+  "provenance": "Original geometric software fixtures. Actual local LLM, MCP, compiler and previews; not real warehouse accuracy.",
+  "eval_metric_reached": null,
+  "cases": [
+    {
+      "id": "count-plain",
+      "brief": "Count pallets across each image. Just show the count, with no alert or event trigger.",
+      "project_id": "202b70c976b148d8",
+      "passed": false,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "pallet"
+        ],
+        "metric": "count_mae"
+      },
+      "observed": [
+        {
+          "metric": "count_mae",
+          "target": 0.5,
+          "regions": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "classes": [
+            "pallet"
+          ],
+          "confidence": 0.4
+        }
+      ],
+      "questions": [],
+      "message": "Local model selected a pipeline pattern and parameters. Count pallets across each image.",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "c9209d17e0e74d588853ddb583f41c88",
+      "elapsed_s": 11.225
+    },
+    {
+      "id": "count-missing-regions",
+      "brief": "Count pallets in lanes A and B separately. No alerts.",
+      "project_id": "aca5d7e356574263",
+      "passed": true,
+      "outcome": "regions",
+      "expected": {},
+      "observed": [],
+      "questions": [
+        "Mark and save A, B on a representative image, then continue building."
+      ],
+      "message": "I need the actual region boundaries to build the requested spatial counts.",
+      "tool_calls": 2,
+      "actual_model_calls": 1,
+      "operation_id": "e146bef0d538472f8e2f689f2489d6e0",
+      "elapsed_s": 7.317
+    },
+    {
+      "id": "barcode-read",
+      "brief": "Read the barcodes on these packages and show the decoded codes. No expected code or comparison.",
+      "project_id": "f565a6883eb54a13",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "reader": "barcode"
+      },
+      "observed": [
+        {
+          "metric": "text_accuracy",
+          "target": 0.9,
+          "regions": [],
+          "reader": "barcode"
+        }
+      ],
+      "questions": [],
+      "message": "Local model selected a pipeline pattern and parameters. Read the barcodes on these packages and show the decoded codes.",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "ffdd107fb52b4c08957beed83d149d96",
+      "elapsed_s": 8.493
+    }
+  ]
+}

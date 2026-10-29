@@ -1,0 +1,35 @@
+{
+  "project_id": "692e0290946d493a",
+  "revision": 15,
+  "state": {
+    "phase": "clarify",
+    "budget": {
+      "max_tool_calls": 30,
+      "max_wall_seconds": 180.0,
+      "max_training_minutes": 30.0,
+      "max_model_calls": 5,
+      "tool_calls": 3,
+      "model_calls": 1,
+      "training_minutes": 0.0,
+      "started_at": 1793239320.300361
+    },
+    "brief_confirmed": false,
+    "candidate_count": 0,
+    "compiled_count": 0,
+    "evaluation": null,
+    "deployment_approved": false,
+    "override_reason": null
+  },
+  "brief": "Current app context (preserve unless the user requests a change):\n{\"existing_goal\":\"\",\"existing_app\":[],\"conversation\":[]}\nUser request:\nCount people in this warehouse footage and show boxes. Use confidence 0.2. Do not create events. Try two different compatible installed detector models with the same count MAE evaluation target.",
+  "clarification_count": 0,
+  "active_operation_id": null,
+  "last_operation_id": "1938339fc858495ea372527345c92633",
+  "history": [
+    {
+      "at": 1793239422.612664,
+      "action": "failure",
+      "phase": "clarify",
+      "detail": ""
+    }
+  ]
+}

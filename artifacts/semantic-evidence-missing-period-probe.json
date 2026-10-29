@@ -1,0 +1,1344 @@
+{
+  "mode": "live-local-semantic-evidence",
+  "model": "visionapp-planner",
+  "data_dir": "/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7",
+  "project_id": "bff9bd2682da4f1c",
+  "provenance": "Synthetic recorded observations for query testing; no detector executed",
+  "cases": [
+    {
+      "question": "How many damaged pallets on dock 4 today?",
+      "expected_count": 1205,
+      "http_status": 200,
+      "elapsed_s": 4.987,
+      "response": {
+        "answer": "Found 1,205 recorded detection observations for damaged pallet in zones 4. Counted the complete requested period (UTC); showing 12 matching records. These are per-frame observations, not unique physical objects; repeated frames or runs may count the same object again. Dates refer to when records were saved, not camera capture times. 1,205 matching observations are marked synthetic.",
+        "evidence": [
+          {
+            "id": "synthetic-damage-0000",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0001",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0002",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0003",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0004",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0005",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0006",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0007",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0008",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0009",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0010",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0011",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          }
+        ],
+        "interpretation": {
+          "query": {
+            "operation": "count",
+            "labels": [
+              "damaged pallet"
+            ],
+            "zones": [
+              "4"
+            ],
+            "kind": "detection",
+            "time": {
+              "period": "today",
+              "amount": null,
+              "start_date": null,
+              "end_date": null
+            },
+            "min_confidence": 0.0,
+            "text_contains": null
+          },
+          "timezone": "UTC",
+          "start_utc": "2026-10-28T00:00:00Z",
+          "end_utc": "2026-10-28T17:26:17.365031Z",
+          "reference_time": "2026-10-28T17:26:17.365031Z",
+          "matched_observations": 1205,
+          "synthetic_observations": 1205,
+          "unknown_provenance_observations": 0,
+          "evidence_returned": 12,
+          "complete_scope": true,
+          "time_basis": "record_created_at",
+          "count_unit": "per_frame_observations"
+        },
+        "questions": [],
+        "query_id": "f4911b2a13ba4353a7374c5ddcabeaa6"
+      },
+      "replay": {
+        "query_id": "f4911b2a13ba4353a7374c5ddcabeaa6",
+        "dry_run": true,
+        "effects_executed": false,
+        "reproduced": true,
+        "errors": [],
+        "answer": {
+          "answer": "Found 1,205 recorded detection observations for damaged pallet in zones 4. Counted the complete requested period (UTC); showing 12 matching records. These are per-frame observations, not unique physical objects; repeated frames or runs may count the same object again. Dates refer to when records were saved, not camera capture times. 1,205 matching observations are marked synthetic.",
+          "evidence": [
+            {
+              "id": "synthetic-damage-0000",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0001",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0002",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0003",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0004",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0005",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0006",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0007",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0008",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0009",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0010",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0011",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            }
+          ],
+          "interpretation": {
+            "query": {
+              "operation": "count",
+              "labels": [
+                "damaged pallet"
+              ],
+              "zones": [
+                "4"
+              ],
+              "kind": "detection",
+              "time": {
+                "period": "today",
+                "amount": null,
+                "start_date": null,
+                "end_date": null
+              },
+              "min_confidence": 0.0,
+              "text_contains": null
+            },
+            "timezone": "UTC",
+            "start_utc": "2026-10-28T00:00:00Z",
+            "end_utc": "2026-10-28T17:26:17.365031Z",
+            "reference_time": "2026-10-28T17:26:17.365031Z",
+            "matched_observations": 1205,
+            "synthetic_observations": 1205,
+            "unknown_provenance_observations": 0,
+            "evidence_returned": 12,
+            "complete_scope": true,
+            "time_basis": "record_created_at",
+            "count_unit": "per_frame_observations"
+          },
+          "questions": [],
+          "query_id": "f4911b2a13ba4353a7374c5ddcabeaa6"
+        }
+      },
+      "trace_kinds": [
+        "run",
+        "tool",
+        "llm",
+        "tool"
+      ],
+      "passed": true
+    },
+    {
+      "question": "How many forklifts at receiving east yesterday?",
+      "expected_count": 1,
+      "http_status": 200,
+      "elapsed_s": 4.175,
+      "response": {
+        "answer": "Found 1 recorded detection observations for forklift in zones receiving east. Counted the complete requested period (UTC); showing 1 matching records. These are per-frame observations, not unique physical objects; repeated frames or runs may count the same object again. Dates refer to when records were saved, not camera capture times. 1 matching observations are marked synthetic.",
+        "evidence": [
+          {
+            "id": "synthetic-forklift",
+            "created_at": "2026-10-27T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "forklift",
+            "confidence": 0.95,
+            "counts": {},
+            "payload": {
+              "kind": "detection",
+              "zone": "receiving east",
+              "synthetic": true
+            }
+          }
+        ],
+        "interpretation": {
+          "query": {
+            "operation": "count",
+            "labels": [
+              "forklift"
+            ],
+            "zones": [
+              "receiving east"
+            ],
+            "kind": "detection",
+            "time": {
+              "period": "yesterday",
+              "amount": null,
+              "start_date": null,
+              "end_date": null
+            },
+            "min_confidence": 0.0,
+            "text_contains": null
+          },
+          "timezone": "UTC",
+          "start_utc": "2026-10-27T00:00:00Z",
+          "end_utc": "2026-10-28T00:00:00Z",
+          "reference_time": "2026-10-28T17:26:21.674146Z",
+          "matched_observations": 1,
+          "synthetic_observations": 1,
+          "unknown_provenance_observations": 0,
+          "evidence_returned": 1,
+          "complete_scope": true,
+          "time_basis": "record_created_at",
+          "count_unit": "per_frame_observations"
+        },
+        "questions": [],
+        "query_id": "03e4287d144743a3836bafb215eaca96"
+      },
+      "replay": {
+        "query_id": "03e4287d144743a3836bafb215eaca96",
+        "dry_run": true,
+        "effects_executed": false,
+        "reproduced": true,
+        "errors": [],
+        "answer": {
+          "answer": "Found 1 recorded detection observations for forklift in zones receiving east. Counted the complete requested period (UTC); showing 1 matching records. These are per-frame observations, not unique physical objects; repeated frames or runs may count the same object again. Dates refer to when records were saved, not camera capture times. 1 matching observations are marked synthetic.",
+          "evidence": [
+            {
+              "id": "synthetic-forklift",
+              "created_at": "2026-10-27T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "forklift",
+              "confidence": 0.95,
+              "counts": {},
+              "payload": {
+                "kind": "detection",
+                "zone": "receiving east",
+                "synthetic": true
+              }
+            }
+          ],
+          "interpretation": {
+            "query": {
+              "operation": "count",
+              "labels": [
+                "forklift"
+              ],
+              "zones": [
+                "receiving east"
+              ],
+              "kind": "detection",
+              "time": {
+                "period": "yesterday",
+                "amount": null,
+                "start_date": null,
+                "end_date": null
+              },
+              "min_confidence": 0.0,
+              "text_contains": null
+            },
+            "timezone": "UTC",
+            "start_utc": "2026-10-27T00:00:00Z",
+            "end_utc": "2026-10-28T00:00:00Z",
+            "reference_time": "2026-10-28T17:26:21.674146Z",
+            "matched_observations": 1,
+            "synthetic_observations": 1,
+            "unknown_provenance_observations": 0,
+            "evidence_returned": 1,
+            "complete_scope": true,
+            "time_basis": "record_created_at",
+            "count_unit": "per_frame_observations"
+          },
+          "questions": [],
+          "query_id": "03e4287d144743a3836bafb215eaca96"
+        }
+      },
+      "trace_kinds": [
+        "run",
+        "tool",
+        "llm",
+        "tool"
+      ],
+      "passed": true
+    },
+    {
+      "question": "How many unique damaged pallets on dock 4 today?",
+      "expected_count": null,
+      "http_status": 200,
+      "elapsed_s": 5.561,
+      "response": {
+        "answer": "are per-frame observations acceptable for counting unique damaged pallets?",
+        "evidence": [],
+        "interpretation": null,
+        "questions": [
+          "are per-frame observations acceptable for counting unique damaged pallets?"
+        ],
+        "query_id": "0cedf6cca8eb41f38c36c8fa7266f569"
+      },
+      "replay": {
+        "query_id": "0cedf6cca8eb41f38c36c8fa7266f569",
+        "dry_run": true,
+        "effects_executed": false,
+        "reproduced": true,
+        "errors": [],
+        "answer": {
+          "answer": "are per-frame observations acceptable for counting unique damaged pallets?",
+          "evidence": [],
+          "interpretation": null,
+          "questions": [
+            "are per-frame observations acceptable for counting unique damaged pallets?"
+          ],
+          "query_id": "0cedf6cca8eb41f38c36c8fa7266f569"
+        }
+      },
+      "trace_kinds": [
+        "run",
+        "llm",
+        "llm",
+        "tool"
+      ],
+      "passed": true
+    },
+    {
+      "question": "How many purple dragons on dock 4 today?",
+      "expected_count": null,
+      "http_status": 200,
+      "elapsed_s": 2.819,
+      "response": {
+        "answer": "What is the label for 'dock 4'? Is 'dock 4' a valid zone label?",
+        "evidence": [],
+        "interpretation": null,
+        "questions": [
+          "What is the label for 'dock 4'? Is 'dock 4' a valid zone label?"
+        ],
+        "query_id": "415979f7cfb140e886ae5a460b18f251"
+      },
+      "replay": {
+        "query_id": "415979f7cfb140e886ae5a460b18f251",
+        "dry_run": true,
+        "effects_executed": false,
+        "reproduced": true,
+        "errors": [],
+        "answer": {
+          "answer": "What is the label for 'dock 4'? Is 'dock 4' a valid zone label?",
+          "evidence": [],
+          "interpretation": null,
+          "questions": [
+            "What is the label for 'dock 4'? Is 'dock 4' a valid zone label?"
+          ],
+          "query_id": "415979f7cfb140e886ae5a460b18f251"
+        }
+      },
+      "trace_kinds": [
+        "run",
+        "llm",
+        "tool"
+      ],
+      "passed": true
+    },
+    {
+      "question": "Show bent connectors at inspection bench over the last 48 hours.",
+      "expected_count": 1,
+      "http_status": 200,
+      "elapsed_s": 7.867,
+      "response": {
+        "answer": "Found 1 recorded detection observations for bent connector in zones inspection bench. Counted the complete requested period (UTC); showing 1 matching records. These are per-frame observations, not unique physical objects; repeated frames or runs may count the same object again. Dates refer to when records were saved, not camera capture times. 1 matching observations are marked synthetic.",
+        "evidence": [
+          {
+            "id": "synthetic-connector",
+            "created_at": "2026-10-28T15:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "bent connector",
+            "confidence": 0.88,
+            "counts": {},
+            "payload": {
+              "kind": "detection",
+              "zone": "inspection bench",
+              "synthetic": true
+            }
+          }
+        ],
+        "interpretation": {
+          "query": {
+            "operation": "count",
+            "labels": [
+              "bent connector"
+            ],
+            "zones": [
+              "inspection bench"
+            ],
+            "kind": "detection",
+            "time": {
+              "period": "last_days",
+              "amount": 48,
+              "start_date": null,
+              "end_date": null
+            },
+            "min_confidence": 0.0,
+            "text_contains": null
+          },
+          "timezone": "UTC",
+          "start_utc": "2026-09-10T17:26:34.246324Z",
+          "end_utc": "2026-10-28T17:26:34.246324Z",
+          "reference_time": "2026-10-28T17:26:34.246324Z",
+          "matched_observations": 1,
+          "synthetic_observations": 1,
+          "unknown_provenance_observations": 0,
+          "evidence_returned": 1,
+          "complete_scope": true,
+          "time_basis": "record_created_at",
+          "count_unit": "per_frame_observations"
+        },
+        "questions": [],
+        "query_id": "7444a07e695440ac9a90e53b6fe66ae6"
+      },
+      "replay": {
+        "query_id": "7444a07e695440ac9a90e53b6fe66ae6",
+        "dry_run": true,
+        "effects_executed": false,
+        "reproduced": true,
+        "errors": [],
+        "answer": {
+          "answer": "Found 1 recorded detection observations for bent connector in zones inspection bench. Counted the complete requested period (UTC); showing 1 matching records. These are per-frame observations, not unique physical objects; repeated frames or runs may count the same object again. Dates refer to when records were saved, not camera capture times. 1 matching observations are marked synthetic.",
+          "evidence": [
+            {
+              "id": "synthetic-connector",
+              "created_at": "2026-10-28T15:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "bent connector",
+              "confidence": 0.88,
+              "counts": {},
+              "payload": {
+                "kind": "detection",
+                "zone": "inspection bench",
+                "synthetic": true
+              }
+            }
+          ],
+          "interpretation": {
+            "query": {
+              "operation": "count",
+              "labels": [
+                "bent connector"
+              ],
+              "zones": [
+                "inspection bench"
+              ],
+              "kind": "detection",
+              "time": {
+                "period": "last_days",
+                "amount": 48,
+                "start_date": null,
+                "end_date": null
+              },
+              "min_confidence": 0.0,
+              "text_contains": null
+            },
+            "timezone": "UTC",
+            "start_utc": "2026-09-10T17:26:34.246324Z",
+            "end_utc": "2026-10-28T17:26:34.246324Z",
+            "reference_time": "2026-10-28T17:26:34.246324Z",
+            "matched_observations": 1,
+            "synthetic_observations": 1,
+            "unknown_provenance_observations": 0,
+            "evidence_returned": 1,
+            "complete_scope": true,
+            "time_basis": "record_created_at",
+            "count_unit": "per_frame_observations"
+          },
+          "questions": [],
+          "query_id": "7444a07e695440ac9a90e53b6fe66ae6"
+        }
+      },
+      "trace_kinds": [
+        "run",
+        "tool",
+        "llm",
+        "llm",
+        "tool"
+      ],
+      "passed": true
+    },
+    {
+      "question": "How many damaged pallets on dock 4?",
+      "expected_count": null,
+      "http_status": 200,
+      "elapsed_s": 4.159,
+      "response": {
+        "answer": "Found 1,205 recorded detection observations for damaged pallet in zones 4. Counted the complete requested period (UTC); showing 12 matching records. These are per-frame observations, not unique physical objects; repeated frames or runs may count the same object again. Dates refer to when records were saved, not camera capture times. 1,205 matching observations are marked synthetic.",
+        "evidence": [
+          {
+            "id": "synthetic-damage-0000",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0001",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0002",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0003",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0004",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0005",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0006",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0007",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0008",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0009",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0010",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          },
+          {
+            "id": "synthetic-damage-0011",
+            "created_at": "2026-10-28T17:26:15.828804+00:00",
+            "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+            "label": "damaged pallet",
+            "confidence": 0.9,
+            "counts": {
+              "4": 99
+            },
+            "payload": {
+              "kind": "detection",
+              "zone": "4",
+              "synthetic": true,
+              "run_id": "synthetic-recording"
+            }
+          }
+        ],
+        "interpretation": {
+          "query": {
+            "operation": "count",
+            "labels": [
+              "damaged pallet"
+            ],
+            "zones": [
+              "4"
+            ],
+            "kind": "detection",
+            "time": {
+              "period": "today",
+              "amount": null,
+              "start_date": null,
+              "end_date": null
+            },
+            "min_confidence": 0.0,
+            "text_contains": null
+          },
+          "timezone": "UTC",
+          "start_utc": "2026-10-28T00:00:00Z",
+          "end_utc": "2026-10-28T17:26:42.111376Z",
+          "reference_time": "2026-10-28T17:26:42.111376Z",
+          "matched_observations": 1205,
+          "synthetic_observations": 1205,
+          "unknown_provenance_observations": 0,
+          "evidence_returned": 12,
+          "complete_scope": true,
+          "time_basis": "record_created_at",
+          "count_unit": "per_frame_observations"
+        },
+        "questions": [],
+        "query_id": "96fb1573d9e94551baa0448df1a2147c"
+      },
+      "replay": {
+        "query_id": "96fb1573d9e94551baa0448df1a2147c",
+        "dry_run": true,
+        "effects_executed": false,
+        "reproduced": true,
+        "errors": [],
+        "answer": {
+          "answer": "Found 1,205 recorded detection observations for damaged pallet in zones 4. Counted the complete requested period (UTC); showing 12 matching records. These are per-frame observations, not unique physical objects; repeated frames or runs may count the same object again. Dates refer to when records were saved, not camera capture times. 1,205 matching observations are marked synthetic.",
+          "evidence": [
+            {
+              "id": "synthetic-damage-0000",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0001",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0002",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0003",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0004",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0005",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0006",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0007",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0008",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0009",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0010",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            },
+            {
+              "id": "synthetic-damage-0011",
+              "created_at": "2026-10-28T17:26:15.828804+00:00",
+              "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "crop_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-f6lf5pz7/projects/bff9bd2682da4f1c/synthetic-frame.png",
+              "label": "damaged pallet",
+              "confidence": 0.9,
+              "counts": {
+                "4": 99
+              },
+              "payload": {
+                "kind": "detection",
+                "zone": "4",
+                "synthetic": true,
+                "run_id": "synthetic-recording"
+              }
+            }
+          ],
+          "interpretation": {
+            "query": {
+              "operation": "count",
+              "labels": [
+                "damaged pallet"
+              ],
+              "zones": [
+                "4"
+              ],
+              "kind": "detection",
+              "time": {
+                "period": "today",
+                "amount": null,
+                "start_date": null,
+                "end_date": null
+              },
+              "min_confidence": 0.0,
+              "text_contains": null
+            },
+            "timezone": "UTC",
+            "start_utc": "2026-10-28T00:00:00Z",
+            "end_utc": "2026-10-28T17:26:42.111376Z",
+            "reference_time": "2026-10-28T17:26:42.111376Z",
+            "matched_observations": 1205,
+            "synthetic_observations": 1205,
+            "unknown_provenance_observations": 0,
+            "evidence_returned": 12,
+            "complete_scope": true,
+            "time_basis": "record_created_at",
+            "count_unit": "per_frame_observations"
+          },
+          "questions": [],
+          "query_id": "96fb1573d9e94551baa0448df1a2147c"
+        }
+      },
+      "trace_kinds": [
+        "run",
+        "tool",
+        "llm",
+        "tool"
+      ],
+      "passed": false
+    }
+  ],
+  "no_project_mutation": true,
+  "no_duplicate_effects": true,
+  "no_deployment": true
+}

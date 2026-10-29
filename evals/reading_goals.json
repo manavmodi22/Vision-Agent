@@ -1,0 +1,182 @@
+[
+  {
+    "id": "reading-exact-barcode-event",
+    "brief": "Read barcodes and create an event when the code exactly equals ABC-990.",
+    "expected": {
+      "reader": "barcode",
+      "expected_text": "ABC-990",
+      "match_mode": "exact",
+      "match_emit": "matched"
+    },
+    "forbidden": [
+      "zone_filter",
+      "detect"
+    ],
+    "required": [
+      "match",
+      "sink_event"
+    ]
+  },
+  {
+    "id": "reading-exact-ocr-mismatch",
+    "brief": "Read printed labels and create a local event when the text does not exactly match ABC-990.",
+    "expected": {
+      "reader": "ocr",
+      "expected_text": "ABC-990",
+      "match_mode": "exact",
+      "match_emit": "mismatched"
+    },
+    "forbidden": [
+      "zone_filter",
+      "detect"
+    ],
+    "required": [
+      "match",
+      "sink_event"
+    ]
+  },
+  {
+    "id": "reading-contains-event",
+    "brief": "Read printed labels and create a local event when the text contains ABC-990.",
+    "expected": {
+      "reader": "ocr",
+      "expected_text": "ABC-990",
+      "match_mode": "contains",
+      "match_emit": "matched"
+    },
+    "forbidden": [
+      "zone_filter",
+      "detect"
+    ],
+    "required": [
+      "match",
+      "sink_event"
+    ]
+  },
+  {
+    "id": "reading-exact-all-results",
+    "brief": "Read barcodes and check whether the decoded code exactly equals ABC-990.",
+    "expected": {
+      "reader": "barcode",
+      "expected_text": "ABC-990",
+      "match_mode": "exact",
+      "match_emit": "all"
+    },
+    "forbidden": [
+      "zone_filter",
+      "detect"
+    ],
+    "required": [
+      "match",
+      "sink_event"
+    ]
+  },
+  {
+    "id": "reading-quoted-placeholder-literal",
+    "brief": "Read printed text and check for \"expected SKU\". Treat that quoted text as the literal comparison value.",
+    "expected": {
+      "reader": "ocr",
+      "expected_text": "expected SKU",
+      "match_mode": "contains",
+      "match_emit": "all"
+    },
+    "forbidden": [
+      "zone_filter",
+      "detect"
+    ],
+    "required": [
+      "match",
+      "sink_event"
+    ]
+  },
+  {
+    "id": "reading-unresolved-followup",
+    "brief": "Read these labels and compare them against the expected SKU.\nUser clarification: ABC-990",
+    "expected": {
+      "reader": "ocr",
+      "expected_text": "ABC-990",
+      "match_mode": "contains",
+      "match_emit": "all"
+    },
+    "forbidden": [
+      "zone_filter",
+      "detect"
+    ],
+    "required": [
+      "match",
+      "sink_event"
+    ]
+  },
+  {
+    "id": "reading-correct-code-placeholder",
+    "brief": "Read barcodes and compare them against the correct package code.",
+    "outcome": "clarification",
+    "forbidden": [
+      "zone_filter",
+      "detect"
+    ]
+  },
+  {
+    "id": "reading-numeric-leading-zeros-event",
+    "brief": "Read barcodes and create a local event when the decoded value exactly equals 001234567890.",
+    "expected": {
+      "reader": "barcode",
+      "expected_text": "001234567890",
+      "match_mode": "exact",
+      "match_emit": "matched"
+    },
+    "required": [
+      "match",
+      "sink_event"
+    ],
+    "forbidden": [
+      "zone_filter",
+      "detect"
+    ]
+  },
+  {
+    "id": "reading-alphanumeric-sku",
+    "brief": "Read printed labels and check for SKU001.",
+    "expected": {
+      "reader": "ocr",
+      "expected_text": "SKU001",
+      "match_mode": "contains",
+      "match_emit": "all"
+    },
+    "required": [
+      "match",
+      "sink_event"
+    ],
+    "forbidden": [
+      "zone_filter",
+      "detect"
+    ]
+  },
+  {
+    "id": "reading-bare-word-clarification",
+    "brief": "Read these labels and compare them against the expected SKU.\nUser clarification: APPLE",
+    "expected": {
+      "reader": "ocr",
+      "expected_text": "APPLE",
+      "match_mode": "contains",
+      "match_emit": "all"
+    },
+    "required": [
+      "match",
+      "sink_event"
+    ],
+    "forbidden": [
+      "zone_filter",
+      "detect"
+    ]
+  },
+  {
+    "id": "reading-no-supplied-comparison-value",
+    "brief": "Read printed labels and compare them.",
+    "outcome": "clarification",
+    "forbidden": [
+      "zone_filter",
+      "detect"
+    ]
+  }
+]

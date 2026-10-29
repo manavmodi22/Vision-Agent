@@ -1,0 +1,776 @@
+{
+  "$defs": {
+    "BlockInference": {
+      "additionalProperties": false,
+      "properties": {
+        "block_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+          "title": "Block Id",
+          "type": "string"
+        },
+        "result": {
+          "$ref": "#/$defs/InferenceResult"
+        },
+        "input_to_frame": {
+          "default": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Input To Frame",
+          "type": "array"
+        }
+      },
+      "required": [
+        "block_id",
+        "result"
+      ],
+      "title": "BlockInference",
+      "type": "object"
+    },
+    "Detection": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "box": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "title": "Box",
+          "type": "array"
+        },
+        "zone": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Zone"
+        }
+      },
+      "required": [
+        "label",
+        "confidence",
+        "box"
+      ],
+      "title": "Detection",
+      "type": "object"
+    },
+    "DetectionObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "box": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            }
+          ],
+          "title": "Box",
+          "type": "array"
+        },
+        "polygon": {
+          "anyOf": [
+            {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              "maxItems": 256,
+              "minItems": 3,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Polygon"
+        },
+        "label": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "box",
+        "label",
+        "confidence"
+      ],
+      "title": "DetectionObservation",
+      "type": "object"
+    },
+    "ExecutionIdentity": {
+      "additionalProperties": false,
+      "properties": {
+        "capability_id": {
+          "title": "Capability Id",
+          "type": "string"
+        },
+        "model_id": {
+          "title": "Model Id",
+          "type": "string"
+        },
+        "adapter_id": {
+          "title": "Adapter Id",
+          "type": "string"
+        },
+        "identity_scope": {
+          "enum": [
+            "local_artifacts_verified",
+            "system_framework_versioned",
+            "synthetic_code"
+          ],
+          "title": "Identity Scope",
+          "type": "string"
+        },
+        "artifact_hashes": {
+          "additionalProperties": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "title": "Artifact Hashes",
+          "type": "object"
+        },
+        "unavailable_artifacts": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Unavailable Artifacts",
+          "type": "array"
+        },
+        "adapter_code_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Adapter Code Sha256",
+          "type": "string"
+        },
+        "runtime_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Runtime Manifest Sha256",
+          "type": "string"
+        },
+        "system_identity": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "System Identity",
+          "type": "object"
+        },
+        "provider": {
+          "title": "Provider",
+          "type": "string"
+        },
+        "config_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Config Sha256",
+          "type": "string"
+        },
+        "identity_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Identity Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "capability_id",
+        "model_id",
+        "adapter_id",
+        "identity_scope",
+        "artifact_hashes",
+        "adapter_code_sha256",
+        "runtime_manifest_sha256",
+        "system_identity",
+        "provider",
+        "config_sha256",
+        "identity_hash"
+      ],
+      "title": "ExecutionIdentity",
+      "type": "object"
+    },
+    "InferenceResult": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "task": {
+          "enum": [
+            "detection",
+            "ocr",
+            "barcode"
+          ],
+          "title": "Task",
+          "type": "string"
+        },
+        "input_size": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 32768,
+              "type": "integer"
+            },
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 32768,
+              "type": "integer"
+            }
+          ],
+          "title": "Input Size",
+          "type": "array"
+        },
+        "input_pixels_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Input Pixels Sha256",
+          "type": "string"
+        },
+        "detections": {
+          "items": {
+            "$ref": "#/$defs/DetectionObservation"
+          },
+          "maxItems": 10000,
+          "title": "Detections",
+          "type": "array"
+        },
+        "readings": {
+          "items": {
+            "$ref": "#/$defs/TextObservation"
+          },
+          "maxItems": 10000,
+          "title": "Readings",
+          "type": "array"
+        },
+        "identity": {
+          "$ref": "#/$defs/ExecutionIdentity"
+        },
+        "timing": {
+          "$ref": "#/$defs/InferenceTiming"
+        },
+        "warnings": {
+          "items": {
+            "maxLength": 1000,
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "task",
+        "input_size",
+        "input_pixels_sha256",
+        "identity",
+        "timing"
+      ],
+      "title": "InferenceResult",
+      "type": "object"
+    },
+    "InferenceTiming": {
+      "additionalProperties": false,
+      "properties": {
+        "total_ms": {
+          "minimum": 0,
+          "title": "Total Ms",
+          "type": "number"
+        },
+        "startup_ms": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Startup Ms"
+        },
+        "load_ms": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Load Ms"
+        },
+        "preprocess_ms": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Preprocess Ms"
+        },
+        "inference_ms": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Inference Ms"
+        },
+        "postprocess_ms": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Postprocess Ms"
+        },
+        "transport_ms": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Transport Ms"
+        },
+        "model_cached": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Cached"
+        }
+      },
+      "required": [
+        "total_ms"
+      ],
+      "title": "InferenceTiming",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "JudgementEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1500,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "model": {
+          "title": "Model",
+          "type": "string"
+        },
+        "base_url": {
+          "title": "Base Url",
+          "type": "string"
+        },
+        "image_sha256": {
+          "title": "Image Sha256",
+          "type": "string"
+        },
+        "model_identity_hash": {
+          "title": "Model Identity Hash",
+          "type": "string"
+        },
+        "identity_scope": {
+          "enum": [
+            "local_weights_verified",
+            "server_metadata_only"
+          ],
+          "title": "Identity Scope",
+          "type": "string"
+        },
+        "weights_sha256": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Weights Sha256"
+        },
+        "box": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "title": "Box",
+          "type": "array"
+        },
+        "input_size": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            }
+          ],
+          "title": "Input Size",
+          "type": "array"
+        },
+        "sent_size": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            }
+          ],
+          "title": "Sent Size",
+          "type": "array"
+        },
+        "elapsed_s": {
+          "minimum": 0,
+          "title": "Elapsed S",
+          "type": "number"
+        },
+        "attempts": {
+          "maximum": 3,
+          "minimum": 1,
+          "title": "Attempts",
+          "type": "integer"
+        },
+        "status": {
+          "const": "model_hypothesis",
+          "default": "model_hypothesis",
+          "title": "Status",
+          "type": "string"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "label",
+        "reason",
+        "confidence",
+        "model",
+        "base_url",
+        "image_sha256",
+        "model_identity_hash",
+        "identity_scope",
+        "input_size",
+        "sent_size",
+        "elapsed_s",
+        "attempts"
+      ],
+      "title": "JudgementEvidence",
+      "type": "object"
+    },
+    "TextObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "box": {
+          "anyOf": [
+            {
+              "maxItems": 4,
+              "minItems": 4,
+              "prefixItems": [
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Box"
+        },
+        "polygon": {
+          "anyOf": [
+            {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              "maxItems": 256,
+              "minItems": 3,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Polygon"
+        },
+        "text": {
+          "maxLength": 16384,
+          "title": "Text",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "ocr",
+            "barcode"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence"
+        },
+        "symbology": {
+          "anyOf": [
+            {
+              "maxLength": 80,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Symbology"
+        }
+      },
+      "required": [
+        "text",
+        "kind"
+      ],
+      "title": "TextObservation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "image_path": {
+      "title": "Image Path",
+      "type": "string"
+    },
+    "detections": {
+      "items": {
+        "$ref": "#/$defs/Detection"
+      },
+      "title": "Detections",
+      "type": "array"
+    },
+    "counts": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Counts",
+      "type": "object"
+    },
+    "texts": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Texts",
+      "type": "array"
+    },
+    "events": {
+      "items": {
+        "additionalProperties": {
+          "$ref": "#/$defs/JsonValue"
+        },
+        "type": "object"
+      },
+      "title": "Events",
+      "type": "array"
+    },
+    "elapsed_ms": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Elapsed Ms",
+      "type": "number"
+    },
+    "timestamp_s": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Timestamp S",
+      "type": "number"
+    },
+    "judgements": {
+      "items": {
+        "$ref": "#/$defs/JudgementEvidence"
+      },
+      "title": "Judgements",
+      "type": "array"
+    },
+    "inferences": {
+      "items": {
+        "$ref": "#/$defs/BlockInference"
+      },
+      "maxItems": 64,
+      "title": "Inferences",
+      "type": "array"
+    }
+  },
+  "required": [
+    "image_path"
+  ],
+  "title": "FrameResult",
+  "type": "object"
+}

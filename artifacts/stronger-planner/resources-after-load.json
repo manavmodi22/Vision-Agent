@@ -1,0 +1,9 @@
+{
+  "load_wait_s": 8.22203783300938,
+  "health": {
+    "status": "ok"
+  },
+  "pressure": "kern.memorystatus_vm_pressure_level: 2\n",
+  "swap": "vm.swapusage: total = 9216.00M  used = 7733.44M  free = 1482.56M  (encrypted)\n",
+  "servers": "  PID    RSS COMMAND\n24138 2621744 /Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server -m /Users/manavrakeshku.modi/.lmstudio/models/lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf --host 127.0.0.1 --port 1234 --alias visionapp-planner --ctx-size 8192 --parallel 1 --reasoning off --no-webui\n27833  15952 /Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server -m /Users/manavrakeshku.modi/.lmstudio/models/prithivMLmods/Cosmos-Reason2-8B-GGUF/Cosmos-Reason2-8B.Q8_0.gguf --mmproj /Users/manavrakeshku.modi/.lmstudio/models/prithivMLmods/Cosmos-Reason2-8B-GGUF/Cosmos-Reason2-8B.mmproj-f16.gguf --host 127.0.0.1 --port 1235 --alias visionapp-vlm --ctx-size 8192 --parallel 1 --reasoning off --image-max-tokens 1024 --no-webui\n44666 10076512 /Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server -m /Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/Qwen3-14B-Q4_K_M.gguf --host 127.0.0.1 --port 1236 --alias visionapp-planner-qwen3-14b --ctx-size 8192 --parallel 1 --reasoning off --chat-template-kwargs {\"enable_thinking\":false} --no-webui\n"
+}

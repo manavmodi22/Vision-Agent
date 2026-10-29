@@ -1,0 +1,21 @@
+{
+  "id": "77c4186106986d3f9440a1d2cfc790922c4027228be7c106668bc60230cf25ca",
+  "sequence": 10,
+  "project_id": "692e0290946d493a",
+  "build_id": "87c3efde66ef43c2b8c19ea6f8bcde3d",
+  "operation_id": "8cba54cfdb3e40e2aefc0eff7627653e",
+  "execution_id": null,
+  "plan_id": null,
+  "call_id": "6199fff164a64241a1ee37a55a7bbdb5",
+  "kind": "tool",
+  "stage": "completed",
+  "name": "blocks_list",
+  "phase": "plan",
+  "at": "2026-10-29T02:08:22.765522+00:00",
+  "duration_ms": 75.669,
+  "model_identity": null,
+  "cost_usd": null,
+  "input_artifact_id": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "output_artifact_id": "016c510bbafdb458ed6e3390b5f546c4584d8a2d5e2189c3821309d8a0e8d3c4",
+  "error": null
+}

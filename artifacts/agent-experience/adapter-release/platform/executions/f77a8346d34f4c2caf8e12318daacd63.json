@@ -1,0 +1,22 @@
+{
+  "id": "f77a8346d34f4c2caf8e12318daacd63",
+  "project_id": "692e0290946d493a",
+  "build_id": "87c3efde66ef43c2b8c19ea6f8bcde3d",
+  "operation_id": "87c3efde66ef43c2b8c19ea6f8bcde3d",
+  "plan_id": "671ab4433ab948519ace6ab1bad5b204",
+  "plan_hash": "bfa9ec4a642315f893fc0a26a1638ec4faecaec4fd7e606268c3f454c1e4aa80",
+  "status": "completed",
+  "phase": "evaluate",
+  "created_at": "2026-10-29T02:10:49.379708+00:00",
+  "updated_at": "2026-10-29T02:11:43.231953+00:00",
+  "accepted_snapshot": {
+    "workspace_hash": "8a5e64a0bc5599344afda069d97cb8bec9ad91dadb79eb2d3fbb287674448d0b",
+    "dataset_hash": "81652d4d4bcf192bcb30a9c8dc79b32675c1707176222949e3f6fa3ae32e8b86",
+    "model_hashes": [
+      "cf1ac92653fb8c11499df123f3ef933fc5a8ab21b5536595d768567bf982d101",
+      "bc4c6657ad6c5cba8fc27801272ac9bb5916b505dba932c86ecf2b5376c537d0"
+    ],
+    "settings_hash": "0a759c259264d0118dc4809a470c7378b308ed6813b6fa1a27c2781abbc053d4"
+  },
+  "error": null
+}

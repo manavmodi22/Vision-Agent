@@ -1,0 +1,218 @@
+{
+  "argv": [
+    "/Users/manavrakeshku.modi/vision-agent/.venv/bin/python",
+    "-m",
+    "evals.run_custom_goals",
+    "--workdir",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/stronger-planner-qwen8-initial4",
+    "--case",
+    "count-capacity",
+    "--case",
+    "count-duration",
+    "--case",
+    "damage-both",
+    "--case",
+    "ocr-match",
+    "--url",
+    "http://127.0.0.1:1236/v1",
+    "--model",
+    "visionapp-planner-qwen3-8b",
+    "--output",
+    "/Users/manavrakeshku.modi/vision-agent/artifacts/stronger-planner/qwen8-initial4.json"
+  ],
+  "exit_code": 1,
+  "aborted": null,
+  "samples": [
+    {
+      "elapsed_s": 0.050454874988645315,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 3.26329174998682,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 6.327123082999606,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 9.37334995798301,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 12.43003787501948,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 15.49153820797801,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 18.672542624990456,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 22.844918541028164,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 27.260693708027247,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 30.319939540990163,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 33.75094587501371,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 36.934554415987805,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 40.44042379100574,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 44.66319112497149,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 48.48191187501652,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 52.5656655409839,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 55.754467124992516,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 59.54398462502286,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 63.40418333298294,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 66.53889995801728,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 70.47678224998526,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 73.62789762497414,
+      "pressure_level": 2,
+      "swapouts_pages": 870085
+    },
+    {
+      "elapsed_s": 76.69378433300881,
+      "pressure_level": 2,
+      "swapouts_pages": 890353
+    },
+    {
+      "elapsed_s": 79.74992758297594,
+      "pressure_level": 2,
+      "swapouts_pages": 890353
+    },
+    {
+      "elapsed_s": 82.84615941601805,
+      "pressure_level": 2,
+      "swapouts_pages": 890353
+    },
+    {
+      "elapsed_s": 85.96307104098378,
+      "pressure_level": 2,
+      "swapouts_pages": 890353
+    },
+    {
+      "elapsed_s": 89.09106566599803,
+      "pressure_level": 2,
+      "swapouts_pages": 890353
+    },
+    {
+      "elapsed_s": 92.18718712497503,
+      "pressure_level": 2,
+      "swapouts_pages": 892105
+    },
+    {
+      "elapsed_s": 95.33150408300571,
+      "pressure_level": 2,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 98.50507658300921,
+      "pressure_level": 2,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 101.5904880000162,
+      "pressure_level": 2,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 104.67755937500624,
+      "pressure_level": 2,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 107.79956833302276,
+      "pressure_level": 2,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 110.97865937498864,
+      "pressure_level": 2,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 114.0351968749892,
+      "pressure_level": 2,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 117.09254141600104,
+      "pressure_level": 2,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 120.14892195799621,
+      "pressure_level": 2,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 123.2041699999827,
+      "pressure_level": 2,
+      "swapouts_pages": 897665
+    }
+  ],
+  "elapsed_s": 126.2063277909765
+}

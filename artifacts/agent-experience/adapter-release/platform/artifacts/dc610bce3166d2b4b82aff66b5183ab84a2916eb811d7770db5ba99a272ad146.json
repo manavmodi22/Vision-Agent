@@ -1,0 +1,52 @@
+{
+  "artifact": {
+    "id": "dc610bce3166d2b4b82aff66b5183ab84a2916eb811d7770db5ba99a272ad146",
+    "project_id": "692e0290946d493a",
+    "kind": "model_response",
+    "title": "visionapp-planner result",
+    "created_at": "2026-10-29T02:10:13.513556+00:00",
+    "sha256": "dc610bce3166d2b4b82aff66b5183ab84a2916eb811d7770db5ba99a272ad146",
+    "media_type": "application/json",
+    "size_bytes": 2296
+  },
+  "content": {
+    "messages": [
+      {
+        "parts": [
+          {
+            "content": "{\n  \"message\": \"Count people in the warehouse footage using two compatible detectors with the same count MAE target. Show detection boxes and use confidence 0.2. No events will be created.\",\n  \"questions\": [],\n  \"choices\": [\n    {\n      \"model_capability_id\": \"model.owlv2-base-patch16\",\n      \"model_reason\": \"Use open-vocabulary detection for people in the warehouse footage. This model supports detection and can be used for counting.\",\n      \"match_mode\": \"contains\",\n      \"match_emit\": \"all\",\n      \"metric\": \"count_mae\",\n      \"target\": 0.5,\n      \"use_case\": \"custom\",\n      \"pipeline_type\": \"detection\",\n      \"objects\": [\"person\"],\n      \"min_confidence\": 0.2,\n      \"count_threshold\": null,\n      \"count_operator\": \">=\",\n      \"hold_seconds\": 0,\n      \"expected_text\": null,\n      \"use_zones\": false,\n      \"zone_ids\": []\n    },\n    {\n      \"model_capability_id\": \"model.rtdetr-v2-r18\",\n      \"model_reason\": \"Use a closed-vocabulary detector trained on common objects, including people, for counting in the warehouse footage.\",\n      \"match_mode\": \"contains\",\n      \"match_emit\": \"all\",\n      \"metric\": \"count_mae\",\n      \"target\": 0.5,\n      \"use_case\": \"custom\",\n      \"pipeline_type\": \"detection\",\n      \"objects\": [\"person\"],\n      \"min_confidence\": 0.2,\n      \"count_threshold\": null,\n      \"count_operator\": \">=\",\n      \"hold_seconds\": 0,\n      \"expected_text\": null,\n      \"use_zones\": false,\n      \"zone_ids\": []\n    }\n  ]\n}",
+            "id": null,
+            "provider_name": null,
+            "provider_details": null,
+            "part_kind": "text"
+          }
+        ],
+        "usage": {
+          "input_tokens": 4378,
+          "cache_write_tokens": 0,
+          "cache_read_tokens": 4377,
+          "output_tokens": 377,
+          "input_audio_tokens": 0,
+          "cache_audio_read_tokens": 0,
+          "output_audio_tokens": 0,
+          "details": {}
+        },
+        "model_name": "visionapp-planner",
+        "timestamp": "2026-10-29T02:10:13.319459Z",
+        "kind": "response",
+        "provider_name": "openai",
+        "provider_url": "http://127.0.0.1:1234/v1/",
+        "provider_details": {
+          "finish_reason": "stop",
+          "timestamp": "2026-10-29T02:10:13Z"
+        },
+        "provider_response_id": "chatcmpl-vxUtWGQ1W3zPx8c8PxybOHxpA3GVZ94e",
+        "finish_reason": "stop",
+        "run_id": null,
+        "conversation_id": null,
+        "metadata": null,
+        "state": "complete"
+      }
+    ]
+  }
+}

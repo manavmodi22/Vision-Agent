@@ -1,0 +1,198 @@
+{
+  "scene": [
+    {
+      "type": "directory",
+      "oid": "b212c261acdd4773ff9d5d846779400e6e957dc6",
+      "size": 0,
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/depth_maps"
+    },
+    {
+      "type": "directory",
+      "oid": "88643a74ceed98811ba9b8dae9e89ed9e9eca2ce",
+      "size": 0,
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/videos"
+    },
+    {
+      "type": "file",
+      "oid": "a92270a196b491fd04af86b6abdb0ed9d34226e9",
+      "size": 39062,
+      "lfs": {
+        "oid": "fa77a8e0843acc55e56544669284efc2e8e5c310ba3125efdad99c5d1fa32ee4",
+        "size": 39062,
+        "pointerSize": 130
+      },
+      "xetHash": "5dfe8992e4bbdc764c4ccf580ee4e07c1443b1a1dc1b4d87e659dab1fd81080d",
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/calibration.json"
+    },
+    {
+      "type": "file",
+      "oid": "6bb00294ba311f3fdcece3a693e9e046526ec0a5",
+      "size": 49424957,
+      "lfs": {
+        "oid": "b7a100353aac19afd44587b77b6a528a5f3bc4f0fe563177c46916c292839a73",
+        "size": 49424957,
+        "pointerSize": 133
+      },
+      "xetHash": "04ad015ea83e712eb426752867d846c4a4ef1d2d0befd03d169f97ca7d1e49b2",
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/ground_truth.json"
+    },
+    {
+      "type": "file",
+      "oid": "d95f21cb45c3ca7328a3ab15135765a05fc0d1b5",
+      "size": 1262482,
+      "lfs": {
+        "oid": "38cdf9e5144148fce6abbbac543d3265eb6fd6782860166744dcf0129155ace4",
+        "size": 1262482,
+        "pointerSize": 132
+      },
+      "xetHash": "09959de8e3623b1e3431026acc06fdb6ea758b5c4ba46f1b247048d289e630b8",
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/map.png"
+    }
+  ],
+  "videos": [
+    {
+      "type": "file",
+      "oid": "570d23283a99b820e0c19814ce552e22c87f3707",
+      "size": 128823802,
+      "lfs": {
+        "oid": "efd46921f48ac1aafad509c580511893419e34ed56c32df510f8628e8fce84f9",
+        "size": 128823802,
+        "pointerSize": 134
+      },
+      "xetHash": "d75378cd118227b958103ae2b62e3400856a36ea23d8150b617fddc39b8d994e",
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/videos/Camera.mp4"
+    },
+    {
+      "type": "file",
+      "oid": "16458c869c5b927318e880ce81e8ba8ababe3ded",
+      "size": 127379806,
+      "lfs": {
+        "oid": "efaaceb0f548197117f497a74783404dbb5a67341f91b423e6e38fedc4685afd",
+        "size": 127379806,
+        "pointerSize": 134
+      },
+      "xetHash": "0a1e9891568841fddd82d295f5ed2389e3249daa0d350d51f72ccd8b4cc6fa2c",
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/videos/Camera_01.mp4"
+    },
+    {
+      "type": "file",
+      "oid": "af740cfb320fb063f17b3dad7c5f4fdeeb7ea40c",
+      "size": 129836014,
+      "lfs": {
+        "oid": "de1ea11dbe9ce5b7825568681acf82ea9d6ab58fbd6eec3027987e1a3c12e4bc",
+        "size": 129836014,
+        "pointerSize": 134
+      },
+      "xetHash": "1e1c898af74f137a67ac9c57b006f5fd6449e9e0837210dc71e171f6b8fe1574",
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/videos/Camera_02.mp4"
+    },
+    {
+      "type": "file",
+      "oid": "cff6366dca43e97756790510368a6f0efac9531d",
+      "size": 155270392,
+      "lfs": {
+        "oid": "0761aafe04280f209842e51018ab4aef1cd16052708dd61ae478ba76e3fd3b32",
+        "size": 155270392,
+        "pointerSize": 134
+      },
+      "xetHash": "0e34729d6f20d30c3ef0932608af3d8ad2c752d9cf465b3a0c25b98ef4bccc84",
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/videos/Camera_03.mp4"
+    },
+    {
+      "type": "file",
+      "oid": "d7be7f10b25b89b48173a7795da5b5ea00d6d76c",
+      "size": 169492455,
+      "lfs": {
+        "oid": "617de5b5c252c9f23ee14af5acf75c578e967fa79384871aa2e2209b3c23d2bc",
+        "size": 169492455,
+        "pointerSize": 134
+      },
+      "xetHash": "9abc3a3c1626aab977ebe580a83af9ea455e6edef3106337ac541a0c46672391",
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/videos/Camera_04.mp4"
+    },
+    {
+      "type": "file",
+      "oid": "1b8ef95428e622548c33ecbab36136f62eae9007",
+      "size": 145970460,
+      "lfs": {
+        "oid": "e3b0ca3b0f7c157d2fd61f3872de2671f9031624f2d3caa61b4a9a2021823139",
+        "size": 145970460,
+        "pointerSize": 134
+      },
+      "xetHash": "26e4f0876463b85c843b1f29a097b0164bcfa82f9f2f1ddf5ee21f1ee9929f84",
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/videos/Camera_05.mp4"
+    },
+    {
+      "type": "file",
+      "oid": "4608a955d34ed11083fe02708c2c4ee76c568873",
+      "size": 135307781,
+      "lfs": {
+        "oid": "4970be8856e0d7278d3409babf43bbb7542125531f91c5f30f049481783090a6",
+        "size": 135307781,
+        "pointerSize": 134
+      },
+      "xetHash": "af62d0be24df76bf352f772ea7dca6b6d30bd5ce688994cedb82d314653f65e1",
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/videos/Camera_06.mp4"
+    },
+    {
+      "type": "file",
+      "oid": "3ce92a694e97dd30b01ee04aebc58ffad116ff69",
+      "size": 199411669,
+      "lfs": {
+        "oid": "7b65012f235c34031ef7ea5d4629c619f3c9a1b59ba4b257c0f1269ca171b3e2",
+        "size": 199411669,
+        "pointerSize": 134
+      },
+      "xetHash": "f3dfe2e2bc7374815245a8a4344c322d544bef080eee61f982fc795838c6fd54",
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/videos/Camera_07.mp4"
+    },
+    {
+      "type": "file",
+      "oid": "ddea8b1e9a28f7e21add05626a08fcbd5bc16530",
+      "size": 142157881,
+      "lfs": {
+        "oid": "e3ab228a24b235bd5cc61197232bcfec0e95afbee3dc84fbaeac38fbe24d9ebd",
+        "size": 142157881,
+        "pointerSize": 134
+      },
+      "xetHash": "b6dba777b35cc0d956dae6967a2133a7e7b2ad9b81e0fcb848123c1a05ee2520",
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/videos/Camera_08.mp4"
+    },
+    {
+      "type": "file",
+      "oid": "562fa1c5f858b165a4d86532ac9e9d967edf913c",
+      "size": 130776152,
+      "lfs": {
+        "oid": "657f68784eb9ae70903e3892b6b9595b1e7f623ccf0f771d41ef7ad1c0c32281",
+        "size": 130776152,
+        "pointerSize": 134
+      },
+      "xetHash": "15ab7122959042efbc3c6e9a5a79e82f6253cfed1cd55c01eafdb276c509a050",
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/videos/Camera_09.mp4"
+    },
+    {
+      "type": "file",
+      "oid": "6335feba3da10bae266c14a52c47019e378580c9",
+      "size": 153779686,
+      "lfs": {
+        "oid": "769f60f0bcda206eab84ee802d7923fb857f3e30ce20054c8f21ca2e0d9cd026",
+        "size": 153779686,
+        "pointerSize": 134
+      },
+      "xetHash": "df9ffe85523b0e84ce39eaa42f2e0894966f86d9bb8e54fb0c6a2c33c704368f",
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/videos/Camera_10.mp4"
+    },
+    {
+      "type": "file",
+      "oid": "f1dc22bc65669c33782e67fae1b81336ff7e17a0",
+      "size": 148112773,
+      "lfs": {
+        "oid": "fb7948b2008c6a5b78b1231adb6bf0b113d2304b0b28aa99a56ad1203ad8792a",
+        "size": 148112773,
+        "pointerSize": 134
+      },
+      "xetHash": "905750a07c9490ce4f293d2fe8221cc252cbb81dd223c0d1d1edc398d6305f0e",
+      "path": "MTMC_Tracking_2025/val/Warehouse_016/videos/Camera_11.mp4"
+    }
+  ]
+}

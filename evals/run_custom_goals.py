@@ -1,0 +1,127 @@
+"""Actual local-planner/MCP benchmark through the same custom entry point as Home."""
+from __future__ import annotations
+
+import argparse
+import asyncio
+import json
+from pathlib import Path
+from time import monotonic
+from typing import Literal
+
+from pydantic import Field, JsonValue
+
+from agent.planner import plan
+from engine.agent_state import AgentStateStore
+from engine.compiler import compile_pipeline
+from engine.datasets import DatasetClass, DatasetService
+from engine.models.fixture import PALETTE
+from engine.service import WorkspaceService
+from spec.models import Contract, PipelineSpec
+
+
+class GoalCase(Contract):
+    id: str
+    brief: str
+    outcome: Literal["pipeline", "regions", "clarification"] = "pipeline"
+    regions_available: bool = True
+    expected: dict[str, JsonValue] = Field(default_factory=dict)
+    forbidden: list[str] = Field(default_factory=list)
+    required: list[str] = Field(default_factory=list)
+
+
+def inspect(candidate: PipelineSpec, root: Path) -> dict[str, JsonValue]:
+    compiled = compile_pipeline(candidate, root)
+    values: dict[str, JsonValue] = {"metric": candidate.eval.metric, "target": candidate.eval.target,
+                                  "regions": list[JsonValue](sorted({zone.id for zones in compiled.zones.values() for zone in zones}))}
+    for block in candidate.blocks:
+        if block.type in {"detect", "detect_open_vocab"}:
+            values.update(classes=block.params["classes"], confidence=block.params["min_conf"])
+        elif block.type in {"ocr", "barcode"}:
+            values["reader"] = block.type
+        elif block.type == "rule":
+            values.update(rule=block.params["when"], hold_s=block.params["hold_s"])
+        elif block.type == "match":
+            values["expected_text"] = block.params["expected"]
+            values["match_mode"] = block.params.get("mode", "contains")
+            values["match_emit"] = block.params.get("emit", "all")
+    return values
+
+
+def equal(actual: JsonValue, expected: JsonValue) -> bool:
+    if isinstance(actual, list) and isinstance(expected, list):
+        return sorted(str(item) for item in actual) == sorted(str(item) for item in expected)
+    return actual == expected
+
+
+async def run(data_dir: Path, output: Path, model: str, url: str, selected: list[str], cases_path: Path | None = None) -> None:
+    cases = [GoalCase.model_validate(item) for item in json.loads((cases_path or Path(__file__).with_name("custom_goals.json")).read_text())]
+    if selected:
+        missing = set(selected) - {case.id for case in cases}
+        if missing:
+            raise ValueError("Unknown benchmark case IDs: " + ", ".join(sorted(missing)))
+        cases = [case for case in cases if case.id in selected]
+    service = WorkspaceService(data_dir)
+    results: list[JsonValue] = []
+    report: dict[str, JsonValue] = {"model": model, "mode": "actual-local-planner-custom-entrypoint",
+        "data_dir": str(data_dir), "provenance": "Original geometric software fixtures. Actual local LLM, MCP, compiler and previews; each case states its detector adapter. Unsupported fixture classes use real local OWLv2 on the same synthetic images. Native readers handle text cases. Not warehouse accuracy.",
+        "eval_metric_reached": None, "cases": results}
+    passed = 0
+    for case in cases:
+        project = service.create_project("Goal benchmark " + case.id, "custom")
+        service.demo(project.id)
+        datasets = DatasetService(service)
+        manifest = datasets.manifest(project.id)
+        names = ["person", "forklift", "damaged carton", "damaged pallet", "crushed carton", "bolt", "washer"]
+        datasets.save_classes(project.id, manifest.revision, manifest.classes + [
+            DatasetClass(id="bench-" + str(index), name=name, color="#43C6AC") for index, name in enumerate(names)])
+        if not case.regions_available:
+            (service.root(project.id) / "zones/lanes.json").write_text('{"zones":[]}')
+        start = monotonic()
+        requested_classes = case.expected.get("classes", [])
+        fixture_supported = isinstance(requested_classes, list) and all(isinstance(name, str) and name in PALETTE for name in requested_classes)
+        detector_model = "fixture-color-v1" if fixture_supported else "owlv2-base-patch16"
+        row: dict[str, JsonValue] = {"id": case.id, "brief": case.brief, "project_id": project.id,
+                                   "detector_model": detector_model, "passed": False}
+        try:
+            result = await plan(case.brief, "media", {"project_id": project.id, "mcp_data_dir": str(data_dir),
+                "use_case": "custom", "detector_model": detector_model, "model_url": url, "planner_model": model})
+            outcome = "regions" if result.needs_zones else "pipeline" if result.candidates else "clarification"
+            observed = [inspect(candidate, service.root(project.id)) for candidate in result.candidates]
+            checks = [outcome == case.outcome]
+            if case.outcome == "pipeline":
+                checks += [bool(observed)]
+                for candidate, values in zip(result.candidates, observed, strict=True):
+                    checks += [not set(case.forbidden) & {block.type for block in candidate.blocks}]
+                    checks += [set(case.required) <= {block.type for block in candidate.blocks}]
+                    checks += [equal(values.get(key), expected) for key, expected in case.expected.items()]
+            store = AgentStateStore(service)
+            assert result.operation_id
+            operation = store.operation(project.id, result.operation_id)
+            calls = sum(call.kind == "llm" and call.status == "completed" for call in operation.calls)
+            checks.append(calls > 0)
+            store.commit_plan(project.id, result.operation_id, result, case.brief)
+            row.update(passed=all(checks), outcome=outcome, expected=case.expected, observed=list[JsonValue](observed),
+                       questions=list[JsonValue](result.questions), message=result.message, tool_calls=result.tool_calls,
+                       actual_model_calls=calls, operation_id=result.operation_id)
+            passed += all(checks)
+        except Exception as error:
+            row["error"] = f"{type(error).__name__}: {error}"
+        row["elapsed_s"] = round(monotonic() - start, 3)
+        results.append(row)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(json.dumps(report, indent=2) + "\n")
+        print(json.dumps({key: row[key] for key in ("id", "passed", "elapsed_s")}), flush=True)
+    if passed != len(cases):
+        raise SystemExit(1)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--workdir", type=Path, required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--model", default="visionapp-planner")
+    parser.add_argument("--url", default="http://127.0.0.1:1234/v1")
+    parser.add_argument("--case", action="append", default=[])
+    parser.add_argument("--cases-file", type=Path, help="Separate versioned case definition file")
+    args = parser.parse_args()
+    asyncio.run(run(args.workdir.resolve(), args.output.resolve(), args.model, args.url, args.case, args.cases_file))

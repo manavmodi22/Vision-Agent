@@ -1,0 +1,3 @@
+/Users/manavrakeshku.modi/vision-agent/.venv/lib/python3.12/site-packages/transformers/models/owlv2/processing_owlv2.py:201: FutureWarning: `post_process_object_detection` method is deprecated for OwlVitProcessor and will be removed in v5. Use `post_process_grounded_object_detection` instead.
+  warnings.warn(
+{"report": "/Users/manavrakeshku.modi/vision-agent/artifacts/adapter-probes/common-adapter/actual-smoke.json", "source_hash": "2263a8b2e6af45ec6dfadb0be23b526e0fe1f4f5b947c5670ea6cd9f1e2e9d15", "hypotheses": 4, "elapsed_s": 4.865705750009511, "adapter_total_ms": 4813.55770904338, "provider": "mps"}

@@ -1,0 +1,207 @@
+{
+  "source_identity": "4f94d391e5238170979135e9425e4212bd43d8e885d6c66f764264433c191ccb",
+  "scope": "deliberately selected difficult synthetic-fixture language interpretation cases, not general success rate or warehouse accuracy",
+  "models": {
+    "nemotron4": {
+      "refinement": {
+        "passed": 0,
+        "total": 5,
+        "p50_s": 22.68203754199203,
+        "max_s": 25.563020000001416,
+        "cases": [
+          {
+            "id": "remove_class",
+            "passed": false,
+            "elapsed_s": 15.470101541024633
+          },
+          {
+            "id": "count_upper",
+            "passed": false,
+            "elapsed_s": 13.573528459004592
+          },
+          {
+            "id": "sample_seconds",
+            "passed": false,
+            "elapsed_s": 22.753717500017956
+          },
+          {
+            "id": "eval_recall",
+            "passed": false,
+            "elapsed_s": 22.68203754199203
+          },
+          {
+            "id": "read_text_exact",
+            "passed": false,
+            "elapsed_s": 25.563020000001416
+          }
+        ]
+      },
+      "initial": {
+        "passed": 0,
+        "total": 4,
+        "p50_s": 15.662500000000001,
+        "max_s": 17.24,
+        "cases": [
+          {
+            "id": "count-capacity",
+            "passed": false,
+            "elapsed_s": 15.489
+          },
+          {
+            "id": "count-duration",
+            "passed": false,
+            "elapsed_s": 15.836
+          },
+          {
+            "id": "damage-both",
+            "passed": false,
+            "elapsed_s": 11.59
+          },
+          {
+            "id": "ocr-match",
+            "passed": false,
+            "elapsed_s": 17.24
+          }
+        ]
+      }
+    },
+    "qwen8": {
+      "refinement": {
+        "passed": 4,
+        "total": 5,
+        "p50_s": 17.491816458001267,
+        "max_s": 29.34658612497151,
+        "cases": [
+          {
+            "id": "remove_class",
+            "passed": true,
+            "elapsed_s": 17.491816458001267
+          },
+          {
+            "id": "count_upper",
+            "passed": true,
+            "elapsed_s": 14.60232695803279
+          },
+          {
+            "id": "sample_seconds",
+            "passed": false,
+            "elapsed_s": 29.34658612497151
+          },
+          {
+            "id": "eval_recall",
+            "passed": true,
+            "elapsed_s": 11.138249125040602
+          },
+          {
+            "id": "read_text_exact",
+            "passed": true,
+            "elapsed_s": 18.781352457997855
+          }
+        ]
+      },
+      "initial": {
+        "passed": 3,
+        "total": 4,
+        "p50_s": 34.484,
+        "max_s": 43.989,
+        "cases": [
+          {
+            "id": "count-capacity",
+            "passed": true,
+            "elapsed_s": 27.84
+          },
+          {
+            "id": "count-duration",
+            "passed": true,
+            "elapsed_s": 43.989
+          },
+          {
+            "id": "damage-both",
+            "passed": false,
+            "elapsed_s": 41.128
+          },
+          {
+            "id": "ocr-match",
+            "passed": true,
+            "elapsed_s": 10.087
+          }
+        ]
+      }
+    },
+    "qwen14": {
+      "refinement": {
+        "passed": 5,
+        "total": 5,
+        "p50_s": 11.192991957999766,
+        "max_s": 22.134266624983866,
+        "cases": [
+          {
+            "id": "remove_class",
+            "passed": true,
+            "elapsed_s": 16.190663582994603
+          },
+          {
+            "id": "count_upper",
+            "passed": true,
+            "elapsed_s": 11.192991957999766
+          },
+          {
+            "id": "sample_seconds",
+            "passed": true,
+            "elapsed_s": 6.353507332969457
+          },
+          {
+            "id": "eval_recall",
+            "passed": true,
+            "elapsed_s": 8.519918375008274
+          },
+          {
+            "id": "read_text_exact",
+            "passed": true,
+            "elapsed_s": 22.134266624983866
+          }
+        ]
+      },
+      "initial": {
+        "passed": 3,
+        "total": 4,
+        "p50_s": 37.4365,
+        "max_s": 107.136,
+        "cases": [
+          {
+            "id": "count-capacity",
+            "passed": true,
+            "elapsed_s": 107.136
+          },
+          {
+            "id": "count-duration",
+            "passed": false,
+            "elapsed_s": 29.121
+          },
+          {
+            "id": "damage-both",
+            "passed": true,
+            "elapsed_s": 45.752
+          },
+          {
+            "id": "ocr-match",
+            "passed": true,
+            "elapsed_s": 23.531
+          }
+        ]
+      }
+    }
+  },
+  "recommendation": "Qwen3-14B provisional for full validation on corrected frozen runtime; no full suites started by this probe",
+  "operational_state": {
+    "planner_port": 1234,
+    "alias": "visionapp-planner",
+    "planner_pid": 46319,
+    "cosmos_port": 1235,
+    "cosmos_pid": 45543,
+    "comparison_port_1236": "closed",
+    "production_two_model_pressure": "normal1 throughout60second observation",
+    "offloaded_layers": "41/41",
+    "rollback": "nemotron-restoration.json"
+  }
+}

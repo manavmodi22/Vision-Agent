@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/manavrakeshku.modi/vision-agent/artifacts/stronger-planner/full_validation.py", line 44, in <module>
+    assert not any((art / (label + suffix)).exists()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Retain prior evidence; use a new label

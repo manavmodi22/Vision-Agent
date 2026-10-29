@@ -1,0 +1,644 @@
+{
+  "model": "visionapp-planner",
+  "provenance": "Actual local-model planning through API and MCP. Synthetic inputs. No warehouse accuracy claim.",
+  "probes": [
+    {
+      "name": "damage-complete",
+      "status": 200,
+      "elapsed_s": 7.19810833298834,
+      "response": {
+        "message": "Local model selected a pipeline pattern and parameters. Detect damaged cartons and damaged pallets using confidence 0.4. Emit an evidence event if at least one is found. Evaluate recall target 0.9. These are synthetic fixtures; use the configured model. All parameters are confirmed.",
+        "questions": [],
+        "candidates": [
+          {
+            "spec_version": "0.1",
+            "name": "damage-candidate-1",
+            "inputs": {
+              "source": {
+                "type": "image_folder",
+                "path": "media"
+              }
+            },
+            "blocks": [
+              {
+                "id": "sample",
+                "type": "frame_sample",
+                "params": {
+                  "fps": 2
+                },
+                "in": {
+                  "frames": "$inputs.source"
+                }
+              },
+              {
+                "id": "det",
+                "type": "detect",
+                "params": {
+                  "model": "fixture-color-v1",
+                  "classes": [
+                    "damaged carton",
+                    "damaged pallet"
+                  ],
+                  "min_conf": 0.4
+                },
+                "in": {
+                  "image": "$sample.frame"
+                }
+              },
+              {
+                "id": "count",
+                "type": "count_per_zone",
+                "params": {},
+                "in": {
+                  "dets": "$det.dets"
+                }
+              },
+              {
+                "id": "full",
+                "type": "rule",
+                "params": {
+                  "when": "count >= 1",
+                  "hold_s": 0.0
+                },
+                "in": {
+                  "value": "$count.counts"
+                }
+              },
+              {
+                "id": "out",
+                "type": "sink_event",
+                "params": {},
+                "in": {
+                  "event": "$full.event"
+                }
+              }
+            ],
+            "eval": {
+              "set": "reviewed-v1",
+              "metric": "recall",
+              "target": 0.9
+            }
+          }
+        ],
+        "project": {
+          "id": "e1cd8d63bf984bdb",
+          "name": "Live probe damage",
+          "use_case": "damage",
+          "status": "building",
+          "created_at": "2026-10-28T16:38:10.824412+00:00",
+          "updated_at": "2026-10-28T16:38:18.100900+00:00",
+          "media": [
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-01.png",
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-02.png",
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-03.png",
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-04.png",
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-05.png",
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-06.png",
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-07.png",
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-08.png",
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-09.png",
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-10.png",
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-11.png",
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-12.png",
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-13.png",
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-14.png",
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-15.png",
+            "/private/tmp/visionapp-targeted-probes/projects/e1cd8d63bf984bdb/media/synthetic-16.png"
+          ],
+          "brief": "Detect damaged cartons and damaged pallets using confidence 0.4. Emit an evidence event if at least one is found. Evaluate recall target 0.9. These are synthetic fixtures; use the configured model. All parameters are confirmed.",
+          "clarification_count": 0,
+          "candidates": [
+            {
+              "spec_version": "0.1",
+              "name": "damage-candidate-1",
+              "inputs": {
+                "source": {
+                  "type": "image_folder",
+                  "path": "media"
+                }
+              },
+              "blocks": [
+                {
+                  "id": "sample",
+                  "type": "frame_sample",
+                  "params": {
+                    "fps": 2
+                  },
+                  "in": {
+                    "frames": "$inputs.source"
+                  }
+                },
+                {
+                  "id": "det",
+                  "type": "detect",
+                  "params": {
+                    "model": "fixture-color-v1",
+                    "classes": [
+                      "damaged carton",
+                      "damaged pallet"
+                    ],
+                    "min_conf": 0.4
+                  },
+                  "in": {
+                    "image": "$sample.frame"
+                  }
+                },
+                {
+                  "id": "count",
+                  "type": "count_per_zone",
+                  "params": {},
+                  "in": {
+                    "dets": "$det.dets"
+                  }
+                },
+                {
+                  "id": "full",
+                  "type": "rule",
+                  "params": {
+                    "when": "count >= 1",
+                    "hold_s": 0.0
+                  },
+                  "in": {
+                    "value": "$count.counts"
+                  }
+                },
+                {
+                  "id": "out",
+                  "type": "sink_event",
+                  "params": {},
+                  "in": {
+                    "event": "$full.event"
+                  }
+                }
+              ],
+              "eval": {
+                "set": "reviewed-v1",
+                "metric": "recall",
+                "target": 0.9
+              }
+            }
+          ],
+          "evaluations": [],
+          "messages": [
+            {
+              "role": "user",
+              "content": "Detect damaged cartons and damaged pallets using confidence 0.4. Emit an evidence event if at least one is found. Evaluate recall target 0.9. These are synthetic fixtures; use the configured model. All parameters are confirmed."
+            },
+            {
+              "role": "assistant",
+              "content": "Local model selected a pipeline pattern and parameters. Detect damaged cartons and damaged pallets using confidence 0.4. Emit an evidence event if at least one is found. Evaluate recall target 0.9. These are synthetic fixtures; use the configured model. All parameters are confirmed."
+            }
+          ],
+          "synthetic": true,
+          "fixture": true,
+          "data_origin": "Generated geometric fixtures; not warehouse imagery",
+          "deployment_id": null
+        }
+      }
+    },
+    {
+      "name": "labels-complete",
+      "status": 200,
+      "elapsed_s": 5.894480249960907,
+      "response": {
+        "message": "Local model selected a pipeline pattern and parameters. Read carton label text with Apple Vision OCR and check whether it contains SKU-001. Emit local evidence.",
+        "questions": [],
+        "candidates": [
+          {
+            "spec_version": "0.1",
+            "name": "labels-candidate-1",
+            "inputs": {
+              "source": {
+                "type": "image_folder",
+                "path": "media"
+              }
+            },
+            "blocks": [
+              {
+                "id": "sample",
+                "type": "frame_sample",
+                "params": {
+                  "fps": 2
+                },
+                "in": {
+                  "frames": "$inputs.source"
+                }
+              },
+              {
+                "id": "read",
+                "type": "ocr",
+                "params": {},
+                "in": {
+                  "image": "$sample.frame"
+                }
+              },
+              {
+                "id": "check",
+                "type": "match",
+                "params": {
+                  "expected": "SKU-001",
+                  "mode": "contains"
+                },
+                "in": {
+                  "text": "$read.text"
+                }
+              },
+              {
+                "id": "out",
+                "type": "sink_event",
+                "params": {},
+                "in": {
+                  "event": "$check.event"
+                }
+              }
+            ],
+            "eval": {
+              "set": "reviewed-v1",
+              "metric": "text_accuracy",
+              "target": 0.95
+            }
+          }
+        ],
+        "project": {
+          "id": "ce15afa831a04e64",
+          "name": "Live probe labels",
+          "use_case": "labels",
+          "status": "building",
+          "created_at": "2026-10-28T16:38:18.103989+00:00",
+          "updated_at": "2026-10-28T16:38:24.075956+00:00",
+          "media": [
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-01.png",
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-02.png",
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-03.png",
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-04.png",
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-05.png",
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-06.png",
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-07.png",
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-08.png",
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-09.png",
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-10.png",
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-11.png",
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-12.png",
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-13.png",
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-14.png",
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-15.png",
+            "/private/tmp/visionapp-targeted-probes/projects/ce15afa831a04e64/media/synthetic-16.png"
+          ],
+          "brief": "Read carton label text with Apple Vision OCR and check whether it contains SKU-001. Use text_accuracy target 0.95, emit local evidence. All parameters are confirmed.",
+          "clarification_count": 0,
+          "candidates": [
+            {
+              "spec_version": "0.1",
+              "name": "labels-candidate-1",
+              "inputs": {
+                "source": {
+                  "type": "image_folder",
+                  "path": "media"
+                }
+              },
+              "blocks": [
+                {
+                  "id": "sample",
+                  "type": "frame_sample",
+                  "params": {
+                    "fps": 2
+                  },
+                  "in": {
+                    "frames": "$inputs.source"
+                  }
+                },
+                {
+                  "id": "read",
+                  "type": "ocr",
+                  "params": {},
+                  "in": {
+                    "image": "$sample.frame"
+                  }
+                },
+                {
+                  "id": "check",
+                  "type": "match",
+                  "params": {
+                    "expected": "SKU-001",
+                    "mode": "contains"
+                  },
+                  "in": {
+                    "text": "$read.text"
+                  }
+                },
+                {
+                  "id": "out",
+                  "type": "sink_event",
+                  "params": {},
+                  "in": {
+                    "event": "$check.event"
+                  }
+                }
+              ],
+              "eval": {
+                "set": "reviewed-v1",
+                "metric": "text_accuracy",
+                "target": 0.95
+              }
+            }
+          ],
+          "evaluations": [],
+          "messages": [
+            {
+              "role": "user",
+              "content": "Read carton label text with Apple Vision OCR and check whether it contains SKU-001. Use text_accuracy target 0.95, emit local evidence. All parameters are confirmed."
+            },
+            {
+              "role": "assistant",
+              "content": "Local model selected a pipeline pattern and parameters. Read carton label text with Apple Vision OCR and check whether it contains SKU-001. Emit local evidence."
+            }
+          ],
+          "synthetic": true,
+          "fixture": true,
+          "data_origin": "Generated geometric fixtures; not warehouse imagery",
+          "deployment_id": null
+        }
+      }
+    },
+    {
+      "name": "underspecified-capacity",
+      "status": 200,
+      "elapsed_s": 6.311126457992941,
+      "response": {
+        "message": "Local model needs clarification. A full-lane alert requires a confirmed capacity before a pipeline can be proposed.",
+        "questions": [
+          "How many pallets make a lane full?"
+        ],
+        "candidates": [],
+        "project": {
+          "id": "fb1a17f707cf4fcb",
+          "name": "Clarification recheck",
+          "use_case": "pallets",
+          "status": "draft",
+          "created_at": "2026-10-28T16:39:26.053080+00:00",
+          "updated_at": "2026-10-28T16:39:32.445269+00:00",
+          "media": [
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-01.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-02.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-03.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-04.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-05.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-06.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-07.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-08.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-09.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-10.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-11.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-12.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-13.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-14.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-15.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-16.png"
+          ],
+          "brief": "",
+          "clarification_count": 1,
+          "candidates": [],
+          "evaluations": [],
+          "messages": [
+            {
+              "role": "user",
+              "content": "Count pallets in the saved lane polygons and alert when a lane is full. I have not specified the lane capacity yet."
+            },
+            {
+              "role": "assistant",
+              "content": "Local model needs clarification. A full-lane alert requires a confirmed capacity before a pipeline can be proposed.\nHow many pallets make a lane full?"
+            }
+          ],
+          "synthetic": true,
+          "fixture": true,
+          "data_origin": "Generated geometric fixtures; not warehouse imagery",
+          "deployment_id": null
+        }
+      }
+    },
+    {
+      "name": "clarification-followup",
+      "status": 200,
+      "elapsed_s": 7.378644958022051,
+      "response": {
+        "message": "Local model selected a pipeline pattern and parameters. Count pallets by center inside confirmed normalized lane polygons. Use count_mae. Never invent a lane capacity; ask if unknown.",
+        "questions": [],
+        "candidates": [
+          {
+            "spec_version": "0.1",
+            "name": "pallets-candidate-1",
+            "inputs": {
+              "source": {
+                "type": "image_folder",
+                "path": "media"
+              }
+            },
+            "blocks": [
+              {
+                "id": "sample",
+                "type": "frame_sample",
+                "params": {
+                  "fps": 2
+                },
+                "in": {
+                  "frames": "$inputs.source"
+                }
+              },
+              {
+                "id": "det",
+                "type": "detect",
+                "params": {
+                  "model": "fixture-color-v1",
+                  "classes": [
+                    "pallet"
+                  ],
+                  "min_conf": 0.4
+                },
+                "in": {
+                  "image": "$sample.frame"
+                }
+              },
+              {
+                "id": "zones",
+                "type": "zone_filter",
+                "params": {
+                  "zones": "zones/lanes.json"
+                },
+                "in": {
+                  "dets": "$det.dets"
+                }
+              },
+              {
+                "id": "count",
+                "type": "count_per_zone",
+                "params": {},
+                "in": {
+                  "dets": "$zones.dets"
+                }
+              },
+              {
+                "id": "full",
+                "type": "rule",
+                "params": {
+                  "when": "count >= 7",
+                  "hold_s": 0.0
+                },
+                "in": {
+                  "value": "$count.counts"
+                }
+              },
+              {
+                "id": "out",
+                "type": "sink_event",
+                "params": {},
+                "in": {
+                  "event": "$full.event"
+                }
+              }
+            ],
+            "eval": {
+              "set": "reviewed-v1",
+              "metric": "count_mae",
+              "target": 0.5
+            }
+          }
+        ],
+        "project": {
+          "id": "fb1a17f707cf4fcb",
+          "name": "Clarification recheck",
+          "use_case": "pallets",
+          "status": "building",
+          "created_at": "2026-10-28T16:39:26.053080+00:00",
+          "updated_at": "2026-10-28T16:39:39.822093+00:00",
+          "media": [
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-01.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-02.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-03.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-04.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-05.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-06.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-07.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-08.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-09.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-10.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-11.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-12.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-13.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-14.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-15.png",
+            "/private/tmp/visionapp-clarify-recheck/projects/fb1a17f707cf4fcb/media/synthetic-16.png"
+          ],
+          "brief": "A lane is full at 7 pallets; hold time zero. Evaluate count_mae target 0.5. Please build it now with those parameters.",
+          "clarification_count": 1,
+          "candidates": [
+            {
+              "spec_version": "0.1",
+              "name": "pallets-candidate-1",
+              "inputs": {
+                "source": {
+                  "type": "image_folder",
+                  "path": "media"
+                }
+              },
+              "blocks": [
+                {
+                  "id": "sample",
+                  "type": "frame_sample",
+                  "params": {
+                    "fps": 2
+                  },
+                  "in": {
+                    "frames": "$inputs.source"
+                  }
+                },
+                {
+                  "id": "det",
+                  "type": "detect",
+                  "params": {
+                    "model": "fixture-color-v1",
+                    "classes": [
+                      "pallet"
+                    ],
+                    "min_conf": 0.4
+                  },
+                  "in": {
+                    "image": "$sample.frame"
+                  }
+                },
+                {
+                  "id": "zones",
+                  "type": "zone_filter",
+                  "params": {
+                    "zones": "zones/lanes.json"
+                  },
+                  "in": {
+                    "dets": "$det.dets"
+                  }
+                },
+                {
+                  "id": "count",
+                  "type": "count_per_zone",
+                  "params": {},
+                  "in": {
+                    "dets": "$zones.dets"
+                  }
+                },
+                {
+                  "id": "full",
+                  "type": "rule",
+                  "params": {
+                    "when": "count >= 7",
+                    "hold_s": 0.0
+                  },
+                  "in": {
+                    "value": "$count.counts"
+                  }
+                },
+                {
+                  "id": "out",
+                  "type": "sink_event",
+                  "params": {},
+                  "in": {
+                    "event": "$full.event"
+                  }
+                }
+              ],
+              "eval": {
+                "set": "reviewed-v1",
+                "metric": "count_mae",
+                "target": 0.5
+              }
+            }
+          ],
+          "evaluations": [],
+          "messages": [
+            {
+              "role": "user",
+              "content": "Count pallets in the saved lane polygons and alert when a lane is full. I have not specified the lane capacity yet."
+            },
+            {
+              "role": "assistant",
+              "content": "Local model needs clarification. A full-lane alert requires a confirmed capacity before a pipeline can be proposed.\nHow many pallets make a lane full?"
+            },
+            {
+              "role": "user",
+              "content": "A lane is full at 7 pallets; hold time zero. Evaluate count_mae target 0.5. Please build it now with those parameters."
+            },
+            {
+              "role": "assistant",
+              "content": "Local model selected a pipeline pattern and parameters. Count pallets by center inside confirmed normalized lane polygons. Use count_mae. Never invent a lane capacity; ask if unknown."
+            }
+          ],
+          "synthetic": true,
+          "fixture": true,
+          "data_origin": "Generated geometric fixtures; not warehouse imagery",
+          "deployment_id": null
+        }
+      }
+    }
+  ],
+  "prior_semantic_failure": {
+    "name": "underspecified-capacity",
+    "behavior": "Model proposed count-only and omitted the requested alert. Fixed deterministic completeness gate; earlier two-turn records replaced by recheck."
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-10-29T02:03:32.338580+00:00",
+  "source_identity": "19f6e4115389679538f934d77a778d9b752952d49fb8d7256b72b91f61028367",
+  "status": "packaged_checks_passed; native_warehouse_build_failed_at_100s_planner_timeout; architecture_incomplete",
+  "python_tests": {
+    "passed": 640,
+    "duration_s": 187.78,
+    "log": "artifacts/full-tests-adapter-release.log"
+  },
+  "mypy": {
+    "passed": true,
+    "source_files": 146,
+    "log": "artifacts/adapter-release-final-mypy.log"
+  },
+  "ruff": {
+    "passed": true,
+    "log": "artifacts/adapter-release-final-ruff.log"
+  },
+  "native_contracts": {
+    "passed": 148,
+    "deterministic_checks": 138,
+    "actual_backend_payload_checks": 10,
+    "evidence": "artifacts/native-platform-validation-adapter-release.json"
+  },
+  "native_ocr_bridge": "artifacts/native-ocr-stdout-validation.json",
+  "portable_build": "artifacts/portable-build-adapter-release.log",
+  "relocation": {
+    "passed": true,
+    "evidence": "artifacts/bundle-verification-adapter-release.json"
+  },
+  "native_release_sha256": "ced2cda1d05299fedac5f0490ae92a4725519dc5c7e40916724ca37afcd2c09f",
+  "native_packaged_sha256": "130a4ef29f4fa2f188f5b2dff5118bab54a66d3df13445b53712ff7026eb8673",
+  "actual_llm_cases": [
+    "artifacts/stronger-planner/qwen14-adapter-reading-final.json",
+    "artifacts/stronger-planner/qwen14-provenance-warehouse-contextfix.json"
+  ],
+  "actual_detector_execution": "artifacts/stronger-planner/qwen14-provenance-warehouse-execution-receipt.json",
+  "actual_adapter_crop_resize": "artifacts/adapter-probes/common-adapter/actual-smoke.json",
+  "nvidia_second_scene_comparison": "artifacts/scene-holdout/comparison.json",
+  "preserved_failures": [
+    "artifacts/stronger-planner/qwen14-provenance-warehouse.json: prompt exceeded budget before LLM; bounded projection fixed and actual rerun passed",
+    "artifacts/bundle-verification-selection-d403.log: prior intermittent extra OCR stdout; raw-response diagnostic retry passed; dedicated stdout ownership added",
+    "artifacts/stronger-planner/qwen14-selection-warehouse-execution.json: earlier weak local checkpoint choices retained; unknown-purpose models excluded by current default eligibility",
+    "Packaged native20-frame warehouse build timed out100.662s during its sole model call before plan creation; no context overflow or preview."
+  ],
+  "remaining": [
+    "Scene-group promotion eligibility and untouched reviewed acceptance data are not enforced.",
+    "YOLOX and PaddleOCR remain isolated probes; new integrated model families and unified provisioning remain pending.",
+    "SAM3 on compatible hardware, segmentation, common VLM/training evidence, failure slices and resource acceptance remain incomplete.",
+    "Broad real-planner/refinement suite failures remain; two targeted live cases do not establish general reliability.",
+    "Local ad-hoc signature only; release signing/notarization and full operational acceptance pending."
+  ],
+  "native_acceptance_failure": "artifacts/agent-experience/adapter-release/native-timeout"
+}

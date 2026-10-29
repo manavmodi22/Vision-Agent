@@ -1,0 +1,189 @@
+{
+  "runtime_freeze": "4f94d391e5238170979135e9425e4212bd43d8e885d6c66f764264433c191ccb",
+  "baseline": {
+    "passed": 20,
+    "total": 24,
+    "expectations": "original partial checks"
+  },
+  "targeted_retest": {
+    "passed": 4,
+    "total": 5
+  },
+  "frozen_full_run": {
+    "passed": 20,
+    "total": 24,
+    "expectations": "tightened nonspatial forbidden-block checks",
+    "source_unchanged": true,
+    "native_binary_unchanged": true
+  },
+  "per_case": [
+    {
+      "id": "count-plain",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "count-all-regions",
+      "original_baseline_passed": false,
+      "targeted_retest_passed": true,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "count-one-region",
+      "original_baseline_passed": false,
+      "targeted_retest_passed": true,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "count-capacity",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": false,
+      "error": null
+    },
+    {
+      "id": "count-duration",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": false,
+      "error": null
+    },
+    {
+      "id": "count-metric",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "count-missing-capacity",
+      "original_baseline_passed": false,
+      "targeted_retest_passed": true,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "count-missing-regions",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "count-new-region",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "detect-person",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "detect-forklift",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "detect-components",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "detect-explicit-label",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "damage-carton",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "damage-both",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": false,
+      "frozen_full_run_passed": false,
+      "error": null
+    },
+    {
+      "id": "damage-crushed",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "ocr-read",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "barcode-read",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "ocr-match",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": false,
+      "error": "PlannerError: Local planning failed: Exceeded maximum output retries (2)"
+    },
+    {
+      "id": "barcode-match",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "ocr-missing-value",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "barcode-missing-value",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "ocr-metric",
+      "original_baseline_passed": false,
+      "targeted_retest_passed": true,
+      "frozen_full_run_passed": true,
+      "error": null
+    },
+    {
+      "id": "ocr-read-simple",
+      "original_baseline_passed": true,
+      "targeted_retest_passed": null,
+      "frozen_full_run_passed": true,
+      "error": null
+    }
+  ]
+}

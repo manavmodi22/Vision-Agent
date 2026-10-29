@@ -1,0 +1,1007 @@
+{
+  "id": "5b17c6924f91446897225d13f5dc3c04",
+  "project_id": "6b0ffff3dec54fb6",
+  "status": "awaiting_approval",
+  "phase": "approval",
+  "next_action": "approve_deployment",
+  "message": "The selected candidate passed its declared target. Review its results and approve deployment to run and record evidence.",
+  "questions": [],
+  "log": [
+    {
+      "at": "2026-10-29T01:09:45.127363+00:00",
+      "phase": "planning",
+      "message": "Interpreting your goal and preparing a working preview"
+    },
+    {
+      "at": "2026-10-29T01:09:46.312002+00:00",
+      "phase": "labeling",
+      "message": "Applied 1 requested changes to 1 candidate(s), with an actual preview of every affected candidate. Preserved unrelated settings and human labels."
+    },
+    {
+      "at": "2026-10-29T01:09:47.151949+00:00",
+      "phase": "evaluating",
+      "message": "Testing all 1 candidate(s) on 16 reviewed images."
+    },
+    {
+      "at": "2026-10-29T01:09:48.954543+00:00",
+      "phase": "evaluating",
+      "message": "Evaluated all 1 candidate(s). Candidate 1 achieved count_mae 0.000 against target 0.500 on 16 reviewed images."
+    },
+    {
+      "at": "2026-10-29T01:09:48.954700+00:00",
+      "phase": "approval",
+      "message": "The selected candidate passed its declared target. Review its results and approve deployment to run and record evidence."
+    }
+  ],
+  "preview": {
+    "frames": [
+      {
+        "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-01.png",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.45,
+              0.4453125,
+              0.5875
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.45,
+              0.9453125,
+              0.5875
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {
+          "all": 4
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 27.273042011074722,
+        "timestamp_s": 0.0,
+        "judgements": []
+      },
+      {
+        "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-02.png",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.225,
+              0.1953125,
+              0.3625
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.45,
+              0.4453125,
+              0.5875
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.675,
+              0.4453125,
+              0.8125
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.225,
+              0.6953125,
+              0.3625
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.45,
+              0.9453125,
+              0.5875
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.675,
+              0.9453125,
+              0.8125
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {
+          "all": 8
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 46.66108300443739,
+        "timestamp_s": 0.0,
+        "judgements": []
+      },
+      {
+        "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-03.png",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.225,
+              0.1953125,
+              0.3625
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.45,
+              0.1953125,
+              0.5875
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.225,
+              0.6953125,
+              0.3625
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.45,
+              0.6953125,
+              0.5875
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {
+          "all": 4
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 28.49774999776855,
+        "timestamp_s": 0.0,
+        "judgements": []
+      },
+      {
+        "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-04.png",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.225,
+              0.1953125,
+              0.3625
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.45,
+              0.1953125,
+              0.5875
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.675,
+              0.1953125,
+              0.8125
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.225,
+              0.6953125,
+              0.3625
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.45,
+              0.6953125,
+              0.5875
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.675,
+              0.6953125,
+              0.8125
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {
+          "all": 8
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 47.24941699532792,
+        "timestamp_s": 0.0,
+        "judgements": []
+      },
+      {
+        "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-05.png",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.45,
+              0.4453125,
+              0.5875
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": null
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.45,
+              0.9453125,
+              0.5875
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {
+          "all": 4
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 31.696291989646852,
+        "timestamp_s": 0.0,
+        "judgements": []
+      }
+    ],
+    "elapsed_s": 0.1863086670055054,
+    "warnings": [
+      "SYNTHETIC FIXTURE: colored rectangles only. This does not validate warehouse detection.",
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+    ]
+  },
+  "selected_candidate_index": 0,
+  "evaluations": [
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "count_mae": 0.0,
+      "passed": true,
+      "metric": "count_mae",
+      "target": 0.5,
+      "sample_count": 16,
+      "failures": [],
+      "spec_hash": "286b5f53b3dfdda268e2ea63aa541b36ec0800cabf3f675012247d06b1557cfe",
+      "dataset_hash": "84025c7ba93e096677747984b77d662d74ac2bbeaa1eaaddd83b12b7270c0af4",
+      "text_accuracy": 1.0,
+      "character_error_rate": null,
+      "word_error_rate": null,
+      "text_normalization": null,
+      "text_error_counts": {},
+      "warnings": [
+        "SYNTHETIC FIXTURE: colored rectangles only. This does not validate warehouse detection.",
+        "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+      ]
+    }
+  ],
+  "project": {
+    "id": "6b0ffff3dec54fb6",
+    "name": "Plan evidence fixture",
+    "use_case": "custom",
+    "status": "evaluated",
+    "created_at": "2026-10-29T01:09:45.037352+00:00",
+    "updated_at": "2026-10-29T01:09:48.589748+00:00",
+    "media": [
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-01.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-02.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-03.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-04.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-05.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-06.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-07.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-08.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-09.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-10.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-11.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-12.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-13.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-14.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-15.png",
+      "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-16.png"
+    ],
+    "brief": "Count pallets\nRefinement: Set confidence to 0.5",
+    "clarification_count": 0,
+    "candidates": [
+      {
+        "spec_version": "0.1",
+        "name": "custom-candidate-1",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "sample",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2
+            },
+            "in": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "det",
+            "type": "detect",
+            "params": {
+              "model": "fixture-color-v1",
+              "classes": [
+                "pallet"
+              ],
+              "min_conf": 0.5
+            },
+            "in": {
+              "image": "$sample.frame"
+            }
+          },
+          {
+            "id": "count",
+            "type": "count_per_zone",
+            "params": {},
+            "in": {
+              "dets": "$det.dets"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "count_mae",
+          "target": 0.5
+        }
+      }
+    ],
+    "evaluations": [
+      {
+        "precision": 1.0,
+        "recall": 1.0,
+        "count_mae": 0.0,
+        "passed": true,
+        "metric": "count_mae",
+        "target": 0.5,
+        "sample_count": 16,
+        "failures": [],
+        "spec_hash": "286b5f53b3dfdda268e2ea63aa541b36ec0800cabf3f675012247d06b1557cfe",
+        "dataset_hash": "84025c7ba93e096677747984b77d662d74ac2bbeaa1eaaddd83b12b7270c0af4",
+        "text_accuracy": 1.0,
+        "character_error_rate": null,
+        "word_error_rate": null,
+        "text_normalization": null,
+        "text_error_counts": {},
+        "warnings": [
+          "SYNTHETIC FIXTURE: colored rectangles only. This does not validate warehouse detection.",
+          "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+        ]
+      }
+    ],
+    "messages": [
+      {
+        "role": "user",
+        "content": "Set confidence to 0.5"
+      },
+      {
+        "role": "assistant",
+        "content": "Applied 1 requested changes to 1 candidate(s), with an actual preview of every affected candidate. Preserved unrelated settings and human labels."
+      }
+    ],
+    "synthetic": true,
+    "fixture": true,
+    "data_origin": "Generated geometric fixtures; not warehouse imagery",
+    "deployment_id": null
+  },
+  "created_at": "2026-10-29T01:09:45.119275+00:00",
+  "updated_at": "2026-10-29T01:09:48.954706+00:00",
+  "plan": {
+    "id": "5eebd9a1aa014ac28ad04b69804f6194",
+    "project_id": "6b0ffff3dec54fb6",
+    "build_id": "5b17c6924f91446897225d13f5dc3c04",
+    "operation_id": "5b17c6924f91446897225d13f5dc3c04",
+    "revision": 2,
+    "parent_plan_id": "b40ddddb9804474cb3f9fe2e8e776d9e",
+    "created_at": "2026-10-29T01:09:47.021795+00:00",
+    "content_hash": "af7e7e429e5ca426c7ed5198f23d70ccc6df0960c6c5f8715e45356b2da0bbb8",
+    "goal": "Set confidence to 0.5",
+    "assumptions": [
+      "Use the project's imported media and saved region geometry.",
+      "A sample preview does not establish accuracy.",
+      "Evaluation requires reviewed labels on the same held-out data for every candidate."
+    ],
+    "candidates": [
+      {
+        "spec_version": "0.1",
+        "name": "custom-candidate-1",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "sample",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2
+            },
+            "in": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "det",
+            "type": "detect",
+            "params": {
+              "model": "fixture-color-v1",
+              "classes": [
+                "pallet"
+              ],
+              "min_conf": 0.5
+            },
+            "in": {
+              "image": "$sample.frame"
+            }
+          },
+          {
+            "id": "count",
+            "type": "count_per_zone",
+            "params": {},
+            "in": {
+              "dets": "$det.dets"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "count_mae",
+          "target": 0.5
+        }
+      }
+    ],
+    "required_capabilities": [
+      "block.count_per_zone",
+      "block.detect",
+      "block.frame_sample",
+      "model.fixture-color-v1"
+    ],
+    "experiments": [
+      {
+        "id": "plan",
+        "phase": "plan",
+        "description": "Apply the requested typed edit and preview affected candidates.",
+        "allowed_tools": [
+          "block_schema",
+          "blocks_list",
+          "build_refine",
+          "build_refinement_context",
+          "dataset_context",
+          "detect_open_vocab",
+          "suggest_labels"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "compile",
+        "phase": "compile",
+        "description": "Compile every candidate and preview up to five samples.",
+        "allowed_tools": [
+          "pipeline_run",
+          "pipeline_validate"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "evaluate",
+        "phase": "evaluate",
+        "description": "Prepare review data, then measure every candidate on the reviewed holdout.",
+        "allowed_tools": [
+          "build_context",
+          "build_prepare_review",
+          "build_propose_labels",
+          "dataset_context",
+          "eval_create",
+          "eval_run",
+          "pipeline_run",
+          "review_queue",
+          "suggest_labels"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "specialize",
+        "phase": "specialize",
+        "description": "After human approval, train and compare measured results.",
+        "allowed_tools": [
+          "build_context",
+          "build_train",
+          "eval_run",
+          "pipeline_run",
+          "train_start",
+          "train_status"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "operate",
+        "phase": "operate",
+        "description": "Run only with current human deployment approval.",
+        "allowed_tools": [
+          "build_operate",
+          "events_query",
+          "report_make",
+          "review_queue"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      }
+    ],
+    "metrics": [
+      {
+        "candidate_index": 0,
+        "metric": "count_mae",
+        "target": 0.5,
+        "direction": "minimize"
+      }
+    ],
+    "stop_conditions": [
+      "Stop on changed data, models, settings or workflow.",
+      "Stop if a required capability is unavailable or a tool fails.",
+      "Respect existing call, time and training budgets.",
+      "Pause at human review and approval checkpoints."
+    ],
+    "human_checkpoints": [
+      {
+        "id": "labels",
+        "phase": "evaluate",
+        "description": "Review labels before scoring.",
+        "requires_approval": true
+      },
+      {
+        "id": "training",
+        "phase": "specialize",
+        "description": "Approve the bounded training attempt.",
+        "requires_approval": true
+      },
+      {
+        "id": "deployment",
+        "phase": "operate",
+        "description": "Approve this evaluated candidate before recording a run.",
+        "requires_approval": true
+      },
+      {
+        "id": "delivery",
+        "phase": "operate",
+        "description": "Configure and approve delivery separately in Alerts.",
+        "requires_approval": true
+      }
+    ],
+    "snapshot": {
+      "workspace_hash": "cee4c303c34df24fbfd6c8c427d5514c8ffeb3c11401b100d09357228044ff71",
+      "dataset_hash": "84025c7ba93e096677747984b77d662d74ac2bbeaa1eaaddd83b12b7270c0af4",
+      "model_hashes": [
+        "286b5f53b3dfdda268e2ea63aa541b36ec0800cabf3f675012247d06b1557cfe"
+      ],
+      "settings_hash": "2bcc5ca8a706171d53fd1b58f92f4beea09876ab946804f26bd60589b3b44108"
+    },
+    "skills": [
+      {
+        "id": "authoring",
+        "version": "1.0.0",
+        "sha256": "68dea50aabed360e591c70ec2f1e99206780a01c2dcf3ab90ed427f2c9bac108"
+      },
+      {
+        "id": "detection",
+        "version": "1.0.0",
+        "sha256": "dd10299dd32378d090fac62855711ae5e3bf9b98d1e2164e0df44138f575a93d"
+      }
+    ],
+    "revision_reason": "Next authorized experiment on the current reviewed project snapshot"
+  },
+  "execution": {
+    "id": "831d6dfac90d42328b33cf00bca4a837",
+    "project_id": "6b0ffff3dec54fb6",
+    "build_id": "5b17c6924f91446897225d13f5dc3c04",
+    "operation_id": "5b17c6924f91446897225d13f5dc3c04",
+    "plan_id": "5eebd9a1aa014ac28ad04b69804f6194",
+    "plan_hash": "af7e7e429e5ca426c7ed5198f23d70ccc6df0960c6c5f8715e45356b2da0bbb8",
+    "status": "paused",
+    "phase": "evaluate",
+    "created_at": "2026-10-29T01:09:47.034248+00:00",
+    "updated_at": "2026-10-29T01:09:48.957793+00:00",
+    "accepted_snapshot": {
+      "workspace_hash": "cee4c303c34df24fbfd6c8c427d5514c8ffeb3c11401b100d09357228044ff71",
+      "dataset_hash": "84025c7ba93e096677747984b77d662d74ac2bbeaa1eaaddd83b12b7270c0af4",
+      "model_hashes": [
+        "286b5f53b3dfdda268e2ea63aa541b36ec0800cabf3f675012247d06b1557cfe"
+      ],
+      "settings_hash": "2bcc5ca8a706171d53fd1b58f92f4beea09876ab946804f26bd60589b3b44108"
+    },
+    "error": null
+  },
+  "tool_events": [
+    {
+      "id": "940a3b271fef29fc00375358f29bb7c7545a6395016ae356d419fa61f1cabe55",
+      "sequence": 1,
+      "project_id": "6b0ffff3dec54fb6",
+      "build_id": "5b17c6924f91446897225d13f5dc3c04",
+      "operation_id": "5b17c6924f91446897225d13f5dc3c04",
+      "execution_id": "85b3745bdcf94997bca9ce2f94bf0512",
+      "plan_id": "b40ddddb9804474cb3f9fe2e8e776d9e",
+      "call_id": "c22acdefb3f344cd8810b4ae9d6a9926",
+      "kind": "tool",
+      "stage": "started",
+      "name": "build_refine",
+      "phase": "plan",
+      "at": "2026-10-29T01:09:45.936446+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "773ddc2398eb475fc0849d8ba79ddaf262360a118ed213c1fb7890d8df536305",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "7e0809985e1e8d976e83139f6ab4adc849051773de4c8e85f1c5942a041d33ca",
+      "sequence": 2,
+      "project_id": "6b0ffff3dec54fb6",
+      "build_id": "5b17c6924f91446897225d13f5dc3c04",
+      "operation_id": "5b17c6924f91446897225d13f5dc3c04",
+      "execution_id": "85b3745bdcf94997bca9ce2f94bf0512",
+      "plan_id": "b40ddddb9804474cb3f9fe2e8e776d9e",
+      "call_id": "c22acdefb3f344cd8810b4ae9d6a9926",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "build_refine",
+      "phase": "plan",
+      "at": "2026-10-29T01:09:46.178225+00:00",
+      "duration_ms": 241.779,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "773ddc2398eb475fc0849d8ba79ddaf262360a118ed213c1fb7890d8df536305",
+      "output_artifact_id": "c4c5426b9af3a433e33ff7b038fd49c4dcae55a16369fc4712ad3d61a96fb5c5",
+      "error": null
+    },
+    {
+      "id": "f958cfdb53d904aef5d1639ca7939bfe18fcf7ed44fad2337c1677cba0288e74",
+      "sequence": 3,
+      "project_id": "6b0ffff3dec54fb6",
+      "build_id": "5b17c6924f91446897225d13f5dc3c04",
+      "operation_id": "5b17c6924f91446897225d13f5dc3c04",
+      "execution_id": "831d6dfac90d42328b33cf00bca4a837",
+      "plan_id": "5eebd9a1aa014ac28ad04b69804f6194",
+      "call_id": "53e89a23a3a64d4da0de0282788773ae",
+      "kind": "tool",
+      "stage": "started",
+      "name": "build_prepare_review",
+      "phase": "evaluate",
+      "at": "2026-10-29T01:09:47.046936+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "86b39764ab1c3b002f21a0592c99812a9300f409d2b140cde1f0649a13479176",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "73e9f9819e06cf22aaae6800415c8d89bc70f51d63f654c70630f1ed55008a4e",
+      "sequence": 4,
+      "project_id": "6b0ffff3dec54fb6",
+      "build_id": "5b17c6924f91446897225d13f5dc3c04",
+      "operation_id": "5b17c6924f91446897225d13f5dc3c04",
+      "execution_id": "831d6dfac90d42328b33cf00bca4a837",
+      "plan_id": "5eebd9a1aa014ac28ad04b69804f6194",
+      "call_id": "53e89a23a3a64d4da0de0282788773ae",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "build_prepare_review",
+      "phase": "evaluate",
+      "at": "2026-10-29T01:09:47.059143+00:00",
+      "duration_ms": 12.207,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "86b39764ab1c3b002f21a0592c99812a9300f409d2b140cde1f0649a13479176",
+      "output_artifact_id": "17b29cb6a2fa1a0dfe0b2ba95ecb2603091a2a485b36dda67a0acbfff81c50ea",
+      "error": null
+    },
+    {
+      "id": "92d80f354e90167d8e748dee69b2160584983f51f4bb077ce8a9fa2d54651de7",
+      "sequence": 5,
+      "project_id": "6b0ffff3dec54fb6",
+      "build_id": "5b17c6924f91446897225d13f5dc3c04",
+      "operation_id": "5b17c6924f91446897225d13f5dc3c04",
+      "execution_id": "831d6dfac90d42328b33cf00bca4a837",
+      "plan_id": "5eebd9a1aa014ac28ad04b69804f6194",
+      "call_id": "62e2dbe442f146e9a641d28bc7dd80ee",
+      "kind": "tool",
+      "stage": "started",
+      "name": "build_context",
+      "phase": "evaluate",
+      "at": "2026-10-29T01:09:47.842906+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "86b39764ab1c3b002f21a0592c99812a9300f409d2b140cde1f0649a13479176",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "bf106ef47b8927f3645f42be37e91aef537fc2bba8bf26e92ecab81870a10a52",
+      "sequence": 6,
+      "project_id": "6b0ffff3dec54fb6",
+      "build_id": "5b17c6924f91446897225d13f5dc3c04",
+      "operation_id": "5b17c6924f91446897225d13f5dc3c04",
+      "execution_id": "831d6dfac90d42328b33cf00bca4a837",
+      "plan_id": "5eebd9a1aa014ac28ad04b69804f6194",
+      "call_id": "62e2dbe442f146e9a641d28bc7dd80ee",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "build_context",
+      "phase": "evaluate",
+      "at": "2026-10-29T01:09:47.857174+00:00",
+      "duration_ms": 14.268,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "86b39764ab1c3b002f21a0592c99812a9300f409d2b140cde1f0649a13479176",
+      "output_artifact_id": "17b29cb6a2fa1a0dfe0b2ba95ecb2603091a2a485b36dda67a0acbfff81c50ea",
+      "error": null
+    },
+    {
+      "id": "4615b059959f389f934502e2434ea436402b4069b4c46a2da7ac9f4c4ed651e1",
+      "sequence": 7,
+      "project_id": "6b0ffff3dec54fb6",
+      "build_id": "5b17c6924f91446897225d13f5dc3c04",
+      "operation_id": "5b17c6924f91446897225d13f5dc3c04",
+      "execution_id": "831d6dfac90d42328b33cf00bca4a837",
+      "plan_id": "5eebd9a1aa014ac28ad04b69804f6194",
+      "call_id": "5fcaf89c119647e68f97ab2fdf4a58c4",
+      "kind": "tool",
+      "stage": "started",
+      "name": "eval_run",
+      "phase": "evaluate",
+      "at": "2026-10-29T01:09:47.927262+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "4c21b8ff8448b356bdfdb39e5f3c3ea71904da2a560cfb7c22fe298087361a04",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "1edf4c087c7a5cafe21a9e67814d74473c01d9ed0d5879be99bb833a9668b243",
+      "sequence": 8,
+      "project_id": "6b0ffff3dec54fb6",
+      "build_id": "5b17c6924f91446897225d13f5dc3c04",
+      "operation_id": "5b17c6924f91446897225d13f5dc3c04",
+      "execution_id": "831d6dfac90d42328b33cf00bca4a837",
+      "plan_id": "5eebd9a1aa014ac28ad04b69804f6194",
+      "call_id": "5fcaf89c119647e68f97ab2fdf4a58c4",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "eval_run",
+      "phase": "evaluate",
+      "at": "2026-10-29T01:09:48.592489+00:00",
+      "duration_ms": 665.227,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "4c21b8ff8448b356bdfdb39e5f3c3ea71904da2a560cfb7c22fe298087361a04",
+      "output_artifact_id": "fcc7c1493e3d62e23131daa63813469930e7fb09a4e4e117be4a080d26406cec",
+      "error": null
+    },
+    {
+      "id": "6293688a6a0d9d6d75747e398896565f6c34b03aa7c1015cb0afade2c5053ebf",
+      "sequence": 9,
+      "project_id": "6b0ffff3dec54fb6",
+      "build_id": "5b17c6924f91446897225d13f5dc3c04",
+      "operation_id": "5b17c6924f91446897225d13f5dc3c04",
+      "execution_id": "831d6dfac90d42328b33cf00bca4a837",
+      "plan_id": "5eebd9a1aa014ac28ad04b69804f6194",
+      "call_id": "99749024b25540a68cfd8e9b633924a1",
+      "kind": "tool",
+      "stage": "started",
+      "name": "pipeline_run",
+      "phase": "evaluate",
+      "at": "2026-10-29T01:09:48.659754+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "4c21b8ff8448b356bdfdb39e5f3c3ea71904da2a560cfb7c22fe298087361a04",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "cc08ceeabb0d0080382147eb1f8c4415ee67cbab3dc110a9ef698722723ab6e5",
+      "sequence": 10,
+      "project_id": "6b0ffff3dec54fb6",
+      "build_id": "5b17c6924f91446897225d13f5dc3c04",
+      "operation_id": "5b17c6924f91446897225d13f5dc3c04",
+      "execution_id": "831d6dfac90d42328b33cf00bca4a837",
+      "plan_id": "5eebd9a1aa014ac28ad04b69804f6194",
+      "call_id": "99749024b25540a68cfd8e9b633924a1",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "pipeline_run",
+      "phase": "evaluate",
+      "at": "2026-10-29T01:09:48.856085+00:00",
+      "duration_ms": 196.331,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "4c21b8ff8448b356bdfdb39e5f3c3ea71904da2a560cfb7c22fe298087361a04",
+      "output_artifact_id": "4d2b86fd7e73cd2ef6c7589bbd4b4fbd59ee68233736c9be666a226062a83cd6",
+      "error": null
+    }
+  ]
+}

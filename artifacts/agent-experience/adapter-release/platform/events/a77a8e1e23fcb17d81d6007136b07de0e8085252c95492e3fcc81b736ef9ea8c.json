@@ -1,0 +1,21 @@
+{
+  "id": "a77a8e1e23fcb17d81d6007136b07de0e8085252c95492e3fcc81b736ef9ea8c",
+  "sequence": 11,
+  "project_id": "692e0290946d493a",
+  "build_id": "87c3efde66ef43c2b8c19ea6f8bcde3d",
+  "operation_id": "8cba54cfdb3e40e2aefc0eff7627653e",
+  "execution_id": null,
+  "plan_id": null,
+  "call_id": "b08f54b46a514403b54fbf19f3117404",
+  "kind": "tool",
+  "stage": "started",
+  "name": "dataset_context",
+  "phase": "plan",
+  "at": "2026-10-29T02:08:22.842336+00:00",
+  "duration_ms": null,
+  "model_identity": null,
+  "cost_usd": null,
+  "input_artifact_id": "96a6ed6b9cf0eda3446b491f2abbbf7f5b4bc327bf5a9b775ace2d80f4534656",
+  "output_artifact_id": null,
+  "error": null
+}

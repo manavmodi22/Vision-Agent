@@ -1,0 +1,21 @@
+{
+  "id": "becf24c9147a2c18e1cfbb845edfaa7a0c33f29c742ddbb086091d0e6f3d4c54",
+  "sequence": 19,
+  "project_id": "692e0290946d493a",
+  "build_id": "87c3efde66ef43c2b8c19ea6f8bcde3d",
+  "operation_id": "8cba54cfdb3e40e2aefc0eff7627653e",
+  "execution_id": "f0bafc4e8b7e45db8d20fea006965ac0",
+  "plan_id": "2eaf0b1361a44fffa722d45fb175149d",
+  "call_id": "dfe1deb433764d83a817dad94073fd78",
+  "kind": "tool",
+  "stage": "started",
+  "name": "pipeline_run",
+  "phase": "compile",
+  "at": "2026-10-29T02:10:18.204929+00:00",
+  "duration_ms": null,
+  "model_identity": null,
+  "cost_usd": null,
+  "input_artifact_id": "1e9513737795673122db5558ddc63e143d8a355b476121ee3723bb4004d850a9",
+  "output_artifact_id": null,
+  "error": null
+}

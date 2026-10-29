@@ -1,0 +1,117 @@
+{
+  "id": "20a1a963820344a2",
+  "name": "Count people in this warehouse footage and show bounding box",
+  "use_case": "custom",
+  "status": "building",
+  "created_at": "2026-10-28T17:41:21.198701+00:00",
+  "updated_at": "2026-10-28T17:42:23.086466+00:00",
+  "media": [
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/7f7b697c-warehouse-033.00s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/7c011a52-warehouse-033.75s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/fd2b5a83-warehouse-034.50s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/2b90a7f3-warehouse-035.25s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/c9e99fe6-warehouse-036.00s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/1c503895-warehouse-036.75s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/861b4247-warehouse-037.50s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/95529022-warehouse-038.25s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/c3515d88-warehouse-039.00s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/2c0a835f-warehouse-039.75s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/df50142a-warehouse-040.50s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/5115ddb1-warehouse-041.25s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/d20cc750-warehouse-042.00s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/674e430d-warehouse-042.75s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/2fd0930d-warehouse-043.50s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/2ce8e214-warehouse-044.25s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/77ded511-warehouse-045.00s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/2f46c66e-warehouse-045.75s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/25c2b516-warehouse-046.50s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/20a1a963820344a2/media/f0d8f858-warehouse-047.25s.png"
+  ],
+  "brief": "Count people in this warehouse footage and show bounding boxes.",
+  "clarification_count": 0,
+  "candidates": [
+    {
+      "spec_version": "0.1",
+      "name": "custom-candidate-1",
+      "inputs": {
+        "source": {
+          "type": "image_folder",
+          "path": "media"
+        }
+      },
+      "blocks": [
+        {
+          "id": "sample",
+          "type": "frame_sample",
+          "params": {
+            "fps": 2
+          },
+          "inputs": {
+            "frames": "$inputs.source"
+          }
+        },
+        {
+          "id": "det",
+          "type": "detect",
+          "params": {
+            "model": "owlv2-base-patch16",
+            "classes": [
+              "person"
+            ],
+            "min_conf": 0.4
+          },
+          "inputs": {
+            "image": "$sample.frame"
+          }
+        },
+        {
+          "id": "count",
+          "type": "count_per_zone",
+          "params": {},
+          "inputs": {
+            "dets": "$det.dets"
+          }
+        },
+        {
+          "id": "full",
+          "type": "rule",
+          "params": {
+            "when": "count >= 1",
+            "hold_s": 0.0
+          },
+          "inputs": {
+            "value": "$count.counts"
+          }
+        },
+        {
+          "id": "out",
+          "type": "sink_event",
+          "params": {},
+          "inputs": {
+            "event": "$full.event"
+          }
+        }
+      ],
+      "eval": {
+        "set": "reviewed-v1",
+        "metric": "recall",
+        "target": 0.9
+      }
+    }
+  ],
+  "evaluations": [],
+  "messages": [
+    {
+      "role": "user",
+      "content": "Count people in this warehouse footage and show bounding boxes."
+    },
+    {
+      "role": "assistant",
+      "content": "Local model selected a pipeline pattern and parameters. Count people in this warehouse footage and show bounding boxes."
+    }
+  ],
+  "synthetic": false,
+  "fixture": false,
+  "data_origin": "NVIDIA Physical AI Smart Spaces, real Warehouse 026; CC-BY-4.0; revision 2cbe9563cbe9f47f846e5c871ee994572bbbc60e",
+  "deployment_id": null
+}

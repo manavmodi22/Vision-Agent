@@ -1,0 +1,262 @@
+[
+  {
+    "path": "spec/__init__.py",
+    "sha256": "e596b79f19e658bacdb2b7ef0f8ecde7d389e8d11764bdf6bc87f56363a456df"
+  },
+  {
+    "path": "spec/models.py",
+    "sha256": "89fa01a499ce787c5a75caf1fcbd67072f9e58706be227d5a8d1f8acde6faa07"
+  },
+  {
+    "path": "engine/__init__.py",
+    "sha256": "514500a279bb6e54bba3d079aeddc85b045c98dd606738626faac278d85ad579"
+  },
+  {
+    "path": "engine/api/__init__.py",
+    "sha256": "13dc2733900229634e4a329bc07e307bb0d912146a52128cfbb485585f78ff6f"
+  },
+  {
+    "path": "engine/api/__main__.py",
+    "sha256": "ff4d3db619945ae7f2ea5334d5964293f51912334b47dd29318e94e2ad8a0b23"
+  },
+  {
+    "path": "engine/api/application.py",
+    "sha256": "071945976893988ae0ed16c425b2981da3797f3d851fced415646f1a71684603"
+  },
+  {
+    "path": "engine/api/contracts.py",
+    "sha256": "3f1c4aa0adc2b808c018c3d210269631ba70725b55b995fedda15c093657118a"
+  },
+  {
+    "path": "engine/blocks/__init__.py",
+    "sha256": "a4407b01dac5bd55eda6173f82333b06bc4654117ee491d68a6a43192ea3d57e"
+  },
+  {
+    "path": "engine/blocks/logic.py",
+    "sha256": "ccaf117f5264a6f202d5ac822e8b7bb985ba6546c614b3e242496bdf062ee215"
+  },
+  {
+    "path": "engine/blocks/params.py",
+    "sha256": "7dc34e6b1c67e83ebd7b08494c20ac59b3fd7a765787cb775e095f466ce82fd6"
+  },
+  {
+    "path": "engine/blocks/reading.py",
+    "sha256": "0d48e7c50eee1d91ff172160779002191333a3652056671b178a91ccde6a92d6"
+  },
+  {
+    "path": "engine/blocks/registry.py",
+    "sha256": "894f3d0064c5d3f16403e925f1f1962e11492fe08d0afb6ac144810430b1374b"
+  },
+  {
+    "path": "engine/blocks/spatial.py",
+    "sha256": "1bcd5a95808030f790850cf6edf5f28e9c4bebb5328c4a00f06b63df8428c4db"
+  },
+  {
+    "path": "engine/compiler/__init__.py",
+    "sha256": "b6373a268486109c909114025770716451045e5abf62219995ef83f7ec282429"
+  },
+  {
+    "path": "engine/eval/__init__.py",
+    "sha256": "1e6d20bc359e2d49da21c8efe3f2b6e7ab8cf9754cbb8fcc147bf8d6c3720b63"
+  },
+  {
+    "path": "engine/eval/hashes.py",
+    "sha256": "dbc9d4228745cbb4ec4df44767a8fb439592d9bd5c5c0a8717bb826cf49d6931"
+  },
+  {
+    "path": "engine/eval/metrics.py",
+    "sha256": "eab7ca0dd201352464ffe6f4f6f831e004099d1d7bd0b3078bd500dbe204dfc8"
+  },
+  {
+    "path": "engine/evidence.py",
+    "sha256": "d13509c8f8a542ab1ec8a500b2c682e32abdd83786b35c2b1d6308b761e87f69"
+  },
+  {
+    "path": "engine/jobs.py",
+    "sha256": "39d4ac0a3932b27a09913771b6bfc2d3c2a5564105c2c1b70b3c5e119107a5d1"
+  },
+  {
+    "path": "engine/media.py",
+    "sha256": "cf0f2ba853c709656ff0ef2a843df802afeac6c406820354fec1e33b630726b3"
+  },
+  {
+    "path": "engine/models/__init__.py",
+    "sha256": "c857b644b08037fd99d8074bc6d0b80b4a87fe3d7b7e40ad4a0afcd2eeba2a9e"
+  },
+  {
+    "path": "engine/models/fixture.py",
+    "sha256": "72365bce263b5f0aafd205a65784dd744efa87673e5ec906de6f69f91c857575"
+  },
+  {
+    "path": "engine/models/local_manifest.py",
+    "sha256": "cc2db60118ab0a78d43efe9b8dac26345e5dfa8eacf979445cd615b7cf07890e"
+  },
+  {
+    "path": "engine/models/manager.py",
+    "sha256": "5984a03740049c200a95aaedab96ba742d632c4bd2694cfa9cb0d6ded967faa9"
+  },
+  {
+    "path": "engine/models/owlv2.py",
+    "sha256": "61994f3f52b7f67938dd8f6cdce34b5ecac274f8c9801269dba0d7bc70c886b6"
+  },
+  {
+    "path": "engine/models/ssdlite.py",
+    "sha256": "df336cbbc9f40c67ca3391c2d1ff13ab96952b7acdc663471c2ebab3f7debfae"
+  },
+  {
+    "path": "engine/runtime/__init__.py",
+    "sha256": "c4fa6402dcb0a72107c5beaa11dc2101c73894b9c6af8a25ea845283f7e7cc50"
+  },
+  {
+    "path": "engine/runtime/executor.py",
+    "sha256": "ff962e69a9717f11afc9f14d94f979d22168c6cf3ee4169946f96ae9f30f83ce"
+  },
+  {
+    "path": "engine/runtime/fixtures.py",
+    "sha256": "527d62e8f909d2b1809efadd8d91c98d69faa303196c0b3fc3db57e18e5bc7bc"
+  },
+  {
+    "path": "engine/runtime/media.py",
+    "sha256": "54d7a77b20a4f18c97c6140a2c7a52f89dd791d468ecdd88e95bd9609730e2d6"
+  },
+  {
+    "path": "engine/runtime/values.py",
+    "sha256": "ca908800be9b9cb02e3fa8959c4e11c9b468544175c3a09d86a969ed0b2334b3"
+  },
+  {
+    "path": "engine/service.py",
+    "sha256": "3e92df403d5022f39c6a3581ab7159abcc750c1ad4a91832b0b3671e3547382e"
+  },
+  {
+    "path": "engine/store/__init__.py",
+    "sha256": "f0e8f8745bf406d5dfeb9d3ae4714b8dca40c8cc854db2094668c258f34f43ad"
+  },
+  {
+    "path": "engine/store/models.py",
+    "sha256": "465cbb0ee95659647c52ef6603d7902e51300922cb7da6623d6218fc58782de0"
+  },
+  {
+    "path": "engine/store/repository.py",
+    "sha256": "da2595bf932e2d36f9ebdc5606396d5a50c7ebc9e02b5440b1303f41ac6b6aad"
+  },
+  {
+    "path": "engine/train/__init__.py",
+    "sha256": "7c4d483dc16c42abee26f26f0e9bca7a6055959602130814d4bf47c09e6da24f"
+  },
+  {
+    "path": "engine/train/contracts.py",
+    "sha256": "8aba5f259fe7882efbeff398e2f50357db795d9612fc9e0f01efff5eabaebcdb"
+  },
+  {
+    "path": "engine/train/validation.py",
+    "sha256": "21cdfdd60fc977e5fa605be291faf37122fb35d5a511e8d4de3478be0f5934db"
+  },
+  {
+    "path": "agent/__init__.py",
+    "sha256": "643517ae0d73f3ae9f8d10756debc6464f28ede4c9c18f717985263fbf8c60c6"
+  },
+  {
+    "path": "agent/contracts.py",
+    "sha256": "ff433f030c02695a7c04a105cc434f1a85fa055d24cbbff4ad9a2ccdf5864622"
+  },
+  {
+    "path": "agent/decisions.py",
+    "sha256": "064e1cf56e6b92d275eb4e9a9886ac3768aaa44cb4e60f8254a4a249f99ec797"
+  },
+  {
+    "path": "agent/machine.py",
+    "sha256": "23d0000d2c975d46be9439e9593f4534699bdb92bd1bcdd20b9f5d3ff5f7ef21"
+  },
+  {
+    "path": "agent/mcp_client.py",
+    "sha256": "7c9d09796b73c084f26639dcd64f235fa76069f4aa8edd55b52235f5e0a79bb8"
+  },
+  {
+    "path": "agent/planner.py",
+    "sha256": "9b4a45474bd7249c1e93c81b0f9b736fbce833ec0991246b92a47926c4c38867"
+  },
+  {
+    "path": "agent/prompts/__init__.py",
+    "sha256": "f049fa3bf8af2564e1dc4173834a0c6e9ad020ac9364fdb7338f129b6c2608ea"
+  },
+  {
+    "path": "agent/skills/__init__.py",
+    "sha256": "c375b6eed0521eaff41f97e0c64b8328999ff108f412e9a2e6267c5641bf3f02"
+  },
+  {
+    "path": "agent/templates.py",
+    "sha256": "457b3834b88106d0403b419cdd4d6efb2ff91a3e922d1d0b2b5a4d6fa525579b"
+  },
+  {
+    "path": "mcp_server/__init__.py",
+    "sha256": "7d9c15502273ca34d0e02344d7ef9798853b5f0160e57a6e1093f934fb80d072"
+  },
+  {
+    "path": "mcp_server/__main__.py",
+    "sha256": "b2c6aea99861ee60ccd51f581012609d6c44221556f5290340e7fe33fe628ee9"
+  },
+  {
+    "path": "mcp_server/contracts.py",
+    "sha256": "100f0e9c3d2e25677a6885bcc7dcb99ab77216bbf5b82b771355e0b41ae9d253"
+  },
+  {
+    "path": "mcp_server/server.py",
+    "sha256": "89332ae2190548c5bb9907f19b0fe19dd32889922ecff1c6f547ca2498f19245"
+  },
+  {
+    "path": "app/Sources/VisionApp/BuildView.swift",
+    "sha256": "185f6250093b5307af3ad4b95b869045967653c554f9b6069b15024a08567364"
+  },
+  {
+    "path": "app/Sources/VisionApp/ContentView.swift",
+    "sha256": "0b8116f0a33f6f29471453bf9f8ea274b943cac00fc8f2b55abb023f1d225ffd"
+  },
+  {
+    "path": "app/Sources/VisionApp/EngineClient.swift",
+    "sha256": "105b25d87a11cb596289a7ce4756c24fbe95d0189cfd5da1bf25be8c5a004e04"
+  },
+  {
+    "path": "app/Sources/VisionApp/EngineSupervisor.swift",
+    "sha256": "f532b8cf239f595975aae34fa2491bc40b3a2d4689024938cc60a0742366319e"
+  },
+  {
+    "path": "app/Sources/VisionApp/EvaluateView.swift",
+    "sha256": "ac9054ca0da9d7982742bc367bdbae7c733a2bdfc52ab95e8cc83f30134b8d44"
+  },
+  {
+    "path": "app/Sources/VisionApp/ImageCanvas.swift",
+    "sha256": "d5f284ccb789193649e4051e6a01f0201f6220e7b12c1909d0fd8a4fc1704fbb"
+  },
+  {
+    "path": "app/Sources/VisionApp/Models.swift",
+    "sha256": "9ae30c550f3830a38be4d61e60a672e623992bbc55102d35539f5a0b3d344713"
+  },
+  {
+    "path": "app/Sources/VisionApp/NativeSelfTests.swift",
+    "sha256": "667c4bd3fefe5c17ee9861930c81623a037175b0f1c03ef0893357ed25706c6a"
+  },
+  {
+    "path": "app/Sources/VisionApp/OperateViews.swift",
+    "sha256": "8c6ec616b9d20305c1f5bbb03afb19352c5529d71cfe97a31a455448bbde8fd1"
+  },
+  {
+    "path": "app/Sources/VisionApp/SettingsView.swift",
+    "sha256": "8065eb7e7d4fa5b569904a1877319d275d8af2f61a62f1c7efda23e8c63ca4bb"
+  },
+  {
+    "path": "app/Sources/VisionApp/Theme.swift",
+    "sha256": "f0a07b847022def21bbd23e184012477f3beb3fdd9d16b1514df41ddd665b7b4"
+  },
+  {
+    "path": "app/Sources/VisionApp/VisionApp.swift",
+    "sha256": "0491a269a5814d0f1ae19c6935199ae81eb0321a022a9e4e6a4fa5edd4998948"
+  },
+  {
+    "path": "app/Sources/VisionApp/VisionBridge.swift",
+    "sha256": "454431675865fc9eb395137ee7214b7cced7a5f27019e7ad40f0dc9ec075991d"
+  },
+  {
+    "path": "app/Sources/VisionApp/WorkspaceModel.swift",
+    "sha256": "998e9800b6a744744bbc6962c5f836cf00338919f0f11d5bd8f4895a2070cd0f"
+  }
+]

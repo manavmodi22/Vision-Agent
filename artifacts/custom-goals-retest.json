@@ -1,0 +1,167 @@
+{
+  "model": "visionapp-planner",
+  "mode": "actual-local-planner-custom-entrypoint",
+  "data_dir": "/Users/manavrakeshku.modi/vision-agent/.visionapp/custom-goal-retest",
+  "provenance": "Original geometric software fixtures. Actual local LLM, MCP, compiler and previews; each case states its detector adapter. Unsupported fixture classes use real local OWLv2 on the same synthetic images. Native readers handle text cases. Not warehouse accuracy.",
+  "eval_metric_reached": null,
+  "cases": [
+    {
+      "id": "count-all-regions",
+      "brief": "Count pallets in the saved lanes A, B, C and D, separately for each lane. No alerts.",
+      "project_id": "a70a45c923cf4f5d",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "pallet"
+        ],
+        "regions": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "metric": "count_mae"
+      },
+      "observed": [
+        {
+          "metric": "count_mae",
+          "target": 0.5,
+          "regions": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "classes": [
+            "pallet"
+          ],
+          "confidence": 0.4
+        }
+      ],
+      "questions": [],
+      "message": "Your workflow is ready to preview. Count pallets in the saved lanes A, B, C and D, separately for each lane. No alerts.",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "b924f874227d40d49f8e85a1eaa3ba65",
+      "elapsed_s": 28.565
+    },
+    {
+      "id": "count-one-region",
+      "brief": "Count only pallets whose centers are inside lane B. Use its saved boundary; do not count the other lanes.",
+      "project_id": "20c236fbc716479a",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "pallet"
+        ],
+        "regions": [
+          "B"
+        ]
+      },
+      "observed": [
+        {
+          "metric": "count_mae",
+          "target": 0.5,
+          "regions": [
+            "B"
+          ],
+          "classes": [
+            "pallet"
+          ],
+          "confidence": 0.4
+        }
+      ],
+      "questions": [],
+      "message": "Your workflow is ready to preview. Count only pallets whose centers are inside lane B. Use its saved boundary; do not count the other lanes.",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "d49039d88d834e22a29e3608a0707f0a",
+      "elapsed_s": 22.66
+    },
+    {
+      "id": "count-missing-capacity",
+      "brief": "Count pallets in each saved lane and alert when a lane is full.",
+      "project_id": "535d39e28e0a4328",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "clarification",
+      "expected": {},
+      "observed": [],
+      "questions": [
+        "How many pallets make a lane full?"
+      ],
+      "message": "Clarification needed. A full-lane alert requires a confirmed capacity before a pipeline can be proposed.",
+      "tool_calls": 2,
+      "actual_model_calls": 1,
+      "operation_id": "d15787250d2849a7994c294d5831dedd",
+      "elapsed_s": 16.735
+    },
+    {
+      "id": "damage-both",
+      "brief": "Find damaged cartons and damaged pallets for review; use the saved classes damaged carton and damaged pallet. Save evidence when either appears.",
+      "project_id": "c32bcdc91dfc409e",
+      "detector_model": "fixture-color-v1",
+      "passed": false,
+      "outcome": "pipeline",
+      "expected": {
+        "classes": [
+          "damaged carton",
+          "damaged pallet"
+        ],
+        "rule": "count >= 1",
+        "metric": "recall"
+      },
+      "observed": [
+        {
+          "metric": "recall",
+          "target": 0.9,
+          "regions": [],
+          "classes": [
+            "damaged carton",
+            "damaged pallet"
+          ],
+          "confidence": 0.4
+        }
+      ],
+      "questions": [],
+      "message": "Your workflow is ready to preview. Detect the requested classes.",
+      "tool_calls": 4,
+      "actual_model_calls": 1,
+      "operation_id": "9497ddeaa2474fdbb7468bad41d52e11",
+      "elapsed_s": 18.469
+    },
+    {
+      "id": "ocr-metric",
+      "brief": "Read printed labels and check for ITEM-882. Evaluate text_accuracy target 0.97.",
+      "project_id": "409eda5d7a184e04",
+      "detector_model": "fixture-color-v1",
+      "passed": true,
+      "outcome": "pipeline",
+      "expected": {
+        "reader": "ocr",
+        "expected_text": "ITEM-882",
+        "metric": "text_accuracy",
+        "target": 0.97
+      },
+      "observed": [
+        {
+          "metric": "text_accuracy",
+          "target": 0.97,
+          "regions": [],
+          "reader": "ocr",
+          "expected_text": "ITEM-882"
+        }
+      ],
+      "questions": [],
+      "message": "Your workflow is ready to preview. Read printed labels and check for ITEM-882. Evaluate text_accuracy target 0.97.",
+      "tool_calls": 4,
+      "actual_model_calls": 2,
+      "operation_id": "bec552cce160405e8ee3493bdd0e8cd7",
+      "elapsed_s": 24.205
+    }
+  ]
+}

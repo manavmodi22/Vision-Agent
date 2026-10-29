@@ -1,0 +1,521 @@
+{
+  "artifact": {
+    "id": "016c510bbafdb458ed6e3390b5f546c4584d8a2d5e2189c3821309d8a0e8d3c4",
+    "project_id": "692e0290946d493a",
+    "kind": "tool_output",
+    "title": "blocks_list result",
+    "created_at": "2026-10-29T02:02:00.742064+00:00",
+    "sha256": "016c510bbafdb458ed6e3390b5f546c4584d8a2d5e2189c3821309d8a0e8d3c4",
+    "media_type": "application/json",
+    "size_bytes": 6249
+  },
+  "content": {
+    "blocks": [
+      {
+        "type": "frame_sample",
+        "description": "Sample frames at a bounded rate.",
+        "params": {
+          "additionalProperties": false,
+          "properties": {
+            "fps": {
+              "default": 2,
+              "exclusiveMinimum": 0,
+              "maximum": 60,
+              "title": "Fps",
+              "type": "number"
+            }
+          },
+          "title": "FrameSampleParams",
+          "type": "object"
+        },
+        "inputs": {
+          "frames": "frames"
+        },
+        "outputs": {
+          "frame": "image"
+        }
+      },
+      {
+        "type": "detect",
+        "description": "Run a locally installed detector.",
+        "params": {
+          "additionalProperties": false,
+          "properties": {
+            "model": {
+              "default": "owlv2-base-patch16",
+              "title": "Model",
+              "type": "string"
+            },
+            "classes": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 64,
+              "minItems": 1,
+              "title": "Classes",
+              "type": "array"
+            },
+            "min_conf": {
+              "default": 0.25,
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Min Conf",
+              "type": "number"
+            }
+          },
+          "title": "DetectParams",
+          "type": "object"
+        },
+        "inputs": {
+          "image": "image"
+        },
+        "outputs": {
+          "dets": "detections"
+        }
+      },
+      {
+        "type": "detect_open_vocab",
+        "description": "Detect text-prompted classes using local OWLv2.",
+        "params": {
+          "additionalProperties": false,
+          "properties": {
+            "model": {
+              "default": "owlv2-base-patch16",
+              "title": "Model",
+              "type": "string"
+            },
+            "classes": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 64,
+              "minItems": 1,
+              "title": "Classes",
+              "type": "array"
+            },
+            "min_conf": {
+              "default": 0.25,
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Min Conf",
+              "type": "number"
+            }
+          },
+          "title": "DetectParams",
+          "type": "object"
+        },
+        "inputs": {
+          "image": "image"
+        },
+        "outputs": {
+          "dets": "detections"
+        }
+      },
+      {
+        "type": "zone_filter",
+        "description": "Keep objects whose center is inside a polygon.",
+        "params": {
+          "$defs": {
+            "Zone": {
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "maxLength": 80,
+                  "minLength": 1,
+                  "title": "Id",
+                  "type": "string"
+                },
+                "polygon": {
+                  "items": {
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "prefixItems": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ],
+                    "type": "array"
+                  },
+                  "minItems": 3,
+                  "title": "Polygon",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "id",
+                "polygon"
+              ],
+              "title": "Zone",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "zones": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "items": {
+                    "$ref": "#/$defs/Zone"
+                  },
+                  "type": "array"
+                }
+              ],
+              "default": "zones/lanes.json",
+              "title": "Zones"
+            },
+            "include_ids": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 20,
+              "title": "Include Ids",
+              "type": "array"
+            }
+          },
+          "title": "ZoneFilterParams",
+          "type": "object"
+        },
+        "inputs": {
+          "dets": "detections"
+        },
+        "outputs": {
+          "dets": "detections"
+        }
+      },
+      {
+        "type": "count_per_zone",
+        "description": "Count detections in each named zone.",
+        "params": {
+          "additionalProperties": false,
+          "properties": {
+            "include_unassigned": {
+              "default": false,
+              "title": "Include Unassigned",
+              "type": "boolean"
+            }
+          },
+          "title": "CountParams",
+          "type": "object"
+        },
+        "inputs": {
+          "dets": "detections"
+        },
+        "outputs": {
+          "counts": "counts"
+        }
+      },
+      {
+        "type": "rule",
+        "description": "Compare zone counts using a small safe expression language.",
+        "params": {
+          "additionalProperties": false,
+          "properties": {
+            "when": {
+              "default": "count >= 1",
+              "maxLength": 100,
+              "title": "When",
+              "type": "string"
+            },
+            "hold_s": {
+              "default": 0,
+              "maximum": 86400,
+              "minimum": 0,
+              "title": "Hold S",
+              "type": "number"
+            }
+          },
+          "title": "RuleParams",
+          "type": "object"
+        },
+        "inputs": {
+          "value": "counts"
+        },
+        "outputs": {
+          "event": "event"
+        }
+      },
+      {
+        "type": "sink_event",
+        "description": "Emit local evidence events; delivery is separately approved.",
+        "params": {
+          "additionalProperties": false,
+          "properties": {
+            "alert": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Alert"
+            }
+          },
+          "title": "SinkEventParams",
+          "type": "object"
+        },
+        "inputs": {
+          "event": "event"
+        },
+        "outputs": {
+          "event": "event"
+        }
+      },
+      {
+        "type": "ocr",
+        "description": "Read text with native Apple Vision.",
+        "params": {
+          "additionalProperties": false,
+          "properties": {
+            "languages": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Languages",
+              "type": "array"
+            }
+          },
+          "title": "ReadingParams",
+          "type": "object"
+        },
+        "inputs": {
+          "image": "image"
+        },
+        "outputs": {
+          "text": "text"
+        }
+      },
+      {
+        "type": "barcode",
+        "description": "Read barcode payloads with native Apple Vision.",
+        "params": {
+          "additionalProperties": false,
+          "properties": {},
+          "title": "EmptyParams",
+          "type": "object"
+        },
+        "inputs": {
+          "image": "image"
+        },
+        "outputs": {
+          "text": "text"
+        }
+      },
+      {
+        "type": "match",
+        "description": "Compare recognized text with an expected value.",
+        "params": {
+          "additionalProperties": false,
+          "properties": {
+            "expected": {
+              "maxLength": 256,
+              "minLength": 1,
+              "title": "Expected",
+              "type": "string"
+            },
+            "mode": {
+              "default": "contains",
+              "enum": [
+                "contains",
+                "exact"
+              ],
+              "title": "Mode",
+              "type": "string"
+            },
+            "emit": {
+              "default": "all",
+              "enum": [
+                "all",
+                "matched",
+                "mismatched"
+              ],
+              "title": "Emit",
+              "type": "string"
+            }
+          },
+          "required": [
+            "expected"
+          ],
+          "title": "MatchParams",
+          "type": "object"
+        },
+        "inputs": {
+          "text": "text"
+        },
+        "outputs": {
+          "event": "event"
+        }
+      },
+      {
+        "type": "vlm_judge",
+        "description": "Ask a configured local vision model for a bounded evidence judgement.",
+        "params": {
+          "additionalProperties": false,
+          "properties": {
+            "base_url": {
+              "default": "http://127.0.0.1:1235/v1",
+              "title": "Base Url",
+              "type": "string"
+            },
+            "model": {
+              "default": "visionapp-vlm",
+              "maxLength": 200,
+              "minLength": 1,
+              "title": "Model",
+              "type": "string"
+            },
+            "timeout_s": {
+              "default": 45,
+              "exclusiveMinimum": 0,
+              "maximum": 120,
+              "title": "Timeout S",
+              "type": "number"
+            },
+            "max_tokens": {
+              "default": 512,
+              "maximum": 2048,
+              "minimum": 64,
+              "title": "Max Tokens",
+              "type": "integer"
+            },
+            "max_image_side": {
+              "default": 768,
+              "maximum": 1536,
+              "minimum": 64,
+              "title": "Max Image Side",
+              "type": "integer"
+            },
+            "retries": {
+              "default": 1,
+              "maximum": 2,
+              "minimum": 0,
+              "title": "Retries",
+              "type": "integer"
+            },
+            "model_sha256": {
+              "anyOf": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Sha256"
+            },
+            "question": {
+              "maxLength": 3000,
+              "minLength": 1,
+              "title": "Question",
+              "type": "string"
+            },
+            "labels": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 20,
+              "minItems": 2,
+              "title": "Labels",
+              "type": "array"
+            }
+          },
+          "required": [
+            "question",
+            "labels"
+          ],
+          "title": "VLMJudgeParams",
+          "type": "object"
+        },
+        "inputs": {
+          "image": "image"
+        },
+        "outputs": {
+          "judgement": "judgement",
+          "text": "text",
+          "event": "event"
+        }
+      },
+      {
+        "type": "resize",
+        "description": "Resize input pixels; normalized boxes remain unchanged.",
+        "params": {
+          "additionalProperties": false,
+          "properties": {
+            "width": {
+              "default": 640,
+              "exclusiveMinimum": 0,
+              "maximum": 8192,
+              "title": "Width",
+              "type": "integer"
+            },
+            "height": {
+              "default": 480,
+              "exclusiveMinimum": 0,
+              "maximum": 8192,
+              "title": "Height",
+              "type": "integer"
+            }
+          },
+          "title": "ResizeParams",
+          "type": "object"
+        },
+        "inputs": {
+          "image": "image"
+        },
+        "outputs": {
+          "image": "image"
+        }
+      },
+      {
+        "type": "crop",
+        "description": "Crop a normalized rectangle and preserve coordinate transforms.",
+        "params": {
+          "additionalProperties": false,
+          "properties": {
+            "box": {
+              "maxItems": 4,
+              "minItems": 4,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "title": "Box",
+              "type": "array"
+            }
+          },
+          "required": [
+            "box"
+          ],
+          "title": "CropParams",
+          "type": "object"
+        },
+        "inputs": {
+          "image": "image"
+        },
+        "outputs": {
+          "image": "image"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-10-29T02:01:28.130344+00:00",
+  "verification_method": "Read-only verification of saved plan, content-addressed tool artifacts, adapter identities, source and imported image bytes, and SQLite event count; no model calls or reexecution.",
+  "source_report": {
+    "path": "artifacts/stronger-planner/qwen14-provenance-warehouse-contextfix.json",
+    "file_sha256": "ad841499952252614aaf7045dc2e8d9b50c4d830b53a8300516c3aa71406ab47"
+  },
+  "runtime_source_sha256": "19f6e4115389679538f934d77a778d9b752952d49fb8d7256b72b91f61028367",
+  "project_id": "a201f9d7d53a4f70",
+  "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+  "plan": {
+    "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/platform/plans/596ce4095435455e9b33e7a8e581786b.json",
+    "file_sha256": "c568291db0438c698bcce2e6b413d564d30ebc9cdd02c8d325e41851def3e26c",
+    "id": "596ce4095435455e9b33e7a8e581786b",
+    "revision": 1,
+    "created_at": "2026-10-29T01:56:24.639386+00:00",
+    "content_hash": "7717513ad7b4b0d9209eccf135846c0e48fd19b9e33a11975a69f163c429980f",
+    "hash_verified": true,
+    "published_before_first_compile": true
+  },
+  "execution": {
+    "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/platform/executions/d02e67a40b104a51812fb3979d1e9560.json",
+    "file_sha256": "af2b5b6f71cc5720b1cc052729cbc70e2fdb21daad95b0f0ac14e6035906d554",
+    "id": "d02e67a40b104a51812fb3979d1e9560",
+    "status": "completed",
+    "phase": "compile",
+    "plan_hash": "7717513ad7b4b0d9209eccf135846c0e48fd19b9e33a11975a69f163c429980f"
+  },
+  "goal": "Count people in these warehouse images and show boxes. Use confidence 0.2. Do not create events. Try two different compatible installed detector models with the same count MAE evaluation target.",
+  "source_scope": "Three unreviewed public NVIDIA Warehouse 026 frames from the retained native sample project; no accuracy or deployment claim",
+  "options_snapshot_id": "ef0b1a75760144effe3ca5c41bfd358cb12f5adb73a41e73201f4e9833bb353f",
+  "options_artifact_id": "3a937fc8c5faa988a050dd02c12e9b3808cdd63bef1c8e77f905dcb7a9a25afd",
+  "actual_planner_call_count": 1,
+  "planner_identity_scope": "Recorded alias only; this receipt does not verify planner weight identity.",
+  "shared_configuration": {
+    "classes": [
+      "person"
+    ],
+    "min_conf": 0.2,
+    "source_type": "image_folder",
+    "sampling_fps": 2,
+    "evaluation": {
+      "set": "reviewed-v1",
+      "metric": "count_mae",
+      "target": 0.5
+    },
+    "dataset_hash": "8a39bd36261f396d2953cb75e20be688e3f0a808a8b36227090d0dd99e490bbf",
+    "same_ordered_frames": true,
+    "same_adapter_input_pixels": true
+  },
+  "shared_frames": [
+    {
+      "index": 0,
+      "original_source": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/efee680b7955431b/media/84bfce01-warehouse-033.00s.png",
+      "imported_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/media/4d45c756-84bfce01-warehouse-033.00s.png",
+      "file_sha256": "be828e8ab0cacf40eff8ad47d1b8bf72df5ba8a731ca7c5727bb22d4694c7daf",
+      "rgb_pixels_sha256": "21c3544f72058f9d64ca5c5f70c86f45c76052e749c74405e0607718b18bf277",
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "index": 1,
+      "original_source": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/efee680b7955431b/media/603d0b4d-warehouse-033.75s.png",
+      "imported_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/media/66d1fdd2-603d0b4d-warehouse-033.75s.png",
+      "file_sha256": "4f1192f2eef2f3056ae2d3d7f551e333e3f03b341bb5a426355a47794746b3c3",
+      "rgb_pixels_sha256": "5efb8196225073e30794526ab390153cf3302bd4fdcf38981642af6ef4946c77",
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "index": 2,
+      "original_source": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/efee680b7955431b/media/ec1288e3-warehouse-034.50s.png",
+      "imported_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/media/861378c6-ec1288e3-warehouse-034.50s.png",
+      "file_sha256": "2d65189f76dc29de969a11300c7431c5053c07041ea8546e80ecdf28c90c5a5d",
+      "rgb_pixels_sha256": "ab67cc034e4d8db16bd50f5fe31f05071f793efabc8afc66bd39535a1c6879bd",
+      "size": [
+        1920,
+        1080
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "candidate_index": 0,
+      "name": "custom-candidate-1",
+      "planned_model": {
+        "candidate_index": 0,
+        "capability_id": "model.owlv2-base-patch16",
+        "model_id": "owlv2-base-patch16",
+        "adapter_id": "owlv2",
+        "proposed_reason": "Use open-vocabulary detection for 'person' if this option is eligible.",
+        "options_snapshot_id": "ef0b1a75760144effe3ca5c41bfd358cb12f5adb73a41e73201f4e9833bb353f",
+        "status": "proposed"
+      },
+      "selection_basis": "default",
+      "recorded_provenance": {
+        "origin": "upstream_pretrained",
+        "initialization": "not_applicable",
+        "training_state": "unknown",
+        "use_scope": "upstream_baseline",
+        "use_scope_evidence_ref": null,
+        "base_model_id": null,
+        "training_samples": null,
+        "epochs_completed": null,
+        "optimizer_steps": null,
+        "preserved_classes": [],
+        "evaluation_dataset_recorded": false,
+        "evaluation_status": "none_attached",
+        "provenance_scope": "registry_recorded"
+      },
+      "actual_identity": {
+        "capability_id": "model.owlv2-base-patch16",
+        "model_id": "owlv2-base-patch16",
+        "adapter_id": "owlv2",
+        "identity_scope": "local_artifacts_verified",
+        "artifact_hashes": {
+          "VISIONAPP_REVISION.txt": "073ed5bcc2468fb94e80948845a776c9e89a1ad3a07aa05624d56916a50570b5",
+          "added_tokens.json": "e5dc0da35d20111e8ff3fdfc03682beca23d5f94ed74331bce81786b2636a24f",
+          "config.json": "ba9df8c25a4b8461887dd0a93d9252c9cd84697fe8d49a9d8794ce409af9acb2",
+          "merges.txt": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+          "model.safetensors": "e1e130b9e404cf91a75ad45644c1da9d7fa5284085eecc864266a6923efb99e7",
+          "preprocessor_config.json": "cf3e396635b797ee1a464e1b2836e98748f8edac19e89aaa2c93b55ac15b0064",
+          "special_tokens_map.json": "d6e2b9cf664efbad2d22998b8d3da986abcbeed3e0825ad33605c9401f9cf73e",
+          "tokenizer_config.json": "b55cda6198e152ded427c8a9b3faf1cccf27a7fa080697a62f6ff143f511f44f",
+          "vocab.json": "e089ad92ba36837a0d31433e555c8f45fe601ab5c221d4f607ded32d9f7a4349"
+        },
+        "unavailable_artifacts": [],
+        "adapter_code_sha256": "8aa9843d9c436a090471bad423bd9f239fdc18057089a8b9151275d19347b148",
+        "runtime_manifest_sha256": "14c14ab7aa0f384d248d048884946496b16fd9c216c077e6bb0d65334eb23a0c",
+        "system_identity": {
+          "architecture": "arm64",
+          "os": "Darwin",
+          "kernel": "25.6.0",
+          "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+          "macos": "26.7.1"
+        },
+        "provider": "mps",
+        "config_sha256": "2df6bcf5774232c9e99c76fe4a04e9a3d9b6c6c24d1242e1a153017324ad5287",
+        "identity_hash": "b261ec75afb6e45267f959bf737e954e8d6e3959f4e710b485fa2a0edd5c06c9"
+      },
+      "plan_bound_spec_hash": "cf1ac92653fb8c11499df123f3ef933fc5a8ab21b5536595d768567bf982d101",
+      "input_artifact_id": "3964050473445ea03f468e526ed55db9224b2789fd5508e136ddf9ad72abf68f",
+      "preview_artifact_id": "e14befef6347929e6beee686fcfef3457dc9f35241a2b0d909cd0795a9b8aab5",
+      "preview_call_id": "7b76613fb0444214968707f1431d7c1c",
+      "preview_event_sequence": 12,
+      "per_frame_observed_hypotheses": [
+        1,
+        2,
+        1
+      ],
+      "preview_events": 0,
+      "measured_preview_elapsed_s": 6.245831457956228,
+      "tool_duration_ms": 6263.54,
+      "plan_identity_and_request_match": true,
+      "all_frame_identities_consistent": true
+    },
+    {
+      "candidate_index": 1,
+      "name": "custom-candidate-2",
+      "planned_model": {
+        "candidate_index": 1,
+        "capability_id": "model.rtdetr-v2-r18",
+        "model_id": "rtdetr-v2-r18",
+        "adapter_id": "rtdetr-v2-r18",
+        "proposed_reason": "Use closed-vocabulary detection for 'person' if this option is eligible.",
+        "options_snapshot_id": "ef0b1a75760144effe3ca5c41bfd358cb12f5adb73a41e73201f4e9833bb353f",
+        "status": "proposed"
+      },
+      "selection_basis": "default",
+      "recorded_provenance": {
+        "origin": "upstream_pretrained",
+        "initialization": "not_applicable",
+        "training_state": "unknown",
+        "use_scope": "upstream_baseline",
+        "use_scope_evidence_ref": null,
+        "base_model_id": null,
+        "training_samples": null,
+        "epochs_completed": null,
+        "optimizer_steps": null,
+        "preserved_classes": [],
+        "evaluation_dataset_recorded": false,
+        "evaluation_status": "none_attached",
+        "provenance_scope": "registry_recorded"
+      },
+      "actual_identity": {
+        "capability_id": "model.rtdetr-v2-r18",
+        "model_id": "rtdetr-v2-r18",
+        "adapter_id": "rtdetr-v2-r18",
+        "identity_scope": "local_artifacts_verified",
+        "artifact_hashes": {
+          "VISIONAPP_REVISION.txt": "4f678e9797d2f2f30017d5c6dbfe64d257ab03800942c33c1a86f60dc1116c62",
+          "config.json": "ed051ec77cb41c5d9d5e3af21a979b1e890599dfd68434d7636ff82ded4c1527",
+          "model.safetensors": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115",
+          "preprocessor_config.json": "cd38cd59999e7a95d68e487fbe5132df3d4e5c32a0836add57e6126ba0c4eaf1"
+        },
+        "unavailable_artifacts": [],
+        "adapter_code_sha256": "5abcde679b776e6f6f1f8d4e5429eefef5ea0d33816c3acabf6f63f9e7bb9f6d",
+        "runtime_manifest_sha256": "14c14ab7aa0f384d248d048884946496b16fd9c216c077e6bb0d65334eb23a0c",
+        "system_identity": {
+          "architecture": "arm64",
+          "os": "Darwin",
+          "kernel": "25.6.0",
+          "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+          "macos": "26.7.1"
+        },
+        "provider": "mps",
+        "config_sha256": "788120729768964a35d0d77a1e6b5453561a92d63aec5cbe0a2f6d4eaf660026",
+        "identity_hash": "b615c78ddc2bf738f7f89493009b5945e8644aeb4b3fe019502c224d29e8feaf"
+      },
+      "plan_bound_spec_hash": "bc4c6657ad6c5cba8fc27801272ac9bb5916b505dba932c86ecf2b5376c537d0",
+      "input_artifact_id": "e2f7d71881006590d0a4acf7797d6bdc74bf1f4e183d259491a40e5faf002025",
+      "preview_artifact_id": "768ab38234a66ac8b98bc6c015ddde52aa718c4071a54ad2a849847360d58bf3",
+      "preview_call_id": "083820e1b9c847968b6fe8b14be84831",
+      "preview_event_sequence": 16,
+      "per_frame_observed_hypotheses": [
+        4,
+        10,
+        0
+      ],
+      "preview_events": 0,
+      "measured_preview_elapsed_s": 0.6457010420272127,
+      "tool_duration_ms": 663.006,
+      "plan_identity_and_request_match": true,
+      "all_frame_identities_consistent": true
+    }
+  ],
+  "state": {
+    "annotations": {
+      "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/annotations.json",
+      "file_sha256": "83ffa89f3514f1868eeb6d61197e80dba5d8b0b02aaf253fc4e9736fa73ed449"
+    },
+    "project": {
+      "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/project.json",
+      "file_sha256": "bb0910a3bdd5389777c487ca4be4d3dee1c33fffa7bb519f985e79bf6044ef4c"
+    },
+    "unreviewed_images": 3,
+    "reviewed_images": 0,
+    "evaluation_reports": 0,
+    "deployment_id": null,
+    "event_database_path": ".visionapp/qwen14-provenance-warehouse-contextfix/evidence.sqlite3",
+    "event_query": "SELECT COUNT(*) FROM events WHERE project_id = a201f9d7d53a4f70",
+    "stored_events": 0,
+    "review_queue_rows": 0
+  },
+  "timeline": {
+    "records": 16,
+    "canonical_sha256": "3116bbec5ed4aabf1d7b73c34e58ef93a83ba60f43430ac0f0a7d53a87b1a813",
+    "completed_tool_calls": 7,
+    "completed_llm_calls": 1,
+    "errors": 0
+  },
+  "verified_artifacts": [
+    {
+      "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/platform/artifacts/44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a.json",
+      "file_sha256": "441c556c202f9cdebf73bd1aa5eb851116ef6b9d9f756286d2a2c48031575be2",
+      "content_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "kind": "tool_input"
+    },
+    {
+      "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/platform/artifacts/016c510bbafdb458ed6e3390b5f546c4584d8a2d5e2189c3821309d8a0e8d3c4.json",
+      "file_sha256": "c6e78d59ac8b459797bf0fb9d4c2500c1cf7420576106f15b5727f934de7ddbb",
+      "content_sha256": "016c510bbafdb458ed6e3390b5f546c4584d8a2d5e2189c3821309d8a0e8d3c4",
+      "kind": "tool_output"
+    },
+    {
+      "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/platform/artifacts/867114e1897602df0a5e0ac849a8cfd2ad0ebcabf09e25a455b540b59678d284.json",
+      "file_sha256": "37309459a73006b50770cb03a54c1ee7e222c6476eef614003d086898eed7a47",
+      "content_sha256": "867114e1897602df0a5e0ac849a8cfd2ad0ebcabf09e25a455b540b59678d284",
+      "kind": "tool_input"
+    },
+    {
+      "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/platform/artifacts/e20db932de09ab79c75953f20dcb59929235bd2f0754fa18f1dd2d01db4ba6d1.json",
+      "file_sha256": "479e6c2bcfade09cc5a93fa757e59ea830b37d6b0e671721c4f5c4a9e6d6b7e5",
+      "content_sha256": "e20db932de09ab79c75953f20dcb59929235bd2f0754fa18f1dd2d01db4ba6d1",
+      "kind": "tool_output"
+    },
+    {
+      "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/platform/artifacts/df09a14835f53b41d7d3d8e25c5b27d1d7ebbe5313ed66845db0113e1332d9f9.json",
+      "file_sha256": "6b1f5e667bf68134a7a7e14828aa989158e9505afd5da30293e8aa4f0c130c52",
+      "content_sha256": "df09a14835f53b41d7d3d8e25c5b27d1d7ebbe5313ed66845db0113e1332d9f9",
+      "kind": "tool_input"
+    },
+    {
+      "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/platform/artifacts/3a937fc8c5faa988a050dd02c12e9b3808cdd63bef1c8e77f905dcb7a9a25afd.json",
+      "file_sha256": "126648c147c07312ece31ac64f20b698f88f22854c3eb84610da29147f941a8f",
+      "content_sha256": "3a937fc8c5faa988a050dd02c12e9b3808cdd63bef1c8e77f905dcb7a9a25afd",
+      "kind": "planning_options"
+    },
+    {
+      "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/platform/artifacts/adcc0e3e3ca47f4c8f41411f0886d301c38f425c3ed69c01014aab2a943b2a9c.json",
+      "file_sha256": "c50bf563187081f4b05cc05b98d3e13de882f8d43235e566a7dafc611bfa3b51",
+      "content_sha256": "adcc0e3e3ca47f4c8f41411f0886d301c38f425c3ed69c01014aab2a943b2a9c",
+      "kind": "tool_input"
+    },
+    {
+      "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/platform/artifacts/c99b3ad6c539ae4b981e6543e632d9a3c0d90e3f307fbb5e8462d120e1a95019.json",
+      "file_sha256": "edc0e792425605777130d77ba576151a15d22d6d4cd223a13b1312032bb7410a",
+      "content_sha256": "c99b3ad6c539ae4b981e6543e632d9a3c0d90e3f307fbb5e8462d120e1a95019",
+      "kind": "model_response"
+    },
+    {
+      "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/platform/artifacts/3964050473445ea03f468e526ed55db9224b2789fd5508e136ddf9ad72abf68f.json",
+      "file_sha256": "2880002ea45d0aa32d86877346fdb2577401a7c8c82f57235c0dd0400a77ba9f",
+      "content_sha256": "3964050473445ea03f468e526ed55db9224b2789fd5508e136ddf9ad72abf68f",
+      "kind": "tool_input"
+    },
+    {
+      "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/platform/artifacts/f2e6221bac7112ea123f706c89500b263e72f0f9bc7068fb74bdbaf8c51fbc38.json",
+      "file_sha256": "758d7458f863f89584fceb4ecf3436e1368bd05b0ca0533a22e6748a9e3a3977",
+      "content_sha256": "f2e6221bac7112ea123f706c89500b263e72f0f9bc7068fb74bdbaf8c51fbc38",
+      "kind": "tool_output"
+    },
+    {
+      "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/platform/artifacts/e14befef6347929e6beee686fcfef3457dc9f35241a2b0d909cd0795a9b8aab5.json",
+      "file_sha256": "caa6b04990b7b7fda9f1457ae0bc0ca695bd5d2bacae6a12d30f2838c96368c7",
+      "content_sha256": "e14befef6347929e6beee686fcfef3457dc9f35241a2b0d909cd0795a9b8aab5",
+      "kind": "preview"
+    },
+    {
+      "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/platform/artifacts/e2f7d71881006590d0a4acf7797d6bdc74bf1f4e183d259491a40e5faf002025.json",
+      "file_sha256": "769727e31f8990beba1b45b6daec911e0283622937a1f7b1317049727cbab667",
+      "content_sha256": "e2f7d71881006590d0a4acf7797d6bdc74bf1f4e183d259491a40e5faf002025",
+      "kind": "tool_input"
+    },
+    {
+      "path": ".visionapp/qwen14-provenance-warehouse-contextfix/projects/a201f9d7d53a4f70/platform/artifacts/768ab38234a66ac8b98bc6c015ddde52aa718c4071a54ad2a849847360d58bf3.json",
+      "file_sha256": "fd0b264177e052e96339c0a1616a30bfc6baf00999141a93e7878176813c299f",
+      "content_sha256": "768ab38234a66ac8b98bc6c015ddde52aa718c4071a54ad2a849847360d58bf3",
+      "kind": "preview"
+    }
+  ],
+  "bounded_conclusion": "The two planned upstream detector models each executed on the same three imported images with matching recorded adapter identities and request hashes. Both use the same planned count-MAE target; no evaluation was performed and no events were stored.",
+  "limitations": [
+    "Observed counts are detector hypotheses per frame, not unique people or reviewed ground truth.",
+    "Three nearby frames from one warehouse sequence do not establish accuracy, independence, model superiority, or deployment readiness.",
+    "The target 0.5 is a planned acceptance criterion, not an achieved score.",
+    "Captured preview timings include different loading/cache conditions and are not a controlled performance comparison.",
+    "Model artifact hashes are verified as internally consistent captured execution evidence and as part of the pre-execution plan snapshot; this audit did not rehash installed model weights or run inference.",
+    "Model choice reasons are recorded proposals; this receipt verifies routing and identity, not optimal selection."
+  ]
+}

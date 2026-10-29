@@ -1,0 +1,117 @@
+{
+  "checked_at": "2026-10-29T02:14:20.675887+00:00",
+  "project_id": "692e0290946d493a",
+  "build_id": "87c3efde66ef43c2b8c19ea6f8bcde3d",
+  "source_identity": "e098c7f30c336ab8914ce584b6940795585847756be1d8d3608d260fbc02f77c",
+  "native_binary_sha256": "30bae164b0dfa4d6767d538a394cb997f07ba277db2309e8241e0d89ec705342",
+  "status": "native_description_build_candidate_previews_contextual_annotation_and_return_verified",
+  "goal": "Count people in this warehouse footage and show boxes. Use confidence 0.2. Do not create events. Try two different compatible installed detector models with the same count MAE evaluation target.",
+  "data_scope": "20 public real NVIDIA Warehouse026 frames; same camera and clip; unreviewed",
+  "candidate_models": [
+    "owlv2-base-patch16",
+    "rtdetr-v2-r18"
+  ],
+  "same_visible_sample": "1cfd68d2-warehouse-045.00s.png",
+  "visible_preview_detection_counts": {
+    "owlv2-base-patch16": 1,
+    "rtdetr-v2-r18": 4
+  },
+  "candidate_switch_clears_old_preview": true,
+  "approval_candidate_unchanged": 0,
+  "manual_annotation_change": [
+    {
+      "before": {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/1cfd68d2-warehouse-045.00s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.3760730028152466,
+            "box": [
+              0.459641170501709,
+              0.34745472095630786,
+              0.5033274332682292,
+              0.4679519370750145
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "430bdca7e7052a09b2fbf4459a0b2a0a2b170deb9e99981ebb8f46173eb9eeab",
+          "created_at": "2026-10-29T02:11:36.203071+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      "after": {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/1cfd68d2-warehouse-045.00s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.3760730028152466,
+            "box": [
+              0.459641170501709,
+              0.34745472095630786,
+              0.5094812794220753,
+              0.4843621934852709
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "430bdca7e7052a09b2fbf4459a0b2a0a2b170deb9e99981ebb8f46173eb9eeab",
+          "created_at": "2026-10-29T02:11:36.203071+00:00",
+          "status": "unverified_hypothesis"
+        }
+      }
+    }
+  ],
+  "all_annotations": 20,
+  "reviewed_images": 0,
+  "recorded_events": 0,
+  "evaluations": [],
+  "deployment_id": null,
+  "saved_plan_revisions": 3,
+  "tool_event_records": 30,
+  "llm_events": [
+    {
+      "stage": "started",
+      "at": "2026-10-29T02:02:01.599038+00:00",
+      "duration_ms": null,
+      "error": null
+    },
+    {
+      "stage": "failed",
+      "at": "2026-10-29T02:03:42.261400+00:00",
+      "duration_ms": 100662.362,
+      "error": "Request timed out."
+    },
+    {
+      "stage": "started",
+      "at": "2026-10-29T02:08:23.924965+00:00",
+      "duration_ms": null,
+      "error": null
+    },
+    {
+      "stage": "completed",
+      "at": "2026-10-29T02:10:13.506161+00:00",
+      "duration_ms": 109581.196,
+      "error": null
+    }
+  ],
+  "first_failure": "native-timeout",
+  "scope_limitations": [
+    "This is functional native acceptance of a supported detection workflow, not representative vision accuracy or full product completion.",
+    "First100-second native attempt failed. Successful retry used cached prompt state and the150-second read timeout. Latency is not a cold-start benchmark.",
+    "The box resize proves interactive persistence; it remains an unreviewed correction, not validated ground truth.",
+    "Both models produce unreviewed hypotheses; their different counts do not identify a winner."
+  ]
+}

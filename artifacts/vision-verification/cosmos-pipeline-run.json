@@ -1,0 +1,89 @@
+{
+  "frames": [
+    {
+      "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/vlm-pipeline-verification/media/warehouse.jpg",
+      "detections": [],
+      "counts": {},
+      "texts": [
+        "person"
+      ],
+      "events": [
+        {
+          "type": "vlm_judgement",
+          "label": "person",
+          "reason": "The image shows an individual dressed in a yellow safety vest and a yellow hard hat, standing with one arm stretched out, which clearly indicates the presence of a person in the scene.",
+          "confidence": 0.99,
+          "model": "visionapp-vlm",
+          "base_url": "http://127.0.0.1:1235/v1",
+          "image_sha256": "777280bc19e783f4963e819bb04c8e0ba51a6eb2100dbcce1c99d6dc3cfc8ce1",
+          "model_identity_hash": "2734fc58f3dba68bfd4bcf83f4a8a72b4263ad81a45dc0290299207e3080ce8d",
+          "identity_scope": "local_weights_verified",
+          "weights_sha256": "0cd7dc26cb43a9e0a549372647c50923e72c2c95c8c00318d69d1c9765e9e868",
+          "box": [
+            0.35,
+            0.3,
+            0.4098958333333333,
+            0.55
+          ],
+          "input_size": [
+            115,
+            270
+          ],
+          "sent_size": [
+            115,
+            270
+          ],
+          "elapsed_s": 5.173482791986316,
+          "attempts": 1,
+          "status": "model_hypothesis",
+          "warnings": [
+            "VLM labels and self-reported confidence are model hypotheses; confidence is not calibrated.",
+            "Projector bytes are not exposed by the API; model-server identity changes invalidate evaluation."
+          ]
+        }
+      ],
+      "elapsed_ms": 5189.037125033792,
+      "timestamp_s": 0.0,
+      "judgements": [
+        {
+          "label": "person",
+          "reason": "The image shows an individual dressed in a yellow safety vest and a yellow hard hat, standing with one arm stretched out, which clearly indicates the presence of a person in the scene.",
+          "confidence": 0.99,
+          "model": "visionapp-vlm",
+          "base_url": "http://127.0.0.1:1235/v1",
+          "image_sha256": "777280bc19e783f4963e819bb04c8e0ba51a6eb2100dbcce1c99d6dc3cfc8ce1",
+          "model_identity_hash": "2734fc58f3dba68bfd4bcf83f4a8a72b4263ad81a45dc0290299207e3080ce8d",
+          "identity_scope": "local_weights_verified",
+          "weights_sha256": "0cd7dc26cb43a9e0a549372647c50923e72c2c95c8c00318d69d1c9765e9e868",
+          "box": [
+            0.35,
+            0.3,
+            0.4098958333333333,
+            0.55
+          ],
+          "input_size": [
+            115,
+            270
+          ],
+          "sent_size": [
+            115,
+            270
+          ],
+          "elapsed_s": 5.173482791986316,
+          "attempts": 1,
+          "status": "model_hypothesis",
+          "warnings": [
+            "VLM labels and self-reported confidence are model hypotheses; confidence is not calibrated.",
+            "Projector bytes are not exposed by the API; model-server identity changes invalidate evaluation."
+          ]
+        }
+      ]
+    }
+  ],
+  "elapsed_s": 10.02724720799597,
+  "warnings": [
+    "VLM labels and self-reported confidence are model hypotheses; confidence is not calibrated.",
+    "Projector bytes are not exposed by the API; model-server identity changes invalidate evaluation.",
+    "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+  ]
+}

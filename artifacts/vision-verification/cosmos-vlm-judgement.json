@@ -1,0 +1,55 @@
+{
+  "source_image": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/Warehouse_026-preview.jpg",
+  "source_box_pixels": [
+    672,
+    324,
+    787,
+    594
+  ],
+  "preflight": {
+    "model": "visionapp-vlm",
+    "base_url": "http://127.0.0.1:1235/v1",
+    "vision_supported": true,
+    "identity_hash": "2734fc58f3dba68bfd4bcf83f4a8a72b4263ad81a45dc0290299207e3080ce8d",
+    "identity_scope": "local_weights_verified",
+    "weights_sha256": "0cd7dc26cb43a9e0a549372647c50923e72c2c95c8c00318d69d1c9765e9e868",
+    "model_license": "NVIDIA Open Model License",
+    "warnings": [
+      "VLM labels and self-reported confidence are model hypotheses; confidence is not calibrated.",
+      "Projector bytes are not exposed by the API; model-server identity changes invalidate evaluation."
+    ]
+  },
+  "judgement": {
+    "label": "person",
+    "reason": "The image shows an individual wearing a yellow hard hat and a reflective vest, standing in a warehouse environment, which clearly indicates the presence of a person in the scene.",
+    "confidence": 0.99,
+    "model": "visionapp-vlm",
+    "base_url": "http://127.0.0.1:1235/v1",
+    "image_sha256": "777280bc19e783f4963e819bb04c8e0ba51a6eb2100dbcce1c99d6dc3cfc8ce1",
+    "model_identity_hash": "2734fc58f3dba68bfd4bcf83f4a8a72b4263ad81a45dc0290299207e3080ce8d",
+    "identity_scope": "local_weights_verified",
+    "weights_sha256": "0cd7dc26cb43a9e0a549372647c50923e72c2c95c8c00318d69d1c9765e9e868",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "input_size": [
+      115,
+      270
+    ],
+    "sent_size": [
+      115,
+      270
+    ],
+    "elapsed_s": 8.998826041002758,
+    "attempts": 1,
+    "status": "model_hypothesis",
+    "warnings": [
+      "VLM labels and self-reported confidence are model hypotheses; confidence is not calibrated.",
+      "Projector bytes are not exposed by the API; model-server identity changes invalidate evaluation."
+    ]
+  },
+  "claim_status": "Model hypothesis on public warehouse imagery; not an accuracy validation"
+}

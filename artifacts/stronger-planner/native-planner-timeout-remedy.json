@@ -1,0 +1,30 @@
+{
+  "previous_source_sha256": "19f6e4115389679538f934d77a778d9b752952d49fb8d7256b72b91f61028367",
+  "source_sha256": "e098c7f30c336ab8914ce584b6940795585847756be1d8d3608d260fbc02f77c",
+  "runtime_files_changed": [
+    "agent/planner.py"
+  ],
+  "test_files": [
+    "tests/test_planner_timeouts.py"
+  ],
+  "change": {
+    "http_read_timeout_seconds": 150,
+    "http_connect_timeout_seconds": 4,
+    "http_write_timeout_seconds": 15,
+    "http_pool_timeout_seconds": 4,
+    "planner_wall_seconds_unchanged": 180,
+    "build_wall_seconds_unchanged": 900,
+    "sdk_transport_retries_unchanged": 0,
+    "typed_output_retries_unchanged": 2,
+    "output_tokens_per_request_unchanged": 1600
+  },
+  "diagnosis": "artifacts/stronger-planner/native19f6-planner-timeout-diagnosis.json",
+  "checks": {
+    "focused_pytest_passed": 28,
+    "final_timeout_pytest_passed": 2,
+    "strict_mypy_modules": 2,
+    "ruff": "passed"
+  },
+  "validation_scope": "Real SDK against in-memory HTTP timeout transport; no network or model calls. Tests verify150s read/4sconnect/15swrite/4spool reaches actual request extensions, exactlyone transport attempt, captured timeout, closed client, and outer180s deadline cancellation without staging.",
+  "estimate_vs_actual": "The~116s completion projection from prior366-token output and observed4.5tokens/s is an estimate only. The actual failed request generated287tokens in100.662s before cancellation. No post-change live outcome is claimed; root owns native Retry validation."
+}

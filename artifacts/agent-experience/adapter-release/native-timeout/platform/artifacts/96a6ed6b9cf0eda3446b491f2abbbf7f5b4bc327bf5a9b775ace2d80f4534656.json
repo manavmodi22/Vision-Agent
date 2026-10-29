@@ -1,0 +1,15 @@
+{
+  "artifact": {
+    "id": "96a6ed6b9cf0eda3446b491f2abbbf7f5b4bc327bf5a9b775ace2d80f4534656",
+    "project_id": "692e0290946d493a",
+    "kind": "tool_input",
+    "title": "dataset_context input",
+    "created_at": "2026-10-29T02:02:00.825162+00:00",
+    "sha256": "96a6ed6b9cf0eda3446b491f2abbbf7f5b4bc327bf5a9b775ace2d80f4534656",
+    "media_type": "application/json",
+    "size_bytes": 33
+  },
+  "content": {
+    "project_id": "692e0290946d493a"
+  }
+}

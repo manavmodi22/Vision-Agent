@@ -1,0 +1,53 @@
+{
+  "source_identity": "44a46c401c45b7a7de00b4aea5b244e30b7cc6549aaeba725bf1aa66bbbee1dc",
+  "status": "software_checks_passed; native_exact_reading_failed; model_output_schema_correction_pending",
+  "python_tests": {
+    "passed": 467,
+    "duration_s": 238.39,
+    "log": "artifacts/full-tests-agent-corrected.log"
+  },
+  "mypy": {
+    "passed": true,
+    "source_files": 109,
+    "scope": "agent engine mcp_server spec"
+  },
+  "ruff": {
+    "passed": true,
+    "scope": "agent engine mcp_server spec tests scripts evals"
+  },
+  "native_checks": {
+    "passed": 83
+  },
+  "portable_build": {
+    "passed": true,
+    "log": "artifacts/portable-build-agent-corrected.log"
+  },
+  "relocated_bundle": {
+    "passed": true,
+    "report": "artifacts/bundle-verification-agent-corrected.json"
+  },
+  "historical_full_model_suites": {
+    "source_identity": "c19fac5076701e673f0f6cca843619382dd195d32fdf0bb5dc68f9488346b639",
+    "report": "artifacts/runtime-validation-c19.json",
+    "initial": "24/25",
+    "refinement": "19/24",
+    "scope": "These complete-suite results are retained unchanged. Retests of fixes are separate."
+  },
+  "native_warehouse_acceptance": {
+    "report": "artifacts/agent-experience/final-build.json",
+    "source_identity": "c19fac5076701e673f0f6cca843619382dd195d32fdf0bb5dc68f9488346b639",
+    "preview_frames": 5,
+    "person_predictions": 4,
+    "reviewed_images": 0,
+    "deployment_approved": false
+  },
+  "native_exact_reading": {
+    "passed": false,
+    "project_id": "dd602abbadcc4651",
+    "model_calls": 3,
+    "cause": "Model omitted match_mode and match_emit; retries exhausted; no candidate committed.",
+    "operation": "artifacts/agent-experience/exact-reading-failed-operation.json",
+    "build": "artifacts/agent-experience/exact-reading-failed-build.json",
+    "screenshot": "artifacts/agent-experience/exact-reading-failed.png"
+  }
+}

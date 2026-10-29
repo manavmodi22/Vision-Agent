@@ -1,0 +1,10 @@
+{
+  "prior_native_sha256": "dcb6badf6746b442e5215de5adce0d62f7530d8e0eab7e2c614d03c5512e2761",
+  "release_sha256": "ae5cb9c8056aec9e8b4ab6b581176cb2e29094aaaa8b54c39458a4f6bc4a1704",
+  "packaged_native_sha256": "0407c08202910ed1c3128064931617b2865185a5237628f25eaf49fe78097fea",
+  "native_checks": {
+    "status": "passed",
+    "checks": 117
+  },
+  "operation": "Refreshed native binary after final UI corrections; Python runtime unchanged; bundle re-signed and deep signature verified"
+}

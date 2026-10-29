@@ -1,0 +1,23 @@
+{
+  "original_pid": 24138,
+  "argv": [
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server",
+    "-m",
+    "/Users/manavrakeshku.modi/.lmstudio/models/lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF/NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "1234",
+    "--alias",
+    "visionapp-planner",
+    "--ctx-size",
+    "8192",
+    "--parallel",
+    "1",
+    "--reasoning",
+    "off",
+    "--no-webui"
+  ],
+  "temporarily_stopped": true,
+  "restored_pid": null
+}

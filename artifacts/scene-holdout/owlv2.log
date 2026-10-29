@@ -1,0 +1,3 @@
+/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/site-packages/transformers/models/owlv2/processing_owlv2.py:201: FutureWarning: `post_process_object_detection` method is deprecated for OwlVitProcessor and will be removed in v5. Use `post_process_grounded_object_detection` instead.
+  warnings.warn(
+{"model": "owlv2-base-patch16", "frames": 30, "elapsed_s": 39.4492559999926}

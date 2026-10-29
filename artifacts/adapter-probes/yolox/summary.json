@@ -1,0 +1,14 @@
+{
+  "aligned_dependency_predictions_identical": true,
+  "source_hashes_verified": true,
+  "real_person_predictions": 3,
+  "synthetic_person_frames": 30,
+  "synthetic_person_ground_truth": 1543,
+  "synthetic_person_predictions": 944,
+  "synthetic_person_precision": 0.9576271186440678,
+  "synthetic_person_recall": 0.5858716785482826,
+  "synthetic_person_count_mae": 19.966666666666665,
+  "warm_real_image_inference_median_ms": 75.15191700076684,
+  "synthetic_frame_inference_median_ms": 65.18704147310928,
+  "production_registered": false
+}

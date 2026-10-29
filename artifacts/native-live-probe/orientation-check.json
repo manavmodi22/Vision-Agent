@@ -1,0 +1,12 @@
+{
+  "native_size": [
+    1280,
+    720
+  ],
+  "reference_size": [
+    1920,
+    1080
+  ],
+  "rgb_mean_absolute_error": 8.88878833912037,
+  "vertically_flipped_mean_absolute_error": 45.641703559027775
+}

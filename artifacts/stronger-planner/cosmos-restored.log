@@ -1,0 +1,16 @@
+0.00.000.741 I srv  llama_server: initializing ...
+0.00.078.220 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.078.399 I srv  init_listene: The UI is disabled
+0.00.078.401 I srv  init_listene: Use --ui/--no-ui (or deprecated --webui/--no-webui) to enable/disable
+0.00.078.453 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.081.675 I srv    load_model: loading model '/Users/manavrakeshku.modi/.lmstudio/models/prithivMLmods/Cosmos-Reason2-8B-GGUF/Cosmos-Reason2-8B.Q8_0.gguf'
+0.00.314.478 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.05.277.918 I cmn          init: llama threadpool init, n_threads = 10
+0.05.649.529 W load_hparams: Qwen-VL models require at minimum 1024 image tokens to function correctly on grounding tasks
+0.05.649.531 W load_hparams: if you encounter problems with accuracy, try adding --image-min-tokens 1024
+0.05.649.532 W load_hparams: more info: https://github.com/ggml-org/llama.cpp/issues/16842
+
+0.06.365.784 I srv    load_model: loaded multimodal model, '/Users/manavrakeshku.modi/.lmstudio/models/prithivMLmods/Cosmos-Reason2-8B-GGUF/Cosmos-Reason2-8B.mmproj-f16.gguf'
+0.06.432.656 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 8192, kv_unified = 'false'
+0.06.439.287 I srv  server_run_i: model loaded
+0.06.439.293 I srv  server_on_li: listening on http://127.0.0.1:1235

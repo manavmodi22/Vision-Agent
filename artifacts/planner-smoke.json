@@ -1,0 +1,16 @@
+{
+  "mode": "live-planner",
+  "model": "visionapp-planner",
+  "provenance": "Actual local-model calls with typed outputs and MCP compilation. Synthetic fixture source. eval_metric_reached remains null: a separate human-labelled real-image accuracy evaluation is required.",
+  "cases": [
+    {
+      "id": "p01",
+      "spec_valid": false,
+      "expected_pattern": false,
+      "tool_calls": 4,
+      "elapsed_s": 30.47748295799829,
+      "eval_metric_reached": null,
+      "error": "Model requested clarification."
+    }
+  ]
+}

@@ -1,0 +1,287 @@
+{
+  "id": "9bdcf7bd17514b8a93c7edd4248e0a1d",
+  "status": "completed",
+  "message": "Review held-out scores before choosing a candidate; deployment is unapproved.",
+  "progress": 1.0,
+  "created_at": "2026-10-28T16:40:52.619631+00:00",
+  "result": {
+    "training": {
+      "model_id": "local-ssdlite-9bdcf7bd1751",
+      "model_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-ssdlite-9bdcf7bd1751",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "epochs_completed": 1,
+      "steps": 5,
+      "elapsed_s": 10.04316929198103,
+      "final_loss": 13.00748062133789,
+      "training_samples": 10,
+      "evaluation_samples": 10,
+      "training_hash": "271475ef792aa9c593cb6f1f65349713d416e560e91c06afff8fe8269f0a8055",
+      "evaluation_hash": "995843a7b2b00a69484d41ce8e5666859663299cb7fadee7a5a4038523c95344",
+      "device": "cpu",
+      "warnings": [
+        "Optimization completed; this model has not passed held-out evaluation or deployment approval.",
+        "Disjoint image contents were verified; independence of scenes, cameras and time periods was not.",
+        "Architecture code is BSD-3-Clause; trained weights retain project dataset conditions.",
+        "Initialized from scratch; a small training set is unlikely to produce a useful detector."
+      ]
+    },
+    "baseline": {
+      "precision": 0.8717948717948718,
+      "recall": 0.390057361376673,
+      "count_mae": 28.9,
+      "passed": false,
+      "metric": "recall",
+      "target": 0.8,
+      "sample_count": 10,
+      "failures": [
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/af044bc7-Camera_01-frame-005275.png",
+          "false_positives": 2,
+          "false_negatives": 41,
+          "count_error": 39.0,
+          "severity": 82.0,
+          "expected_count": 52,
+          "observed_count": 13,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/a9d75050-Camera_01-frame-001552.png",
+          "false_positives": 3,
+          "false_negatives": 40,
+          "count_error": 37.0,
+          "severity": 80.0,
+          "expected_count": 49,
+          "observed_count": 12,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/b8e10620-Camera_01-frame-004965.png",
+          "false_positives": 2,
+          "false_negatives": 38,
+          "count_error": 36.0,
+          "severity": 76.0,
+          "expected_count": 49,
+          "observed_count": 13,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/8c68f1f8-Camera_01-frame-002482.png",
+          "false_positives": 5,
+          "false_negatives": 35,
+          "count_error": 30.0,
+          "severity": 70.0,
+          "expected_count": 53,
+          "observed_count": 23,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/be07fb54-Camera_01-frame-004344.png",
+          "false_positives": 2,
+          "false_negatives": 35,
+          "count_error": 33.0,
+          "severity": 70.0,
+          "expected_count": 55,
+          "observed_count": 22,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/d86c3f87-Camera_01-frame-000621.png",
+          "false_positives": 4,
+          "false_negatives": 31,
+          "count_error": 27.0,
+          "severity": 62.0,
+          "expected_count": 53,
+          "observed_count": 26,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/d515fa4e-Camera_01-frame-001862.png",
+          "false_positives": 4,
+          "false_negatives": 27,
+          "count_error": 23.0,
+          "severity": 54.0,
+          "expected_count": 53,
+          "observed_count": 30,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/b249a6dd-Camera_01-frame-000310.png",
+          "false_positives": 1,
+          "false_negatives": 26,
+          "count_error": 25.0,
+          "severity": 52.0,
+          "expected_count": 50,
+          "observed_count": 25,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/c60c7d48-Camera_01-frame-003103.png",
+          "false_positives": 2,
+          "false_negatives": 26,
+          "count_error": 24.0,
+          "severity": 52.0,
+          "expected_count": 56,
+          "observed_count": 32,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/f2e379e3-Camera_01-frame-004655.png",
+          "false_positives": 5,
+          "false_negatives": 20,
+          "count_error": 15.0,
+          "severity": 40.0,
+          "expected_count": 53,
+          "observed_count": 38,
+          "expected_texts": [],
+          "observed_texts": []
+        }
+      ],
+      "spec_hash": "3cbd149a54a2a341bab931f67dd0b7509addb8c1cfc6eeb3b690aa82302101d8",
+      "dataset_hash": "995843a7b2b00a69484d41ce8e5666859663299cb7fadee7a5a4038523c95344",
+      "text_accuracy": 1.0,
+      "warnings": [
+        "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+      ]
+    },
+    "trained": {
+      "precision": 0.012935323383084577,
+      "recall": 0.0497131931166348,
+      "count_mae": 148.7,
+      "passed": false,
+      "metric": "recall",
+      "target": 0.8,
+      "sample_count": 10,
+      "failures": [
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/b8e10620-Camera_01-frame-004965.png",
+          "false_positives": 200,
+          "false_negatives": 48,
+          "count_error": 152.0,
+          "severity": 400.0,
+          "expected_count": 49,
+          "observed_count": 201,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/d515fa4e-Camera_01-frame-001862.png",
+          "false_positives": 200,
+          "false_negatives": 52,
+          "count_error": 148.0,
+          "severity": 400.0,
+          "expected_count": 53,
+          "observed_count": 201,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/af044bc7-Camera_01-frame-005275.png",
+          "false_positives": 199,
+          "false_negatives": 50,
+          "count_error": 149.0,
+          "severity": 398.0,
+          "expected_count": 52,
+          "observed_count": 201,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/be07fb54-Camera_01-frame-004344.png",
+          "false_positives": 199,
+          "false_negatives": 53,
+          "count_error": 146.0,
+          "severity": 398.0,
+          "expected_count": 55,
+          "observed_count": 201,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/f2e379e3-Camera_01-frame-004655.png",
+          "false_positives": 199,
+          "false_negatives": 51,
+          "count_error": 148.0,
+          "severity": 398.0,
+          "expected_count": 53,
+          "observed_count": 201,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/8c68f1f8-Camera_01-frame-002482.png",
+          "false_positives": 198,
+          "false_negatives": 50,
+          "count_error": 148.0,
+          "severity": 396.0,
+          "expected_count": 53,
+          "observed_count": 201,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/a9d75050-Camera_01-frame-001552.png",
+          "false_positives": 198,
+          "false_negatives": 46,
+          "count_error": 152.0,
+          "severity": 396.0,
+          "expected_count": 49,
+          "observed_count": 201,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/b249a6dd-Camera_01-frame-000310.png",
+          "false_positives": 198,
+          "false_negatives": 47,
+          "count_error": 151.0,
+          "severity": 396.0,
+          "expected_count": 50,
+          "observed_count": 201,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/c60c7d48-Camera_01-frame-003103.png",
+          "false_positives": 197,
+          "false_negatives": 52,
+          "count_error": 145.0,
+          "severity": 394.0,
+          "expected_count": 56,
+          "observed_count": 201,
+          "expected_texts": [],
+          "observed_texts": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/training-job-verification/projects/1de5cc9a212e404b/media/d86c3f87-Camera_01-frame-000621.png",
+          "false_positives": 196,
+          "false_negatives": 48,
+          "count_error": 148.0,
+          "severity": 392.0,
+          "expected_count": 53,
+          "observed_count": 201,
+          "expected_texts": [],
+          "observed_texts": []
+        }
+      ],
+      "spec_hash": "506114c085a02a48ee2b5e3b319a23fe81b4190f3c3c61fd91806611e22315ae",
+      "dataset_hash": "995843a7b2b00a69484d41ce8e5666859663299cb7fadee7a5a4038523c95344",
+      "text_accuracy": 1.0,
+      "warnings": [
+        "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+      ]
+    }
+  },
+  "error": null
+}

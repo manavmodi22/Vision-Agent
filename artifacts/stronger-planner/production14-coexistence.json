@@ -1,0 +1,110 @@
+[
+  {
+    "sample": 0,
+    "at": 1793213397.941704,
+    "pressure": "1",
+    "swap": "vm.swapusage: total = 10240.00M  used = 9876.94M  free = 363.06M  (encrypted)",
+    "1234": 200,
+    "1235": 200,
+    "1236": "not_listening"
+  },
+  {
+    "sample": 1,
+    "at": 1793213403.0336041,
+    "pressure": "1",
+    "swap": "vm.swapusage: total = 10240.00M  used = 9876.94M  free = 363.06M  (encrypted)",
+    "1234": 200,
+    "1235": 200,
+    "1236": "not_listening"
+  },
+  {
+    "sample": 2,
+    "at": 1793213408.11615,
+    "pressure": "1",
+    "swap": "vm.swapusage: total = 10240.00M  used = 9876.94M  free = 363.06M  (encrypted)",
+    "1234": 200,
+    "1235": 200,
+    "1236": "not_listening"
+  },
+  {
+    "sample": 3,
+    "at": 1793213413.207381,
+    "pressure": "1",
+    "swap": "vm.swapusage: total = 10240.00M  used = 9876.94M  free = 363.06M  (encrypted)",
+    "1234": 200,
+    "1235": 200,
+    "1236": "not_listening"
+  },
+  {
+    "sample": 4,
+    "at": 1793213418.295634,
+    "pressure": "1",
+    "swap": "vm.swapusage: total = 10240.00M  used = 9876.94M  free = 363.06M  (encrypted)",
+    "1234": 200,
+    "1235": 200,
+    "1236": "not_listening"
+  },
+  {
+    "sample": 5,
+    "at": 1793213423.377642,
+    "pressure": "1",
+    "swap": "vm.swapusage: total = 10240.00M  used = 9876.94M  free = 363.06M  (encrypted)",
+    "1234": 200,
+    "1235": 200,
+    "1236": "not_listening"
+  },
+  {
+    "sample": 6,
+    "at": 1793213428.4652019,
+    "pressure": "1",
+    "swap": "vm.swapusage: total = 10240.00M  used = 9820.94M  free = 419.06M  (encrypted)",
+    "1234": 200,
+    "1235": 200,
+    "1236": "not_listening"
+  },
+  {
+    "sample": 7,
+    "at": 1793213433.5365078,
+    "pressure": "1",
+    "swap": "vm.swapusage: total = 10240.00M  used = 9820.94M  free = 419.06M  (encrypted)",
+    "1234": 200,
+    "1235": 200,
+    "1236": "not_listening"
+  },
+  {
+    "sample": 8,
+    "at": 1793213438.625393,
+    "pressure": "1",
+    "swap": "vm.swapusage: total = 10240.00M  used = 9820.94M  free = 419.06M  (encrypted)",
+    "1234": 200,
+    "1235": 200,
+    "1236": "not_listening"
+  },
+  {
+    "sample": 9,
+    "at": 1793213443.7037508,
+    "pressure": "1",
+    "swap": "vm.swapusage: total = 10240.00M  used = 9812.94M  free = 427.06M  (encrypted)",
+    "1234": 200,
+    "1235": 200,
+    "1236": "not_listening"
+  },
+  {
+    "sample": 10,
+    "at": 1793213448.7987041,
+    "pressure": "1",
+    "swap": "vm.swapusage: total = 10240.00M  used = 9812.94M  free = 427.06M  (encrypted)",
+    "1234": 200,
+    "1235": 200,
+    "1236": "not_listening"
+  },
+  {
+    "sample": 11,
+    "at": 1793213453.889493,
+    "pressure": "1",
+    "swap": "vm.swapusage: total = 10240.00M  used = 9804.94M  free = 435.06M  (encrypted)",
+    "1234": 200,
+    "1235": 200,
+    "1236": "not_listening"
+  }
+]

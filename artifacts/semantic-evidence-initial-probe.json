@@ -1,0 +1,160 @@
+{
+  "mode": "live-local-semantic-evidence",
+  "model": "visionapp-planner",
+  "data_dir": "/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/visionapp-evidence-live-9gf0ih0j",
+  "project_id": "a24367579ca64412",
+  "provenance": "Synthetic recorded observations for query testing; no detector executed",
+  "cases": [
+    {
+      "question": "How many damaged pallets on dock 4 today?",
+      "expected_count": 1205,
+      "http_status": 200,
+      "elapsed_s": 5.318,
+      "response": {
+        "answer": "Which zone is dock 4?",
+        "evidence": [],
+        "interpretation": null,
+        "questions": [
+          "Which zone is dock 4?"
+        ],
+        "query_id": "8037d6fa9d534d14bd10cd31fafcb994"
+      },
+      "replay": {
+        "query_id": "8037d6fa9d534d14bd10cd31fafcb994",
+        "dry_run": true,
+        "effects_executed": false,
+        "reproduced": true,
+        "errors": [],
+        "answer": {
+          "answer": "Which zone is dock 4?",
+          "evidence": [],
+          "interpretation": null,
+          "questions": [
+            "Which zone is dock 4?"
+          ],
+          "query_id": "8037d6fa9d534d14bd10cd31fafcb994"
+        }
+      },
+      "trace_kinds": [
+        "run",
+        "llm",
+        "tool"
+      ],
+      "passed": false
+    },
+    {
+      "question": "How many forklifts at receiving east yesterday?",
+      "expected_count": 1,
+      "http_status": 200,
+      "elapsed_s": 2.104,
+      "response": {
+        "answer": "Which zone is 'receiving east'?",
+        "evidence": [],
+        "interpretation": null,
+        "questions": [
+          "Which zone is 'receiving east'?"
+        ],
+        "query_id": "dc415f620c434c3d9082a9efa5ea19d4"
+      },
+      "replay": {
+        "query_id": "dc415f620c434c3d9082a9efa5ea19d4",
+        "dry_run": true,
+        "effects_executed": false,
+        "reproduced": true,
+        "errors": [],
+        "answer": {
+          "answer": "Which zone is 'receiving east'?",
+          "evidence": [],
+          "interpretation": null,
+          "questions": [
+            "Which zone is 'receiving east'?"
+          ],
+          "query_id": "dc415f620c434c3d9082a9efa5ea19d4"
+        }
+      },
+      "trace_kinds": [
+        "run",
+        "llm",
+        "tool"
+      ],
+      "passed": false
+    },
+    {
+      "question": "How many unique damaged pallets on dock 4 today?",
+      "expected_count": null,
+      "http_status": 200,
+      "elapsed_s": 2.269,
+      "response": {
+        "answer": "Which zone is dock 4?",
+        "evidence": [],
+        "interpretation": null,
+        "questions": [
+          "Which zone is dock 4?"
+        ],
+        "query_id": "bd207b46607c46488aeb07a1891361a2"
+      },
+      "replay": {
+        "query_id": "bd207b46607c46488aeb07a1891361a2",
+        "dry_run": true,
+        "effects_executed": false,
+        "reproduced": true,
+        "errors": [],
+        "answer": {
+          "answer": "Which zone is dock 4?",
+          "evidence": [],
+          "interpretation": null,
+          "questions": [
+            "Which zone is dock 4?"
+          ],
+          "query_id": "bd207b46607c46488aeb07a1891361a2"
+        }
+      },
+      "trace_kinds": [
+        "run",
+        "llm",
+        "tool"
+      ],
+      "passed": true
+    },
+    {
+      "question": "How many purple dragons on dock 4 today?",
+      "expected_count": null,
+      "http_status": 200,
+      "elapsed_s": 2.157,
+      "response": {
+        "answer": "What is the label for the purple dragon object?",
+        "evidence": [],
+        "interpretation": null,
+        "questions": [
+          "What is the label for the purple dragon object?"
+        ],
+        "query_id": "c70021e2399a4224be2ee9c47162500f"
+      },
+      "replay": {
+        "query_id": "c70021e2399a4224be2ee9c47162500f",
+        "dry_run": true,
+        "effects_executed": false,
+        "reproduced": true,
+        "errors": [],
+        "answer": {
+          "answer": "What is the label for the purple dragon object?",
+          "evidence": [],
+          "interpretation": null,
+          "questions": [
+            "What is the label for the purple dragon object?"
+          ],
+          "query_id": "c70021e2399a4224be2ee9c47162500f"
+        }
+      },
+      "trace_kinds": [
+        "run",
+        "llm",
+        "tool"
+      ],
+      "passed": true
+    }
+  ],
+  "no_project_mutation": true,
+  "no_duplicate_effects": true,
+  "no_deployment": true
+}

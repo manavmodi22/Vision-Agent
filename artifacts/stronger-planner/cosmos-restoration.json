@@ -1,0 +1,28 @@
+{
+  "original_pid": 27833,
+  "argv": [
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server",
+    "-m",
+    "/Users/manavrakeshku.modi/.lmstudio/models/prithivMLmods/Cosmos-Reason2-8B-GGUF/Cosmos-Reason2-8B.Q8_0.gguf",
+    "--mmproj",
+    "/Users/manavrakeshku.modi/.lmstudio/models/prithivMLmods/Cosmos-Reason2-8B-GGUF/Cosmos-Reason2-8B.mmproj-f16.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "1235",
+    "--alias",
+    "visionapp-vlm",
+    "--ctx-size",
+    "8192",
+    "--parallel",
+    "1",
+    "--reasoning",
+    "off",
+    "--image-max-tokens",
+    "1024",
+    "--no-webui"
+  ],
+  "temporarily_stopped": false,
+  "reason": "kernel memory pressure rose from1 to2 after candidate load",
+  "restored_pid": 45543
+}

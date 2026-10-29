@@ -1,0 +1,157 @@
+{
+  "tessdata-commit.json": {
+    "url": "https://api.github.com/repos/tesseract-ocr/tessdata_fast/commits/main",
+    "sha256": "8b63053ad3bdd7b131b45c8364d6c289ece15972678dab4392ee11c76dd42706",
+    "bytes": 4358
+  },
+  "tesseract-release.json": {
+    "url": "https://api.github.com/repos/tesseract-ocr/tesseract/releases/latest",
+    "sha256": "245aeff5854bcab070cb8672020794e5a51a6ebcafc9ec404924301b25bef6e1",
+    "bytes": 8362
+  },
+  "paddleocr-commit.json": {
+    "url": "https://api.github.com/repos/PaddlePaddle/PaddleOCR/commits/main",
+    "sha256": "e52edc888ee3aaaa531833689e471267893c7b986e630b64f7daa9c78f08cec0",
+    "bytes": 100662
+  },
+  "tessdoc-commit.json": {
+    "url": "https://api.github.com/repos/tesseract-ocr/tessdoc/commits/main",
+    "sha256": "903e79fe40d5672e0f596e7d1eb61dee8062c3f90879aa3d682a8b6520fc19d8",
+    "bytes": 5199
+  },
+  "paddlepaddle-pypi.json": {
+    "url": "https://pypi.org/pypi/paddlepaddle/3.2.1/json",
+    "sha256": "67a6dea08f40a39a6c4534174a94529f0e9dc8a34317e629167dcff2a233fd56",
+    "bytes": 26507
+  },
+  "mlx-vlm-pypi.json": {
+    "url": "https://pypi.org/pypi/mlx-vlm/json",
+    "sha256": "a96c1a96b8108e77af68a1b8f52550e228083de50dfd77a310ca7c4477ab4b18",
+    "bytes": 227342
+  },
+  "paddleocr-pypi.json": {
+    "url": "https://pypi.org/pypi/paddleocr/json",
+    "sha256": "1500d9e29e3f4c58becc6efe7a672700286ce3e6bc73fd10e255227e7d871591",
+    "bytes": 102105
+  },
+  "mlx-vlm-commit.json": {
+    "url": "https://api.github.com/repos/Blaizzy/mlx-vlm/commits/main",
+    "sha256": "d4d6be955913559b3c6f0233d5ca3c6df0dd9a55bdfb4b51189b2f1e41d3823b",
+    "bytes": 18568
+  },
+  "tesseract-homebrew.json": {
+    "url": "https://formulae.brew.sh/api/formula/tesseract.json",
+    "sha256": "d3616146ba41672950f55f4a132a8732913745a2e065c6f2639b7bc9c7670b96",
+    "bytes": 4443
+  },
+  "PP-OCRv5_mobile_det-metadata.json": {
+    "url": "https://huggingface.co/api/models/PaddlePaddle/PP-OCRv5_mobile_det?blobs=true",
+    "sha256": "83411de62522e033ce3df9104c8198b7c306b69e12bb9fd4a3b25773689af227",
+    "bytes": 1493
+  },
+  "en_PP-OCRv5_mobile_rec-metadata.json": {
+    "url": "https://huggingface.co/api/models/PaddlePaddle/en_PP-OCRv5_mobile_rec?blobs=true",
+    "sha256": "35523dfb7063e85e96f9852ffb0b60d26d324df8d1e6b975426dde79af5ff710",
+    "bytes": 1476
+  },
+  "PaddleOCR-VL-1.6-metadata.json": {
+    "url": "https://huggingface.co/api/models/PaddlePaddle/PaddleOCR-VL-1.6?blobs=true",
+    "sha256": "6db92490272d637299b003edf1eaf3cff2a4e681b10fe4594b6d47c00c16a178",
+    "bytes": 6761
+  },
+  "paddleocr-apple-silicon.md": {
+    "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleOCR/dab3fe35379033fdcb2d0e9572fac0b36c9a9ebf/docs/version3.x/pipeline_usage/PaddleOCR-VL-Apple-Silicon.en.md",
+    "sha256": "4cc4afdffdc294263b75fd616dc3298f362cbc2561e71accccb770098add21da",
+    "bytes": 7096
+  },
+  "paddleocr-ocr.md": {
+    "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleOCR/dab3fe35379033fdcb2d0e9572fac0b36c9a9ebf/docs/version3.x/pipeline_usage/OCR.en.md",
+    "sha256": "f12732a0d2ad81c2c30d0f654cde2bd43d20d2299088947891a0c5344ac716d1",
+    "bytes": 132572
+  },
+  "paddleocr-text-recognition.md": {
+    "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleOCR/dab3fe35379033fdcb2d0e9572fac0b36c9a9ebf/docs/version3.x/module_usage/text_recognition.en.md",
+    "sha256": "97789065147c5882443594b6dbdf73b1e93482925896d05341ce4f4c6b515777",
+    "bytes": 55788
+  },
+  "paddleocr-license.txt": {
+    "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleOCR/dab3fe35379033fdcb2d0e9572fac0b36c9a9ebf/LICENSE",
+    "sha256": "3840c5c0c61c294264d2dd77b8777be6ddd90121ef4e0e64abcd22edea581d6e",
+    "bytes": 11376
+  },
+  "tessdata-README.md": {
+    "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/README.md",
+    "sha256": "22fee9835bff02fb7013aa9786a2144ae3d4c219083089375985a62808e7215e",
+    "bytes": 4353
+  },
+  "tessdata-LICENSE": {
+    "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  "tessdoc-Installation.md": {
+    "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdoc/08d630d27e48366ac1bc9dd0b61408977ceb9ae3/Installation.md",
+    "sha256": "5711828c5ca3afd27852af2a2d5aafd0bc86a361ed079cee6d4a24efc4e3a10b",
+    "bytes": 10969
+  },
+  "tessdoc-Data-Files.md": {
+    "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdoc/08d630d27e48366ac1bc9dd0b61408977ceb9ae3/Data-Files.md",
+    "sha256": "7b95571b917b474a97e5d5008eb2aeabb268a8c3c7c68ac499142ed8f2769a85",
+    "bytes": 18581
+  },
+  "mlx-vlm-LICENSE": {
+    "url": "https://raw.githubusercontent.com/Blaizzy/mlx-vlm/138d7617d39653b39a5cbc379b1b5907a4481d67/LICENSE",
+    "sha256": "f74c448746be3376e27dee43e2be9ec9d55f4820cd7466c603a6c7d1fd2d25b8",
+    "bytes": 1069
+  },
+  "mlx-vlm-README.md": {
+    "url": "https://raw.githubusercontent.com/Blaizzy/mlx-vlm/138d7617d39653b39a5cbc379b1b5907a4481d67/README.md",
+    "sha256": "514780483efc14e7c365eff0bc0aff1949c97811ff6b2e3ddcf8d250319cc741",
+    "bytes": 79098
+  },
+  "tesseract-license.txt": {
+    "url": "https://raw.githubusercontent.com/tesseract-ocr/tesseract/5.5.4/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  "tesseract-commit.json": {
+    "url": "https://api.github.com/repos/tesseract-ocr/tesseract/commits/5.5.4",
+    "sha256": "0f031ef44e4fe17f4a1e089a08df371c9181ccec3e266952e51ebaf7ccb24d19",
+    "bytes": 4625
+  },
+  "en_PP-OCRv5_mobile_rec-README.md": {
+    "url": "https://huggingface.co/PaddlePaddle/en_PP-OCRv5_mobile_rec/raw/267c36e24c331595590fe7bd72bde2436fd286f2/README.md",
+    "sha256": "4c1cfd6e103b0966fe97505b5254cfa35a931d47d7effca97a9db47fb57dd699",
+    "bytes": 6908
+  },
+  "eng-traineddata-metadata.json": {
+    "url": "https://api.github.com/repos/tesseract-ocr/tessdata_fast/contents/eng.traineddata?ref=87416418657359cb625c412a48b6e1d6d41c29bd",
+    "sha256": "ccd1d17b835e17b3b2efced58d27a2e32861f3b21a593d52bdba12ec28411e61",
+    "bytes": 1054
+  },
+  "PP-OCRv5_mobile_det-README.md": {
+    "url": "https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_det/raw/0d63e78e2b680928f6b1747d76a08db6e645efb7/README.md",
+    "sha256": "4cc20ad6d41af86b3ce9885ffb0956e152574a2eb14179aeb07fd2d3956161ca",
+    "bytes": 16243
+  },
+  "PaddleOCR-VL-1.6-README.md": {
+    "url": "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6/raw/c5630abae1d940eafe0697512a0325494b02ab42/README.md",
+    "sha256": "d6c5b77a660577f6e18021defccd835bdc93a8c6538f5a479d597f3e94288abf",
+    "bytes": 21424
+  },
+  "textocr-dataset.html": {
+    "url": "https://textvqa.org/textocr/dataset/",
+    "sha256": "f38607977e76bf20e6ab98e4930514040a6c9f2a4cdaee916a980179bf2e071b",
+    "bytes": 2804
+  },
+  "mlx-vlm-paddleocr.md": {
+    "url": "https://raw.githubusercontent.com/Blaizzy/mlx-vlm/138d7617d39653b39a5cbc379b1b5907a4481d67/mlx_vlm/models/paddleocr_vl/README.md",
+    "sha256": "c97156a5f786e523b8b52141ba16020598f269f3015a617d8ce507c5a3173e85",
+    "bytes": 2338
+  },
+  "openimages-facts.html": {
+    "url": "https://storage.googleapis.com/openimages/web/factsfigures.html",
+    "sha256": "c3df3356e90f93b44c464241308506f335109e3b90a608ccf14553a37821a7d3",
+    "bytes": 34327
+  }
+}

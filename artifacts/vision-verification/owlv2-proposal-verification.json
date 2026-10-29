@@ -1,0 +1,7 @@
+{
+  "elapsed_s": 8.177746834000573,
+  "source_image": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/Warehouse_026-preview.jpg",
+  "all_generated_unreviewed": true,
+  "input_unchanged": true,
+  "claim_status": "Model proposals for human correction; not ground truth or accuracy evidence"
+}

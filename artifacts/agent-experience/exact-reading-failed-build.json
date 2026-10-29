@@ -1,0 +1,75 @@
+{
+  "view": {
+    "id": "488044dbeb794abf9c772e1d9b344a3c",
+    "project_id": "dd602abbadcc4651",
+    "status": "failed",
+    "phase": "planning",
+    "next_action": "retry",
+    "message": "Local planning failed: Exceeded maximum output retries (2)",
+    "questions": [],
+    "log": [
+      {
+        "at": "2026-10-28T19:44:53.126502+00:00",
+        "phase": "planning",
+        "message": "Interpreting your goal and preparing a working preview"
+      },
+      {
+        "at": "2026-10-28T19:47:10.211976+00:00",
+        "phase": "planning",
+        "message": "Local planning failed: Exceeded maximum output retries (2)"
+      }
+    ],
+    "preview": null,
+    "selected_candidate_index": null,
+    "evaluations": [],
+    "project": {},
+    "created_at": "2026-10-28T19:44:53.090028+00:00",
+    "updated_at": "2026-10-28T19:47:10.212000+00:00"
+  },
+  "operation": {
+    "id": "488044dbeb794abf9c772e1d9b344a3c",
+    "project_id": "dd602abbadcc4651",
+    "trace_id": "62c919bbba75401d99f4435bb3982e9c",
+    "root_span_id": "72cf2a3aa3c94945",
+    "owner_pid": 54410,
+    "created_at": 1793216693.126422,
+    "updated_at": 1793216830.212003,
+    "deadline": 1793217593.114665,
+    "status": "failed",
+    "input_fingerprint": "43a4867b442102e2b492c8a5758548d3e0c92f38d91949809e67bbabf628ee92",
+    "brief": "Read printed labels and create a local event only when the text exactly equals \"ABC-990\".",
+    "source_path": "media",
+    "detector_model": "",
+    "state": {
+      "phase": "plan",
+      "budget": {
+        "max_tool_calls": 30,
+        "max_wall_seconds": 900.0,
+        "max_training_minutes": 4.0,
+        "max_model_calls": 5,
+        "tool_calls": 0,
+        "model_calls": 0,
+        "training_minutes": 0.0,
+        "started_at": 1793216693.1262589
+      },
+      "brief_confirmed": false,
+      "candidate_count": 0,
+      "compiled_count": 0,
+      "evaluation": null,
+      "deployment_approved": false,
+      "override_reason": null
+    },
+    "calls": [],
+    "history": [],
+    "decision": null,
+    "result": null,
+    "error": "Local planning failed: Exceeded maximum output retries (2)"
+  },
+  "prompt": "Read printed labels and create a local event only when the text exactly equals \"ABC-990\".",
+  "data_hash": "72d7461ae0c99b6ede3d7bd3d06c7fd5cd335d0b86dd5dba3c107f841d4488bd",
+  "plan_operation_id": null,
+  "training_approved_hash": null,
+  "training_attempts": 0,
+  "training_job_id": null,
+  "refinement_decisions": []
+}

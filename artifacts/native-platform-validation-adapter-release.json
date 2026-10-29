@@ -1,0 +1,88 @@
+{
+  "checked_at": "2026-10-29T01:49:10.701320+00:00",
+  "scope": "Native state contracts and backend payload decoding; actual OCR subprocess validation recorded separately. No new LLM calls or UI acceptance.",
+  "ui_revision": "Strict OCR stdout ownership and idle candidate preview inspection with project, request, and full pipeline identity guards; approval candidate unchanged.",
+  "results": {
+    "debug": {
+      "binary": "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Debug/VisionApp",
+      "sha256": "87192fd75a730a48affa8eb395f8801dc2fa3b08d8c30460b8663b2a0585982c",
+      "result": {
+        "status": "passed",
+        "checks": 148
+      }
+    },
+    "release": {
+      "binary": "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Release/VisionApp",
+      "sha256": "ced2cda1d05299fedac5f0490ae92a4725519dc5c7e40916724ca37afcd2c09f",
+      "result": {
+        "status": "passed",
+        "checks": 148
+      }
+    }
+  },
+  "payloads": [
+    {
+      "path": "artifacts/capability-catalog-local.json",
+      "sha256": "de0c8f166c2c0b19f8ea4ef8860e430961782dcded2ceeb4d4686689fd4d4cea"
+    },
+    {
+      "path": "artifacts/platform-fixture/build-status.json",
+      "sha256": "4f936e653217fe7c11dcffc70aba3e9e52d0050bc0fd9d7a91ec02f355c73a8d"
+    },
+    {
+      "path": "artifacts/platform-fixture/17b29cb6a2fa1a0dfe0b2ba95ecb2603091a2a485b36dda67a0acbfff81c50ea.json",
+      "sha256": "81fa96a8f1d71432d2113292078d79c54a15387bebad06a153be80d4d451e910"
+    },
+    {
+      "path": "artifacts/platform-fixture/4c21b8ff8448b356bdfdb39e5f3c3ea71904da2a560cfb7c22fe298087361a04.json",
+      "sha256": "388cf8540a3ce2b5597078f02d1fa9792ecdb5c21e9368380852268f027317f0"
+    },
+    {
+      "path": "artifacts/platform-fixture/4d2b86fd7e73cd2ef6c7589bbd4b4fbd59ee68233736c9be666a226062a83cd6.json",
+      "sha256": "9515c54a3244bd58635c8b0accd9abb1750b85ed76ff836e8bcb1b4508e7bfce"
+    },
+    {
+      "path": "artifacts/platform-fixture/773ddc2398eb475fc0849d8ba79ddaf262360a118ed213c1fb7890d8df536305.json",
+      "sha256": "96bef535b87c0a1f488ef1bf7ad710069492992dbd670b9da1eb0e02933ce843"
+    },
+    {
+      "path": "artifacts/platform-fixture/86b39764ab1c3b002f21a0592c99812a9300f409d2b140cde1f0649a13479176.json",
+      "sha256": "b19ec406df1ec72e13d3561cbd19fbb9946d90a8db7f69c6d1e4432d80424a5b"
+    },
+    {
+      "path": "artifacts/platform-fixture/c4c5426b9af3a433e33ff7b038fd49c4dcae55a16369fc4712ad3d61a96fb5c5.json",
+      "sha256": "702b439aca6548cc30fb374f472a2d189911748e7fc8f6ff2858ab1b9fef6cea"
+    },
+    {
+      "path": "artifacts/platform-fixture/fcc7c1493e3d62e23131daa63813469930e7fb09a4e4e117be4a080d26406cec.json",
+      "sha256": "1dac00e18228a9e8f2cc6da2a6dd5ec12e37749538648492c1416363894efbc9"
+    },
+    {
+      "path": "artifacts/stronger-planner/qwen14-selection-warehouse.json",
+      "check_flag": "--planning-probe",
+      "sha256": "60ee3b0e3f225198750e4de57914b28576f5b47c38cc7fb01920ebc2cc41d601"
+    }
+  ],
+  "fixture_tool_events": 10,
+  "capability_entries": 73,
+  "toolchain_warning": "CommandLineTools linker reports two absent optional search paths; build exits successfully.",
+  "native_ocr_policy": "apple-vision-en-us-v2",
+  "ocr_observation_report": "artifacts/native-ocr-language-policy.json",
+  "captured_model_proposals": [
+    {
+      "candidate_index": 0,
+      "model_id": "local-detector-rtdetr-prior001-20261028",
+      "status": "proposed",
+      "proposed_reason": "Use this detector for counting people in warehouse images with a confidence threshold of 0.2."
+    },
+    {
+      "candidate_index": 1,
+      "model_id": "local-ssdlite-7dcfc58e1c6e",
+      "status": "proposed",
+      "proposed_reason": "Use this detector for counting people in warehouse images with a confidence threshold of 0.2."
+    }
+  ],
+  "stdout_validation_report": "artifacts/native-ocr-stdout-validation.json",
+  "deterministic_checks": 138,
+  "external_payload_checks": 10
+}

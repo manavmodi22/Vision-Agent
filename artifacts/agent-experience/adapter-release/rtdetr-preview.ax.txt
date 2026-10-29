@@ -1,0 +1,100 @@
+Window: "VisionApp", App: VisionApp.
+0 standard window VisionApp, Secondary Actions: Raise, ID: SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<VisionApp.ContentView, SwiftUI._EnvironmentKeyWritingModifier<Swift.Optional<VisionApp.WorkspaceModel>>>, SwiftUI._EnvironmentKeyWritingModifier<Swift.Optional<VisionApp.EngineSupervisor>>>, SwiftUI._FlexFrameLayout>, SwiftUI._PreferenceWritingModifier<SwiftUI.PreferredColorSchemeKey>>, SwiftUI._TaskModifier2>-1-AppWindow-1
+	1 container
+		2 text Count people in this warehouse footage and show boxes. Use c
+		3 image Description: Scan, ID: viewfinder
+		4 text VisionApp Agent On this Mac
+		5 button Build a new app
+		6 text Your apps
+		7 button Description: New Folder, Help: Create a named project, ID: folder.badge.plus
+		8 scroll area Secondary Actions: Scroll Up, Scroll Down
+			9 button Count people in this warehouse footage and show boxes. Use c, Building
+			10 button Read printed labels and create a local event only when the t, Building
+			11 button Read printed labels and create a local event only when the t, Draft
+			12 button Count people in this warehouse footage. Show boxes and save, Building
+			13 button Count people inside region A in this warehouse footage. Show, Building
+			14 button Count people in this warehouse footage and show bounding box, Building
+			15 button Warehouse lab · custom objects, Building
+			16 button NVIDIA warehouse · real footage, Building
+			17 button NVIDIA warehouse · annotated synthetic, Building
+			18 scroll bar (settable, float) 0
+				19 value indicator (settable, float) 0
+				20 increment arrow button
+				21 decrement arrow button
+				22 increment page button
+				23 decrement page button
+		24 button Agent
+		25 button Application
+		26 disclosure triangle Description: Tools, Value: off
+		27 scroll area Secondary Actions: Scroll Up, Scroll Down
+			28 text Build with your agent Your examples
+			29 button Add media
+			30 scroll area Secondary Actions: Scroll Left, Scroll Right
+				31 image
+				32 image
+				33 image
+				34 image
+				35 image
+				36 scroll bar (settable, float) 0
+					37 value indicator (settable, float) 0
+					38 increment arrow button
+					39 decrement arrow button
+					40 increment page button
+					41 decrement page button
+			42 text 20 sample images Build plan Revision 3 1. custom-candidate-1 Model to test: owlv2-base-patch16 Proposed reason: Use open-vocabulary detection for people in the warehouse footage. This model supports detection and can be used for counting. Count Mae ≤ 0.5 2. custom-candidate-2 Model to test: rtdetr-v2-r18 Proposed reason: Use a closed-vocabulary detector trained on common objects, including people, for counting in the warehouse footage. Count Mae ≤ 0.5 Paused Evaluate 2 human checkpoints · 1 bounded experiments Saved 7:11:43 PM
+			43 button Review plan
+			44 text You Count people in this warehouse footage and show boxes. Use confidence 0.2. Do not create events. Try two different compatible installed detector models with the same count MAE evaluation target. Agent Configured 2 alternatives. Displays counts of "person" in each processed frame. Agent Review the labels on 20 evaluation images, then continue. 0 are reviewed. Evaluation requires 10–50 reviewed images; suggestions are not ground truth. Agent activity Reading your app context Completed Evaluate 52 ms
+			45 disclosure triangle Description: All 30 recorded events, Value: off
+			46 disclosure triangle Description: Build status history, Value: off
+			47 scroll bar (settable, float) 0
+				48 value indicator (settable, float) 0
+				49 increment arrow button
+				50 decrement arrow button
+				51 increment page button
+				52 decrement page button
+		53 text Your review is needed Check the proposed boxes and classes on real examples. Only mark an image reviewed after checking it.
+		54 button Review annotations
+		55 button Continue after review
+		56 button Capabilities
+		57 text Answer the agent or describe what to change…
+		58 button Settings & models
+		59 scroll area Secondary Actions: Scroll Up, Scroll Down
+			60 text entry area (settable)
+			61 scroll bar (disabled, settable, float) 0
+		62 text Engine connected
+		63 button (disabled) Continue building
+		64 scroll area Secondary Actions: Scroll Up, Scroll Down
+			65 text Your application Draft Count people in this warehouse footage and show boxes. Use confidence 0.2. Do not create events. Try two different compatible installed detector models with the same count MAE evaluation target. Preview on your examples
+			66 button Test preview
+			67 Application view
+				68 radio button Description: Preview, Value: 1
+				69 radio button Description: Workflow details, Value: 0
+			70 pop up button Inspect preview, Value: Candidate 2 · rtdetr-v2-r18
+			71 text Preview inspection only · app approval is unchanged. MODEL OUTPUT 133 ms / frame person  30% person  73% person  25% person  20%
+			72 image
+			73 button Back
+			74 text Sample 2 of 5
+			75 button Forward
+			76 collection Secondary Actions: AXScrollToTop, AXScrollToBottom
+				77 text person: 4
+			78 button Correct this image
+			79 text Review labels for the displayed example. FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted.
+			80 scroll bar (settable, float) 0
+				81 value indicator (settable, float) 0
+				82 increment arrow button
+				83 decrement arrow button
+				84 increment page button
+				85 decrement page button
+	86 close button
+	87 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	88 minimize button
+	89 text VisionApp
+90 menu bar
+	91 VisionApp
+	92 File
+	93 Edit
+	94 View
+	95 Window
+	96 Help
+
+The focused UI element is 0 standard window VisionApp, Secondary Actions: Raise, ID: SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<VisionApp.ContentView, SwiftUI._EnvironmentKeyWritingModifier<Swift.Optional<VisionApp.WorkspaceModel>>>, SwiftUI._EnvironmentKeyWritingModifier<Swift.Optional<VisionApp.EngineSupervisor>>>, SwiftUI._FlexFrameLayout>, SwiftUI._PreferenceWritingModifier<SwiftUI.PreferredColorSchemeKey>>, SwiftUI._TaskModifier2>-1-AppWindow-1

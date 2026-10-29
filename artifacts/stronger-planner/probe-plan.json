@@ -1,0 +1,32 @@
+{
+  "runtime_source_identity": "4f94d391e5238170979135e9425e4212bd43d8e885d6c66f764264433c191ccb",
+  "test_driver": "evals/run_refinement_live.py",
+  "requested_cases": [
+    "remove_class",
+    "count_upper",
+    "sample_seconds",
+    "eval_recall",
+    "read_text_exact"
+  ],
+  "baseline_historical": "artifacts/refinement-live-baseline24.json",
+  "baseline_is_source_matched": false,
+  "request_deadline_s": 25,
+  "operation_deadline_s": 90,
+  "native_binary": "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Debug/VisionApp",
+  "inference_started": false,
+  "frozen_runtime_verified": true,
+  "paired_current_refinement_baseline_required": true,
+  "initial_cases": [
+    "count-capacity",
+    "count-duration",
+    "damage-both"
+  ],
+  "paired_current_initial_baseline": "artifacts/custom-goals-final.json",
+  "evidence_hashes": {
+    "evals/run_refinement_live.py": "cf8f8bbd720050a94208c7b4f4d74b48a3b38ac1a3378ad8a964915326159ed3",
+    "evals/refinement_cases.json": "21454b993c436a9e7addc6c7aefc7b28717d75459f63ec619485deea413a0d82",
+    "evals/run_custom_goals.py": "a9b3bd65ec0350110f0ff07e46acacd75613991ef67fb8a61c19b21eaad42f0e",
+    "evals/custom_goals.json": "29742504b8eb5a78c2386d214c6fdc16935b060936f55ae0d0792bfd0af4e57f",
+    "artifacts/custom-goals-final.json": "fcb528eb2bac05e41125d254d2d623a034015d670a6cf1ff6f4622da63dcd297"
+  }
+}

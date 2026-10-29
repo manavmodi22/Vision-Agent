@@ -1,0 +1,111 @@
+{
+  "model": "visionapp-planner",
+  "model_url": "http://127.0.0.1:1234/v1",
+  "scope": "Actual LLM language interpretation and typed patch/fixture preview; no warehouse accuracy claim",
+  "passed": 0,
+  "total": 5,
+  "planned_cases": 5,
+  "complete": true,
+  "cases": [
+    {
+      "id": "remove_class",
+      "prompt": "Stop detecting pallets; keep the cartons.",
+      "context": "two_classes",
+      "project_id": "749f73a45d614507",
+      "build_id": "8ccfb4d605e3409298d892ab01e21991",
+      "provenance": "original generated synthetic fixture pixels",
+      "passed": false,
+      "error": "Local refinement failed: Exceeded maximum output retries (2)",
+      "model_calls": 3,
+      "tool_calls": [
+        {
+          "name": "build_refinement_context",
+          "status": "completed"
+        }
+      ],
+      "trace_id": "a7ab39d29f374fb2b689ba579948fca7",
+      "elapsed_s": 15.470101541024633,
+      "no_approval_or_run": true
+    },
+    {
+      "id": "count_upper",
+      "prompt": "Change the rule to alert when the count is no more than two.",
+      "context": "pallets",
+      "project_id": "8448b0fb480040ef",
+      "build_id": "baa8a585a59a400ca22e60a56a1ab68e",
+      "provenance": "original generated synthetic fixture pixels",
+      "passed": false,
+      "error": "Local refinement failed: Exceeded maximum output retries (2)",
+      "model_calls": 3,
+      "tool_calls": [
+        {
+          "name": "build_refinement_context",
+          "status": "completed"
+        }
+      ],
+      "trace_id": "017ef105c6344577a52e944caa53e06a",
+      "elapsed_s": 13.573528459004592,
+      "no_approval_or_run": true
+    },
+    {
+      "id": "sample_seconds",
+      "prompt": "Check just one frame every two seconds.",
+      "context": "pallets",
+      "project_id": "2a58169a01284d77",
+      "build_id": "9626da1b9e954fc2922d2d1ee1628375",
+      "provenance": "original generated synthetic fixture pixels",
+      "passed": false,
+      "error": "Local refinement failed: Exceeded maximum output retries (2)",
+      "model_calls": 3,
+      "tool_calls": [
+        {
+          "name": "build_refinement_context",
+          "status": "completed"
+        }
+      ],
+      "trace_id": "4dc945c87fe646b89e01feec96a29d57",
+      "elapsed_s": 22.753717500017956,
+      "no_approval_or_run": true
+    },
+    {
+      "id": "eval_recall",
+      "prompt": "Use recall to judge success, and require at least ninety percent.",
+      "context": "pallets",
+      "project_id": "c9cdc7f47a8e4867",
+      "build_id": "e50aad1b6dac493787a9093fb0492c70",
+      "provenance": "original generated synthetic fixture pixels",
+      "passed": false,
+      "error": "Local refinement failed: Exceeded maximum output retries (2)",
+      "model_calls": 3,
+      "tool_calls": [
+        {
+          "name": "build_refinement_context",
+          "status": "completed"
+        }
+      ],
+      "trace_id": "70fad5a377d0420092fa5f675e61a221",
+      "elapsed_s": 22.68203754199203,
+      "no_approval_or_run": true
+    },
+    {
+      "id": "read_text_exact",
+      "prompt": "The expected label is now SKU-042, and it must match exactly.",
+      "context": "labels",
+      "project_id": "f3ee6378971546bf",
+      "build_id": "3b8f707bea204e5a9f844f0e507e2713",
+      "provenance": "original generated synthetic fixture pixels",
+      "passed": false,
+      "error": "Local refinement failed: Exceeded maximum output retries (2)",
+      "model_calls": 3,
+      "tool_calls": [
+        {
+          "name": "build_refinement_context",
+          "status": "completed"
+        }
+      ],
+      "trace_id": "2ebb4f0479514b00a72eff632d12d99b",
+      "elapsed_s": 25.563020000001416,
+      "no_approval_or_run": true
+    }
+  ]
+}

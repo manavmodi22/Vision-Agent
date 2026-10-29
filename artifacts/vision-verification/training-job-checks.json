@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "full_labels_preserved": 20,
+  "holdout_count": 10,
+  "candidates_scored": 2,
+  "automatic_deployment": false,
+  "source": "published NVIDIA synthetic GT; isolated verification workspace"
+}

@@ -1,0 +1,12 @@
+{"processed_frames":1,"detections":1,"processing_ms":5936.271707993001,"dropped":169,"sampled_out":14,"width":1280,"height":720,"state":"running"}
+{"processed_frames":2,"detections":2,"processing_ms":700.9715830208734,"dropped":178,"sampled_out":28,"width":1280,"height":720,"state":"running"}
+{"processed_frames":3,"detections":2,"processing_ms":781.5626249648631,"dropped":187,"sampled_out":42,"width":1280,"height":720,"state":"running"}
+{"processed_frames":4,"detections":0,"processing_ms":750.68741600262,"dropped":195,"sampled_out":56,"width":1280,"height":720,"state":"running"}
+{"processed_frames":5,"detections":1,"processing_ms":960.6584999710321,"dropped":210,"sampled_out":70,"width":1280,"height":720,"state":"running"}
+{"processed_frames":6,"detections":0,"processing_ms":912.3287500115111,"dropped":223,"sampled_out":84,"width":1280,"height":720,"state":"running"}
+{"processed_frames":7,"detections":1,"processing_ms":815.324374998454,"dropped":233,"sampled_out":98,"width":1280,"height":720,"state":"running"}
+{"processed_frames":8,"detections":0,"processing_ms":897.9189580422826,"dropped":246,"sampled_out":112,"width":1280,"height":720,"state":"running"}
+{"processed_frames":9,"detections":1,"processing_ms":878.4475830034353,"dropped":258,"sampled_out":126,"width":1280,"height":720,"state":"running"}
+{"processed_frames":10,"detections":0,"processing_ms":893.9146670163609,"dropped":270,"sampled_out":140,"width":1280,"height":720,"state":"running"}
+{"processed_frames":11,"detections":1,"processing_ms":894.8796249460429,"dropped":283,"sampled_out":154,"width":1280,"height":720,"state":"running"}
+{"status":"passed","session_id":"ec999dd4e97e4275841bf3749f227f0d","processed_frames":11,"retained_frames":0,"state":"stopped"}

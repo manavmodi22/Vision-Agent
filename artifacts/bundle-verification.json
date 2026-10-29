@@ -1,0 +1,1115 @@
+{
+  "bundle": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app",
+  "relocation_test": true,
+  "isolated_imports": {
+    "python": "/tmp/va-bundle-lziy4zl6/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/bin/python3.12",
+    "engine": "/private/tmp/va-bundle-lziy4zl6/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine/__init__.py",
+    "paths": [
+      "/private/tmp/va-bundle-lziy4zl6/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python312.zip",
+      "/private/tmp/va-bundle-lziy4zl6/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12",
+      "/private/tmp/va-bundle-lziy4zl6/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/lib-dynload",
+      "/private/tmp/va-bundle-lziy4zl6/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/site-packages"
+    ],
+    "mps": true
+  },
+  "native_checks": {
+    "status": "passed",
+    "checks": 67
+  },
+  "apple_vision": {
+    "texts": [
+      "PALLET 12345",
+      "DOCK 4"
+    ],
+    "barcodes": []
+  },
+  "health": {
+    "status": "ok",
+    "version": "0.1.0",
+    "model_server": {
+      "reachable": true,
+      "models": [
+        "visionapp-planner"
+      ],
+      "error": null
+    },
+    "runtime": {
+      "data_dir": "/private/tmp/va-bundle-lziy4zl6/data",
+      "python": "/private/tmp/va-bundle-lziy4zl6/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/bin/python3.12",
+      "package_root": "/private/tmp/va-bundle-lziy4zl6/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+      "build_id": "d90a80c2a2abfb3678cd9565cc56432b26e4c5a9a63533836dc11437942953a1",
+      "pid": 37466
+    },
+    "capabilities": {
+      "image_folder": true,
+      "recorded_video": true,
+      "apple_vision": true,
+      "camera": false,
+      "screen_capture": false,
+      "training": true,
+      "alerts": true,
+      "native_app": true,
+      "live_frame_ingress": true
+    }
+  },
+  "fixture_preview": {
+    "frames": [
+      {
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-01.png",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.45,
+              0.4453125,
+              0.5875
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": "D"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.45,
+              0.9453125,
+              0.5875
+            ],
+            "zone": "D"
+          }
+        ],
+        "counts": {
+          "A": 0,
+          "B": 2,
+          "C": 0,
+          "D": 2
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 31.827665981836617,
+        "timestamp_s": 0.0,
+        "judgements": []
+      },
+      {
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-02.png",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.225,
+              0.1953125,
+              0.3625
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.45,
+              0.4453125,
+              0.5875
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.675,
+              0.4453125,
+              0.8125
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.225,
+              0.6953125,
+              0.3625
+            ],
+            "zone": "C"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": "D"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.45,
+              0.9453125,
+              0.5875
+            ],
+            "zone": "D"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.675,
+              0.9453125,
+              0.8125
+            ],
+            "zone": "D"
+          }
+        ],
+        "counts": {
+          "A": 1,
+          "B": 3,
+          "C": 1,
+          "D": 3
+        },
+        "texts": [],
+        "events": [
+          {
+            "type": "count_rule",
+            "zone": "B",
+            "count": 3,
+            "when": "count >= 3",
+            "held_s": 0.0
+          },
+          {
+            "type": "count_rule",
+            "zone": "D",
+            "count": 3,
+            "when": "count >= 3",
+            "held_s": 0.0
+          }
+        ],
+        "elapsed_ms": 46.73120804363862,
+        "timestamp_s": 0.0,
+        "judgements": []
+      },
+      {
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-03.png",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.225,
+              0.1953125,
+              0.3625
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.45,
+              0.1953125,
+              0.5875
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.225,
+              0.6953125,
+              0.3625
+            ],
+            "zone": "C"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.45,
+              0.6953125,
+              0.5875
+            ],
+            "zone": "C"
+          }
+        ],
+        "counts": {
+          "A": 2,
+          "B": 0,
+          "C": 2,
+          "D": 0
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 27.417917037382722,
+        "timestamp_s": 0.0,
+        "judgements": []
+      },
+      {
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-04.png",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.225,
+              0.1953125,
+              0.3625
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.45,
+              0.1953125,
+              0.5875
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.675,
+              0.1953125,
+              0.8125
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.225,
+              0.6953125,
+              0.3625
+            ],
+            "zone": "C"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.45,
+              0.6953125,
+              0.5875
+            ],
+            "zone": "C"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.675,
+              0.6953125,
+              0.8125
+            ],
+            "zone": "C"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": "D"
+          }
+        ],
+        "counts": {
+          "A": 3,
+          "B": 1,
+          "C": 3,
+          "D": 1
+        },
+        "texts": [],
+        "events": [
+          {
+            "type": "count_rule",
+            "zone": "A",
+            "count": 3,
+            "when": "count >= 3",
+            "held_s": 0.0
+          },
+          {
+            "type": "count_rule",
+            "zone": "C",
+            "count": 3,
+            "when": "count >= 3",
+            "held_s": 0.0
+          }
+        ],
+        "elapsed_ms": 48.40479098493233,
+        "timestamp_s": 0.0,
+        "judgements": []
+      },
+      {
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-05.png",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.45,
+              0.4453125,
+              0.5875
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": "D"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.45,
+              0.9453125,
+              0.5875
+            ],
+            "zone": "D"
+          }
+        ],
+        "counts": {
+          "A": 0,
+          "B": 2,
+          "C": 0,
+          "D": 2
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 30.70533403661102,
+        "timestamp_s": 0.0,
+        "judgements": []
+      }
+    ],
+    "elapsed_s": 0.19057295797392726,
+    "warnings": [
+      "SYNTHETIC FIXTURE: colored rectangles only. This does not validate warehouse detection.",
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+    ]
+  },
+  "fixture_evaluation": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "count_mae": 0.0,
+    "passed": true,
+    "metric": "count_mae",
+    "target": 0.5,
+    "sample_count": 16,
+    "failures": [],
+    "spec_hash": "15c0af91750296f2f12e02df5de4984018839dcc97d30c6c307e59685beddd09",
+    "dataset_hash": "cee8273616e6b4149b707a7ba7615261a4f97875a9bb3d9cbf305356e52e5199",
+    "text_accuracy": 1.0,
+    "warnings": [
+      "SYNTHETIC FIXTURE: colored rectangles only. This does not validate warehouse detection.",
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+    ]
+  },
+  "actual_semantic_question": {
+    "answer": "Found 13 recorded detection observations for pallet in zones A. Counted the complete requested period (America/Los_Angeles); showing 12 matching records. These are per-frame observations, not unique physical objects; repeated frames or runs may count the same object again. Dates refer to when records were saved, not camera capture times. 13 matching observations are marked synthetic.",
+    "evidence": [
+      {
+        "id": "a49b0ee34d1042109915921d1fae6537",
+        "created_at": "2026-10-28T17:50:49.582175+00:00",
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-10.png",
+        "crop_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/crops/a49b0ee34d1042109915921d1fae6537.jpg",
+        "label": "pallet",
+        "confidence": 0.99,
+        "counts": {
+          "A": 1,
+          "B": 3,
+          "C": 1,
+          "D": 3
+        },
+        "payload": {
+          "run_id": "f18e3fd02a5a456f8917b66bdb62f526",
+          "synthetic": true,
+          "zone": "A",
+          "box": [
+            0.0546875,
+            0.225,
+            0.1953125,
+            0.3625
+          ],
+          "kind": "detection"
+        }
+      },
+      {
+        "id": "e907f5883f164a0f93ed931800a43260",
+        "created_at": "2026-10-28T17:50:49.555222+00:00",
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-08.png",
+        "crop_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/crops/e907f5883f164a0f93ed931800a43260.jpg",
+        "label": "pallet",
+        "confidence": 0.99,
+        "counts": {
+          "A": 3,
+          "B": 1,
+          "C": 3,
+          "D": 1
+        },
+        "payload": {
+          "run_id": "f18e3fd02a5a456f8917b66bdb62f526",
+          "synthetic": true,
+          "zone": "A",
+          "box": [
+            0.0546875,
+            0.675,
+            0.1953125,
+            0.8125
+          ],
+          "kind": "detection"
+        }
+      },
+      {
+        "id": "fe35b84773c541749c8d5cc56988011e",
+        "created_at": "2026-10-28T17:50:49.553612+00:00",
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-08.png",
+        "crop_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/crops/fe35b84773c541749c8d5cc56988011e.jpg",
+        "label": "pallet",
+        "confidence": 0.99,
+        "counts": {
+          "A": 3,
+          "B": 1,
+          "C": 3,
+          "D": 1
+        },
+        "payload": {
+          "run_id": "f18e3fd02a5a456f8917b66bdb62f526",
+          "synthetic": true,
+          "zone": "A",
+          "box": [
+            0.0546875,
+            0.45,
+            0.1953125,
+            0.5875
+          ],
+          "kind": "detection"
+        }
+      },
+      {
+        "id": "178b70035bcc416fbcf585b20e11b4a8",
+        "created_at": "2026-10-28T17:50:49.550427+00:00",
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-08.png",
+        "crop_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/crops/178b70035bcc416fbcf585b20e11b4a8.jpg",
+        "label": "pallet",
+        "confidence": 0.99,
+        "counts": {
+          "A": 3,
+          "B": 1,
+          "C": 3,
+          "D": 1
+        },
+        "payload": {
+          "run_id": "f18e3fd02a5a456f8917b66bdb62f526",
+          "synthetic": true,
+          "zone": "A",
+          "box": [
+            0.0546875,
+            0.225,
+            0.1953125,
+            0.3625
+          ],
+          "kind": "detection"
+        }
+      },
+      {
+        "id": "9d4c58e9c7134e95803c8623b0f20196",
+        "created_at": "2026-10-28T17:50:49.541144+00:00",
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-07.png",
+        "crop_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/crops/9d4c58e9c7134e95803c8623b0f20196.jpg",
+        "label": "pallet",
+        "confidence": 0.99,
+        "counts": {
+          "A": 2,
+          "B": 0,
+          "C": 2,
+          "D": 0
+        },
+        "payload": {
+          "run_id": "f18e3fd02a5a456f8917b66bdb62f526",
+          "synthetic": true,
+          "zone": "A",
+          "box": [
+            0.0546875,
+            0.45,
+            0.1953125,
+            0.5875
+          ],
+          "kind": "detection"
+        }
+      },
+      {
+        "id": "0c773529d2254b0cbad74784e99ba362",
+        "created_at": "2026-10-28T17:50:49.538455+00:00",
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-07.png",
+        "crop_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/crops/0c773529d2254b0cbad74784e99ba362.jpg",
+        "label": "pallet",
+        "confidence": 0.99,
+        "counts": {
+          "A": 2,
+          "B": 0,
+          "C": 2,
+          "D": 0
+        },
+        "payload": {
+          "run_id": "f18e3fd02a5a456f8917b66bdb62f526",
+          "synthetic": true,
+          "zone": "A",
+          "box": [
+            0.0546875,
+            0.225,
+            0.1953125,
+            0.3625
+          ],
+          "kind": "detection"
+        }
+      },
+      {
+        "id": "c3ee9bf64e914402984f6a0d8506ae5a",
+        "created_at": "2026-10-28T17:50:49.516437+00:00",
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-06.png",
+        "crop_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/crops/c3ee9bf64e914402984f6a0d8506ae5a.jpg",
+        "label": "pallet",
+        "confidence": 0.99,
+        "counts": {
+          "A": 1,
+          "B": 3,
+          "C": 1,
+          "D": 3
+        },
+        "payload": {
+          "run_id": "f18e3fd02a5a456f8917b66bdb62f526",
+          "synthetic": true,
+          "zone": "A",
+          "box": [
+            0.0546875,
+            0.225,
+            0.1953125,
+            0.3625
+          ],
+          "kind": "detection"
+        }
+      },
+      {
+        "id": "9989837aae4e4ef89403ad3289c496c6",
+        "created_at": "2026-10-28T17:50:49.491092+00:00",
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-04.png",
+        "crop_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/crops/9989837aae4e4ef89403ad3289c496c6.jpg",
+        "label": "pallet",
+        "confidence": 0.99,
+        "counts": {
+          "A": 3,
+          "B": 1,
+          "C": 3,
+          "D": 1
+        },
+        "payload": {
+          "run_id": "f18e3fd02a5a456f8917b66bdb62f526",
+          "synthetic": true,
+          "zone": "A",
+          "box": [
+            0.0546875,
+            0.675,
+            0.1953125,
+            0.8125
+          ],
+          "kind": "detection"
+        }
+      },
+      {
+        "id": "9e72341f75b0448d8b801a0fb68a6148",
+        "created_at": "2026-10-28T17:50:49.488932+00:00",
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-04.png",
+        "crop_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/crops/9e72341f75b0448d8b801a0fb68a6148.jpg",
+        "label": "pallet",
+        "confidence": 0.99,
+        "counts": {
+          "A": 3,
+          "B": 1,
+          "C": 3,
+          "D": 1
+        },
+        "payload": {
+          "run_id": "f18e3fd02a5a456f8917b66bdb62f526",
+          "synthetic": true,
+          "zone": "A",
+          "box": [
+            0.0546875,
+            0.45,
+            0.1953125,
+            0.5875
+          ],
+          "kind": "detection"
+        }
+      },
+      {
+        "id": "0bb15466ba334daf8e17013ddce656fb",
+        "created_at": "2026-10-28T17:50:49.486380+00:00",
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-04.png",
+        "crop_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/crops/0bb15466ba334daf8e17013ddce656fb.jpg",
+        "label": "pallet",
+        "confidence": 0.99,
+        "counts": {
+          "A": 3,
+          "B": 1,
+          "C": 3,
+          "D": 1
+        },
+        "payload": {
+          "run_id": "f18e3fd02a5a456f8917b66bdb62f526",
+          "synthetic": true,
+          "zone": "A",
+          "box": [
+            0.0546875,
+            0.225,
+            0.1953125,
+            0.3625
+          ],
+          "kind": "detection"
+        }
+      },
+      {
+        "id": "2fba9952c35b4adbb7096f4c5f46d697",
+        "created_at": "2026-10-28T17:50:49.478595+00:00",
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-03.png",
+        "crop_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/crops/2fba9952c35b4adbb7096f4c5f46d697.jpg",
+        "label": "pallet",
+        "confidence": 0.99,
+        "counts": {
+          "A": 2,
+          "B": 0,
+          "C": 2,
+          "D": 0
+        },
+        "payload": {
+          "run_id": "f18e3fd02a5a456f8917b66bdb62f526",
+          "synthetic": true,
+          "zone": "A",
+          "box": [
+            0.0546875,
+            0.45,
+            0.1953125,
+            0.5875
+          ],
+          "kind": "detection"
+        }
+      },
+      {
+        "id": "8ab2d075c4f8463096b14d4ae707b42e",
+        "created_at": "2026-10-28T17:50:49.477054+00:00",
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/media/synthetic-03.png",
+        "crop_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/33288f1036e147b0/crops/8ab2d075c4f8463096b14d4ae707b42e.jpg",
+        "label": "pallet",
+        "confidence": 0.99,
+        "counts": {
+          "A": 2,
+          "B": 0,
+          "C": 2,
+          "D": 0
+        },
+        "payload": {
+          "run_id": "f18e3fd02a5a456f8917b66bdb62f526",
+          "synthetic": true,
+          "zone": "A",
+          "box": [
+            0.0546875,
+            0.225,
+            0.1953125,
+            0.3625
+          ],
+          "kind": "detection"
+        }
+      }
+    ],
+    "interpretation": {
+      "query": {
+        "operation": "count",
+        "labels": [
+          "pallet"
+        ],
+        "zones": [
+          "A"
+        ],
+        "kind": "detection",
+        "time": {
+          "period": "today",
+          "amount": null,
+          "start_date": null,
+          "end_date": null
+        },
+        "min_confidence": 0.0,
+        "text_contains": null
+      },
+      "timezone": "America/Los_Angeles",
+      "start_utc": "2026-10-28T07:00:00Z",
+      "end_utc": "2026-10-28T17:50:51.222086Z",
+      "reference_time": "2026-10-28T17:50:51.222086Z",
+      "matched_observations": 13,
+      "synthetic_observations": 13,
+      "unknown_provenance_observations": 0,
+      "evidence_returned": 12,
+      "complete_scope": true,
+      "time_basis": "record_created_at",
+      "count_unit": "per_frame_observations"
+    },
+    "questions": [],
+    "query_id": "9f08103648724378b01ddbe818a2acdd"
+  },
+  "actual_detector_preview": {
+    "frames": [
+      {
+        "image_path": "/private/tmp/va-bundle-lziy4zl6/data/projects/ceed202fcb5149fc/media/f85ed1d3-1c503895-warehouse-036.75s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.41919100284576416,
+            "box": [
+              0.34637120564778645,
+              0.42612934818974246,
+              0.4149155298868815,
+              0.5717201515480325
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {
+          "all": 1
+        },
+        "texts": [],
+        "events": [
+          {
+            "type": "count_rule",
+            "zone": "all",
+            "count": 1,
+            "when": "count >= 1",
+            "held_s": 0.0
+          }
+        ],
+        "elapsed_ms": 10936.479124997277,
+        "timestamp_s": 0.0,
+        "judgements": []
+      }
+    ],
+    "elapsed_s": 10.941004457999952,
+    "warnings": [
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+    ]
+  },
+  "models": [
+    {
+      "id": "fixture-color-v1",
+      "name": "Synthetic color fixture",
+      "license": "MIT",
+      "available": true,
+      "synthetic": true,
+      "backend": "numpy",
+      "description": "Test rectangles only; not a warehouse detector.",
+      "estimated_fps": null
+    },
+    {
+      "id": "owlv2-base-patch16",
+      "name": "OWLv2 base patch16 ensemble",
+      "license": "Apache-2.0",
+      "available": true,
+      "synthetic": false,
+      "backend": "transformers",
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/owlv2-base-patch16",
+      "source": "https://huggingface.co/google/owlv2-base-patch16-ensemble",
+      "description": "Open-vocabulary detector; install weights locally before use.",
+      "estimated_fps": null
+    },
+    {
+      "id": "apple-vision",
+      "name": "Apple Vision OCR and barcode",
+      "license": "macOS system framework",
+      "available": true,
+      "synthetic": false,
+      "backend": "apple-vision",
+      "description": "Native macOS OCR and barcode bridge.",
+      "estimated_fps": null
+    },
+    {
+      "id": "rtdetr-v2-r18",
+      "name": "RT-DETRv2 R18 pretrained",
+      "license": "Apache-2.0",
+      "available": true,
+      "synthetic": false,
+      "backend": "rtdetr-v2-r18",
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/rtdetr-v2-r18",
+      "source": "https://huggingface.co/PekingU/rtdetr_v2_r18vd",
+      "classes": [
+        "person",
+        "bicycle",
+        "car",
+        "motorbike",
+        "aeroplane",
+        "bus",
+        "train",
+        "truck",
+        "boat",
+        "traffic light",
+        "fire hydrant",
+        "stop sign",
+        "parking meter",
+        "bench",
+        "bird",
+        "cat",
+        "dog",
+        "horse",
+        "sheep",
+        "cow",
+        "elephant",
+        "bear",
+        "zebra",
+        "giraffe",
+        "backpack",
+        "umbrella",
+        "handbag",
+        "tie",
+        "suitcase",
+        "frisbee",
+        "skis",
+        "snowboard",
+        "sports ball",
+        "kite",
+        "baseball bat",
+        "baseball glove",
+        "skateboard",
+        "surfboard",
+        "tennis racket",
+        "bottle",
+        "wine glass",
+        "cup",
+        "fork",
+        "knife",
+        "spoon",
+        "bowl",
+        "banana",
+        "apple",
+        "sandwich",
+        "orange",
+        "broccoli",
+        "carrot",
+        "hot dog",
+        "pizza",
+        "donut",
+        "cake",
+        "chair",
+        "sofa",
+        "pottedplant",
+        "bed",
+        "diningtable",
+        "toilet",
+        "tvmonitor",
+        "laptop",
+        "mouse",
+        "remote",
+        "keyboard",
+        "cell phone",
+        "microwave",
+        "oven",
+        "toaster",
+        "sink",
+        "refrigerator",
+        "book",
+        "clock",
+        "vase",
+        "scissors",
+        "teddy bear",
+        "hair drier",
+        "toothbrush"
+      ],
+      "description": "COCO-pretrained detector and default base for custom-class fine-tuning.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-detector-rtdetr-prior001-20261028",
+      "name": "local-detector-rtdetr-prior001-20261028",
+      "license": "Apache-2.0",
+      "weights_license": "Apache-2.0 upstream checkpoint; local fine-tune also subject to project dataset terms",
+      "available": true,
+      "synthetic": false,
+      "backend": "rtdetr-v2-r18",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-detector-rtdetr-prior001-20261028",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-detector-rtdetr-smoke-20261028",
+      "name": "local-detector-rtdetr-smoke-20261028",
+      "license": "Apache-2.0",
+      "weights_license": "Apache-2.0 upstream checkpoint; local fine-tune also subject to project dataset terms",
+      "available": true,
+      "synthetic": false,
+      "backend": "rtdetr-v2-r18",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-detector-rtdetr-smoke-20261028",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-ssdlite-7dcfc58e1c6e",
+      "name": "local-ssdlite-7dcfc58e1c6e",
+      "license": "BSD-3-Clause architecture; project-trained weights",
+      "weights_license": "Project dataset terms; local use only until reviewed for distribution",
+      "available": true,
+      "synthetic": false,
+      "backend": "ssdlite320",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-ssdlite-7dcfc58e1c6e",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-ssdlite-9bdcf7bd1751",
+      "name": "local-ssdlite-9bdcf7bd1751",
+      "license": "BSD-3-Clause architecture; project-trained weights",
+      "weights_license": "Project dataset terms; local use only until reviewed for distribution",
+      "available": true,
+      "synthetic": false,
+      "backend": "ssdlite320",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-ssdlite-9bdcf7bd1751",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-ssdlite-finetune-smoke-20261028",
+      "name": "local-ssdlite-finetune-smoke-20261028",
+      "license": "BSD-3-Clause architecture; project-trained weights",
+      "weights_license": "Project dataset terms; local use only until reviewed for distribution",
+      "available": true,
+      "synthetic": false,
+      "backend": "ssdlite320",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-ssdlite-finetune-smoke-20261028",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-ssdlite-smoke-20261028",
+      "name": "local-ssdlite-smoke-20261028",
+      "license": "BSD-3-Clause architecture; project-trained weights",
+      "weights_license": "Project dataset terms; local use only until reviewed for distribution",
+      "available": true,
+      "synthetic": false,
+      "backend": "ssdlite320",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-ssdlite-smoke-20261028",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    }
+  ],
+  "signature_after_execution": "passed",
+  "status": "passed"
+}

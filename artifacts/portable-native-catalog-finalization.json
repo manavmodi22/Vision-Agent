@@ -1,0 +1,10 @@
+{
+  "prior_native_sha256": "0407c08202910ed1c3128064931617b2865185a5237628f25eaf49fe78097fea",
+  "release_sha256": "5e0b0df1891d744e88da89c11c11f5237b18054d42c441c318b4c954c8cbef57",
+  "packaged_native_sha256": "57f1cd4e5f8e554e2292b6af5d709780cebf130806feffa0820d7acf96b8ed79",
+  "native_checks": {
+    "status": "passed",
+    "checks": 120
+  },
+  "operation": "Catalog eligibility wording correction only; Python runtime unchanged; re-signed with deep signature verified"
+}

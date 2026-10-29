@@ -1,0 +1,157 @@
+{
+  "view": {
+    "id": "020592b8d936473c8efdbab8ccb0a64c",
+    "project_id": "70fca89f71a84d0f",
+    "status": "awaiting_review",
+    "phase": "reviewing",
+    "next_action": "review_labels",
+    "message": "Review the labels on 2 evaluation images, then continue. 0 are reviewed. Evaluation requires 10–50 reviewed images; suggestions are not ground truth. This workflow requires manually reviewed expected text or labels; automatic detector proposals do not apply.",
+    "questions": [],
+    "log": [
+      {
+        "at": "2026-10-29T01:21:47.686765+00:00",
+        "phase": "planning",
+        "message": "Interpreting your goal and preparing a working preview"
+      },
+      {
+        "at": "2026-10-29T01:22:18.265508+00:00",
+        "phase": "previewing",
+        "message": "Compiled 1 candidate(s) and previewed 2 images; observed 0 detections. Reads printed text. Checks whether the read text exactly matches \"ABC-990\". Creates a local event only when that comparison matches. Accuracy has not been evaluated."
+      },
+      {
+        "at": "2026-10-29T01:22:18.265782+00:00",
+        "phase": "labeling",
+        "message": "Using OWLv2 as the default open-vocabulary detector for arbitrary object classes; reading pipelines use their native reading adapter."
+      },
+      {
+        "at": "2026-10-29T01:22:20.613161+00:00",
+        "phase": "reviewing",
+        "message": "Review the labels on 2 evaluation images, then continue. 0 are reviewed. Evaluation requires 10–50 reviewed images; suggestions are not ground truth. This workflow requires manually reviewed expected text or labels; automatic detector proposals do not apply."
+      }
+    ],
+    "preview": {
+      "frames": [
+        {
+          "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/70fca89f71a84d0f/media/f2a76670-exact-match.png",
+          "detections": [],
+          "counts": {},
+          "texts": [
+            "ABC-990"
+          ],
+          "events": [
+            {
+              "type": "label_check",
+              "matched": true,
+              "expected": "ABC-990",
+              "observed": [
+                "ABC-990"
+              ]
+            }
+          ],
+          "elapsed_ms": 359.3991660163738,
+          "timestamp_s": 0.0,
+          "judgements": []
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/70fca89f71a84d0f/media/fafcff02-substring-only.png",
+          "detections": [],
+          "counts": {},
+          "texts": [
+            "ХABC-990Y"
+          ],
+          "events": [],
+          "elapsed_ms": 369.1986660123803,
+          "timestamp_s": 0.0,
+          "judgements": []
+        }
+      ],
+      "elapsed_s": 0.7292407919885591,
+      "warnings": [
+        "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+      ]
+    },
+    "selected_candidate_index": 0,
+    "evaluations": [],
+    "project": {},
+    "created_at": "2026-10-29T01:21:47.684257+00:00",
+    "updated_at": "2026-10-29T01:22:20.613177+00:00",
+    "plan": null,
+    "execution": null,
+    "tool_events": []
+  },
+  "operation": {
+    "id": "020592b8d936473c8efdbab8ccb0a64c",
+    "project_id": "70fca89f71a84d0f",
+    "trace_id": "44faf88b61384d3d90cfc8e2e13f68e0",
+    "root_span_id": "23671b4f59c045c8",
+    "owner_pid": 71827,
+    "created_at": 1793236907.6867352,
+    "updated_at": 1793236940.61318,
+    "deadline": 1793237807.685329,
+    "status": "running",
+    "input_fingerprint": "17ae0791bf9661ec9ee9dce3000a43d986729fd5922f70802e2355bd74e2e9d7",
+    "brief": "Read printed labels and create a local event only when the text exactly equals \"ABC-990\".",
+    "source_path": "media",
+    "detector_model": "",
+    "state": {
+      "phase": "evaluate",
+      "budget": {
+        "max_tool_calls": 30,
+        "max_wall_seconds": 900.0,
+        "max_training_minutes": 4.0,
+        "max_model_calls": 5,
+        "tool_calls": 1,
+        "model_calls": 0,
+        "training_minutes": 0.0,
+        "started_at": 1793236907.686723
+      },
+      "brief_confirmed": true,
+      "candidate_count": 1,
+      "compiled_count": 1,
+      "evaluation": null,
+      "deployment_approved": false,
+      "override_reason": null
+    },
+    "calls": [
+      {
+        "id": "af6f8dd2056d41018adf3298ae7fcfd1",
+        "kind": "tool",
+        "name": "build_prepare_review",
+        "started_ns": 1793236940480162000,
+        "ended_ns": 1793236940497724000,
+        "status": "completed",
+        "request": {
+          "project_id": "70fca89f71a84d0f"
+        },
+        "result": {
+          "image_count": 2,
+          "reviewed_count": 0,
+          "evaluation_image_count": 2,
+          "evaluation_reviewed_count": 0,
+          "candidate_count": 1,
+          "can_propose_labels": false,
+          "fixture": false,
+          "training_eligible": false,
+          "review_subset_created": false,
+          "comparison_scopes": [
+            "1e9a30491cd12132f1df8325117a47e795510b65b2577a2db38acc47b62e3078"
+          ]
+        },
+        "error": null
+      }
+    ],
+    "history": [],
+    "decision": null,
+    "result": null,
+    "error": null,
+    "skills": []
+  },
+  "prompt": "Read printed labels and create a local event only when the text exactly equals \"ABC-990\".",
+  "data_hash": "dc6c101a70ea003480c9d9ac479753283e22797966696bd4c68d260e720beeed",
+  "plan_operation_id": "091c5e7d60f044a4a845dda794608bc8",
+  "training_approved_hash": null,
+  "training_attempts": 0,
+  "training_job_id": null,
+  "refinement_decisions": [],
+  "skills": []
+}

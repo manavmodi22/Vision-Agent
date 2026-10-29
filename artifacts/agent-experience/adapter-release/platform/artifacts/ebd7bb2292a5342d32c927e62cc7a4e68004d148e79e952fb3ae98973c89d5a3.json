@@ -1,0 +1,532 @@
+{
+  "artifact": {
+    "id": "ebd7bb2292a5342d32c927e62cc7a4e68004d148e79e952fb3ae98973c89d5a3",
+    "project_id": "692e0290946d493a",
+    "kind": "tool_output",
+    "title": "build_propose_labels result",
+    "created_at": "2026-10-29T02:11:43.059769+00:00",
+    "sha256": "ebd7bb2292a5342d32c927e62cc7a4e68004d148e79e952fb3ae98973c89d5a3",
+    "media_type": "application/json",
+    "size_bytes": 13207
+  },
+  "content": {
+    "id": "692e0290946d493a-v1",
+    "annotations": [
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/6bbde703-warehouse-033.00s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.3735033869743347,
+            "box": [
+              0.3657603899637858,
+              0.40960286458333334,
+              0.43305492401123047,
+              0.5920425415039062
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "be828e8ab0cacf40eff8ad47d1b8bf72df5ba8a731ca7c5727bb22d4694c7daf",
+          "created_at": "2026-10-29T02:10:59.705723+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/66a2d701-warehouse-033.75s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.2790854573249817,
+            "box": [
+              0.5173921585083008,
+              0.07709666358100044,
+              0.5597836812337239,
+              0.23050895973488136
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.3841955065727234,
+            "box": [
+              0.34316867192586265,
+              0.41734879105179395,
+              0.4166748046875,
+              0.5722837660047743
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "4f1192f2eef2f3056ae2d3d7f551e333e3f03b341bb5a426355a47794746b3c3",
+          "created_at": "2026-10-29T02:11:02.197584+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/e525240a-warehouse-034.50s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.37468838691711426,
+            "box": [
+              0.34497671127319335,
+              0.42369952731662325,
+              0.4162107785542806,
+              0.5721846969039351
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "2d65189f76dc29de969a11300c7431c5053c07041ea8546e80ecdf28c90c5a5d",
+          "created_at": "2026-10-29T02:11:04.584372+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/73910641-warehouse-035.25s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.4033174216747284,
+            "box": [
+              0.3506879170735677,
+              0.393477291531033,
+              0.41414976119995117,
+              0.5708218044704861
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "fdff41a21971cd8a60d1800741c24d0fb655def629f936d1483159a68e5681a2",
+          "created_at": "2026-10-29T02:11:06.880815+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/a6f7b585-warehouse-036.00s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.3217436671257019,
+            "box": [
+              0.5188524881998698,
+              0.11714136335584853,
+              0.5383570353190105,
+              0.16937635916250723
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.3956942856311798,
+            "box": [
+              0.3422796567281087,
+              0.42377714934172456,
+              0.4164423624674479,
+              0.5714838098596644
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "9b657261bde5ec609fcd2b108743802042abfb365bffc3e31f228bf2e43e07ed",
+          "created_at": "2026-10-29T02:11:09.222346+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/2a9fe57c-warehouse-036.75s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.41919100284576416,
+            "box": [
+              0.34637120564778645,
+              0.42612934818974246,
+              0.4149155298868815,
+              0.5717201515480325
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "928bb623bb92a23870493a824d07982394261003a66b1e1f3853fe494a6b4f26",
+          "created_at": "2026-10-29T02:11:11.571608+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/b07672d8-warehouse-037.50s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.21694156527519226,
+            "box": [
+              0.5083491325378418,
+              0.15086407131618923,
+              0.5310236930847168,
+              0.21001065572102864
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.37779340147972107,
+            "box": [
+              0.34751386642456056,
+              0.4000629566333912,
+              0.4160297393798828,
+              0.5698030825014467
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "f1ce8e9d983604b10056824b36db6a68590fa07c84e2a8929a61657fac40256b",
+          "created_at": "2026-10-29T02:11:13.834812+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/61f86196-warehouse-038.25s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.38887983560562134,
+            "box": [
+              0.34747387568155924,
+              0.36656810619212965,
+              0.4125402768452962,
+              0.5718116477683738
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "a2afda4892a5e3d27558b9582fa9a09c7c895c6483edbaff56bb8049d5726aff",
+          "created_at": "2026-10-29T02:11:16.035970+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/60524125-warehouse-039.00s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.3782584071159363,
+            "box": [
+              0.37453009287516276,
+              0.3489030060944734,
+              0.4265732447306315,
+              0.5681229767975984
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "f17edca93723d5660372f8bdb0a52e25bc4daf7cb789962b884d7b131956b32c",
+          "created_at": "2026-10-29T02:11:17.995010+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/21eb8666-warehouse-039.75s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.37868016958236694,
+            "box": [
+              0.3440459569295247,
+              0.29560060854311343,
+              0.4008821487426758,
+              0.48979407416449655
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.307735800743103,
+            "box": [
+              0.49877052307128905,
+              0.17902707700376158,
+              0.5274372736612956,
+              0.327674639666522
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "01ef735b6d9bf61900b99107a2000d58adfacc234b237605061f3a724e1c5dc6",
+          "created_at": "2026-10-29T02:11:20.032209+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/b1cb0a50-warehouse-040.50s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.3635205030441284,
+            "box": [
+              0.5064983367919922,
+              0.18947307445384837,
+              0.5319890975952148,
+              0.2686721236617477
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.24788673222064972,
+            "box": [
+              0.30506649017333987,
+              0.32426687169958046,
+              0.33920494715372723,
+              0.42144444783528645
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "76343d7b3633ede39572c45fdf5b2267d77abde4ba1813f96d7ee33f62a70a9a",
+          "created_at": "2026-10-29T02:11:21.916979+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/41705a98-warehouse-041.25s.png",
+        "detections": [],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "40a92c28aec1e005761420f80c6e14f361d6796a255033bf3dcb7a60dcb21051",
+          "created_at": "2026-10-29T02:11:23.903442+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/dc98fe6e-warehouse-042.00s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.20215676724910736,
+            "box": [
+              0.49946006139119464,
+              0.22223103841145833,
+              0.5288220723470052,
+              0.30739977801287616
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "e96a21a7309a253526b4bb79707ce97ee14a7aa3eb557599091f84c89c5b4a28",
+          "created_at": "2026-10-29T02:11:26.544335+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/61048b99-warehouse-042.75s.png",
+        "detections": [],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "b292123a6c76c849d50fd53ecb415b9e46ba698b44d70ace845a4d754b2c5691",
+          "created_at": "2026-10-29T02:11:29.009251+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/4fafcab5-warehouse-043.50s.png",
+        "detections": [],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "ba4cc9f49bde2f72a85fbb9d6f87e946d772d59f4f74281739d6cd04b3890914",
+          "created_at": "2026-10-29T02:11:31.113158+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/afb7925a-warehouse-044.25s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.28089776635169983,
+            "box": [
+              0.47123629252115884,
+              0.30443818834092884,
+              0.5092452685038249,
+              0.4084859212239583
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "2f4fc48e6d655ed66ccfa4e7fd4756ae86e400ad8f0317ba9232ef259b39426f",
+          "created_at": "2026-10-29T02:11:33.974649+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/1cfd68d2-warehouse-045.00s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.3760730028152466,
+            "box": [
+              0.459641170501709,
+              0.34745472095630786,
+              0.5033274332682292,
+              0.4679519370750145
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "430bdca7e7052a09b2fbf4459a0b2a0a2b170deb9e99981ebb8f46173eb9eeab",
+          "created_at": "2026-10-29T02:11:36.203071+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/8c7df621-warehouse-045.75s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.35804226994514465,
+            "box": [
+              0.4337672551472982,
+              0.42681381790726275,
+              0.4949141184488932,
+              0.578721844708478
+            ],
+            "zone": null
+          }
+        ],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "e711d7b51369a479bbfe14abe0e90afa75849afea883dc11cfcdf85a59d7555c",
+          "created_at": "2026-10-29T02:11:38.634644+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/6933babd-warehouse-046.50s.png",
+        "detections": [],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "3e9d1eb9bdd54e01a4893af21977ca5a0f484f4863f92fafb7ddc913cdeacecf",
+          "created_at": "2026-10-29T02:11:40.915845+00:00",
+          "status": "unverified_hypothesis"
+        }
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/1a95ac9d-warehouse-047.25s.png",
+        "detections": [],
+        "reviewed": false,
+        "expected_texts": [],
+        "proposal": {
+          "source": "model_proposal",
+          "model_id": "owlv2-base-patch16",
+          "spec_hash": "aad14cbcf9d8a814d82ad05e766bbe7c5219831a32ddc50654bfaf4192a3c557",
+          "image_sha256": "7ea7393f0f2334bcfde3f084587e74c83086917ae1963a8e14ae949323fb190b",
+          "created_at": "2026-10-29T02:11:42.972394+00:00",
+          "status": "unverified_hypothesis"
+        }
+      }
+    ]
+  }
+}

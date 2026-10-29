@@ -1,0 +1,112 @@
+[
+  {
+    "model": "PP-OCRv5_mobile_det",
+    "revision": "0d63e78e2b680928f6b1747d76a08db6e645efb7",
+    "file": "README.md",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr/models/PP-OCRv5_mobile_det/README.md",
+    "url": "https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_det/resolve/0d63e78e2b680928f6b1747d76a08db6e645efb7/README.md",
+    "bytes": 16243,
+    "sha256": "4cc20ad6d41af86b3ce9885ffb0956e152574a2eb14179aeb07fd2d3956161ca",
+    "publisher_digest_verified": true,
+    "declared_license": "apache-2.0"
+  },
+  {
+    "model": "PP-OCRv5_mobile_det",
+    "revision": "0d63e78e2b680928f6b1747d76a08db6e645efb7",
+    "file": "config.json",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr/models/PP-OCRv5_mobile_det/config.json",
+    "url": "https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_det/resolve/0d63e78e2b680928f6b1747d76a08db6e645efb7/config.json",
+    "bytes": 2871,
+    "sha256": "7ac1c33f377ba58561f4b89d3180b6add2b7c5c60a4edac90fa4e0ceccdc6665",
+    "publisher_digest_verified": true,
+    "declared_license": "apache-2.0"
+  },
+  {
+    "model": "PP-OCRv5_mobile_det",
+    "revision": "0d63e78e2b680928f6b1747d76a08db6e645efb7",
+    "file": "inference.json",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr/models/PP-OCRv5_mobile_det/inference.json",
+    "url": "https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_det/resolve/0d63e78e2b680928f6b1747d76a08db6e645efb7/inference.json",
+    "bytes": 229777,
+    "sha256": "05feef1acb00aa4cd7362b15f7f501fc4f99d7b1fa73c1c871e0c7b1504b0f5c",
+    "publisher_digest_verified": true,
+    "declared_license": "apache-2.0"
+  },
+  {
+    "model": "PP-OCRv5_mobile_det",
+    "revision": "0d63e78e2b680928f6b1747d76a08db6e645efb7",
+    "file": "inference.pdiparams",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr/models/PP-OCRv5_mobile_det/inference.pdiparams",
+    "url": "https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_det/resolve/0d63e78e2b680928f6b1747d76a08db6e645efb7/inference.pdiparams",
+    "bytes": 4692937,
+    "sha256": "afa1820cb16c1fd0dad589d0f8b389139061c1ef6d68019685fd07be997dda5b",
+    "publisher_digest_verified": true,
+    "declared_license": "apache-2.0"
+  },
+  {
+    "model": "PP-OCRv5_mobile_det",
+    "revision": "0d63e78e2b680928f6b1747d76a08db6e645efb7",
+    "file": "inference.yml",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr/models/PP-OCRv5_mobile_det/inference.yml",
+    "url": "https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_det/resolve/0d63e78e2b680928f6b1747d76a08db6e645efb7/inference.yml",
+    "bytes": 903,
+    "sha256": "98069072e1b6b37d727fd9d9f11725faa46d6ea0de012f2ed26caea011c37699",
+    "publisher_digest_verified": true,
+    "declared_license": "apache-2.0"
+  },
+  {
+    "model": "en_PP-OCRv5_mobile_rec",
+    "revision": "267c36e24c331595590fe7bd72bde2436fd286f2",
+    "file": "README.md",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr/models/en_PP-OCRv5_mobile_rec/README.md",
+    "url": "https://huggingface.co/PaddlePaddle/en_PP-OCRv5_mobile_rec/resolve/267c36e24c331595590fe7bd72bde2436fd286f2/README.md",
+    "bytes": 6908,
+    "sha256": "4c1cfd6e103b0966fe97505b5254cfa35a931d47d7effca97a9db47fb57dd699",
+    "publisher_digest_verified": true,
+    "declared_license": "apache-2.0"
+  },
+  {
+    "model": "en_PP-OCRv5_mobile_rec",
+    "revision": "267c36e24c331595590fe7bd72bde2436fd286f2",
+    "file": "config.json",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr/models/en_PP-OCRv5_mobile_rec/config.json",
+    "url": "https://huggingface.co/PaddlePaddle/en_PP-OCRv5_mobile_rec/resolve/267c36e24c331595590fe7bd72bde2436fd286f2/config.json",
+    "bytes": 10455,
+    "sha256": "16103ac291a82fca50f0bb000d62a4b8168f6042f03c89c44cf32f241d1eb1f2",
+    "publisher_digest_verified": true,
+    "declared_license": "apache-2.0"
+  },
+  {
+    "model": "en_PP-OCRv5_mobile_rec",
+    "revision": "267c36e24c331595590fe7bd72bde2436fd286f2",
+    "file": "inference.json",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr/models/en_PP-OCRv5_mobile_rec/inference.json",
+    "url": "https://huggingface.co/PaddlePaddle/en_PP-OCRv5_mobile_rec/resolve/267c36e24c331595590fe7bd72bde2436fd286f2/inference.json",
+    "bytes": 217712,
+    "sha256": "fd1b6ec722ea841a72d3ba43e527df1d1066d5d7808e0503ee3eec7265188753",
+    "publisher_digest_verified": true,
+    "declared_license": "apache-2.0"
+  },
+  {
+    "model": "en_PP-OCRv5_mobile_rec",
+    "revision": "267c36e24c331595590fe7bd72bde2436fd286f2",
+    "file": "inference.pdiparams",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr/models/en_PP-OCRv5_mobile_rec/inference.pdiparams",
+    "url": "https://huggingface.co/PaddlePaddle/en_PP-OCRv5_mobile_rec/resolve/267c36e24c331595590fe7bd72bde2436fd286f2/inference.pdiparams",
+    "bytes": 7772315,
+    "sha256": "3ec8a97ed6cefe8568d3e2ee90bb193299b566a7661aa4fd52d224b96b59f66b",
+    "publisher_digest_verified": true,
+    "declared_license": "apache-2.0"
+  },
+  {
+    "model": "en_PP-OCRv5_mobile_rec",
+    "revision": "267c36e24c331595590fe7bd72bde2436fd286f2",
+    "file": "inference.yml",
+    "path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr/models/en_PP-OCRv5_mobile_rec/inference.yml",
+    "url": "https://huggingface.co/PaddlePaddle/en_PP-OCRv5_mobile_rec/resolve/267c36e24c331595590fe7bd72bde2436fd286f2/inference.yml",
+    "bytes": 3964,
+    "sha256": "27e91d0582f40168aa218303c76e184bc78fa7a5d105aad0cfbad8458b441067",
+    "publisher_digest_verified": true,
+    "declared_license": "apache-2.0"
+  }
+]

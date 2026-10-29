@@ -1,0 +1,69 @@
+{
+  "1234": {
+    "status": "ok"
+  },
+  "1235": {
+    "status": "ok"
+  },
+  "models": {
+    "models": [
+      {
+        "name": "visionapp-planner",
+        "model": "visionapp-planner",
+        "modified_at": "",
+        "size": "",
+        "digest": "",
+        "type": "model",
+        "description": "",
+        "tags": [
+          ""
+        ],
+        "capabilities": [
+          "completion"
+        ],
+        "parameters": "",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "",
+          "families": [
+            ""
+          ],
+          "parameter_size": "",
+          "quantization_level": ""
+        }
+      }
+    ],
+    "object": "list",
+    "data": [
+      {
+        "id": "visionapp-planner",
+        "aliases": [
+          "visionapp-planner"
+        ],
+        "tags": [],
+        "object": "model",
+        "architecture": {
+          "input_modalities": [
+            "text"
+          ],
+          "output_modalities": [
+            "text"
+          ]
+        },
+        "created": 1793213486,
+        "owned_by": "llamacpp",
+        "meta": {
+          "vocab_type": 2,
+          "n_vocab": 151936,
+          "n_ctx": 8192,
+          "n_ctx_train": 40960,
+          "n_embd": 5120,
+          "n_params": 14768307200,
+          "size": 8995793920,
+          "ftype": "Q4_K - Medium"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "recorded_at": "2026-10-28T19:09:43.847512+00:00",
+  "runtime_source": "c19fac5076701e673f0f6cca843619382dd195d32fdf0bb5dc68f9488346b639",
+  "project_id": "efee680b7955431b",
+  "actual_native_flow": "Home \u2192 Try warehouse footage \u2192 goal \u2192 Build my app",
+  "goal": "Current app context (preserve unless the user requests a change):\n{\"existing_goal\":\"\",\"existing_app\":[],\"conversation\":[]}\nUser request:\nCount people in this warehouse footage. Show boxes and save a crop for review whenever at least one person appears. Use confidence 0.2.",
+  "model": "official Qwen3-14B Q4_K_M served as visionapp-planner",
+  "model_provenance": "artifacts/stronger-planner/model-provenance.json",
+  "model_call_count": 1,
+  "planner_compile_preview_s": 63.466767208999954,
+  "preview_frames": 5,
+  "preview_detections": 4,
+  "spec": {
+    "spec_version": "0.1",
+    "name": "custom-candidate-1",
+    "inputs": {
+      "source": {
+        "type": "image_folder",
+        "path": "media"
+      }
+    },
+    "blocks": [
+      {
+        "id": "sample",
+        "type": "frame_sample",
+        "params": {
+          "fps": 2
+        },
+        "inputs": {
+          "frames": "$inputs.source"
+        }
+      },
+      {
+        "id": "det",
+        "type": "detect",
+        "params": {
+          "model": "owlv2-base-patch16",
+          "classes": [
+            "person"
+          ],
+          "min_conf": 0.2
+        },
+        "inputs": {
+          "image": "$sample.frame"
+        }
+      },
+      {
+        "id": "count",
+        "type": "count_per_zone",
+        "params": {},
+        "inputs": {
+          "dets": "$det.dets"
+        }
+      },
+      {
+        "id": "full",
+        "type": "rule",
+        "params": {
+          "when": "count >= 1",
+          "hold_s": 0.0
+        },
+        "inputs": {
+          "value": "$count.counts"
+        }
+      },
+      {
+        "id": "out",
+        "type": "sink_event",
+        "params": {},
+        "inputs": {
+          "event": "$full.event"
+        }
+      }
+    ],
+    "eval": {
+      "set": "reviewed-v1",
+      "metric": "count_mae",
+      "target": 0.5
+    }
+  },
+  "completion_message": "Displays counts of \"person\" in each processed frame. Creates a local event when that count is at least 1.",
+  "annotation_images": 20,
+  "reviewed_images": 0,
+  "evaluation": null,
+  "deployment_approved": false,
+  "build_phase": "reviewing",
+  "next_action": "review_labels",
+  "software_acceptance_only": true,
+  "persisted_events": 0
+}

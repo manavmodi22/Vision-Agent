@@ -1,0 +1,32 @@
+{
+  "training": {
+    "model_id": "local-ssdlite-smoke-20261028",
+    "model_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-ssdlite-smoke-20261028",
+    "classes": [
+      "forklift",
+      "person"
+    ],
+    "epochs_completed": 1,
+    "steps": 5,
+    "elapsed_s": 5.307259041001089,
+    "final_loss": 13.438019752502441,
+    "training_samples": 10,
+    "evaluation_samples": 10,
+    "training_hash": "0b915e9d603fd49263538eb17a196dbf2b4c9b0244098c54ef2c3bfe25ec601e",
+    "evaluation_hash": "8ecaff1f1f2313463f2b56837b413aa03eff3cb4e9639651262472533ef99df3",
+    "device": "cpu",
+    "warnings": [
+      "Optimization completed; this model has not passed held-out evaluation or deployment approval.",
+      "Disjoint image contents were verified; independence of scenes, cameras and time periods was not.",
+      "Architecture code is BSD-3-Clause; trained weights retain project dataset conditions.",
+      "Initialized from scratch; a small training set is unlikely to produce a useful detector."
+    ]
+  },
+  "inference_elapsed_s": 0.21297375002177432,
+  "heldout_frame": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-006206.png",
+  "inference_detections": 170,
+  "checkpoint_format": "safetensors",
+  "base_weights": "none; initialized from scratch",
+  "provenance": "NVIDIA PhysicalAI-SmartSpaces published synthetic GT; no user review flags changed",
+  "limitation": "Optimization and saved-model inference smoke only; not accuracy or improvement validation"
+}

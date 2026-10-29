@@ -1,0 +1,69 @@
+{
+  "checked_at": "2026-10-29T02:03:32.338580+00:00",
+  "source_identity": "e098c7f30c336ab8914ce584b6940795585847756be1d8d3608d260fbc02f77c",
+  "status": "packaged_native_description_build_preview_and_annotation_verified; overall_architecture_incomplete",
+  "python_tests": {
+    "passed": 640,
+    "duration_s": 187.78,
+    "log": "artifacts/full-tests-adapter-release.log",
+    "tested_source_identity": "19f6e4115389679538f934d77a778d9b752952d49fb8d7256b72b91f61028367",
+    "scope": "Full suite before the isolated planner transport fix; focused current-source regression recorded separately."
+  },
+  "mypy": {
+    "passed": true,
+    "source_files": 146,
+    "log": "artifacts/final-e098-mypy.log"
+  },
+  "ruff": {
+    "passed": true,
+    "log": "artifacts/final-e098-ruff.log"
+  },
+  "native_contracts": {
+    "passed": 148,
+    "deterministic_checks": 138,
+    "actual_backend_payload_checks": 10,
+    "evidence": "artifacts/native-platform-validation-adapter-release.json"
+  },
+  "native_ocr_bridge": "artifacts/native-ocr-stdout-validation.json",
+  "portable_build": "artifacts/portable-build-e098.log",
+  "relocation": {
+    "passed": true,
+    "evidence": "artifacts/bundle-verification-e098.json"
+  },
+  "native_release_sha256": "ced2cda1d05299fedac5f0490ae92a4725519dc5c7e40916724ca37afcd2c09f",
+  "native_packaged_sha256": "30bae164b0dfa4d6767d538a394cb997f07ba277db2309e8241e0d89ec705342",
+  "actual_llm_cases": [
+    "artifacts/stronger-planner/qwen14-adapter-reading-final.json",
+    "artifacts/stronger-planner/qwen14-provenance-warehouse-contextfix.json"
+  ],
+  "actual_detector_execution": "artifacts/stronger-planner/qwen14-provenance-warehouse-execution-receipt.json",
+  "actual_adapter_crop_resize": "artifacts/adapter-probes/common-adapter/actual-smoke.json",
+  "nvidia_second_scene_comparison": "artifacts/scene-holdout/comparison.json",
+  "preserved_failures": [
+    "artifacts/stronger-planner/qwen14-provenance-warehouse.json: prompt exceeded budget before LLM; bounded projection fixed and actual rerun passed",
+    "artifacts/bundle-verification-selection-d403.log: prior intermittent extra OCR stdout; raw-response diagnostic retry passed; dedicated stdout ownership added",
+    "artifacts/stronger-planner/qwen14-selection-warehouse-execution.json: earlier weak local checkpoint choices retained; unknown-purpose models excluded by current default eligibility",
+    "Packaged native20-frame warehouse build timed out100.662s during its sole model call before plan creation; no context overflow or preview."
+  ],
+  "remaining": [
+    "Local planner latency remains high: the successful native retry took109.6 seconds for one model call.",
+    "Scene-group promotion eligibility and untouched reviewed acceptance data are not enforced.",
+    "YOLOX and PaddleOCR remain isolated probes; new integrated model families and unified provisioning remain pending.",
+    "SAM3 on compatible hardware, segmentation, common VLM/training evidence, failure slices and resource acceptance remain incomplete.",
+    "Broad real-planner/refinement suite failures remain; two targeted live cases do not establish general reliability.",
+    "Local ad-hoc signature only; release signing/notarization and full operational acceptance pending."
+  ],
+  "native_acceptance_failure": "artifacts/agent-experience/adapter-release/native-timeout",
+  "timeout_fix": {
+    "evidence": "artifacts/stronger-planner/native-planner-timeout-remedy.json",
+    "focused_tests_passed": 28,
+    "read_timeout_s": 150,
+    "planner_total_budget_s": 180,
+    "build_total_budget_s": 900,
+    "automatic_retries": 0
+  },
+  "native_acceptance": "artifacts/agent-experience/adapter-release/acceptance.json",
+  "native_post_run_signature": "codesign --verify --deep --strict passed after actual native build and annotation workflow",
+  "native_llm_latency_ms": 109581.196,
+  "native_latency_scope": "Successful retry with cached prompt; first native attempt failed at100662.362ms. Not a cold-start performance claim."
+}

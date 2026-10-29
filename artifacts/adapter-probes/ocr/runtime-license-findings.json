@@ -1,0 +1,294 @@
+{
+  "findings": [
+    {
+      "name": "python-bidi",
+      "version": "0.6.12",
+      "license": null,
+      "classifiers": [
+        "License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)"
+      ],
+      "requires": [
+        "filelock>=3.20.1 ; extra == 'dev'",
+        "nox ; extra == 'dev'",
+        "pytest>=9.0.3 ; extra == 'dev'"
+      ]
+    },
+    {
+      "name": "crc32c",
+      "version": "2.9.post0",
+      "license": "LGPL-2.1-or-later",
+      "classifiers": [
+        "License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)"
+      ],
+      "requires": null
+    },
+    {
+      "name": "shapely",
+      "version": "2.2.0",
+      "license": "BSD-3-Clause",
+      "classifiers": [],
+      "requires": [
+        "numpy>=1.26"
+      ]
+    },
+    {
+      "name": "pypdfium2",
+      "version": "5.14.0",
+      "license": "BSD-3-Clause, Apache-2.0, dependency licenses",
+      "classifiers": [],
+      "requires": null
+    },
+    {
+      "name": "opencv-contrib-python",
+      "version": "4.10.0.84",
+      "license": "Apache 2.0",
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "requires": [
+        "numpy (>=1.13.3) ; python_version < \"3.7\"",
+        "numpy (>=1.21.0) ; python_version <= \"3.9\" and platform_system == \"Darwin\" and platform_machine == \"arm64\"",
+        "numpy (>=1.21.2) ; python_version >= \"3.10\"",
+        "numpy (>=1.21.4) ; python_version >= \"3.10\" and platform_system == \"Darwin\"",
+        "numpy (>=1.23.5) ; python_version >= \"3.11\"",
+        "numpy (>=1.26.0) ; python_version >= \"3.12\"",
+        "numpy (>=1.19.3) ; python_version >= \"3.6\" and platform_system == \"Linux\" and platform_machine == \"aarch64\"",
+        "numpy (>=1.17.0) ; python_version >= \"3.7\"",
+        "numpy (>=1.17.3) ; python_version >= \"3.8\"",
+        "numpy (>=1.19.3) ; python_version >= \"3.9\""
+      ]
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.23",
+      "license": "MPL-2.0",
+      "classifiers": [
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+      ],
+      "requires": null
+    },
+    {
+      "name": "tqdm",
+      "version": "4.70.1",
+      "license": "MPL-2.0 AND MIT",
+      "classifiers": [],
+      "requires": [
+        "colorama; platform_system == \"Windows\"",
+        "requests; extra == \"discord\"",
+        "envwrap; extra == \"discord\"",
+        "slack-sdk; extra == \"slack\"",
+        "envwrap; extra == \"slack\"",
+        "requests; extra == \"telegram\"",
+        "envwrap; extra == \"telegram\"",
+        "ipywidgets>=6; extra == \"notebook\""
+      ]
+    }
+  ],
+  "declared_dependency_edges": [
+    {
+      "package": "modelscope",
+      "requirement": "tqdm>=4.64.0"
+    },
+    {
+      "package": "modelscope",
+      "requirement": "tqdm>=4.64.0; extra == \"hub\""
+    },
+    {
+      "package": "modelscope",
+      "requirement": "shapely; extra == \"cv\""
+    },
+    {
+      "package": "modelscope",
+      "requirement": "tqdm; extra == \"cv\""
+    },
+    {
+      "package": "modelscope",
+      "requirement": "tqdm; extra == \"audio-tts\""
+    },
+    {
+      "package": "modelscope",
+      "requirement": "tqdm; extra == \"audio-signal\""
+    },
+    {
+      "package": "modelscope",
+      "requirement": "tqdm; extra == \"audio\""
+    },
+    {
+      "package": "modelscope",
+      "requirement": "tqdm; extra == \"audio\""
+    },
+    {
+      "package": "modelscope",
+      "requirement": "tqdm>=4.64.0; extra == \"all\""
+    },
+    {
+      "package": "modelscope",
+      "requirement": "shapely; extra == \"all\""
+    },
+    {
+      "package": "modelscope",
+      "requirement": "tqdm; extra == \"all\""
+    },
+    {
+      "package": "huggingface_hub",
+      "requirement": "tqdm>=4.42.1"
+    },
+    {
+      "package": "huggingface_hub",
+      "requirement": "types-tqdm; extra == \"typing\""
+    },
+    {
+      "package": "huggingface_hub",
+      "requirement": "types-tqdm; extra == \"all\""
+    },
+    {
+      "package": "huggingface_hub",
+      "requirement": "types-tqdm; extra == \"dev\""
+    },
+    {
+      "package": "requests",
+      "requirement": "certifi>=2023.5.7"
+    },
+    {
+      "package": "bce-python-sdk",
+      "requirement": "crc32c>=2.2.post0"
+    },
+    {
+      "package": "modelscope-hub",
+      "requirement": "tqdm>=4.64.0"
+    },
+    {
+      "package": "httpcore",
+      "requirement": "certifi"
+    },
+    {
+      "package": "aistudio_sdk",
+      "requirement": "tqdm"
+    },
+    {
+      "package": "fsspec",
+      "requirement": "tqdm; extra == 'full'"
+    },
+    {
+      "package": "fsspec",
+      "requirement": "tqdm; extra == 'test-full'"
+    },
+    {
+      "package": "fsspec",
+      "requirement": "tqdm; extra == 'tqdm'"
+    },
+    {
+      "package": "paddlex",
+      "requirement": "opencv-contrib-python==4.10.0.84; extra == \"cv\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "pypdfium2>=4; extra == \"cv\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "opencv-contrib-python==4.10.0.84; extra == \"multimodal\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "pypdfium2>=4; extra == \"multimodal\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "opencv-contrib-python==4.10.0.84; extra == \"ie\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "pypdfium2>=4; extra == \"ie\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "shapely; extra == \"ie\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "opencv-contrib-python==4.10.0.84; extra == \"trans\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "pypdfium2>=4; extra == \"trans\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "shapely; extra == \"trans\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "opencv-contrib-python==4.10.0.84; extra == \"ocr-core\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "pypdfium2>=4; extra == \"ocr-core\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "python-bidi; extra == \"ocr-core\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "shapely; extra == \"ocr-core\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "opencv-contrib-python==4.10.0.84; extra == \"ocr\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "pypdfium2>=4; extra == \"ocr\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "python-bidi; extra == \"ocr\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "shapely; extra == \"ocr\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "tqdm; extra == \"speech\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "opencv-contrib-python==4.10.0.84; extra == \"video\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "opencv-contrib-python==4.10.0.84; extra == \"base\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "pypdfium2>=4; extra == \"base\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "python-bidi; extra == \"base\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "shapely; extra == \"base\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "tqdm; extra == \"base\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "opencv-contrib-python==4.10.0.84; extra == \"serving\""
+    },
+    {
+      "package": "paddlex",
+      "requirement": "pypdfium2>=4; extra == \"serving\""
+    },
+    {
+      "package": "httpx",
+      "requirement": "certifi"
+    }
+  ],
+  "scope": "Installed metadata/notice review; not a complete distribution audit"
+}

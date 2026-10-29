@@ -1,0 +1,21 @@
+{
+  "id": "40dce2d1786816e8b801a2227cb1749c107dce7fc0a69f0246a172d94dd53b93",
+  "sequence": 27,
+  "project_id": "692e0290946d493a",
+  "build_id": "87c3efde66ef43c2b8c19ea6f8bcde3d",
+  "operation_id": "87c3efde66ef43c2b8c19ea6f8bcde3d",
+  "execution_id": "f77a8346d34f4c2caf8e12318daacd63",
+  "plan_id": "671ab4433ab948519ace6ab1bad5b204",
+  "call_id": "f0f200398ce0492eba4eb90a871859f2",
+  "kind": "tool",
+  "stage": "started",
+  "name": "build_propose_labels",
+  "phase": "evaluate",
+  "at": "2026-10-29T02:10:49.942181+00:00",
+  "duration_ms": null,
+  "model_identity": null,
+  "cost_usd": null,
+  "input_artifact_id": "1b584ab89c3f52bb3bd9c5d305943a5bbea6eca95837152ffef8aa49a322da33",
+  "output_artifact_id": null,
+  "error": null
+}

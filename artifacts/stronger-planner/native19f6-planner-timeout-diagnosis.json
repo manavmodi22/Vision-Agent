@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-10-29T02:04:42.863531+00:00",
+  "project_id": "692e0290946d493a",
+  "build_id": "87c3efde66ef43c2b8c19ea6f8bcde3d",
+  "operation_id": "1938339fc858495ea372527345c92633",
+  "saved_operation": {
+    "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/agent-runs/1938339fc858495ea372527345c92633.json",
+    "sha256": "d2cba869fe82e6b7c2768b95d3868abb878bc886ed410a5140a77de97d376f00"
+  },
+  "model_call": {
+    "id": "d03f6484b6a44618b7cabb3697f1a45b",
+    "duration_s": 100.662362,
+    "status": "failed",
+    "error": "Request timed out.",
+    "request_sha256": "72f0087073f92515fbc829710aa39b3b0f221698d361ddb39963ca254cfc19d7",
+    "reported_model_alias": "visionapp-planner",
+    "settings": {
+      "temperature": 0,
+      "max_tokens": 1600
+    }
+  },
+  "context": {
+    "system_chars": 13271,
+    "user_chars": 5993,
+    "output_schema_chars": 2369,
+    "total_chars": 21633,
+    "limit_chars": 24000,
+    "difference_from_successful_three_frame_request_chars": 131,
+    "same_system_and_schema_as_success": true,
+    "image_payload_sent": false,
+    "dataset_context": {
+      "revision": 1,
+      "classes": [],
+      "image_count": 20,
+      "reviewed_count": 0,
+      "annotation_count": 0,
+      "split_counts": {
+        "unassigned": 20
+      },
+      "saved_zone_ids": [],
+      "zones_confirmed": false,
+      "zone_origin": "unconfirmed"
+    }
+  },
+  "server_evidence": {
+    "log_path": "/Users/manavrakeshku.modi/vision-agent/artifacts/stronger-planner/production14.log",
+    "task_id": 7127,
+    "prompt_tokens": 4378,
+    "context_tokens": 8192,
+    "generated_tokens_at_cancellation": 287,
+    "reported_truncated": false,
+    "observed_generation_average_tokens_per_s": [
+      5.62,
+      4.49
+    ],
+    "selected_log_lines_sha256": "384b99eb1c225b02f9e3d5809f168a37713c7d05afe9f3f6a900c27550f514cc",
+    "selected_log_lines": [
+      "432.15.854.457 I slot launch_slot_: id  0 | task 7127 | processing task, is_child = 0",
+      "432.15.854.466 I slot   operator(): id  0 | task 7127 | new prompt, n_ctx_slot = 8192, n_keep = 0, task.n_tokens = 4378",
+      "432.15.854.471 I slot   operator(): id  0 | task 7127 | cached n_tokens = 2767, memory_seq_rm [2767, end)",
+      "432.15.855.207 I slot init_sampler: id  0 | task 7127 | init sampler, took 0.51 ms, tokens: text = 4378, total = 4378",
+      "433.08.352.416 I slot print_timing: id  0 | task 7127 | n_gen =    100, tg =   5.62 t/s, tg_3s =   5.67 t/s",
+      "433.11.741.736 I slot print_timing: id  0 | task 7127 | n_gen =    113, tg =   5.33 t/s, tg_3s =   3.84 t/s",
+      "433.15.220.532 I slot print_timing: id  0 | task 7127 | n_gen =    127, tg =   5.14 t/s, tg_3s =   4.02 t/s",
+      "433.18.513.381 I slot print_timing: id  0 | task 7127 | n_gen =    145, tg =   5.18 t/s, tg_3s =   5.47 t/s",
+      "433.21.674.748 I slot print_timing: id  0 | task 7127 | n_gen =    159, tg =   5.11 t/s, tg_3s =   4.43 t/s",
+      "433.24.806.211 I slot print_timing: id  0 | task 7127 | n_gen =    174, tg =   5.08 t/s, tg_3s =   4.79 t/s",
+      "433.27.887.423 I slot print_timing: id  0 | task 7127 | n_gen =    185, tg =   4.95 t/s, tg_3s =   3.57 t/s",
+      "433.30.948.219 I slot print_timing: id  0 | task 7127 | n_gen =    197, tg =   4.87 t/s, tg_3s =   3.92 t/s",
+      "433.34.163.286 I slot print_timing: id  0 | task 7127 | n_gen =    210, tg =   4.81 t/s, tg_3s =   4.04 t/s",
+      "433.37.374.797 I slot print_timing: id  0 | task 7127 | n_gen =    222, tg =   4.74 t/s, tg_3s =   3.74 t/s",
+      "433.40.824.985 I slot print_timing: id  0 | task 7127 | n_gen =    236, tg =   4.69 t/s, tg_3s =   4.06 t/s",
+      "433.43.921.483 I slot print_timing: id  0 | task 7127 | n_gen =    248, tg =   4.64 t/s, tg_3s =   3.88 t/s",
+      "433.46.943.254 I slot print_timing: id  0 | task 7127 | n_gen =    258, tg =   4.57 t/s, tg_3s =   3.31 t/s",
+      "433.50.068.245 I slot print_timing: id  0 | task 7127 | n_gen =    269, tg =   4.52 t/s, tg_3s =   3.52 t/s",
+      "433.53.080.933 I slot print_timing: id  0 | task 7127 | n_gen =    281, tg =   4.49 t/s, tg_3s =   3.98 t/s",
+      "433.55.330.992 W srv          stop: cancel task, id_task = 7127",
+      "433.55.446.431 I slot      release: id  0 | task 7127 | stop processing: n_tokens = 4665, truncated = 0"
+    ]
+  },
+  "existing_budgets": {
+    "build_wall_seconds": 900,
+    "nested_plan_wall_seconds": 180,
+    "http_request_seconds": 100,
+    "sdk_transport_retries": 0,
+    "typed_output_retries": 2,
+    "model_call_limit": 5,
+    "output_token_cap_per_request": 1600
+  },
+  "effects": {
+    "plan_published": false,
+    "preview_ran": false,
+    "stored_events": 0,
+    "decision_saved": false
+  },
+  "diagnosis": "The fixed HTTP timeout cancelled a still-generating local-model response. The prompt passed the context guard and the server reported no truncation. The larger image collection was represented by compact statistics, not image payloads.",
+  "uncertainty": "The trace does not establish why throughput slowed. Root observed normal memory pressure and no new swapouts; contention or other hardware/runtime effects are not attributed by this receipt.",
+  "minimal_proposal": {
+    "http_read_timeout_seconds": 150,
+    "retain_plan_wall_seconds": 180,
+    "retain_build_wall_seconds": 900,
+    "retain_retry_and_token_limits": true,
+    "rationale": "The prior successful two-candidate response used366 output tokens. At4.5 tokens/s plus approximately35 seconds of prompt work, a similarly sized answer is roughly116 seconds; this is an estimate, not a completion guarantee.",
+    "followup_verification": "Retry the original native goal with actual model calls controlled by root; confirm cancellation still occurs at the unchanged overall wall-clock deadline and no partial plan is committed on timeout."
+  },
+  "runtime_modified": false,
+  "new_model_calls": 0
+}

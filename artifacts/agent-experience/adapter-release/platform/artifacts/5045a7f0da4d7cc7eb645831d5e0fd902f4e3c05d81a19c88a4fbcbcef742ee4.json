@@ -1,0 +1,818 @@
+{
+  "artifact": {
+    "id": "5045a7f0da4d7cc7eb645831d5e0fd902f4e3c05d81a19c88a4fbcbcef742ee4",
+    "project_id": "692e0290946d493a",
+    "kind": "preview",
+    "title": "pipeline_run result",
+    "created_at": "2026-10-29T02:10:40.839117+00:00",
+    "sha256": "5045a7f0da4d7cc7eb645831d5e0fd902f4e3c05d81a19c88a4fbcbcef742ee4",
+    "media_type": "application/json",
+    "size_bytes": 15430
+  },
+  "content": {
+    "frames": [
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/1a95ac9d-warehouse-047.25s.png",
+        "detections": [],
+        "counts": {
+          "all": 0
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 801.7552079982124,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "det",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                1920,
+                1080
+              ],
+              "input_pixels_sha256": "6f17cc532f33eb7389c38f46f57301be553d264e30694e5cb894f151a0756956",
+              "detections": [],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.rtdetr-v2-r18",
+                "model_id": "rtdetr-v2-r18",
+                "adapter_id": "rtdetr-v2-r18",
+                "identity_scope": "local_artifacts_verified",
+                "artifact_hashes": {
+                  "VISIONAPP_REVISION.txt": "4f678e9797d2f2f30017d5c6dbfe64d257ab03800942c33c1a86f60dc1116c62",
+                  "config.json": "ed051ec77cb41c5d9d5e3af21a979b1e890599dfd68434d7636ff82ded4c1527",
+                  "model.safetensors": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115",
+                  "preprocessor_config.json": "cd38cd59999e7a95d68e487fbe5132df3d4e5c32a0836add57e6126ba0c4eaf1"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "5abcde679b776e6f6f1f8d4e5429eefef5ea0d33816c3acabf6f63f9e7bb9f6d",
+                "runtime_manifest_sha256": "14c14ab7aa0f384d248d048884946496b16fd9c216c077e6bb0d65334eb23a0c",
+                "system_identity": {
+                  "architecture": "arm64",
+                  "os": "Darwin",
+                  "kernel": "25.6.0",
+                  "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                  "macos": "26.7.1"
+                },
+                "provider": "mps",
+                "config_sha256": "788120729768964a35d0d77a1e6b5453561a92d63aec5cbe0a2f6d4eaf660026",
+                "identity_hash": "b615c78ddc2bf738f7f89493009b5945e8644aeb4b3fe019502c224d29e8feaf"
+              },
+              "timing": {
+                "total_ms": 758.0866669886746,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": []
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          }
+        ]
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/1cfd68d2-warehouse-045.00s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.7364334464073181,
+            "box": [
+              0.46170644760131835,
+              0.3447268733271846,
+              0.5034018198649088,
+              0.46528755470558447
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.30015677213668823,
+            "box": [
+              0.4607367515563965,
+              0.34432686699761283,
+              0.5039243698120117,
+              0.5600897894965278
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.25149065256118774,
+            "box": [
+              0.4639052708943685,
+              0.3450362594039352,
+              0.5024963696797689,
+              0.40853178236219617
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.20963579416275024,
+            "box": [
+              0.26892321904500327,
+              0.6495837176287615,
+              0.2951938629150391,
+              0.7368381076388889
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {
+          "all": 4
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 174.3812920176424,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "det",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                1920,
+                1080
+              ],
+              "input_pixels_sha256": "30da8439fc1103caac445962617ce0c5abe0df2f4eeec3e15e052e971fa1b7a5",
+              "detections": [
+                {
+                  "box": [
+                    0.46170644760131835,
+                    0.3447268733271846,
+                    0.5034018198649088,
+                    0.46528755470558447
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.7364334464073181
+                },
+                {
+                  "box": [
+                    0.4607367515563965,
+                    0.34432686699761283,
+                    0.5039243698120117,
+                    0.5600897894965278
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.30015677213668823
+                },
+                {
+                  "box": [
+                    0.4639052708943685,
+                    0.3450362594039352,
+                    0.5024963696797689,
+                    0.40853178236219617
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.25149065256118774
+                },
+                {
+                  "box": [
+                    0.26892321904500327,
+                    0.6495837176287615,
+                    0.2951938629150391,
+                    0.7368381076388889
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.20963579416275024
+                }
+              ],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.rtdetr-v2-r18",
+                "model_id": "rtdetr-v2-r18",
+                "adapter_id": "rtdetr-v2-r18",
+                "identity_scope": "local_artifacts_verified",
+                "artifact_hashes": {
+                  "VISIONAPP_REVISION.txt": "4f678e9797d2f2f30017d5c6dbfe64d257ab03800942c33c1a86f60dc1116c62",
+                  "config.json": "ed051ec77cb41c5d9d5e3af21a979b1e890599dfd68434d7636ff82ded4c1527",
+                  "model.safetensors": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115",
+                  "preprocessor_config.json": "cd38cd59999e7a95d68e487fbe5132df3d4e5c32a0836add57e6126ba0c4eaf1"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "5abcde679b776e6f6f1f8d4e5429eefef5ea0d33816c3acabf6f63f9e7bb9f6d",
+                "runtime_manifest_sha256": "14c14ab7aa0f384d248d048884946496b16fd9c216c077e6bb0d65334eb23a0c",
+                "system_identity": {
+                  "architecture": "arm64",
+                  "os": "Darwin",
+                  "kernel": "25.6.0",
+                  "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                  "macos": "26.7.1"
+                },
+                "provider": "mps",
+                "config_sha256": "788120729768964a35d0d77a1e6b5453561a92d63aec5cbe0a2f6d4eaf660026",
+                "identity_hash": "b615c78ddc2bf738f7f89493009b5945e8644aeb4b3fe019502c224d29e8feaf"
+              },
+              "timing": {
+                "total_ms": 124.61508298292756,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": []
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          }
+        ]
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/21eb8666-warehouse-039.75s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.8443490862846375,
+            "box": [
+              0.3523967425028483,
+              0.30463166413483794,
+              0.40175937016805013,
+              0.4938783433702257
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.32969018816947937,
+            "box": [
+              0.6293069203694661,
+              0.12824654755768952,
+              0.6445926666259766,
+              0.20916438632541232
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.30587854981422424,
+            "box": [
+              0.5095503489176433,
+              0.19982111895525898,
+              0.5256776809692383,
+              0.25146911055953414
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.265201210975647,
+            "box": [
+              0.2703631083170573,
+              0.6498058177806713,
+              0.29527403513590494,
+              0.7364483303493924
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.23330138623714447,
+            "box": [
+              0.509905465443929,
+              0.20163697136773004,
+              0.5246214866638184,
+              0.23519470779984086
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.22429773211479187,
+            "box": [
+              0.06269003550211588,
+              0.6941552621346933,
+              0.10034911632537842,
+              0.7785699915002894
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.22263464331626892,
+            "box": [
+              0.27035996119181316,
+              0.6494458233868634,
+              0.2987523396809896,
+              0.7640716552734375
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.21284812688827515,
+            "box": [
+              0.4548243522644043,
+              0.13219419408727576,
+              0.481327756245931,
+              0.2692458258734809
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.20300811529159546,
+            "box": [
+              0.47299219767252604,
+              0.11083371904161242,
+              0.4931657155354818,
+              0.22176905031557437
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.2019427865743637,
+            "box": [
+              0.4527220090230306,
+              0.15646622269241897,
+              0.4779288609822591,
+              0.27213917484989875
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.20193780958652496,
+            "box": [
+              0.5071680704752605,
+              0.19779442681206597,
+              0.5317082405090332,
+              0.27142387672706886
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {
+          "all": 11
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 213.30800000578165,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "det",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                1920,
+                1080
+              ],
+              "input_pixels_sha256": "2e6eb657c1e5f2b8ab51fb67df6a71faa8b66bc503caecfa40ad9c527ff21b4b",
+              "detections": [
+                {
+                  "box": [
+                    0.3523967425028483,
+                    0.30463166413483794,
+                    0.40175937016805013,
+                    0.4938783433702257
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.8443490862846375
+                },
+                {
+                  "box": [
+                    0.6293069203694661,
+                    0.12824654755768952,
+                    0.6445926666259766,
+                    0.20916438632541232
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.32969018816947937
+                },
+                {
+                  "box": [
+                    0.5095503489176433,
+                    0.19982111895525898,
+                    0.5256776809692383,
+                    0.25146911055953414
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.30587854981422424
+                },
+                {
+                  "box": [
+                    0.2703631083170573,
+                    0.6498058177806713,
+                    0.29527403513590494,
+                    0.7364483303493924
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.265201210975647
+                },
+                {
+                  "box": [
+                    0.509905465443929,
+                    0.20163697136773004,
+                    0.5246214866638184,
+                    0.23519470779984086
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.23330138623714447
+                },
+                {
+                  "box": [
+                    0.06269003550211588,
+                    0.6941552621346933,
+                    0.10034911632537842,
+                    0.7785699915002894
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.22429773211479187
+                },
+                {
+                  "box": [
+                    0.27035996119181316,
+                    0.6494458233868634,
+                    0.2987523396809896,
+                    0.7640716552734375
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.22263464331626892
+                },
+                {
+                  "box": [
+                    0.4548243522644043,
+                    0.13219419408727576,
+                    0.481327756245931,
+                    0.2692458258734809
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.21284812688827515
+                },
+                {
+                  "box": [
+                    0.47299219767252604,
+                    0.11083371904161242,
+                    0.4931657155354818,
+                    0.22176905031557437
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.20300811529159546
+                },
+                {
+                  "box": [
+                    0.4527220090230306,
+                    0.15646622269241897,
+                    0.4779288609822591,
+                    0.27213917484989875
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.2019427865743637
+                },
+                {
+                  "box": [
+                    0.5071680704752605,
+                    0.19779442681206597,
+                    0.5317082405090332,
+                    0.27142387672706886
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.20193780958652496
+                }
+              ],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.rtdetr-v2-r18",
+                "model_id": "rtdetr-v2-r18",
+                "adapter_id": "rtdetr-v2-r18",
+                "identity_scope": "local_artifacts_verified",
+                "artifact_hashes": {
+                  "VISIONAPP_REVISION.txt": "4f678e9797d2f2f30017d5c6dbfe64d257ab03800942c33c1a86f60dc1116c62",
+                  "config.json": "ed051ec77cb41c5d9d5e3af21a979b1e890599dfd68434d7636ff82ded4c1527",
+                  "model.safetensors": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115",
+                  "preprocessor_config.json": "cd38cd59999e7a95d68e487fbe5132df3d4e5c32a0836add57e6126ba0c4eaf1"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "5abcde679b776e6f6f1f8d4e5429eefef5ea0d33816c3acabf6f63f9e7bb9f6d",
+                "runtime_manifest_sha256": "14c14ab7aa0f384d248d048884946496b16fd9c216c077e6bb0d65334eb23a0c",
+                "system_identity": {
+                  "architecture": "arm64",
+                  "os": "Darwin",
+                  "kernel": "25.6.0",
+                  "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                  "macos": "26.7.1"
+                },
+                "provider": "mps",
+                "config_sha256": "788120729768964a35d0d77a1e6b5453561a92d63aec5cbe0a2f6d4eaf660026",
+                "identity_hash": "b615c78ddc2bf738f7f89493009b5945e8644aeb4b3fe019502c224d29e8feaf"
+              },
+              "timing": {
+                "total_ms": 161.904291016981,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": []
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          }
+        ]
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/2a9fe57c-warehouse-036.75s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.24360164999961853,
+            "box": [
+              0.454168701171875,
+              0.15679260536476416,
+              0.47744305928548175,
+              0.2708404541015625
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.22390012443065643,
+            "box": [
+              0.2703370730082194,
+              0.6513799031575521,
+              0.29518362681070964,
+              0.7366790206344039
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.2195151448249817,
+            "box": [
+              0.49524141947428385,
+              0.26389745076497395,
+              0.5130290349324544,
+              0.3113889906141493
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.2075091302394867,
+            "box": [
+              0.47442537943522134,
+              0.10784336372658059,
+              0.5031229337056478,
+              0.221110110812717
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {
+          "all": 4
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 232.15641698334366,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "det",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                1920,
+                1080
+              ],
+              "input_pixels_sha256": "320a2cf9c895ac090e03e164c0d6011a3bb2529a239ccc5032640280435c6aff",
+              "detections": [
+                {
+                  "box": [
+                    0.454168701171875,
+                    0.15679260536476416,
+                    0.47744305928548175,
+                    0.2708404541015625
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.24360164999961853
+                },
+                {
+                  "box": [
+                    0.2703370730082194,
+                    0.6513799031575521,
+                    0.29518362681070964,
+                    0.7366790206344039
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.22390012443065643
+                },
+                {
+                  "box": [
+                    0.49524141947428385,
+                    0.26389745076497395,
+                    0.5130290349324544,
+                    0.3113889906141493
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.2195151448249817
+                },
+                {
+                  "box": [
+                    0.47442537943522134,
+                    0.10784336372658059,
+                    0.5031229337056478,
+                    0.221110110812717
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.2075091302394867
+                }
+              ],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.rtdetr-v2-r18",
+                "model_id": "rtdetr-v2-r18",
+                "adapter_id": "rtdetr-v2-r18",
+                "identity_scope": "local_artifacts_verified",
+                "artifact_hashes": {
+                  "VISIONAPP_REVISION.txt": "4f678e9797d2f2f30017d5c6dbfe64d257ab03800942c33c1a86f60dc1116c62",
+                  "config.json": "ed051ec77cb41c5d9d5e3af21a979b1e890599dfd68434d7636ff82ded4c1527",
+                  "model.safetensors": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115",
+                  "preprocessor_config.json": "cd38cd59999e7a95d68e487fbe5132df3d4e5c32a0836add57e6126ba0c4eaf1"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "5abcde679b776e6f6f1f8d4e5429eefef5ea0d33816c3acabf6f63f9e7bb9f6d",
+                "runtime_manifest_sha256": "14c14ab7aa0f384d248d048884946496b16fd9c216c077e6bb0d65334eb23a0c",
+                "system_identity": {
+                  "architecture": "arm64",
+                  "os": "Darwin",
+                  "kernel": "25.6.0",
+                  "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                  "macos": "26.7.1"
+                },
+                "provider": "mps",
+                "config_sha256": "788120729768964a35d0d77a1e6b5453561a92d63aec5cbe0a2f6d4eaf660026",
+                "identity_hash": "b615c78ddc2bf738f7f89493009b5945e8644aeb4b3fe019502c224d29e8feaf"
+              },
+              "timing": {
+                "total_ms": 147.93145802104846,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": []
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          }
+        ]
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/41705a98-warehouse-041.25s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.2504253685474396,
+            "box": [
+              0.62803955078125,
+              0.1266569490785952,
+              0.6426534016927083,
+              0.2061907026502821
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {
+          "all": 1
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 166.1735000088811,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "det",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                1920,
+                1080
+              ],
+              "input_pixels_sha256": "386df67f891df066e3bb6c766bb4815cb3ff0f9cf8c5e027473d89d7159ef1d4",
+              "detections": [
+                {
+                  "box": [
+                    0.62803955078125,
+                    0.1266569490785952,
+                    0.6426534016927083,
+                    0.2061907026502821
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.2504253685474396
+                }
+              ],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.rtdetr-v2-r18",
+                "model_id": "rtdetr-v2-r18",
+                "adapter_id": "rtdetr-v2-r18",
+                "identity_scope": "local_artifacts_verified",
+                "artifact_hashes": {
+                  "VISIONAPP_REVISION.txt": "4f678e9797d2f2f30017d5c6dbfe64d257ab03800942c33c1a86f60dc1116c62",
+                  "config.json": "ed051ec77cb41c5d9d5e3af21a979b1e890599dfd68434d7636ff82ded4c1527",
+                  "model.safetensors": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115",
+                  "preprocessor_config.json": "cd38cd59999e7a95d68e487fbe5132df3d4e5c32a0836add57e6126ba0c4eaf1"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "5abcde679b776e6f6f1f8d4e5429eefef5ea0d33816c3acabf6f63f9e7bb9f6d",
+                "runtime_manifest_sha256": "14c14ab7aa0f384d248d048884946496b16fd9c216c077e6bb0d65334eb23a0c",
+                "system_identity": {
+                  "architecture": "arm64",
+                  "os": "Darwin",
+                  "kernel": "25.6.0",
+                  "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                  "macos": "26.7.1"
+                },
+                "provider": "mps",
+                "config_sha256": "788120729768964a35d0d77a1e6b5453561a92d63aec5cbe0a2f6d4eaf660026",
+                "identity_hash": "b615c78ddc2bf738f7f89493009b5945e8644aeb4b3fe019502c224d29e8feaf"
+              },
+              "timing": {
+                "total_ms": 114.33329101419076,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": []
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          }
+        ]
+      }
+    ],
+    "elapsed_s": 1.6067670830525458,
+    "warnings": [
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+    ]
+  }
+}

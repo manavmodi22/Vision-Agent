@@ -1,0 +1,11 @@
+{
+  "source_protocol_sha256": "34df3453b9578bbd9fc16597d20d7338b29ac197a461d9c46ab9912fffba3c19",
+  "visible_annotations_by_source_class": {
+    "FourierGR1T2": 103,
+    "Transporter": 30,
+    "Person": 112
+  },
+  "target": "person",
+  "non_target_policy": "Non-person classes, including humanoid robots, are negatives for this person-only comparison; no ontology remapping.",
+  "visual_check": "Six evenly spaced frame/annotation composites inspected; geometry appears aligned. Full dataset remains unreviewed published synthetic ground truth."
+}

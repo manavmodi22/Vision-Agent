@@ -1,0 +1,489 @@
+{
+  "artifact": {
+    "id": "3d283bf4dd6472367ebea6f126bd98ed4581b9693984b2c8eb94f8851b2ef49b",
+    "project_id": "692e0290946d493a",
+    "kind": "preview",
+    "title": "pipeline_run result",
+    "created_at": "2026-10-29T02:10:38.614468+00:00",
+    "sha256": "3d283bf4dd6472367ebea6f126bd98ed4581b9693984b2c8eb94f8851b2ef49b",
+    "media_type": "application/json",
+    "size_bytes": 12782
+  },
+  "content": {
+    "frames": [
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/1a95ac9d-warehouse-047.25s.png",
+        "detections": [],
+        "counts": {
+          "all": 0
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 10630.793374963105,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "det",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                1920,
+                1080
+              ],
+              "input_pixels_sha256": "6f17cc532f33eb7389c38f46f57301be553d264e30694e5cb894f151a0756956",
+              "detections": [],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.owlv2-base-patch16",
+                "model_id": "owlv2-base-patch16",
+                "adapter_id": "owlv2",
+                "identity_scope": "local_artifacts_verified",
+                "artifact_hashes": {
+                  "VISIONAPP_REVISION.txt": "073ed5bcc2468fb94e80948845a776c9e89a1ad3a07aa05624d56916a50570b5",
+                  "added_tokens.json": "e5dc0da35d20111e8ff3fdfc03682beca23d5f94ed74331bce81786b2636a24f",
+                  "config.json": "ba9df8c25a4b8461887dd0a93d9252c9cd84697fe8d49a9d8794ce409af9acb2",
+                  "merges.txt": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+                  "model.safetensors": "e1e130b9e404cf91a75ad45644c1da9d7fa5284085eecc864266a6923efb99e7",
+                  "preprocessor_config.json": "cf3e396635b797ee1a464e1b2836e98748f8edac19e89aaa2c93b55ac15b0064",
+                  "special_tokens_map.json": "d6e2b9cf664efbad2d22998b8d3da986abcbeed3e0825ad33605c9401f9cf73e",
+                  "tokenizer_config.json": "b55cda6198e152ded427c8a9b3faf1cccf27a7fa080697a62f6ff143f511f44f",
+                  "vocab.json": "e089ad92ba36837a0d31433e555c8f45fe601ab5c221d4f607ded32d9f7a4349"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "8aa9843d9c436a090471bad423bd9f239fdc18057089a8b9151275d19347b148",
+                "runtime_manifest_sha256": "14c14ab7aa0f384d248d048884946496b16fd9c216c077e6bb0d65334eb23a0c",
+                "system_identity": {
+                  "architecture": "arm64",
+                  "os": "Darwin",
+                  "kernel": "25.6.0",
+                  "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                  "macos": "26.7.1"
+                },
+                "provider": "mps",
+                "config_sha256": "2df6bcf5774232c9e99c76fe4a04e9a3d9b6c6c24d1242e1a153017324ad5287",
+                "identity_hash": "b261ec75afb6e45267f959bf737e954e8d6e3959f4e710b485fa2a0edd5c06c9"
+              },
+              "timing": {
+                "total_ms": 10597.326916991733,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": []
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          }
+        ]
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/1cfd68d2-warehouse-045.00s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.3760730028152466,
+            "box": [
+              0.459641170501709,
+              0.34745472095630786,
+              0.5033274332682292,
+              0.4679519370750145
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {
+          "all": 1
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 2572.453917004168,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "det",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                1920,
+                1080
+              ],
+              "input_pixels_sha256": "30da8439fc1103caac445962617ce0c5abe0df2f4eeec3e15e052e971fa1b7a5",
+              "detections": [
+                {
+                  "box": [
+                    0.459641170501709,
+                    0.34745472095630786,
+                    0.5033274332682292,
+                    0.4679519370750145
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.3760730028152466
+                }
+              ],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.owlv2-base-patch16",
+                "model_id": "owlv2-base-patch16",
+                "adapter_id": "owlv2",
+                "identity_scope": "local_artifacts_verified",
+                "artifact_hashes": {
+                  "VISIONAPP_REVISION.txt": "073ed5bcc2468fb94e80948845a776c9e89a1ad3a07aa05624d56916a50570b5",
+                  "added_tokens.json": "e5dc0da35d20111e8ff3fdfc03682beca23d5f94ed74331bce81786b2636a24f",
+                  "config.json": "ba9df8c25a4b8461887dd0a93d9252c9cd84697fe8d49a9d8794ce409af9acb2",
+                  "merges.txt": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+                  "model.safetensors": "e1e130b9e404cf91a75ad45644c1da9d7fa5284085eecc864266a6923efb99e7",
+                  "preprocessor_config.json": "cf3e396635b797ee1a464e1b2836e98748f8edac19e89aaa2c93b55ac15b0064",
+                  "special_tokens_map.json": "d6e2b9cf664efbad2d22998b8d3da986abcbeed3e0825ad33605c9401f9cf73e",
+                  "tokenizer_config.json": "b55cda6198e152ded427c8a9b3faf1cccf27a7fa080697a62f6ff143f511f44f",
+                  "vocab.json": "e089ad92ba36837a0d31433e555c8f45fe601ab5c221d4f607ded32d9f7a4349"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "8aa9843d9c436a090471bad423bd9f239fdc18057089a8b9151275d19347b148",
+                "runtime_manifest_sha256": "14c14ab7aa0f384d248d048884946496b16fd9c216c077e6bb0d65334eb23a0c",
+                "system_identity": {
+                  "architecture": "arm64",
+                  "os": "Darwin",
+                  "kernel": "25.6.0",
+                  "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                  "macos": "26.7.1"
+                },
+                "provider": "mps",
+                "config_sha256": "2df6bcf5774232c9e99c76fe4a04e9a3d9b6c6c24d1242e1a153017324ad5287",
+                "identity_hash": "b261ec75afb6e45267f959bf737e954e8d6e3959f4e710b485fa2a0edd5c06c9"
+              },
+              "timing": {
+                "total_ms": 2533.1645410042256,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": []
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          }
+        ]
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/21eb8666-warehouse-039.75s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.37868016958236694,
+            "box": [
+              0.3440459569295247,
+              0.29560060854311343,
+              0.4008821487426758,
+              0.48979407416449655
+            ],
+            "zone": null
+          },
+          {
+            "label": "person",
+            "confidence": 0.307735800743103,
+            "box": [
+              0.49877052307128905,
+              0.17902707700376158,
+              0.5274372736612956,
+              0.327674639666522
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {
+          "all": 2
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 2165.6313330167904,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "det",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                1920,
+                1080
+              ],
+              "input_pixels_sha256": "2e6eb657c1e5f2b8ab51fb67df6a71faa8b66bc503caecfa40ad9c527ff21b4b",
+              "detections": [
+                {
+                  "box": [
+                    0.3440459569295247,
+                    0.29560060854311343,
+                    0.4008821487426758,
+                    0.48979407416449655
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.37868016958236694
+                },
+                {
+                  "box": [
+                    0.49877052307128905,
+                    0.17902707700376158,
+                    0.5274372736612956,
+                    0.327674639666522
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.307735800743103
+                }
+              ],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.owlv2-base-patch16",
+                "model_id": "owlv2-base-patch16",
+                "adapter_id": "owlv2",
+                "identity_scope": "local_artifacts_verified",
+                "artifact_hashes": {
+                  "VISIONAPP_REVISION.txt": "073ed5bcc2468fb94e80948845a776c9e89a1ad3a07aa05624d56916a50570b5",
+                  "added_tokens.json": "e5dc0da35d20111e8ff3fdfc03682beca23d5f94ed74331bce81786b2636a24f",
+                  "config.json": "ba9df8c25a4b8461887dd0a93d9252c9cd84697fe8d49a9d8794ce409af9acb2",
+                  "merges.txt": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+                  "model.safetensors": "e1e130b9e404cf91a75ad45644c1da9d7fa5284085eecc864266a6923efb99e7",
+                  "preprocessor_config.json": "cf3e396635b797ee1a464e1b2836e98748f8edac19e89aaa2c93b55ac15b0064",
+                  "special_tokens_map.json": "d6e2b9cf664efbad2d22998b8d3da986abcbeed3e0825ad33605c9401f9cf73e",
+                  "tokenizer_config.json": "b55cda6198e152ded427c8a9b3faf1cccf27a7fa080697a62f6ff143f511f44f",
+                  "vocab.json": "e089ad92ba36837a0d31433e555c8f45fe601ab5c221d4f607ded32d9f7a4349"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "8aa9843d9c436a090471bad423bd9f239fdc18057089a8b9151275d19347b148",
+                "runtime_manifest_sha256": "14c14ab7aa0f384d248d048884946496b16fd9c216c077e6bb0d65334eb23a0c",
+                "system_identity": {
+                  "architecture": "arm64",
+                  "os": "Darwin",
+                  "kernel": "25.6.0",
+                  "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                  "macos": "26.7.1"
+                },
+                "provider": "mps",
+                "config_sha256": "2df6bcf5774232c9e99c76fe4a04e9a3d9b6c6c24d1242e1a153017324ad5287",
+                "identity_hash": "b261ec75afb6e45267f959bf737e954e8d6e3959f4e710b485fa2a0edd5c06c9"
+              },
+              "timing": {
+                "total_ms": 2128.6794160259888,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": []
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          }
+        ]
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/2a9fe57c-warehouse-036.75s.png",
+        "detections": [
+          {
+            "label": "person",
+            "confidence": 0.41919100284576416,
+            "box": [
+              0.34637120564778645,
+              0.42612934818974246,
+              0.4149155298868815,
+              0.5717201515480325
+            ],
+            "zone": null
+          }
+        ],
+        "counts": {
+          "all": 1
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 2661.381750018336,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "det",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                1920,
+                1080
+              ],
+              "input_pixels_sha256": "320a2cf9c895ac090e03e164c0d6011a3bb2529a239ccc5032640280435c6aff",
+              "detections": [
+                {
+                  "box": [
+                    0.34637120564778645,
+                    0.42612934818974246,
+                    0.4149155298868815,
+                    0.5717201515480325
+                  ],
+                  "polygon": null,
+                  "label": "person",
+                  "confidence": 0.41919100284576416
+                }
+              ],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.owlv2-base-patch16",
+                "model_id": "owlv2-base-patch16",
+                "adapter_id": "owlv2",
+                "identity_scope": "local_artifacts_verified",
+                "artifact_hashes": {
+                  "VISIONAPP_REVISION.txt": "073ed5bcc2468fb94e80948845a776c9e89a1ad3a07aa05624d56916a50570b5",
+                  "added_tokens.json": "e5dc0da35d20111e8ff3fdfc03682beca23d5f94ed74331bce81786b2636a24f",
+                  "config.json": "ba9df8c25a4b8461887dd0a93d9252c9cd84697fe8d49a9d8794ce409af9acb2",
+                  "merges.txt": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+                  "model.safetensors": "e1e130b9e404cf91a75ad45644c1da9d7fa5284085eecc864266a6923efb99e7",
+                  "preprocessor_config.json": "cf3e396635b797ee1a464e1b2836e98748f8edac19e89aaa2c93b55ac15b0064",
+                  "special_tokens_map.json": "d6e2b9cf664efbad2d22998b8d3da986abcbeed3e0825ad33605c9401f9cf73e",
+                  "tokenizer_config.json": "b55cda6198e152ded427c8a9b3faf1cccf27a7fa080697a62f6ff143f511f44f",
+                  "vocab.json": "e089ad92ba36837a0d31433e555c8f45fe601ab5c221d4f607ded32d9f7a4349"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "8aa9843d9c436a090471bad423bd9f239fdc18057089a8b9151275d19347b148",
+                "runtime_manifest_sha256": "14c14ab7aa0f384d248d048884946496b16fd9c216c077e6bb0d65334eb23a0c",
+                "system_identity": {
+                  "architecture": "arm64",
+                  "os": "Darwin",
+                  "kernel": "25.6.0",
+                  "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                  "macos": "26.7.1"
+                },
+                "provider": "mps",
+                "config_sha256": "2df6bcf5774232c9e99c76fe4a04e9a3d9b6c6c24d1242e1a153017324ad5287",
+                "identity_hash": "b261ec75afb6e45267f959bf737e954e8d6e3959f4e710b485fa2a0edd5c06c9"
+              },
+              "timing": {
+                "total_ms": 2627.126250008587,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": []
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          }
+        ]
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/41705a98-warehouse-041.25s.png",
+        "detections": [],
+        "counts": {
+          "all": 0
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 2286.9659590069205,
+        "timestamp_s": 0.0,
+        "judgements": [],
+        "inferences": [
+          {
+            "block_id": "det",
+            "result": {
+              "schema_version": 1,
+              "task": "detection",
+              "input_size": [
+                1920,
+                1080
+              ],
+              "input_pixels_sha256": "386df67f891df066e3bb6c766bb4815cb3ff0f9cf8c5e027473d89d7159ef1d4",
+              "detections": [],
+              "readings": [],
+              "identity": {
+                "capability_id": "model.owlv2-base-patch16",
+                "model_id": "owlv2-base-patch16",
+                "adapter_id": "owlv2",
+                "identity_scope": "local_artifacts_verified",
+                "artifact_hashes": {
+                  "VISIONAPP_REVISION.txt": "073ed5bcc2468fb94e80948845a776c9e89a1ad3a07aa05624d56916a50570b5",
+                  "added_tokens.json": "e5dc0da35d20111e8ff3fdfc03682beca23d5f94ed74331bce81786b2636a24f",
+                  "config.json": "ba9df8c25a4b8461887dd0a93d9252c9cd84697fe8d49a9d8794ce409af9acb2",
+                  "merges.txt": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+                  "model.safetensors": "e1e130b9e404cf91a75ad45644c1da9d7fa5284085eecc864266a6923efb99e7",
+                  "preprocessor_config.json": "cf3e396635b797ee1a464e1b2836e98748f8edac19e89aaa2c93b55ac15b0064",
+                  "special_tokens_map.json": "d6e2b9cf664efbad2d22998b8d3da986abcbeed3e0825ad33605c9401f9cf73e",
+                  "tokenizer_config.json": "b55cda6198e152ded427c8a9b3faf1cccf27a7fa080697a62f6ff143f511f44f",
+                  "vocab.json": "e089ad92ba36837a0d31433e555c8f45fe601ab5c221d4f607ded32d9f7a4349"
+                },
+                "unavailable_artifacts": [],
+                "adapter_code_sha256": "8aa9843d9c436a090471bad423bd9f239fdc18057089a8b9151275d19347b148",
+                "runtime_manifest_sha256": "14c14ab7aa0f384d248d048884946496b16fd9c216c077e6bb0d65334eb23a0c",
+                "system_identity": {
+                  "architecture": "arm64",
+                  "os": "Darwin",
+                  "kernel": "25.6.0",
+                  "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                  "macos": "26.7.1"
+                },
+                "provider": "mps",
+                "config_sha256": "2df6bcf5774232c9e99c76fe4a04e9a3d9b6c6c24d1242e1a153017324ad5287",
+                "identity_hash": "b261ec75afb6e45267f959bf737e954e8d6e3959f4e710b485fa2a0edd5c06c9"
+              },
+              "timing": {
+                "total_ms": 2253.7966669769958,
+                "startup_ms": null,
+                "load_ms": null,
+                "preprocess_ms": null,
+                "inference_ms": null,
+                "postprocess_ms": null,
+                "transport_ms": null,
+                "model_cached": null
+              },
+              "warnings": []
+            },
+            "input_to_frame": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          }
+        ]
+      }
+    ],
+    "elapsed_s": 20.33109912503278,
+    "warnings": [
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+    ]
+  }
+}

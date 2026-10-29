@@ -1,0 +1,1559 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-29T01:42:37.791903+00:00",
+  "dataset": "nvidia/PhysicalAI-SmartSpaces",
+  "revision": "2cbe9563cbe9f47f846e5c871ee994572bbbc60e",
+  "license": "CC-BY-4.0",
+  "attribution": "NVIDIA Physical AI Smart Spaces, Wang et al. (2026)",
+  "scene": "MTMC_Tracking_2025/val/Warehouse_016",
+  "camera": "Camera_01",
+  "synthetic": true,
+  "source_receipts": [
+    {
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/calibration.json",
+      "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-SmartSpaces/resolve/2cbe9563cbe9f47f846e5c871ee994572bbbc60e/MTMC_Tracking_2025/val/Warehouse_016/calibration.json",
+      "bytes": 39062,
+      "sha256": "fa77a8e0843acc55e56544669284efc2e8e5c310ba3125efdad99c5d1fa32ee4"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/ground_truth.json",
+      "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-SmartSpaces/resolve/2cbe9563cbe9f47f846e5c871ee994572bbbc60e/MTMC_Tracking_2025/val/Warehouse_016/ground_truth.json",
+      "bytes": 49424957,
+      "sha256": "b7a100353aac19afd44587b77b6a528a5f3bc4f0fe563177c46916c292839a73"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/videos/Camera_01.mp4",
+      "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-SmartSpaces/resolve/2cbe9563cbe9f47f846e5c871ee994572bbbc60e/MTMC_Tracking_2025/val/Warehouse_016/videos/Camera_01.mp4",
+      "bytes": 127379806,
+      "sha256": "efaaceb0f548197117f497a74783404dbb5a67341f91b423e6e38fedc4685afd"
+    }
+  ],
+  "comparison": {
+    "task": "person detection/count",
+    "models": [
+      "owlv2-base-patch16",
+      "rtdetr-v2-r18",
+      "yolox-s-onnx-coco"
+    ],
+    "min_conf": 0.15,
+    "matching_iou": 0.5,
+    "target_recall": 0.8,
+    "frame_indices": [
+      0,
+      310,
+      621,
+      931,
+      1241,
+      1552,
+      1862,
+      2172,
+      2482,
+      2793,
+      3103,
+      3413,
+      3724,
+      4034,
+      4344,
+      4655,
+      4965,
+      5275,
+      5586,
+      5896,
+      6206,
+      6517,
+      6827,
+      7137,
+      7447,
+      7758,
+      8068,
+      8378,
+      8689,
+      8999
+    ]
+  },
+  "scope": "New source scene distinct from previously tuned Warehouse_015. Fixed samples and thresholds before inference. Published synthetic labels, not human reviewed or an independent real-world deployment benchmark.",
+  "promotion_eligible": false,
+  "label_review_status": "unreviewed_published_synthetic",
+  "annotations": [
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-000000.png",
+      "image_sha256": "c3b9e75a04aa1aafeb22c6ee469581f3c93592a690a144cdb6d74a370b12bbf6",
+      "frame_index": 0,
+      "timestamp_s": 0.0,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.47604166666666664,
+            0.0,
+            0.48489583333333336,
+            0.014814814814814815
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.203125,
+            0.40185185185185185,
+            0.290625,
+            0.6055555555555555
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-000310.png",
+      "image_sha256": "63ed6c351028009af33ba5884654c9796601132a8cff6f377abad0efddaef06c",
+      "frame_index": 310,
+      "timestamp_s": 10.333333333333334,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7932291666666667,
+            0.4388888888888889,
+            0.9010416666666666,
+            0.612037037037037
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.38177083333333334,
+            0.0,
+            0.39479166666666665,
+            0.04537037037037037
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.653125,
+            0.3351851851851852,
+            0.7203125,
+            0.5407407407407407
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9619791666666667,
+            0.28425925925925927,
+            0.9994791666666667,
+            0.37222222222222223
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9369791666666667,
+            0.15,
+            0.9994791666666667,
+            0.2740740740740741
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-000621.png",
+      "image_sha256": "636c83eb3b352546310e377f2a041c71480a9d9988792b86833521be1980969e",
+      "frame_index": 621,
+      "timestamp_s": 20.7,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.4427083333333333,
+            0.0,
+            0.46510416666666665,
+            0.1037037037037037
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8479166666666667,
+            0.3537037037037037,
+            0.959375,
+            0.562037037037037
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9234375,
+            0.4027777777777778,
+            0.9994791666666667,
+            0.562962962962963
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-000931.png",
+      "image_sha256": "6192e84eb74215e2200d550d1608d146eb3fd66d3b76b6e6e4e0c5cb09d5f4a1",
+      "frame_index": 931,
+      "timestamp_s": 31.033333333333335,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8151041666666666,
+            0.5953703703703703,
+            0.925,
+            0.7601851851851852
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6458333333333334,
+            0.0,
+            0.6635416666666667,
+            0.04814814814814815
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8583333333333333,
+            0.49444444444444446,
+            0.9994791666666667,
+            0.6435185185185185
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.803125,
+            0.24074074074074073,
+            0.8895833333333333,
+            0.4185185185185185
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-001241.png",
+      "image_sha256": "b803839b86cc16274b3672f9074b34398ed4df45cc422ef28834e97b54184c52",
+      "frame_index": 1241,
+      "timestamp_s": 41.36666666666667,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6395833333333333,
+            0.0,
+            0.6578125,
+            0.049074074074074076
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.865625,
+            0.5,
+            0.9994791666666667,
+            0.700925925925926
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7984375,
+            0.27314814814814814,
+            0.8807291666666667,
+            0.46111111111111114
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-001552.png",
+      "image_sha256": "1177fec42665638d546c94029ceb1071c1ceee1f2d3d9a5f599f87e2abf2f0af",
+      "frame_index": 1552,
+      "timestamp_s": 51.733333333333334,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8135416666666667,
+            0.5,
+            0.9104166666666667,
+            0.6611111111111111
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.984375,
+            0.675,
+            0.9994791666666667,
+            0.7111111111111111
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-001862.png",
+      "image_sha256": "b0031a97464019fa88d4dc736a1e8de491328942d6b3e5fd9b4f837f862b74ea",
+      "frame_index": 1862,
+      "timestamp_s": 62.06666666666667,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.665625,
+            0.0,
+            0.6796875,
+            0.016666666666666666
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8489583333333334,
+            0.7398148148148148,
+            0.9994791666666667,
+            0.9055555555555556
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-002172.png",
+      "image_sha256": "364d4616b44a83248dfd631b3cd44195923e74e9ed93032a2ad976f384055e48",
+      "frame_index": 2172,
+      "timestamp_s": 72.4,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.95,
+            0.9675925925925926,
+            0.9994791666666667,
+            0.9990740740740741
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7255208333333333,
+            0.0,
+            0.759375,
+            0.08055555555555556
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8994791666666667,
+            0.7870370370370371,
+            0.9994791666666667,
+            0.9333333333333333
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-002482.png",
+      "image_sha256": "20606b817139b289cfd8c48f27f557a9aba660297934c8655c4892bbfce8ec8d",
+      "frame_index": 2482,
+      "timestamp_s": 82.73333333333333,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6338541666666667,
+            0.9398148148148148,
+            0.7104166666666667,
+            0.9990740740740741
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6697916666666667,
+            0.0,
+            0.7010416666666667,
+            0.09351851851851851
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8515625,
+            0.5555555555555556,
+            0.965625,
+            0.7518518518518519
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7427083333333333,
+            0.3685185185185185,
+            0.83125,
+            0.5648148148148148
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-002793.png",
+      "image_sha256": "59281cdc660cfa9230440aae8969853e5f62834f04537628b9737f3121c839f3",
+      "frame_index": 2793,
+      "timestamp_s": 93.1,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7489583333333333,
+            0.600925925925926,
+            0.8453125,
+            0.7638888888888888
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.5671875,
+            0.0,
+            0.5864583333333333,
+            0.08888888888888889
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.821875,
+            0.7166666666666667,
+            0.9776041666666667,
+            0.9101851851851852
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9489583333333333,
+            0.8592592592592593,
+            0.9994791666666667,
+            0.937962962962963
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-003103.png",
+      "image_sha256": "22666dcb33494518c54aaff7d750fd827774a78c218ad9d845e8a3a0897503a2",
+      "frame_index": 3103,
+      "timestamp_s": 103.43333333333334,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6260416666666667,
+            0.0,
+            0.646875,
+            0.05185185185185185
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8916666666666667,
+            0.3296296296296296,
+            0.9994791666666667,
+            0.5296296296296297
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-003413.png",
+      "image_sha256": "c24d1bcf52f7d3977ad3733b5f7bb1c5cba6991b54d6cee2d4e66fe883df7d13",
+      "frame_index": 3413,
+      "timestamp_s": 113.76666666666667,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7666666666666667,
+            0.6962962962962963,
+            0.8776041666666666,
+            0.8546296296296296
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6786458333333333,
+            0.0,
+            0.6921875,
+            0.007407407407407408
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8463541666666666,
+            0.850925925925926,
+            0.9994791666666667,
+            0.9990740740740741
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8203125,
+            0.6694444444444444,
+            0.9572916666666667,
+            0.8379629629629629
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9552083333333333,
+            0.4,
+            0.9994791666666667,
+            0.4888888888888889
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-003724.png",
+      "image_sha256": "e1c5a9c38e5c9f0e74005de1766a8dc8dc83e5e02b449e3960d1eacef6b4eea9",
+      "frame_index": 3724,
+      "timestamp_s": 124.13333333333334,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9875,
+            0.6925925925925925,
+            0.9994791666666667,
+            0.725
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7078125,
+            0.0,
+            0.7364583333333333,
+            0.07777777777777778
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7973958333333333,
+            0.4064814814814815,
+            0.9083333333333333,
+            0.612037037037037
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8541666666666666,
+            0.6444444444444445,
+            0.990625,
+            0.8
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9875,
+            0.24259259259259258,
+            0.9994791666666667,
+            0.2898148148148148
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-004034.png",
+      "image_sha256": "23c2a56b8327c00177b46296139ff874718d225e704f15474dfd46d243cd077d",
+      "frame_index": 4034,
+      "timestamp_s": 134.46666666666667,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8348958333333333,
+            0.6416666666666667,
+            0.9552083333333333,
+            0.8064814814814815
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6276041666666666,
+            0.0,
+            0.6567708333333333,
+            0.11574074074074074
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6604166666666667,
+            0.7870370370370371,
+            0.784375,
+            0.9481481481481482
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-004344.png",
+      "image_sha256": "6c7629e6445e9d6605876919513989b53766016e54e1ddd55af4facb30d16840",
+      "frame_index": 4344,
+      "timestamp_s": 144.8,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7270833333333333,
+            0.0,
+            0.7604166666666666,
+            0.10277777777777777
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7958333333333333,
+            0.4962962962962963,
+            0.9119791666666667,
+            0.7055555555555556
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7734375,
+            0.6657407407407407,
+            0.8885416666666667,
+            0.8824074074074074
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8208333333333333,
+            0.16944444444444445,
+            0.90625,
+            0.3425925925925926
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-004655.png",
+      "image_sha256": "245e216cbd062c00592e01051cd5e0dfa7e93873418bc2d14b22c6cdd0ff9593",
+      "frame_index": 4655,
+      "timestamp_s": 155.16666666666666,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8369791666666667,
+            0.5083333333333333,
+            0.9479166666666666,
+            0.6787037037037037
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.653125,
+            0.0,
+            0.6677083333333333,
+            0.03796296296296296
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8765625,
+            0.25925925925925924,
+            0.9791666666666666,
+            0.45740740740740743
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6401041666666667,
+            0.3768518518518518,
+            0.715625,
+            0.5638888888888889
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.990625,
+            0.3861111111111111,
+            0.9994791666666667,
+            0.4074074074074074
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-004965.png",
+      "image_sha256": "d1d119c1cfbcc9ab3cc462fb62cb2d1f832ffa4c711e00453896b28d6cf5911d",
+      "frame_index": 4965,
+      "timestamp_s": 165.5,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6317708333333333,
+            0.0,
+            0.6598958333333333,
+            0.10740740740740741
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9270833333333334,
+            0.625,
+            0.9994791666666667,
+            0.7527777777777778
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8151041666666666,
+            0.2564814814814815,
+            0.90625,
+            0.4462962962962963
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-005275.png",
+      "image_sha256": "2f61517e8e5e9fad035018b25427c429aad4067d69685785baf9aaf39660e2b1",
+      "frame_index": 5275,
+      "timestamp_s": 175.83333333333334,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9526041666666667,
+            0.16111111111111112,
+            0.9994791666666667,
+            0.2916666666666667
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7453125,
+            0.0,
+            0.7796875,
+            0.09814814814814815
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8984375,
+            0.2824074074074074,
+            0.9994791666666667,
+            0.487962962962963
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8317708333333333,
+            0.2490740740740741,
+            0.928125,
+            0.44166666666666665
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-005586.png",
+      "image_sha256": "c79c3ae3ceb03960646939693b2c26f89a7c6cf4b7945ffd316c62253f14e736",
+      "frame_index": 5586,
+      "timestamp_s": 186.2,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8208333333333333,
+            0.04259259259259259,
+            0.875,
+            0.18703703703703703
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7619791666666667,
+            0.0,
+            0.8078125,
+            0.09814814814814815
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9645833333333333,
+            0.19907407407407407,
+            0.9994791666666667,
+            0.2916666666666667
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8385416666666666,
+            0.2564814814814815,
+            0.9354166666666667,
+            0.45
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-005896.png",
+      "image_sha256": "7e18046f9a78818ba3de8a73b353c4691dce85f721cd4351f124f754de8409e5",
+      "frame_index": 5896,
+      "timestamp_s": 196.53333333333333,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6921875,
+            0.03981481481481482,
+            0.73125,
+            0.18425925925925926
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8213541666666667,
+            0.0,
+            0.853125,
+            0.053703703703703705
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6802083333333333,
+            0.1259259259259259,
+            0.7395833333333334,
+            0.3111111111111111
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8421875,
+            0.2574074074074074,
+            0.9328125,
+            0.45092592592592595
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-006206.png",
+      "image_sha256": "2f5ba70de1b63960b2721dacd47a435bfbe9ad0c9a7f2bcff8582c0a2098c57e",
+      "frame_index": 6206,
+      "timestamp_s": 206.86666666666667,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6098958333333333,
+            0.0,
+            0.6338541666666667,
+            0.09814814814814815
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9572916666666667,
+            0.06018518518518518,
+            0.9932291666666667,
+            0.1037037037037037
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7036458333333333,
+            0.13518518518518519,
+            0.7776041666666667,
+            0.3212962962962963
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8229166666666666,
+            0.25555555555555554,
+            0.9270833333333334,
+            0.4527777777777778
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-006517.png",
+      "image_sha256": "0a7bb99ce408b1c767cbe8d6359f39fa5ca7a41471c76fb29376bc24eab3672c",
+      "frame_index": 6517,
+      "timestamp_s": 217.23333333333332,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.5848958333333333,
+            0.0,
+            0.615625,
+            0.08981481481481482
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8135416666666667,
+            0.08796296296296297,
+            0.8848958333333333,
+            0.2722222222222222
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6828125,
+            0.12777777777777777,
+            0.7354166666666667,
+            0.3101851851851852
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-006827.png",
+      "image_sha256": "67567e46f120049795b4a3f5fa7a20b060c3b1b363971052601067b6f8b6218c",
+      "frame_index": 6827,
+      "timestamp_s": 227.56666666666666,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.5875,
+            0.004629629629629629,
+            0.5989583333333334,
+            0.01574074074074074
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.653125,
+            0.07037037037037037,
+            0.7098958333333333,
+            0.2388888888888889
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.5651041666666666,
+            0.10740740740740741,
+            0.6109375,
+            0.28055555555555556
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-007137.png",
+      "image_sha256": "8419b20ed2e127d2138813f3537e44ba011c7f00a7abc695952297acb69066f0",
+      "frame_index": 7137,
+      "timestamp_s": 237.9,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9864583333333333,
+            0.34444444444444444,
+            0.9989583333333333,
+            0.35555555555555557
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6713541666666667,
+            0.062037037037037036,
+            0.7213541666666666,
+            0.2388888888888889
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9083333333333333,
+            0.7518518518518519,
+            0.9994791666666667,
+            0.8796296296296297
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.5354166666666667,
+            0.06574074074074074,
+            0.5786458333333333,
+            0.22037037037037038
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-007447.png",
+      "image_sha256": "85bfe069fd7018f61e35c79342a4edc652d82965c4f29e08b9695c3aaef1ab0f",
+      "frame_index": 7447,
+      "timestamp_s": 248.23333333333332,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8994791666666667,
+            0.10277777777777777,
+            0.9765625,
+            0.25925925925925924
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6729166666666667,
+            0.08055555555555556,
+            0.7197916666666667,
+            0.25925925925925924
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9322916666666666,
+            0.41574074074074074,
+            0.9994791666666667,
+            0.5546296296296296
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.53125,
+            0.05648148148148148,
+            0.5619791666666667,
+            0.22777777777777777
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-007758.png",
+      "image_sha256": "14e7e250bacc8db380e6cd6ec9762dfc84d6de129a879ac65069c73f4d265645",
+      "frame_index": 7758,
+      "timestamp_s": 258.6,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7739583333333333,
+            0.1787037037037037,
+            0.8463541666666666,
+            0.35555555555555557
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6697916666666667,
+            0.075,
+            0.7161458333333334,
+            0.2564814814814815
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.75,
+            0.4027777777777778,
+            0.8369791666666667,
+            0.5907407407407408
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.365625,
+            0.07407407407407407,
+            0.41354166666666664,
+            0.24814814814814815
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-008068.png",
+      "image_sha256": "89bb32fa744c60c697b414f239456749870509e188caf1d3ca7686e77444101c",
+      "frame_index": 8068,
+      "timestamp_s": 268.93333333333334,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7744791666666667,
+            0.18055555555555555,
+            0.8458333333333333,
+            0.35462962962962963
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.5166666666666667,
+            0.09166666666666666,
+            0.553125,
+            0.275
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7380208333333333,
+            0.4046296296296296,
+            0.8265625,
+            0.5935185185185186
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.30885416666666665,
+            0.0,
+            0.3494791666666667,
+            0.1527777777777778
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-008378.png",
+      "image_sha256": "0cf55894fd668351277cabcf86212b4626c68ea867f06443b3ad2246ec6fd806",
+      "frame_index": 8378,
+      "timestamp_s": 279.26666666666665,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6260416666666667,
+            0.0,
+            0.6505208333333333,
+            0.06944444444444445
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8932291666666666,
+            0.4981481481481482,
+            0.9994791666666667,
+            0.6768518518518518
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.8036458333333333,
+            0.11944444444444445,
+            0.8786458333333333,
+            0.30833333333333335
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7333333333333333,
+            0.4361111111111111,
+            0.8338541666666667,
+            0.5953703703703703
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.35989583333333336,
+            0.08148148148148149,
+            0.39895833333333336,
+            0.25833333333333336
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-008689.png",
+      "image_sha256": "14ad79f6f8bb265a147a3982efa0b0e3c31671d86c208a6e45654a6239ae2bcb",
+      "frame_index": 8689,
+      "timestamp_s": 289.6333333333333,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6817708333333333,
+            0.0,
+            0.6963541666666667,
+            0.018518518518518517
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9671875,
+            0.47314814814814815,
+            0.9994791666666667,
+            0.5546296296296296
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7953125,
+            0.12037037037037036,
+            0.871875,
+            0.3074074074074074
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.5520833333333334,
+            0.4074074074074074,
+            0.6,
+            0.5944444444444444
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.50625,
+            0.08055555555555556,
+            0.5479166666666667,
+            0.25
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2025/val/Warehouse_016/benchmark-30/Camera_01/Camera_01-008999.png",
+      "image_sha256": "056f830e0ea05b20f30ff427afe61ec80400cc3a5ec3382f65d769b8c6593e5a",
+      "frame_index": 8999,
+      "timestamp_s": 299.96666666666664,
+      "source_scene": "MTMC_Tracking_2025/val/Warehouse_016",
+      "source_camera": "Camera_01",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.6052083333333333,
+            0.004629629629629629,
+            0.6130208333333333,
+            0.01574074074074074
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.9677083333333333,
+            0.4740740740740741,
+            0.9994791666666667,
+            0.5546296296296296
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.7947916666666667,
+            0.12222222222222222,
+            0.871875,
+            0.30925925925925923
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.5515625,
+            0.4166666666666667,
+            0.5994791666666667,
+            0.5962962962962963
+          ]
+        },
+        {
+          "label": "person",
+          "confidence": 1.0,
+          "box": [
+            0.3692708333333333,
+            0.13518518518518519,
+            0.4036458333333333,
+            0.28888888888888886
+          ]
+        }
+      ],
+      "reviewed": false,
+      "ground_truth_origin": "NVIDIA IsaacSim published automatic labels"
+    }
+  ]
+}

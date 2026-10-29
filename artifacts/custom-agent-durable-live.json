@@ -1,0 +1,1742 @@
+{
+  "status": 200,
+  "elapsed_s": 32.67644587496761,
+  "source": "Five NVIDIA warehouse frames copied from existing downloaded verification dataset. Unreviewed labels; no accuracy claim.",
+  "prior_failure": "Earlier broad schema proposed unrelated presets; custom schema and semantic validators now constrain task fields.",
+  "response": {
+    "message": "Local model selected a pipeline pattern and parameters. Detect the requested classes.",
+    "questions": [],
+    "candidates": [
+      {
+        "spec_version": "0.1",
+        "name": "custom-candidate-1",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "sample",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2
+            },
+            "in": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "det",
+            "type": "detect",
+            "params": {
+              "model": "owlv2-base-patch16",
+              "classes": [
+                "person",
+                "forklift"
+              ],
+              "min_conf": 0.25
+            },
+            "in": {
+              "image": "$sample.frame"
+            }
+          },
+          {
+            "id": "count",
+            "type": "count_per_zone",
+            "params": {},
+            "in": {
+              "dets": "$det.dets"
+            }
+          },
+          {
+            "id": "full",
+            "type": "rule",
+            "params": {
+              "when": "count >= 1",
+              "hold_s": 0.0
+            },
+            "in": {
+              "value": "$count.counts"
+            }
+          },
+          {
+            "id": "out",
+            "type": "sink_event",
+            "params": {},
+            "in": {
+              "event": "$full.event"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "recall",
+          "target": 0.9
+        }
+      }
+    ],
+    "project": {
+      "id": "0bfdc03f3ef2465f",
+      "name": "Custom person and forklift app",
+      "use_case": "custom",
+      "status": "building",
+      "created_at": "2026-10-28T17:01:06.026343+00:00",
+      "updated_at": "2026-10-28T17:01:38.973602+00:00",
+      "media": [
+        "/private/tmp/visionapp-custom-authoring-recheck/projects/0bfdc03f3ef2465f/media/cb51877e-061bc51a-Camera_01-frame-003413.png",
+        "/private/tmp/visionapp-custom-authoring-recheck/projects/0bfdc03f3ef2465f/media/0bddff41-2406f7e5-Camera_01-frame-002793.png",
+        "/private/tmp/visionapp-custom-authoring-recheck/projects/0bfdc03f3ef2465f/media/6a13075b-6a6d48dd-Camera_01-frame-005896.png",
+        "/private/tmp/visionapp-custom-authoring-recheck/projects/0bfdc03f3ef2465f/media/10c37923-af044bc7-Camera_01-frame-005275.png",
+        "/private/tmp/visionapp-custom-authoring-recheck/projects/0bfdc03f3ef2465f/media/daee5eb2-c60c7d48-Camera_01-frame-003103.png"
+      ],
+      "brief": "Build my custom computer vision app. Detect the saved person and forklift classes at confidence 0.25. Count detections and emit a local evidence event when count is at least 1, hold zero seconds. Evaluate recall target 0.9 later against my reviewed labels. Use the imported images and configured OWLv2 model. All planning parameters are confirmed.",
+      "clarification_count": 0,
+      "candidates": [
+        {
+          "spec_version": "0.1",
+          "name": "custom-candidate-1",
+          "inputs": {
+            "source": {
+              "type": "image_folder",
+              "path": "media"
+            }
+          },
+          "blocks": [
+            {
+              "id": "sample",
+              "type": "frame_sample",
+              "params": {
+                "fps": 2
+              },
+              "in": {
+                "frames": "$inputs.source"
+              }
+            },
+            {
+              "id": "det",
+              "type": "detect",
+              "params": {
+                "model": "owlv2-base-patch16",
+                "classes": [
+                  "person",
+                  "forklift"
+                ],
+                "min_conf": 0.25
+              },
+              "in": {
+                "image": "$sample.frame"
+              }
+            },
+            {
+              "id": "count",
+              "type": "count_per_zone",
+              "params": {},
+              "in": {
+                "dets": "$det.dets"
+              }
+            },
+            {
+              "id": "full",
+              "type": "rule",
+              "params": {
+                "when": "count >= 1",
+                "hold_s": 0.0
+              },
+              "in": {
+                "value": "$count.counts"
+              }
+            },
+            {
+              "id": "out",
+              "type": "sink_event",
+              "params": {},
+              "in": {
+                "event": "$full.event"
+              }
+            }
+          ],
+          "eval": {
+            "set": "reviewed-v1",
+            "metric": "recall",
+            "target": 0.9
+          }
+        }
+      ],
+      "evaluations": [],
+      "messages": [
+        {
+          "role": "user",
+          "content": "Build my custom computer vision app. Detect the saved person and forklift classes at confidence 0.25. Count detections and emit a local evidence event when count is at least 1, hold zero seconds. Evaluate recall target 0.9 later against my reviewed labels. Use the imported images and configured OWLv2 model. All planning parameters are confirmed."
+        },
+        {
+          "role": "assistant",
+          "content": "Local model selected a pipeline pattern and parameters. Detect the requested classes."
+        }
+      ],
+      "synthetic": false,
+      "fixture": false,
+      "data_origin": "User imported media",
+      "deployment_id": null
+    }
+  },
+  "state": {
+    "project_id": "0bfdc03f3ef2465f",
+    "revision": 19,
+    "state": {
+      "phase": "evaluate",
+      "budget": {
+        "max_tool_calls": 30,
+        "max_wall_seconds": 180.0,
+        "max_training_minutes": 30.0,
+        "max_model_calls": 5,
+        "tool_calls": 4,
+        "model_calls": 1,
+        "training_minutes": 0.0,
+        "started_at": 1793206868.2222989
+      },
+      "brief_confirmed": true,
+      "candidate_count": 1,
+      "compiled_count": 1,
+      "evaluation": null,
+      "deployment_approved": false,
+      "override_reason": null
+    },
+    "brief": "Build my custom computer vision app. Detect the saved person and forklift classes at confidence 0.25. Count detections and emit a local evidence event when count is at least 1, hold zero seconds. Evaluate recall target 0.9 later against my reviewed labels. Use the imported images and configured OWLv2 model. All planning parameters are confirmed.",
+    "clarification_count": 0,
+    "active_operation_id": null,
+    "last_operation_id": "480ee49988d940e5bb28ac98eee03e76",
+    "history": [
+      {
+        "at": 1793206899.520161,
+        "action": "plan_committed",
+        "phase": "evaluate",
+        "detail": ""
+      }
+    ]
+  },
+  "run": {
+    "id": "480ee49988d940e5bb28ac98eee03e76",
+    "project_id": "0bfdc03f3ef2465f",
+    "trace_id": "75479ecc156049c0902c4c83afc20010",
+    "root_span_id": "e1584a9ba464454c",
+    "owner_pid": 29885,
+    "created_at": 1793206868.23716,
+    "updated_at": 1793206898.974259,
+    "deadline": 1793206928.300163,
+    "status": "completed",
+    "input_fingerprint": "a81bcf1a8cd4e1c4fbc8375088c7216e9d3f5aa5e1f4b33f129a92c0fc8f914d",
+    "brief": "Build my custom computer vision app. Detect the saved person and forklift classes at confidence 0.25. Count detections and emit a local evidence event when count is at least 1, hold zero seconds. Evaluate recall target 0.9 later against my reviewed labels. Use the imported images and configured OWLv2 model. All planning parameters are confirmed.",
+    "source_path": "media",
+    "detector_model": "owlv2-base-patch16",
+    "state": {
+      "phase": "evaluate",
+      "budget": {
+        "max_tool_calls": 30,
+        "max_wall_seconds": 180.0,
+        "max_training_minutes": 30.0,
+        "max_model_calls": 5,
+        "tool_calls": 4,
+        "model_calls": 1,
+        "training_minutes": 0.0,
+        "started_at": 1793206868.2222989
+      },
+      "brief_confirmed": true,
+      "candidate_count": 1,
+      "compiled_count": 1,
+      "evaluation": null,
+      "deployment_approved": false,
+      "override_reason": null
+    },
+    "calls": [
+      {
+        "id": "40196620978440c6af8c43ceec34e571",
+        "kind": "tool",
+        "name": "blocks_list",
+        "started_ns": 1793206868336787000,
+        "ended_ns": 1793206868355698000,
+        "status": "completed",
+        "request": {},
+        "result": {
+          "blocks": [
+            {
+              "type": "frame_sample",
+              "description": "Sample frames at a bounded rate.",
+              "params": {
+                "additionalProperties": false,
+                "properties": {
+                  "fps": {
+                    "default": 2,
+                    "exclusiveMinimum": 0,
+                    "maximum": 60,
+                    "title": "Fps",
+                    "type": "number"
+                  }
+                },
+                "title": "FrameSampleParams",
+                "type": "object"
+              },
+              "inputs": {
+                "frames": "frames"
+              },
+              "outputs": {
+                "frame": "image"
+              }
+            },
+            {
+              "type": "detect",
+              "description": "Run a locally installed detector.",
+              "params": {
+                "additionalProperties": false,
+                "properties": {
+                  "model": {
+                    "default": "owlv2-base-patch16",
+                    "title": "Model",
+                    "type": "string"
+                  },
+                  "classes": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 64,
+                    "minItems": 1,
+                    "title": "Classes",
+                    "type": "array"
+                  },
+                  "min_conf": {
+                    "default": 0.25,
+                    "maximum": 1,
+                    "minimum": 0,
+                    "title": "Min Conf",
+                    "type": "number"
+                  }
+                },
+                "title": "DetectParams",
+                "type": "object"
+              },
+              "inputs": {
+                "image": "image"
+              },
+              "outputs": {
+                "dets": "detections"
+              }
+            },
+            {
+              "type": "detect_open_vocab",
+              "description": "Detect text-prompted classes using local OWLv2.",
+              "params": {
+                "additionalProperties": false,
+                "properties": {
+                  "model": {
+                    "default": "owlv2-base-patch16",
+                    "title": "Model",
+                    "type": "string"
+                  },
+                  "classes": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 64,
+                    "minItems": 1,
+                    "title": "Classes",
+                    "type": "array"
+                  },
+                  "min_conf": {
+                    "default": 0.25,
+                    "maximum": 1,
+                    "minimum": 0,
+                    "title": "Min Conf",
+                    "type": "number"
+                  }
+                },
+                "title": "DetectParams",
+                "type": "object"
+              },
+              "inputs": {
+                "image": "image"
+              },
+              "outputs": {
+                "dets": "detections"
+              }
+            },
+            {
+              "type": "zone_filter",
+              "description": "Keep objects whose center is inside a polygon.",
+              "params": {
+                "$defs": {
+                  "Zone": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "maxLength": 80,
+                        "minLength": 1,
+                        "title": "Id",
+                        "type": "string"
+                      },
+                      "polygon": {
+                        "items": {
+                          "maxItems": 2,
+                          "minItems": 2,
+                          "prefixItems": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ],
+                          "type": "array"
+                        },
+                        "minItems": 3,
+                        "title": "Polygon",
+                        "type": "array"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "polygon"
+                    ],
+                    "title": "Zone",
+                    "type": "object"
+                  }
+                },
+                "additionalProperties": false,
+                "properties": {
+                  "zones": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "items": {
+                          "$ref": "#/$defs/Zone"
+                        },
+                        "type": "array"
+                      }
+                    ],
+                    "default": "zones/lanes.json",
+                    "title": "Zones"
+                  }
+                },
+                "title": "ZoneFilterParams",
+                "type": "object"
+              },
+              "inputs": {
+                "dets": "detections"
+              },
+              "outputs": {
+                "dets": "detections"
+              }
+            },
+            {
+              "type": "count_per_zone",
+              "description": "Count detections in each named zone.",
+              "params": {
+                "additionalProperties": false,
+                "properties": {
+                  "include_unassigned": {
+                    "default": false,
+                    "title": "Include Unassigned",
+                    "type": "boolean"
+                  }
+                },
+                "title": "CountParams",
+                "type": "object"
+              },
+              "inputs": {
+                "dets": "detections"
+              },
+              "outputs": {
+                "counts": "counts"
+              }
+            },
+            {
+              "type": "rule",
+              "description": "Compare zone counts using a small safe expression language.",
+              "params": {
+                "additionalProperties": false,
+                "properties": {
+                  "when": {
+                    "default": "count >= 1",
+                    "maxLength": 100,
+                    "title": "When",
+                    "type": "string"
+                  },
+                  "hold_s": {
+                    "default": 0,
+                    "maximum": 86400,
+                    "minimum": 0,
+                    "title": "Hold S",
+                    "type": "number"
+                  }
+                },
+                "title": "RuleParams",
+                "type": "object"
+              },
+              "inputs": {
+                "value": "counts"
+              },
+              "outputs": {
+                "event": "event"
+              }
+            },
+            {
+              "type": "sink_event",
+              "description": "Emit local evidence events; delivery is separately approved.",
+              "params": {
+                "additionalProperties": false,
+                "properties": {
+                  "alert": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Alert"
+                  }
+                },
+                "title": "SinkEventParams",
+                "type": "object"
+              },
+              "inputs": {
+                "event": "event"
+              },
+              "outputs": {
+                "event": "event"
+              }
+            },
+            {
+              "type": "ocr",
+              "description": "Read text with native Apple Vision.",
+              "params": {
+                "additionalProperties": false,
+                "properties": {
+                  "languages": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "title": "Languages",
+                    "type": "array"
+                  }
+                },
+                "title": "ReadingParams",
+                "type": "object"
+              },
+              "inputs": {
+                "image": "image"
+              },
+              "outputs": {
+                "text": "text"
+              }
+            },
+            {
+              "type": "barcode",
+              "description": "Read barcode payloads with native Apple Vision.",
+              "params": {
+                "additionalProperties": false,
+                "properties": {},
+                "title": "EmptyParams",
+                "type": "object"
+              },
+              "inputs": {
+                "image": "image"
+              },
+              "outputs": {
+                "text": "text"
+              }
+            },
+            {
+              "type": "match",
+              "description": "Compare recognized text with an expected value.",
+              "params": {
+                "additionalProperties": false,
+                "properties": {
+                  "expected": {
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "title": "Expected",
+                    "type": "string"
+                  },
+                  "mode": {
+                    "default": "contains",
+                    "enum": [
+                      "contains",
+                      "exact"
+                    ],
+                    "title": "Mode",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "expected"
+                ],
+                "title": "MatchParams",
+                "type": "object"
+              },
+              "inputs": {
+                "text": "text"
+              },
+              "outputs": {
+                "event": "event"
+              }
+            },
+            {
+              "type": "vlm_judge",
+              "description": "Ask a configured local vision model for a bounded evidence judgement.",
+              "params": {
+                "additionalProperties": false,
+                "properties": {
+                  "base_url": {
+                    "default": "http://127.0.0.1:1235/v1",
+                    "title": "Base Url",
+                    "type": "string"
+                  },
+                  "model": {
+                    "default": "visionapp-vlm",
+                    "maxLength": 200,
+                    "minLength": 1,
+                    "title": "Model",
+                    "type": "string"
+                  },
+                  "timeout_s": {
+                    "default": 45,
+                    "exclusiveMinimum": 0,
+                    "maximum": 120,
+                    "title": "Timeout S",
+                    "type": "number"
+                  },
+                  "max_tokens": {
+                    "default": 512,
+                    "maximum": 2048,
+                    "minimum": 64,
+                    "title": "Max Tokens",
+                    "type": "integer"
+                  },
+                  "max_image_side": {
+                    "default": 768,
+                    "maximum": 1536,
+                    "minimum": 64,
+                    "title": "Max Image Side",
+                    "type": "integer"
+                  },
+                  "retries": {
+                    "default": 1,
+                    "maximum": 2,
+                    "minimum": 0,
+                    "title": "Retries",
+                    "type": "integer"
+                  },
+                  "model_sha256": {
+                    "anyOf": [
+                      {
+                        "pattern": "^[0-9a-f]{64}$",
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Model Sha256"
+                  },
+                  "question": {
+                    "maxLength": 3000,
+                    "minLength": 1,
+                    "title": "Question",
+                    "type": "string"
+                  },
+                  "labels": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 20,
+                    "minItems": 2,
+                    "title": "Labels",
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "question",
+                  "labels"
+                ],
+                "title": "VLMJudgeParams",
+                "type": "object"
+              },
+              "inputs": {
+                "image": "image"
+              },
+              "outputs": {
+                "judgement": "judgement",
+                "text": "text",
+                "event": "event"
+              }
+            },
+            {
+              "type": "resize",
+              "description": "Resize input pixels; normalized boxes remain unchanged.",
+              "params": {
+                "additionalProperties": false,
+                "properties": {
+                  "width": {
+                    "default": 640,
+                    "exclusiveMinimum": 0,
+                    "maximum": 8192,
+                    "title": "Width",
+                    "type": "integer"
+                  },
+                  "height": {
+                    "default": 480,
+                    "exclusiveMinimum": 0,
+                    "maximum": 8192,
+                    "title": "Height",
+                    "type": "integer"
+                  }
+                },
+                "title": "ResizeParams",
+                "type": "object"
+              },
+              "inputs": {
+                "image": "image"
+              },
+              "outputs": {
+                "image": "image"
+              }
+            },
+            {
+              "type": "crop",
+              "description": "Crop a normalized rectangle and preserve coordinate transforms.",
+              "params": {
+                "additionalProperties": false,
+                "properties": {
+                  "box": {
+                    "maxItems": 4,
+                    "minItems": 4,
+                    "prefixItems": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ],
+                    "title": "Box",
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "box"
+                ],
+                "title": "CropParams",
+                "type": "object"
+              },
+              "inputs": {
+                "image": "image"
+              },
+              "outputs": {
+                "image": "image"
+              }
+            }
+          ]
+        },
+        "error": null
+      },
+      {
+        "id": "0a071906aa0a4eda8798312e6f6098aa",
+        "kind": "tool",
+        "name": "dataset_context",
+        "started_ns": 1793206868387137000,
+        "ended_ns": 1793206868405293000,
+        "status": "completed",
+        "request": {
+          "project_id": "0bfdc03f3ef2465f"
+        },
+        "result": {
+          "revision": 2,
+          "classes": [
+            "person",
+            "forklift"
+          ],
+          "image_count": 5,
+          "reviewed_count": 0,
+          "annotation_count": 0,
+          "split_counts": {
+            "unassigned": 5
+          }
+        },
+        "error": null
+      },
+      {
+        "id": "1a4586601dbd4cf1b486e2ca3e5e895c",
+        "kind": "llm",
+        "name": "visionapp-planner",
+        "started_ns": 1793206868475826000,
+        "ended_ns": 1793206881048979000,
+        "status": "completed",
+        "request": {
+          "messages": [
+            {
+              "parts": [
+                {
+                  "content": "You build the user's own computer vision application.\nReturn one custom detector choice unless the user explicitly requests alternatives.\nUse the dataset ontology's class names exactly and interpret the user's goal.\nAn annotation label means an object class; it does NOT mean OCR text printed on a box.\nFill objects, min_confidence, count_threshold, hold_seconds, metric and target.\nCopy any explicitly requested metric and target exactly. Otherwise default to\nrecall target 0.9 for detection. A local evidence event on any detection uses\ncount_threshold 1. No unrelated example applications may be added.\nAll choices use use_case custom and expected_text null. Ask up to three questions\nonly if the task cannot be specified from the brief and saved dataset context.\nIf classes and detection parameters are present, create the proposal now.\nOutput only a typed decision; the application compiles it into an editable graph,\nvalidates it and previews imported samples. Do not claim evaluation accuracy,\napprove deployment, review labels, execute code, send alerts or invent detections.\nExample response: {\"message\":\"Detect the requested classes.\",\"questions\":[],\n\"choices\":[{\"use_case\":\"custom\",\"objects\":[\"bolt\",\"washer\"],\n\"min_confidence\":0.4,\"count_threshold\":1,\"hold_seconds\":0,\n\"expected_text\":null,\"metric\":\"recall\",\"target\":0.9}]}.\n\nBuild the user's own computer vision app. Use their saved ontology class names exactly. Detection labels stay unreviewed proposals until the user accepts or edits them. Choose typed blocks from the implemented catalog; do not force a warehouse preset. Ask for missing objects or expected output, not a preset selection.\nYou may ask at most 3 further questions in this project.",
+                  "timestamp": "2026-10-28T17:01:08.448181Z",
+                  "dynamic_ref": null,
+                  "part_kind": "system-prompt"
+                },
+                {
+                  "content": "Task brief:\nBuild my custom computer vision app. Detect the saved person and forklift classes at confidence 0.25. Count detections and emit a local evidence event when count is at least 1, hold zero seconds. Evaluate recall target 0.9 later against my reviewed labels. Use the imported images and configured OWLv2 model. All planning parameters are confirmed.\nAuthoritative engine context:\n{\"source_path\": \"media\", \"detector_model\": \"owlv2-base-patch16\", \"use_case\": \"custom\", \"dataset\": {\"revision\": 2, \"classes\": [\"person\", \"forklift\"], \"image_count\": 5, \"reviewed_count\": 0, \"annotation_count\": 0, \"split_counts\": {\"unassigned\": 5}}, \"zones_path\": \"zones/lanes.json\", \"source_provenance\": \"imported media\", \"implemented_blocks\": [{\"type\": \"frame_sample\", \"description\": \"Sample frames at a bounded rate.\"}, {\"type\": \"detect\", \"description\": \"Run a locally installed detector.\"}, {\"type\": \"detect_open_vocab\", \"description\": \"Detect text-prompted classes using local OWLv2.\"}, {\"type\": \"zone_filter\", \"description\": \"Keep objects whose center is inside a polygon.\"}, {\"type\": \"count_per_zone\", \"description\": \"Count detections in each named zone.\"}, {\"type\": \"rule\", \"description\": \"Compare zone counts using a small safe expression language.\"}, {\"type\": \"sink_event\", \"description\": \"Emit local evidence events; delivery is separately approved.\"}, {\"type\": \"ocr\", \"description\": \"Read text with native Apple Vision.\"}, {\"type\": \"barcode\", \"description\": \"Read barcode payloads with native Apple Vision.\"}, {\"type\": \"match\", \"description\": \"Compare recognized text with an expected value.\"}, {\"type\": \"vlm_judge\", \"description\": \"Ask a configured local vision model for a bounded evidence judgement.\"}, {\"type\": \"resize\", \"description\": \"Resize input pixels; normalized boxes remain unchanged.\"}, {\"type\": \"crop\", \"description\": \"Crop a normalized rectangle and preserve coordinate transforms.\"}]}",
+                  "timestamp": "2026-10-28T17:01:08.448205Z",
+                  "part_kind": "user-prompt"
+                }
+              ],
+              "timestamp": "2026-10-28T17:01:08.448415Z",
+              "instructions": null,
+              "kind": "request",
+              "run_id": "01a18375-59de-74a3-bba8-580c03ca034f",
+              "conversation_id": "01a18375-59de-74a3-bba8-580bf13a4deb",
+              "metadata": null
+            }
+          ],
+          "model_settings": {
+            "temperature": 0,
+            "max_tokens": 1600
+          },
+          "output_schema": {
+            "$defs": {
+              "CustomPatternChoice": {
+                "additionalProperties": false,
+                "properties": {
+                  "use_case": {
+                    "const": "custom",
+                    "default": "custom",
+                    "title": "Use Case",
+                    "type": "string"
+                  },
+                  "objects": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 20,
+                    "title": "Objects",
+                    "type": "array"
+                  },
+                  "min_confidence": {
+                    "default": 0.4,
+                    "maximum": 1,
+                    "minimum": 0,
+                    "title": "Min Confidence",
+                    "type": "number"
+                  },
+                  "count_threshold": {
+                    "anyOf": [
+                      {
+                        "maximum": 10000,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Count Threshold"
+                  },
+                  "hold_seconds": {
+                    "default": 0,
+                    "maximum": 3600,
+                    "minimum": 0,
+                    "title": "Hold Seconds",
+                    "type": "number"
+                  },
+                  "expected_text": {
+                    "anyOf": [
+                      {
+                        "maxLength": 500,
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Expected Text"
+                  },
+                  "metric": {
+                    "enum": [
+                      "count_mae",
+                      "precision",
+                      "recall",
+                      "text_accuracy"
+                    ],
+                    "title": "Metric",
+                    "type": "string"
+                  },
+                  "target": {
+                    "minimum": 0,
+                    "title": "Target",
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "metric",
+                  "target"
+                ],
+                "title": "CustomPatternChoice",
+                "type": "object"
+              }
+            },
+            "additionalProperties": false,
+            "description": "Custom authoring schema does not offer unrelated warehouse preset choices.",
+            "properties": {
+              "message": {
+                "maxLength": 2000,
+                "minLength": 1,
+                "title": "Message",
+                "type": "string"
+              },
+              "questions": {
+                "items": {
+                  "type": "string"
+                },
+                "maxItems": 3,
+                "title": "Questions",
+                "type": "array"
+              },
+              "choices": {
+                "items": {
+                  "$ref": "#/$defs/CustomPatternChoice"
+                },
+                "maxItems": 3,
+                "title": "Choices",
+                "type": "array"
+              }
+            },
+            "required": [
+              "message",
+              "questions",
+              "choices"
+            ],
+            "title": "CustomPlanDecision",
+            "type": "object"
+          }
+        },
+        "result": {
+          "messages": [
+            {
+              "parts": [
+                {
+                  "content": "{\"message\":\"Detect the requested classes.\",\"questions\":[],\"choices\":[{\"metric\":\"recall\",\"target\":0.9,\"use_case\":\"custom\",\"objects\":[\"person\",\"forklift\"],\"min_confidence\":0.25,\"count_threshold\":1,\"hold_seconds\":0,\"expected_text\":null}]}",
+                  "id": null,
+                  "provider_name": null,
+                  "provider_details": null,
+                  "part_kind": "text"
+                }
+              ],
+              "usage": {
+                "input_tokens": 849,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 69,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {}
+              },
+              "model_name": "visionapp-planner",
+              "timestamp": "2026-10-28T17:01:21.024473Z",
+              "kind": "response",
+              "provider_name": "openai",
+              "provider_url": "http://127.0.0.1:1234/v1/",
+              "provider_details": {
+                "finish_reason": "stop",
+                "timestamp": "2026-10-28T17:01:21Z"
+              },
+              "provider_response_id": "chatcmpl-IRDDnRnVnbuVr8tHJdvJ48sPP1us31VZ",
+              "finish_reason": "stop",
+              "run_id": null,
+              "conversation_id": null,
+              "metadata": null,
+              "state": "complete"
+            }
+          ]
+        },
+        "error": null
+      },
+      {
+        "id": "b0e7f95eebf04b47a7a408ac6b5886c6",
+        "kind": "tool",
+        "name": "pipeline_validate",
+        "started_ns": 1793206881249811000,
+        "ended_ns": 1793206881274884000,
+        "status": "completed",
+        "request": {
+          "project_id": "0bfdc03f3ef2465f",
+          "spec": {
+            "spec_version": "0.1",
+            "name": "custom-candidate-1",
+            "inputs": {
+              "source": {
+                "type": "image_folder",
+                "path": "media"
+              }
+            },
+            "blocks": [
+              {
+                "id": "sample",
+                "type": "frame_sample",
+                "params": {
+                  "fps": 2
+                },
+                "in": {
+                  "frames": "$inputs.source"
+                }
+              },
+              {
+                "id": "det",
+                "type": "detect",
+                "params": {
+                  "model": "owlv2-base-patch16",
+                  "classes": [
+                    "person",
+                    "forklift"
+                  ],
+                  "min_conf": 0.25
+                },
+                "in": {
+                  "image": "$sample.frame"
+                }
+              },
+              {
+                "id": "count",
+                "type": "count_per_zone",
+                "params": {},
+                "in": {
+                  "dets": "$det.dets"
+                }
+              },
+              {
+                "id": "full",
+                "type": "rule",
+                "params": {
+                  "when": "count >= 1",
+                  "hold_s": 0.0
+                },
+                "in": {
+                  "value": "$count.counts"
+                }
+              },
+              {
+                "id": "out",
+                "type": "sink_event",
+                "params": {},
+                "in": {
+                  "event": "$full.event"
+                }
+              }
+            ],
+            "eval": {
+              "set": "reviewed-v1",
+              "metric": "recall",
+              "target": 0.9
+            }
+          }
+        },
+        "result": {
+          "valid": true,
+          "errors": []
+        },
+        "error": null
+      },
+      {
+        "id": "7755192bc12d422ca3bacd084281fc09",
+        "kind": "tool",
+        "name": "pipeline_run",
+        "started_ns": 1793206881303409000,
+        "ended_ns": 1793206898271499000,
+        "status": "completed",
+        "request": {
+          "project_id": "0bfdc03f3ef2465f",
+          "spec": {
+            "spec_version": "0.1",
+            "name": "custom-candidate-1",
+            "inputs": {
+              "source": {
+                "type": "image_folder",
+                "path": "media"
+              }
+            },
+            "blocks": [
+              {
+                "id": "sample",
+                "type": "frame_sample",
+                "params": {
+                  "fps": 2
+                },
+                "in": {
+                  "frames": "$inputs.source"
+                }
+              },
+              {
+                "id": "det",
+                "type": "detect",
+                "params": {
+                  "model": "owlv2-base-patch16",
+                  "classes": [
+                    "person",
+                    "forklift"
+                  ],
+                  "min_conf": 0.25
+                },
+                "in": {
+                  "image": "$sample.frame"
+                }
+              },
+              {
+                "id": "count",
+                "type": "count_per_zone",
+                "params": {},
+                "in": {
+                  "dets": "$det.dets"
+                }
+              },
+              {
+                "id": "full",
+                "type": "rule",
+                "params": {
+                  "when": "count >= 1",
+                  "hold_s": 0.0
+                },
+                "in": {
+                  "value": "$count.counts"
+                }
+              },
+              {
+                "id": "out",
+                "type": "sink_event",
+                "params": {},
+                "in": {
+                  "event": "$full.event"
+                }
+              }
+            ],
+            "eval": {
+              "set": "reviewed-v1",
+              "metric": "recall",
+              "target": 0.9
+            }
+          }
+        },
+        "result": {
+          "frames": [
+            {
+              "image_path": "/private/tmp/visionapp-custom-authoring-recheck/projects/0bfdc03f3ef2465f/media/0bddff41-2406f7e5-Camera_01-frame-002793.png",
+              "detections": [
+                {
+                  "label": "forklift",
+                  "confidence": 0.4589376747608185,
+                  "box": [
+                    0.0,
+                    0.3605587146900318,
+                    0.12246518929799398,
+                    0.5826783921983507
+                  ],
+                  "zone": null
+                },
+                {
+                  "label": "forklift",
+                  "confidence": 0.3817157447338104,
+                  "box": [
+                    0.45303799311319987,
+                    0.32850237245912906,
+                    0.5253725051879883,
+                    0.4765900788483796
+                  ],
+                  "zone": null
+                },
+                {
+                  "label": "forklift",
+                  "confidence": 0.6371145844459534,
+                  "box": [
+                    0.44009151458740237,
+                    0.3313262374312789,
+                    0.5238505681355794,
+                    0.48170216878255206
+                  ],
+                  "zone": null
+                }
+              ],
+              "counts": {
+                "all": 3
+              },
+              "texts": [],
+              "events": [
+                {
+                  "type": "count_rule",
+                  "zone": "all",
+                  "count": 3,
+                  "when": "count >= 1",
+                  "held_s": 0.0
+                }
+              ],
+              "elapsed_ms": 7113.751625001896,
+              "timestamp_s": 0.0,
+              "judgements": []
+            },
+            {
+              "image_path": "/private/tmp/visionapp-custom-authoring-recheck/projects/0bfdc03f3ef2465f/media/10c37923-af044bc7-Camera_01-frame-005275.png",
+              "detections": [
+                {
+                  "label": "forklift",
+                  "confidence": 0.28925612568855286,
+                  "box": [
+                    0.00032318010926246643,
+                    0.36290031715675636,
+                    0.07572615146636963,
+                    0.5791384096498843
+                  ],
+                  "zone": null
+                },
+                {
+                  "label": "forklift",
+                  "confidence": 0.682645857334137,
+                  "box": [
+                    0.5149751345316569,
+                    0.32492938571506075,
+                    0.5803475062052409,
+                    0.4741715042679398
+                  ],
+                  "zone": null
+                }
+              ],
+              "counts": {
+                "all": 2
+              },
+              "texts": [],
+              "events": [
+                {
+                  "type": "count_rule",
+                  "zone": "all",
+                  "count": 2,
+                  "when": "count >= 1",
+                  "held_s": 1.0
+                }
+              ],
+              "elapsed_ms": 2416.6512500378303,
+              "timestamp_s": 1.0,
+              "judgements": []
+            },
+            {
+              "image_path": "/private/tmp/visionapp-custom-authoring-recheck/projects/0bfdc03f3ef2465f/media/6a13075b-6a6d48dd-Camera_01-frame-005896.png",
+              "detections": [
+                {
+                  "label": "forklift",
+                  "confidence": 0.6464583277702332,
+                  "box": [
+                    0.5130658785502116,
+                    0.3258030926739728,
+                    0.5857529322306315,
+                    0.47315832067418984
+                  ],
+                  "zone": null
+                }
+              ],
+              "counts": {
+                "all": 1
+              },
+              "texts": [],
+              "events": [
+                {
+                  "type": "count_rule",
+                  "zone": "all",
+                  "count": 1,
+                  "when": "count >= 1",
+                  "held_s": 2.0
+                }
+              ],
+              "elapsed_ms": 2280.3582079941407,
+              "timestamp_s": 2.0,
+              "judgements": []
+            },
+            {
+              "image_path": "/private/tmp/visionapp-custom-authoring-recheck/projects/0bfdc03f3ef2465f/media/cb51877e-061bc51a-Camera_01-frame-003413.png",
+              "detections": [
+                {
+                  "label": "forklift",
+                  "confidence": 0.520003616809845,
+                  "box": [
+                    0.46654596328735354,
+                    0.3286220974392361,
+                    0.5363126118977865,
+                    0.48082501446759257
+                  ],
+                  "zone": null
+                },
+                {
+                  "label": "forklift",
+                  "confidence": 0.29335886240005493,
+                  "box": [
+                    0.4660090446472168,
+                    0.3290922659414786,
+                    0.5296071688334147,
+                    0.4771866975007234
+                  ],
+                  "zone": null
+                }
+              ],
+              "counts": {
+                "all": 2
+              },
+              "texts": [],
+              "events": [
+                {
+                  "type": "count_rule",
+                  "zone": "all",
+                  "count": 2,
+                  "when": "count >= 1",
+                  "held_s": 3.0
+                }
+              ],
+              "elapsed_ms": 2594.0747499698773,
+              "timestamp_s": 3.0,
+              "judgements": []
+            },
+            {
+              "image_path": "/private/tmp/visionapp-custom-authoring-recheck/projects/0bfdc03f3ef2465f/media/daee5eb2-c60c7d48-Camera_01-frame-003103.png",
+              "detections": [
+                {
+                  "label": "forklift",
+                  "confidence": 0.5796895623207092,
+                  "box": [
+                    0.5100345611572266,
+                    0.32674854419849536,
+                    0.5835594177246094,
+                    0.4746977064344618
+                  ],
+                  "zone": null
+                },
+                {
+                  "label": "forklift",
+                  "confidence": 0.40330690145492554,
+                  "box": [
+                    0.4570315678914388,
+                    0.3348012288411458,
+                    0.5175508817036947,
+                    0.47728915744357636
+                  ],
+                  "zone": null
+                },
+                {
+                  "label": "forklift",
+                  "confidence": 0.3790375888347626,
+                  "box": [
+                    0.4451000213623047,
+                    0.3392552693684896,
+                    0.554453722635905,
+                    0.4840739497432002
+                  ],
+                  "zone": null
+                },
+                {
+                  "label": "forklift",
+                  "confidence": 0.4705476760864258,
+                  "box": [
+                    2.0850449800491333e-05,
+                    0.3605749059606482,
+                    0.08908714453379313,
+                    0.582850025318287
+                  ],
+                  "zone": null
+                }
+              ],
+              "counts": {
+                "all": 4
+              },
+              "texts": [],
+              "events": [
+                {
+                  "type": "count_rule",
+                  "zone": "all",
+                  "count": 4,
+                  "when": "count >= 1",
+                  "held_s": 4.0
+                }
+              ],
+              "elapsed_ms": 2534.18066696031,
+              "timestamp_s": 4.0,
+              "judgements": []
+            }
+          ],
+          "elapsed_s": 16.945060583995655,
+          "warnings": [
+            "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+          ]
+        },
+        "error": null
+      }
+    ],
+    "history": [
+      {
+        "at": 1793206868.237151,
+        "action": "begin",
+        "phase": "plan",
+        "detail": ""
+      },
+      {
+        "at": 1793206881.180125,
+        "action": "prepare_compile",
+        "phase": "compile",
+        "detail": ""
+      },
+      {
+        "at": 1793206898.300171,
+        "action": "stage",
+        "phase": "evaluate",
+        "detail": ""
+      },
+      {
+        "at": 1793206898.9742541,
+        "action": "commit",
+        "phase": "evaluate",
+        "detail": ""
+      }
+    ],
+    "decision": {
+      "message": "Detect the requested classes.",
+      "questions": [],
+      "choices": [
+        {
+          "use_case": "custom",
+          "objects": [
+            "person",
+            "forklift"
+          ],
+          "min_confidence": 0.25,
+          "count_threshold": 1,
+          "hold_seconds": 0.0,
+          "expected_text": null,
+          "metric": "recall",
+          "target": 0.9
+        }
+      ]
+    },
+    "result": {
+      "message": "Local model selected a pipeline pattern and parameters. Detect the requested classes.",
+      "questions": [],
+      "candidates": [
+        {
+          "spec_version": "0.1",
+          "name": "custom-candidate-1",
+          "inputs": {
+            "source": {
+              "type": "image_folder",
+              "path": "media"
+            }
+          },
+          "blocks": [
+            {
+              "id": "sample",
+              "type": "frame_sample",
+              "params": {
+                "fps": 2
+              },
+              "in": {
+                "frames": "$inputs.source"
+              }
+            },
+            {
+              "id": "det",
+              "type": "detect",
+              "params": {
+                "model": "owlv2-base-patch16",
+                "classes": [
+                  "person",
+                  "forklift"
+                ],
+                "min_conf": 0.25
+              },
+              "in": {
+                "image": "$sample.frame"
+              }
+            },
+            {
+              "id": "count",
+              "type": "count_per_zone",
+              "params": {},
+              "in": {
+                "dets": "$det.dets"
+              }
+            },
+            {
+              "id": "full",
+              "type": "rule",
+              "params": {
+                "when": "count >= 1",
+                "hold_s": 0.0
+              },
+              "in": {
+                "value": "$count.counts"
+              }
+            },
+            {
+              "id": "out",
+              "type": "sink_event",
+              "params": {},
+              "in": {
+                "event": "$full.event"
+              }
+            }
+          ],
+          "eval": {
+            "set": "reviewed-v1",
+            "metric": "recall",
+            "target": 0.9
+          }
+        }
+      ],
+      "tool_calls": 4,
+      "elapsed_s": 30.66827458300395,
+      "operation_id": "480ee49988d940e5bb28ac98eee03e76"
+    },
+    "error": null
+  },
+  "traces": [
+    {
+      "trace_id": "75479ecc156049c0902c4c83afc20010",
+      "span_id": "e1584a9ba464454c",
+      "parent_span_id": null,
+      "name": "agent.run",
+      "project_id": "0bfdc03f3ef2465f",
+      "operation_id": "480ee49988d940e5bb28ac98eee03e76",
+      "kind": "run",
+      "start_ns": 1793206868237159936,
+      "end_ns": 1793206898974258944,
+      "status": "OK",
+      "attributes": {
+        "vision.project_id": "0bfdc03f3ef2465f",
+        "vision.operation_id": "480ee49988d940e5bb28ac98eee03e76",
+        "vision.kind": "run",
+        "vision.phase": "evaluate",
+        "vision.status": "completed",
+        "vision.tool_calls": 4,
+        "vision.model_calls": 1,
+        "vision.error": ""
+      }
+    },
+    {
+      "trace_id": "75479ecc156049c0902c4c83afc20010",
+      "span_id": "7755192bc12d422c",
+      "parent_span_id": "e1584a9ba464454c",
+      "name": "tool.pipeline_run",
+      "project_id": "0bfdc03f3ef2465f",
+      "operation_id": "480ee49988d940e5bb28ac98eee03e76",
+      "kind": "tool",
+      "start_ns": 1793206881303409000,
+      "end_ns": 1793206898271499000,
+      "status": "OK",
+      "attributes": {
+        "vision.project_id": "0bfdc03f3ef2465f",
+        "vision.operation_id": "480ee49988d940e5bb28ac98eee03e76",
+        "vision.kind": "tool",
+        "vision.phase": "compile",
+        "vision.status": "completed",
+        "vision.call_id": "7755192bc12d422ca3bacd084281fc09",
+        "vision.request": "{\"project_id\": \"0bfdc03f3ef2465f\", \"spec\": {\"spec_version\": \"0.1\", \"name\": \"custom-candidate-1\", \"inputs\": {\"source\": {\"type\": \"image_folder\", \"path\": \"media\"}}, \"blocks\": [{\"id\": \"sample\", \"type\": \"frame_sample\", \"params\": {\"fps\": 2}, \"in\": {\"frames\": \"$inputs.source\"}}, {\"id\": \"det\", \"type\": \"detect\", \"params\": {\"model\": \"owlv2-base-patch16\", \"classes\": [\"person\", \"forklift\"], \"min_conf\": 0.25}, \"in\": {\"image\": \"$sample.frame\"}}, {\"id\": \"count\", \"type\": \"count_per_zone\", \"params\": {}, \"in\": {\"dets\": \"$det.dets\"}}, {\"id\": \"full\", \"type\": \"rule\", \"params\": {\"when\": \"count >= 1\", \"hold_s\": 0.0}, \"in\": {\"value\": \"$count.counts\"}}, {\"id\": \"out\", \"type\": \"sink_event\", \"params\": {}, \"in\": {\"event\": \"$full.event\"}}], \"eval\": {\"set\": \"reviewed-v1\", \"metric\": \"recall\", \"target\": 0.9}}}",
+        "vision.result": "{\"frames\": [{\"image_path\": \"/private/tmp/visionapp-custom-authoring-recheck/projects/0bfdc03f3ef2465f/media/0bddff41-2406f7e5-Camera_01-frame-002793.png\", \"detections\": [{\"label\": \"forklift\", \"confidence\": 0.4589376747608185, \"box\": [0.0, 0.3605587146900318, 0.12246518929799398, 0.5826783921983507], \"zone\": null}, {\"label\": \"forklift\", \"confidence\": 0.3817157447338104, \"box\": [0.45303799311319987, 0.32850237245912906, 0.5253725051879883, 0.4765900788483796], \"zone\": null}, {\"label\": \"forklift\", \"confidence\": 0.6371145844459534, \"box\": [0.44009151458740237, 0.3313262374312789, 0.5238505681355794, 0.48170216878255206], \"zone\": null}], \"counts\": {\"all\": 3}, \"texts\": [], \"events\": [{\"type\": \"count_rule\", \"zone\": \"all\", \"count\": 3, \"when\": \"count >= 1\", \"held_s\": 0.0}], \"elapsed_ms\": 7113.751625001896, \"timestamp_s\": 0.0, \"judgements\": []}, {\"image_path\": \"/private/tmp/visionapp-custom-authoring-recheck/projects/0bfdc03f3ef2465f/media/10c37923-af044bc7-Camera_01-frame-005275.png\", \"detections\": [{\"label\": \"forklift\", \"confidence\": 0.28925612568855286, \"box\": [0.00032318010926246643, 0.36290031715675636, 0.07572615146636963, 0.5791384096498843], \"zone\": null}, {\"label\": \"forklift\", \"confidence\": 0.682645857334137, \"box\": [0.5149751345316569, 0.32492938571506075, 0.5803475062052409, 0.4741715042679398], \"zone\": null}], \"counts\": {\"all\": 2}, \"texts\": [], \"events\": [{\"type\": \"count_rule\", \"zone\": \"all\", \"count\": 2, \"when\": \"count >= 1\", \"held_s\": 1.0}], \"elapsed_ms\": 2416.6512500378303, \"timestamp_s\": 1.0, \"judgements\": []}, {\"image_path\": \"/private/tmp/visionapp-custom-authoring-recheck/projects/0bfdc03f3ef2465f/media/6a13075b-6a6d48dd-Camera_01-frame-005896.png\", \"detections\": [{\"label\": \"forklift\", \"confidence\": 0.6464583277702332, \"box\": [0.5130658785502116, 0.3258030926739728, 0.5857529322306315, 0.47315832067418984], \"zone\": null}], \"counts\": {\"all\": 1}, \"texts\": [], \"events\": [{\"type\": \"count_rule\", \"zone\": \"all\", \"count\": 1, \"when\": \"count >= 1\", \"held_s\": 2.0}], \"elapsed_ms\": 2280.3582079941407, \"timestamp_s\": 2.0, \"judgements\": []}, {\"image_path\": \"/private/tmp/visionapp-custom-authoring-recheck/projects/0bfdc03f3ef2465f/media/cb51877e-061bc51a-Camera_01-frame-003413.png\", \"detections\": [{\"label\": \"forklift\", \"confidence\": 0.520003616809845, \"box\": [0.46654596328735354, 0.3286220974392361, 0.5363126118977865, 0.48082501446759257], \"zone\": null}, {\"label\": \"forklift\", \"confidence\": 0.29335886240005493, \"box\": [0.4660090446472168, 0.3290922659414786, 0.5296071688334147, 0.4771866975007234], \"zone\": null}], \"counts\": {\"all\": 2}, \"texts\": [], \"events\": [{\"type\": \"count_rule\", \"zone\": \"all\", \"count\": 2, \"when\": \"count >= 1\", \"held_s\": 3.0}], \"elapsed_ms\": 2594.0747499698773, \"timestamp_s\": 3.0, \"judgements\": []}, {\"image_path\": \"/private/tmp/visionapp-custom-authoring-recheck/projects/0bfdc03f3ef2465f/media/daee5eb2-c60c7d48-Camera_01-frame-003103.png\", \"detections\": [{\"label\": \"forklift\", \"confidence\": 0.5796895623207092, \"box\": [0.5100345611572266, 0.32674854419849536, 0.5835594177246094, 0.4746977064344618], \"zone\": null}, {\"label\": \"forklift\", \"confidence\": 0.40330690145492554, \"box\": [0.4570315678914388, 0.3348012288411458, 0.5175508817036947, 0.47728915744357636], \"zone\": null}, {\"label\": \"forklift\", \"confidence\": 0.3790375888347626, \"box\": [0.4451000213623047, 0.3392552693684896, 0.554453722635905, 0.4840739497432002], \"zone\": null}, {\"label\": \"forklift\", \"confidence\": 0.4705476760864258, \"box\": [2.0850449800491333e-05, 0.3605749059606482, 0.08908714453379313, 0.582850025318287], \"zone\": null}], \"counts\": {\"all\": 4}, \"texts\": [], \"events\": [{\"type\": \"count_rule\", \"zone\": \"all\", \"count\": 4, \"when\": \"count >= 1\", \"held_s\": 4.0}], \"elapsed_ms\": 2534.18066696031, \"timestamp_s\": 4.0, \"judgements\": []}], \"elapsed_s\": 16.945060583995655, \"warnings\": [\"FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted.\"]}",
+        "vision.error": ""
+      }
+    },
+    {
+      "trace_id": "75479ecc156049c0902c4c83afc20010",
+      "span_id": "b0e7f95eebf04b47",
+      "parent_span_id": "e1584a9ba464454c",
+      "name": "tool.pipeline_validate",
+      "project_id": "0bfdc03f3ef2465f",
+      "operation_id": "480ee49988d940e5bb28ac98eee03e76",
+      "kind": "tool",
+      "start_ns": 1793206881249811000,
+      "end_ns": 1793206881274884000,
+      "status": "OK",
+      "attributes": {
+        "vision.project_id": "0bfdc03f3ef2465f",
+        "vision.operation_id": "480ee49988d940e5bb28ac98eee03e76",
+        "vision.kind": "tool",
+        "vision.phase": "compile",
+        "vision.status": "completed",
+        "vision.call_id": "b0e7f95eebf04b47a7a408ac6b5886c6",
+        "vision.request": "{\"project_id\": \"0bfdc03f3ef2465f\", \"spec\": {\"spec_version\": \"0.1\", \"name\": \"custom-candidate-1\", \"inputs\": {\"source\": {\"type\": \"image_folder\", \"path\": \"media\"}}, \"blocks\": [{\"id\": \"sample\", \"type\": \"frame_sample\", \"params\": {\"fps\": 2}, \"in\": {\"frames\": \"$inputs.source\"}}, {\"id\": \"det\", \"type\": \"detect\", \"params\": {\"model\": \"owlv2-base-patch16\", \"classes\": [\"person\", \"forklift\"], \"min_conf\": 0.25}, \"in\": {\"image\": \"$sample.frame\"}}, {\"id\": \"count\", \"type\": \"count_per_zone\", \"params\": {}, \"in\": {\"dets\": \"$det.dets\"}}, {\"id\": \"full\", \"type\": \"rule\", \"params\": {\"when\": \"count >= 1\", \"hold_s\": 0.0}, \"in\": {\"value\": \"$count.counts\"}}, {\"id\": \"out\", \"type\": \"sink_event\", \"params\": {}, \"in\": {\"event\": \"$full.event\"}}], \"eval\": {\"set\": \"reviewed-v1\", \"metric\": \"recall\", \"target\": 0.9}}}",
+        "vision.result": "{\"valid\": true, \"errors\": []}",
+        "vision.error": ""
+      }
+    },
+    {
+      "trace_id": "75479ecc156049c0902c4c83afc20010",
+      "span_id": "1a4586601dbd4cf1",
+      "parent_span_id": "e1584a9ba464454c",
+      "name": "llm.visionapp-planner",
+      "project_id": "0bfdc03f3ef2465f",
+      "operation_id": "480ee49988d940e5bb28ac98eee03e76",
+      "kind": "llm",
+      "start_ns": 1793206868475826000,
+      "end_ns": 1793206881048979000,
+      "status": "OK",
+      "attributes": {
+        "vision.project_id": "0bfdc03f3ef2465f",
+        "vision.operation_id": "480ee49988d940e5bb28ac98eee03e76",
+        "vision.kind": "llm",
+        "vision.phase": "plan",
+        "vision.status": "completed",
+        "vision.call_id": "1a4586601dbd4cf1b486e2ca3e5e895c",
+        "vision.request": "{\"messages\": [{\"parts\": [{\"content\": \"You build the user's own computer vision application.\\nReturn one custom detector choice unless the user explicitly requests alternatives.\\nUse the dataset ontology's class names exactly and interpret the user's goal.\\nAn annotation label means an object class; it does NOT mean OCR text printed on a box.\\nFill objects, min_confidence, count_threshold, hold_seconds, metric and target.\\nCopy any explicitly requested metric and target exactly. Otherwise default to\\nrecall target 0.9 for detection. A local evidence event on any detection uses\\ncount_threshold 1. No unrelated example applications may be added.\\nAll choices use use_case custom and expected_text null. Ask up to three questions\\nonly if the task cannot be specified from the brief and saved dataset context.\\nIf classes and detection parameters are present, create the proposal now.\\nOutput only a typed decision; the application compiles it into an editable graph,\\nvalidates it and previews imported samples. Do not claim evaluation accuracy,\\napprove deployment, review labels, execute code, send alerts or invent detections.\\nExample response: {\\\"message\\\":\\\"Detect the requested classes.\\\",\\\"questions\\\":[],\\n\\\"choices\\\":[{\\\"use_case\\\":\\\"custom\\\",\\\"objects\\\":[\\\"bolt\\\",\\\"washer\\\"],\\n\\\"min_confidence\\\":0.4,\\\"count_threshold\\\":1,\\\"hold_seconds\\\":0,\\n\\\"expected_text\\\":null,\\\"metric\\\":\\\"recall\\\",\\\"target\\\":0.9}]}.\\n\\nBuild the user's own computer vision app. Use their saved ontology class names exactly. Detection labels stay unreviewed proposals until the user accepts or edits them. Choose typed blocks from the implemented catalog; do not force a warehouse preset. Ask for missing objects or expected output, not a preset selection.\\nYou may ask at most 3 further questions in this project.\", \"timestamp\": \"2026-10-28T17:01:08.448181Z\", \"dynamic_ref\": null, \"part_kind\": \"system-prompt\"}, {\"content\": \"Task brief:\\nBuild my custom computer vision app. Detect the saved person and forklift classes at confidence 0.25. Count detections and emit a local evidence event when count is at least 1, hold zero seconds. Evaluate recall target 0.9 later against my reviewed labels. Use the imported images and configured OWLv2 model. All planning parameters are confirmed.\\nAuthoritative engine context:\\n{\\\"source_path\\\": \\\"media\\\", \\\"detector_model\\\": \\\"owlv2-base-patch16\\\", \\\"use_case\\\": \\\"custom\\\", \\\"dataset\\\": {\\\"revision\\\": 2, \\\"classes\\\": [\\\"person\\\", \\\"forklift\\\"], \\\"image_count\\\": 5, \\\"reviewed_count\\\": 0, \\\"annotation_count\\\": 0, \\\"split_counts\\\": {\\\"unassigned\\\": 5}}, \\\"zones_path\\\": \\\"zones/lanes.json\\\", \\\"source_provenance\\\": \\\"imported media\\\", \\\"implemented_blocks\\\": [{\\\"type\\\": \\\"frame_sample\\\", \\\"description\\\": \\\"Sample frames at a bounded rate.\\\"}, {\\\"type\\\": \\\"detect\\\", \\\"description\\\": \\\"Run a locally installed detector.\\\"}, {\\\"type\\\": \\\"detect_open_vocab\\\", \\\"description\\\": \\\"Detect text-prompted classes using local OWLv2.\\\"}, {\\\"type\\\": \\\"zone_filter\\\", \\\"description\\\": \\\"Keep objects whose center is inside a polygon.\\\"}, {\\\"type\\\": \\\"count_per_zone\\\", \\\"description\\\": \\\"Count detections in each named zone.\\\"}, {\\\"type\\\": \\\"rule\\\", \\\"description\\\": \\\"Compare zone counts using a small safe expression language.\\\"}, {\\\"type\\\": \\\"sink_event\\\", \\\"description\\\": \\\"Emit local evidence events; delivery is separately approved.\\\"}, {\\\"type\\\": \\\"ocr\\\", \\\"description\\\": \\\"Read text with native Apple Vision.\\\"}, {\\\"type\\\": \\\"barcode\\\", \\\"description\\\": \\\"Read barcode payloads with native Apple Vision.\\\"}, {\\\"type\\\": \\\"match\\\", \\\"description\\\": \\\"Compare recognized text with an expected value.\\\"}, {\\\"type\\\": \\\"vlm_judge\\\", \\\"description\\\": \\\"Ask a configured local vision model for a bounded evidence judgement.\\\"}, {\\\"type\\\": \\\"resize\\\", \\\"description\\\": \\\"Resize input pixels; normalized boxes remain unchanged.\\\"}, {\\\"type\\\": \\\"crop\\\", \\\"description\\\": \\\"Crop a normalized rectangle and preserve coordinate transforms.\\\"}]}\", \"timestamp\": \"2026-10-28T17:01:08.448205Z\", \"part_kind\": \"user-prompt\"}], \"timestamp\": \"2026-10-28T17:01:08.448415Z\", \"instructions\": null, \"kind\": \"request\", \"run_id\": \"01a18375-59de-74a3-bba8-580c03ca034f\", \"conversation_id\": \"01a18375-59de-74a3-bba8-580bf13a4deb\", \"metadata\": null}], \"model_settings\": {\"temperature\": 0, \"max_tokens\": 1600}, \"output_schema\": {\"$defs\": {\"CustomPatternChoice\": {\"additionalProperties\": false, \"properties\": {\"use_case\": {\"const\": \"custom\", \"default\": \"custom\", \"title\": \"Use Case\", \"type\": \"string\"}, \"objects\": {\"items\": {\"type\": \"string\"}, \"maxItems\": 20, \"title\": \"Objects\", \"type\": \"array\"}, \"min_confidence\": {\"default\": 0.4, \"maximum\": 1, \"minimum\": 0, \"title\": \"Min Confidence\", \"type\": \"number\"}, \"count_threshold\": {\"anyOf\": [{\"maximum\": 10000, \"minimum\": 1, \"type\": \"integer\"}, {\"type\": \"null\"}], \"default\": null, \"title\": \"Count Threshold\"}, \"hold_seconds\": {\"default\": 0, \"maximum\": 3600, \"minimum\": 0, \"title\": \"Hold Seconds\", \"type\": \"number\"}, \"expected_text\": {\"anyOf\": [{\"maxLength\": 500, \"type\": \"string\"}, {\"type\": \"null\"}], \"default\": null, \"title\": \"Expected Text\"}, \"metric\": {\"enum\": [\"count_mae\", \"precision\", \"recall\", \"text_accuracy\"], \"title\": \"Metric\", \"type\": \"string\"}, \"target\": {\"minimum\": 0, \"title\": \"Target\", \"type\": \"number\"}}, \"required\": [\"metric\", \"target\"], \"title\": \"CustomPatternChoice\", \"type\": \"object\"}}, \"additionalProperties\": false, \"description\": \"Custom authoring schema does not offer unrelated warehouse preset choices.\", \"properties\": {\"message\": {\"maxLength\": 2000, \"minLength\": 1, \"title\": \"Message\", \"type\": \"string\"}, \"questions\": {\"items\": {\"type\": \"string\"}, \"maxItems\": 3, \"title\": \"Questions\", \"type\": \"array\"}, \"choices\": {\"items\": {\"$ref\": \"#/$defs/CustomPatternChoice\"}, \"maxItems\": 3, \"title\": \"Choices\", \"type\": \"array\"}}, \"required\": [\"message\", \"questions\", \"choices\"], \"title\": \"CustomPlanDecision\", \"type\": \"object\"}}",
+        "vision.result": "{\"messages\": [{\"parts\": [{\"content\": \"{\\\"message\\\":\\\"Detect the requested classes.\\\",\\\"questions\\\":[],\\\"choices\\\":[{\\\"metric\\\":\\\"recall\\\",\\\"target\\\":0.9,\\\"use_case\\\":\\\"custom\\\",\\\"objects\\\":[\\\"person\\\",\\\"forklift\\\"],\\\"min_confidence\\\":0.25,\\\"count_threshold\\\":1,\\\"hold_seconds\\\":0,\\\"expected_text\\\":null}]}\", \"id\": null, \"provider_name\": null, \"provider_details\": null, \"part_kind\": \"text\"}], \"usage\": {\"input_tokens\": 849, \"cache_write_tokens\": 0, \"cache_read_tokens\": 0, \"output_tokens\": 69, \"input_audio_tokens\": 0, \"cache_audio_read_tokens\": 0, \"output_audio_tokens\": 0, \"details\": {}}, \"model_name\": \"visionapp-planner\", \"timestamp\": \"2026-10-28T17:01:21.024473Z\", \"kind\": \"response\", \"provider_name\": \"openai\", \"provider_url\": \"http://127.0.0.1:1234/v1/\", \"provider_details\": {\"finish_reason\": \"stop\", \"timestamp\": \"2026-10-28T17:01:21Z\"}, \"provider_response_id\": \"chatcmpl-IRDDnRnVnbuVr8tHJdvJ48sPP1us31VZ\", \"finish_reason\": \"stop\", \"run_id\": null, \"conversation_id\": null, \"metadata\": null, \"state\": \"complete\"}]}",
+        "vision.error": ""
+      }
+    },
+    {
+      "trace_id": "75479ecc156049c0902c4c83afc20010",
+      "span_id": "0a071906aa0a4eda",
+      "parent_span_id": "e1584a9ba464454c",
+      "name": "tool.dataset_context",
+      "project_id": "0bfdc03f3ef2465f",
+      "operation_id": "480ee49988d940e5bb28ac98eee03e76",
+      "kind": "tool",
+      "start_ns": 1793206868387137000,
+      "end_ns": 1793206868405293000,
+      "status": "OK",
+      "attributes": {
+        "vision.project_id": "0bfdc03f3ef2465f",
+        "vision.operation_id": "480ee49988d940e5bb28ac98eee03e76",
+        "vision.kind": "tool",
+        "vision.phase": "plan",
+        "vision.status": "completed",
+        "vision.call_id": "0a071906aa0a4eda8798312e6f6098aa",
+        "vision.request": "{\"project_id\": \"0bfdc03f3ef2465f\"}",
+        "vision.result": "{\"revision\": 2, \"classes\": [\"person\", \"forklift\"], \"image_count\": 5, \"reviewed_count\": 0, \"annotation_count\": 0, \"split_counts\": {\"unassigned\": 5}}",
+        "vision.error": ""
+      }
+    },
+    {
+      "trace_id": "75479ecc156049c0902c4c83afc20010",
+      "span_id": "40196620978440c6",
+      "parent_span_id": "e1584a9ba464454c",
+      "name": "tool.blocks_list",
+      "project_id": "0bfdc03f3ef2465f",
+      "operation_id": "480ee49988d940e5bb28ac98eee03e76",
+      "kind": "tool",
+      "start_ns": 1793206868336787000,
+      "end_ns": 1793206868355698000,
+      "status": "OK",
+      "attributes": {
+        "vision.project_id": "0bfdc03f3ef2465f",
+        "vision.operation_id": "480ee49988d940e5bb28ac98eee03e76",
+        "vision.kind": "tool",
+        "vision.phase": "plan",
+        "vision.status": "completed",
+        "vision.call_id": "40196620978440c6af8c43ceec34e571",
+        "vision.request": "{}",
+        "vision.result": "{\"blocks\": [{\"type\": \"frame_sample\", \"description\": \"Sample frames at a bounded rate.\", \"params\": {\"additionalProperties\": false, \"properties\": {\"fps\": {\"default\": 2, \"exclusiveMinimum\": 0, \"maximum\": 60, \"title\": \"Fps\", \"type\": \"number\"}}, \"title\": \"FrameSampleParams\", \"type\": \"object\"}, \"inputs\": {\"frames\": \"frames\"}, \"outputs\": {\"frame\": \"image\"}}, {\"type\": \"detect\", \"description\": \"Run a locally installed detector.\", \"params\": {\"additionalProperties\": false, \"properties\": {\"model\": {\"default\": \"owlv2-base-patch16\", \"title\": \"Model\", \"type\": \"string\"}, \"classes\": {\"items\": {\"type\": \"string\"}, \"maxItems\": 64, \"minItems\": 1, \"title\": \"Classes\", \"type\": \"array\"}, \"min_conf\": {\"default\": 0.25, \"maximum\": 1, \"minimum\": 0, \"title\": \"Min Conf\", \"type\": \"number\"}}, \"title\": \"DetectParams\", \"type\": \"object\"}, \"inputs\": {\"image\": \"image\"}, \"outputs\": {\"dets\": \"detections\"}}, {\"type\": \"detect_open_vocab\", \"description\": \"Detect text-prompted classes using local OWLv2.\", \"params\": {\"additionalProperties\": false, \"properties\": {\"model\": {\"default\": \"owlv2-base-patch16\", \"title\": \"Model\", \"type\": \"string\"}, \"classes\": {\"items\": {\"type\": \"string\"}, \"maxItems\": 64, \"minItems\": 1, \"title\": \"Classes\", \"type\": \"array\"}, \"min_conf\": {\"default\": 0.25, \"maximum\": 1, \"minimum\": 0, \"title\": \"Min Conf\", \"type\": \"number\"}}, \"title\": \"DetectParams\", \"type\": \"object\"}, \"inputs\": {\"image\": \"image\"}, \"outputs\": {\"dets\": \"detections\"}}, {\"type\": \"zone_filter\", \"description\": \"Keep objects whose center is inside a polygon.\", \"params\": {\"$defs\": {\"Zone\": {\"additionalProperties\": false, \"properties\": {\"id\": {\"maxLength\": 80, \"minLength\": 1, \"title\": \"Id\", \"type\": \"string\"}, \"polygon\": {\"items\": {\"maxItems\": 2, \"minItems\": 2, \"prefixItems\": [{\"type\": \"number\"}, {\"type\": \"number\"}], \"type\": \"array\"}, \"minItems\": 3, \"title\": \"Polygon\", \"type\": \"array\"}}, \"required\": [\"id\", \"polygon\"], \"title\": \"Zone\", \"type\": \"object\"}}, \"additionalProperties\": false, \"properties\": {\"zones\": {\"anyOf\": [{\"type\": \"string\"}, {\"items\": {\"$ref\": \"#/$defs/Zone\"}, \"type\": \"array\"}], \"default\": \"zones/lanes.json\", \"title\": \"Zones\"}}, \"title\": \"ZoneFilterParams\", \"type\": \"object\"}, \"inputs\": {\"dets\": \"detections\"}, \"outputs\": {\"dets\": \"detections\"}}, {\"type\": \"count_per_zone\", \"description\": \"Count detections in each named zone.\", \"params\": {\"additionalProperties\": false, \"properties\": {\"include_unassigned\": {\"default\": false, \"title\": \"Include Unassigned\", \"type\": \"boolean\"}}, \"title\": \"CountParams\", \"type\": \"object\"}, \"inputs\": {\"dets\": \"detections\"}, \"outputs\": {\"counts\": \"counts\"}}, {\"type\": \"rule\", \"description\": \"Compare zone counts using a small safe expression language.\", \"params\": {\"additionalProperties\": false, \"properties\": {\"when\": {\"default\": \"count >= 1\", \"maxLength\": 100, \"title\": \"When\", \"type\": \"string\"}, \"hold_s\": {\"default\": 0, \"maximum\": 86400, \"minimum\": 0, \"title\": \"Hold S\", \"type\": \"number\"}}, \"title\": \"RuleParams\", \"type\": \"object\"}, \"inputs\": {\"value\": \"counts\"}, \"outputs\": {\"event\": \"event\"}}, {\"type\": \"sink_event\", \"description\": \"Emit local evidence events; delivery is separately approved.\", \"params\": {\"additionalProperties\": false, \"properties\": {\"alert\": {\"anyOf\": [{\"type\": \"string\"}, {\"type\": \"null\"}], \"default\": null, \"title\": \"Alert\"}}, \"title\": \"SinkEventParams\", \"type\": \"object\"}, \"inputs\": {\"event\": \"event\"}, \"outputs\": {\"event\": \"event\"}}, {\"type\": \"ocr\", \"description\": \"Read text with native Apple Vision.\", \"params\": {\"additionalProperties\": false, \"properties\": {\"languages\": {\"items\": {\"type\": \"string\"}, \"title\": \"Languages\", \"type\": \"array\"}}, \"title\": \"ReadingParams\", \"type\": \"object\"}, \"inputs\": {\"image\": \"image\"}, \"outputs\": {\"text\": \"text\"}}, {\"type\": \"barcode\", \"description\": \"Read barcode payloads with native Apple Vision.\", \"params\": {\"additionalProperties\": false, \"properties\": {}, \"title\": \"EmptyParams\", \"type\": \"object\"}, \"inputs\": {\"image\": \"image\"}, \"outputs\": {\"text\": \"text\"}}, {\"type\": \"match\", \"description\": \"Compare recognized text with an expected value.\", \"params\": {\"additionalProperties\": false, \"properties\": {\"expected\": {\"maxLength\": 256, \"minLength\": 1, \"title\": \"Expected\", \"type\": \"string\"}, \"mode\": {\"default\": \"contains\", \"enum\": [\"contains\", \"exact\"], \"title\": \"Mode\", \"type\": \"string\"}}, \"required\": [\"expected\"], \"title\": \"MatchParams\", \"type\": \"object\"}, \"inputs\": {\"text\": \"text\"}, \"outputs\": {\"event\": \"event\"}}, {\"type\": \"vlm_judge\", \"description\": \"Ask a configured local vision model for a bounded evidence judgement.\", \"params\": {\"additionalProperties\": false, \"properties\": {\"base_url\": {\"default\": \"http://127.0.0.1:1235/v1\", \"title\": \"Base Url\", \"type\": \"string\"}, \"model\": {\"default\": \"visionapp-vlm\", \"maxLength\": 200, \"minLength\": 1, \"title\": \"Model\", \"type\": \"string\"}, \"timeout_s\": {\"default\": 45, \"exclusiveMinimum\": 0, \"maximum\": 120, \"title\": \"Timeout S\", \"type\": \"number\"}, \"max_tokens\": {\"default\": 512, \"maximum\": 2048, \"minimum\": 64, \"title\": \"Max Tokens\", \"type\": \"integer\"}, \"max_image_side\": {\"default\": 768, \"maximum\": 1536, \"minimum\": 64, \"title\": \"Max Image Side\", \"type\": \"integer\"}, \"retries\": {\"default\": 1, \"maximum\": 2, \"minimum\": 0, \"title\": \"Retries\", \"type\": \"integer\"}, \"model_sha256\": {\"anyOf\": [{\"pattern\": \"^[0-9a-f]{64}$\", \"type\": \"string\"}, {\"type\": \"null\"}], \"default\": null, \"title\": \"Model Sha256\"}, \"question\": {\"maxLength\": 3000, \"minLength\": 1, \"title\": \"Question\", \"type\": \"string\"}, \"labels\": {\"items\": {\"type\": \"string\"}, \"maxItems\": 20, \"minItems\": 2, \"title\": \"Labels\", \"type\": \"array\"}}, \"required\": [\"question\", \"labels\"], \"title\": \"VLMJudgeParams\", \"type\": \"object\"}, \"inputs\": {\"image\": \"image\"}, \"outputs\": {\"judgement\": \"judgement\", \"text\": \"text\", \"event\": \"event\"}}, {\"type\": \"resize\", \"description\": \"Resize input pixels; normalized boxes remain unchanged.\", \"params\": {\"additionalProperties\": false, \"properties\": {\"width\": {\"default\": 640, \"exclusiveMinimum\": 0, \"maximum\": 8192, \"title\": \"Width\", \"type\": \"integer\"}, \"height\": {\"default\": 480, \"exclusiveMinimum\": 0, \"maximum\": 8192, \"title\": \"Height\", \"type\": \"integer\"}}, \"title\": \"ResizeParams\", \"type\": \"object\"}, \"inputs\": {\"image\": \"image\"}, \"outputs\": {\"image\": \"image\"}}, {\"type\": \"crop\", \"description\": \"Crop a normalized rectangle and preserve coordinate transforms.\", \"params\": {\"additionalProperties\": false, \"properties\": {\"box\": {\"maxItems\": 4, \"minItems\": 4, \"prefixItems\": [{\"type\": \"number\"}, {\"type\": \"number\"}, {\"type\": \"number\"}, {\"type\": \"number\"}], \"title\": \"Box\", \"type\": \"array\"}}, \"required\": [\"box\"], \"title\": \"CropParams\", \"type\": \"object\"}, \"inputs\": {\"image\": \"image\"}, \"outputs\": {\"image\": \"image\"}}]}",
+        "vision.error": ""
+      }
+    }
+  ],
+  "replay": {
+    "operation_id": "480ee49988d940e5bb28ac98eee03e76",
+    "original_status": "completed",
+    "dry_run": true,
+    "effects_executed": false,
+    "reproduced": true,
+    "candidate_count": 1,
+    "captured_tool_calls": 4,
+    "captured_model_calls": 1,
+    "errors": [],
+    "result": {
+      "message": "Local model selected a pipeline pattern and parameters. Detect the requested classes.",
+      "questions": [],
+      "candidates": [
+        {
+          "spec_version": "0.1",
+          "name": "custom-candidate-1",
+          "inputs": {
+            "source": {
+              "type": "image_folder",
+              "path": "media"
+            }
+          },
+          "blocks": [
+            {
+              "id": "sample",
+              "type": "frame_sample",
+              "params": {
+                "fps": 2
+              },
+              "in": {
+                "frames": "$inputs.source"
+              }
+            },
+            {
+              "id": "det",
+              "type": "detect",
+              "params": {
+                "model": "owlv2-base-patch16",
+                "classes": [
+                  "person",
+                  "forklift"
+                ],
+                "min_conf": 0.25
+              },
+              "in": {
+                "image": "$sample.frame"
+              }
+            },
+            {
+              "id": "count",
+              "type": "count_per_zone",
+              "params": {},
+              "in": {
+                "dets": "$det.dets"
+              }
+            },
+            {
+              "id": "full",
+              "type": "rule",
+              "params": {
+                "when": "count >= 1",
+                "hold_s": 0.0
+              },
+              "in": {
+                "value": "$count.counts"
+              }
+            },
+            {
+              "id": "out",
+              "type": "sink_event",
+              "params": {},
+              "in": {
+                "event": "$full.event"
+              }
+            }
+          ],
+          "eval": {
+            "set": "reviewed-v1",
+            "metric": "recall",
+            "target": 0.9
+          }
+        }
+      ],
+      "tool_calls": 4,
+      "elapsed_s": 30.66827458300395,
+      "operation_id": "480ee49988d940e5bb28ac98eee03e76"
+    }
+  },
+  "replay_preserved_project": true,
+  "replay_preserved_events": true
+}

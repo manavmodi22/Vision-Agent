@@ -1,0 +1,4 @@
+Verified MTMC_Tracking_2025/val/Warehouse_016/calibration.json: 39062 bytes
+Verified MTMC_Tracking_2025/val/Warehouse_016/ground_truth.json: 49424957 bytes
+Verified MTMC_Tracking_2025/val/Warehouse_016/videos/Camera_01.mp4: 127379806 bytes
+{"frames": 30, "person_boxes": 112, "protocol_sha256": "34df3453b9578bbd9fc16597d20d7338b29ac197a461d9c46ab9912fffba3c19"}

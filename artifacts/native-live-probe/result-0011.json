@@ -1,0 +1,1 @@
+{"image_path":"live:\/\/ec999dd4e97e4275841bf3749f227f0d\/11","events":[{"type":"count_rule","held_s":0,"when":"count >= 1","zone":"all","count":1}],"elapsed_ms":887.1934579801746,"detections":[{"box":[0.34399664402008057,0.4524264441596137,0.414874792098999,0.5939776526557075],"confidence":0.4135369062423706,"label":"person"}],"counts":{"all":1},"texts":[]}

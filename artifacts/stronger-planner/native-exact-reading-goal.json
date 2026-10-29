@@ -1,0 +1,20 @@
+[
+  {
+    "id": "native-exact-ocr-matched",
+    "brief": "Read printed labels and create a local event only when the text exactly equals \"ABC-990\".",
+    "expected": {
+      "reader": "ocr",
+      "expected_text": "ABC-990",
+      "match_mode": "exact",
+      "match_emit": "matched"
+    },
+    "forbidden": [
+      "zone_filter",
+      "detect"
+    ],
+    "required": [
+      "match",
+      "sink_event"
+    ]
+  }
+]

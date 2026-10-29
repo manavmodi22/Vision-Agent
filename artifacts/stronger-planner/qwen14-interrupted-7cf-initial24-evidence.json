@@ -1,0 +1,316 @@
+{
+  "before": {
+    "source_identity": "7cfbe90c3fb1b3f5e4d7974f801274d3f2d9b9a533bd35632b757185b90aaa36",
+    "server_pid": 46319,
+    "server_command": "/Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server -m /Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/Qwen3-14B-Q4_K_M.gguf --host 127.0.0.1 --port 1234 --alias visionapp-planner --ctx-size 8192 --parallel 1 --reasoning off --chat-template-kwargs {\"enable_thinking\":false} --no-webui -lv 4",
+    "models_response": {
+      "models": [
+        {
+          "name": "visionapp-planner",
+          "model": "visionapp-planner",
+          "modified_at": "",
+          "size": "",
+          "digest": "",
+          "type": "model",
+          "description": "",
+          "tags": [
+            ""
+          ],
+          "capabilities": [
+            "completion"
+          ],
+          "parameters": "",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "",
+            "families": [
+              ""
+            ],
+            "parameter_size": "",
+            "quantization_level": ""
+          }
+        }
+      ],
+      "object": "list",
+      "data": [
+        {
+          "id": "visionapp-planner",
+          "aliases": [
+            "visionapp-planner"
+          ],
+          "tags": [],
+          "object": "model",
+          "architecture": {
+            "input_modalities": [
+              "text"
+            ],
+            "output_modalities": [
+              "text"
+            ]
+          },
+          "created": 1793213913,
+          "owned_by": "llamacpp",
+          "meta": {
+            "vocab_type": 2,
+            "n_vocab": 151936,
+            "n_ctx": 8192,
+            "n_ctx_train": 40960,
+            "n_embd": 5120,
+            "n_params": 14768307200,
+            "size": 8995793920,
+            "ftype": "Q4_K - Medium"
+          }
+        }
+      ]
+    },
+    "at": "2026-10-28T18:58:33.394120+00:00"
+  },
+  "argv": [
+    "/Users/manavrakeshku.modi/vision-agent/.venv/bin/python",
+    "-m",
+    "evals.run_custom_goals",
+    "--workdir",
+    "/Users/manavrakeshku.modi/vision-agent/.visionapp/qwen14-final-initial24",
+    "--output",
+    "/Users/manavrakeshku.modi/vision-agent/artifacts/stronger-planner/qwen14-final-initial24.json",
+    "--model",
+    "visionapp-planner",
+    "--url",
+    "http://127.0.0.1:1234/v1"
+  ],
+  "model_provenance": {
+    "repo": "Qwen/Qwen3-14B-GGUF",
+    "revision": "530227a7d994db8eca5ab5ced2fb692b614357fd",
+    "license": "Apache-2.0",
+    "source": "https://huggingface.co/Qwen/Qwen3-14B-GGUF",
+    "elapsed_download_and_hash_s": 97.03655054199044,
+    "files": [
+      {
+        "name": "LICENSE",
+        "path": "/Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/LICENSE",
+        "bytes": 11544,
+        "sha256": "5de36594c10839788a8c589443a8ef9d8b8d17c65a1b5807206ae037fc36c6bd"
+      },
+      {
+        "name": "README.md",
+        "path": "/Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/README.md",
+        "bytes": 7497,
+        "sha256": "3e0df8a0e59bc900f7bcbc943b3163830abec87a19d2bca94651868362def947"
+      },
+      {
+        "name": "Qwen3-14B-Q4_K_M.gguf",
+        "path": "/Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/Qwen3-14B-Q4_K_M.gguf",
+        "bytes": 9001752960,
+        "sha256": "500a8806e85ee9c83f3ae08420295592451379b4f8cf2d0f41c15dffeb6b81f0"
+      }
+    ]
+  },
+  "file_hashes": {
+    "evals/custom_goals.json": "29742504b8eb5a78c2386d214c6fdc16935b060936f55ae0d0792bfd0af4e57f",
+    "evals/run_custom_goals.py": "a9b3bd65ec0350110f0ff07e46acacd75613991ef67fb8a61c19b21eaad42f0e"
+  },
+  "after": {
+    "source_identity": "7cfbe90c3fb1b3f5e4d7974f801274d3f2d9b9a533bd35632b757185b90aaa36",
+    "server_pid": 46319,
+    "server_command": "/Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server -m /Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-14B-GGUF/Qwen3-14B-Q4_K_M.gguf --host 127.0.0.1 --port 1234 --alias visionapp-planner --ctx-size 8192 --parallel 1 --reasoning off --chat-template-kwargs {\"enable_thinking\":false} --no-webui -lv 4",
+    "models_response": {
+      "models": [
+        {
+          "name": "visionapp-planner",
+          "model": "visionapp-planner",
+          "modified_at": "",
+          "size": "",
+          "digest": "",
+          "type": "model",
+          "description": "",
+          "tags": [
+            ""
+          ],
+          "capabilities": [
+            "completion"
+          ],
+          "parameters": "",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "",
+            "families": [
+              ""
+            ],
+            "parameter_size": "",
+            "quantization_level": ""
+          }
+        }
+      ],
+      "object": "list",
+      "data": [
+        {
+          "id": "visionapp-planner",
+          "aliases": [
+            "visionapp-planner"
+          ],
+          "tags": [],
+          "object": "model",
+          "architecture": {
+            "input_modalities": [
+              "text"
+            ],
+            "output_modalities": [
+              "text"
+            ]
+          },
+          "created": 1793213996,
+          "owned_by": "llamacpp",
+          "meta": {
+            "vocab_type": 2,
+            "n_vocab": 151936,
+            "n_ctx": 8192,
+            "n_ctx_train": 40960,
+            "n_embd": 5120,
+            "n_params": 14768307200,
+            "size": 8995793920,
+            "ftype": "Q4_K - Medium"
+          }
+        }
+      ]
+    },
+    "at": "2026-10-28T18:59:56.181191+00:00"
+  },
+  "exit_code": -15,
+  "aborted": null,
+  "samples": [
+    {
+      "elapsed_s": 0.0525230840430595,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 3.107547334046103,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 6.166656084009446,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 9.21223495900631,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 12.26475404202938,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 15.330661084037274,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 18.38823154201964,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 21.45519345899811,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 24.544690625043586,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 27.602869875030592,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 30.976081542030443,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 34.282312166993506,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 37.33416025002953,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 40.86562887503533,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 44.101940209046006,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 47.495602792012505,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 50.79814741702285,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 54.57127095904434,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 58.51634512504097,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 61.840120709035546,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 66.48460200004047,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 69.5584984170273,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 72.60595270904014,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 75.66642545902869,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    },
+    {
+      "elapsed_s": 79.68245600000955,
+      "pressure_level": 1,
+      "swapouts_pages": 897665
+    }
+  ],
+  "elapsed_s": 82.7830993750249,
+  "unchanged_source": true,
+  "unchanged_server": true,
+  "interrupted": true,
+  "complete": false,
+  "interruption_reason": "Root audit confirmed visible Home crop-for-review goal was not recognized as evidence request; stop before source correction and fresh expanded suite. Partial results are not a full-suite score.",
+  "workspace_preserved": ".visionapp/qwen14-final-initial24"
+}

@@ -1,0 +1,444 @@
+[
+  {
+    "id": "evidence-01",
+    "question": "How many damaged pallets ever?",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [
+          "damaged pallet"
+        ],
+        "zones": [],
+        "kind": "detection",
+        "time": {
+          "period": "all_time"
+        }
+      },
+      "questions": []
+    },
+    "expected_count": 3
+  },
+  {
+    "id": "evidence-02",
+    "question": "Count damaged pallet observations on dock 4 of all time",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [
+          "damaged pallet"
+        ],
+        "zones": [
+          "4"
+        ],
+        "kind": "detection",
+        "time": {
+          "period": "all_time"
+        }
+      },
+      "questions": []
+    },
+    "expected_count": 2
+  },
+  {
+    "id": "evidence-03",
+    "question": "Show damaged pallets from dock 5 of all time",
+    "decision": {
+      "query": {
+        "operation": "show",
+        "labels": [
+          "damaged pallet"
+        ],
+        "zones": [
+          "5"
+        ],
+        "kind": "detection",
+        "time": {
+          "period": "all_time"
+        }
+      },
+      "questions": []
+    },
+    "expected_count": 1
+  },
+  {
+    "id": "evidence-04",
+    "question": "How many damaged pallets ever with confidence at least 0.8?",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [
+          "damaged pallet"
+        ],
+        "zones": [],
+        "kind": "detection",
+        "time": {
+          "period": "all_time"
+        },
+        "min_confidence": 0.8
+      },
+      "questions": []
+    },
+    "expected_count": 2
+  },
+  {
+    "id": "evidence-05",
+    "question": "How many damaged pallets on dock 4 ever with confidence at least 0.8?",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [
+          "damaged pallet"
+        ],
+        "zones": [
+          "4"
+        ],
+        "kind": "detection",
+        "time": {
+          "period": "all_time"
+        },
+        "min_confidence": 0.8
+      },
+      "questions": []
+    },
+    "expected_count": 1
+  },
+  {
+    "id": "evidence-06",
+    "question": "Count damaged pallets ever with confidence 0.99 or above",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [
+          "damaged pallet"
+        ],
+        "zones": [],
+        "kind": "detection",
+        "time": {
+          "period": "all_time"
+        },
+        "min_confidence": 0.99
+      },
+      "questions": []
+    },
+    "expected_count": 0
+  },
+  {
+    "id": "evidence-07",
+    "question": "Count every detection of all time",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [],
+        "zones": [],
+        "kind": "detection",
+        "time": {
+          "period": "all_time"
+        }
+      },
+      "questions": []
+    },
+    "expected_count": 6
+  },
+  {
+    "id": "evidence-08",
+    "question": "Show all recorded observations of forklifts",
+    "decision": {
+      "query": {
+        "operation": "show",
+        "labels": [
+          "forklift"
+        ],
+        "zones": [],
+        "kind": "detection",
+        "time": {
+          "period": "all_time"
+        }
+      },
+      "questions": []
+    },
+    "expected_count": 1
+  },
+  {
+    "id": "evidence-09",
+    "question": "How many pallets ever?",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [
+          "pallet"
+        ],
+        "zones": [],
+        "kind": "detection",
+        "time": {
+          "period": "all_time"
+        }
+      },
+      "questions": []
+    },
+    "expected_count": 1
+  },
+  {
+    "id": "evidence-10",
+    "question": "Count leaking drums ever",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [
+          "leaking drum"
+        ],
+        "zones": [],
+        "kind": "detection",
+        "time": {
+          "period": "all_time"
+        }
+      },
+      "questions": []
+    },
+    "expected_count": 1
+  },
+  {
+    "id": "evidence-11",
+    "question": "Show leaking drums in loading east of all time",
+    "decision": {
+      "query": {
+        "operation": "show",
+        "labels": [
+          "leaking drum"
+        ],
+        "zones": [
+          "loading east"
+        ],
+        "kind": "detection",
+        "time": {
+          "period": "all_time"
+        }
+      },
+      "questions": []
+    },
+    "expected_count": 1
+  },
+  {
+    "id": "evidence-12",
+    "question": "Count forklifts at loading east of all time",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [
+          "forklift"
+        ],
+        "zones": [
+          "loading east"
+        ],
+        "kind": "detection",
+        "time": {
+          "period": "all_time"
+        }
+      },
+      "questions": []
+    },
+    "expected_count": 0
+  },
+  {
+    "id": "evidence-13",
+    "question": "Count forklifts and pallets ever",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [
+          "forklift",
+          "pallet"
+        ],
+        "zones": [],
+        "kind": "detection",
+        "time": {
+          "period": "all_time"
+        }
+      },
+      "questions": []
+    },
+    "expected_count": 2
+  },
+  {
+    "id": "evidence-14",
+    "question": "Show all recorded history of text readings",
+    "decision": {
+      "query": {
+        "operation": "show",
+        "labels": [
+          "read text"
+        ],
+        "zones": [],
+        "kind": "text",
+        "time": {
+          "period": "all_time"
+        }
+      },
+      "questions": []
+    },
+    "expected_count": 1
+  },
+  {
+    "id": "evidence-15",
+    "question": "How many readings contain SKU-001 ever?",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [
+          "read text"
+        ],
+        "zones": [],
+        "kind": "text",
+        "time": {
+          "period": "all_time"
+        },
+        "text_contains": "SKU-001"
+      },
+      "questions": []
+    },
+    "expected_count": 1
+  },
+  {
+    "id": "evidence-16",
+    "question": "How many readings contain SKU-999 ever?",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [
+          "read text"
+        ],
+        "zones": [],
+        "kind": "text",
+        "time": {
+          "period": "all_time"
+        },
+        "text_contains": "SKU-999"
+      },
+      "questions": []
+    },
+    "expected_count": 0
+  },
+  {
+    "id": "evidence-17",
+    "question": "How many pipeline events ever?",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [
+          "pipeline event"
+        ],
+        "zones": [],
+        "kind": "rule",
+        "time": {
+          "period": "all_time"
+        }
+      },
+      "questions": []
+    },
+    "expected_count": 1
+  },
+  {
+    "id": "evidence-18",
+    "question": "Count all detection observations on dock 4 of all time",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [],
+        "zones": [
+          "4"
+        ],
+        "kind": "detection",
+        "time": {
+          "period": "all_time"
+        }
+      },
+      "questions": []
+    },
+    "expected_count": 4
+  },
+  {
+    "id": "evidence-19",
+    "question": "Count damaged pallets from January 1 through January 1, 2026",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [
+          "damaged pallet"
+        ],
+        "zones": [],
+        "kind": "detection",
+        "time": {
+          "period": "between_dates",
+          "start_date": "2026-01-01",
+          "end_date": "2026-01-01"
+        }
+      },
+      "questions": []
+    },
+    "expected_count": 2
+  },
+  {
+    "id": "evidence-20",
+    "question": "Count damaged pallets from January 2 through January 3, 2026",
+    "decision": {
+      "query": {
+        "operation": "count",
+        "labels": [
+          "damaged pallet"
+        ],
+        "zones": [],
+        "kind": "detection",
+        "time": {
+          "period": "between_dates",
+          "start_date": "2026-01-02",
+          "end_date": "2026-01-03"
+        }
+      },
+      "questions": []
+    },
+    "expected_count": 1
+  },
+  {
+    "id": "evidence-21",
+    "question": "How many pallets?",
+    "decision": {
+      "query": null,
+      "questions": [
+        "Which time period should I count?"
+      ]
+    },
+    "expected_count": null
+  },
+  {
+    "id": "evidence-22",
+    "question": "How many unique pallets today?",
+    "decision": {
+      "query": null,
+      "questions": [
+        "These records cannot identify unique physical objects. Are per-frame observation counts acceptable?"
+      ]
+    },
+    "expected_count": null
+  },
+  {
+    "id": "evidence-23",
+    "question": "Compare average pallets by dock today",
+    "decision": {
+      "query": null,
+      "questions": [
+        "Only counting or showing observations is supported. Which single class, zone and period should I count?"
+      ]
+    },
+    "expected_count": null
+  },
+  {
+    "id": "evidence-24",
+    "question": "How many purple dragons today?",
+    "decision": {
+      "query": null,
+      "questions": [
+        "Purple dragon is not a saved or recorded class. Which available class should I use?"
+      ]
+    },
+    "expected_count": null
+  }
+]

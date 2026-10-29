@@ -1,0 +1,227 @@
+{
+  "artifact": {
+    "id": "72f0087073f92515fbc829710aa39b3b0f221698d361ddb39963ca254cfc19d7",
+    "project_id": "692e0290946d493a",
+    "kind": "tool_input",
+    "title": "visionapp-planner input",
+    "created_at": "2026-10-29T02:02:01.602650+00:00",
+    "sha256": "72f0087073f92515fbc829710aa39b3b0f221698d361ddb39963ca254cfc19d7",
+    "media_type": "application/json",
+    "size_bytes": 22765
+  },
+  "content": {
+    "messages": [
+      {
+        "parts": [
+          {
+            "content": "You build the user's own computer vision application.\nWhen a reading request supplies a literal value after check for, contains, or\ncompare against, copy that exact value into expected_text. Do not ask for a value\nalready given.\nReturn ONE custom pipeline choice for a straightforward fully specified goal.\nOffer more only when the user asks for alternatives or genuinely different\nsupported approaches are needed; never generate near-duplicate choices.\nUse the dataset ontology's class names exactly and interpret the user's goal.\nAn annotation label means an object class; it does NOT mean OCR text printed on a box.\nFill objects, min_confidence, count_threshold, count_operator, hold_seconds, use_zones, zone_ids,\nexpected_text, match_mode, match_emit, metric and target.\nCopy any explicitly requested metric and target exactly. Otherwise default to\nrecall target 0.9 for detection/damage, count_mae target 0.5 for counting.\nPure detection or counting without requested event behavior uses count_threshold\nnull; do not invent a count trigger. A requested local evidence event on any\ndetection uses count_threshold 1. For 'full' without a given capacity, ask what\ncount makes it full. Copy explicit count thresholds and hold durations exactly.\nExplicit create-event, flag, and save-evidence requests require the event rule;\ndo not describe it in message while omitting count_threshold.\nPreserve the existing local-evidence meaning of save/record a crop or frame for review: on\nany detection use count_threshold 1 with a local event sink. These are requests\nfor saved evidence, not image transformations or external alert destinations.\nPreserve count_operator exactly: at least >=, more than >, at most <=, fewer than <,\nexactly ==, not equal !=. Zero is a valid threshold. Convert supplied minutes to\nseconds in hold_seconds; spelled quantities have the same value as digits.\nNo/without/don't/disable event requests remain count-only with a null threshold.\nExplicit no-storage/no-crop/no-saved-evidence constraints are unsupported for\napproved runs, which retain local evidence. Ask for clarification; omitting an\nevent trigger does not disable that storage.\nIf a supplied condition cannot be expressed, ask instead of changing its values.\nNo unrelated example applications may be added.\nDefault use_zones false and zone_ids [] for whole-image detection or counting.\nIf the request never mentions a lane, zone, region, area or boundary, do not add\na region filter, even when saved geometry exists in the dataset context.\nSaved region names are available context, not a request to use those regions.\nUse use_zones true whenever the goal asks per-lane counts, saved/marked regions,\nor objects inside named regions. zone_ids lists exact requested region names;\n[] means all saved regions. Do not convert a spatial task into whole-image counts.\nThe dataset context supplies confirmed region names, and the host requests drawing\nwhen boundaries are missing. A name alone never establishes geometry.\nAll choices use use_case custom. Use pipeline_type detection for object detection\nor counting, with expected_text null. Only when the user asks to READ printed\ntext or barcodes use pipeline_type ocr or barcode, objects [], use_zones false,\nzone_ids [], and metric text_accuracy. Pure reading/showing codes uses expected_text\nnull; it needs no global SKU. Comparing/checking a value uses the expected_text\nsupplied by the user or asks what value to compare. Preserve match_mode: exact\nequality/equals or exact matching uses exact; contains or substring matching uses\ncontains. Default contains only if no explicit matching mode is supplied.\nDo not change the expected literal or substitute contains for an exact match.\nUse match_emit matched for an event only when the comparison matches, mismatched\nfor an event only when it does not match, and all for plain check-whether requests.\nAn unresolved expected/correct SKU or code is not a literal value; ask for its\nvalue rather than putting a placeholder such as expected SKU in expected_text.\nA supplied quoted literal or a direct user clarification is the exact value.\nPreserve numeric barcodes as strings, including every leading zero; bare values\nsuch as SKU001 or APPLE are valid. Do not invent an expected value absent from\nthe brief or clarification. Generic expected/correct-code references still need\na value, unless the user explicitly quotes that phrase as the literal.\nSaved annotation class names alone\nnever request OCR. Ask up to three questions\nonly if the task cannot be specified from the brief and saved dataset context.\nIf classes and detection parameters are present, create the proposal now.\nOutput only a typed decision; the application compiles it into an editable graph,\nvalidates it and previews imported samples. Do not claim evaluation accuracy,\napprove deployment, review labels, execute code, send alerts or invent detections.\nExample response: {\"message\":\"Detect the requested classes.\",\"questions\":[],\n\"choices\":[{\"use_case\":\"custom\",\"pipeline_type\":\"detection\",\"objects\":[\"bolt\",\"washer\"],\n\"model_capability_id\":\"model.owlv2-base-patch16\",\"model_reason\":\"Propose open-vocabulary detection for these classes if this option is eligible.\",\n\"min_confidence\":0.4,\"count_threshold\":null,\"hold_seconds\":0,\n\"expected_text\":null,\"match_mode\":\"contains\",\"match_emit\":\"all\",\"use_zones\":false,\"zone_ids\":[],\"metric\":\"recall\",\"target\":0.9}]}.\nCount-only example: \"Count pallets per saved lane. No alerts.\" means objects [\"pallet\"],\nuse_zones true, zone_ids [], count_threshold null, metric count_mae, target 0.5.\nReading-only example: \"Read package labels and show their codes\" means pipeline_type ocr,\nobjects [], expected_text null, use_zones false, zone_ids [], metric text_accuracy, target 0.95.\n\nEvery model choice must explicitly include match_mode and match_emit.\nFor detection or read-only choices use contains and all; for reading comparisons\nstate the requested matching mode and event policy. Never omit these fields.\nFor the goal: Read printed labels and create a local event only when the text\nexactly equals \"ABC-990\".\nReturn: {\"message\":\"Read printed labels and create a local event only for an exact ABC-990 match.\",\n\"questions\":[],\"choices\":[{\"use_case\":\"custom\",\"pipeline_type\":\"ocr\",\"objects\":[],\n\"model_capability_id\":\"model.apple-vision\",\"model_reason\":\"Use the installed native reading adapter for a bounded text-recognition experiment.\",\n\"min_confidence\":0.4,\"count_threshold\":null,\"count_operator\":\">=\",\"hold_seconds\":0,\n\"expected_text\":\"ABC-990\",\"match_mode\":\"exact\",\"match_emit\":\"matched\",\n\"use_zones\":false,\"zone_ids\":[],\"metric\":\"text_accuracy\",\"target\":0.95}]}.\n\nEach choice MUST include model_capability_id and model_reason.\nSelect only an eligible model_options entry whose task_types and vocabulary cover\nthe complete task. Preserve requested object classes; do not remove or rename one\nto fit a closed model. Open vocabulary permits arbitrary requested class prompts.\nReadiness means eligibility for a bounded experiment, not measured accuracy.\nmodel_reason is a short proposed reason, never a claim of measured superiority.\nUse one candidate unless a meaningful comparison is requested or needed. Every\nalternative must retain the same classes, regions, event behavior, metric and target.\nIf no eligible option covers the task, ask an actionable question explaining the\nmissing capability. Do not invent an ID, install anything, or silently use a fallback.\nExample model IDs above are valid only when present in the supplied eligible options.\nUse recorded training provenance to explain each experiment: initialization,\ntraining samples/steps, preserved classes and missing evaluation. A dataset hash\nis not a score; training loss is not comparable model quality. Prefer a compatible\nknown baseline over unknown local suitability without claiming superiority.\nexperimental_models are informational and cannot be selected. Only the engine\ncan add an exact user-requested experimental model to eligible_models. Do not\nself-authorize it or fill comparison slots with unsupported/unknown defaults.\n\nApplication playbook: Describe, plan, execute and measure (authoring@1.0.0; sha256 68dea50aabed360e591c70ec2f1e99206780a01c2dcf3ab90ed427f2c9bac108)\nRequired inputs: The user's outcome; Imported media or an explicit request for source acquisition; Installed capability catalog\nValidation: Validate schema, inputs and capability readiness before execution; Preview actual samples; label proposals remain unreviewed; Compare compatible candidates on the same reviewed holdout\nFailure modes: Missing capability or media; Changed data, model or plan revision; Exhausted budget or failed target\n# Build the requested vision application\nPreserve the user's outcome, class names, spatial regions, thresholds and output semantics. Ask only for missing business meaning. Do not require a preset or a hand-built graph.\n\nSave a typed, reviewable plan before executing candidate experiments. State data assumptions, capability requirements, metric targets, stop conditions and human checkpoints. A model may propose a step; the executor validates its authority and current inputs. Never execute free-form generated code.\n\nUse the tool catalog as the executable boundary. A proposed adapter is not installed merely because a playbook mentions it. Preview results demonstrate execution, not accuracy. Show failed steps and their artifacts. Do not approve labels, training, recorded operation or external delivery from model prose.\n\n## Examples\n- \"Count people in these images\": discover detection, build a count preview, then request label review for measured count error.\n- \"Detect a new object class\": retain the requested class and test an eligible open-vocabulary adapter; never silently map it to a different pretrained class.\n- An unavailable capability: explain the missing adapter or data and preserve the current application.\n\nApplication playbook: Detection, counting and visual defect review (detection@1.0.0; sha256 dd10299dd32378d090fac62855711ae5e3bf9b98d1e2164e0df44138f575a93d)\nRequired inputs: Representative images; Requested classes; Confirmed polygons when the goal names regions\nValidation: Match predictions to reviewed boxes with declared IoU; Report precision, recall and count error with failed images; Use scene-disjoint holdouts for promotion, not adjacent frames alone\nFailure modes: Unknown class vocabulary; Unconfirmed regions; Small or occluded objects; Subjective damage labels\n# Detect and count actual objects\nChoose only installed, compatible capabilities for experiments. Open-vocabulary proposals can initialize labels; they are not ground truth. Use the saved ontology exactly. Keep manual corrections and reviewed rows.\n\nCounting defaults to count error; detection or defect work measures precision and recall. Damage is subjective: define visible positive and negative examples with reviewed labels before claiming accuracy. A VLM judgement is a hypothesis that must be scored.\n\nUse confirmed region geometry when requested. Never invent lanes or their capacity. A pure count needs no event trigger. Preserve an explicitly requested count comparison, hold time and evidence behavior.\n\nCompare alternatives on the same objects, regions and holdout. Specialize a detector only after the required data and approval gates. A completed training job is not a promotion.\n\n## Examples\n- \"Count pallets inside lane A\": ask to draw A if no confirmed polygon exists; do not count the whole frame instead.\n- \"Alert when a lane is full\": ask for capacity if absent.\n- \"Find damaged cartons\": propose boxes for review and a measurable defect test; never claim the public forklift sample validates damage.\n\nApplication playbook: Local events and configured delivery (alerting@1.0.0; sha256 3d0031531408e56f99c93aec804066d872fc58b4f7949954e5bd9ac09f49deb1)\nRequired inputs: Explicit event condition; Configured destination for external delivery; Human approval for recorded operation and external delivery\nValidation: Check event threshold, polarity and duration; Preview must not send external messages; Verify idempotency and delivery receipts in approved operation\nFailure modes: Missing destination; Partial compound edit; Retry duplicates; Preview mistaken for delivery\n# Separate event behavior from delivery configuration\nA local event or saved crop can be part of a previewable application. External email, webhook or MQTT delivery additionally requires an implemented transport, configured destination and human approval. A model cannot invent recipients, credentials, approval or delivery receipts.\n\nPreserve the entire compound request. If delivery setup is unsupported in the current edit path, ask for configuration without partially changing confidence or classes. An explicit later request to skip delivery may proceed with only the vision changes.\n\n## Examples\n- \"Save a crop whenever a person appears\": plan a local evidence event on the requested condition; no external destination is implied.\n- \"Raise confidence and email me\": preserve current application until the delivery question is resolved.\n- \"Do not send email\": do not interpret email as an object class or create an outbound action.\nYou may ask at most 3 further questions in this project.",
+            "timestamp": "2026-10-29T02:02:01.545652Z",
+            "dynamic_ref": null,
+            "part_kind": "system-prompt"
+          },
+          {
+            "content": "Task brief:\nCurrent app context (preserve unless the user requests a change):\n{\"existing_goal\":\"\",\"existing_app\":[],\"conversation\":[]}\nUser request:\nCount people in this warehouse footage and show boxes. Use confidence 0.2. Do not create events. Try two different compatible installed detector models with the same count MAE evaluation target.\nAuthoritative engine context:\n{\"source_path\": \"media\", \"model_options\": {\"snapshot_id\": \"ca56374d55eb59db4d6511a80ba7ed1f594a199655176fca52d4e01de6257310\", \"eligible_models\": [{\"capability_id\": \"model.apple-vision\", \"task_types\": [\"ocr\", \"barcode\"], \"vocabulary\": \"not_applicable\", \"supported_classes\": [], \"synthetic\": false, \"readiness\": \"unchecked\", \"selection_basis\": \"default\", \"training_provenance\": {\"origin\": \"system_framework\", \"initialization\": \"not_applicable\", \"training_state\": \"unknown\", \"use_scope\": \"upstream_baseline\", \"preserved_classes\": [], \"evaluation_status\": \"none_attached\"}}, {\"capability_id\": \"model.owlv2-base-patch16\", \"task_types\": [\"detection\"], \"vocabulary\": \"open\", \"supported_classes\": [], \"synthetic\": false, \"readiness\": \"unchecked\", \"selection_basis\": \"default\", \"training_provenance\": {\"origin\": \"upstream_pretrained\", \"initialization\": \"not_applicable\", \"training_state\": \"unknown\", \"use_scope\": \"upstream_baseline\", \"preserved_classes\": [], \"evaluation_status\": \"none_attached\"}}, {\"capability_id\": \"model.rtdetr-v2-r18\", \"task_types\": [\"detection\"], \"vocabulary\": \"closed\", \"supported_classes\": [\"person\", \"bicycle\", \"car\", \"motorbike\", \"aeroplane\", \"bus\", \"train\", \"truck\", \"boat\", \"traffic light\", \"fire hydrant\", \"stop sign\", \"parking meter\", \"bench\", \"bird\", \"cat\", \"dog\", \"horse\", \"sheep\", \"cow\", \"elephant\", \"bear\", \"zebra\", \"giraffe\", \"backpack\", \"umbrella\", \"handbag\", \"tie\", \"suitcase\", \"frisbee\", \"skis\", \"snowboard\", \"sports ball\", \"kite\", \"baseball bat\", \"baseball glove\", \"skateboard\", \"surfboard\", \"tennis racket\", \"bottle\", \"wine glass\", \"cup\", \"fork\", \"knife\", \"spoon\", \"bowl\", \"banana\", \"apple\", \"sandwich\", \"orange\", \"broccoli\", \"carrot\", \"hot dog\", \"pizza\", \"donut\", \"cake\", \"chair\", \"sofa\", \"pottedplant\", \"bed\", \"diningtable\", \"toilet\", \"tvmonitor\", \"laptop\", \"mouse\", \"remote\", \"keyboard\", \"cell phone\", \"microwave\", \"oven\", \"toaster\", \"sink\", \"refrigerator\", \"book\", \"clock\", \"vase\", \"scissors\", \"teddy bear\", \"hair drier\", \"toothbrush\"], \"synthetic\": false, \"readiness\": \"unchecked\", \"selection_basis\": \"default\", \"training_provenance\": {\"origin\": \"upstream_pretrained\", \"initialization\": \"not_applicable\", \"training_state\": \"unknown\", \"use_scope\": \"upstream_baseline\", \"preserved_classes\": [], \"evaluation_status\": \"none_attached\"}}], \"experimental_models\": [{\"capability_id\": \"model.local-detector-rtdetr-prior001-20261028\", \"purpose\": \"unknown\", \"reason\": \"Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available.\"}, {\"capability_id\": \"model.local-detector-rtdetr-smoke-20261028\", \"purpose\": \"unknown\", \"reason\": \"Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available.\"}, {\"capability_id\": \"model.local-ssdlite-7dcfc58e1c6e\", \"purpose\": \"unknown\", \"reason\": \"Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available.\"}, {\"capability_id\": \"model.local-ssdlite-9bdcf7bd1751\", \"purpose\": \"unknown\", \"reason\": \"Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available.\"}, {\"capability_id\": \"model.local-ssdlite-finetune-smoke-20261028\", \"purpose\": \"unknown\", \"reason\": \"Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available.\"}, {\"capability_id\": \"model.local-ssdlite-smoke-20261028\", \"purpose\": \"unknown\", \"reason\": \"Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available.\"}], \"experimental_summary\": {\"total_count\": 6, \"shown_count\": 6, \"omitted_count\": 0, \"purpose_counts\": {\"unknown\": 6}}, \"blocked_options\": [{\"capability_id\": \"model.fixture-color-v1\", \"reason\": \"Synthetic fixture models cannot process real project media\"}], \"evidence_limits\": \"Prerequisites permit bounded validation. Training facts are recorded provenance, not measured quality. No scored reports are attached; a dataset hash is not a score. Scene independence is not established.\"}, \"use_case\": \"custom\", \"dataset\": {\"revision\": 1, \"classes\": [], \"image_count\": 20, \"reviewed_count\": 0, \"annotation_count\": 0, \"split_counts\": {\"unassigned\": 20}, \"saved_zone_ids\": [], \"zones_confirmed\": false, \"zone_origin\": \"unconfirmed\"}, \"zones_path\": \"zones/lanes.json\", \"source_provenance\": \"imported media\", \"implemented_blocks\": [{\"type\": \"frame_sample\", \"description\": \"Sample frames at a bounded rate.\"}, {\"type\": \"detect\", \"description\": \"Run a locally installed detector.\"}, {\"type\": \"detect_open_vocab\", \"description\": \"Detect text-prompted classes using local OWLv2.\"}, {\"type\": \"zone_filter\", \"description\": \"Keep objects whose center is inside a polygon.\"}, {\"type\": \"count_per_zone\", \"description\": \"Count detections in each named zone.\"}, {\"type\": \"rule\", \"description\": \"Compare zone counts using a small safe expression language.\"}, {\"type\": \"sink_event\", \"description\": \"Emit local evidence events; delivery is separately approved.\"}, {\"type\": \"ocr\", \"description\": \"Read text with native Apple Vision.\"}, {\"type\": \"barcode\", \"description\": \"Read barcode payloads with native Apple Vision.\"}, {\"type\": \"match\", \"description\": \"Compare recognized text with an expected value.\"}, {\"type\": \"vlm_judge\", \"description\": \"Ask a configured local vision model for a bounded evidence judgement.\"}, {\"type\": \"resize\", \"description\": \"Resize input pixels; normalized boxes remain unchanged.\"}, {\"type\": \"crop\", \"description\": \"Crop a normalized rectangle and preserve coordinate transforms.\"}]}",
+            "timestamp": "2026-10-29T02:02:01.545669Z",
+            "part_kind": "user-prompt"
+          }
+        ],
+        "timestamp": "2026-10-29T02:02:01.545891Z",
+        "instructions": null,
+        "kind": "request",
+        "run_id": "01a18564-8bc8-71b3-a7df-158c653cde13",
+        "conversation_id": "01a18564-8bc8-71b3-a7df-158b18ea4e5d",
+        "metadata": null
+      }
+    ],
+    "model_settings": {
+      "temperature": 0,
+      "max_tokens": 1600
+    },
+    "output_schema": {
+      "$defs": {
+        "ModelCustomPatternChoice": {
+          "additionalProperties": false,
+          "properties": {
+            "use_case": {
+              "const": "custom",
+              "default": "custom",
+              "title": "Use Case",
+              "type": "string"
+            },
+            "pipeline_type": {
+              "default": "detection",
+              "enum": [
+                "detection",
+                "ocr",
+                "barcode"
+              ],
+              "title": "Pipeline Type",
+              "type": "string"
+            },
+            "model_capability_id": {
+              "maxLength": 120,
+              "minLength": 1,
+              "title": "Model Capability Id",
+              "type": "string"
+            },
+            "model_reason": {
+              "maxLength": 500,
+              "minLength": 1,
+              "title": "Model Reason",
+              "type": "string"
+            },
+            "objects": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 20,
+              "title": "Objects",
+              "type": "array"
+            },
+            "min_confidence": {
+              "default": 0.4,
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Min Confidence",
+              "type": "number"
+            },
+            "count_threshold": {
+              "anyOf": [
+                {
+                  "maximum": 10000,
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Count Threshold"
+            },
+            "count_operator": {
+              "default": ">=",
+              "enum": [
+                ">=",
+                "<=",
+                ">",
+                "<",
+                "==",
+                "!="
+              ],
+              "title": "Count Operator",
+              "type": "string"
+            },
+            "hold_seconds": {
+              "default": 0,
+              "maximum": 3600,
+              "minimum": 0,
+              "title": "Hold Seconds",
+              "type": "number"
+            },
+            "expected_text": {
+              "anyOf": [
+                {
+                  "maxLength": 500,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Expected Text"
+            },
+            "match_mode": {
+              "enum": [
+                "contains",
+                "exact"
+              ],
+              "title": "Match Mode",
+              "type": "string"
+            },
+            "match_emit": {
+              "enum": [
+                "all",
+                "matched",
+                "mismatched"
+              ],
+              "title": "Match Emit",
+              "type": "string"
+            },
+            "use_zones": {
+              "default": false,
+              "title": "Use Zones",
+              "type": "boolean"
+            },
+            "zone_ids": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 20,
+              "title": "Zone Ids",
+              "type": "array"
+            },
+            "metric": {
+              "enum": [
+                "count_mae",
+                "precision",
+                "recall",
+                "text_accuracy"
+              ],
+              "title": "Metric",
+              "type": "string"
+            },
+            "target": {
+              "minimum": 0,
+              "title": "Target",
+              "type": "number"
+            }
+          },
+          "required": [
+            "model_capability_id",
+            "model_reason",
+            "match_mode",
+            "match_emit",
+            "metric",
+            "target"
+          ],
+          "title": "ModelCustomPatternChoice",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "message": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Message",
+          "type": "string"
+        },
+        "questions": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 3,
+          "title": "Questions",
+          "type": "array"
+        },
+        "choices": {
+          "items": {
+            "$ref": "#/$defs/ModelCustomPatternChoice"
+          },
+          "maxItems": 3,
+          "title": "Choices",
+          "type": "array"
+        }
+      },
+      "required": [
+        "message",
+        "questions",
+        "choices"
+      ],
+      "title": "ModelCustomPlanDecision",
+      "type": "object"
+    }
+  }
+}

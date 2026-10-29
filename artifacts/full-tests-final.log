@@ -1,0 +1,19 @@
+........................................................................ [ 25%]
+........................................................................ [ 50%]
+..................................................F..................... [ 75%]
+........................................................................ [100%]
+=================================== FAILURES ===================================
+___ test_count_only_intent_does_not_acquire_regions_events_or_recall_metric ____
+
+    def test_count_only_intent_does_not_acquire_regions_events_or_recall_metric() -> None:
+        decision = spatial_decision()
+>       with pytest.raises(ValueError, match="whole-image"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'whole-image'
+E         Actual message: 'The user did not request any spatial region. Set use_zones false and zone_ids []; saved geometry alone does not authorize filtering the image.'
+
+tests/test_goal_fidelity.py:25: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_goal_fidelity.py::test_count_only_intent_does_not_acquire_regions_events_or_recall_metric
+1 failed, 287 passed in 413.47s (0:06:53)

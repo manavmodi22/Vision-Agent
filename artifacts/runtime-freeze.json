@@ -1,0 +1,7 @@
+{
+  "source_identity": "4f94d391e5238170979135e9425e4212bd43d8e885d6c66f764264433c191ccb",
+  "runtime_frozen": true,
+  "language_baselines": "Captured separately; not full product readiness",
+  "native_checks": 83,
+  "static_checks": "mypy111clean; Ruffclean"
+}

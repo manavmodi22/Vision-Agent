@@ -1,0 +1,32 @@
+{
+  "artifact": {
+    "id": "773ddc2398eb475fc0849d8ba79ddaf262360a118ed213c1fb7890d8df536305",
+    "project_id": "6b0ffff3dec54fb6",
+    "kind": "tool_input",
+    "title": "build_refine input",
+    "created_at": "2026-10-29T01:09:45.941674+00:00",
+    "sha256": "773ddc2398eb475fc0849d8ba79ddaf262360a118ed213c1fb7890d8df536305",
+    "media_type": "application/json",
+    "size_bytes": 335
+  },
+  "content": {
+    "project_id": "6b0ffff3dec54fb6",
+    "build_id": "5b17c6924f91446897225d13f5dc3c04",
+    "candidate_index": 0,
+    "patch": {
+      "kind": "confidence",
+      "scope": null,
+      "block_id": null,
+      "confidence": 0.5,
+      "classes": [],
+      "count_threshold": null,
+      "count_operator": null,
+      "hold_s": null,
+      "expected_text": null,
+      "match_mode": null,
+      "fps": null,
+      "eval_metric": null,
+      "eval_target": null
+    }
+  }
+}

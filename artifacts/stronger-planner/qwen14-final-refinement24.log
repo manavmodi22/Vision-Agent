@@ -1,0 +1,24 @@
+confidence_percent: FAIL (34.3s) Local refinement failed: Request timed out.
+confidence_permissive: PASS (26.7s) 
+confidence_decimal: PASS (22.0s) 
+add_class: PASS (16.4s) 
+replace_classes: PASS (8.9s) 
+remove_class: PASS (13.6s) 
+count_hold: PASS (18.7s) 
+hold_only: PASS (10.3s) 
+count_upper: PASS (13.1s) 
+count_strict: PASS (11.3s) 
+sample_seconds: PASS (10.2s) 
+sample_relative: PASS (11.5s) 
+sample_numeric: PASS (8.6s) 
+eval_count: PASS (11.7s) 
+eval_recall: PASS (11.0s) 
+compound_confidence_rate: PASS (17.0s) 
+compound_rule_target: FAIL (29.0s) Local refinement failed: Request timed out.
+insert_rule: FAIL (35.0s) Local refinement failed: Request timed out.
+read_text_exact: PASS (25.6s) 
+insert_text_match: PASS (45.1s) 
+ambiguous_accuracy: FAIL (29.9s) Local refinement failed: Request timed out.
+ambiguous_count: PASS (24.0s) 
+unsupported_compound: FAIL (13.2s) 
+contextual_answer: PASS (24.4s) 

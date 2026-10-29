@@ -1,0 +1,44 @@
+{
+  "source_identity": "d403b8dc578b7be2b33b9b1065bbf90a288d01eb60cdd71dbd06b902b611428b",
+  "status": "packaged_checkpoint_verified; native_model_selection_interaction_pending; overall_architecture_incomplete",
+  "python_tests": {
+    "passed": 581,
+    "duration_s": 139.65,
+    "log": "artifacts/full-tests-selection-d403.log"
+  },
+  "mypy": {
+    "passed": true,
+    "source_files": 135,
+    "log": "artifacts/selection-mypy.log"
+  },
+  "ruff": {
+    "passed": true,
+    "log": "artifacts/selection-ruff.log"
+  },
+  "native_contracts": {
+    "passed": 137,
+    "evidence": "artifacts/native-platform-validation-selection-d403.json"
+  },
+  "portable_build": "artifacts/portable-build-selection-d403.log",
+  "relocation": {
+    "first_attempt": "artifacts/bundle-verification-selection-d403.log",
+    "first_result": "failed: extra OCR stdout, no raw response captured",
+    "diagnostic_retry": "artifacts/bundle-verification-selection-d403-retry.json",
+    "retry_result": "passed",
+    "limitation": "An intermittent strict bridge parsing failure remains under investigation; do not erase it with the retry pass."
+  },
+  "native_release_sha256": "1738918addd6d05c71adfc05c1c5b014a81cc0bfce4448de058e5d1d87ce5145",
+  "native_packaged_sha256": "e3a6fc6ee0c54936cd043b92c85424b774aeb4b31b636eea0e956077a82c9d97",
+  "actual_llm_cases": [
+    "artifacts/stronger-planner/qwen14-selection-exact-reading.json",
+    "artifacts/stronger-planner/qwen14-selection-warehouse.json"
+  ],
+  "actual_detector_execution": "artifacts/stronger-planner/qwen14-selection-warehouse-execution.json",
+  "historical_broad_model_scores": "artifacts/runtime-validation-c19.json",
+  "remaining": [
+    "Smoke/unknown local checkpoints need explicit default eligibility and training provenance; routing passed but choices produced poor boxes.",
+    "Common adapter evidence wrappers in newer checkout, not this package.",
+    "Scene-group promotion gate and separate acceptance set remain absent.",
+    "YOLOX/Paddle are isolated probes; SAM3 and full release requirements incomplete."
+  ]
+}

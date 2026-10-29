@@ -1,0 +1,23 @@
+{
+  "CPU_FEASIBILITY.md": "f494268749524ef449a9d56bd62e88b22984b9f8630afff1dbc7c82d61c32215",
+  "cpu-feasibility.json": "a3efd2b3ce90417850027d846757bedd3aca8066f03be7a55d56b402412a404f",
+  "cpu-inputs.json": "38528d090a821ef25c0bfb561e099ae273def60d8907bcf652093a64e27991d9",
+  "download-receipt.json": "494f9873136853eb7251de2a7d0ccf4ed8c4000b45bbee0fa94bfc9c8f3f242d",
+  "cpu-dependency-licenses.json": "eb17ca2a2f09f3c218fee65efcca582efa476152e2ab063a0a99a0553c8102d5",
+  "cpu-installed.txt": "8589e155e2418447a730d1f6a20a2f84b7f0ae4539cc78393253429c6456de96",
+  "probe-requirements.in": "e9330d325941b704143d2fefdb57fd446dd640aef5466df27293cb2c1a4f1ddd",
+  "probe-requirements.lock": "3d32ba931e3684aa5f258faa7dd1bc2c5c3d128747917f4a2d0aa7666909899f",
+  "install.log": "d4b88219babdc17b884dbef44161d8f995310c4944f93888904961b071d9e25d",
+  "cpu-run.log": "c5d3367935e4f9b7d8c269259376a59d41ce4b578b8315115c11400090039d0f",
+  "network-denial-check.json": "67a5682d66638f67fb2b5dfcdd9394eb3baaf76544ba1c1deaa0c66746c7c976",
+  "cpu-public-source-provenance.json": "eed06a5529a24983fc753afa8ab02087c330c08a9d9dabdcdb905d54d662197e",
+  "probe_cpu.py": "2276738a230fc43fe0a0b66d4544915209f9ff49b814afdbbb8305db7875f4de",
+  "cpu-mixed-case-overlay.png": "f52d92d144b67233490ce48c83b03caa98a8223e2571d707c805988d136b5a63",
+  "cpu-exact-match-overlay.png": "dc2d34c6273eb9d8699a41b75626db090db2c184f38288f5a394a430f92364e9",
+  "cpu-leading-zeros-overlay.png": "1745b28b76370e1a250a20b20811d556a22708d62cfac9bd7e43f3c9e8e0ad4c",
+  "cpu-substring-only-overlay.png": "43a17c2516039f8e3e308df98b70b5cea32bb074d206c53cee1a7f17a810d090",
+  "cpu-real-public-label-crop-overlay.png": "ed14b658cb72abc0cd3f925b12740430904ffcf2f493476ef3cb4633a03287c1",
+  "fixtures/leading-zeros.png": "dcd11350d95ed26c059d71c1c89d6c3b29e2f57372508b4e9976e1b8728c0e27",
+  "fixtures/nvidia-real-label-crop.png": "7153cb6b64888a3ef328824545a6d9979edd2da7f6f744774808fa96baee75c7",
+  "fixtures/mixed-case.png": "ed5308a610d4baae2e384034fee3de505b44c46769e2d594f7a5c1e930d820e6"
+}

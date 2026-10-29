@@ -1,0 +1,91 @@
+{
+  "status": "metadata_research_only",
+  "models": {
+    "PP-OCRv5_mobile_det": {
+      "repository": "PaddlePaddle/PP-OCRv5_mobile_det",
+      "revision": "0d63e78e2b680928f6b1747d76a08db6e645efb7",
+      "license_declared": "apache-2.0",
+      "weights_downloaded": false,
+      "inference_tested": false,
+      "files": [
+        {
+          "path": "inference.pdiparams",
+          "bytes": 4692937,
+          "expected_sha256": "afa1820cb16c1fd0dad589d0f8b389139061c1ef6d68019685fd07be997dda5b",
+          "url": "https://huggingface.co/PaddlePaddle/PP-OCRv5_mobile_det/resolve/0d63e78e2b680928f6b1747d76a08db6e645efb7/inference.pdiparams"
+        }
+      ]
+    },
+    "en_PP-OCRv5_mobile_rec": {
+      "repository": "PaddlePaddle/en_PP-OCRv5_mobile_rec",
+      "revision": "267c36e24c331595590fe7bd72bde2436fd286f2",
+      "license_declared": "apache-2.0",
+      "weights_downloaded": false,
+      "inference_tested": false,
+      "files": [
+        {
+          "path": "inference.pdiparams",
+          "bytes": 7772315,
+          "expected_sha256": "3ec8a97ed6cefe8568d3e2ee90bb193299b566a7661aa4fd52d224b96b59f66b",
+          "url": "https://huggingface.co/PaddlePaddle/en_PP-OCRv5_mobile_rec/resolve/267c36e24c331595590fe7bd72bde2436fd286f2/inference.pdiparams"
+        }
+      ]
+    },
+    "PaddleOCR-VL-1.6": {
+      "repository": "PaddlePaddle/PaddleOCR-VL-1.6",
+      "revision": "c5630abae1d940eafe0697512a0325494b02ab42",
+      "license_declared": "apache-2.0",
+      "weights_downloaded": false,
+      "inference_tested": false,
+      "files": [
+        {
+          "path": "model.safetensors",
+          "bytes": 1917255968,
+          "expected_sha256": "85a479d506a11e724e7285d395c551be69f41dbc16b6342d3cacfb189aed71db",
+          "url": "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6/resolve/c5630abae1d940eafe0697512a0325494b02ab42/model.safetensors"
+        }
+      ]
+    },
+    "tessdata-fast-eng": {
+      "repository": "tesseract-ocr/tessdata_fast",
+      "revision": "87416418657359cb625c412a48b6e1d6d41c29bd",
+      "license_declared": "Apache-2.0 (README explicitly all data)",
+      "weights_downloaded": false,
+      "inference_tested": false,
+      "files": [
+        {
+          "path": "eng.traineddata",
+          "bytes": 4113088,
+          "git_blob_sha1": "bbef4675053b5b468cdb477053e28b1c698ba08e",
+          "expected_sha256": null,
+          "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/eng.traineddata"
+        }
+      ]
+    }
+  },
+  "code_revisions": {
+    "paddleocr": "dab3fe35379033fdcb2d0e9572fac0b36c9a9ebf",
+    "mlx-vlm": "138d7617d39653b39a5cbc379b1b5907a4481d67",
+    "tesseract": "7e548e6eff172f38f97664afe7f7ce40db36c8d6",
+    "tessdata": "87416418657359cb625c412a48b6e1d6d41c29bd",
+    "tessdoc": "08d630d27e48366ac1bc9dd0b61408977ceb9ae3"
+  },
+  "paddle_cpu_wheel": {
+    "filename": "paddlepaddle-3.2.1-cp312-cp312-macosx_11_0_arm64.whl",
+    "url": "https://files.pythonhosted.org/packages/fc/d8/81076b4029e119664eb29a8592e74fe0d5203298055dd4fda4addd4f61ae/paddlepaddle-3.2.1-cp312-cp312-macosx_11_0_arm64.whl",
+    "size": 99491247,
+    "digests": {
+      "blake2b_256": "fcd881076b4029e119664eb29a8592e74fe0d5203298055dd4fda4addd4f61ae",
+      "md5": "2b6b5eec9028a2f2ecd66a980464cc61",
+      "sha256": "5190d3680bf0678a337f710a76f3235833c449a274cac38a9d60cab2d8fb0acf"
+    }
+  },
+  "proposed_package_versions": {
+    "paddlepaddle": "3.2.1",
+    "paddleocr": "3.7.0",
+    "mlx-vlm": "0.7.11",
+    "tesseract": "5.5.4"
+  },
+  "environment_resolved": false,
+  "production_changes": false
+}

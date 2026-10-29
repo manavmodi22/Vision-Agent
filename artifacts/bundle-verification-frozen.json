@@ -1,0 +1,725 @@
+{
+  "bundle": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app",
+  "relocation_test": true,
+  "isolated_imports": {
+    "python": "/tmp/va-bundle-btjr3h_j/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/bin/python3.12",
+    "engine": "/private/tmp/va-bundle-btjr3h_j/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine/__init__.py",
+    "paths": [
+      "/private/tmp/va-bundle-btjr3h_j/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python312.zip",
+      "/private/tmp/va-bundle-btjr3h_j/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12",
+      "/private/tmp/va-bundle-btjr3h_j/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/lib-dynload",
+      "/private/tmp/va-bundle-btjr3h_j/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/site-packages"
+    ],
+    "mps": true
+  },
+  "native_checks": {
+    "status": "passed",
+    "checks": 83
+  },
+  "apple_vision": {
+    "barcodes": [],
+    "texts": [
+      "PALLET 12345",
+      "DOCK 4"
+    ]
+  },
+  "health": {
+    "status": "ok",
+    "version": "0.1.0",
+    "model_server": {
+      "reachable": true,
+      "models": [
+        "visionapp-planner"
+      ],
+      "error": null
+    },
+    "runtime": {
+      "data_dir": "/private/tmp/va-bundle-btjr3h_j/data",
+      "python": "/private/tmp/va-bundle-btjr3h_j/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/bin/python3.12",
+      "package_root": "/private/tmp/va-bundle-btjr3h_j/Path with spaces/VisionApp.app/Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+      "build_id": "4f94d391e5238170979135e9425e4212bd43d8e885d6c66f764264433c191ccb",
+      "pid": 44073
+    },
+    "capabilities": {
+      "image_folder": true,
+      "recorded_video": true,
+      "apple_vision": true,
+      "camera": false,
+      "screen_capture": false,
+      "training": true,
+      "alerts": true,
+      "native_app": true,
+      "live_frame_ingress": true
+    }
+  },
+  "fixture_preview": {
+    "frames": [
+      {
+        "image_path": "/private/tmp/va-bundle-btjr3h_j/data/projects/cdbec2afe1a5415f/media/synthetic-01.png",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.45,
+              0.4453125,
+              0.5875
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": "D"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.45,
+              0.9453125,
+              0.5875
+            ],
+            "zone": "D"
+          }
+        ],
+        "counts": {
+          "A": 0,
+          "B": 2,
+          "C": 0,
+          "D": 2
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 87.75849995436147,
+        "timestamp_s": 0.0,
+        "judgements": []
+      },
+      {
+        "image_path": "/private/tmp/va-bundle-btjr3h_j/data/projects/cdbec2afe1a5415f/media/synthetic-02.png",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.225,
+              0.1953125,
+              0.3625
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.45,
+              0.4453125,
+              0.5875
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.675,
+              0.4453125,
+              0.8125
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.225,
+              0.6953125,
+              0.3625
+            ],
+            "zone": "C"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": "D"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.45,
+              0.9453125,
+              0.5875
+            ],
+            "zone": "D"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.675,
+              0.9453125,
+              0.8125
+            ],
+            "zone": "D"
+          }
+        ],
+        "counts": {
+          "A": 1,
+          "B": 3,
+          "C": 1,
+          "D": 3
+        },
+        "texts": [],
+        "events": [
+          {
+            "type": "count_rule",
+            "zone": "B",
+            "count": 3,
+            "when": "count >= 3",
+            "held_s": 0.0
+          },
+          {
+            "type": "count_rule",
+            "zone": "D",
+            "count": 3,
+            "when": "count >= 3",
+            "held_s": 0.0
+          }
+        ],
+        "elapsed_ms": 123.24666697531939,
+        "timestamp_s": 0.0,
+        "judgements": []
+      },
+      {
+        "image_path": "/private/tmp/va-bundle-btjr3h_j/data/projects/cdbec2afe1a5415f/media/synthetic-03.png",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.225,
+              0.1953125,
+              0.3625
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.45,
+              0.1953125,
+              0.5875
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.225,
+              0.6953125,
+              0.3625
+            ],
+            "zone": "C"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.45,
+              0.6953125,
+              0.5875
+            ],
+            "zone": "C"
+          }
+        ],
+        "counts": {
+          "A": 2,
+          "B": 0,
+          "C": 2,
+          "D": 0
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 96.5259579825215,
+        "timestamp_s": 0.0,
+        "judgements": []
+      },
+      {
+        "image_path": "/private/tmp/va-bundle-btjr3h_j/data/projects/cdbec2afe1a5415f/media/synthetic-04.png",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.225,
+              0.1953125,
+              0.3625
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.45,
+              0.1953125,
+              0.5875
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.0546875,
+              0.675,
+              0.1953125,
+              0.8125
+            ],
+            "zone": "A"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.225,
+              0.6953125,
+              0.3625
+            ],
+            "zone": "C"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.45,
+              0.6953125,
+              0.5875
+            ],
+            "zone": "C"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.5546875,
+              0.675,
+              0.6953125,
+              0.8125
+            ],
+            "zone": "C"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": "D"
+          }
+        ],
+        "counts": {
+          "A": 3,
+          "B": 1,
+          "C": 3,
+          "D": 1
+        },
+        "texts": [],
+        "events": [
+          {
+            "type": "count_rule",
+            "zone": "A",
+            "count": 3,
+            "when": "count >= 3",
+            "held_s": 0.0
+          },
+          {
+            "type": "count_rule",
+            "zone": "C",
+            "count": 3,
+            "when": "count >= 3",
+            "held_s": 0.0
+          }
+        ],
+        "elapsed_ms": 167.65683295670897,
+        "timestamp_s": 0.0,
+        "judgements": []
+      },
+      {
+        "image_path": "/private/tmp/va-bundle-btjr3h_j/data/projects/cdbec2afe1a5415f/media/synthetic-05.png",
+        "detections": [
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.225,
+              0.4453125,
+              0.3625
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.3046875,
+              0.45,
+              0.4453125,
+              0.5875
+            ],
+            "zone": "B"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.225,
+              0.9453125,
+              0.3625
+            ],
+            "zone": "D"
+          },
+          {
+            "label": "pallet",
+            "confidence": 0.99,
+            "box": [
+              0.8046875,
+              0.45,
+              0.9453125,
+              0.5875
+            ],
+            "zone": "D"
+          }
+        ],
+        "counts": {
+          "A": 0,
+          "B": 2,
+          "C": 0,
+          "D": 2
+        },
+        "texts": [],
+        "events": [],
+        "elapsed_ms": 183.73433302622288,
+        "timestamp_s": 0.0,
+        "judgements": []
+      }
+    ],
+    "elapsed_s": 0.6669018749962561,
+    "warnings": [
+      "SYNTHETIC FIXTURE: colored rectangles only. This does not validate warehouse detection.",
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+    ]
+  },
+  "fixture_evaluation": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "count_mae": 0.0,
+    "passed": true,
+    "metric": "count_mae",
+    "target": 0.5,
+    "sample_count": 16,
+    "failures": [],
+    "spec_hash": "15c0af91750296f2f12e02df5de4984018839dcc97d30c6c307e59685beddd09",
+    "dataset_hash": "770def904a599340af39b1283262a2c24b8f705793656224c7f189f831f549bc",
+    "text_accuracy": 1.0,
+    "warnings": [
+      "SYNTHETIC FIXTURE: colored rectangles only. This does not validate warehouse detection.",
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+    ]
+  },
+  "models": [
+    {
+      "id": "fixture-color-v1",
+      "name": "Synthetic color fixture",
+      "license": "MIT",
+      "available": true,
+      "synthetic": true,
+      "backend": "numpy",
+      "description": "Test rectangles only; not a warehouse detector.",
+      "estimated_fps": null
+    },
+    {
+      "id": "owlv2-base-patch16",
+      "name": "OWLv2 base patch16 ensemble",
+      "license": "Apache-2.0",
+      "available": true,
+      "synthetic": false,
+      "backend": "transformers",
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/owlv2-base-patch16",
+      "source": "https://huggingface.co/google/owlv2-base-patch16-ensemble",
+      "description": "Open-vocabulary detector; install weights locally before use.",
+      "estimated_fps": null
+    },
+    {
+      "id": "apple-vision",
+      "name": "Apple Vision OCR and barcode",
+      "license": "macOS system framework",
+      "available": true,
+      "synthetic": false,
+      "backend": "apple-vision",
+      "description": "Native macOS OCR and barcode bridge.",
+      "estimated_fps": null
+    },
+    {
+      "id": "rtdetr-v2-r18",
+      "name": "RT-DETRv2 R18 pretrained",
+      "license": "Apache-2.0",
+      "available": true,
+      "synthetic": false,
+      "backend": "rtdetr-v2-r18",
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/rtdetr-v2-r18",
+      "source": "https://huggingface.co/PekingU/rtdetr_v2_r18vd",
+      "classes": [
+        "person",
+        "bicycle",
+        "car",
+        "motorbike",
+        "aeroplane",
+        "bus",
+        "train",
+        "truck",
+        "boat",
+        "traffic light",
+        "fire hydrant",
+        "stop sign",
+        "parking meter",
+        "bench",
+        "bird",
+        "cat",
+        "dog",
+        "horse",
+        "sheep",
+        "cow",
+        "elephant",
+        "bear",
+        "zebra",
+        "giraffe",
+        "backpack",
+        "umbrella",
+        "handbag",
+        "tie",
+        "suitcase",
+        "frisbee",
+        "skis",
+        "snowboard",
+        "sports ball",
+        "kite",
+        "baseball bat",
+        "baseball glove",
+        "skateboard",
+        "surfboard",
+        "tennis racket",
+        "bottle",
+        "wine glass",
+        "cup",
+        "fork",
+        "knife",
+        "spoon",
+        "bowl",
+        "banana",
+        "apple",
+        "sandwich",
+        "orange",
+        "broccoli",
+        "carrot",
+        "hot dog",
+        "pizza",
+        "donut",
+        "cake",
+        "chair",
+        "sofa",
+        "pottedplant",
+        "bed",
+        "diningtable",
+        "toilet",
+        "tvmonitor",
+        "laptop",
+        "mouse",
+        "remote",
+        "keyboard",
+        "cell phone",
+        "microwave",
+        "oven",
+        "toaster",
+        "sink",
+        "refrigerator",
+        "book",
+        "clock",
+        "vase",
+        "scissors",
+        "teddy bear",
+        "hair drier",
+        "toothbrush"
+      ],
+      "description": "COCO-pretrained detector and default base for custom-class fine-tuning.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-detector-rtdetr-prior001-20261028",
+      "name": "local-detector-rtdetr-prior001-20261028",
+      "license": "Apache-2.0",
+      "weights_license": "Apache-2.0 upstream checkpoint; local fine-tune also subject to project dataset terms",
+      "available": true,
+      "synthetic": false,
+      "backend": "rtdetr-v2-r18",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-detector-rtdetr-prior001-20261028",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-detector-rtdetr-smoke-20261028",
+      "name": "local-detector-rtdetr-smoke-20261028",
+      "license": "Apache-2.0",
+      "weights_license": "Apache-2.0 upstream checkpoint; local fine-tune also subject to project dataset terms",
+      "available": true,
+      "synthetic": false,
+      "backend": "rtdetr-v2-r18",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-detector-rtdetr-smoke-20261028",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-ssdlite-7dcfc58e1c6e",
+      "name": "local-ssdlite-7dcfc58e1c6e",
+      "license": "BSD-3-Clause architecture; project-trained weights",
+      "weights_license": "Project dataset terms; local use only until reviewed for distribution",
+      "available": true,
+      "synthetic": false,
+      "backend": "ssdlite320",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-ssdlite-7dcfc58e1c6e",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-ssdlite-9bdcf7bd1751",
+      "name": "local-ssdlite-9bdcf7bd1751",
+      "license": "BSD-3-Clause architecture; project-trained weights",
+      "weights_license": "Project dataset terms; local use only until reviewed for distribution",
+      "available": true,
+      "synthetic": false,
+      "backend": "ssdlite320",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-ssdlite-9bdcf7bd1751",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-ssdlite-finetune-smoke-20261028",
+      "name": "local-ssdlite-finetune-smoke-20261028",
+      "license": "BSD-3-Clause architecture; project-trained weights",
+      "weights_license": "Project dataset terms; local use only until reviewed for distribution",
+      "available": true,
+      "synthetic": false,
+      "backend": "ssdlite320",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-ssdlite-finetune-smoke-20261028",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    },
+    {
+      "id": "local-ssdlite-smoke-20261028",
+      "name": "local-ssdlite-smoke-20261028",
+      "license": "BSD-3-Clause architecture; project-trained weights",
+      "weights_license": "Project dataset terms; local use only until reviewed for distribution",
+      "available": true,
+      "synthetic": false,
+      "backend": "ssdlite320",
+      "classes": [
+        "forklift",
+        "person"
+      ],
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-ssdlite-smoke-20261028",
+      "description": "Locally trained detector; requires independent evaluation.",
+      "estimated_fps": null
+    }
+  ],
+  "signature_after_execution": "passed",
+  "status": "passed"
+}

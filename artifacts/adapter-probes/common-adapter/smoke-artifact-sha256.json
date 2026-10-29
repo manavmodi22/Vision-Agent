@@ -1,0 +1,8 @@
+{
+  "smoke_existing.py": "887fa99a4cc20d12008e3f06351d1d919eea1fc436b2865958f39490388f28cc",
+  "actual-smoke.json": "6e649419496c6e7184ff4c04cb3d53f4e34653206bc6e87e5cca131576258173",
+  "actual-smoke-overlay.jpg": "545098e1bcf0d4cb40d7da9b0dc991cc93573d4225e52026026794537acf6ebe",
+  "actual-smoke.log": "f2ac7c0c9031a33aa70b2aaa633680f7a8d536422f71c0beca172bf67b81a3bd",
+  "frame-result.schema.json": "7fe46107bee03ad0ef0c62ef635a26d8beb07e2eee47f18e0c277f03d869f8f0",
+  "SLICE1_VALIDATION.md": "9c8551e1affbe7d5f8c3911f6f2ea51095e4b25a893e33c3b01c51a3ae554b54"
+}

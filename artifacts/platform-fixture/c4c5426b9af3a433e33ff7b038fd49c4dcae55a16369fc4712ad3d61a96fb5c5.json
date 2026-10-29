@@ -1,0 +1,413 @@
+{
+  "artifact": {
+    "id": "c4c5426b9af3a433e33ff7b038fd49c4dcae55a16369fc4712ad3d61a96fb5c5",
+    "project_id": "6b0ffff3dec54fb6",
+    "kind": "preview",
+    "title": "build_refine result",
+    "created_at": "2026-10-29T01:09:46.180098+00:00",
+    "sha256": "c4c5426b9af3a433e33ff7b038fd49c4dcae55a16369fc4712ad3d61a96fb5c5",
+    "media_type": "application/json",
+    "size_bytes": 4949
+  },
+  "content": {
+    "preview": {
+      "frames": [
+        {
+          "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-01.png",
+          "detections": [
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.225,
+                0.4453125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.45,
+                0.4453125,
+                0.5875
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.8046875,
+                0.225,
+                0.9453125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.8046875,
+                0.45,
+                0.9453125,
+                0.5875
+              ],
+              "zone": null
+            }
+          ],
+          "counts": {
+            "all": 4
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 30.00120900105685,
+          "timestamp_s": 0.0,
+          "judgements": []
+        },
+        {
+          "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-02.png",
+          "detections": [
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.0546875,
+                0.225,
+                0.1953125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.225,
+                0.4453125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.45,
+                0.4453125,
+                0.5875
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.675,
+                0.4453125,
+                0.8125
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.5546875,
+                0.225,
+                0.6953125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.8046875,
+                0.225,
+                0.9453125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.8046875,
+                0.45,
+                0.9453125,
+                0.5875
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.8046875,
+                0.675,
+                0.9453125,
+                0.8125
+              ],
+              "zone": null
+            }
+          ],
+          "counts": {
+            "all": 8
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 47.15695802588016,
+          "timestamp_s": 0.0,
+          "judgements": []
+        },
+        {
+          "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-03.png",
+          "detections": [
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.0546875,
+                0.225,
+                0.1953125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.0546875,
+                0.45,
+                0.1953125,
+                0.5875
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.5546875,
+                0.225,
+                0.6953125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.5546875,
+                0.45,
+                0.6953125,
+                0.5875
+              ],
+              "zone": null
+            }
+          ],
+          "counts": {
+            "all": 4
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 27.529124985449016,
+          "timestamp_s": 0.0,
+          "judgements": []
+        },
+        {
+          "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-04.png",
+          "detections": [
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.0546875,
+                0.225,
+                0.1953125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.0546875,
+                0.45,
+                0.1953125,
+                0.5875
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.0546875,
+                0.675,
+                0.1953125,
+                0.8125
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.225,
+                0.4453125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.5546875,
+                0.225,
+                0.6953125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.5546875,
+                0.45,
+                0.6953125,
+                0.5875
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.5546875,
+                0.675,
+                0.6953125,
+                0.8125
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.8046875,
+                0.225,
+                0.9453125,
+                0.3625
+              ],
+              "zone": null
+            }
+          ],
+          "counts": {
+            "all": 8
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 48.190750007051975,
+          "timestamp_s": 0.0,
+          "judgements": []
+        },
+        {
+          "image_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-137/test_refinement_plan_exists_in0/projects/6b0ffff3dec54fb6/media/synthetic-05.png",
+          "detections": [
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.225,
+                0.4453125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.3046875,
+                0.45,
+                0.4453125,
+                0.5875
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.8046875,
+                0.225,
+                0.9453125,
+                0.3625
+              ],
+              "zone": null
+            },
+            {
+              "label": "pallet",
+              "confidence": 0.99,
+              "box": [
+                0.8046875,
+                0.45,
+                0.9453125,
+                0.5875
+              ],
+              "zone": null
+            }
+          ],
+          "counts": {
+            "all": 4
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 28.177250002045184,
+          "timestamp_s": 0.0,
+          "judgements": []
+        }
+      ],
+      "elapsed_s": 0.18467254197457805,
+      "warnings": [
+        "SYNTHETIC FIXTURE: colored rectangles only. This does not validate warehouse detection.",
+        "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+      ]
+    },
+    "candidate_index": 0,
+    "message": "Applied 1 requested changes to 1 candidate(s), with an actual preview of every affected candidate. Preserved unrelated settings and human labels.",
+    "base_spec_hash": "cbf10bf2fbac52c57711182d53bab5f76349172ae68a0acdb7b2f69fe63d5d76",
+    "spec_hash": "286b5f53b3dfdda268e2ea63aa541b36ec0800cabf3f675012247d06b1557cfe",
+    "requires_review": false,
+    "affected_candidate_indices": [
+      0
+    ],
+    "previewed_candidate_indices": [
+      0
+    ],
+    "base_spec_hashes": {
+      "0": "cbf10bf2fbac52c57711182d53bab5f76349172ae68a0acdb7b2f69fe63d5d76"
+    },
+    "spec_hashes": {
+      "0": "286b5f53b3dfdda268e2ea63aa541b36ec0800cabf3f675012247d06b1557cfe"
+    }
+  }
+}

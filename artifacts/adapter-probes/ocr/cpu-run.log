@@ -1,0 +1,55 @@
+/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr/venv/lib/python3.12/site-packages/paddle/utils/cpp_extension/extension_utils.py:718: UserWarning: No ccache found. Please be aware that recompiling all source files may be required. You can download and install ccache from: https://github.com/ccache/ccache/blob/master/doc/INSTALL.md
+  warnings.warn(warning_message)
+WARNING: OMP_NUM_THREADS set to 2, not 1. The computation speed will not be optimized if you use data parallel. It will fail if this PaddlePaddle binary is compiled with OpenBlas since OpenBlas does not support multi-threads.
+PLEASE USE OMP_NUM_THREADS WISELY.
+Creating model: ('PP-OCRv5_mobile_det', '/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr/models/PP-OCRv5_mobile_det', None)
+Creating model: ('en_PP-OCRv5_mobile_rec', '/Users/manavrakeshku.modi/vision-agent/.visionapp/adapter-probes/ocr/models/en_PP-OCRv5_mobile_rec', None)
+{
+  "checks": {
+    "all_synthetic_literals_preserved": true,
+    "leading_zeros_preserved": true,
+    "mixed_case_preserved": true,
+    "exact_input_equals_target": true,
+    "substring_input_not_equal_target": true
+  },
+  "observations": [
+    {
+      "id": "exact-match",
+      "texts": [
+        "ABC-990"
+      ],
+      "ms": 294.5762909948826
+    },
+    {
+      "id": "substring-only",
+      "texts": [
+        "XABC-990Y"
+      ],
+      "ms": 238.75520896399394
+    },
+    {
+      "id": "leading-zeros",
+      "texts": [
+        "001234567890"
+      ],
+      "ms": 173.04825002793223
+    },
+    {
+      "id": "mixed-case",
+      "texts": [
+        "AbC-009x"
+      ],
+      "ms": 171.22045799624175
+    },
+    {
+      "id": "real-public-label-crop",
+      "texts": [
+        "ENTP0343",
+        "BLI",
+        "FMP012 15",
+        "W0"
+      ],
+      "ms": 560.2029589936137
+    }
+  ]
+}

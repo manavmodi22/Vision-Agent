@@ -1,0 +1,71 @@
+{
+  "checked_at": "2026-10-29T01:31:36.105428+00:00",
+  "scope": "Actual Apple Vision CLI on two existing acceptance fixtures; no LLM or character rewriting",
+  "request_policy_version": "apple-vision-en-us-v2",
+  "request_configuration": {
+    "recognition_level": "accurate",
+    "recognition_languages": [
+      "en-US"
+    ],
+    "automatically_detects_language": false,
+    "uses_language_correction": false,
+    "validated_by_native_checks": true
+  },
+  "binary": "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Release/VisionApp",
+  "binary_sha256": "2da16b6118ca0b18c1326ad4edaad70f1df5e45e5d32ce7c0e8e85769d99c788",
+  "macos": "26.7.1",
+  "platform": "macOS-26.7.1-arm64-arm-64bit",
+  "results": [
+    {
+      "image": "/Users/manavrakeshku.modi/vision-agent/artifacts/agent-experience/reading-fixtures/exact-match.png",
+      "image_sha256": "fc676599ca501be77228487bc0f50736fbe7d1a1992aeb135593d5b02e3719f2",
+      "fixture_expected_text": "ABC-990",
+      "output": {
+        "texts": [
+          "ABC-990"
+        ],
+        "barcodes": []
+      },
+      "text_codepoints": [
+        [
+          "U+0041",
+          "U+0042",
+          "U+0043",
+          "U+002D",
+          "U+0039",
+          "U+0039",
+          "U+0030"
+        ]
+      ],
+      "expected_text_equal": true,
+      "elapsed_s": 0.6343524999683723
+    },
+    {
+      "image": "/Users/manavrakeshku.modi/vision-agent/artifacts/agent-experience/reading-fixtures/substring-only.png",
+      "image_sha256": "5928ade6b5f39ec7a6f276c8ec891cee8f61877bc0fd6b8df7119882d97d08ae",
+      "fixture_expected_text": "XABC-990Y",
+      "output": {
+        "texts": [
+          "ХABC-990Y"
+        ],
+        "barcodes": []
+      },
+      "text_codepoints": [
+        [
+          "U+0425",
+          "U+0041",
+          "U+0042",
+          "U+0043",
+          "U+002D",
+          "U+0039",
+          "U+0039",
+          "U+0030",
+          "U+0059"
+        ]
+      ],
+      "expected_text_equal": false,
+      "elapsed_s": 0.25492950004991144
+    }
+  ],
+  "conclusion": "Explicit en-US policy is enforced. Cyrillic U+0425 confusion remains on substring-only.png; this observation is not general OCR accuracy."
+}

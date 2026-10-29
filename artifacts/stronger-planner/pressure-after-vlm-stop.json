@@ -1,0 +1,26 @@
+[
+  {
+    "t": 1793212678.600214,
+    "reading": "kern.memorystatus_vm_pressure_level: 2\nvm.swapusage: total = 9216.00M  used = 7733.44M  free = 1482.56M  (encrypted)\n"
+  },
+  {
+    "t": 1793212683.644595,
+    "reading": "kern.memorystatus_vm_pressure_level: 2\nvm.swapusage: total = 9216.00M  used = 7733.44M  free = 1482.56M  (encrypted)\n"
+  },
+  {
+    "t": 1793212688.6948512,
+    "reading": "kern.memorystatus_vm_pressure_level: 2\nvm.swapusage: total = 9216.00M  used = 7733.44M  free = 1482.56M  (encrypted)\n"
+  },
+  {
+    "t": 1793212693.73409,
+    "reading": "kern.memorystatus_vm_pressure_level: 2\nvm.swapusage: total = 9216.00M  used = 7733.44M  free = 1482.56M  (encrypted)\n"
+  },
+  {
+    "t": 1793212698.780558,
+    "reading": "kern.memorystatus_vm_pressure_level: 2\nvm.swapusage: total = 9216.00M  used = 7733.44M  free = 1482.56M  (encrypted)\n"
+  },
+  {
+    "t": 1793212703.821259,
+    "reading": "kern.memorystatus_vm_pressure_level: 2\nvm.swapusage: total = 9216.00M  used = 7733.44M  free = 1482.56M  (encrypted)\n"
+  }
+]

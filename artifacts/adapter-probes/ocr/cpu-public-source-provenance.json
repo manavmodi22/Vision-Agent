@@ -1,0 +1,82 @@
+{
+  "dataset": "nvidia/PhysicalAI-SmartSpaces",
+  "revision": "2cbe9563cbe9f47f846e5c871ee994572bbbc60e",
+  "license": "CC-BY-4.0",
+  "attribution": "NVIDIA Physical AI Smart Spaces",
+  "synthetic": "MTMC_Tracking_2025/val/Warehouse_015",
+  "real_unlabelled": "MTMC_Tracking_2026/test/Warehouse_026",
+  "files": [
+    {
+      "path": "README.md",
+      "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-SmartSpaces/resolve/2cbe9563cbe9f47f846e5c871ee994572bbbc60e/README.md",
+      "bytes": 15579,
+      "sha256": "cdba2b672c8ac8deed29f9b26ea1bf2df52f91898d73bc7f59cd6c7b542150ab"
+    },
+    {
+      "path": "MTMC_Tracking_2025/val/Warehouse_015/ground_truth.json",
+      "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-SmartSpaces/resolve/2cbe9563cbe9f47f846e5c871ee994572bbbc60e/MTMC_Tracking_2025/val/Warehouse_015/ground_truth.json",
+      "bytes": 304707361,
+      "sha256": "91830b37c0f80eb481c4adcd89a5d21eee3a83b9d3cd228e61a20bbc688049d4"
+    },
+    {
+      "path": "MTMC_Tracking_2025/val/Warehouse_015/calibration.json",
+      "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-SmartSpaces/resolve/2cbe9563cbe9f47f846e5c871ee994572bbbc60e/MTMC_Tracking_2025/val/Warehouse_015/calibration.json",
+      "bytes": 42263,
+      "sha256": "ae3371f5e8e45a3ba6a1b05ea55895e2bfa6363ce6f0e5ee6406a930aeb3484f"
+    },
+    {
+      "path": "MTMC_Tracking_2025/val/Warehouse_015/videos/Camera_01.mp4",
+      "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-SmartSpaces/resolve/2cbe9563cbe9f47f846e5c871ee994572bbbc60e/MTMC_Tracking_2025/val/Warehouse_015/videos/Camera_01.mp4",
+      "bytes": 259214604,
+      "sha256": "a453efd15e30defd03f5c9ef10e5dfd3406034c2b30bc981d171819e311f0632"
+    },
+    {
+      "path": "MTMC_Tracking_2026/test/Warehouse_026/calibration.json",
+      "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-SmartSpaces/resolve/2cbe9563cbe9f47f846e5c871ee994572bbbc60e/MTMC_Tracking_2026/test/Warehouse_026/calibration.json",
+      "bytes": 8692,
+      "sha256": "94644b9bb5bf71d967c0b87036d9c1b8186f2c2b7e8a106ac517d2fa49640e46"
+    },
+    {
+      "path": "MTMC_Tracking_2026/test/Warehouse_026/videos/Camera_0000.mp4",
+      "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-SmartSpaces/resolve/2cbe9563cbe9f47f846e5c871ee994572bbbc60e/MTMC_Tracking_2026/test/Warehouse_026/videos/Camera_0000.mp4",
+      "bytes": 19802011,
+      "sha256": "83ed232a2f5fe3031807ed19020e1a44fe386e89b68f9bea621797f1552c9cda"
+    }
+  ],
+  "scene": "MTMC_Tracking_2025/val/Warehouse_015",
+  "camera": "Camera_01",
+  "frames": [
+    0,
+    310,
+    621,
+    931,
+    1241,
+    1552,
+    1862,
+    2172,
+    2482,
+    2793,
+    3103,
+    3413,
+    3724,
+    4034,
+    4344,
+    4655,
+    4965,
+    5275,
+    5586,
+    5896,
+    6206,
+    6517,
+    6827,
+    7137,
+    7447,
+    7758,
+    8068,
+    8378,
+    8689,
+    8999
+  ],
+  "label_status": "published synthetic labels; not human reviewed",
+  "derivation": "Video frames decoded to PNG; boxes normalized to xyxy; person/forklift classes only"
+}

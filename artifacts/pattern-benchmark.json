@@ -1,0 +1,223 @@
+{
+  "mode": "template-regression",
+  "model": null,
+  "provenance": "Authored templates selected by declared use_case. Synthetic fixtures. This measures compiler/pattern regression, not LLM planning, inference accuracy or warehouse performance.",
+  "cases": [
+    {
+      "id": "p01",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.0025810410152189434,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "p02",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.001757624966558069,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "p03",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.0029193750233389437,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "p04",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.0016488329856656492,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "p05",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.0016446670051664114,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "p06",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.0018131670076400042,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "p07",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.0019394590053707361,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "p08",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.0017212500097230077,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "d01",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.001572666980791837,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "d02",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.001349083031527698,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "d03",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.0012960000312887132,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "d04",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.0012695409823209047,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "d05",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.00143158296123147,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "d06",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.0014940419932827353,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "d07",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.0013195829815231264,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "d08",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.0016102500376291573,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "l01",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.00005604198668152094,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "l02",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.00003095896681770682,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "l03",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.00004895898746326566,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "l04",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.00007000000914558768,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "l05",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.000032334006391465664,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "l06",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.000026459048967808485,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "l07",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.000024291046429425478,
+      "eval_metric_reached": null,
+      "error": null
+    },
+    {
+      "id": "l08",
+      "spec_valid": true,
+      "expected_pattern": true,
+      "tool_calls": 0,
+      "elapsed_s": 0.00002320797648280859,
+      "eval_metric_reached": null,
+      "error": null
+    }
+  ]
+}

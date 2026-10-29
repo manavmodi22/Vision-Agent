@@ -1,0 +1,81 @@
+{
+  "source_identity": "d403b8dc578b7be2b33b9b1065bbf90a288d01eb60cdd71dbd06b902b611428b",
+  "report_sha256": "60ee3b0e3f225198750e4de57914b28576f5b47c38cc7fb01920ebc2cc41d601",
+  "passed": true,
+  "scope": "Actual selection/routing, equal samples and metric/target, no recorded effects; not a quality pass",
+  "models": [
+    {
+      "candidate_index": 0,
+      "capability_id": "model.local-detector-rtdetr-prior001-20261028",
+      "model_id": "local-detector-rtdetr-prior001-20261028",
+      "adapter_id": "rtdetr-v2-r18",
+      "proposed_reason": "Use this detector for counting people in warehouse images with a confidence threshold of 0.2.",
+      "options_snapshot_id": "9b08e06219687f05cdf7a5bd3bb7a05b5d4087265ad689ecc9fd4578ca3eb94d",
+      "status": "proposed"
+    },
+    {
+      "candidate_index": 1,
+      "capability_id": "model.local-ssdlite-7dcfc58e1c6e",
+      "model_id": "local-ssdlite-7dcfc58e1c6e",
+      "adapter_id": "ssdlite320",
+      "proposed_reason": "Use this detector for counting people in warehouse images with a confidence threshold of 0.2.",
+      "options_snapshot_id": "9b08e06219687f05cdf7a5bd3bb7a05b5d4087265ad689ecc9fd4578ca3eb94d",
+      "status": "proposed"
+    }
+  ],
+  "previews": [
+    {
+      "artifact": ".visionapp/qwen14-selection-warehouse/projects/d8ce4ed982a74cd0/platform/artifacts/66daf55e4523f1ee2576097c557011f14baecf77a00c8f7d99eceaea6ac3c61d.json",
+      "artifact_sha256": "5fbd4b96bcf630b47e1e3c1c6780167fe253c6eb1a30d8d77aff3cb34a52017f",
+      "frames": [
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/qwen14-selection-warehouse/projects/d8ce4ed982a74cd0/media/24d8e55e-ec1288e3-warehouse-034.50s.png",
+          "count": 0,
+          "elapsed_ms": 8618.604707997292,
+          "events": 0
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/qwen14-selection-warehouse/projects/d8ce4ed982a74cd0/media/27b63ca7-84bfce01-warehouse-033.00s.png",
+          "count": 0,
+          "elapsed_ms": 105.34879198530689,
+          "events": 0
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/qwen14-selection-warehouse/projects/d8ce4ed982a74cd0/media/4d60d358-603d0b4d-warehouse-033.75s.png",
+          "count": 3,
+          "elapsed_ms": 80.85804199799895,
+          "events": 0
+        }
+      ]
+    },
+    {
+      "artifact": ".visionapp/qwen14-selection-warehouse/projects/d8ce4ed982a74cd0/platform/artifacts/30dd4d11396f06217ba5f3e0c979c7d3889fd90144cf73201ae9fbbc4258430c.json",
+      "artifact_sha256": "ba80dd3f3dc9d65effd935ae80c97707e713fd3284fb83b19d2327f2cb0d220f",
+      "frames": [
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/qwen14-selection-warehouse/projects/d8ce4ed982a74cd0/media/24d8e55e-ec1288e3-warehouse-034.50s.png",
+          "count": 92,
+          "elapsed_ms": 528.1545000034384,
+          "events": 0
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/qwen14-selection-warehouse/projects/d8ce4ed982a74cd0/media/27b63ca7-84bfce01-warehouse-033.00s.png",
+          "count": 92,
+          "elapsed_ms": 193.55824997182935,
+          "events": 0
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/qwen14-selection-warehouse/projects/d8ce4ed982a74cd0/media/4d60d358-603d0b4d-warehouse-033.75s.png",
+          "count": 92,
+          "elapsed_ms": 190.22337504429743,
+          "events": 0
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Unreviewed correlated real frames",
+    "Selected local engineering checkpoints produced weak proposals; selection provenance issue retained",
+    "No model ranking or deployment approval"
+  ]
+}

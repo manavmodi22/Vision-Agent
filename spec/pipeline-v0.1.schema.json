@@ -1,0 +1,137 @@
+{
+  "$defs": {
+    "BlockSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "minLength": 1,
+          "title": "Type",
+          "type": "string"
+        },
+        "params": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Params",
+          "type": "object"
+        },
+        "in": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "In",
+          "type": "object"
+        }
+      },
+      "required": [
+        "id",
+        "type"
+      ],
+      "title": "BlockSpec",
+      "type": "object"
+    },
+    "EvalConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "set": {
+          "default": "eval/default",
+          "title": "Set",
+          "type": "string"
+        },
+        "metric": {
+          "default": "count_mae",
+          "enum": [
+            "count_mae",
+            "precision",
+            "recall",
+            "text_accuracy"
+          ],
+          "title": "Metric",
+          "type": "string"
+        },
+        "target": {
+          "default": 0.5,
+          "minimum": 0,
+          "title": "Target",
+          "type": "number"
+        }
+      },
+      "title": "EvalConfig",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "SourceSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "image_folder",
+            "image_file",
+            "video_file",
+            "camera",
+            "screen_capture"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "path": {
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "path"
+      ],
+      "title": "SourceSpec",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "spec_version": {
+      "const": "0.1",
+      "default": "0.1",
+      "title": "Spec Version",
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 120,
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "inputs": {
+      "additionalProperties": {
+        "$ref": "#/$defs/SourceSpec"
+      },
+      "title": "Inputs",
+      "type": "object"
+    },
+    "blocks": {
+      "items": {
+        "$ref": "#/$defs/BlockSpec"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "title": "Blocks",
+      "type": "array"
+    },
+    "eval": {
+      "$ref": "#/$defs/EvalConfig"
+    }
+  },
+  "required": [
+    "name",
+    "inputs",
+    "blocks"
+  ],
+  "title": "PipelineSpec",
+  "type": "object"
+}

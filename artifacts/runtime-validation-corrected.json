@@ -1,0 +1,31 @@
+{
+  "source_identity": "7cfbe90c3fb1b3f5e4d7974f801274d3f2d9b9a533bd35632b757185b90aaa36",
+  "status": "full_model_suites_pending",
+  "python_tests": {
+    "passed": 340,
+    "duration_s": 110.68,
+    "log": "artifacts/full-tests-corrected.log"
+  },
+  "mypy": {
+    "passed": true,
+    "source_files": 113
+  },
+  "ruff": {
+    "passed": true
+  },
+  "native_checks": {
+    "passed": 83
+  },
+  "portable_build": {
+    "passed": true,
+    "log": "artifacts/portable-build-corrected.log"
+  },
+  "relocated_bundle": {
+    "passed": true,
+    "report": "artifacts/bundle-verification-corrected.json",
+    "actual_detector": true,
+    "actual_semantic_question": true,
+    "native_ocr": true,
+    "signature_after_execution": "passed"
+  }
+}

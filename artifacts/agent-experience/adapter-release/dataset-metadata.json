@@ -1,0 +1,11 @@
+{
+  "revision": 3,
+  "fingerprint": "cb603c32d97042d619ddee374f2b9529b95394aaa4fc2898d1b34c81277f6bfc",
+  "classes": [
+    {
+      "id": "ab8df74f3dfa",
+      "name": "person",
+      "color": "#43C6AC"
+    }
+  ]
+}

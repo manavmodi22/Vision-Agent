@@ -1,0 +1,26 @@
+{
+  "repo": "Qwen/Qwen3-8B-GGUF",
+  "revision": "7c41481f57cb95916b40956ab2f0b139b296d974",
+  "license": "Apache-2.0",
+  "files": [
+    {
+      "name": "LICENSE",
+      "path": "/Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-8B-GGUF/LICENSE",
+      "bytes": 11544,
+      "sha256": "5de36594c10839788a8c589443a8ef9d8b8d17c65a1b5807206ae037fc36c6bd"
+    },
+    {
+      "name": "README.md",
+      "path": "/Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-8B-GGUF/README.md",
+      "bytes": 7577,
+      "sha256": "913fd918b4afb4511accca0874f701248b024013e804fa7a463639ead74e4dcb"
+    },
+    {
+      "name": "Qwen3-8B-Q4_K_M.gguf",
+      "path": "/Users/manavrakeshku.modi/.lmstudio/models/Qwen/Qwen3-8B-GGUF/Qwen3-8B-Q4_K_M.gguf",
+      "bytes": 5027783488,
+      "sha256": "d98cdcbd03e17ce47681435b5150e34c1417f50b5c0019dd560e4882c5745785"
+    }
+  ],
+  "elapsed_download_and_hash_s": 43.23288920801133
+}

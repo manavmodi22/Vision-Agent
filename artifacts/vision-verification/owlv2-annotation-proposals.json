@@ -1,0 +1,119 @@
+{
+  "id": "real-warehouse-proposals",
+  "annotations": [
+    {
+      "image_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/proposal-verification/media/real-warehouse.jpg",
+      "detections": [
+        {
+          "label": "forklift",
+          "confidence": 0.1708175390958786,
+          "box": [
+            0.5363372166951498,
+            0.012487828290020977,
+            0.5659162521362304,
+            0.15865122477213542
+          ],
+          "zone": null
+        },
+        {
+          "label": "pallet",
+          "confidence": 0.17197273671627045,
+          "box": [
+            0.0,
+            0.0029559930165608725,
+            0.35866028467814126,
+            0.8660084477177372
+          ],
+          "zone": null
+        },
+        {
+          "label": "pallet",
+          "confidence": 0.15187497437000275,
+          "box": [
+            0.33807427088419595,
+            0.33448215060763886,
+            0.41339181264241537,
+            0.404509593822338
+          ],
+          "zone": null
+        },
+        {
+          "label": "person",
+          "confidence": 0.2858106195926666,
+          "box": [
+            0.2890708287556966,
+            0.3036500718858507,
+            0.34689737955729166,
+            0.42519330625180846
+          ],
+          "zone": null
+        },
+        {
+          "label": "person",
+          "confidence": 0.4600358307361603,
+          "box": [
+            0.3552671432495117,
+            0.31496615939670136,
+            0.39717194239298503,
+            0.5194519608109086
+          ],
+          "zone": null
+        },
+        {
+          "label": "person",
+          "confidence": 0.4304506778717041,
+          "box": [
+            0.44260311126708984,
+            0.31521354957863135,
+            0.4823185920715332,
+            0.5374200891565394
+          ],
+          "zone": null
+        },
+        {
+          "label": "pallet",
+          "confidence": 0.17986109852790833,
+          "box": [
+            0.5817083994547526,
+            0.006611241234673394,
+            0.8023293177286784,
+            0.9920082374855325
+          ],
+          "zone": null
+        },
+        {
+          "label": "pallet",
+          "confidence": 0.1959448754787445,
+          "box": [
+            0.3106266975402832,
+            0.5422422620985243,
+            0.42894840240478516,
+            0.7294356169524017
+          ],
+          "zone": null
+        },
+        {
+          "label": "pallet",
+          "confidence": 0.15426377952098846,
+          "box": [
+            0.3133272171020508,
+            0.5940806636103877,
+            0.4298487663269043,
+            0.7288654468677662
+          ],
+          "zone": null
+        }
+      ],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": {
+        "source": "model_proposal",
+        "model_id": "owlv2-base-patch16",
+        "spec_hash": "f2734409da9f05fb0cf7ebba73cde1dd50a7a8628b001f3288eeeabd25b6a226",
+        "image_sha256": "a89bf58762b307e383f33bcb871b44737654de4a229f41d67d8eab81175a25ef",
+        "created_at": "2026-10-28T16:52:46.132515+00:00",
+        "status": "unverified_hypothesis"
+      }
+    }
+  ]
+}

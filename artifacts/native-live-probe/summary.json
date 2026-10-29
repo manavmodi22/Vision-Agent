@@ -1,0 +1,23 @@
+{
+  "native_return_code": 0,
+  "project_id": "895cb8d594074c7a",
+  "deployment_id": null,
+  "project_media_count": 1,
+  "events_count": 0,
+  "temporary_workspace": "/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/vision-native-probe-ewt_lbqr",
+  "source": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2026/test/Warehouse_026/videos/Camera_0000.mp4",
+  "command": [
+    "/Users/manavrakeshku.modi/vision-agent/app/.build/debug/VisionApp",
+    "--replay-video",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/datasets/nvidia-smartspaces/MTMC_Tracking_2026/test/Warehouse_026/videos/Camera_0000.mp4",
+    "--project",
+    "895cb8d594074c7a",
+    "--socket",
+    "/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/vision-native-probe-ewt_lbqr/engine.sock",
+    "--preview-only",
+    "--duration",
+    "15",
+    "--output-dir",
+    "/Users/manavrakeshku.modi/vision-agent/artifacts/native-live-probe"
+  ]
+}

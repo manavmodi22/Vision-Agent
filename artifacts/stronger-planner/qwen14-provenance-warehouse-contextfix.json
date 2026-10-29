@@ -1,0 +1,1210 @@
+{
+  "source_identity": "19f6e4115389679538f934d77a778d9b752952d49fb8d7256b72b91f61028367",
+  "goal": "Count people in these warehouse images and show boxes. Use confidence 0.2. Do not create events. Try two different compatible installed detector models with the same count MAE evaluation target.",
+  "project_id": "a201f9d7d53a4f70",
+  "source_scope": "Three unreviewed public NVIDIA Warehouse 026 frames from the retained native sample project; no accuracy or deployment claim",
+  "inputs": [
+    {
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/efee680b7955431b/media/84bfce01-warehouse-033.00s.png",
+      "sha256": "be828e8ab0cacf40eff8ad47d1b8bf72df5ba8a731ca7c5727bb22d4694c7daf"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/efee680b7955431b/media/603d0b4d-warehouse-033.75s.png",
+      "sha256": "4f1192f2eef2f3056ae2d3d7f551e333e3f03b341bb5a426355a47794746b3c3"
+    },
+    {
+      "path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/efee680b7955431b/media/ec1288e3-warehouse-034.50s.png",
+      "sha256": "2d65189f76dc29de969a11300c7431c5053c07041ea8546e80ecdf28c90c5a5d"
+    }
+  ],
+  "planning_options": {
+    "schema_version": "0.2",
+    "snapshot_id": "ef0b1a75760144effe3ca5c41bfd358cb12f5adb73a41e73201f4e9833bb353f",
+    "project_id": "a201f9d7d53a4f70",
+    "fixture_source": false,
+    "detection_constraint": null,
+    "eligible_models": [
+      {
+        "capability_id": "model.apple-vision",
+        "model_id": "apple-vision",
+        "adapter_id": "apple-vision",
+        "task_types": [
+          "ocr",
+          "barcode"
+        ],
+        "output_contract": "texts/v1",
+        "vocabulary": "not_applicable",
+        "supported_classes": [],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {},
+        "version": "26.7.1",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "system_framework",
+          "initialization": "not_applicable",
+          "training_state": "unknown",
+          "use_scope": "upstream_baseline",
+          "use_scope_evidence_ref": null,
+          "base_model_id": null,
+          "training_samples": null,
+          "epochs_completed": null,
+          "optimizer_steps": null,
+          "preserved_classes": [],
+          "evaluation_dataset_recorded": false,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "registry_recorded"
+        },
+        "selection_basis": "default",
+        "selection_reason": "Compatible recorded registration; quality still requires project evaluation."
+      },
+      {
+        "capability_id": "model.owlv2-base-patch16",
+        "model_id": "owlv2-base-patch16",
+        "adapter_id": "owlv2",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "open",
+        "supported_classes": [],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "config.json": "ba9df8c25a4b8461887dd0a93d9252c9cd84697fe8d49a9d8794ce409af9acb2"
+        },
+        "version": "cfd3195ba4ea9592eec887ded089f4c08eff231d",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "upstream_pretrained",
+          "initialization": "not_applicable",
+          "training_state": "unknown",
+          "use_scope": "upstream_baseline",
+          "use_scope_evidence_ref": null,
+          "base_model_id": null,
+          "training_samples": null,
+          "epochs_completed": null,
+          "optimizer_steps": null,
+          "preserved_classes": [],
+          "evaluation_dataset_recorded": false,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "registry_recorded"
+        },
+        "selection_basis": "default",
+        "selection_reason": "Compatible recorded registration; quality still requires project evaluation."
+      },
+      {
+        "capability_id": "model.rtdetr-v2-r18",
+        "model_id": "rtdetr-v2-r18",
+        "adapter_id": "rtdetr-v2-r18",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "closed",
+        "supported_classes": [
+          "person",
+          "bicycle",
+          "car",
+          "motorbike",
+          "aeroplane",
+          "bus",
+          "train",
+          "truck",
+          "boat",
+          "traffic light",
+          "fire hydrant",
+          "stop sign",
+          "parking meter",
+          "bench",
+          "bird",
+          "cat",
+          "dog",
+          "horse",
+          "sheep",
+          "cow",
+          "elephant",
+          "bear",
+          "zebra",
+          "giraffe",
+          "backpack",
+          "umbrella",
+          "handbag",
+          "tie",
+          "suitcase",
+          "frisbee",
+          "skis",
+          "snowboard",
+          "sports ball",
+          "kite",
+          "baseball bat",
+          "baseball glove",
+          "skateboard",
+          "surfboard",
+          "tennis racket",
+          "bottle",
+          "wine glass",
+          "cup",
+          "fork",
+          "knife",
+          "spoon",
+          "bowl",
+          "banana",
+          "apple",
+          "sandwich",
+          "orange",
+          "broccoli",
+          "carrot",
+          "hot dog",
+          "pizza",
+          "donut",
+          "cake",
+          "chair",
+          "sofa",
+          "pottedplant",
+          "bed",
+          "diningtable",
+          "toilet",
+          "tvmonitor",
+          "laptop",
+          "mouse",
+          "remote",
+          "keyboard",
+          "cell phone",
+          "microwave",
+          "oven",
+          "toaster",
+          "sink",
+          "refrigerator",
+          "book",
+          "clock",
+          "vase",
+          "scissors",
+          "teddy bear",
+          "hair drier",
+          "toothbrush"
+        ],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "config.json": "ed051ec77cb41c5d9d5e3af21a979b1e890599dfd68434d7636ff82ded4c1527"
+        },
+        "version": "5650961749fa93567c0d46fc7f43ea4f9e914107",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "upstream_pretrained",
+          "initialization": "not_applicable",
+          "training_state": "unknown",
+          "use_scope": "upstream_baseline",
+          "use_scope_evidence_ref": null,
+          "base_model_id": null,
+          "training_samples": null,
+          "epochs_completed": null,
+          "optimizer_steps": null,
+          "preserved_classes": [],
+          "evaluation_dataset_recorded": false,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "registry_recorded"
+        },
+        "selection_basis": "default",
+        "selection_reason": "Compatible recorded registration; quality still requires project evaluation."
+      }
+    ],
+    "blocked_options": [
+      {
+        "capability_id": "model.fixture-color-v1",
+        "reason": "Synthetic fixture models cannot process real project media"
+      },
+      {
+        "capability_id": "model.local-detector-rtdetr-prior001-20261028",
+        "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-detector-rtdetr-smoke-20261028",
+        "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-7dcfc58e1c6e",
+        "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-9bdcf7bd1751",
+        "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-finetune-smoke-20261028",
+        "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-smoke-20261028",
+        "reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      }
+    ],
+    "experimental_models": [
+      {
+        "capability_id": "model.local-detector-rtdetr-prior001-20261028",
+        "model_id": "local-detector-rtdetr-prior001-20261028",
+        "adapter_id": "rtdetr-v2-r18",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "closed",
+        "supported_classes": [
+          "forklift",
+          "person"
+        ],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "config.json": "bb2e53d7a8ff7a61e98198866a49d5b1426b8a245ab032bd6b20ef6ea9237016",
+          "manifest.json": "df144b8fa4b7ac1d71faa1084ea975ca8edd56e7ec98cf331221bdbd6f33ca23",
+          "declared_upstream_weights": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115"
+        },
+        "version": "2026-10-28T17:02:20.786480+00:00",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "locally_trained",
+          "initialization": "unknown",
+          "training_state": "unknown",
+          "use_scope": "unknown",
+          "use_scope_evidence_ref": null,
+          "base_model_id": "rtdetr-v2-r18",
+          "training_samples": 10,
+          "epochs_completed": 10,
+          "optimizer_steps": 50,
+          "preserved_classes": [
+            "person"
+          ],
+          "evaluation_dataset_recorded": true,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "manifest_recorded"
+        },
+        "selection_basis": "requires_explicit_request",
+        "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-detector-rtdetr-smoke-20261028",
+        "model_id": "local-detector-rtdetr-smoke-20261028",
+        "adapter_id": "rtdetr-v2-r18",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "closed",
+        "supported_classes": [
+          "forklift",
+          "person"
+        ],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "config.json": "bb2e53d7a8ff7a61e98198866a49d5b1426b8a245ab032bd6b20ef6ea9237016",
+          "manifest.json": "d2dedc03077e1192ba151786bd16512347189a0e448d7ba25e9fe3fa2c24605e",
+          "declared_upstream_weights": "d18309d0d7ea57048138885c4c6ecfcb1e24506fc6153b94ad484f8ab62c7115"
+        },
+        "version": "2026-10-28T16:59:23.588493+00:00",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "locally_trained",
+          "initialization": "unknown",
+          "training_state": "unknown",
+          "use_scope": "unknown",
+          "use_scope_evidence_ref": null,
+          "base_model_id": "rtdetr-v2-r18",
+          "training_samples": 10,
+          "epochs_completed": 1,
+          "optimizer_steps": 5,
+          "preserved_classes": [
+            "person"
+          ],
+          "evaluation_dataset_recorded": true,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "manifest_recorded"
+        },
+        "selection_basis": "requires_explicit_request",
+        "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-7dcfc58e1c6e",
+        "model_id": "local-ssdlite-7dcfc58e1c6e",
+        "adapter_id": "ssdlite320",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "closed",
+        "supported_classes": [
+          "forklift",
+          "person"
+        ],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "manifest.json": "b63ad94e53626d1a7d25a2b3fa2365f1ddc23a69a85c44a17bb37a6f46b343b9"
+        },
+        "version": "2026-10-28T16:39:49.358925+00:00",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "locally_trained",
+          "initialization": "unknown",
+          "training_state": "unknown",
+          "use_scope": "unknown",
+          "use_scope_evidence_ref": null,
+          "base_model_id": null,
+          "training_samples": 10,
+          "epochs_completed": 1,
+          "optimizer_steps": 5,
+          "preserved_classes": [],
+          "evaluation_dataset_recorded": true,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "manifest_recorded"
+        },
+        "selection_basis": "requires_explicit_request",
+        "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-9bdcf7bd1751",
+        "model_id": "local-ssdlite-9bdcf7bd1751",
+        "adapter_id": "ssdlite320",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "closed",
+        "supported_classes": [
+          "forklift",
+          "person"
+        ],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "manifest.json": "bce1da1461fe847e891a98fdd600c01c0696c3bdbe7797fbbd55ef3fba4b5205"
+        },
+        "version": "2026-10-28T16:41:03.958262+00:00",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "locally_trained",
+          "initialization": "unknown",
+          "training_state": "unknown",
+          "use_scope": "unknown",
+          "use_scope_evidence_ref": null,
+          "base_model_id": null,
+          "training_samples": 10,
+          "epochs_completed": 1,
+          "optimizer_steps": 5,
+          "preserved_classes": [],
+          "evaluation_dataset_recorded": true,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "manifest_recorded"
+        },
+        "selection_basis": "requires_explicit_request",
+        "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-finetune-smoke-20261028",
+        "model_id": "local-ssdlite-finetune-smoke-20261028",
+        "adapter_id": "ssdlite320",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "closed",
+        "supported_classes": [
+          "forklift",
+          "person"
+        ],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "manifest.json": "02e264f0da945a4df424f3abd45a91068af38e367238ac326c3334b4de29e354"
+        },
+        "version": "2026-10-28T16:35:46.790718+00:00",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "locally_trained",
+          "initialization": "unknown",
+          "training_state": "unknown",
+          "use_scope": "unknown",
+          "use_scope_evidence_ref": null,
+          "base_model_id": "local-ssdlite-smoke-20261028",
+          "training_samples": 10,
+          "epochs_completed": 1,
+          "optimizer_steps": 5,
+          "preserved_classes": [],
+          "evaluation_dataset_recorded": true,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "manifest_recorded"
+        },
+        "selection_basis": "requires_explicit_request",
+        "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      },
+      {
+        "capability_id": "model.local-ssdlite-smoke-20261028",
+        "model_id": "local-ssdlite-smoke-20261028",
+        "adapter_id": "ssdlite320",
+        "task_types": [
+          "detection"
+        ],
+        "output_contract": "detections/v1",
+        "vocabulary": "closed",
+        "supported_classes": [
+          "forklift",
+          "person"
+        ],
+        "synthetic": false,
+        "readiness": "unchecked",
+        "provenance_hashes": {
+          "manifest.json": "04f0f3c7acbd08941722c94a16fca9c0105f282428f117a0774084945c2b1dac"
+        },
+        "version": "2026-10-28T16:34:52.650167+00:00",
+        "limitations": [
+          "Prerequisites permit a bounded experiment, not a quality claim.",
+          "No scored evaluation report is attached to this option; a dataset hash is not a score.",
+          "Training facts are recorded provenance; scene independence is not established here."
+        ],
+        "training_provenance": {
+          "origin": "locally_trained",
+          "initialization": "unknown",
+          "training_state": "unknown",
+          "use_scope": "unknown",
+          "use_scope_evidence_ref": null,
+          "base_model_id": null,
+          "training_samples": 10,
+          "epochs_completed": 1,
+          "optimizer_steps": 5,
+          "preserved_classes": [],
+          "evaluation_dataset_recorded": true,
+          "evaluation_status": "none_attached",
+          "provenance_scope": "manifest_recorded"
+        },
+        "selection_basis": "requires_explicit_request",
+        "selection_reason": "Local model suitability is unknown: no evidenced user-candidate registration. An exact explicit model experiment is available."
+      }
+    ],
+    "explicit_model_ids": [],
+    "request_hash": "37aa5b19cf8685986849731ce32dfa0f355853e402bb1117218a70ade9f30dfe"
+  },
+  "expected_candidates": 2,
+  "script_sha256": "02ebbc802a94158a43a918c14bc73421b9b1a07ea3e93e04927e531d558c0763",
+  "native_binary_sha256": "ced2cda1d05299fedac5f0490ae92a4725519dc5c7e40916724ca37afcd2c09f",
+  "passed": true,
+  "actual_model_calls": 1,
+  "result": {
+    "message": "Configured 2 alternatives. Displays counts of \"person\" in each processed frame.",
+    "questions": [],
+    "candidates": [
+      {
+        "spec_version": "0.1",
+        "name": "custom-candidate-1",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "sample",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2
+            },
+            "in": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "det",
+            "type": "detect",
+            "params": {
+              "model": "owlv2-base-patch16",
+              "classes": [
+                "person"
+              ],
+              "min_conf": 0.2
+            },
+            "in": {
+              "image": "$sample.frame"
+            }
+          },
+          {
+            "id": "count",
+            "type": "count_per_zone",
+            "params": {},
+            "in": {
+              "dets": "$det.dets"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "count_mae",
+          "target": 0.5
+        }
+      },
+      {
+        "spec_version": "0.1",
+        "name": "custom-candidate-2",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "sample",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2
+            },
+            "in": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "det",
+            "type": "detect",
+            "params": {
+              "model": "rtdetr-v2-r18",
+              "classes": [
+                "person"
+              ],
+              "min_conf": 0.2
+            },
+            "in": {
+              "image": "$sample.frame"
+            }
+          },
+          {
+            "id": "count",
+            "type": "count_per_zone",
+            "params": {},
+            "in": {
+              "dets": "$det.dets"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "count_mae",
+          "target": 0.5
+        }
+      }
+    ],
+    "tool_calls": 7,
+    "elapsed_s": 64.38672620902071,
+    "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+    "needs_zones": false
+  },
+  "plan": {
+    "id": "596ce4095435455e9b33e7a8e581786b",
+    "project_id": "a201f9d7d53a4f70",
+    "build_id": null,
+    "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+    "revision": 1,
+    "parent_plan_id": null,
+    "created_at": "2026-10-29T01:56:24.639386+00:00",
+    "content_hash": "7717513ad7b4b0d9209eccf135846c0e48fd19b9e33a11975a69f163c429980f",
+    "goal": "Count people in these warehouse images and show boxes. Use confidence 0.2. Do not create events. Try two different compatible installed detector models with the same count MAE evaluation target.",
+    "assumptions": [
+      "Use the project's imported media and saved region geometry.",
+      "A sample preview does not establish accuracy.",
+      "Evaluation requires reviewed labels on the same held-out data for every candidate."
+    ],
+    "candidates": [
+      {
+        "spec_version": "0.1",
+        "name": "custom-candidate-1",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "sample",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2
+            },
+            "in": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "det",
+            "type": "detect",
+            "params": {
+              "model": "owlv2-base-patch16",
+              "classes": [
+                "person"
+              ],
+              "min_conf": 0.2
+            },
+            "in": {
+              "image": "$sample.frame"
+            }
+          },
+          {
+            "id": "count",
+            "type": "count_per_zone",
+            "params": {},
+            "in": {
+              "dets": "$det.dets"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "count_mae",
+          "target": 0.5
+        }
+      },
+      {
+        "spec_version": "0.1",
+        "name": "custom-candidate-2",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "sample",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2
+            },
+            "in": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "det",
+            "type": "detect",
+            "params": {
+              "model": "rtdetr-v2-r18",
+              "classes": [
+                "person"
+              ],
+              "min_conf": 0.2
+            },
+            "in": {
+              "image": "$sample.frame"
+            }
+          },
+          {
+            "id": "count",
+            "type": "count_per_zone",
+            "params": {},
+            "in": {
+              "dets": "$det.dets"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "count_mae",
+          "target": 0.5
+        }
+      }
+    ],
+    "required_capabilities": [
+      "block.count_per_zone",
+      "block.detect",
+      "block.frame_sample",
+      "model.owlv2-base-patch16",
+      "model.rtdetr-v2-r18"
+    ],
+    "experiments": [
+      {
+        "id": "compile",
+        "phase": "compile",
+        "description": "Compile every candidate and preview up to five samples.",
+        "allowed_tools": [
+          "pipeline_run",
+          "pipeline_validate"
+        ],
+        "candidate_indices": [
+          0,
+          1
+        ]
+      },
+      {
+        "id": "evaluate",
+        "phase": "evaluate",
+        "description": "Prepare the review set, then measure candidates once its labels are reviewed.",
+        "allowed_tools": [
+          "build_context",
+          "build_prepare_review",
+          "build_propose_labels",
+          "eval_run",
+          "pipeline_run"
+        ],
+        "candidate_indices": [
+          0,
+          1
+        ]
+      }
+    ],
+    "metrics": [
+      {
+        "candidate_index": 0,
+        "metric": "count_mae",
+        "target": 0.5,
+        "direction": "minimize"
+      },
+      {
+        "candidate_index": 1,
+        "metric": "count_mae",
+        "target": 0.5,
+        "direction": "minimize"
+      }
+    ],
+    "stop_conditions": [
+      "Stop on changed data, models, settings or workflow.",
+      "Stop if a required capability is unavailable or a tool fails.",
+      "Respect existing call, time and training budgets.",
+      "Pause at human review and approval checkpoints."
+    ],
+    "human_checkpoints": [
+      {
+        "id": "labels",
+        "phase": "evaluate",
+        "description": "Before scoring, review any unreviewed labels in the chosen evaluation set.",
+        "requires_approval": true
+      },
+      {
+        "id": "deployment",
+        "phase": "operate",
+        "description": "Only if you choose a recorded run: approve the evaluated candidate first.",
+        "requires_approval": true
+      }
+    ],
+    "snapshot": {
+      "workspace_hash": "b8e77fa52d34b8126cd68e47072580b49f645c87549a9b41157794f555002b60",
+      "dataset_hash": "8a39bd36261f396d2953cb75e20be688e3f0a808a8b36227090d0dd99e490bbf",
+      "model_hashes": [
+        "cf1ac92653fb8c11499df123f3ef933fc5a8ab21b5536595d768567bf982d101",
+        "bc4c6657ad6c5cba8fc27801272ac9bb5916b505dba932c86ecf2b5376c537d0"
+      ],
+      "settings_hash": "2bcc5ca8a706171d53fd1b58f92f4beea09876ab946804f26bd60589b3b44108"
+    },
+    "skills": [
+      {
+        "id": "authoring",
+        "version": "1.0.0",
+        "sha256": "68dea50aabed360e591c70ec2f1e99206780a01c2dcf3ab90ed427f2c9bac108"
+      },
+      {
+        "id": "detection",
+        "version": "1.0.0",
+        "sha256": "dd10299dd32378d090fac62855711ae5e3bf9b98d1e2164e0df44138f575a93d"
+      },
+      {
+        "id": "alerting",
+        "version": "1.0.0",
+        "sha256": "3d0031531408e56f99c93aec804066d872fc58b4f7949954e5bd9ac09f49deb1"
+      }
+    ],
+    "revision_reason": "Initial typed proposal before compilation",
+    "planning_options_artifact_id": "3a937fc8c5faa988a050dd02c12e9b3808cdd63bef1c8e77f905dcb7a9a25afd",
+    "model_selections": [
+      {
+        "candidate_index": 0,
+        "capability_id": "model.owlv2-base-patch16",
+        "model_id": "owlv2-base-patch16",
+        "adapter_id": "owlv2",
+        "proposed_reason": "Use open-vocabulary detection for 'person' if this option is eligible.",
+        "options_snapshot_id": "ef0b1a75760144effe3ca5c41bfd358cb12f5adb73a41e73201f4e9833bb353f",
+        "status": "proposed"
+      },
+      {
+        "candidate_index": 1,
+        "capability_id": "model.rtdetr-v2-r18",
+        "model_id": "rtdetr-v2-r18",
+        "adapter_id": "rtdetr-v2-r18",
+        "proposed_reason": "Use closed-vocabulary detection for 'person' if this option is eligible.",
+        "options_snapshot_id": "ef0b1a75760144effe3ca5c41bfd358cb12f5adb73a41e73201f4e9833bb353f",
+        "status": "proposed"
+      }
+    ]
+  },
+  "events": [
+    {
+      "id": "efdc3590f2fec0c2ce6dcd63a781f0fb485e3148c9bc7436e79712b039e65a3f",
+      "sequence": 1,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": null,
+      "plan_id": null,
+      "call_id": "d375ff027b5e4c908b2aa1827a5ac30a",
+      "kind": "tool",
+      "stage": "started",
+      "name": "blocks_list",
+      "phase": "plan",
+      "at": "2026-10-29T01:55:28.712246+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "03a56ed7d2c2cb474b64196943e4075ce34df86f18d96faf48c63e00beb86561",
+      "sequence": 2,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": null,
+      "plan_id": null,
+      "call_id": "d375ff027b5e4c908b2aa1827a5ac30a",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "blocks_list",
+      "phase": "plan",
+      "at": "2026-10-29T01:55:28.732967+00:00",
+      "duration_ms": 20.721,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "output_artifact_id": "016c510bbafdb458ed6e3390b5f546c4584d8a2d5e2189c3821309d8a0e8d3c4",
+      "error": null
+    },
+    {
+      "id": "60805585bfb3efb899062fc1a986088e4c7875f2a5f648179ee98b809eccde11",
+      "sequence": 3,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": null,
+      "plan_id": null,
+      "call_id": "f6357de9c47c4e67970074e2b15ddf7d",
+      "kind": "tool",
+      "stage": "started",
+      "name": "dataset_context",
+      "phase": "plan",
+      "at": "2026-10-29T01:55:28.763610+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "867114e1897602df0a5e0ac849a8cfd2ad0ebcabf09e25a455b540b59678d284",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "71ce8ec922cc7570acde5af3ae70681291b03046e15babff409d3b685ea86712",
+      "sequence": 4,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": null,
+      "plan_id": null,
+      "call_id": "f6357de9c47c4e67970074e2b15ddf7d",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "dataset_context",
+      "phase": "plan",
+      "at": "2026-10-29T01:55:28.781909+00:00",
+      "duration_ms": 18.299,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "867114e1897602df0a5e0ac849a8cfd2ad0ebcabf09e25a455b540b59678d284",
+      "output_artifact_id": "e20db932de09ab79c75953f20dcb59929235bd2f0754fa18f1dd2d01db4ba6d1",
+      "error": null
+    },
+    {
+      "id": "299a78838143f635fb1e0856696fdf64fc34663c9e52045aa2de88a290bea756",
+      "sequence": 5,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": null,
+      "plan_id": null,
+      "call_id": "6c74148927954c0dab6d48eb4168b8f2",
+      "kind": "tool",
+      "stage": "started",
+      "name": "planning_options",
+      "phase": "plan",
+      "at": "2026-10-29T01:55:28.808616+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "df09a14835f53b41d7d3d8e25c5b27d1d7ebbe5313ed66845db0113e1332d9f9",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "8e66a21d57ed556e2a8922e78beceb73e3c17d9c9b90156549785ebf1b6f6c1a",
+      "sequence": 6,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": null,
+      "plan_id": null,
+      "call_id": "6c74148927954c0dab6d48eb4168b8f2",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "planning_options",
+      "phase": "plan",
+      "at": "2026-10-29T01:55:28.893448+00:00",
+      "duration_ms": 84.832,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "df09a14835f53b41d7d3d8e25c5b27d1d7ebbe5313ed66845db0113e1332d9f9",
+      "output_artifact_id": "3a937fc8c5faa988a050dd02c12e9b3808cdd63bef1c8e77f905dcb7a9a25afd",
+      "error": null
+    },
+    {
+      "id": "66dd4fa9130d06a88bc3569ac83555205079382fdabd73aa7516c7f80787f8c7",
+      "sequence": 7,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": null,
+      "plan_id": null,
+      "call_id": "4017bdb5e0a042ecb1aef25da8a46ed5",
+      "kind": "llm",
+      "stage": "started",
+      "name": "visionapp-planner",
+      "phase": "plan",
+      "at": "2026-10-29T01:55:29.163200+00:00",
+      "duration_ms": null,
+      "model_identity": "Reported model alias: visionapp-planner",
+      "cost_usd": null,
+      "input_artifact_id": "adcc0e3e3ca47f4c8f41411f0886d301c38f425c3ed69c01014aab2a943b2a9c",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "44fa352585f47a6795de3f1ae2479a179dd197190f927c8bb6d7c85dc9421d36",
+      "sequence": 8,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": null,
+      "plan_id": null,
+      "call_id": "4017bdb5e0a042ecb1aef25da8a46ed5",
+      "kind": "llm",
+      "stage": "completed",
+      "name": "visionapp-planner",
+      "phase": "plan",
+      "at": "2026-10-29T01:56:22.914539+00:00",
+      "duration_ms": 53751.339,
+      "model_identity": "Reported model alias: visionapp-planner",
+      "cost_usd": null,
+      "input_artifact_id": "adcc0e3e3ca47f4c8f41411f0886d301c38f425c3ed69c01014aab2a943b2a9c",
+      "output_artifact_id": "c99b3ad6c539ae4b981e6543e632d9a3c0d90e3f307fbb5e8462d120e1a95019",
+      "error": null
+    },
+    {
+      "id": "73fd9b846dcdcaf5f6e71747ea37de5d40c163dc35e145925eed0361cfbd2f24",
+      "sequence": 9,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": "d02e67a40b104a51812fb3979d1e9560",
+      "plan_id": "596ce4095435455e9b33e7a8e581786b",
+      "call_id": "9e6bc3d2cc71405482d14fbdc0ce98d5",
+      "kind": "tool",
+      "stage": "started",
+      "name": "pipeline_validate",
+      "phase": "compile",
+      "at": "2026-10-29T01:56:24.835977+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "3964050473445ea03f468e526ed55db9224b2789fd5508e136ddf9ad72abf68f",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "ce97aea71d5a636e77699e6f921f0d014ea110a572c7dde147e33cd80a5a5d12",
+      "sequence": 10,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": "d02e67a40b104a51812fb3979d1e9560",
+      "plan_id": "596ce4095435455e9b33e7a8e581786b",
+      "call_id": "9e6bc3d2cc71405482d14fbdc0ce98d5",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "pipeline_validate",
+      "phase": "compile",
+      "at": "2026-10-29T01:56:24.864680+00:00",
+      "duration_ms": 28.703,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "3964050473445ea03f468e526ed55db9224b2789fd5508e136ddf9ad72abf68f",
+      "output_artifact_id": "f2e6221bac7112ea123f706c89500b263e72f0f9bc7068fb74bdbaf8c51fbc38",
+      "error": null
+    },
+    {
+      "id": "34ca0149b18c6a3d428b35d5b6d6f3142e7cb86b2741864086a76cb585ff2fae",
+      "sequence": 11,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": "d02e67a40b104a51812fb3979d1e9560",
+      "plan_id": "596ce4095435455e9b33e7a8e581786b",
+      "call_id": "7b76613fb0444214968707f1431d7c1c",
+      "kind": "tool",
+      "stage": "started",
+      "name": "pipeline_run",
+      "phase": "compile",
+      "at": "2026-10-29T01:56:24.970093+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "3964050473445ea03f468e526ed55db9224b2789fd5508e136ddf9ad72abf68f",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "828d0d08f5673025b05b8968382c101a39c3312508cf6ab893b5ab4602cf9554",
+      "sequence": 12,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": "d02e67a40b104a51812fb3979d1e9560",
+      "plan_id": "596ce4095435455e9b33e7a8e581786b",
+      "call_id": "7b76613fb0444214968707f1431d7c1c",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "pipeline_run",
+      "phase": "compile",
+      "at": "2026-10-29T01:56:31.233633+00:00",
+      "duration_ms": 6263.54,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "3964050473445ea03f468e526ed55db9224b2789fd5508e136ddf9ad72abf68f",
+      "output_artifact_id": "e14befef6347929e6beee686fcfef3457dc9f35241a2b0d909cd0795a9b8aab5",
+      "error": null
+    },
+    {
+      "id": "fe785c17c38c14984982fe8ca226b7c3a2b06d316c2cfb9f9245fff3636bbc43",
+      "sequence": 13,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": "d02e67a40b104a51812fb3979d1e9560",
+      "plan_id": "596ce4095435455e9b33e7a8e581786b",
+      "call_id": "776eb24e21f34a4580c673b9b98149e3",
+      "kind": "tool",
+      "stage": "started",
+      "name": "pipeline_validate",
+      "phase": "compile",
+      "at": "2026-10-29T01:56:31.344133+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "e2f7d71881006590d0a4acf7797d6bdc74bf1f4e183d259491a40e5faf002025",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "ac33050e7ccab14bb198153ada60201580fc9461623a8158cf5ce0d712c5b5a3",
+      "sequence": 14,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": "d02e67a40b104a51812fb3979d1e9560",
+      "plan_id": "596ce4095435455e9b33e7a8e581786b",
+      "call_id": "776eb24e21f34a4580c673b9b98149e3",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "pipeline_validate",
+      "phase": "compile",
+      "at": "2026-10-29T01:56:31.375062+00:00",
+      "duration_ms": 30.929,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "e2f7d71881006590d0a4acf7797d6bdc74bf1f4e183d259491a40e5faf002025",
+      "output_artifact_id": "f2e6221bac7112ea123f706c89500b263e72f0f9bc7068fb74bdbaf8c51fbc38",
+      "error": null
+    },
+    {
+      "id": "31d383750e3ec2345ea02b139874821bea73a99a19d2f6c338558caa7ae3f878",
+      "sequence": 15,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": "d02e67a40b104a51812fb3979d1e9560",
+      "plan_id": "596ce4095435455e9b33e7a8e581786b",
+      "call_id": "083820e1b9c847968b6fe8b14be84831",
+      "kind": "tool",
+      "stage": "started",
+      "name": "pipeline_run",
+      "phase": "compile",
+      "at": "2026-10-29T01:56:31.486489+00:00",
+      "duration_ms": null,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "e2f7d71881006590d0a4acf7797d6bdc74bf1f4e183d259491a40e5faf002025",
+      "output_artifact_id": null,
+      "error": null
+    },
+    {
+      "id": "1c74c7e262805452bf18a60517a41259ebb090a38c5dc46ae9d7f183ace9f6ee",
+      "sequence": 16,
+      "project_id": "a201f9d7d53a4f70",
+      "build_id": null,
+      "operation_id": "0e7bb1cd348b46fc98f204e1031f14bd",
+      "execution_id": "d02e67a40b104a51812fb3979d1e9560",
+      "plan_id": "596ce4095435455e9b33e7a8e581786b",
+      "call_id": "083820e1b9c847968b6fe8b14be84831",
+      "kind": "tool",
+      "stage": "completed",
+      "name": "pipeline_run",
+      "phase": "compile",
+      "at": "2026-10-29T01:56:32.149495+00:00",
+      "duration_ms": 663.006,
+      "model_identity": null,
+      "cost_usd": null,
+      "input_artifact_id": "e2f7d71881006590d0a4acf7797d6bdc74bf1f4e183d259491a40e5faf002025",
+      "output_artifact_id": "768ab38234a66ac8b98bc6c015ddde52aa718c4071a54ad2a849847360d58bf3",
+      "error": null
+    }
+  ],
+  "stored_events": 0,
+  "elapsed_s": 66.47828908299562,
+  "source_unchanged": true
+}

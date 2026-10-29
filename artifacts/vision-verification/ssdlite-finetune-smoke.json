@@ -1,0 +1,155 @@
+{
+  "training": {
+    "model_id": "local-ssdlite-finetune-smoke-20261028",
+    "model_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-ssdlite-finetune-smoke-20261028",
+    "classes": [
+      "forklift",
+      "person"
+    ],
+    "epochs_completed": 1,
+    "steps": 5,
+    "elapsed_s": 5.46964470797684,
+    "final_loss": 13.405648231506348,
+    "training_samples": 10,
+    "evaluation_samples": 10,
+    "training_hash": "0b915e9d603fd49263538eb17a196dbf2b4c9b0244098c54ef2c3bfe25ec601e",
+    "evaluation_hash": "8ecaff1f1f2313463f2b56837b413aa03eff3cb4e9639651262472533ef99df3",
+    "device": "cpu",
+    "warnings": [
+      "Optimization completed; this model has not passed held-out evaluation or deployment approval.",
+      "Disjoint image contents were verified; independence of scenes, cameras and time periods was not.",
+      "Architecture code is BSD-3-Clause; trained weights retain project dataset conditions."
+    ]
+  },
+  "heldout_evaluation": {
+    "precision": 0.025,
+    "recall": 0.07857142857142857,
+    "count_mae": 120.0,
+    "passed": false,
+    "metric": "recall",
+    "target": 0.8,
+    "sample_count": 10,
+    "failures": [
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-007137.png",
+        "false_positives": 173,
+        "false_negatives": 54,
+        "count_error": 119.0,
+        "severity": 346.0,
+        "expected_count": 57,
+        "observed_count": 176,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-007447.png",
+        "false_positives": 173,
+        "false_negatives": 49,
+        "count_error": 124.0,
+        "severity": 346.0,
+        "expected_count": 52,
+        "observed_count": 176,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-007758.png",
+        "false_positives": 173,
+        "false_negatives": 51,
+        "count_error": 122.0,
+        "severity": 346.0,
+        "expected_count": 54,
+        "observed_count": 176,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-008689.png",
+        "false_positives": 173,
+        "false_negatives": 55,
+        "count_error": 118.0,
+        "severity": 346.0,
+        "expected_count": 58,
+        "observed_count": 176,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-006827.png",
+        "false_positives": 172,
+        "false_negatives": 54,
+        "count_error": 118.0,
+        "severity": 344.0,
+        "expected_count": 58,
+        "observed_count": 176,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-008068.png",
+        "false_positives": 172,
+        "false_negatives": 53,
+        "count_error": 119.0,
+        "severity": 344.0,
+        "expected_count": 57,
+        "observed_count": 176,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-008999.png",
+        "false_positives": 172,
+        "false_negatives": 50,
+        "count_error": 122.0,
+        "severity": 344.0,
+        "expected_count": 54,
+        "observed_count": 176,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-006517.png",
+        "false_positives": 170,
+        "false_negatives": 50,
+        "count_error": 120.0,
+        "severity": 340.0,
+        "expected_count": 56,
+        "observed_count": 176,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-006206.png",
+        "false_positives": 169,
+        "false_negatives": 48,
+        "count_error": 121.0,
+        "severity": 338.0,
+        "expected_count": 55,
+        "observed_count": 176,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-008378.png",
+        "false_positives": 169,
+        "false_negatives": 52,
+        "count_error": 117.0,
+        "severity": 338.0,
+        "expected_count": 59,
+        "observed_count": 176,
+        "expected_texts": [],
+        "observed_texts": []
+      }
+    ],
+    "spec_hash": "33a9a781105766715f2c1c1462fe43383db4db0db5deb7ec7d849e19c3bfa082",
+    "dataset_hash": "8ecaff1f1f2313463f2b56837b413aa03eff3cb4e9639651262472533ef99df3",
+    "text_accuracy": 1.0,
+    "warnings": [
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+    ]
+  },
+  "checkpoint_format": "safetensors",
+  "base_model": "local-ssdlite-smoke-20261028",
+  "provenance": "NVIDIA PhysicalAI-SmartSpaces published synthetic GT; no app review flags changed",
+  "limitation": "Two short optimization passes on one correlated camera sequence. Not warehouse accuracy validation."
+}

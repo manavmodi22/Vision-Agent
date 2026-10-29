@@ -1,0 +1,136 @@
+{
+  "project_id": "fc0b3f0ae13e4172",
+  "images": 12,
+  "classes": [
+    "person",
+    "forklift",
+    "pallet"
+  ],
+  "reviewed_images": 0,
+  "manual_annotation": {
+    "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/fc0b3f0ae13e4172/media/6a4edfb4-Camera_0000-frame-000284.png",
+    "detections": [
+      {
+        "label": "person",
+        "confidence": 1.0,
+        "box": [
+          0.4359892569382274,
+          0.3090122351536855,
+          0.4838854073410922,
+          0.533422858848105
+        ],
+        "zone": null
+      }
+    ],
+    "reviewed": false,
+    "expected_texts": [],
+    "proposal": null
+  },
+  "ui_verified": [
+    "draw box",
+    "move box",
+    "resize handle",
+    "zoom and fit",
+    "undo and redo",
+    "autosave and reopen",
+    "add custom class",
+    "edit confidence",
+    "add resize block",
+    "reorder block",
+    "connect compatible image port",
+    "validate and save workflow",
+    "preview edited pipeline on real NVIDIA frames",
+    "no unrelated zone overlays",
+    "unrun input explicitly labeled",
+    "manual annotation persisted after app restart"
+  ],
+  "pipeline": {
+    "spec_version": "0.1",
+    "name": "People and forklifts",
+    "inputs": {
+      "source": {
+        "type": "image_folder",
+        "path": "media"
+      }
+    },
+    "blocks": [
+      {
+        "id": "sample",
+        "type": "frame_sample",
+        "params": {
+          "fps": 2
+        },
+        "in": {
+          "frames": "$inputs.source"
+        }
+      },
+      {
+        "id": "resize",
+        "type": "resize",
+        "params": {
+          "height": 720,
+          "width": 1280
+        },
+        "in": {
+          "image": "$sample.frame"
+        }
+      },
+      {
+        "id": "det",
+        "type": "detect",
+        "params": {
+          "model": "owlv2-base-patch16",
+          "classes": [
+            "person",
+            "forklift"
+          ],
+          "min_conf": 0.18
+        },
+        "in": {
+          "image": "$resize.image"
+        }
+      },
+      {
+        "id": "count",
+        "type": "count_per_zone",
+        "params": {},
+        "in": {
+          "dets": "$det.dets"
+        }
+      },
+      {
+        "id": "full",
+        "type": "rule",
+        "params": {
+          "when": "count >= 1",
+          "hold_s": 0
+        },
+        "in": {
+          "value": "$count.counts"
+        }
+      },
+      {
+        "id": "out",
+        "type": "sink_event",
+        "params": {},
+        "in": {
+          "event": "$full.event"
+        }
+      }
+    ],
+    "eval": {
+      "set": "reviewed-v1",
+      "metric": "recall",
+      "target": 0.9
+    }
+  },
+  "preview": {
+    "actual_inference": true,
+    "frames": 5,
+    "elapsed_s": 10.6,
+    "includes_model_loading": true,
+    "model": "owlv2-base-patch16",
+    "zone_filter_present": false
+  },
+  "final_visible_state": "Dataset editor, frame 000284; saved manual person box; unreviewed; read-only predictions separate."
+}

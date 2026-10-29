@@ -1,0 +1,147 @@
+{
+  "id": "692e0290946d493a",
+  "name": "Count people in this warehouse footage and show boxes. Use c",
+  "use_case": "custom",
+  "status": "building",
+  "created_at": "2026-10-29T02:01:45.257519+00:00",
+  "updated_at": "2026-10-29T02:11:43.045244+00:00",
+  "media": [
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/6bbde703-warehouse-033.00s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/66a2d701-warehouse-033.75s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/e525240a-warehouse-034.50s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/73910641-warehouse-035.25s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/a6f7b585-warehouse-036.00s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/2a9fe57c-warehouse-036.75s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/b07672d8-warehouse-037.50s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/61f86196-warehouse-038.25s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/60524125-warehouse-039.00s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/21eb8666-warehouse-039.75s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/b1cb0a50-warehouse-040.50s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/41705a98-warehouse-041.25s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/dc98fe6e-warehouse-042.00s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/61048b99-warehouse-042.75s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/4fafcab5-warehouse-043.50s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/afb7925a-warehouse-044.25s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/1cfd68d2-warehouse-045.00s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/8c7df621-warehouse-045.75s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/6933babd-warehouse-046.50s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/692e0290946d493a/media/1a95ac9d-warehouse-047.25s.png"
+  ],
+  "brief": "Count people in this warehouse footage and show boxes. Use confidence 0.2. Do not create events. Try two different compatible installed detector models with the same count MAE evaluation target.",
+  "clarification_count": 0,
+  "candidates": [
+    {
+      "spec_version": "0.1",
+      "name": "custom-candidate-1",
+      "inputs": {
+        "source": {
+          "type": "image_folder",
+          "path": "media"
+        }
+      },
+      "blocks": [
+        {
+          "id": "sample",
+          "type": "frame_sample",
+          "params": {
+            "fps": 2
+          },
+          "inputs": {
+            "frames": "$inputs.source"
+          }
+        },
+        {
+          "id": "det",
+          "type": "detect",
+          "params": {
+            "model": "owlv2-base-patch16",
+            "classes": [
+              "person"
+            ],
+            "min_conf": 0.2
+          },
+          "inputs": {
+            "image": "$sample.frame"
+          }
+        },
+        {
+          "id": "count",
+          "type": "count_per_zone",
+          "params": {},
+          "inputs": {
+            "dets": "$det.dets"
+          }
+        }
+      ],
+      "eval": {
+        "set": "reviewed-v1",
+        "metric": "count_mae",
+        "target": 0.5
+      }
+    },
+    {
+      "spec_version": "0.1",
+      "name": "custom-candidate-2",
+      "inputs": {
+        "source": {
+          "type": "image_folder",
+          "path": "media"
+        }
+      },
+      "blocks": [
+        {
+          "id": "sample",
+          "type": "frame_sample",
+          "params": {
+            "fps": 2
+          },
+          "inputs": {
+            "frames": "$inputs.source"
+          }
+        },
+        {
+          "id": "det",
+          "type": "detect",
+          "params": {
+            "model": "rtdetr-v2-r18",
+            "classes": [
+              "person"
+            ],
+            "min_conf": 0.2
+          },
+          "inputs": {
+            "image": "$sample.frame"
+          }
+        },
+        {
+          "id": "count",
+          "type": "count_per_zone",
+          "params": {},
+          "inputs": {
+            "dets": "$det.dets"
+          }
+        }
+      ],
+      "eval": {
+        "set": "reviewed-v1",
+        "metric": "count_mae",
+        "target": 0.5
+      }
+    }
+  ],
+  "evaluations": [],
+  "messages": [
+    {
+      "role": "user",
+      "content": "Count people in this warehouse footage and show boxes. Use confidence 0.2. Do not create events. Try two different compatible installed detector models with the same count MAE evaluation target."
+    },
+    {
+      "role": "assistant",
+      "content": "Configured 2 alternatives. Displays counts of \"person\" in each processed frame."
+    }
+  ],
+  "synthetic": false,
+  "fixture": false,
+  "data_origin": "NVIDIA Physical AI Smart Spaces, real Warehouse 026; CC-BY-4.0; revision 2cbe9563cbe9f47f846e5c871ee994572bbbc60e",
+  "deployment_id": null
+}

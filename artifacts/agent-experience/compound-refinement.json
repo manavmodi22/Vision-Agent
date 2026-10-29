@@ -1,0 +1,162 @@
+{
+  "project_id": "77a75e08732b43fd",
+  "runtime_source": "4f94d391e5238170979135e9425e4212bd43d8e885d6c66f764264433c191ccb",
+  "prompt": "Use a 20% confidence cutoff and process one frame per second. Keep region A and the existing count behavior.",
+  "build_id": "5504ee288c84404984733adc00a44545",
+  "exactly_requested_graph_changes": true,
+  "annotation_hash_unchanged": true,
+  "annotation_file_sha256": "c072bf015bb9fbf601dd835d8ef8f6faf18f393bd6020f65efc52088fd6d7dd0",
+  "before": {
+    "spec_version": "0.1",
+    "name": "custom-candidate-1",
+    "inputs": {
+      "source": {
+        "type": "image_folder",
+        "path": "media"
+      }
+    },
+    "blocks": [
+      {
+        "id": "sample",
+        "type": "frame_sample",
+        "params": {
+          "fps": 2
+        },
+        "inputs": {
+          "frames": "$inputs.source"
+        }
+      },
+      {
+        "id": "det",
+        "type": "detect",
+        "params": {
+          "model": "owlv2-base-patch16",
+          "classes": [
+            "person"
+          ],
+          "min_conf": 0.4
+        },
+        "inputs": {
+          "image": "$sample.frame"
+        }
+      },
+      {
+        "id": "zones",
+        "type": "zone_filter",
+        "params": {
+          "zones": "zones/lanes.json",
+          "include_ids": [
+            "A"
+          ]
+        },
+        "inputs": {
+          "dets": "$det.dets"
+        }
+      },
+      {
+        "id": "count",
+        "type": "count_per_zone",
+        "params": {},
+        "inputs": {
+          "dets": "$zones.dets"
+        }
+      }
+    ],
+    "eval": {
+      "set": "reviewed-v1",
+      "metric": "count_mae",
+      "target": 0.5
+    }
+  },
+  "after": {
+    "spec_version": "0.1",
+    "name": "custom-candidate-1",
+    "inputs": {
+      "source": {
+        "type": "image_folder",
+        "path": "media"
+      }
+    },
+    "blocks": [
+      {
+        "id": "sample",
+        "type": "frame_sample",
+        "params": {
+          "fps": 1.0
+        },
+        "inputs": {
+          "frames": "$inputs.source"
+        }
+      },
+      {
+        "id": "det",
+        "type": "detect",
+        "params": {
+          "model": "owlv2-base-patch16",
+          "classes": [
+            "person"
+          ],
+          "min_conf": 0.2
+        },
+        "inputs": {
+          "image": "$sample.frame"
+        }
+      },
+      {
+        "id": "zones",
+        "type": "zone_filter",
+        "params": {
+          "zones": "zones/lanes.json",
+          "include_ids": [
+            "A"
+          ]
+        },
+        "inputs": {
+          "dets": "$det.dets"
+        }
+      },
+      {
+        "id": "count",
+        "type": "count_per_zone",
+        "params": {},
+        "inputs": {
+          "dets": "$zones.dets"
+        }
+      }
+    ],
+    "eval": {
+      "set": "reviewed-v1",
+      "metric": "count_mae",
+      "target": 0.5
+    }
+  },
+  "model_calls": 1,
+  "tool_calls": [
+    {
+      "name": "build_refinement_context",
+      "status": "completed"
+    },
+    {
+      "name": "build_refine",
+      "status": "completed"
+    },
+    {
+      "name": "build_prepare_review",
+      "status": "completed"
+    },
+    {
+      "name": "build_propose_labels",
+      "status": "completed"
+    },
+    {
+      "name": "build_context",
+      "status": "completed"
+    }
+  ],
+  "detections": 5,
+  "frames": 5,
+  "status": "awaiting_review",
+  "deployment": false,
+  "evaluations": 0,
+  "note": "Actual packaged nativeUI plus localLLM and realOWLv2 previews on NVIDIAWarehouse026. Predictions are unreviewed; no accuracy claim."
+}

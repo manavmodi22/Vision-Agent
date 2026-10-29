@@ -1,0 +1,38 @@
+........................................................................ [ 28%]
+....................F................................................... [ 56%]
+........................................................................ [ 84%]
+.........................................                                [100%]
+=================================== FAILURES ===================================
+________ test_missing_zone_metadata_does_not_become_a_false_zero_count _________
+
+tmp_path = PosixPath('/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-99/test_missing_zone_metadata_doe0')
+
+    def test_missing_zone_metadata_does_not_become_a_false_zero_count(tmp_path: Path) -> None:
+        service = WorkspaceService(tmp_path)
+        project = service.create_project("OCR location unavailable", "custom")
+        service.repository.add_event(project.id, EventRecord(id="text-without-zone", label="read text", confidence=1,
+            image_path="/synthetic/frame.png", created_at="2026-01-01T12:00:00Z",
+            payload={"kind": "text", "text": "SKU-001", "synthetic": True}))
+>       result = execute_evidence_query(service, project.id, query(kind="text", labels=["read text"], zones=["A"]),
+                                        "UTC", datetime.now(UTC))
+
+tests/test_agent_evidence.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+engine/evidence_query.py:149: in execute_evidence_query
+    validate_query(query, context)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+query = EvidenceQuery(operation='count', labels=['read text'], zones=['A'], kind='text', time=TimeScope(period='all_time', amount=None, start_date=None, end_date=None), min_confidence=0, text_contains=None)
+context = EvidenceContext(project_id='1a761f4ef9944804', timezone='UTC', reference_time=datetime.datetime(2026, 10, 28, 18, 11, ...T12:00:00Z', latest_record='2026-01-01T12:00:00Z', time_basis='record_created_at', count_unit='per_frame_observations')
+
+    def validate_query(query: EvidenceQuery, context: EvidenceContext) -> None:
+        if not set(query.labels) <= set(context.labels):
+            raise ValueError("The requested label is not in this project's saved or recorded labels; ask for clarification")
+        if not set(query.zones) <= set(context.zones):
+>           raise ValueError("The requested zone is not in this project's saved or recorded zones; ask for clarification")
+E           ValueError: The requested zone is not in this project's saved or recorded zones; ask for clarification
+
+engine/evidence_query.py:136: ValueError
+=========================== short test summary info ============================
+FAILED tests/test_agent_evidence.py::test_missing_zone_metadata_does_not_become_a_false_zero_count
+1 failed, 256 passed in 437.08s (0:07:17)

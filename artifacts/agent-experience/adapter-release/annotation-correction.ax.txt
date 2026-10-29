@@ -1,0 +1,66 @@
+Window: "", App: VisionApp.
+0 sheet Secondary Actions: Raise
+	1 container
+		2 text Review examples
+		3 button Back to conversation
+		4 text Count people in this warehouse footage and show boxes. Use c Review the agent’s proposed labels, then continue the build.
+		5 button Continue building
+		6 button Dataset
+		7 text 1cfd68d2-warehouse-045.00s.png 1,920 × 1,080 All changes saved
+		8 button Back
+		9 button Forward
+		10 checkbox Description: Reviewed, Value: 0
+		11 scroll area Secondary Actions: Scroll Up, Scroll Down
+			12 list Secondary Actions: AXScrollToTop, AXScrollToBottom
+				13 button 6bbde703-warehouse-033.00s.png
+				14 button 66a2d701-warehouse-033.75s.png
+				15 button e525240a-warehouse-034.50s.png
+				16 button 73910641-warehouse-035.25s.png
+				17 button a6f7b585-warehouse-036.00s.png
+				18 button 2a9fe57c-warehouse-036.75s.png
+				19 button b07672d8-warehouse-037.50s.png
+				20 button 61f86196-warehouse-038.25s.png
+				21 button 60524125-warehouse-039.00s.png
+			22 scroll bar (settable, float) 0
+				23 value indicator (settable, float) 0
+				24 increment arrow button
+				25 decrement arrow button
+				26 increment page button
+				27 decrement page button
+		28 Tool
+			29 radio button Description: cursorarrow, Value: 1
+			30 radio button Description: rectangle.dashed, Value: 0
+			31 radio button Description: hand.draw, Value: 0
+		32 button Undo
+		33 button (disabled) Redo
+		34 button Zoom Out
+		35 text 100%
+		36 button Zoom In
+		37 button Fit
+		38 text V Select  ·  B Box  ·  H Pan  ·  Space-drag Pan  ·  ← → Images  ·  ⌘Z Undo
+		39 scroll area Secondary Actions: Scroll Up, Scroll Down
+			40 text Class
+			41 button Add
+			42 pop up button Description: Class, Value: person
+			43 text Objects 1 Model proposals · not reviewed
+			44 button person, 1
+			45 text Selected box X 882 px Y 375 px Width 95 px Height 147 px
+			46 button Delete object
+			47 text Drag a box to move it. Drag a square handle to resize. Class changes apply to the selected object. Predictions
+			48 checkbox Description: Show read-only overlay, Value: 0
+			49 text Labels use solid outlines. Preview predictions use dashed orange outlines and never save automatically. person 38% confidence
+			50 button Description: Add, Help: Copy this prediction into unreviewed labels
+			51 text Review Check every visible object before marking this image reviewed. Empty images can be reviewed as negative examples.
+			52 scroll bar (settable, float) 0
+				53 value indicator (settable, float) 0
+				54 increment arrow button
+				55 decrement arrow button
+				56 increment page button
+				57 decrement page button
+58 menu bar
+	59 VisionApp
+	60 File
+	61 Edit
+	62 View
+	63 Window
+	64 Help

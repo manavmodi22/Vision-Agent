@@ -1,0 +1,4 @@
+{"id": "count-capacity", "passed": true, "elapsed_s": 107.136}
+{"id": "count-duration", "passed": false, "elapsed_s": 29.121}
+{"id": "damage-both", "passed": true, "elapsed_s": 45.752}
+{"id": "ocr-match", "passed": true, "elapsed_s": 23.531}

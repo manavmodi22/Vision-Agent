@@ -1,0 +1,153 @@
+{
+  "training": {
+    "backend": "rtdetr-v2-r18",
+    "base_model_id": "rtdetr-v2-r18",
+    "model_id": "local-detector-rtdetr-prior001-20261028",
+    "model_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/local-detector-rtdetr-prior001-20261028",
+    "classes": [
+      "forklift",
+      "person"
+    ],
+    "epochs_completed": 10,
+    "steps": 50,
+    "elapsed_s": 60.82332700002007,
+    "final_loss": 8.861706733703613,
+    "training_samples": 10,
+    "evaluation_samples": 10,
+    "training_hash": "2cefbd10def4c59de4e0e9e6dc2700bce974a77a937e0892d37940ce14a88197",
+    "evaluation_hash": "eadd619f0403f61bc4d09f1cfa8402ecd8efac2fde69105c9d358e55379e4f75",
+    "device": "mps",
+    "warnings": [
+      "Pretrained detector specialized locally; held-out scoring and user deployment approval are still required.",
+      "Image-content separation is verified; camera/scene/time independence must be checked separately."
+    ]
+  },
+  "heldout": {
+    "precision": 0.6168091168091168,
+    "recall": 0.7732142857142857,
+    "count_mae": 14.2,
+    "passed": false,
+    "metric": "recall",
+    "target": 0.8,
+    "sample_count": 10,
+    "failures": [
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-007137.png",
+        "false_positives": 34,
+        "false_negatives": 17,
+        "count_error": 17.0,
+        "severity": 68.0,
+        "expected_count": 57,
+        "observed_count": 74,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-008689.png",
+        "false_positives": 30,
+        "false_negatives": 15,
+        "count_error": 15.0,
+        "severity": 60.0,
+        "expected_count": 58,
+        "observed_count": 73,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-007758.png",
+        "false_positives": 29,
+        "false_negatives": 11,
+        "count_error": 18.0,
+        "severity": 58.0,
+        "expected_count": 54,
+        "observed_count": 72,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-008999.png",
+        "false_positives": 28,
+        "false_negatives": 15,
+        "count_error": 13.0,
+        "severity": 56.0,
+        "expected_count": 54,
+        "observed_count": 67,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-006827.png",
+        "false_positives": 27,
+        "false_negatives": 14,
+        "count_error": 13.0,
+        "severity": 54.0,
+        "expected_count": 58,
+        "observed_count": 71,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-006517.png",
+        "false_positives": 26,
+        "false_negatives": 11,
+        "count_error": 15.0,
+        "severity": 52.0,
+        "expected_count": 56,
+        "observed_count": 71,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-007447.png",
+        "false_positives": 26,
+        "false_negatives": 11,
+        "count_error": 15.0,
+        "severity": 52.0,
+        "expected_count": 52,
+        "observed_count": 67,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-008068.png",
+        "false_positives": 24,
+        "false_negatives": 11,
+        "count_error": 13.0,
+        "severity": 48.0,
+        "expected_count": 57,
+        "observed_count": 70,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-006206.png",
+        "false_positives": 23,
+        "false_negatives": 11,
+        "count_error": 12.0,
+        "severity": 46.0,
+        "expected_count": 55,
+        "observed_count": 67,
+        "expected_texts": [],
+        "observed_texts": []
+      },
+      {
+        "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/a009404fe6c546ec/media/Camera_01-frame-008378.png",
+        "false_positives": 22,
+        "false_negatives": 11,
+        "count_error": 11.0,
+        "severity": 44.0,
+        "expected_count": 59,
+        "observed_count": 70,
+        "expected_texts": [],
+        "observed_texts": []
+      }
+    ],
+    "spec_hash": "55ea12f7d542bd9f50854b95210f1927317ee56ebe6865522699dfdfa56b0b5b",
+    "dataset_hash": "eadd619f0403f61bc4d09f1cfa8402ecd8efac2fde69105c9d358e55379e4f75",
+    "text_accuracy": 1.0,
+    "warnings": [
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+    ]
+  },
+  "claim_status": "Actual 10-epoch pretrained specialization on10 synthetic frames;10 disjoint but correlated heldout frames; not real deployment accuracy"
+}

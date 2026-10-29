@@ -1,0 +1,114 @@
+[
+  {
+    "name": "onnxruntime",
+    "version": "1.31.1",
+    "license": "MIT License",
+    "requires": [
+      "flatbuffers",
+      "numpy>=1.21.6",
+      "packaging",
+      "protobuf>=4.25.8",
+      "sympy; extra == \"symbolic\"",
+      "ml_dtypes; extra == \"quantization\""
+    ],
+    "license_files": []
+  },
+  {
+    "name": "opencv-python-headless",
+    "version": "4.14.0.94",
+    "license": "Apache 2.0",
+    "requires": [
+      "numpy<2.0; python_version < \"3.9\"",
+      "numpy>=2; python_version >= \"3.9\""
+    ],
+    "license_files": [
+      "LICENSE-3RD-PARTY.txt",
+      "LICENSE.txt"
+    ]
+  },
+  {
+    "name": "numpy",
+    "version": "2.5.4",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "requires": null,
+    "license_files": [
+      "LICENSE.txt",
+      "numpy/_core/include/numpy/libdivide/LICENSE.txt",
+      "numpy/_core/src/common/pythoncapi-compat/COPYING",
+      "numpy/_core/src/highway/LICENSE",
+      "numpy/_core/src/multiarray/dragon4_LICENSE.txt",
+      "numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
+      "numpy/_core/src/umath/svml/LICENSE",
+      "numpy/fft/pocketfft/LICENSE.md",
+      "numpy/linalg/lapack_lite/LICENSE.txt",
+      "numpy/ma/LICENSE",
+      "numpy/random/LICENSE.md",
+      "numpy/random/src/distributions/LICENSE.md",
+      "numpy/random/src/mt19937/LICENSE.md",
+      "numpy/random/src/pcg64/LICENSE.md",
+      "numpy/random/src/philox/LICENSE.md",
+      "numpy/random/src/sfc64/LICENSE.md",
+      "numpy/random/src/splitmix64/LICENSE.md"
+    ]
+  },
+  {
+    "name": "pillow",
+    "version": "12.3.0",
+    "license": "MIT-CMU",
+    "requires": [
+      "furo; extra == \"docs\"",
+      "olefile; extra == \"docs\"",
+      "sphinx>=8.2; extra == \"docs\"",
+      "sphinx-autobuild; extra == \"docs\"",
+      "sphinx-copybutton; extra == \"docs\"",
+      "sphinx-inline-tabs; extra == \"docs\"",
+      "sphinxext-opengraph; extra == \"docs\"",
+      "olefile; extra == \"fpx\"",
+      "olefile; extra == \"mic\"",
+      "arro3-compute; extra == \"test-arrow\"",
+      "arro3-core; extra == \"test-arrow\"",
+      "nanoarrow; extra == \"test-arrow\"",
+      "pyarrow; extra == \"test-arrow\"",
+      "coverage>=7.4.2; extra == \"tests\"",
+      "defusedxml; extra == \"tests\"",
+      "markdown2; extra == \"tests\"",
+      "olefile; extra == \"tests\"",
+      "packaging; extra == \"tests\"",
+      "pytest; extra == \"tests\"",
+      "pytest-cov; extra == \"tests\"",
+      "pytest-timeout; extra == \"tests\"",
+      "pytest-xdist; extra == \"tests\"",
+      "setuptools; extra == \"tests\"",
+      "trove-classifiers>=2024.10.12; extra == \"tests\"",
+      "defusedxml; extra == \"xmp\""
+    ],
+    "license_files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "name": "protobuf",
+    "version": "7.36.2",
+    "license": "3-Clause BSD License",
+    "requires": null,
+    "license_files": []
+  },
+  {
+    "name": "flatbuffers",
+    "version": "25.12.19",
+    "license": "Apache 2.0",
+    "requires": null,
+    "license_files": []
+  },
+  {
+    "name": "packaging",
+    "version": "26.3",
+    "license": "Apache-2.0 OR BSD-2-Clause",
+    "requires": null,
+    "license_files": [
+      "LICENSE",
+      "LICENSE.APACHE",
+      "LICENSE.BSD"
+    ]
+  }
+]

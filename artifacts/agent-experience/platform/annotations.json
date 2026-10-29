@@ -1,0 +1,21 @@
+{
+  "id": "70fca89f71a84d0f-v1",
+  "annotations": [
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/70fca89f71a84d0f/media/f2a76670-exact-match.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [],
+      "proposal": null
+    },
+    {
+      "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/70fca89f71a84d0f/media/fafcff02-substring-only.png",
+      "detections": [],
+      "reviewed": false,
+      "expected_texts": [
+        "XABC-990Y"
+      ],
+      "proposal": null
+    }
+  ]
+}

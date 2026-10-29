@@ -1,0 +1,11 @@
+{
+  "prompt": "Set confidence to 0.2",
+  "status": "awaiting_review",
+  "preview_frames": 5,
+  "detections": 5,
+  "new_request_visible_while_running": true,
+  "previous_preview_retained_while_running": true,
+  "saved_app_reopened": true,
+  "evaluations": 0,
+  "deployment_created": false
+}

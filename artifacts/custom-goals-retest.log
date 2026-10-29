@@ -1,0 +1,5 @@
+{"id": "count-all-regions", "passed": true, "elapsed_s": 28.565}
+{"id": "count-one-region", "passed": true, "elapsed_s": 22.66}
+{"id": "count-missing-capacity", "passed": true, "elapsed_s": 16.735}
+{"id": "damage-both", "passed": false, "elapsed_s": 18.469}
+{"id": "ocr-metric", "passed": true, "elapsed_s": 24.205}

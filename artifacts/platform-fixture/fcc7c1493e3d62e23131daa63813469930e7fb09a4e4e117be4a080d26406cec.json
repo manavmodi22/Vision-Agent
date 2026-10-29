@@ -1,0 +1,33 @@
+{
+  "artifact": {
+    "id": "fcc7c1493e3d62e23131daa63813469930e7fb09a4e4e117be4a080d26406cec",
+    "project_id": "6b0ffff3dec54fb6",
+    "kind": "evaluation",
+    "title": "eval_run result",
+    "created_at": "2026-10-29T01:09:48.596531+00:00",
+    "sha256": "fcc7c1493e3d62e23131daa63813469930e7fb09a4e4e117be4a080d26406cec",
+    "media_type": "application/json",
+    "size_bytes": 591
+  },
+  "content": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "count_mae": 0.0,
+    "passed": true,
+    "metric": "count_mae",
+    "target": 0.5,
+    "sample_count": 16,
+    "failures": [],
+    "spec_hash": "286b5f53b3dfdda268e2ea63aa541b36ec0800cabf3f675012247d06b1557cfe",
+    "dataset_hash": "84025c7ba93e096677747984b77d662d74ac2bbeaa1eaaddd83b12b7270c0af4",
+    "text_accuracy": 1.0,
+    "character_error_rate": null,
+    "word_error_rate": null,
+    "text_normalization": null,
+    "text_error_counts": {},
+    "warnings": [
+      "SYNTHETIC FIXTURE: colored rectangles only. This does not validate warehouse detection.",
+      "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+    ]
+  }
+}

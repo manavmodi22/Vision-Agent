@@ -1,0 +1,17 @@
+{
+  "kind": "synthetic software acceptance fixture",
+  "purpose": "Distinguish exact label matching from substring matching with native OCR.",
+  "source": "Original images created locally using Pillow and Arial; no real warehouse labels or accuracy claim.",
+  "images": [
+    {
+      "path": "exact-match.png",
+      "text": "ABC-990",
+      "expected_exact_match": true
+    },
+    {
+      "path": "substring-only.png",
+      "text": "XABC-990Y",
+      "expected_exact_match": false
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "662ad03dfb169de92bed1ec9793c1953cb8233587b39095fa8d6e654fd4da5ed",
+  "sequence": 6,
+  "project_id": "692e0290946d493a",
+  "build_id": "87c3efde66ef43c2b8c19ea6f8bcde3d",
+  "operation_id": "1938339fc858495ea372527345c92633",
+  "execution_id": null,
+  "plan_id": null,
+  "call_id": "44343942f1794ad2887b107bc86aac2f",
+  "kind": "tool",
+  "stage": "completed",
+  "name": "planning_options",
+  "phase": "plan",
+  "at": "2026-10-29T02:02:01.123694+00:00",
+  "duration_ms": 159.123,
+  "model_identity": null,
+  "cost_usd": null,
+  "input_artifact_id": "139eee6b10269aed40562f6a87ab2f0aefaa13d0382511335d45c56a8baf4344",
+  "output_artifact_id": "eb874ddf71118e9477a49835f159624a96fd9fb1c770e9078d2336377b500290",
+  "error": null
+}

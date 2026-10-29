@@ -1,0 +1,223 @@
+{
+  "id": "524440eb582944b7ac04eceb355901fc",
+  "project_id": "692e0290946d493a",
+  "build_id": "87c3efde66ef43c2b8c19ea6f8bcde3d",
+  "operation_id": "87c3efde66ef43c2b8c19ea6f8bcde3d",
+  "revision": 3,
+  "parent_plan_id": "671ab4433ab948519ace6ab1bad5b204",
+  "created_at": "2026-10-29T02:11:43.458923+00:00",
+  "content_hash": "fa117f26f2a0e8cb7dab0a843afc19841bb3915107b25ff37aff123fb978db17",
+  "goal": "Count people in this warehouse footage and show boxes. Use confidence 0.2. Do not create events. Try two different compatible installed detector models with the same count MAE evaluation target.",
+  "assumptions": [
+    "Use the project's imported media and saved region geometry.",
+    "A sample preview does not establish accuracy.",
+    "Evaluation requires reviewed labels on the same held-out data for every candidate."
+  ],
+  "candidates": [
+    {
+      "spec_version": "0.1",
+      "name": "custom-candidate-1",
+      "inputs": {
+        "source": {
+          "type": "image_folder",
+          "path": "media"
+        }
+      },
+      "blocks": [
+        {
+          "id": "sample",
+          "type": "frame_sample",
+          "params": {
+            "fps": 2
+          },
+          "inputs": {
+            "frames": "$inputs.source"
+          }
+        },
+        {
+          "id": "det",
+          "type": "detect",
+          "params": {
+            "model": "owlv2-base-patch16",
+            "classes": [
+              "person"
+            ],
+            "min_conf": 0.2
+          },
+          "inputs": {
+            "image": "$sample.frame"
+          }
+        },
+        {
+          "id": "count",
+          "type": "count_per_zone",
+          "params": {},
+          "inputs": {
+            "dets": "$det.dets"
+          }
+        }
+      ],
+      "eval": {
+        "set": "reviewed-v1",
+        "metric": "count_mae",
+        "target": 0.5
+      }
+    },
+    {
+      "spec_version": "0.1",
+      "name": "custom-candidate-2",
+      "inputs": {
+        "source": {
+          "type": "image_folder",
+          "path": "media"
+        }
+      },
+      "blocks": [
+        {
+          "id": "sample",
+          "type": "frame_sample",
+          "params": {
+            "fps": 2
+          },
+          "inputs": {
+            "frames": "$inputs.source"
+          }
+        },
+        {
+          "id": "det",
+          "type": "detect",
+          "params": {
+            "model": "rtdetr-v2-r18",
+            "classes": [
+              "person"
+            ],
+            "min_conf": 0.2
+          },
+          "inputs": {
+            "image": "$sample.frame"
+          }
+        },
+        {
+          "id": "count",
+          "type": "count_per_zone",
+          "params": {},
+          "inputs": {
+            "dets": "$det.dets"
+          }
+        }
+      ],
+      "eval": {
+        "set": "reviewed-v1",
+        "metric": "count_mae",
+        "target": 0.5
+      }
+    }
+  ],
+  "required_capabilities": [
+    "block.count_per_zone",
+    "block.detect",
+    "block.frame_sample",
+    "model.owlv2-base-patch16",
+    "model.rtdetr-v2-r18"
+  ],
+  "experiments": [
+    {
+      "id": "evaluate",
+      "phase": "evaluate",
+      "description": "Prepare the review set, then measure candidates once its labels are reviewed.",
+      "allowed_tools": [
+        "build_context",
+        "build_prepare_review",
+        "build_propose_labels",
+        "eval_run",
+        "pipeline_run"
+      ],
+      "candidate_indices": [
+        0,
+        1
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "candidate_index": 0,
+      "metric": "count_mae",
+      "target": 0.5,
+      "direction": "minimize"
+    },
+    {
+      "candidate_index": 1,
+      "metric": "count_mae",
+      "target": 0.5,
+      "direction": "minimize"
+    }
+  ],
+  "stop_conditions": [
+    "Stop on changed data, models, settings or workflow.",
+    "Stop if a required capability is unavailable or a tool fails.",
+    "Respect existing call, time and training budgets.",
+    "Pause at human review and approval checkpoints."
+  ],
+  "human_checkpoints": [
+    {
+      "id": "labels",
+      "phase": "evaluate",
+      "description": "Before scoring, review any unreviewed labels in the chosen evaluation set.",
+      "requires_approval": true
+    },
+    {
+      "id": "deployment",
+      "phase": "operate",
+      "description": "Only if you choose a recorded run: approve the evaluated candidate first.",
+      "requires_approval": true
+    }
+  ],
+  "snapshot": {
+    "workspace_hash": "8a5e64a0bc5599344afda069d97cb8bec9ad91dadb79eb2d3fbb287674448d0b",
+    "dataset_hash": "81652d4d4bcf192bcb30a9c8dc79b32675c1707176222949e3f6fa3ae32e8b86",
+    "model_hashes": [
+      "cf1ac92653fb8c11499df123f3ef933fc5a8ab21b5536595d768567bf982d101",
+      "bc4c6657ad6c5cba8fc27801272ac9bb5916b505dba932c86ecf2b5376c537d0"
+    ],
+    "settings_hash": "0a759c259264d0118dc4809a470c7378b308ed6813b6fa1a27c2781abbc053d4"
+  },
+  "skills": [
+    {
+      "id": "authoring",
+      "version": "1.0.0",
+      "sha256": "68dea50aabed360e591c70ec2f1e99206780a01c2dcf3ab90ed427f2c9bac108"
+    },
+    {
+      "id": "detection",
+      "version": "1.0.0",
+      "sha256": "dd10299dd32378d090fac62855711ae5e3bf9b98d1e2164e0df44138f575a93d"
+    },
+    {
+      "id": "alerting",
+      "version": "1.0.0",
+      "sha256": "3d0031531408e56f99c93aec804066d872fc58b4f7949954e5bd9ac09f49deb1"
+    }
+  ],
+  "revision_reason": "Next authorized experiment on the current project snapshot",
+  "planning_options_artifact_id": "eb874ddf71118e9477a49835f159624a96fd9fb1c770e9078d2336377b500290",
+  "model_selections": [
+    {
+      "candidate_index": 0,
+      "capability_id": "model.owlv2-base-patch16",
+      "model_id": "owlv2-base-patch16",
+      "adapter_id": "owlv2",
+      "proposed_reason": "Use open-vocabulary detection for people in the warehouse footage. This model supports detection and can be used for counting.",
+      "options_snapshot_id": "ca56374d55eb59db4d6511a80ba7ed1f594a199655176fca52d4e01de6257310",
+      "status": "proposed"
+    },
+    {
+      "candidate_index": 1,
+      "capability_id": "model.rtdetr-v2-r18",
+      "model_id": "rtdetr-v2-r18",
+      "adapter_id": "rtdetr-v2-r18",
+      "proposed_reason": "Use a closed-vocabulary detector trained on common objects, including people, for counting in the warehouse footage.",
+      "options_snapshot_id": "ca56374d55eb59db4d6511a80ba7ed1f594a199655176fca52d4e01de6257310",
+      "status": "proposed"
+    }
+  ]
+}

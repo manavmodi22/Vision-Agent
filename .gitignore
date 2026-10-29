@@ -1,0 +1,30 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
+app/.build/
+dist/
+.visionapp/
+.visionapp-refinement-live/
+*.egg-info/
+*.sock
+
+# Local credentials, model assets, and application state
+.env
+.env.*
+!.env.example
+*.gguf
+*.safetensors
+*.onnx
+*.pt
+*.pth
+*.sqlite3
+*.sqlite3-*
+
+# Archived experiment source trees and extracted packaging checks
+artifacts/stronger-planner/pending/
+artifacts/platform-skills-wheel/
+

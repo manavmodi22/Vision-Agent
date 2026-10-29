@@ -1,0 +1,1533 @@
+{
+  "id": "af8f7bc4ca7342019363c2f49bff5de6",
+  "project_id": "dd602abbadcc4651",
+  "trace_id": "ba312c8cdea74870832770c4699601db",
+  "root_span_id": "b11b607b1b8a4be5",
+  "owner_pid": 54464,
+  "created_at": 1793216700.042571,
+  "updated_at": 1793216830.049634,
+  "deadline": 1793216879.9569228,
+  "status": "failed",
+  "input_fingerprint": "48c8322981c0910b234ae767f2b1813ee9d25e4fb58d88cf192aefc80164438a",
+  "brief": "Current app context (preserve unless the user requests a change):\n{\"existing_goal\":\"\",\"existing_app\":[],\"conversation\":[]}\nUser request:\nRead printed labels and create a local event only when the text exactly equals \"ABC-990\".",
+  "source_path": "media",
+  "detector_model": "owlv2-base-patch16",
+  "state": {
+    "phase": "plan",
+    "budget": {
+      "max_tool_calls": 30,
+      "max_wall_seconds": 180.0,
+      "max_training_minutes": 30.0,
+      "max_model_calls": 5,
+      "tool_calls": 2,
+      "model_calls": 3,
+      "training_minutes": 0.0,
+      "started_at": 1793216699.956799
+    },
+    "brief_confirmed": true,
+    "candidate_count": 0,
+    "compiled_count": 0,
+    "evaluation": null,
+    "deployment_approved": false,
+    "override_reason": null
+  },
+  "calls": [
+    {
+      "id": "bbaa9057c2614b78ab7928d0d9018bdd",
+      "kind": "tool",
+      "name": "blocks_list",
+      "started_ns": 1793216700425177000,
+      "ended_ns": 1793216700510077000,
+      "status": "completed",
+      "request": {},
+      "result": {
+        "blocks": [
+          {
+            "type": "frame_sample",
+            "description": "Sample frames at a bounded rate.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "fps": {
+                  "default": 2,
+                  "exclusiveMinimum": 0,
+                  "maximum": 60,
+                  "title": "Fps",
+                  "type": "number"
+                }
+              },
+              "title": "FrameSampleParams",
+              "type": "object"
+            },
+            "inputs": {
+              "frames": "frames"
+            },
+            "outputs": {
+              "frame": "image"
+            }
+          },
+          {
+            "type": "detect",
+            "description": "Run a locally installed detector.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "model": {
+                  "default": "owlv2-base-patch16",
+                  "title": "Model",
+                  "type": "string"
+                },
+                "classes": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 64,
+                  "minItems": 1,
+                  "title": "Classes",
+                  "type": "array"
+                },
+                "min_conf": {
+                  "default": 0.25,
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Min Conf",
+                  "type": "number"
+                }
+              },
+              "title": "DetectParams",
+              "type": "object"
+            },
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "dets": "detections"
+            }
+          },
+          {
+            "type": "detect_open_vocab",
+            "description": "Detect text-prompted classes using local OWLv2.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "model": {
+                  "default": "owlv2-base-patch16",
+                  "title": "Model",
+                  "type": "string"
+                },
+                "classes": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 64,
+                  "minItems": 1,
+                  "title": "Classes",
+                  "type": "array"
+                },
+                "min_conf": {
+                  "default": 0.25,
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Min Conf",
+                  "type": "number"
+                }
+              },
+              "title": "DetectParams",
+              "type": "object"
+            },
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "dets": "detections"
+            }
+          },
+          {
+            "type": "zone_filter",
+            "description": "Keep objects whose center is inside a polygon.",
+            "params": {
+              "$defs": {
+                "Zone": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "maxLength": 80,
+                      "minLength": 1,
+                      "title": "Id",
+                      "type": "string"
+                    },
+                    "polygon": {
+                      "items": {
+                        "maxItems": 2,
+                        "minItems": 2,
+                        "prefixItems": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ],
+                        "type": "array"
+                      },
+                      "minItems": 3,
+                      "title": "Polygon",
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "polygon"
+                  ],
+                  "title": "Zone",
+                  "type": "object"
+                }
+              },
+              "additionalProperties": false,
+              "properties": {
+                "zones": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "items": {
+                        "$ref": "#/$defs/Zone"
+                      },
+                      "type": "array"
+                    }
+                  ],
+                  "default": "zones/lanes.json",
+                  "title": "Zones"
+                },
+                "include_ids": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 20,
+                  "title": "Include Ids",
+                  "type": "array"
+                }
+              },
+              "title": "ZoneFilterParams",
+              "type": "object"
+            },
+            "inputs": {
+              "dets": "detections"
+            },
+            "outputs": {
+              "dets": "detections"
+            }
+          },
+          {
+            "type": "count_per_zone",
+            "description": "Count detections in each named zone.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "include_unassigned": {
+                  "default": false,
+                  "title": "Include Unassigned",
+                  "type": "boolean"
+                }
+              },
+              "title": "CountParams",
+              "type": "object"
+            },
+            "inputs": {
+              "dets": "detections"
+            },
+            "outputs": {
+              "counts": "counts"
+            }
+          },
+          {
+            "type": "rule",
+            "description": "Compare zone counts using a small safe expression language.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "when": {
+                  "default": "count >= 1",
+                  "maxLength": 100,
+                  "title": "When",
+                  "type": "string"
+                },
+                "hold_s": {
+                  "default": 0,
+                  "maximum": 86400,
+                  "minimum": 0,
+                  "title": "Hold S",
+                  "type": "number"
+                }
+              },
+              "title": "RuleParams",
+              "type": "object"
+            },
+            "inputs": {
+              "value": "counts"
+            },
+            "outputs": {
+              "event": "event"
+            }
+          },
+          {
+            "type": "sink_event",
+            "description": "Emit local evidence events; delivery is separately approved.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "alert": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Alert"
+                }
+              },
+              "title": "SinkEventParams",
+              "type": "object"
+            },
+            "inputs": {
+              "event": "event"
+            },
+            "outputs": {
+              "event": "event"
+            }
+          },
+          {
+            "type": "ocr",
+            "description": "Read text with native Apple Vision.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "languages": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "Languages",
+                  "type": "array"
+                }
+              },
+              "title": "ReadingParams",
+              "type": "object"
+            },
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "text": "text"
+            }
+          },
+          {
+            "type": "barcode",
+            "description": "Read barcode payloads with native Apple Vision.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {},
+              "title": "EmptyParams",
+              "type": "object"
+            },
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "text": "text"
+            }
+          },
+          {
+            "type": "match",
+            "description": "Compare recognized text with an expected value.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "expected": {
+                  "maxLength": 256,
+                  "minLength": 1,
+                  "title": "Expected",
+                  "type": "string"
+                },
+                "mode": {
+                  "default": "contains",
+                  "enum": [
+                    "contains",
+                    "exact"
+                  ],
+                  "title": "Mode",
+                  "type": "string"
+                },
+                "emit": {
+                  "default": "all",
+                  "enum": [
+                    "all",
+                    "matched",
+                    "mismatched"
+                  ],
+                  "title": "Emit",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "expected"
+              ],
+              "title": "MatchParams",
+              "type": "object"
+            },
+            "inputs": {
+              "text": "text"
+            },
+            "outputs": {
+              "event": "event"
+            }
+          },
+          {
+            "type": "vlm_judge",
+            "description": "Ask a configured local vision model for a bounded evidence judgement.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "base_url": {
+                  "default": "http://127.0.0.1:1235/v1",
+                  "title": "Base Url",
+                  "type": "string"
+                },
+                "model": {
+                  "default": "visionapp-vlm",
+                  "maxLength": 200,
+                  "minLength": 1,
+                  "title": "Model",
+                  "type": "string"
+                },
+                "timeout_s": {
+                  "default": 45,
+                  "exclusiveMinimum": 0,
+                  "maximum": 120,
+                  "title": "Timeout S",
+                  "type": "number"
+                },
+                "max_tokens": {
+                  "default": 512,
+                  "maximum": 2048,
+                  "minimum": 64,
+                  "title": "Max Tokens",
+                  "type": "integer"
+                },
+                "max_image_side": {
+                  "default": 768,
+                  "maximum": 1536,
+                  "minimum": 64,
+                  "title": "Max Image Side",
+                  "type": "integer"
+                },
+                "retries": {
+                  "default": 1,
+                  "maximum": 2,
+                  "minimum": 0,
+                  "title": "Retries",
+                  "type": "integer"
+                },
+                "model_sha256": {
+                  "anyOf": [
+                    {
+                      "pattern": "^[0-9a-f]{64}$",
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Model Sha256"
+                },
+                "question": {
+                  "maxLength": 3000,
+                  "minLength": 1,
+                  "title": "Question",
+                  "type": "string"
+                },
+                "labels": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 20,
+                  "minItems": 2,
+                  "title": "Labels",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "question",
+                "labels"
+              ],
+              "title": "VLMJudgeParams",
+              "type": "object"
+            },
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "judgement": "judgement",
+              "text": "text",
+              "event": "event"
+            }
+          },
+          {
+            "type": "resize",
+            "description": "Resize input pixels; normalized boxes remain unchanged.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "width": {
+                  "default": 640,
+                  "exclusiveMinimum": 0,
+                  "maximum": 8192,
+                  "title": "Width",
+                  "type": "integer"
+                },
+                "height": {
+                  "default": 480,
+                  "exclusiveMinimum": 0,
+                  "maximum": 8192,
+                  "title": "Height",
+                  "type": "integer"
+                }
+              },
+              "title": "ResizeParams",
+              "type": "object"
+            },
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "image": "image"
+            }
+          },
+          {
+            "type": "crop",
+            "description": "Crop a normalized rectangle and preserve coordinate transforms.",
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "box": {
+                  "maxItems": 4,
+                  "minItems": 4,
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "title": "Box",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "box"
+              ],
+              "title": "CropParams",
+              "type": "object"
+            },
+            "inputs": {
+              "image": "image"
+            },
+            "outputs": {
+              "image": "image"
+            }
+          }
+        ]
+      },
+      "error": null
+    },
+    {
+      "id": "b906b54cc6c54f36b228fb277b749787",
+      "kind": "tool",
+      "name": "dataset_context",
+      "started_ns": 1793216700586499000,
+      "ended_ns": 1793216700635135000,
+      "status": "completed",
+      "request": {
+        "project_id": "dd602abbadcc4651"
+      },
+      "result": {
+        "revision": 1,
+        "classes": [],
+        "image_count": 2,
+        "reviewed_count": 0,
+        "annotation_count": 0,
+        "split_counts": {
+          "unassigned": 2
+        },
+        "saved_zone_ids": [],
+        "zones_confirmed": false,
+        "zone_origin": "unconfirmed"
+      },
+      "error": null
+    },
+    {
+      "id": "c9930e4c60724c3cabb23aad9e2d76b3",
+      "kind": "llm",
+      "name": "visionapp-planner",
+      "started_ns": 1793216700933102000,
+      "ended_ns": 1793216778330692000,
+      "status": "completed",
+      "request": {
+        "messages": [
+          {
+            "parts": [
+              {
+                "content": "You build the user's own computer vision application.\nWhen a reading request supplies a literal value after check for, contains, or\ncompare against, copy that exact value into expected_text. Do not ask for a value\nalready given.\nReturn ONE custom pipeline choice for a straightforward fully specified goal.\nOffer more only when the user asks for alternatives or genuinely different\nsupported approaches are needed; never generate near-duplicate choices.\nUse the dataset ontology's class names exactly and interpret the user's goal.\nAn annotation label means an object class; it does NOT mean OCR text printed on a box.\nFill objects, min_confidence, count_threshold, count_operator, hold_seconds, use_zones, zone_ids,\nexpected_text, match_mode, match_emit, metric and target.\nCopy any explicitly requested metric and target exactly. Otherwise default to\nrecall target 0.9 for detection/damage, count_mae target 0.5 for counting.\nPure detection or counting without requested event behavior uses count_threshold\nnull; do not invent a count trigger. A requested local evidence event on any\ndetection uses count_threshold 1. For 'full' without a given capacity, ask what\ncount makes it full. Copy explicit count thresholds and hold durations exactly.\nExplicit create-event, flag, and save-evidence requests require the event rule;\ndo not describe it in message while omitting count_threshold.\nPreserve the existing local-evidence meaning of save/record a crop or frame for review: on\nany detection use count_threshold 1 with a local event sink. These are requests\nfor saved evidence, not image transformations or external alert destinations.\nPreserve count_operator exactly: at least >=, more than >, at most <=, fewer than <,\nexactly ==, not equal !=. Zero is a valid threshold. Convert supplied minutes to\nseconds in hold_seconds; spelled quantities have the same value as digits.\nNo/without/don't/disable event requests remain count-only with a null threshold.\nExplicit no-storage/no-crop/no-saved-evidence constraints are unsupported for\napproved runs, which retain local evidence. Ask for clarification; omitting an\nevent trigger does not disable that storage.\nIf a supplied condition cannot be expressed, ask instead of changing its values.\nNo unrelated example applications may be added.\nDefault use_zones false and zone_ids [] for whole-image detection or counting.\nIf the request never mentions a lane, zone, region, area or boundary, do not add\na region filter, even when saved geometry exists in the dataset context.\nSaved region names are available context, not a request to use those regions.\nUse use_zones true whenever the goal asks per-lane counts, saved/marked regions,\nor objects inside named regions. zone_ids lists exact requested region names;\n[] means all saved regions. Do not convert a spatial task into whole-image counts.\nThe dataset context supplies confirmed region names, and the host requests drawing\nwhen boundaries are missing. A name alone never establishes geometry.\nAll choices use use_case custom. Use pipeline_type detection for object detection\nor counting, with expected_text null. Only when the user asks to READ printed\ntext or barcodes use pipeline_type ocr or barcode, objects [], use_zones false,\nzone_ids [], and metric text_accuracy. Pure reading/showing codes uses expected_text\nnull; it needs no global SKU. Comparing/checking a value uses the expected_text\nsupplied by the user or asks what value to compare. Preserve match_mode: exact\nequality/equals or exact matching uses exact; contains or substring matching uses\ncontains. Default contains only if no explicit matching mode is supplied.\nDo not change the expected literal or substitute contains for an exact match.\nUse match_emit matched for an event only when the comparison matches, mismatched\nfor an event only when it does not match, and all for plain check-whether requests.\nAn unresolved expected/correct SKU or code is not a literal value; ask for its\nvalue rather than putting a placeholder such as expected SKU in expected_text.\nA supplied quoted literal or a direct user clarification is the exact value.\nPreserve numeric barcodes as strings, including every leading zero; bare values\nsuch as SKU001 or APPLE are valid. Do not invent an expected value absent from\nthe brief or clarification. Generic expected/correct-code references still need\na value, unless the user explicitly quotes that phrase as the literal.\nSaved annotation class names alone\nnever request OCR. Ask up to three questions\nonly if the task cannot be specified from the brief and saved dataset context.\nIf classes and detection parameters are present, create the proposal now.\nOutput only a typed decision; the application compiles it into an editable graph,\nvalidates it and previews imported samples. Do not claim evaluation accuracy,\napprove deployment, review labels, execute code, send alerts or invent detections.\nExample response: {\"message\":\"Detect the requested classes.\",\"questions\":[],\n\"choices\":[{\"use_case\":\"custom\",\"pipeline_type\":\"detection\",\"objects\":[\"bolt\",\"washer\"],\n\"min_confidence\":0.4,\"count_threshold\":null,\"hold_seconds\":0,\n\"expected_text\":null,\"use_zones\":false,\"zone_ids\":[],\"metric\":\"recall\",\"target\":0.9}]}.\nCount-only example: \"Count pallets per saved lane. No alerts.\" means objects [\"pallet\"],\nuse_zones true, zone_ids [], count_threshold null, metric count_mae, target 0.5.\nReading-only example: \"Read package labels and show their codes\" means pipeline_type ocr,\nobjects [], expected_text null, use_zones false, zone_ids [], metric text_accuracy, target 0.95.\n\nBuild the user's own computer vision app. Use their saved ontology class names exactly. Detection labels stay unreviewed proposals until the user accepts or edits them. Choose typed blocks from the implemented catalog; do not force a warehouse preset. Ask for missing objects or expected output, not a preset selection.\nYou may ask at most 3 further questions in this project.",
+                "timestamp": "2026-10-28T19:45:00.868441Z",
+                "dynamic_ref": null,
+                "part_kind": "system-prompt"
+              },
+              {
+                "content": "Task brief:\nCurrent app context (preserve unless the user requests a change):\n{\"existing_goal\":\"\",\"existing_app\":[],\"conversation\":[]}\nUser request:\nRead printed labels and create a local event only when the text exactly equals \"ABC-990\".\nAuthoritative engine context:\n{\"source_path\": \"media\", \"detector_model\": \"owlv2-base-patch16\", \"use_case\": \"custom\", \"dataset\": {\"revision\": 1, \"classes\": [], \"image_count\": 2, \"reviewed_count\": 0, \"annotation_count\": 0, \"split_counts\": {\"unassigned\": 2}, \"saved_zone_ids\": [], \"zones_confirmed\": false, \"zone_origin\": \"unconfirmed\"}, \"zones_path\": \"zones/lanes.json\", \"source_provenance\": \"imported media\", \"implemented_blocks\": [{\"type\": \"frame_sample\", \"description\": \"Sample frames at a bounded rate.\"}, {\"type\": \"detect\", \"description\": \"Run a locally installed detector.\"}, {\"type\": \"detect_open_vocab\", \"description\": \"Detect text-prompted classes using local OWLv2.\"}, {\"type\": \"zone_filter\", \"description\": \"Keep objects whose center is inside a polygon.\"}, {\"type\": \"count_per_zone\", \"description\": \"Count detections in each named zone.\"}, {\"type\": \"rule\", \"description\": \"Compare zone counts using a small safe expression language.\"}, {\"type\": \"sink_event\", \"description\": \"Emit local evidence events; delivery is separately approved.\"}, {\"type\": \"ocr\", \"description\": \"Read text with native Apple Vision.\"}, {\"type\": \"barcode\", \"description\": \"Read barcode payloads with native Apple Vision.\"}, {\"type\": \"match\", \"description\": \"Compare recognized text with an expected value.\"}, {\"type\": \"vlm_judge\", \"description\": \"Ask a configured local vision model for a bounded evidence judgement.\"}, {\"type\": \"resize\", \"description\": \"Resize input pixels; normalized boxes remain unchanged.\"}, {\"type\": \"crop\", \"description\": \"Crop a normalized rectangle and preserve coordinate transforms.\"}]}",
+                "timestamp": "2026-10-28T19:45:00.868462Z",
+                "part_kind": "user-prompt"
+              }
+            ],
+            "timestamp": "2026-10-28T19:45:00.868961Z",
+            "instructions": null,
+            "kind": "request",
+            "run_id": "01a1840b-61c1-7412-b81d-66ceb0bf4ccc",
+            "conversation_id": "01a1840b-61c1-7412-b81d-66cdad9dbd41",
+            "metadata": null
+          }
+        ],
+        "model_settings": {
+          "temperature": 0,
+          "max_tokens": 1600
+        },
+        "output_schema": {
+          "$defs": {
+            "CustomPatternChoice": {
+              "additionalProperties": false,
+              "properties": {
+                "use_case": {
+                  "const": "custom",
+                  "default": "custom",
+                  "title": "Use Case",
+                  "type": "string"
+                },
+                "pipeline_type": {
+                  "default": "detection",
+                  "enum": [
+                    "detection",
+                    "ocr",
+                    "barcode"
+                  ],
+                  "title": "Pipeline Type",
+                  "type": "string"
+                },
+                "objects": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 20,
+                  "title": "Objects",
+                  "type": "array"
+                },
+                "min_confidence": {
+                  "default": 0.4,
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Min Confidence",
+                  "type": "number"
+                },
+                "count_threshold": {
+                  "anyOf": [
+                    {
+                      "maximum": 10000,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Count Threshold"
+                },
+                "count_operator": {
+                  "default": ">=",
+                  "enum": [
+                    ">=",
+                    "<=",
+                    ">",
+                    "<",
+                    "==",
+                    "!="
+                  ],
+                  "title": "Count Operator",
+                  "type": "string"
+                },
+                "hold_seconds": {
+                  "default": 0,
+                  "maximum": 3600,
+                  "minimum": 0,
+                  "title": "Hold Seconds",
+                  "type": "number"
+                },
+                "expected_text": {
+                  "anyOf": [
+                    {
+                      "maxLength": 500,
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Expected Text"
+                },
+                "match_mode": {
+                  "default": "contains",
+                  "enum": [
+                    "contains",
+                    "exact"
+                  ],
+                  "title": "Match Mode",
+                  "type": "string"
+                },
+                "match_emit": {
+                  "default": "all",
+                  "enum": [
+                    "all",
+                    "matched",
+                    "mismatched"
+                  ],
+                  "title": "Match Emit",
+                  "type": "string"
+                },
+                "use_zones": {
+                  "default": false,
+                  "title": "Use Zones",
+                  "type": "boolean"
+                },
+                "zone_ids": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 20,
+                  "title": "Zone Ids",
+                  "type": "array"
+                },
+                "metric": {
+                  "enum": [
+                    "count_mae",
+                    "precision",
+                    "recall",
+                    "text_accuracy"
+                  ],
+                  "title": "Metric",
+                  "type": "string"
+                },
+                "target": {
+                  "minimum": 0,
+                  "title": "Target",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "metric",
+                "target"
+              ],
+              "title": "CustomPatternChoice",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "description": "Custom authoring schema does not offer unrelated warehouse preset choices.",
+          "properties": {
+            "message": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Message",
+              "type": "string"
+            },
+            "questions": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 3,
+              "title": "Questions",
+              "type": "array"
+            },
+            "choices": {
+              "items": {
+                "$ref": "#/$defs/CustomPatternChoice"
+              },
+              "maxItems": 3,
+              "title": "Choices",
+              "type": "array"
+            }
+          },
+          "required": [
+            "message",
+            "questions",
+            "choices"
+          ],
+          "title": "CustomPlanDecision",
+          "type": "object"
+        }
+      },
+      "result": {
+        "messages": [
+          {
+            "parts": [
+              {
+                "content": "{\"message\":\"Read printed labels and create a local event only when the text exactly equals \\\"ABC-990\\\".\",\"questions\":[],\"choices\":[{\"metric\":\"text_accuracy\",\"target\":0.95,\"use_case\":\"custom\",\"pipeline_type\":\"ocr\",\"objects\":[],\"min_confidence\":0.4,\"count_threshold\":1,\"hold_seconds\":0,\"expected_text\":\"ABC-990\",\"use_zones\":false,\"zone_ids\":[]\n}]}",
+                "id": null,
+                "provider_name": null,
+                "provider_details": null,
+                "part_kind": "text"
+              }
+            ],
+            "usage": {
+              "input_tokens": 1685,
+              "cache_write_tokens": 0,
+              "cache_read_tokens": 4,
+              "output_tokens": 94,
+              "input_audio_tokens": 0,
+              "cache_audio_read_tokens": 0,
+              "output_audio_tokens": 0,
+              "details": {}
+            },
+            "model_name": "visionapp-planner",
+            "timestamp": "2026-10-28T19:46:16.088370Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_url": "http://127.0.0.1:1234/v1/",
+            "provider_details": {
+              "finish_reason": "stop",
+              "timestamp": "2026-10-28T19:46:15Z"
+            },
+            "provider_response_id": "chatcmpl-NiF20rSuye196IMvfD9n2xOK5I37bHnH",
+            "finish_reason": "stop",
+            "run_id": null,
+            "conversation_id": null,
+            "metadata": null,
+            "state": "complete"
+          }
+        ]
+      },
+      "error": null
+    },
+    {
+      "id": "0c5a511209e84a7c83d2328903f7a5e3",
+      "kind": "llm",
+      "name": "visionapp-planner",
+      "started_ns": 1793216778777805000,
+      "ended_ns": 1793216804082263000,
+      "status": "completed",
+      "request": {
+        "messages": [
+          {
+            "parts": [
+              {
+                "content": "You build the user's own computer vision application.\nWhen a reading request supplies a literal value after check for, contains, or\ncompare against, copy that exact value into expected_text. Do not ask for a value\nalready given.\nReturn ONE custom pipeline choice for a straightforward fully specified goal.\nOffer more only when the user asks for alternatives or genuinely different\nsupported approaches are needed; never generate near-duplicate choices.\nUse the dataset ontology's class names exactly and interpret the user's goal.\nAn annotation label means an object class; it does NOT mean OCR text printed on a box.\nFill objects, min_confidence, count_threshold, count_operator, hold_seconds, use_zones, zone_ids,\nexpected_text, match_mode, match_emit, metric and target.\nCopy any explicitly requested metric and target exactly. Otherwise default to\nrecall target 0.9 for detection/damage, count_mae target 0.5 for counting.\nPure detection or counting without requested event behavior uses count_threshold\nnull; do not invent a count trigger. A requested local evidence event on any\ndetection uses count_threshold 1. For 'full' without a given capacity, ask what\ncount makes it full. Copy explicit count thresholds and hold durations exactly.\nExplicit create-event, flag, and save-evidence requests require the event rule;\ndo not describe it in message while omitting count_threshold.\nPreserve the existing local-evidence meaning of save/record a crop or frame for review: on\nany detection use count_threshold 1 with a local event sink. These are requests\nfor saved evidence, not image transformations or external alert destinations.\nPreserve count_operator exactly: at least >=, more than >, at most <=, fewer than <,\nexactly ==, not equal !=. Zero is a valid threshold. Convert supplied minutes to\nseconds in hold_seconds; spelled quantities have the same value as digits.\nNo/without/don't/disable event requests remain count-only with a null threshold.\nExplicit no-storage/no-crop/no-saved-evidence constraints are unsupported for\napproved runs, which retain local evidence. Ask for clarification; omitting an\nevent trigger does not disable that storage.\nIf a supplied condition cannot be expressed, ask instead of changing its values.\nNo unrelated example applications may be added.\nDefault use_zones false and zone_ids [] for whole-image detection or counting.\nIf the request never mentions a lane, zone, region, area or boundary, do not add\na region filter, even when saved geometry exists in the dataset context.\nSaved region names are available context, not a request to use those regions.\nUse use_zones true whenever the goal asks per-lane counts, saved/marked regions,\nor objects inside named regions. zone_ids lists exact requested region names;\n[] means all saved regions. Do not convert a spatial task into whole-image counts.\nThe dataset context supplies confirmed region names, and the host requests drawing\nwhen boundaries are missing. A name alone never establishes geometry.\nAll choices use use_case custom. Use pipeline_type detection for object detection\nor counting, with expected_text null. Only when the user asks to READ printed\ntext or barcodes use pipeline_type ocr or barcode, objects [], use_zones false,\nzone_ids [], and metric text_accuracy. Pure reading/showing codes uses expected_text\nnull; it needs no global SKU. Comparing/checking a value uses the expected_text\nsupplied by the user or asks what value to compare. Preserve match_mode: exact\nequality/equals or exact matching uses exact; contains or substring matching uses\ncontains. Default contains only if no explicit matching mode is supplied.\nDo not change the expected literal or substitute contains for an exact match.\nUse match_emit matched for an event only when the comparison matches, mismatched\nfor an event only when it does not match, and all for plain check-whether requests.\nAn unresolved expected/correct SKU or code is not a literal value; ask for its\nvalue rather than putting a placeholder such as expected SKU in expected_text.\nA supplied quoted literal or a direct user clarification is the exact value.\nPreserve numeric barcodes as strings, including every leading zero; bare values\nsuch as SKU001 or APPLE are valid. Do not invent an expected value absent from\nthe brief or clarification. Generic expected/correct-code references still need\na value, unless the user explicitly quotes that phrase as the literal.\nSaved annotation class names alone\nnever request OCR. Ask up to three questions\nonly if the task cannot be specified from the brief and saved dataset context.\nIf classes and detection parameters are present, create the proposal now.\nOutput only a typed decision; the application compiles it into an editable graph,\nvalidates it and previews imported samples. Do not claim evaluation accuracy,\napprove deployment, review labels, execute code, send alerts or invent detections.\nExample response: {\"message\":\"Detect the requested classes.\",\"questions\":[],\n\"choices\":[{\"use_case\":\"custom\",\"pipeline_type\":\"detection\",\"objects\":[\"bolt\",\"washer\"],\n\"min_confidence\":0.4,\"count_threshold\":null,\"hold_seconds\":0,\n\"expected_text\":null,\"use_zones\":false,\"zone_ids\":[],\"metric\":\"recall\",\"target\":0.9}]}.\nCount-only example: \"Count pallets per saved lane. No alerts.\" means objects [\"pallet\"],\nuse_zones true, zone_ids [], count_threshold null, metric count_mae, target 0.5.\nReading-only example: \"Read package labels and show their codes\" means pipeline_type ocr,\nobjects [], expected_text null, use_zones false, zone_ids [], metric text_accuracy, target 0.95.\n\nBuild the user's own computer vision app. Use their saved ontology class names exactly. Detection labels stay unreviewed proposals until the user accepts or edits them. Choose typed blocks from the implemented catalog; do not force a warehouse preset. Ask for missing objects or expected output, not a preset selection.\nYou may ask at most 3 further questions in this project.",
+                "timestamp": "2026-10-28T19:45:00.868441Z",
+                "dynamic_ref": null,
+                "part_kind": "system-prompt"
+              },
+              {
+                "content": "Task brief:\nCurrent app context (preserve unless the user requests a change):\n{\"existing_goal\":\"\",\"existing_app\":[],\"conversation\":[]}\nUser request:\nRead printed labels and create a local event only when the text exactly equals \"ABC-990\".\nAuthoritative engine context:\n{\"source_path\": \"media\", \"detector_model\": \"owlv2-base-patch16\", \"use_case\": \"custom\", \"dataset\": {\"revision\": 1, \"classes\": [], \"image_count\": 2, \"reviewed_count\": 0, \"annotation_count\": 0, \"split_counts\": {\"unassigned\": 2}, \"saved_zone_ids\": [], \"zones_confirmed\": false, \"zone_origin\": \"unconfirmed\"}, \"zones_path\": \"zones/lanes.json\", \"source_provenance\": \"imported media\", \"implemented_blocks\": [{\"type\": \"frame_sample\", \"description\": \"Sample frames at a bounded rate.\"}, {\"type\": \"detect\", \"description\": \"Run a locally installed detector.\"}, {\"type\": \"detect_open_vocab\", \"description\": \"Detect text-prompted classes using local OWLv2.\"}, {\"type\": \"zone_filter\", \"description\": \"Keep objects whose center is inside a polygon.\"}, {\"type\": \"count_per_zone\", \"description\": \"Count detections in each named zone.\"}, {\"type\": \"rule\", \"description\": \"Compare zone counts using a small safe expression language.\"}, {\"type\": \"sink_event\", \"description\": \"Emit local evidence events; delivery is separately approved.\"}, {\"type\": \"ocr\", \"description\": \"Read text with native Apple Vision.\"}, {\"type\": \"barcode\", \"description\": \"Read barcode payloads with native Apple Vision.\"}, {\"type\": \"match\", \"description\": \"Compare recognized text with an expected value.\"}, {\"type\": \"vlm_judge\", \"description\": \"Ask a configured local vision model for a bounded evidence judgement.\"}, {\"type\": \"resize\", \"description\": \"Resize input pixels; normalized boxes remain unchanged.\"}, {\"type\": \"crop\", \"description\": \"Crop a normalized rectangle and preserve coordinate transforms.\"}]}",
+                "timestamp": "2026-10-28T19:45:00.868462Z",
+                "part_kind": "user-prompt"
+              }
+            ],
+            "timestamp": "2026-10-28T19:45:00.868961Z",
+            "instructions": null,
+            "kind": "request",
+            "run_id": "01a1840b-61c1-7412-b81d-66ceb0bf4ccc",
+            "conversation_id": "01a1840b-61c1-7412-b81d-66cdad9dbd41",
+            "metadata": null
+          },
+          {
+            "parts": [
+              {
+                "content": "{\"message\":\"Read printed labels and create a local event only when the text exactly equals \\\"ABC-990\\\".\",\"questions\":[],\"choices\":[{\"metric\":\"text_accuracy\",\"target\":0.95,\"use_case\":\"custom\",\"pipeline_type\":\"ocr\",\"objects\":[],\"min_confidence\":0.4,\"count_threshold\":1,\"hold_seconds\":0,\"expected_text\":\"ABC-990\",\"use_zones\":false,\"zone_ids\":[]\n}]}",
+                "id": null,
+                "provider_name": null,
+                "provider_details": null,
+                "part_kind": "text"
+              }
+            ],
+            "usage": {
+              "input_tokens": 1685,
+              "cache_write_tokens": 0,
+              "cache_read_tokens": 4,
+              "output_tokens": 94,
+              "input_audio_tokens": 0,
+              "cache_audio_read_tokens": 0,
+              "output_audio_tokens": 0,
+              "details": {}
+            },
+            "model_name": "visionapp-planner",
+            "timestamp": "2026-10-28T19:46:16.088370Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_url": "http://127.0.0.1:1234/v1/",
+            "provider_details": {
+              "finish_reason": "stop",
+              "timestamp": "2026-10-28T19:46:15Z"
+            },
+            "provider_response_id": "chatcmpl-NiF20rSuye196IMvfD9n2xOK5I37bHnH",
+            "finish_reason": "stop",
+            "run_id": "01a1840b-61c1-7412-b81d-66ceb0bf4ccc",
+            "conversation_id": "01a1840b-61c1-7412-b81d-66cdad9dbd41",
+            "metadata": null,
+            "state": "complete"
+          },
+          {
+            "parts": [
+              {
+                "content": "The user explicitly requested match_mode 'exact'; preserve it exactly instead of changing equality or substring semantics",
+                "tool_name": null,
+                "tool_call_id": "pyd_ai_54a93de95c8c4743b9197324cececad6",
+                "timestamp": "2026-10-28T19:46:18.676020Z",
+                "part_kind": "retry-prompt"
+              }
+            ],
+            "timestamp": "2026-10-28T19:46:18.678577Z",
+            "instructions": null,
+            "kind": "request",
+            "run_id": "01a1840b-61c1-7412-b81d-66ceb0bf4ccc",
+            "conversation_id": "01a1840b-61c1-7412-b81d-66cdad9dbd41",
+            "metadata": null
+          }
+        ],
+        "model_settings": {
+          "temperature": 0,
+          "max_tokens": 1600
+        },
+        "output_schema": {
+          "$defs": {
+            "CustomPatternChoice": {
+              "additionalProperties": false,
+              "properties": {
+                "use_case": {
+                  "const": "custom",
+                  "default": "custom",
+                  "title": "Use Case",
+                  "type": "string"
+                },
+                "pipeline_type": {
+                  "default": "detection",
+                  "enum": [
+                    "detection",
+                    "ocr",
+                    "barcode"
+                  ],
+                  "title": "Pipeline Type",
+                  "type": "string"
+                },
+                "objects": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 20,
+                  "title": "Objects",
+                  "type": "array"
+                },
+                "min_confidence": {
+                  "default": 0.4,
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Min Confidence",
+                  "type": "number"
+                },
+                "count_threshold": {
+                  "anyOf": [
+                    {
+                      "maximum": 10000,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Count Threshold"
+                },
+                "count_operator": {
+                  "default": ">=",
+                  "enum": [
+                    ">=",
+                    "<=",
+                    ">",
+                    "<",
+                    "==",
+                    "!="
+                  ],
+                  "title": "Count Operator",
+                  "type": "string"
+                },
+                "hold_seconds": {
+                  "default": 0,
+                  "maximum": 3600,
+                  "minimum": 0,
+                  "title": "Hold Seconds",
+                  "type": "number"
+                },
+                "expected_text": {
+                  "anyOf": [
+                    {
+                      "maxLength": 500,
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Expected Text"
+                },
+                "match_mode": {
+                  "default": "contains",
+                  "enum": [
+                    "contains",
+                    "exact"
+                  ],
+                  "title": "Match Mode",
+                  "type": "string"
+                },
+                "match_emit": {
+                  "default": "all",
+                  "enum": [
+                    "all",
+                    "matched",
+                    "mismatched"
+                  ],
+                  "title": "Match Emit",
+                  "type": "string"
+                },
+                "use_zones": {
+                  "default": false,
+                  "title": "Use Zones",
+                  "type": "boolean"
+                },
+                "zone_ids": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 20,
+                  "title": "Zone Ids",
+                  "type": "array"
+                },
+                "metric": {
+                  "enum": [
+                    "count_mae",
+                    "precision",
+                    "recall",
+                    "text_accuracy"
+                  ],
+                  "title": "Metric",
+                  "type": "string"
+                },
+                "target": {
+                  "minimum": 0,
+                  "title": "Target",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "metric",
+                "target"
+              ],
+              "title": "CustomPatternChoice",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "description": "Custom authoring schema does not offer unrelated warehouse preset choices.",
+          "properties": {
+            "message": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Message",
+              "type": "string"
+            },
+            "questions": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 3,
+              "title": "Questions",
+              "type": "array"
+            },
+            "choices": {
+              "items": {
+                "$ref": "#/$defs/CustomPatternChoice"
+              },
+              "maxItems": 3,
+              "title": "Choices",
+              "type": "array"
+            }
+          },
+          "required": [
+            "message",
+            "questions",
+            "choices"
+          ],
+          "title": "CustomPlanDecision",
+          "type": "object"
+        }
+      },
+      "result": {
+        "messages": [
+          {
+            "parts": [
+              {
+                "content": "{\"message\":\"Read printed labels and create a local event only when the text exactly equals \\\"ABC-990\\\".\",\"questions\":[],\"choices\":[{\"metric\":\"text_accuracy\",\"target\":0.95,\"use_case\":\"custom\",\"pipeline_type\":\"ocr\",\"objects\":[],\"min_confidence\":0.4,\"count_threshold\":1,\"hold_seconds\":0,\"expected_text\":\"ABC-990\",\"use_zones\":false,\"zone_ids\":[\n\"],\" ]}]}",
+                "id": null,
+                "provider_name": null,
+                "provider_details": null,
+                "part_kind": "text"
+              }
+            ],
+            "usage": {
+              "input_tokens": 1818,
+              "cache_write_tokens": 0,
+              "cache_read_tokens": 1681,
+              "output_tokens": 96,
+              "input_audio_tokens": 0,
+              "cache_audio_read_tokens": 0,
+              "output_audio_tokens": 0,
+              "details": {}
+            },
+            "model_name": "visionapp-planner",
+            "timestamp": "2026-10-28T19:46:43.999202Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_url": "http://127.0.0.1:1234/v1/",
+            "provider_details": {
+              "finish_reason": "stop",
+              "timestamp": "2026-10-28T19:46:43Z"
+            },
+            "provider_response_id": "chatcmpl-Za3IiK4UZG5KQl2krhwU6GMN1CWBstWY",
+            "finish_reason": "stop",
+            "run_id": null,
+            "conversation_id": null,
+            "metadata": null,
+            "state": "complete"
+          }
+        ]
+      },
+      "error": null
+    },
+    {
+      "id": "7f1a8b8a5ed048b5b17f6ba0a346f96c",
+      "kind": "llm",
+      "name": "visionapp-planner",
+      "started_ns": 1793216804200134000,
+      "ended_ns": 1793216829895489000,
+      "status": "completed",
+      "request": {
+        "messages": [
+          {
+            "parts": [
+              {
+                "content": "You build the user's own computer vision application.\nWhen a reading request supplies a literal value after check for, contains, or\ncompare against, copy that exact value into expected_text. Do not ask for a value\nalready given.\nReturn ONE custom pipeline choice for a straightforward fully specified goal.\nOffer more only when the user asks for alternatives or genuinely different\nsupported approaches are needed; never generate near-duplicate choices.\nUse the dataset ontology's class names exactly and interpret the user's goal.\nAn annotation label means an object class; it does NOT mean OCR text printed on a box.\nFill objects, min_confidence, count_threshold, count_operator, hold_seconds, use_zones, zone_ids,\nexpected_text, match_mode, match_emit, metric and target.\nCopy any explicitly requested metric and target exactly. Otherwise default to\nrecall target 0.9 for detection/damage, count_mae target 0.5 for counting.\nPure detection or counting without requested event behavior uses count_threshold\nnull; do not invent a count trigger. A requested local evidence event on any\ndetection uses count_threshold 1. For 'full' without a given capacity, ask what\ncount makes it full. Copy explicit count thresholds and hold durations exactly.\nExplicit create-event, flag, and save-evidence requests require the event rule;\ndo not describe it in message while omitting count_threshold.\nPreserve the existing local-evidence meaning of save/record a crop or frame for review: on\nany detection use count_threshold 1 with a local event sink. These are requests\nfor saved evidence, not image transformations or external alert destinations.\nPreserve count_operator exactly: at least >=, more than >, at most <=, fewer than <,\nexactly ==, not equal !=. Zero is a valid threshold. Convert supplied minutes to\nseconds in hold_seconds; spelled quantities have the same value as digits.\nNo/without/don't/disable event requests remain count-only with a null threshold.\nExplicit no-storage/no-crop/no-saved-evidence constraints are unsupported for\napproved runs, which retain local evidence. Ask for clarification; omitting an\nevent trigger does not disable that storage.\nIf a supplied condition cannot be expressed, ask instead of changing its values.\nNo unrelated example applications may be added.\nDefault use_zones false and zone_ids [] for whole-image detection or counting.\nIf the request never mentions a lane, zone, region, area or boundary, do not add\na region filter, even when saved geometry exists in the dataset context.\nSaved region names are available context, not a request to use those regions.\nUse use_zones true whenever the goal asks per-lane counts, saved/marked regions,\nor objects inside named regions. zone_ids lists exact requested region names;\n[] means all saved regions. Do not convert a spatial task into whole-image counts.\nThe dataset context supplies confirmed region names, and the host requests drawing\nwhen boundaries are missing. A name alone never establishes geometry.\nAll choices use use_case custom. Use pipeline_type detection for object detection\nor counting, with expected_text null. Only when the user asks to READ printed\ntext or barcodes use pipeline_type ocr or barcode, objects [], use_zones false,\nzone_ids [], and metric text_accuracy. Pure reading/showing codes uses expected_text\nnull; it needs no global SKU. Comparing/checking a value uses the expected_text\nsupplied by the user or asks what value to compare. Preserve match_mode: exact\nequality/equals or exact matching uses exact; contains or substring matching uses\ncontains. Default contains only if no explicit matching mode is supplied.\nDo not change the expected literal or substitute contains for an exact match.\nUse match_emit matched for an event only when the comparison matches, mismatched\nfor an event only when it does not match, and all for plain check-whether requests.\nAn unresolved expected/correct SKU or code is not a literal value; ask for its\nvalue rather than putting a placeholder such as expected SKU in expected_text.\nA supplied quoted literal or a direct user clarification is the exact value.\nPreserve numeric barcodes as strings, including every leading zero; bare values\nsuch as SKU001 or APPLE are valid. Do not invent an expected value absent from\nthe brief or clarification. Generic expected/correct-code references still need\na value, unless the user explicitly quotes that phrase as the literal.\nSaved annotation class names alone\nnever request OCR. Ask up to three questions\nonly if the task cannot be specified from the brief and saved dataset context.\nIf classes and detection parameters are present, create the proposal now.\nOutput only a typed decision; the application compiles it into an editable graph,\nvalidates it and previews imported samples. Do not claim evaluation accuracy,\napprove deployment, review labels, execute code, send alerts or invent detections.\nExample response: {\"message\":\"Detect the requested classes.\",\"questions\":[],\n\"choices\":[{\"use_case\":\"custom\",\"pipeline_type\":\"detection\",\"objects\":[\"bolt\",\"washer\"],\n\"min_confidence\":0.4,\"count_threshold\":null,\"hold_seconds\":0,\n\"expected_text\":null,\"use_zones\":false,\"zone_ids\":[],\"metric\":\"recall\",\"target\":0.9}]}.\nCount-only example: \"Count pallets per saved lane. No alerts.\" means objects [\"pallet\"],\nuse_zones true, zone_ids [], count_threshold null, metric count_mae, target 0.5.\nReading-only example: \"Read package labels and show their codes\" means pipeline_type ocr,\nobjects [], expected_text null, use_zones false, zone_ids [], metric text_accuracy, target 0.95.\n\nBuild the user's own computer vision app. Use their saved ontology class names exactly. Detection labels stay unreviewed proposals until the user accepts or edits them. Choose typed blocks from the implemented catalog; do not force a warehouse preset. Ask for missing objects or expected output, not a preset selection.\nYou may ask at most 3 further questions in this project.",
+                "timestamp": "2026-10-28T19:45:00.868441Z",
+                "dynamic_ref": null,
+                "part_kind": "system-prompt"
+              },
+              {
+                "content": "Task brief:\nCurrent app context (preserve unless the user requests a change):\n{\"existing_goal\":\"\",\"existing_app\":[],\"conversation\":[]}\nUser request:\nRead printed labels and create a local event only when the text exactly equals \"ABC-990\".\nAuthoritative engine context:\n{\"source_path\": \"media\", \"detector_model\": \"owlv2-base-patch16\", \"use_case\": \"custom\", \"dataset\": {\"revision\": 1, \"classes\": [], \"image_count\": 2, \"reviewed_count\": 0, \"annotation_count\": 0, \"split_counts\": {\"unassigned\": 2}, \"saved_zone_ids\": [], \"zones_confirmed\": false, \"zone_origin\": \"unconfirmed\"}, \"zones_path\": \"zones/lanes.json\", \"source_provenance\": \"imported media\", \"implemented_blocks\": [{\"type\": \"frame_sample\", \"description\": \"Sample frames at a bounded rate.\"}, {\"type\": \"detect\", \"description\": \"Run a locally installed detector.\"}, {\"type\": \"detect_open_vocab\", \"description\": \"Detect text-prompted classes using local OWLv2.\"}, {\"type\": \"zone_filter\", \"description\": \"Keep objects whose center is inside a polygon.\"}, {\"type\": \"count_per_zone\", \"description\": \"Count detections in each named zone.\"}, {\"type\": \"rule\", \"description\": \"Compare zone counts using a small safe expression language.\"}, {\"type\": \"sink_event\", \"description\": \"Emit local evidence events; delivery is separately approved.\"}, {\"type\": \"ocr\", \"description\": \"Read text with native Apple Vision.\"}, {\"type\": \"barcode\", \"description\": \"Read barcode payloads with native Apple Vision.\"}, {\"type\": \"match\", \"description\": \"Compare recognized text with an expected value.\"}, {\"type\": \"vlm_judge\", \"description\": \"Ask a configured local vision model for a bounded evidence judgement.\"}, {\"type\": \"resize\", \"description\": \"Resize input pixels; normalized boxes remain unchanged.\"}, {\"type\": \"crop\", \"description\": \"Crop a normalized rectangle and preserve coordinate transforms.\"}]}",
+                "timestamp": "2026-10-28T19:45:00.868462Z",
+                "part_kind": "user-prompt"
+              }
+            ],
+            "timestamp": "2026-10-28T19:45:00.868961Z",
+            "instructions": null,
+            "kind": "request",
+            "run_id": "01a1840b-61c1-7412-b81d-66ceb0bf4ccc",
+            "conversation_id": "01a1840b-61c1-7412-b81d-66cdad9dbd41",
+            "metadata": null
+          },
+          {
+            "parts": [
+              {
+                "content": "{\"message\":\"Read printed labels and create a local event only when the text exactly equals \\\"ABC-990\\\".\",\"questions\":[],\"choices\":[{\"metric\":\"text_accuracy\",\"target\":0.95,\"use_case\":\"custom\",\"pipeline_type\":\"ocr\",\"objects\":[],\"min_confidence\":0.4,\"count_threshold\":1,\"hold_seconds\":0,\"expected_text\":\"ABC-990\",\"use_zones\":false,\"zone_ids\":[]\n}]}",
+                "id": null,
+                "provider_name": null,
+                "provider_details": null,
+                "part_kind": "text"
+              }
+            ],
+            "usage": {
+              "input_tokens": 1685,
+              "cache_write_tokens": 0,
+              "cache_read_tokens": 4,
+              "output_tokens": 94,
+              "input_audio_tokens": 0,
+              "cache_audio_read_tokens": 0,
+              "output_audio_tokens": 0,
+              "details": {}
+            },
+            "model_name": "visionapp-planner",
+            "timestamp": "2026-10-28T19:46:16.088370Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_url": "http://127.0.0.1:1234/v1/",
+            "provider_details": {
+              "finish_reason": "stop",
+              "timestamp": "2026-10-28T19:46:15Z"
+            },
+            "provider_response_id": "chatcmpl-NiF20rSuye196IMvfD9n2xOK5I37bHnH",
+            "finish_reason": "stop",
+            "run_id": "01a1840b-61c1-7412-b81d-66ceb0bf4ccc",
+            "conversation_id": "01a1840b-61c1-7412-b81d-66cdad9dbd41",
+            "metadata": null,
+            "state": "complete"
+          },
+          {
+            "parts": [
+              {
+                "content": "The user explicitly requested match_mode 'exact'; preserve it exactly instead of changing equality or substring semantics",
+                "tool_name": null,
+                "tool_call_id": "pyd_ai_54a93de95c8c4743b9197324cececad6",
+                "timestamp": "2026-10-28T19:46:18.676020Z",
+                "part_kind": "retry-prompt"
+              }
+            ],
+            "timestamp": "2026-10-28T19:46:18.678577Z",
+            "instructions": null,
+            "kind": "request",
+            "run_id": "01a1840b-61c1-7412-b81d-66ceb0bf4ccc",
+            "conversation_id": "01a1840b-61c1-7412-b81d-66cdad9dbd41",
+            "metadata": null
+          },
+          {
+            "parts": [
+              {
+                "content": "{\"message\":\"Read printed labels and create a local event only when the text exactly equals \\\"ABC-990\\\".\",\"questions\":[],\"choices\":[{\"metric\":\"text_accuracy\",\"target\":0.95,\"use_case\":\"custom\",\"pipeline_type\":\"ocr\",\"objects\":[],\"min_confidence\":0.4,\"count_threshold\":1,\"hold_seconds\":0,\"expected_text\":\"ABC-990\",\"use_zones\":false,\"zone_ids\":[\n\"],\" ]}]}",
+                "id": null,
+                "provider_name": null,
+                "provider_details": null,
+                "part_kind": "text"
+              }
+            ],
+            "usage": {
+              "input_tokens": 1818,
+              "cache_write_tokens": 0,
+              "cache_read_tokens": 1681,
+              "output_tokens": 96,
+              "input_audio_tokens": 0,
+              "cache_audio_read_tokens": 0,
+              "output_audio_tokens": 0,
+              "details": {}
+            },
+            "model_name": "visionapp-planner",
+            "timestamp": "2026-10-28T19:46:43.999202Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_url": "http://127.0.0.1:1234/v1/",
+            "provider_details": {
+              "finish_reason": "stop",
+              "timestamp": "2026-10-28T19:46:43Z"
+            },
+            "provider_response_id": "chatcmpl-Za3IiK4UZG5KQl2krhwU6GMN1CWBstWY",
+            "finish_reason": "stop",
+            "run_id": "01a1840b-61c1-7412-b81d-66ceb0bf4ccc",
+            "conversation_id": "01a1840b-61c1-7412-b81d-66cdad9dbd41",
+            "metadata": null,
+            "state": "complete"
+          },
+          {
+            "parts": [
+              {
+                "content": [
+                  {
+                    "type": "value_error",
+                    "loc": [
+                      "choices",
+                      0
+                    ],
+                    "msg": "Value error, Object-count regions do not apply to an OCR/barcode reader",
+                    "input": {
+                      "metric": "text_accuracy",
+                      "target": 0.95,
+                      "use_case": "custom",
+                      "pipeline_type": "ocr",
+                      "objects": [],
+                      "min_confidence": 0.4,
+                      "count_threshold": 1,
+                      "hold_seconds": 0,
+                      "expected_text": "ABC-990",
+                      "use_zones": false,
+                      "zone_ids": [
+                        "],"
+                      ]
+                    }
+                  }
+                ],
+                "tool_name": null,
+                "tool_call_id": "pyd_ai_4d193e4ad06c4ba185cd907a6ec4606c",
+                "timestamp": "2026-10-28T19:46:44.183219Z",
+                "part_kind": "retry-prompt"
+              }
+            ],
+            "timestamp": "2026-10-28T19:46:44.183689Z",
+            "instructions": null,
+            "kind": "request",
+            "run_id": "01a1840b-61c1-7412-b81d-66ceb0bf4ccc",
+            "conversation_id": "01a1840b-61c1-7412-b81d-66cdad9dbd41",
+            "metadata": null
+          }
+        ],
+        "model_settings": {
+          "temperature": 0,
+          "max_tokens": 1600
+        },
+        "output_schema": {
+          "$defs": {
+            "CustomPatternChoice": {
+              "additionalProperties": false,
+              "properties": {
+                "use_case": {
+                  "const": "custom",
+                  "default": "custom",
+                  "title": "Use Case",
+                  "type": "string"
+                },
+                "pipeline_type": {
+                  "default": "detection",
+                  "enum": [
+                    "detection",
+                    "ocr",
+                    "barcode"
+                  ],
+                  "title": "Pipeline Type",
+                  "type": "string"
+                },
+                "objects": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 20,
+                  "title": "Objects",
+                  "type": "array"
+                },
+                "min_confidence": {
+                  "default": 0.4,
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Min Confidence",
+                  "type": "number"
+                },
+                "count_threshold": {
+                  "anyOf": [
+                    {
+                      "maximum": 10000,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Count Threshold"
+                },
+                "count_operator": {
+                  "default": ">=",
+                  "enum": [
+                    ">=",
+                    "<=",
+                    ">",
+                    "<",
+                    "==",
+                    "!="
+                  ],
+                  "title": "Count Operator",
+                  "type": "string"
+                },
+                "hold_seconds": {
+                  "default": 0,
+                  "maximum": 3600,
+                  "minimum": 0,
+                  "title": "Hold Seconds",
+                  "type": "number"
+                },
+                "expected_text": {
+                  "anyOf": [
+                    {
+                      "maxLength": 500,
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Expected Text"
+                },
+                "match_mode": {
+                  "default": "contains",
+                  "enum": [
+                    "contains",
+                    "exact"
+                  ],
+                  "title": "Match Mode",
+                  "type": "string"
+                },
+                "match_emit": {
+                  "default": "all",
+                  "enum": [
+                    "all",
+                    "matched",
+                    "mismatched"
+                  ],
+                  "title": "Match Emit",
+                  "type": "string"
+                },
+                "use_zones": {
+                  "default": false,
+                  "title": "Use Zones",
+                  "type": "boolean"
+                },
+                "zone_ids": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 20,
+                  "title": "Zone Ids",
+                  "type": "array"
+                },
+                "metric": {
+                  "enum": [
+                    "count_mae",
+                    "precision",
+                    "recall",
+                    "text_accuracy"
+                  ],
+                  "title": "Metric",
+                  "type": "string"
+                },
+                "target": {
+                  "minimum": 0,
+                  "title": "Target",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "metric",
+                "target"
+              ],
+              "title": "CustomPatternChoice",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "description": "Custom authoring schema does not offer unrelated warehouse preset choices.",
+          "properties": {
+            "message": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Message",
+              "type": "string"
+            },
+            "questions": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 3,
+              "title": "Questions",
+              "type": "array"
+            },
+            "choices": {
+              "items": {
+                "$ref": "#/$defs/CustomPatternChoice"
+              },
+              "maxItems": 3,
+              "title": "Choices",
+              "type": "array"
+            }
+          },
+          "required": [
+            "message",
+            "questions",
+            "choices"
+          ],
+          "title": "CustomPlanDecision",
+          "type": "object"
+        }
+      },
+      "result": {
+        "messages": [
+          {
+            "parts": [
+              {
+                "content": "{\"message\":\"Read printed labels and create a local event only when the text exactly equals \\\"ABC-990\\\".\",\"questions\":[],\"choices\":[{\"metric\":\"text_accuracy\",\"target\":0.95,\"use_case\":\"custom\",\"pipeline_type\":\"ocr\",\"objects\":[],\"min_confidence\":0.4,\"count_threshold\":null,\"hold_seconds\":0,\"expected_text\":\"ABC-990\",\"use_zones\":false,\"zone_ids\":[]\n}]}",
+                "id": null,
+                "provider_name": null,
+                "provider_details": null,
+                "part_kind": "text"
+              }
+            ],
+            "usage": {
+              "input_tokens": 2093,
+              "cache_write_tokens": 0,
+              "cache_read_tokens": 1814,
+              "output_tokens": 94,
+              "input_audio_tokens": 0,
+              "cache_audio_read_tokens": 0,
+              "output_audio_tokens": 0,
+              "details": {}
+            },
+            "model_name": "visionapp-planner",
+            "timestamp": "2026-10-28T19:47:09.764421Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_url": "http://127.0.0.1:1234/v1/",
+            "provider_details": {
+              "finish_reason": "stop",
+              "timestamp": "2026-10-28T19:47:09Z"
+            },
+            "provider_response_id": "chatcmpl-flDudWuvplfODxFmwjxugneuUlolmFd7",
+            "finish_reason": "stop",
+            "run_id": null,
+            "conversation_id": null,
+            "metadata": null,
+            "state": "complete"
+          }
+        ]
+      },
+      "error": null
+    }
+  ],
+  "history": [
+    {
+      "at": 1793216700.042538,
+      "action": "begin",
+      "phase": "plan",
+      "detail": ""
+    },
+    {
+      "at": 1793216830.049629,
+      "action": "failed",
+      "phase": "plan",
+      "detail": "Exceeded maximum output retries (2)"
+    }
+  ],
+  "decision": null,
+  "result": null,
+  "error": "Exceeded maximum output retries (2)"
+}

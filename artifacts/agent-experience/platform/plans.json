@@ -1,0 +1,456 @@
+[
+  {
+    "id": "77a3f17e3d4142bf8e97d94e755b56b9",
+    "project_id": "70fca89f71a84d0f",
+    "build_id": "020592b8d936473c8efdbab8ccb0a64c",
+    "operation_id": "091c5e7d60f044a4a845dda794608bc8",
+    "revision": 1,
+    "parent_plan_id": null,
+    "created_at": "2026-10-29T01:22:16.955127+00:00",
+    "content_hash": "1b38f5b27a1e0c882741a955efaeebb54f8e9a9c2a8f878e6da74d8a2a995f2c",
+    "goal": "Read printed labels and create a local event only when the text exactly equals \"ABC-990\".",
+    "assumptions": [
+      "Use the project's imported media and saved region geometry.",
+      "A sample preview does not establish accuracy.",
+      "Evaluation requires reviewed labels on the same held-out data for every candidate."
+    ],
+    "candidates": [
+      {
+        "spec_version": "0.1",
+        "name": "custom-candidate-1",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "sample",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2
+            },
+            "inputs": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "read",
+            "type": "ocr",
+            "params": {},
+            "inputs": {
+              "image": "$sample.frame"
+            }
+          },
+          {
+            "id": "check",
+            "type": "match",
+            "params": {
+              "expected": "ABC-990",
+              "mode": "exact",
+              "emit": "matched"
+            },
+            "inputs": {
+              "text": "$read.text"
+            }
+          },
+          {
+            "id": "out",
+            "type": "sink_event",
+            "params": {},
+            "inputs": {
+              "event": "$check.event"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "text_accuracy",
+          "target": 0.95
+        }
+      }
+    ],
+    "required_capabilities": [
+      "block.frame_sample",
+      "block.match",
+      "block.ocr",
+      "block.sink_event",
+      "model.apple-vision"
+    ],
+    "experiments": [
+      {
+        "id": "plan",
+        "phase": "plan",
+        "description": "Apply the requested typed edit and preview affected candidates.",
+        "allowed_tools": [
+          "block_schema",
+          "blocks_list",
+          "build_refine",
+          "build_refinement_context",
+          "dataset_context",
+          "detect_open_vocab",
+          "suggest_labels"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "compile",
+        "phase": "compile",
+        "description": "Compile every candidate and preview up to five samples.",
+        "allowed_tools": [
+          "pipeline_run",
+          "pipeline_validate"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "evaluate",
+        "phase": "evaluate",
+        "description": "Prepare review data, then measure every candidate on the reviewed holdout.",
+        "allowed_tools": [
+          "build_context",
+          "build_prepare_review",
+          "build_propose_labels",
+          "dataset_context",
+          "eval_create",
+          "eval_run",
+          "pipeline_run",
+          "review_queue",
+          "suggest_labels"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "specialize",
+        "phase": "specialize",
+        "description": "After human approval, train and compare measured results.",
+        "allowed_tools": [
+          "build_context",
+          "build_train",
+          "eval_run",
+          "pipeline_run",
+          "train_start",
+          "train_status"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "operate",
+        "phase": "operate",
+        "description": "Run only with current human deployment approval.",
+        "allowed_tools": [
+          "build_operate",
+          "events_query",
+          "report_make",
+          "review_queue"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      }
+    ],
+    "metrics": [
+      {
+        "candidate_index": 0,
+        "metric": "text_accuracy",
+        "target": 0.95,
+        "direction": "maximize"
+      }
+    ],
+    "stop_conditions": [
+      "Stop on changed data, models, settings or workflow.",
+      "Stop if a required capability is unavailable or a tool fails.",
+      "Respect existing call, time and training budgets.",
+      "Pause at human review and approval checkpoints."
+    ],
+    "human_checkpoints": [
+      {
+        "id": "labels",
+        "phase": "evaluate",
+        "description": "Review labels before scoring.",
+        "requires_approval": true
+      },
+      {
+        "id": "training",
+        "phase": "specialize",
+        "description": "Approve the bounded training attempt.",
+        "requires_approval": true
+      },
+      {
+        "id": "deployment",
+        "phase": "operate",
+        "description": "Approve this evaluated candidate before recording a run.",
+        "requires_approval": true
+      },
+      {
+        "id": "delivery",
+        "phase": "operate",
+        "description": "Configure and approve delivery separately in Alerts.",
+        "requires_approval": true
+      }
+    ],
+    "snapshot": {
+      "workspace_hash": "82af4f874bcc95debcd7a4dc0339a2a6b28bf4503056fbca178a911b2c7f3f5a",
+      "dataset_hash": "dc6c101a70ea003480c9d9ac479753283e22797966696bd4c68d260e720beeed",
+      "model_hashes": [
+        "7047131e0930965904389b2a861ae690b72ddbdf2504074424d7c7eb344201aa",
+        "0b79551be09919c94ce45d4b72370250a6a85c48d792c0a02c370a0c82e71b5e"
+      ],
+      "settings_hash": "0a759c259264d0118dc4809a470c7378b308ed6813b6fa1a27c2781abbc053d4"
+    },
+    "skills": [
+      {
+        "id": "authoring",
+        "version": "1.0.0",
+        "sha256": "68dea50aabed360e591c70ec2f1e99206780a01c2dcf3ab90ed427f2c9bac108"
+      },
+      {
+        "id": "reading",
+        "version": "1.0.0",
+        "sha256": "1b3054a9d0b0f0e7544431624a76655824c2ec34474a6a43e110f446abb4690c"
+      },
+      {
+        "id": "alerting",
+        "version": "1.0.0",
+        "sha256": "3d0031531408e56f99c93aec804066d872fc58b4f7949954e5bd9ac09f49deb1"
+      }
+    ],
+    "revision_reason": "Initial typed proposal before compilation"
+  },
+  {
+    "id": "7ec1dfbfde9046cab9d200762b8055b9",
+    "project_id": "70fca89f71a84d0f",
+    "build_id": "020592b8d936473c8efdbab8ccb0a64c",
+    "operation_id": "020592b8d936473c8efdbab8ccb0a64c",
+    "revision": 2,
+    "parent_plan_id": "77a3f17e3d4142bf8e97d94e755b56b9",
+    "created_at": "2026-10-29T01:22:20.457466+00:00",
+    "content_hash": "5169a0394a702031abc8203fb7eb7bd5b9baf2b94ca79ec44f913dfc8a7e2497",
+    "goal": "Read printed labels and create a local event only when the text exactly equals \"ABC-990\".",
+    "assumptions": [
+      "Use the project's imported media and saved region geometry.",
+      "A sample preview does not establish accuracy.",
+      "Evaluation requires reviewed labels on the same held-out data for every candidate."
+    ],
+    "candidates": [
+      {
+        "spec_version": "0.1",
+        "name": "custom-candidate-1",
+        "inputs": {
+          "source": {
+            "type": "image_folder",
+            "path": "media"
+          }
+        },
+        "blocks": [
+          {
+            "id": "sample",
+            "type": "frame_sample",
+            "params": {
+              "fps": 2
+            },
+            "inputs": {
+              "frames": "$inputs.source"
+            }
+          },
+          {
+            "id": "read",
+            "type": "ocr",
+            "params": {},
+            "inputs": {
+              "image": "$sample.frame"
+            }
+          },
+          {
+            "id": "check",
+            "type": "match",
+            "params": {
+              "expected": "ABC-990",
+              "mode": "exact",
+              "emit": "matched"
+            },
+            "inputs": {
+              "text": "$read.text"
+            }
+          },
+          {
+            "id": "out",
+            "type": "sink_event",
+            "params": {},
+            "inputs": {
+              "event": "$check.event"
+            }
+          }
+        ],
+        "eval": {
+          "set": "reviewed-v1",
+          "metric": "text_accuracy",
+          "target": 0.95
+        }
+      }
+    ],
+    "required_capabilities": [
+      "block.frame_sample",
+      "block.match",
+      "block.ocr",
+      "block.sink_event",
+      "model.apple-vision"
+    ],
+    "experiments": [
+      {
+        "id": "plan",
+        "phase": "plan",
+        "description": "Apply the requested typed edit and preview affected candidates.",
+        "allowed_tools": [
+          "block_schema",
+          "blocks_list",
+          "build_refine",
+          "build_refinement_context",
+          "dataset_context",
+          "detect_open_vocab",
+          "suggest_labels"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "compile",
+        "phase": "compile",
+        "description": "Compile every candidate and preview up to five samples.",
+        "allowed_tools": [
+          "pipeline_run",
+          "pipeline_validate"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "evaluate",
+        "phase": "evaluate",
+        "description": "Prepare review data, then measure every candidate on the reviewed holdout.",
+        "allowed_tools": [
+          "build_context",
+          "build_prepare_review",
+          "build_propose_labels",
+          "dataset_context",
+          "eval_create",
+          "eval_run",
+          "pipeline_run",
+          "review_queue",
+          "suggest_labels"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "specialize",
+        "phase": "specialize",
+        "description": "After human approval, train and compare measured results.",
+        "allowed_tools": [
+          "build_context",
+          "build_train",
+          "eval_run",
+          "pipeline_run",
+          "train_start",
+          "train_status"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      },
+      {
+        "id": "operate",
+        "phase": "operate",
+        "description": "Run only with current human deployment approval.",
+        "allowed_tools": [
+          "build_operate",
+          "events_query",
+          "report_make",
+          "review_queue"
+        ],
+        "candidate_indices": [
+          0
+        ]
+      }
+    ],
+    "metrics": [
+      {
+        "candidate_index": 0,
+        "metric": "text_accuracy",
+        "target": 0.95,
+        "direction": "maximize"
+      }
+    ],
+    "stop_conditions": [
+      "Stop on changed data, models, settings or workflow.",
+      "Stop if a required capability is unavailable or a tool fails.",
+      "Respect existing call, time and training budgets.",
+      "Pause at human review and approval checkpoints."
+    ],
+    "human_checkpoints": [
+      {
+        "id": "labels",
+        "phase": "evaluate",
+        "description": "Review labels before scoring.",
+        "requires_approval": true
+      },
+      {
+        "id": "training",
+        "phase": "specialize",
+        "description": "Approve the bounded training attempt.",
+        "requires_approval": true
+      },
+      {
+        "id": "deployment",
+        "phase": "operate",
+        "description": "Approve this evaluated candidate before recording a run.",
+        "requires_approval": true
+      },
+      {
+        "id": "delivery",
+        "phase": "operate",
+        "description": "Configure and approve delivery separately in Alerts.",
+        "requires_approval": true
+      }
+    ],
+    "snapshot": {
+      "workspace_hash": "4d15029fab07beeb0f985eb3d21a13d212bb79bc488995237def8bba203e2525",
+      "dataset_hash": "dc6c101a70ea003480c9d9ac479753283e22797966696bd4c68d260e720beeed",
+      "model_hashes": [
+        "7047131e0930965904389b2a861ae690b72ddbdf2504074424d7c7eb344201aa",
+        "0b79551be09919c94ce45d4b72370250a6a85c48d792c0a02c370a0c82e71b5e"
+      ],
+      "settings_hash": "0a759c259264d0118dc4809a470c7378b308ed6813b6fa1a27c2781abbc053d4"
+    },
+    "skills": [
+      {
+        "id": "authoring",
+        "version": "1.0.0",
+        "sha256": "68dea50aabed360e591c70ec2f1e99206780a01c2dcf3ab90ed427f2c9bac108"
+      },
+      {
+        "id": "reading",
+        "version": "1.0.0",
+        "sha256": "1b3054a9d0b0f0e7544431624a76655824c2ec34474a6a43e110f446abb4690c"
+      },
+      {
+        "id": "alerting",
+        "version": "1.0.0",
+        "sha256": "3d0031531408e56f99c93aec804066d872fc58b4f7949954e5bd9ac09f49deb1"
+      }
+    ],
+    "revision_reason": "Next authorized experiment on the current reviewed project snapshot"
+  }
+]

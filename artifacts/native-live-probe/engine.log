@@ -1,0 +1,10 @@
+INFO:     Started server process [33327]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+/Users/manavrakeshku.modi/vision-agent/.venv/lib/python3.12/site-packages/transformers/models/owlv2/processing_owlv2.py:201: FutureWarning: `post_process_object_detection` method is deprecated for OwlVitProcessor and will be removed in v5. Use `post_process_grounded_object_detection` instead.
+  warnings.warn(
+INFO:     Shutting down
+INFO:     Waiting for background tasks to complete. (CTRL+C to force quit)
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [33327]

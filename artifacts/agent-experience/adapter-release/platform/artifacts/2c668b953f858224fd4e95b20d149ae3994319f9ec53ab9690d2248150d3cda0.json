@@ -1,0 +1,27 @@
+{
+  "artifact": {
+    "id": "2c668b953f858224fd4e95b20d149ae3994319f9ec53ab9690d2248150d3cda0",
+    "project_id": "692e0290946d493a",
+    "kind": "tool_output",
+    "title": "build_prepare_review result",
+    "created_at": "2026-10-29T02:10:49.555586+00:00",
+    "sha256": "2c668b953f858224fd4e95b20d149ae3994319f9ec53ab9690d2248150d3cda0",
+    "media_type": "application/json",
+    "size_bytes": 369
+  },
+  "content": {
+    "image_count": 20,
+    "reviewed_count": 0,
+    "evaluation_image_count": 20,
+    "evaluation_reviewed_count": 0,
+    "candidate_count": 2,
+    "can_propose_labels": true,
+    "fixture": false,
+    "training_eligible": false,
+    "review_subset_created": false,
+    "comparison_scopes": [
+      "0b82496f13b87613d5013cdc89803d59395ba6abfcffd2c67208e8192e1dc6e6",
+      "0b82496f13b87613d5013cdc89803d59395ba6abfcffd2c67208e8192e1dc6e6"
+    ]
+  }
+}

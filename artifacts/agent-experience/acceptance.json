@@ -1,0 +1,24 @@
+{
+  "project_id": "20a1a963820344a2",
+  "goal": "Count people in this warehouse footage and show bounding boxes.",
+  "refinement": "Lower confidence to 0.15",
+  "initial_preview_frames": 5,
+  "initial_preview_detections": 2,
+  "refined_preview_detections": 7,
+  "pipeline_changes": [
+    {
+      "path": "/blocks/1/params/min_conf",
+      "before": 0.4,
+      "after": 0.15
+    }
+  ],
+  "annotations": 20,
+  "proposal_images": 20,
+  "proposal_boxes": 2,
+  "reviewed_images": 0,
+  "after_continue_without_review": "awaiting_review",
+  "evaluation_count": 0,
+  "deployment_created": false,
+  "native_flow": "Home > Try warehouse footage > Build my app > actual preview > confidence follow-up > Review annotations > Continue building",
+  "limits": "Unreviewed proposals; real-recording accuracy not measured. Previous suggestions preserved across confidence refinement."
+}
