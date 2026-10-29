@@ -1,0 +1,13 @@
+{
+  "options": [
+    {
+      "model_id": "yolox-s-onnx-coco",
+      "capability_id": "model.yolox-s-onnx-coco",
+      "name": "YOLOX-s ONNX COCO (CPU)",
+      "action": "install",
+      "installed": false,
+      "download_bytes": 35869373,
+      "blockers": []
+    }
+  ]
+}

@@ -37,12 +37,14 @@ from engine.api.contracts import (
 from engine.api.dataset_routes import build_router as dataset_router
 from engine.api.evaluation_routes import evaluation_router
 from engine.api.live_routes import build_router as live_router
+from engine.api.provisioning_routes import provisioning_router
 from engine.api.sample_routes import build_router as sample_router
 from engine.builds.manager import BuildManager
 from engine.datasets import DatasetConflict, DatasetService
 from engine.evidence import events_csv
 from engine.jobs import Job, JobManager
 from engine.live import LiveManager
+from engine.provisioning import ProvisioningConflict, ProvisioningManager
 from engine.runtime_identity import runtime_identity
 from engine.service import WorkspaceService
 from engine.store.models import EventRecord, Message, Project, ReviewRecord, Settings
@@ -57,6 +59,7 @@ def create_app(data_dir: Path) -> FastAPI:
     alerts = AlertService(service)
     live = LiveManager(service)
     builds = BuildManager(service)
+    provisioning = ProvisioningManager(data_dir)
     identity = runtime_identity(data_dir)
 
     @asynccontextmanager
@@ -66,6 +69,7 @@ def create_app(data_dir: Path) -> FastAPI:
             yield
         finally:
             await builds.close()
+            await run_in_threadpool(provisioning.close)
             await run_in_threadpool(live.close)
             await run_in_threadpool(alerts.stop)
 
@@ -73,7 +77,9 @@ def create_app(data_dir: Path) -> FastAPI:
     app.state.service = service
     app.state.live = live
     app.state.builds = builds
+    app.state.provisioning = provisioning
     jobs = JobManager(service)
+    app.include_router(provisioning_router(provisioning))
     app.include_router(evaluation_router(service, builds))
     app.include_router(dataset_router(service))
     app.include_router(alert_router(alerts))
@@ -84,6 +90,7 @@ def create_app(data_dir: Path) -> FastAPI:
     app.include_router(capability_router(service))
     agent_states = AgentStateStore(service)
 
+    @app.exception_handler(ProvisioningConflict)
     @app.exception_handler(DatasetConflict)
     @app.exception_handler(AgentConflict)
     async def conflict(request: Request, error: DatasetConflict) -> JSONResponse:

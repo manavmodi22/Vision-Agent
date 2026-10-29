@@ -1,0 +1,158 @@
+{
+  "checked_at": "2026-10-29T03:15:38.263366+00:00",
+  "scope": "Native provisioning plan/job/receipt contracts, historical payload decoding, four mocked provisioning API fixtures, and four parent-captured real provisioning API responses. Native task ran no download, install, learned inference, user-project mutation, package or UI acceptance.",
+  "deterministic_checks": 182,
+  "historical_payload_checks": 14,
+  "results": {
+    "debug": {
+      "binary": "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Debug/VisionApp",
+      "sha256": "42a97ab09a3f679f68ec8503786e1dcc6c9dbe9629c2e5e567489d9db3fcb55c",
+      "result": {
+        "status": "passed",
+        "checks": 204
+      }
+    },
+    "release": {
+      "binary": "/Users/manavrakeshku.modi/vision-agent/app/.build/out/Products/Release/VisionApp",
+      "sha256": "1d0118e1696808b2b906251188ac7b9bde21b897cba4f7fcec91a5b35cd1245a",
+      "result": {
+        "status": "passed",
+        "checks": 204
+      }
+    }
+  },
+  "payloads": [
+    {
+      "path": "artifacts/capability-catalog-local.json",
+      "flag": "--capability-catalog",
+      "sha256": "de0c8f166c2c0b19f8ea4ef8860e430961782dcded2ceeb4d4686689fd4d4cea"
+    },
+    {
+      "path": "artifacts/platform-fixture/build-status.json",
+      "flag": "--build-status",
+      "sha256": "4f936e653217fe7c11dcffc70aba3e9e52d0050bc0fd9d7a91ec02f355c73a8d"
+    },
+    {
+      "path": "artifacts/platform-fixture/17b29cb6a2fa1a0dfe0b2ba95ecb2603091a2a485b36dda67a0acbfff81c50ea.json",
+      "flag": "--build-artifact",
+      "sha256": "81fa96a8f1d71432d2113292078d79c54a15387bebad06a153be80d4d451e910"
+    },
+    {
+      "path": "artifacts/platform-fixture/4c21b8ff8448b356bdfdb39e5f3c3ea71904da2a560cfb7c22fe298087361a04.json",
+      "flag": "--build-artifact",
+      "sha256": "388cf8540a3ce2b5597078f02d1fa9792ecdb5c21e9368380852268f027317f0"
+    },
+    {
+      "path": "artifacts/platform-fixture/4d2b86fd7e73cd2ef6c7589bbd4b4fbd59ee68233736c9be666a226062a83cd6.json",
+      "flag": "--build-artifact",
+      "sha256": "9515c54a3244bd58635c8b0accd9abb1750b85ed76ff836e8bcb1b4508e7bfce"
+    },
+    {
+      "path": "artifacts/platform-fixture/773ddc2398eb475fc0849d8ba79ddaf262360a118ed213c1fb7890d8df536305.json",
+      "flag": "--build-artifact",
+      "sha256": "96bef535b87c0a1f488ef1bf7ad710069492992dbd670b9da1eb0e02933ce843"
+    },
+    {
+      "path": "artifacts/platform-fixture/86b39764ab1c3b002f21a0592c99812a9300f409d2b140cde1f0649a13479176.json",
+      "flag": "--build-artifact",
+      "sha256": "b19ec406df1ec72e13d3561cbd19fbb9946d90a8db7f69c6d1e4432d80424a5b"
+    },
+    {
+      "path": "artifacts/platform-fixture/c4c5426b9af3a433e33ff7b038fd49c4dcae55a16369fc4712ad3d61a96fb5c5.json",
+      "flag": "--build-artifact",
+      "sha256": "702b439aca6548cc30fb374f472a2d189911748e7fc8f6ff2858ab1b9fef6cea"
+    },
+    {
+      "path": "artifacts/platform-fixture/fcc7c1493e3d62e23131daa63813469930e7fb09a4e4e117be4a080d26406cec.json",
+      "flag": "--build-artifact",
+      "sha256": "1dac00e18228a9e8f2cc6da2a6dd5ec12e37749538648492c1416363894efbc9"
+    },
+    {
+      "path": "artifacts/stronger-planner/qwen14-selection-warehouse.json",
+      "flag": "--planning-probe",
+      "sha256": "60ee3b0e3f225198750e4de57914b28576f5b47c38cc7fb01920ebc2cc41d601"
+    },
+    {
+      "path": "artifacts/evaluation-fairness/native-fixtures/configuration.json",
+      "flag": "--evaluation-configuration",
+      "sha256": "7b9426f06aaee757371fdbc7b97b45955b98a5ba42171e684c335104a20b604f",
+      "provenance": "Actual API software-contract fixture; inference explicitly mocked, not detector quality."
+    },
+    {
+      "path": "artifacts/evaluation-fairness/native-fixtures/readiness.json",
+      "flag": "--evaluation-readiness",
+      "sha256": "42e666522e8679cfac85077916b74ce6d78bc827e38e289cba9c6976e011043a",
+      "provenance": "Actual API software-contract fixture; inference explicitly mocked, not detector quality."
+    },
+    {
+      "path": "artifacts/evaluation-fairness/native-fixtures/result.json",
+      "flag": "--evaluation-result",
+      "sha256": "80dd11ee9d501418e495da38dfd2a9a5dded6a3147c7900fd291ff686e6b5089",
+      "provenance": "Actual API software-contract fixture; inference explicitly mocked, not detector quality."
+    },
+    {
+      "path": "artifacts/evaluation-fairness/native-fixtures/build-status.json",
+      "flag": "--build-status",
+      "sha256": "26d4b1929ae58fc10d06cb0a5abe40cb2b371d409d2655f06734d78d339957fe",
+      "provenance": "Actual API software-contract fixture; inference explicitly mocked, not detector quality."
+    },
+    {
+      "path": "artifacts/provisioning/mocked-api-fixtures/options.json",
+      "flag": "--provisioning-options",
+      "sha256": "12b7837f0f6728c40a5c45b9b23b048ffff9f2ea824ee032abdb5d916041c4ba",
+      "provenance": "Actual API software-contract fixture; download and inference explicitly mocked."
+    },
+    {
+      "path": "artifacts/provisioning/mocked-api-fixtures/plan.json",
+      "flag": "--provisioning-plan",
+      "sha256": "4ac338aa67c7cfbd5e7bdfb1b46d9d517c54c5fa3284e7ee48cce0682f2172b7",
+      "provenance": "Actual API software-contract fixture; download and inference explicitly mocked."
+    },
+    {
+      "path": "artifacts/provisioning/mocked-api-fixtures/job.json",
+      "flag": "--provisioning-job",
+      "sha256": "5575a11255c5af0d3349efa64da9916934cd8f012e9982e4370cc93e5e9e2f89",
+      "provenance": "Actual API software-contract fixture; download and inference explicitly mocked."
+    },
+    {
+      "path": "artifacts/provisioning/mocked-api-fixtures/health.json",
+      "flag": "--provisioning-health",
+      "sha256": "ae97b556440a3f7c471e3137b32aebb4be87b1c36cba8f5d068504a8f432492e",
+      "provenance": "Actual API software-contract fixture; download and inference explicitly mocked."
+    },
+    {
+      "path": "artifacts/provisioning/native-fixtures/options.json",
+      "flag": "--provisioning-options",
+      "sha256": "fa7a889f625e4f603d9a5f8d6f020e96f45e452b925eae8762a6f942ad203b42",
+      "provenance": "Parent-captured actual API response from isolated real official download, hash/size check and ONNX black-image smoke. Native check validates decoding only."
+    },
+    {
+      "path": "artifacts/provisioning/native-fixtures/plan.json",
+      "flag": "--provisioning-plan",
+      "sha256": "dd4554d8b731a2d2d45b72296aceac4b5526128df73ac9e510e734c9df1ac9a0",
+      "provenance": "Parent-captured actual API response from isolated real official download, hash/size check and ONNX black-image smoke. Native check validates decoding only."
+    },
+    {
+      "path": "artifacts/provisioning/native-fixtures/job.json",
+      "flag": "--provisioning-job",
+      "sha256": "03f2986b5d907b3f9cca2e5068fd563a38bdbbe02788001fcf408b058169f133",
+      "provenance": "Parent-captured actual API response from isolated real official download, hash/size check and ONNX black-image smoke. Native check validates decoding only."
+    },
+    {
+      "path": "artifacts/provisioning/native-fixtures/health.json",
+      "flag": "--provisioning-health",
+      "sha256": "2c07e21caa30126ed3afd793918d5ea4843aee1b7458996902357b79d32d8b68",
+      "provenance": "Parent-captured actual API response from isolated real official download, hash/size check and ONNX black-image smoke. Native check validates decoding only."
+    }
+  ],
+  "design": "docs/native-provisioning.md",
+  "limitations": [
+    "Mocked fixtures establish software compatibility only.",
+    "Real response decoding is separate from the actual download/inference that parent performed.",
+    "Smoke receipt establishes bounded adapter execution on the recorded generated input, not project quality.",
+    "Visible UI acceptance belongs to parent integration."
+  ],
+  "mocked_provisioning_payload_checks": 4,
+  "real_provisioning_payload_checks": 4,
+  "receipt_validation": "Fetches only explicit completed-job receipt ID; requires matching model, job, plan hash and no-quality-claim scope. Missing or mismatched evidence does not erase or promote the historical job result."
+}

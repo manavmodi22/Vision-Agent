@@ -1,0 +1,29 @@
+{
+  "id": "c7b118b947944340abc453535743e3b4",
+  "model_id": "yolox-s-onnx-coco",
+  "job_id": "288f5ec2c52f4254b835deae8de6b780",
+  "plan_hash": "9b2e629bd31dd05371ce75daa2d145a08c2df39aff2ed94e6574a8657fe50f04",
+  "created_at": "2026-10-29T03:15:07.368114+00:00",
+  "installation_hash": "736e07a9e9193050f4e0af0a399ebf82adabb09d39b9edb28c7336e61daf8139",
+  "runtime_snapshot": {
+    "runtime_source": "f0d1c365f956d3f57e11686ab58a1f7aa07a4595b2cb3f0b481a733a6a1451fb",
+    "python": "3.12.14",
+    "system": "Darwin",
+    "architecture": "arm64",
+    "kernel": "25.6.0",
+    "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+    "macos": "26.7.1",
+    "recipe": "056cffd49b31aa4de1d12c0d28a75e20a508693cd868fc1d0468767128a6650d",
+    "package:onnxruntime": "1.31.1",
+    "package:numpy": "2.5.4",
+    "package:Pillow": "12.3.0",
+    "package:opencv-python-headless": "4.14.0.94",
+    "package:pydantic": "2.14.1"
+  },
+  "input_description": "Generated black RGB image, 640 by 640 pixels; no user media",
+  "input_sha256": "af90227ef45eb554c3b8d30da879ed50fa48b3405808300e36f1a8d57f27efb5",
+  "elapsed_s": 0.31543125002644956,
+  "observation_count": 0,
+  "execution_identity_hash": "8a31316340f88c5de909f4ffd0bbf1dc5513cebffa00767affc8e63b605cdfbd",
+  "quality_claim": "none"
+}

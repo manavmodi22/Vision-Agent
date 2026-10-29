@@ -40,7 +40,9 @@ def validate_experiment_capabilities(service: WorkspaceService, required_ids: li
             if block in {"ocr", "barcode"}:
                 dependencies = ["model.apple-vision"]
             elif block == "detect_open_vocab":
-                dependencies = ["model.owlv2-base-patch16"]
+                dependencies = [key for key in required_ids if key in models and "detection" in models[key].task_types]
+                if not dependencies:
+                    dependencies = ["model.owlv2-base-patch16"]
             elif block == "vlm_judge":
                 if not settings.vlm_model:
                     raise ValueError("Configure a local vision model before validating block.vlm_judge")

@@ -4,7 +4,37 @@ Source: `agent-platform-revision.md`, adopted by the user on 2026-10-28. This ma
 retains the full requested outcome; partial implementation is not completion.
 The original five describe/build/prove/run/improve flows remain acceptance flows.
 
-Current software source is
+Current provisioning candidate source is
+`2f0804da25ccbd6047d9dee2389127f13e3aa944b2596e1b0e7b577e1d5363a5`.
+The [full suite](../artifacts/provisioning/full-tests-2f08.log) passes **758 tests in
+391.25 seconds**, strict mypy on **168 files** and repository Ruff. Its coordinated-
+negation correction also passes 112 focused checks in 4.37 seconds. Unchanged
+Debug and Release native binaries each pass **204 software/decoding checks**.
+[Fresh actual isolated installation](../artifacts/provisioning/installation-2f08.json)
+passes in **13.773 seconds**. The [exact original Qwen/MCP goal](../artifacts/provisioning/agent-2f08.json)
+passes with one response and two real preview frames in **75.757 seconds**.
+[Candidate bundle verification](../artifacts/provisioning/bundle-2f08.json) passes
+relocation/imports, OCR/fixture inference, actual YOLOX real-image/black-image
+inference and signature checks. No accuracy or deployment approval follows.
+
+[Native revalidation](../artifacts/provisioning/native-validation-2f08.json) verifies
+stale receipt handling and explicit zero-download restoration of readiness. The
+[native goal walkthrough](../artifacts/provisioning/native-agent-acceptance-2f08.json)
+passes describe/build/preview: one Qwen call (88.817 seconds), five preview frames,
+20 unreviewed annotation images, and the exact preview image opened in the editor.
+The new box-edit check remains **incomplete** because CUA ScreenCaptureKit returned
+an invalid-parameter error; annotations remained unchanged. The original project's
+four checked files are unchanged, and the QA project remains unreviewed in the app.
+[The canonical app copy and signature check passed](../artifacts/provisioning/package-installation-2f08.json), preserving the prior bundle; canonical relaunch UI is unverified.
+
+The [retained provisioning baseline `f0d1`](../artifacts/provisioning/baseline-f0d1.json)
+passes **732 tests in 426.56 seconds**, package relocation/ONNX smoke/signature
+checks and the actual native installation walkthrough. Its exact Qwen/MCP request
+failed the deterministic coordinated-negation guard; that failure and operation
+are preserved below. These installation successes do not establish a completed
+describe/build path or detector quality.
+
+The previous packaged software checkpoint is
 `7f621816c32bcfd849c3c1a8986aa86dbb72157e54b818455e24ed7384a41228`.
 It passes **672 Python tests in 264.02 seconds**, strict mypy on **151 files** and
 Ruff. Debug and Release native binaries each pass **173 software/decoding checks**
@@ -22,22 +52,60 @@ contextual evidence checkpoints in that workflow.
 | Requirement | Authoritative completion evidence | Current work |
 | --- | --- | --- |
 | Accurate capability discovery and health | Current machine catalog; adapter/prerequisite/smoke receipts; native catalog matches API | Machine catalog/API and prior packaged native catalog inspected; per-candidate model options/routing verified; request-bound training-purpose eligibility verified; unknown local checkpoints require an explicit model experiment |
-| Compatible approved provisioning with source hashes | Reproducible installer, verified source/weight hashes, failure recovery and native result | Existing individual installers; unified provisioning pending |
+| Compatible approved provisioning with source hashes | Reproducible installer, verified source/weight hashes, failure recovery and native result | First unified recipe is implemented for official pinned YOLOX-s ONNX: immutable plan, exact human approval, bounded durable job, streamed verification, atomic install and identity-bound smoke receipt. Actual isolated API install/replay and candidate package/inference checks pass on `2f08`; native runtime-stale receipt rejection and explicit zero-download revalidation pass. `f0d1` actual native download/install remains retained. Additional recipes and dependency installation remain pending |
 | Typed plan saved and shown before execution | Persisted immutable revision precedes first execution event; native plan visible | Saved-plan ordering and immutable revision contracts pass; actual Qwen/MCP exact-reading plan captured |
 | Separate bounded executor | Execution consumes stored revision; stale data/model/plan rejected; coded phase/tool authority tests | Phase, capability, snapshot and concurrent-action contracts pass |
 | Durable action timeline and artifacts | Matching start/finish events and content hashes for actual calls; crash/replay tests; native timeline | Actual MCP events, artifacts, evaluation references and replay tests pass; packaged native timeline, plan and contextual correction inspected |
 | Versioned Markdown playbooks | Packaged documents, typed metadata, exact hashes in actual plan/trace, selection and authority tests | Six packages ship in wheel; hashes captured in actual Qwen plan and verified before execution |
-| Common adapter contracts and new families | Actual detection/segmentation/reading outputs with timing/provenance; per-adapter hardware smoke | Typed evidence wrappers for existing detection and reading adapters pass contract tests and actual OWLv2/RT-DETR/native OCR runs; segmentation, VLM/training parity and new production families pending |
-| SAM 3, YOLO variant and OCR alternative comparison | Licensed pinned weights, supported hardware, actual same-task benchmark artifacts | Isolated YOLOX-s CPU and PaddleOCR CPU inference verified, neither registered; Paddle transitive runtime audited; SAM 3 unsupported on Mac pending hardware proof |
+| Common adapter contracts and new families | Actual detection/segmentation/reading outputs with timing/provenance; per-adapter hardware smoke | Common evidence wrappers cover existing detection/reading plus integrated YOLOX-s ONNX CPU. Actual OWLv2/RT-DETR/native OCR runs and YOLOX black-image/30-frame parity evidence exist; segmentation, VLM/training parity and further families remain pending |
+| SAM 3, YOLO variant and OCR alternative comparison | Licensed pinned weights, supported hardware, actual same-task benchmark artifacts | YOLOX-s ONNX is registered with exact COCO vocabulary, pinned official artifacts and a reviewed install recipe; integrated 30-frame outputs match the prior probe, including its failed 52.7% diagnostic recall. PaddleOCR remains an isolated CPU probe with transitive-runtime audit; SAM 3 and other YOLO variants remain unsupported |
 | Comparable candidate evaluation | Same reviewed holdout/task, aggregate and failure-slice metrics, latency/resources, explicit selection gate | Shared immutable validation protocol binds all compared candidates, task/metric, reviewed membership, source/group/policy and recipe; changes invalidate results/approvals. Numeric pass is separate from promotion eligibility. Nullable CER/WER and EvaluationReport references retained; masks, named-field metrics, failure slices and standardized resource comparison pending |
 | Reviewed scene-disjoint acceptance data | Provenance and split audit, independent reviewed labels, exact benchmark run | Human configuration/reservation and selected-candidate acceptance are implemented, with exposure history, source/pixel separation, duplicate rejection and exact cached replay. Positive path is software-tested with mocked inference, not measured vision quality. Real independent reviewed ground truth remains incomplete; retained public NVIDIA labels are unreviewed, and the separate second-scene detector benchmark failed its recall gate |
 | Optional source acquisition | Isolated external tool authority; URL/time/license/access provenance; injection and content-boundary tests | Pending |
-| System acceptance | Native flows, sustained throughput/coexistence, offline behavior, camera/screen permissions, approved alerts | Current software enforces protocol-bound approval, bounded local-only trials and disabled trial delivery; native contracts pass. Packaged evidence editing and re-evaluation UI verified with generated fixtures; broader hardware/operational acceptance remains pending |
+| System acceptance | Native flows, sustained throughput/coexistence, offline behavior, camera/screen permissions, approved alerts | Protocol-bound approval and bounded local-only trials remain enforced. Candidate `2f08` native goal→preview and exact-image editor opening pass; the new box edit is unverified due to CUA failure. Prior generated-fixture evidence-editing checks remain historical. Canonical relaunch, broader hardware and operational acceptance remain pending |
 | Original local release requirements | Reproducible bundle, all required flows, signing/notarization and Apple silicon CI | Local ad-hoc bundle verified previously; release gates pending |
 
 Historical live-model failures and software reports remain in `artifacts/`.
 New contract tests do not replace model-quality or vision-quality benchmarks.
 Each update must name its tested source identity and exact evidence scope.
+
+## Reviewed provisioning baseline at `f0d1`
+
+The [capability contract](capability-catalog.md) defines the first recipe and API.
+The human reviews exact source URLs, artifact hashes/sizes, target, scoped license
+and readiness before approving a saved plan. No model can self-authorize an
+installation. Read/list routes do not execute; interrupted jobs require an explicit
+retry, and changed plans/targets are rejected. Existing differing model files are
+preserved. A current smoke receipt binds artifact, runtime, host and request
+identity; failed revalidation clears current readiness without erasing history.
+
+The [actual isolated installation receipt](../artifacts/provisioning/installation-f0d1.json)
+records 4.318 seconds for download and black-image smoke, with approval/hash checks
+and active/completed job replay. Weights come from the pinned official release and
+are not redistributed. Apache-2.0 is the repository declaration; a separate asset
+license was not found in the inspected release. This is not independent legal
+verification or model-quality evidence.
+
+The [adapter parity receipt](../artifacts/provisioning/adapter-parity-f0d1.json)
+retains the previous predictions on all 30 synthetic NVIDIA Warehouse_016 frames.
+Published labels remain unreviewed; recall is **59 / (59 + 53) = 52.7%**, with 97
+false positives. The diagnostic recall gate remains failed and no application is
+approved. The [37-check software report](../artifacts/provisioning/software-validation-f0d1.json)
+uses mocked downloads/inference and is separate from these actual receipts.
+The [baseline full suite](../artifacts/provisioning/full-tests-f0d1.log) passes
+732 tests in 426.56 seconds. [Packaged relocation/ONNX/signature verification](../artifacts/provisioning/bundle-f0d1.json)
+and the [native installation walkthrough](../artifacts/provisioning/native-installation-f0d1.json)
+also pass. The native receipt survives close/reopen; catalog readiness refreshes
+and the retained project's checked files remain unchanged.
+
+The [actual Qwen/MCP request](../artifacts/provisioning/agent-f0d1.json) failed:
+the guard rejected a correct first count-only decision for “Do not create events
+or send alerts,” then the model asked an unnecessary clarification. The
+[original operation](../artifacts/provisioning/agent-f0d1-operation.json) remains
+retained. `2f08` narrowly corrects the guard; its exact live rerun and candidate
+package/inference gates now pass as recorded above. This does not rescore or erase
+the baseline failure. Additional reviewed model recipes, integrated alternative
+OCR, SAM 3 and other YOLO variants remain incomplete.
 
 ## Evaluation evidence slice at `7f62`
 

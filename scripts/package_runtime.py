@@ -98,7 +98,13 @@ def assemble(root: Path, destination: Path, identity: str) -> None:
         }, indent=2) + "\n")
         command(str(python), "-I", "-B", "-c",
                 "import engine.api.application, agent.planner, mcp_server.server; "
-                "import torch, transformers, cv2; print('Bundled imports passed')", cwd=support, env=environment)
+                "import torch, transformers, cv2, onnxruntime; print('Bundled imports passed')", cwd=support, env=environment)
+        for notice in ("engine/models/licenses/YOLOX-Apache-2.0.txt",
+                       "engine/models/licenses/YOLOX-NOTICE.md",
+                       "onnxruntime/LICENSE", "onnxruntime/ThirdPartyNotices.txt"):
+            path = site / notice
+            if not path.is_file() or path.stat().st_size == 0:
+                raise ValueError(f"Bundled adapter/runtime attribution is missing: {notice}")
         for path in staging.rglob("*"):
             if path.is_symlink() and not path.resolve().is_relative_to(staging.resolve()):
                 raise ValueError(f"Bundle contains an external symlink: {path.relative_to(staging)}")

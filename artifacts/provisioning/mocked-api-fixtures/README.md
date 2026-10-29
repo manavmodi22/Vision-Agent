@@ -1,0 +1,1 @@
+These actual API responses were captured by tests/test_provisioning.py with tiny software artifact bytes and explicitly mocked network/inference. They exercise wire contracts and are not official downloaded model artifacts, actual model execution, or quality evidence. Real installation receipts are kept separately by root.

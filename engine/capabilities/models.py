@@ -35,6 +35,9 @@ def model_catalog() -> list[CapabilityManifest]:
         if identifier == "fixture-color-v1":
             result.append(_fixture())
             continue
+        if identifier == "yolox-s-onnx-coco":
+            result.append(_yolox())
+            continue
         native = identifier == "apple-vision"
         local = identifier.startswith("local-")
         backend = str(record.get("backend", "unknown"))
@@ -120,3 +123,43 @@ def _fixture() -> CapabilityManifest:
         readiness=CapabilityReadiness(state="ready" if ok else "blocked", checked_at=now(), evidence_scope="inference_smoke",
             reason="Tiny CPU fixture self-test passed; no real-world accuracy implied." if ok else "Fixture self-test failed",
             evidence=[evidence("inference_smoke", "8x8 synthetic pallet rectangle", ok, "Executed the actual fixture adapter on this host.")]))
+
+
+def _yolox() -> CapabilityManifest:
+    from engine.provisioning.plans import make_plan
+    from engine.provisioning.registry import YOLOX
+    from engine.provisioning.state import current_health, installation_matches
+
+    plan = make_plan(YOLOX)
+    installed = installation_matches(YOLOX)
+    receipt = current_health(YOLOX.model_id)
+    checks = [evidence("package", package, plan.runtime_snapshot["package:" + package] != "missing",
+        "Installed distribution metadata; executable imports are checked by bounded smoke",
+        {"version": plan.runtime_snapshot["package:" + package]}) for package in YOLOX.packages]
+    checks.extend(evidence("file", artifact.filename,
+        (Path(plan.target_directory) / artifact.filename).is_file(),
+        "The installer verifies the reviewed exact byte size and SHA256 before installation")
+        for artifact in YOLOX.artifacts)
+    ready = installed and not plan.blockers
+    if receipt:
+        checks.append(evidence("inference_smoke", "Generated black 640x640 RGB image", True,
+            "Executed the pinned adapter on this host; no accuracy or throughput claim",
+            {"receipt_id": receipt.id, "elapsed_s": receipt.elapsed_s,
+             "execution_identity_hash": receipt.execution_identity_hash}))
+    reason = ("Current identity-bound black-image inference passed; evaluate on reviewed project data before promotion."
+        if receipt else "; ".join(plan.blockers) if plan.blockers else
+        "Installed artifacts are verified; bounded execution validation has not passed on this runtime."
+        if installed else "Review the pinned installation plan, then explicitly approve download and validation.")
+    return CapabilityManifest(id="model." + YOLOX.model_id, name=YOLOX.name, kind="model",
+        description="Closed COCO vocabulary detector using the official pinned ONNX release and CPUExecutionProvider.",
+        availability="installed" if installed else "available_to_install", implemented=True,
+        installation_ready=ready, callable=bool(receipt and ready), task_types=["detection"], version=YOLOX.revision,
+        license=plan.license,
+        provenance=CapabilityProvenance(scope="registry_metadata", revision=YOLOX.revision,
+            source_urls=[artifact.source_url for artifact in YOLOX.artifacts],
+            hashes={artifact.filename: artifact.expected_sha256 for artifact in YOLOX.artifacts},
+            notes=["Hashes identify the reviewed official artifacts; receipt validity also binds current installed bytes/runtime."]),
+        hardware=plan.hardware, side_effects=["read_images", "local_inference"],
+        install_method="reviewed_provisioning", install_instructions="Open the reviewed provisioning plan; downloads and smoke inference require an explicit human action.",
+        readiness=CapabilityReadiness(state="ready" if receipt and ready else "unchecked" if ready else "blocked",
+            reason=reason, checked_at=now(), evidence_scope="inference_smoke" if receipt else "prerequisites", evidence=checks))

@@ -1,0 +1,143 @@
+{
+  "passed": true,
+  "runtime_source_identity": "2f0804da25ccbd6047d9dee2389127f13e3aa944b2596e1b0e7b577e1d5363a5",
+  "scope": "Actual final packaged native validation of previously installed pinned weights, no download and generated black-image execution only. Historical f0d1 receipt remained readable; catalog correctly changed to Not verified after runtime update, then Ready after this explicit validation.",
+  "plan": {
+    "id": "e3ba8455d41a4a939663d9f19308b8eb",
+    "plan_hash": "0696a780af4f45f85c0b8ad6f912331a9911926c19b10e1d64e6d46e3d2ed4fa",
+    "created_at": "2026-10-29T03:27:01.414064+00:00",
+    "model_id": "yolox-s-onnx-coco",
+    "capability_id": "model.yolox-s-onnx-coco",
+    "name": "YOLOX-s ONNX COCO (CPU)",
+    "action": "validate",
+    "artifacts": [
+      {
+        "filename": "model.onnx",
+        "source_url": "https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_s.onnx",
+        "expected_sha256": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+        "expected_bytes": 35858002
+      },
+      {
+        "filename": "LICENSE.txt",
+        "source_url": "https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/6ddff4824372906469a7fae2dc3206c7aa4bbaee/LICENSE",
+        "expected_sha256": "0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088",
+        "expected_bytes": 11371
+      }
+    ],
+    "license": {
+      "identifier": "Apache-2.0",
+      "code": "Apache-2.0",
+      "weights": "Official repository Apache-2.0 declaration; a separate asset license was not found in the inspected release",
+      "status": "declared",
+      "notes": [
+        "License scope is the official repository declaration, not independent legal verification of the weights.",
+        "Weights are fetched from the pinned official release; this app does not redistribute weights."
+      ]
+    },
+    "source_revision": "6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+    "target_directory": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/yolox-s-onnx-coco",
+    "total_download_bytes": 0,
+    "max_duration_s": 600,
+    "hardware": {
+      "platforms": [
+        "Darwin",
+        "Linux"
+      ],
+      "accelerators": [
+        "cpu"
+      ],
+      "required_packages": [
+        "onnxruntime",
+        "numpy",
+        "Pillow",
+        "opencv-python-headless",
+        "pydantic"
+      ],
+      "minimum_memory_gib": null,
+      "estimated_disk_bytes": 35869373,
+      "notes": [
+        "CPUExecutionProvider only. A bounded black-image smoke proves execution, not accuracy or production throughput."
+      ]
+    },
+    "readiness": {
+      "state": "unchecked",
+      "reason": "Host prerequisites are present. Installation and inference will run only after explicit approval.",
+      "checked_at": "2026-10-29T03:27:01.414064+00:00",
+      "evidence_scope": "prerequisites",
+      "evidence": []
+    },
+    "blockers": [],
+    "runtime_snapshot": {
+      "runtime_source": "2f0804da25ccbd6047d9dee2389127f13e3aa944b2596e1b0e7b577e1d5363a5",
+      "python": "3.12.14",
+      "system": "Darwin",
+      "architecture": "arm64",
+      "kernel": "25.6.0",
+      "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+      "macos": "26.7.1",
+      "recipe": "056cffd49b31aa4de1d12c0d28a75e20a508693cd868fc1d0468767128a6650d",
+      "package:onnxruntime": "1.31.1",
+      "package:numpy": "2.5.4",
+      "package:Pillow": "12.3.0",
+      "package:opencv-python-headless": "4.14.0.94",
+      "package:pydantic": "2.14.1"
+    },
+    "existing_installation_hash": "a4f84036308ed13da151095f391073307b2cbc26aa6cd8d44217e5ba5032dbbc"
+  },
+  "job": {
+    "id": "5eaadfd783c143c2a102e05fe5c3f23b",
+    "plan_id": "e3ba8455d41a4a939663d9f19308b8eb",
+    "plan_hash": "0696a780af4f45f85c0b8ad6f912331a9911926c19b10e1d64e6d46e3d2ed4fa",
+    "model_id": "yolox-s-onnx-coco",
+    "status": "completed",
+    "phase": "completed",
+    "created_at": "2026-10-29T03:27:03.244899+00:00",
+    "updated_at": "2026-10-29T03:27:04.632622+00:00",
+    "progress": 1.0,
+    "downloaded_bytes": 0,
+    "total_bytes": 0,
+    "message": "Installed and executed on a generated black image; no quality claim",
+    "error": null,
+    "result": {
+      "installed": true,
+      "installation_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/yolox-s-onnx-coco",
+      "artifact_hashes": {
+        "model.onnx": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+        "LICENSE.txt": "0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088"
+      },
+      "smoke_status": "passed",
+      "health_receipt_id": "bdebdeac276e4958ad288907caf36d47",
+      "message": "Installed and executed on a generated black image; no quality claim"
+    }
+  },
+  "health": {
+    "id": "bdebdeac276e4958ad288907caf36d47",
+    "model_id": "yolox-s-onnx-coco",
+    "job_id": "5eaadfd783c143c2a102e05fe5c3f23b",
+    "plan_hash": "0696a780af4f45f85c0b8ad6f912331a9911926c19b10e1d64e6d46e3d2ed4fa",
+    "created_at": "2026-10-29T03:27:04.631259+00:00",
+    "installation_hash": "a4f84036308ed13da151095f391073307b2cbc26aa6cd8d44217e5ba5032dbbc",
+    "runtime_snapshot": {
+      "runtime_source": "2f0804da25ccbd6047d9dee2389127f13e3aa944b2596e1b0e7b577e1d5363a5",
+      "python": "3.12.14",
+      "system": "Darwin",
+      "architecture": "arm64",
+      "kernel": "25.6.0",
+      "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+      "macos": "26.7.1",
+      "recipe": "056cffd49b31aa4de1d12c0d28a75e20a508693cd868fc1d0468767128a6650d",
+      "package:onnxruntime": "1.31.1",
+      "package:numpy": "2.5.4",
+      "package:Pillow": "12.3.0",
+      "package:opencv-python-headless": "4.14.0.94",
+      "package:pydantic": "2.14.1"
+    },
+    "input_description": "Generated black RGB image, 640 by 640 pixels; no user media",
+    "input_sha256": "af90227ef45eb554c3b8d30da879ed50fa48b3405808300e36f1a8d57f27efb5",
+    "elapsed_s": 0.3064384169992991,
+    "observation_count": 0,
+    "execution_identity_hash": "a2ce0af0adb2fe4d8dc4a5f338822dc6ccc514f64050a32b0ee23f637ac9efef",
+    "quality_claim": "none"
+  },
+  "screenshot": "native-validation-2f08.png"
+}

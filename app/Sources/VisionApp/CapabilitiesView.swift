@@ -7,6 +7,7 @@ struct CapabilitiesView: View {
     @NativeState<String> private var availability = "all"
     @NativeState<String> private var kind = "all"
     @NativeState<String?> private var selectedID: String?
+    @NativeState<ProvisioningOption?> private var provisioning: ProvisioningOption?
     init(client: EngineClient, focusID: String? = nil) {
         _store = StateObject(wrappedValue: CapabilityStore(client: client)); _selectedID = .init(initialValue: focusID)
     }
@@ -53,7 +54,18 @@ struct CapabilitiesView: View {
                     Divider()
                     if let selected {
                         ScrollView {
-                            CapabilityDetail(capability: selected).frame(maxWidth: .infinity, alignment: .leading).padding(.leading, 22).padding(.bottom, 24)
+                            VStack(alignment: .leading, spacing: 18) {
+                                if let option = store.provisioningOptions.first(where: { $0.capabilityID == selected.id }) {
+                                    HStack {
+                                        Text(option.installed ? "Validate this installation with a bounded adapter smoke test." : "Review the exact download, license and validation plan before installing.").font(.caption).foregroundStyle(Studio.muted)
+                                        Spacer()
+                                        Button(option.action == "blocked" ? "Review requirements…" : option.installed ? "Review validation…" : "Review installation…") { provisioning = option }
+                                            .buttonStyle(.borderedProminent).disabled(!model.supervisor.connected || store.loading)
+                                    }.panel()
+                                }
+                                if let error = store.provisioningError { Text("Provisioning options unavailable: \(error)").font(.caption).foregroundStyle(.orange) }
+                                CapabilityDetail(capability: selected)
+                            }.frame(maxWidth: .infinity, alignment: .leading).padding(.leading, 22).padding(.bottom, 24)
                         }.id(selected.id).frame(maxWidth: .infinity)
                     }
                 }
@@ -61,6 +73,9 @@ struct CapabilitiesView: View {
         }.padding(24)
             .task { if model.supervisor.connected { await store.refresh() } }
             .onChange(of: model.capabilityFocus) { _, focus in selectedID = focus; search = ""; availability = "all"; kind = "all" }
+            .sheet(item: $provisioning, onDismiss: { Task { await store.refresh() } }) { option in
+                ProvisioningSheet(client: model.client, option: option) { await store.refresh() }
+            }
     }
     private func row(_ capability: Capability) -> some View {
         VStack(alignment: .leading, spacing: 8) {

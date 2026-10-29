@@ -1,0 +1,36 @@
+{
+  "project_id": "6d7129f0598a45e4",
+  "revision": 25,
+  "state": {
+    "phase": "evaluate",
+    "budget": {
+      "max_tool_calls": 30,
+      "max_wall_seconds": 180.0,
+      "max_training_minutes": 30.0,
+      "max_model_calls": 5,
+      "tool_calls": 5,
+      "model_calls": 1,
+      "training_minutes": 0.0,
+      "started_at": 1793244457.4098182
+    },
+    "brief_confirmed": true,
+    "candidate_count": 1,
+    "compiled_count": 1,
+    "evaluation": null,
+    "deployment_approved": false,
+    "override_reason": null,
+    "approval_scope": null
+  },
+  "brief": "Use yolox-s-onnx-coco to count people in these warehouse images and show their boxes. Build exactly one workflow, use confidence 0.15 and a count MAE target of 0.5. Do not create events or send alerts.",
+  "clarification_count": 0,
+  "active_operation_id": null,
+  "last_operation_id": "a108194d91ac463288b3523d6d2cf3d3",
+  "history": [
+    {
+      "at": 1793244554.95932,
+      "action": "plan_committed",
+      "phase": "evaluate",
+      "detail": ""
+    }
+  ]
+}

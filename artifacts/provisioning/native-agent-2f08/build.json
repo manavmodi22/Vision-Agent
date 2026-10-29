@@ -1,0 +1,1050 @@
+{
+  "view": {
+    "id": "011a5fb9512e4feb854c56ddc8c04479",
+    "project_id": "6d7129f0598a45e4",
+    "status": "awaiting_review",
+    "phase": "reviewing",
+    "next_action": "review_labels",
+    "message": "Review the labels on 20 evaluation images, then continue. 0 are reviewed. Evaluation requires 10–50 reviewed images; suggestions are not ground truth.",
+    "questions": [],
+    "log": [
+      {
+        "at": "2026-10-29T03:27:35.345040+00:00",
+        "phase": "planning",
+        "message": "Interpreting your goal and preparing a working preview"
+      },
+      {
+        "at": "2026-10-29T03:29:15.113997+00:00",
+        "phase": "previewing",
+        "message": "Compiled 1 candidate(s) and previewed 5 images; observed 4 detections. Displays counts of \"person\" in each processed frame. Accuracy has not been evaluated."
+      },
+      {
+        "at": "2026-10-29T03:29:15.114024+00:00",
+        "phase": "labeling",
+        "message": "Candidate adapters: yolox-s-onnx-coco. Their quality still requires evaluation on reviewed examples."
+      },
+      {
+        "at": "2026-10-29T03:29:46.692990+00:00",
+        "phase": "reviewing",
+        "message": "20 images have unverified detector suggestions. Existing manual labels and prior proposals were retained; reviewed labels were not overwritten."
+      },
+      {
+        "at": "2026-10-29T03:29:46.693182+00:00",
+        "phase": "reviewing",
+        "message": "Review the labels on 20 evaluation images, then continue. 0 are reviewed. Evaluation requires 10–50 reviewed images; suggestions are not ground truth."
+      }
+    ],
+    "preview": {
+      "frames": [
+        {
+          "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/0a285907-warehouse-040.50s.png",
+          "detections": [
+            {
+              "label": "person",
+              "confidence": 0.264089971780777,
+              "box": [
+                0.5076475461324056,
+                0.19149451079191984,
+                0.5322311719258627,
+                0.26560454191984956
+              ],
+              "zone": null
+            }
+          ],
+          "counts": {
+            "all": 1
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 319.8693750309758,
+          "timestamp_s": 0.0,
+          "judgements": [],
+          "inferences": [
+            {
+              "block_id": "det",
+              "result": {
+                "schema_version": 1,
+                "task": "detection",
+                "input_size": [
+                  1920,
+                  1080
+                ],
+                "input_pixels_sha256": "ec138a5346dc49ecbc1b33f427c112fe1308bbede490797a9991476f75b419cb",
+                "detections": [
+                  {
+                    "box": [
+                      0.5076475461324056,
+                      0.19149451079191984,
+                      0.5322311719258627,
+                      0.26560454191984956
+                    ],
+                    "polygon": null,
+                    "label": "person",
+                    "confidence": 0.264089971780777
+                  }
+                ],
+                "readings": [],
+                "identity": {
+                  "capability_id": "model.yolox-s-onnx-coco",
+                  "model_id": "yolox-s-onnx-coco",
+                  "adapter_id": "yolox-onnx",
+                  "identity_scope": "local_artifacts_verified",
+                  "artifact_hashes": {
+                    "LICENSE.txt": "0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088",
+                    "model.onnx": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+                    "provenance.json": "ec86b5e881036ba5317330438a8d324a3620c911caaee5ac51add82d2dde4c77"
+                  },
+                  "unavailable_artifacts": [],
+                  "adapter_code_sha256": "c9e8785208809e91bc93b436e7fc6c2c44ed4dce9c7529f2d968a3e582aaaba9",
+                  "runtime_manifest_sha256": "96e5936d4dc266f2ae8fa3344c8a7a79cece0a734dcdd441dae633eb7c8804e8",
+                  "system_identity": {
+                    "architecture": "arm64",
+                    "os": "Darwin",
+                    "kernel": "25.6.0",
+                    "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                    "macos": "26.7.1"
+                  },
+                  "provider": "CPUExecutionProvider",
+                  "config_sha256": "0586e3d9b92594fa03d9a3cc29b516f435a3ad0367af002a5df8d3f49d8dafc4",
+                  "identity_hash": "48ba7bcdc99491ac366b198e10fb3993e178c5d725170de32672fcc89ca95a11"
+                },
+                "timing": {
+                  "total_ms": 287.41066704969853,
+                  "startup_ms": null,
+                  "load_ms": null,
+                  "preprocess_ms": null,
+                  "inference_ms": null,
+                  "postprocess_ms": null,
+                  "transport_ms": null,
+                  "model_cached": null
+                },
+                "warnings": []
+              },
+              "input_to_frame": [
+                0.0,
+                0.0,
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/0be18a67-warehouse-033.75s.png",
+          "detections": [],
+          "counts": {
+            "all": 0
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 151.52654197299853,
+          "timestamp_s": 0.0,
+          "judgements": [],
+          "inferences": [
+            {
+              "block_id": "det",
+              "result": {
+                "schema_version": 1,
+                "task": "detection",
+                "input_size": [
+                  1920,
+                  1080
+                ],
+                "input_pixels_sha256": "5efb8196225073e30794526ab390153cf3302bd4fdcf38981642af6ef4946c77",
+                "detections": [],
+                "readings": [],
+                "identity": {
+                  "capability_id": "model.yolox-s-onnx-coco",
+                  "model_id": "yolox-s-onnx-coco",
+                  "adapter_id": "yolox-onnx",
+                  "identity_scope": "local_artifacts_verified",
+                  "artifact_hashes": {
+                    "LICENSE.txt": "0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088",
+                    "model.onnx": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+                    "provenance.json": "ec86b5e881036ba5317330438a8d324a3620c911caaee5ac51add82d2dde4c77"
+                  },
+                  "unavailable_artifacts": [],
+                  "adapter_code_sha256": "c9e8785208809e91bc93b436e7fc6c2c44ed4dce9c7529f2d968a3e582aaaba9",
+                  "runtime_manifest_sha256": "96e5936d4dc266f2ae8fa3344c8a7a79cece0a734dcdd441dae633eb7c8804e8",
+                  "system_identity": {
+                    "architecture": "arm64",
+                    "os": "Darwin",
+                    "kernel": "25.6.0",
+                    "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                    "macos": "26.7.1"
+                  },
+                  "provider": "CPUExecutionProvider",
+                  "config_sha256": "0586e3d9b92594fa03d9a3cc29b516f435a3ad0367af002a5df8d3f49d8dafc4",
+                  "identity_hash": "48ba7bcdc99491ac366b198e10fb3993e178c5d725170de32672fcc89ca95a11"
+                },
+                "timing": {
+                  "total_ms": 108.37487503886223,
+                  "startup_ms": null,
+                  "load_ms": null,
+                  "preprocess_ms": null,
+                  "inference_ms": null,
+                  "postprocess_ms": null,
+                  "transport_ms": null,
+                  "model_cached": null
+                },
+                "warnings": []
+              },
+              "input_to_frame": [
+                0.0,
+                0.0,
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/0e6845bd-warehouse-039.00s.png",
+          "detections": [
+            {
+              "label": "person",
+              "confidence": 0.7673462629318237,
+              "box": [
+                0.3735533078511556,
+                0.34117892229998553,
+                0.4237222989400228,
+                0.5663594563802083
+              ],
+              "zone": null
+            }
+          ],
+          "counts": {
+            "all": 1
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 154.09766702214256,
+          "timestamp_s": 0.0,
+          "judgements": [],
+          "inferences": [
+            {
+              "block_id": "det",
+              "result": {
+                "schema_version": 1,
+                "task": "detection",
+                "input_size": [
+                  1920,
+                  1080
+                ],
+                "input_pixels_sha256": "46fb704a3b4983650812d4ed950cb057f9226a593a072437c5fb3448e37405e9",
+                "detections": [
+                  {
+                    "box": [
+                      0.3735533078511556,
+                      0.34117892229998553,
+                      0.4237222989400228,
+                      0.5663594563802083
+                    ],
+                    "polygon": null,
+                    "label": "person",
+                    "confidence": 0.7673462629318237
+                  }
+                ],
+                "readings": [],
+                "identity": {
+                  "capability_id": "model.yolox-s-onnx-coco",
+                  "model_id": "yolox-s-onnx-coco",
+                  "adapter_id": "yolox-onnx",
+                  "identity_scope": "local_artifacts_verified",
+                  "artifact_hashes": {
+                    "LICENSE.txt": "0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088",
+                    "model.onnx": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+                    "provenance.json": "ec86b5e881036ba5317330438a8d324a3620c911caaee5ac51add82d2dde4c77"
+                  },
+                  "unavailable_artifacts": [],
+                  "adapter_code_sha256": "c9e8785208809e91bc93b436e7fc6c2c44ed4dce9c7529f2d968a3e582aaaba9",
+                  "runtime_manifest_sha256": "96e5936d4dc266f2ae8fa3344c8a7a79cece0a734dcdd441dae633eb7c8804e8",
+                  "system_identity": {
+                    "architecture": "arm64",
+                    "os": "Darwin",
+                    "kernel": "25.6.0",
+                    "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                    "macos": "26.7.1"
+                  },
+                  "provider": "CPUExecutionProvider",
+                  "config_sha256": "0586e3d9b92594fa03d9a3cc29b516f435a3ad0367af002a5df8d3f49d8dafc4",
+                  "identity_hash": "48ba7bcdc99491ac366b198e10fb3993e178c5d725170de32672fcc89ca95a11"
+                },
+                "timing": {
+                  "total_ms": 97.40791696822271,
+                  "startup_ms": null,
+                  "load_ms": null,
+                  "preprocess_ms": null,
+                  "inference_ms": null,
+                  "postprocess_ms": null,
+                  "transport_ms": null,
+                  "model_cached": null
+                },
+                "warnings": []
+              },
+              "input_to_frame": [
+                0.0,
+                0.0,
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/111f3cd5-warehouse-035.25s.png",
+          "detections": [
+            {
+              "label": "person",
+              "confidence": 0.6323914527893066,
+              "box": [
+                0.33224109013875325,
+                0.3904793633355035,
+                0.41566232045491536,
+                0.5842497083875868
+              ],
+              "zone": null
+            },
+            {
+              "label": "person",
+              "confidence": 0.31294235587120056,
+              "box": [
+                0.5122673988342286,
+                0.10664338005913629,
+                0.5408769607543945,
+                0.27062626591435185
+              ],
+              "zone": null
+            }
+          ],
+          "counts": {
+            "all": 2
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 154.07624997897074,
+          "timestamp_s": 0.0,
+          "judgements": [],
+          "inferences": [
+            {
+              "block_id": "det",
+              "result": {
+                "schema_version": 1,
+                "task": "detection",
+                "input_size": [
+                  1920,
+                  1080
+                ],
+                "input_pixels_sha256": "0ea2016d34e7012ee0481cb0010c3f8374f512206484e0204363dc2f55dabd7b",
+                "detections": [
+                  {
+                    "box": [
+                      0.33224109013875325,
+                      0.3904793633355035,
+                      0.41566232045491536,
+                      0.5842497083875868
+                    ],
+                    "polygon": null,
+                    "label": "person",
+                    "confidence": 0.6323914527893066
+                  },
+                  {
+                    "box": [
+                      0.5122673988342286,
+                      0.10664338005913629,
+                      0.5408769607543945,
+                      0.27062626591435185
+                    ],
+                    "polygon": null,
+                    "label": "person",
+                    "confidence": 0.31294235587120056
+                  }
+                ],
+                "readings": [],
+                "identity": {
+                  "capability_id": "model.yolox-s-onnx-coco",
+                  "model_id": "yolox-s-onnx-coco",
+                  "adapter_id": "yolox-onnx",
+                  "identity_scope": "local_artifacts_verified",
+                  "artifact_hashes": {
+                    "LICENSE.txt": "0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088",
+                    "model.onnx": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+                    "provenance.json": "ec86b5e881036ba5317330438a8d324a3620c911caaee5ac51add82d2dde4c77"
+                  },
+                  "unavailable_artifacts": [],
+                  "adapter_code_sha256": "c9e8785208809e91bc93b436e7fc6c2c44ed4dce9c7529f2d968a3e582aaaba9",
+                  "runtime_manifest_sha256": "96e5936d4dc266f2ae8fa3344c8a7a79cece0a734dcdd441dae633eb7c8804e8",
+                  "system_identity": {
+                    "architecture": "arm64",
+                    "os": "Darwin",
+                    "kernel": "25.6.0",
+                    "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                    "macos": "26.7.1"
+                  },
+                  "provider": "CPUExecutionProvider",
+                  "config_sha256": "0586e3d9b92594fa03d9a3cc29b516f435a3ad0367af002a5df8d3f49d8dafc4",
+                  "identity_hash": "48ba7bcdc99491ac366b198e10fb3993e178c5d725170de32672fcc89ca95a11"
+                },
+                "timing": {
+                  "total_ms": 104.61241699522361,
+                  "startup_ms": null,
+                  "load_ms": null,
+                  "preprocess_ms": null,
+                  "inference_ms": null,
+                  "postprocess_ms": null,
+                  "transport_ms": null,
+                  "model_cached": null
+                },
+                "warnings": []
+              },
+              "input_to_frame": [
+                0.0,
+                0.0,
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        },
+        {
+          "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/1b2362c6-warehouse-036.00s.png",
+          "detections": [],
+          "counts": {
+            "all": 0
+          },
+          "texts": [],
+          "events": [],
+          "elapsed_ms": 140.4080829815939,
+          "timestamp_s": 0.0,
+          "judgements": [],
+          "inferences": [
+            {
+              "block_id": "det",
+              "result": {
+                "schema_version": 1,
+                "task": "detection",
+                "input_size": [
+                  1920,
+                  1080
+                ],
+                "input_pixels_sha256": "77887ac61f256704ded4ab06fcb19fef7a44f15d8ac974572ca7ba1a122eb406",
+                "detections": [],
+                "readings": [],
+                "identity": {
+                  "capability_id": "model.yolox-s-onnx-coco",
+                  "model_id": "yolox-s-onnx-coco",
+                  "adapter_id": "yolox-onnx",
+                  "identity_scope": "local_artifacts_verified",
+                  "artifact_hashes": {
+                    "LICENSE.txt": "0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088",
+                    "model.onnx": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+                    "provenance.json": "ec86b5e881036ba5317330438a8d324a3620c911caaee5ac51add82d2dde4c77"
+                  },
+                  "unavailable_artifacts": [],
+                  "adapter_code_sha256": "c9e8785208809e91bc93b436e7fc6c2c44ed4dce9c7529f2d968a3e582aaaba9",
+                  "runtime_manifest_sha256": "96e5936d4dc266f2ae8fa3344c8a7a79cece0a734dcdd441dae633eb7c8804e8",
+                  "system_identity": {
+                    "architecture": "arm64",
+                    "os": "Darwin",
+                    "kernel": "25.6.0",
+                    "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+                    "macos": "26.7.1"
+                  },
+                  "provider": "CPUExecutionProvider",
+                  "config_sha256": "0586e3d9b92594fa03d9a3cc29b516f435a3ad0367af002a5df8d3f49d8dafc4",
+                  "identity_hash": "48ba7bcdc99491ac366b198e10fb3993e178c5d725170de32672fcc89ca95a11"
+                },
+                "timing": {
+                  "total_ms": 89.92520900210366,
+                  "startup_ms": null,
+                  "load_ms": null,
+                  "preprocess_ms": null,
+                  "inference_ms": null,
+                  "postprocess_ms": null,
+                  "transport_ms": null,
+                  "model_cached": null
+                },
+                "warnings": []
+              },
+              "input_to_frame": [
+                0.0,
+                0.0,
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "elapsed_s": 2.1539721250301227,
+      "warnings": [
+        "FPS is unbenchmarked on this Mac; runtime timings are measured, not predicted."
+      ]
+    },
+    "selected_candidate_index": 0,
+    "evaluations": [],
+    "acceptance_evaluation": null,
+    "project": {},
+    "created_at": "2026-10-29T03:27:35.223913+00:00",
+    "updated_at": "2026-10-29T03:29:46.693188+00:00",
+    "plan": null,
+    "execution": null,
+    "tool_events": []
+  },
+  "operation": {
+    "id": "011a5fb9512e4feb854c56ddc8c04479",
+    "project_id": "6d7129f0598a45e4",
+    "trace_id": "955c1e123239484082f003a5df02fbd0",
+    "root_span_id": "1bb8b49823fe43f1",
+    "owner_pid": 91397,
+    "created_at": 1793244455.344995,
+    "updated_at": 1793244586.6931899,
+    "deadline": 1793245355.2530072,
+    "status": "running",
+    "input_fingerprint": "d7c96242e243a6bf533df69931deaa01ccf51cf952a97a2ca2adf9e5ee004707",
+    "brief": "Use yolox-s-onnx-coco to count people in these warehouse images and show their boxes. Build exactly one workflow, use confidence 0.15 and a count MAE target of 0.5. Do not create events or send alerts.",
+    "source_path": "media",
+    "detector_model": "",
+    "state": {
+      "phase": "evaluate",
+      "budget": {
+        "max_tool_calls": 30,
+        "max_wall_seconds": 900.0,
+        "max_training_minutes": 4.0,
+        "max_model_calls": 5,
+        "tool_calls": 3,
+        "model_calls": 0,
+        "training_minutes": 0.0,
+        "started_at": 1793244455.34498
+      },
+      "brief_confirmed": true,
+      "candidate_count": 1,
+      "compiled_count": 1,
+      "evaluation": null,
+      "deployment_approved": false,
+      "override_reason": null,
+      "approval_scope": null
+    },
+    "calls": [
+      {
+        "id": "6b54a32ba8f144c3af0629ed4fe6f16d",
+        "kind": "tool",
+        "name": "build_prepare_review",
+        "started_ns": 1793244557774817000,
+        "ended_ns": 1793244559702871000,
+        "status": "completed",
+        "request": {
+          "project_id": "6d7129f0598a45e4"
+        },
+        "result": {
+          "image_count": 20,
+          "reviewed_count": 0,
+          "evaluation_image_count": 20,
+          "evaluation_reviewed_count": 0,
+          "candidate_count": 1,
+          "can_propose_labels": true,
+          "fixture": false,
+          "training_eligible": false,
+          "review_subset_created": false,
+          "comparison_scopes": [
+            "492766ed3340107fe310198f4451384caeaa97d101a051dc77594dd34f50f6e2"
+          ]
+        },
+        "error": null
+      },
+      {
+        "id": "762e346707f64bacb607de2d9438bcee",
+        "kind": "tool",
+        "name": "build_propose_labels",
+        "started_ns": 1793244560604891000,
+        "ended_ns": 1793244584751158000,
+        "status": "completed",
+        "request": {
+          "project_id": "6d7129f0598a45e4",
+          "candidate_index": 0,
+          "max_frames": 50
+        },
+        "result": {
+          "id": "6d7129f0598a45e4-v1",
+          "annotations": [
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/d9ef8e56-warehouse-033.00s.png",
+              "detections": [
+                {
+                  "label": "person",
+                  "confidence": 0.24810582399368286,
+                  "box": [
+                    0.549078369140625,
+                    0.025805356767442493,
+                    0.5676887512207032,
+                    0.12583919101291233
+                  ],
+                  "zone": null
+                },
+                {
+                  "label": "person",
+                  "confidence": 0.1608615219593048,
+                  "box": [
+                    0.5363681793212891,
+                    0.03816726472642687,
+                    0.5673474629720052,
+                    0.21156993442111546
+                  ],
+                  "zone": null
+                }
+              ],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "be828e8ab0cacf40eff8ad47d1b8bf72df5ba8a731ca7c5727bb22d4694c7daf",
+                "created_at": "2026-10-29T03:29:22.049183+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/0be18a67-warehouse-033.75s.png",
+              "detections": [],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "4f1192f2eef2f3056ae2d3d7f551e333e3f03b341bb5a426355a47794746b3c3",
+                "created_at": "2026-10-29T03:29:23.265716+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/2a626f88-warehouse-034.50s.png",
+              "detections": [],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "2d65189f76dc29de969a11300c7431c5053c07041ea8546e80ecdf28c90c5a5d",
+                "created_at": "2026-10-29T03:29:24.411997+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/111f3cd5-warehouse-035.25s.png",
+              "detections": [
+                {
+                  "label": "person",
+                  "confidence": 0.6323914527893066,
+                  "box": [
+                    0.33224109013875325,
+                    0.3904793633355035,
+                    0.41566232045491536,
+                    0.5842497083875868
+                  ],
+                  "zone": null
+                },
+                {
+                  "label": "person",
+                  "confidence": 0.31294235587120056,
+                  "box": [
+                    0.5122673988342286,
+                    0.10664338005913629,
+                    0.5408769607543945,
+                    0.27062626591435185
+                  ],
+                  "zone": null
+                }
+              ],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "fdff41a21971cd8a60d1800741c24d0fb655def629f936d1483159a68e5681a2",
+                "created_at": "2026-10-29T03:29:25.618119+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/1b2362c6-warehouse-036.00s.png",
+              "detections": [],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "9b657261bde5ec609fcd2b108743802042abfb365bffc3e31f228bf2e43e07ed",
+                "created_at": "2026-10-29T03:29:26.753128+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/e73a2555-warehouse-036.75s.png",
+              "detections": [],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "928bb623bb92a23870493a824d07982394261003a66b1e1f3853fe494a6b4f26",
+                "created_at": "2026-10-29T03:29:27.832150+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/775fa813-warehouse-037.50s.png",
+              "detections": [
+                {
+                  "label": "person",
+                  "confidence": 0.630451500415802,
+                  "box": [
+                    0.34602702458699547,
+                    0.40157363326461226,
+                    0.415971310933431,
+                    0.5740937409577547
+                  ],
+                  "zone": null
+                }
+              ],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "f1ce8e9d983604b10056824b36db6a68590fa07c84e2a8929a61657fac40256b",
+                "created_at": "2026-10-29T03:29:28.923941+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/d504da8b-warehouse-038.25s.png",
+              "detections": [
+                {
+                  "label": "person",
+                  "confidence": 0.7788815498352051,
+                  "box": [
+                    0.35441226959228517,
+                    0.3701380411783854,
+                    0.41450843811035154,
+                    0.5715840657552084
+                  ],
+                  "zone": null
+                }
+              ],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "a2afda4892a5e3d27558b9582fa9a09c7c895c6483edbaff56bb8049d5726aff",
+                "created_at": "2026-10-29T03:29:30.127099+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/0e6845bd-warehouse-039.00s.png",
+              "detections": [
+                {
+                  "label": "person",
+                  "confidence": 0.7673462629318237,
+                  "box": [
+                    0.3735533078511556,
+                    0.34117892229998553,
+                    0.4237222989400228,
+                    0.5663594563802083
+                  ],
+                  "zone": null
+                }
+              ],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "f17edca93723d5660372f8bdb0a52e25bc4daf7cb789962b884d7b131956b32c",
+                "created_at": "2026-10-29T03:29:31.478441+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/83607859-warehouse-039.75s.png",
+              "detections": [
+                {
+                  "label": "person",
+                  "confidence": 0.4326697885990143,
+                  "box": [
+                    0.35048599243164064,
+                    0.305629391140408,
+                    0.400206470489502,
+                    0.503411865234375
+                  ],
+                  "zone": null
+                }
+              ],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "01ef735b6d9bf61900b99107a2000d58adfacc234b237605061f3a724e1c5dc6",
+                "created_at": "2026-10-29T03:29:32.632397+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/0a285907-warehouse-040.50s.png",
+              "detections": [
+                {
+                  "label": "person",
+                  "confidence": 0.264089971780777,
+                  "box": [
+                    0.5076475461324056,
+                    0.19149451079191984,
+                    0.5322311719258627,
+                    0.26560454191984956
+                  ],
+                  "zone": null
+                }
+              ],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "76343d7b3633ede39572c45fdf5b2267d77abde4ba1813f96d7ee33f62a70a9a",
+                "created_at": "2026-10-29T03:29:33.740314+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/8ae8f100-warehouse-041.25s.png",
+              "detections": [],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "40a92c28aec1e005761420f80c6e14f361d6796a255033bf3dcb7a60dcb21051",
+                "created_at": "2026-10-29T03:29:34.909860+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/4991d604-warehouse-042.00s.png",
+              "detections": [],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "e96a21a7309a253526b4bb79707ce97ee14a7aa3eb557599091f84c89c5b4a28",
+                "created_at": "2026-10-29T03:29:36.071060+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/89de2996-warehouse-042.75s.png",
+              "detections": [],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "b292123a6c76c849d50fd53ecb415b9e46ba698b44d70ace845a4d754b2c5691",
+                "created_at": "2026-10-29T03:29:37.383303+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/eba1ad49-warehouse-043.50s.png",
+              "detections": [],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "ba4cc9f49bde2f72a85fbb9d6f87e946d772d59f4f74281739d6cd04b3890914",
+                "created_at": "2026-10-29T03:29:38.487045+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/6746cff4-warehouse-044.25s.png",
+              "detections": [
+                {
+                  "label": "person",
+                  "confidence": 0.46895426511764526,
+                  "box": [
+                    0.47258586883544923,
+                    0.30199367381908276,
+                    0.5063006401062011,
+                    0.39832181577329284
+                  ],
+                  "zone": null
+                }
+              ],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "2f4fc48e6d655ed66ccfa4e7fd4756ae86e400ad8f0317ba9232ef259b39426f",
+                "created_at": "2026-10-29T03:29:39.647129+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/aeb337fd-warehouse-045.00s.png",
+              "detections": [
+                {
+                  "label": "person",
+                  "confidence": 0.5095008611679077,
+                  "box": [
+                    0.461369260152181,
+                    0.3444770247847946,
+                    0.5025189717610677,
+                    0.4656602930139612
+                  ],
+                  "zone": null
+                }
+              ],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "430bdca7e7052a09b2fbf4459a0b2a0a2b170deb9e99981ebb8f46173eb9eeab",
+                "created_at": "2026-10-29T03:29:40.738702+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/b707f0ca-warehouse-045.75s.png",
+              "detections": [
+                {
+                  "label": "person",
+                  "confidence": 0.6030486822128296,
+                  "box": [
+                    0.43441623051961265,
+                    0.42525637591326676,
+                    0.48107369740804035,
+                    0.5708950466579861
+                  ],
+                  "zone": null
+                }
+              ],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "e711d7b51369a479bbfe14abe0e90afa75849afea883dc11cfcdf85a59d7555c",
+                "created_at": "2026-10-29T03:29:42.148213+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/377cf2e6-warehouse-046.50s.png",
+              "detections": [],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "3e9d1eb9bdd54e01a4893af21977ca5a0f484f4863f92fafb7ddc913cdeacecf",
+                "created_at": "2026-10-29T03:29:43.309127+00:00",
+                "status": "unverified_hypothesis"
+              }
+            },
+            {
+              "image_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/22ff32a6-warehouse-047.25s.png",
+              "detections": [
+                {
+                  "label": "person",
+                  "confidence": 0.29659542441368103,
+                  "box": [
+                    0.3859091758728027,
+                    0.8911775942201967,
+                    0.4632881164550781,
+                    1.0
+                  ],
+                  "zone": null
+                }
+              ],
+              "reviewed": false,
+              "expected_texts": [],
+              "proposal": {
+                "source": "model_proposal",
+                "model_id": "yolox-s-onnx-coco",
+                "spec_hash": "a7356ccbc4f57668e84e6b9ddcc29795021491db267c7aee5b6cf1227fd3d187",
+                "image_sha256": "7ea7393f0f2334bcfde3f084587e74c83086917ae1963a8e14ae949323fb190b",
+                "created_at": "2026-10-29T03:29:44.549206+00:00",
+                "status": "unverified_hypothesis"
+              }
+            }
+          ]
+        },
+        "error": null
+      },
+      {
+        "id": "5e62f455cc854a02b5c2e89453194f3d",
+        "kind": "tool",
+        "name": "build_context",
+        "started_ns": 1793244585593313000,
+        "ended_ns": 1793244586548019000,
+        "status": "completed",
+        "request": {
+          "project_id": "6d7129f0598a45e4"
+        },
+        "result": {
+          "image_count": 20,
+          "reviewed_count": 0,
+          "evaluation_image_count": 20,
+          "evaluation_reviewed_count": 0,
+          "candidate_count": 1,
+          "can_propose_labels": true,
+          "fixture": false,
+          "training_eligible": false,
+          "review_subset_created": false,
+          "comparison_scopes": [
+            "492766ed3340107fe310198f4451384caeaa97d101a051dc77594dd34f50f6e2"
+          ]
+        },
+        "error": null
+      }
+    ],
+    "history": [],
+    "decision": null,
+    "result": null,
+    "error": null,
+    "skills": [],
+    "planning_options": null
+  },
+  "prompt": "Use yolox-s-onnx-coco to count people in these warehouse images and show their boxes. Build exactly one workflow, use confidence 0.15 and a count MAE target of 0.5. Do not create events or send alerts.",
+  "data_hash": "4f2fb378725622855cecc4df4369255ec1dc0de8814de06f4cc59503bc07b606",
+  "plan_operation_id": "a108194d91ac463288b3523d6d2cf3d3",
+  "training_approved_hash": null,
+  "training_attempts": 0,
+  "training_job_id": null,
+  "refinement_decisions": [],
+  "skills": []
+}

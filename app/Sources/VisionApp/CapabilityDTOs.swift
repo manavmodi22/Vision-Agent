@@ -93,6 +93,8 @@ struct CapabilityCatalog: Codable {
     @Published var catalog: CapabilityCatalog?
     @Published var loading = false
     @Published var error: String?
+    @Published var provisioningOptions: [ProvisioningOption] = []
+    @Published var provisioningError: String?
     init(client: EngineClient) { self.client = client }
     func refresh() async {
         guard !loading else { return }; loading = true
@@ -100,5 +102,7 @@ struct CapabilityCatalog: Codable {
         do { catalog = try await client.request("GET", "/capabilities"); error = nil }
         catch is CancellationError { }
         catch { self.error = error.localizedDescription }
+        do { let result: ProvisioningOptions = try await client.request("GET", "/provisioning/options"); provisioningOptions = result.options; provisioningError = nil }
+        catch { provisioningOptions = []; provisioningError = error.localizedDescription }
     }
 }

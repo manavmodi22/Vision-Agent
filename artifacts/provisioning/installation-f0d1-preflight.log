@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/manavrakeshku.modi/vision-agent/artifacts/provisioning/verify_installation.py", line 106, in <module>
+    main()
+  File "/Users/manavrakeshku.modi/vision-agent/artifacts/provisioning/verify_installation.py", line 27, in main
+    raise ValueError("Use fresh paths; earlier evidence must be retained")
+ValueError: Use fresh paths; earlier evidence must be retained

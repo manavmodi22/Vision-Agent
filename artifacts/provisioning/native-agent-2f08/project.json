@@ -1,0 +1,100 @@
+{
+  "id": "6d7129f0598a45e4",
+  "name": "Use yolox-s-onnx-coco to count people in these warehouse ima",
+  "use_case": "custom",
+  "status": "building",
+  "created_at": "2026-10-29T03:27:26.500504+00:00",
+  "updated_at": "2026-10-29T03:29:44.641274+00:00",
+  "media": [
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/d9ef8e56-warehouse-033.00s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/0be18a67-warehouse-033.75s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/2a626f88-warehouse-034.50s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/111f3cd5-warehouse-035.25s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/1b2362c6-warehouse-036.00s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/e73a2555-warehouse-036.75s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/775fa813-warehouse-037.50s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/d504da8b-warehouse-038.25s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/0e6845bd-warehouse-039.00s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/83607859-warehouse-039.75s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/0a285907-warehouse-040.50s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/8ae8f100-warehouse-041.25s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/4991d604-warehouse-042.00s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/89de2996-warehouse-042.75s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/eba1ad49-warehouse-043.50s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/6746cff4-warehouse-044.25s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/aeb337fd-warehouse-045.00s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/b707f0ca-warehouse-045.75s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/377cf2e6-warehouse-046.50s.png",
+    "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4/media/22ff32a6-warehouse-047.25s.png"
+  ],
+  "brief": "Use yolox-s-onnx-coco to count people in these warehouse images and show their boxes. Build exactly one workflow, use confidence 0.15 and a count MAE target of 0.5. Do not create events or send alerts.",
+  "clarification_count": 0,
+  "candidates": [
+    {
+      "spec_version": "0.1",
+      "name": "custom-candidate-1",
+      "inputs": {
+        "source": {
+          "type": "image_folder",
+          "path": "media"
+        }
+      },
+      "blocks": [
+        {
+          "id": "sample",
+          "type": "frame_sample",
+          "params": {
+            "fps": 2
+          },
+          "inputs": {
+            "frames": "$inputs.source"
+          }
+        },
+        {
+          "id": "det",
+          "type": "detect",
+          "params": {
+            "model": "yolox-s-onnx-coco",
+            "classes": [
+              "person"
+            ],
+            "min_conf": 0.15
+          },
+          "inputs": {
+            "image": "$sample.frame"
+          }
+        },
+        {
+          "id": "count",
+          "type": "count_per_zone",
+          "params": {},
+          "inputs": {
+            "dets": "$det.dets"
+          }
+        }
+      ],
+      "eval": {
+        "set": "reviewed-v1",
+        "metric": "count_mae",
+        "target": 0.5
+      }
+    }
+  ],
+  "evaluations": [],
+  "messages": [
+    {
+      "role": "user",
+      "content": "Use yolox-s-onnx-coco to count people in these warehouse images and show their boxes. Build exactly one workflow, use confidence 0.15 and a count MAE target of 0.5. Do not create events or send alerts."
+    },
+    {
+      "role": "assistant",
+      "content": "Displays counts of \"person\" in each processed frame."
+    }
+  ],
+  "synthetic": false,
+  "fixture": false,
+  "data_origin": "NVIDIA Physical AI Smart Spaces, real Warehouse 026; CC-BY-4.0; revision 2cbe9563cbe9f47f846e5c871ee994572bbbc60e",
+  "deployment_id": null,
+  "approval_scope": null,
+  "trial_limits": {}
+}

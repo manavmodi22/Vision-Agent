@@ -11,6 +11,12 @@ This is a development build. See [implementation status](docs/status.md),
 The [agent platform revision](docs/agent-platform-revision.md) records the updated
 architecture and implementation gaps.
 
+The capability catalog can now create a reviewable installation plan for the
+pinned YOLOX-s ONNX detector. Review its source, download size and license
+declaration, then explicitly install and validate it. The completed smoke test
+proves local execution; project quality still needs reviewed examples. YOLOX uses
+its fixed COCO classes and does not supply pallet, forklift or damage detection.
+
 ## Open the app
 
 Open `dist/VisionApp.app` after building it with the commands below. App bundles,

@@ -24,4 +24,11 @@ Evaluation hashes now bind these adapter identities, so previous evaluations req
 
 ## Deferred
 
-YOLOX and Paddle remain isolated probes. Rich native text geometry needs a separately versioned bridge protocol; reader model selection requires coordinated compiler/executor/planner changes. Neither is part of this slice. Transitive dependency/license review remains required before new runtimes are distributed.
+Paddle remains an isolated probe. Rich native text geometry needs a separately versioned bridge protocol; reader model selection requires coordinated compiler/executor/planner changes. Neither is part of this original slice. Transitive dependency/license review remains required before new runtimes are distributed.
+
+The later `f0d1` slice integrates YOLOX-s ONNX through the same evidence contract,
+using exact pinned weights, the `CPUExecutionProvider`, content-bound session
+caching and strict COCO classes. Its reviewed installation and generated-image
+smoke establish execution readiness only; the unchanged synthetic-scene recall
+failure remains evidence against a quality claim. See `docs/model-adapter-research.md`
+and `artifacts/provisioning/` for the separate installation and parity receipts.

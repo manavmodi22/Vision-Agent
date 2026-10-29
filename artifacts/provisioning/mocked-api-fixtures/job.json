@@ -1,0 +1,26 @@
+{
+  "id": "facdafd78abc4fa4ac1685e397bcbb38",
+  "plan_id": "c806b44e9d724614ac50101236e6db65",
+  "plan_hash": "57176986ddcd65164cc720028aaa2ee0854d59074122b0b015ef17688b6db1aa",
+  "model_id": "yolox-s-onnx-coco",
+  "status": "completed",
+  "phase": "completed",
+  "created_at": "2026-10-29T03:13:38.785436+00:00",
+  "updated_at": "2026-10-29T03:13:38.898989+00:00",
+  "progress": 1.0,
+  "downloaded_bytes": 63,
+  "total_bytes": 63,
+  "message": "Installed and executed on a generated black image; no quality claim",
+  "error": null,
+  "result": {
+    "installed": true,
+    "installation_path": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-189/test_install_active_and_comple0/models/yolox-s-onnx-coco",
+    "artifact_hashes": {
+      "model.onnx": "dbfe5c16f9ce733267ef0bb6916c2f2cd444140f5bb1796dbc6c80355713dc13",
+      "LICENSE.txt": "d408031ad98879ea57f072063f3b99240a2486dcbba1e4115fa95535c03ec44a"
+    },
+    "smoke_status": "passed",
+    "health_receipt_id": "bdff85e8a86941769b2bfcc0d05c65e6",
+    "message": "Installed and executed on a generated black image; no quality claim"
+  }
+}

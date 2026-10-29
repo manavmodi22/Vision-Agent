@@ -1,0 +1,5 @@
+{"phase": "queued", "message": "Waiting for the approved installation worker"}
+{"phase": "downloading", "message": "Downloading model.onnx from its reviewed official source"}
+{"phase": "verifying", "message": "Verified every downloaded byte count and SHA256"}
+{"phase": "validating", "message": "Running one bounded black-image inference; this is not an accuracy benchmark"}
+{"passed": true, "elapsed_s": 13.772999999986496, "source_unchanged": true}

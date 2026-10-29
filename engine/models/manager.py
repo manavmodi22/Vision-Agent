@@ -8,6 +8,8 @@ from pathlib import Path
 
 from pydantic import JsonValue
 
+from engine.models.yolox_config import ADAPTER_ID, COCO_CLASSES, MODEL_ID, MODEL_URL
+
 
 class ModelUnavailable(ValueError):
     """The requested model cannot execute on this installation."""
@@ -46,6 +48,19 @@ def list_models() -> list[dict[str, JsonValue]]:
          "backend": "apple-vision", "description": "Native macOS OCR and barcode bridge.",
          "estimated_fps": None},
     ]
+    from engine.models.artifacts import model_content_fingerprint
+    yolox_available = all(importlib.util.find_spec(name) is not None for name in ("onnxruntime", "numpy", "cv2"))
+    yolox_error: str | None = None
+    try:
+        model_content_fingerprint(MODEL_ID)
+    except (OSError, ValueError) as exc:
+        yolox_available, yolox_error = False, str(exc)
+    records.append({"id": MODEL_ID, "name": "YOLOX-s ONNX COCO (CPU)", "license": "Apache-2.0",
+        "available": yolox_available, "synthetic": False, "backend": ADAPTER_ID,
+        "path": str(model_directory() / MODEL_ID), "source": MODEL_URL, "classes": list(COCO_CLASSES),
+        "description": "Pinned official COCO detector; CPU only, no custom-class remapping or fine-tuning.",
+        "weights_license": "Official repository Apache-2.0 declaration; no separate asset-specific statement.",
+        "error": yolox_error, "estimated_fps": None})
     rtdetr = rtdetr_path()
     rtdetr_available = ((rtdetr / "model.safetensors").is_file() and (rtdetr / "config.json").is_file()
                         and (rtdetr / "preprocessor_config.json").is_file()
@@ -102,6 +117,8 @@ def validate_model(model_id: str, *, allow_agpl: bool = False) -> None:
 
 def trained_classes(model_id: str) -> list[str] | None:
     """None means an open-vocabulary adapter; closed checkpoints advertise classes."""
+    if model_id == MODEL_ID:
+        return list(COCO_CLASSES)
     if model_id == "rtdetr-v2-r18":
         path = rtdetr_path() / "config.json"
         if not path.is_file():

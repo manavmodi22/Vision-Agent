@@ -1,0 +1,26 @@
+{
+  "id": "288f5ec2c52f4254b835deae8de6b780",
+  "plan_id": "ecf14c5c00d54c0b8b7e3ecb8164a50c",
+  "plan_hash": "9b2e629bd31dd05371ce75daa2d145a08c2df39aff2ed94e6574a8657fe50f04",
+  "model_id": "yolox-s-onnx-coco",
+  "status": "completed",
+  "phase": "completed",
+  "created_at": "2026-10-29T03:15:04.298411+00:00",
+  "updated_at": "2026-10-29T03:15:07.369630+00:00",
+  "progress": 1.0,
+  "downloaded_bytes": 35869373,
+  "total_bytes": 35869373,
+  "message": "Installed and executed on a generated black image; no quality claim",
+  "error": null,
+  "result": {
+    "installed": true,
+    "installation_path": "/Users/manavrakeshku.modi/vision-agent/.visionapp/provisioning-e2e-f0d1/models/yolox-s-onnx-coco",
+    "artifact_hashes": {
+      "model.onnx": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+      "LICENSE.txt": "0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088"
+    },
+    "smoke_status": "passed",
+    "health_receipt_id": "c7b118b947944340abc453535743e3b4",
+    "message": "Installed and executed on a generated black image; no quality claim"
+  }
+}

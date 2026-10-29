@@ -1,0 +1,41 @@
+{
+  "runtime_source_sha256": "f0d1c365f956d3f57e11686ab58a1f7aa07a4595b2cb3f0b481a733a6a1451fb",
+  "scope": "Software/API contract verification only. Network responses and inference explicitly mocked; no learned-model call or real download performed by this task.",
+  "checks": {
+    "focused_pytest_passed": 37,
+    "elapsed_s": 4.58,
+    "strict_mypy_runtime_files": 17,
+    "ruff": "passed"
+  },
+  "implemented": [
+    "Fixed official YOLOX-s ONNX and pinned repository license recipe",
+    "Immutable plan and exact plan-hash human approval",
+    "Durable background jobs and status/list/reopen routes",
+    "Active/completed idempotency with fresh evidence checks",
+    "Streaming exact size/SHA256 and allowlisted HTTPS redirects",
+    "Private staging and atomic initial directory installation",
+    "Existing differing installation preservation and explicit repair boundary",
+    "Interrupted-job lease-safe recovery and owned staging cleanup",
+    "Fixed generated black-input subprocess with deadline/output bounds",
+    "Content/runtime/dependency/exact-request-bound health receipt",
+    "Failed revalidation clears current health while retaining historical receipt",
+    "Current catalog readiness and selected-detector dependency routing"
+  ],
+  "not_claimed": [
+    "Actual official download or learned-model inference; parent validation remains pending",
+    "Model accuracy, deployment quality, sustained throughput or operational promotion",
+    "Unified dependency installation or additional model-family recipes",
+    "Automatic repair/overwrite of an existing differing model directory",
+    "Separate legal verification of the release asset license"
+  ],
+  "fixtures": "artifacts/provisioning/mocked-api-fixtures (mock bytes and mocked inference; separate from parent actual receipts)",
+  "api": [
+    "GET /provisioning/options",
+    "POST /provisioning/plans",
+    "GET /provisioning/plans/{id}",
+    "POST /provisioning/jobs",
+    "GET /provisioning/jobs?model_id=...",
+    "GET /provisioning/jobs/{id}",
+    "GET /provisioning/health/{id}"
+  ]
+}

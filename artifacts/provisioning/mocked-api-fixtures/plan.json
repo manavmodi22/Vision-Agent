@@ -1,0 +1,82 @@
+{
+  "id": "c806b44e9d724614ac50101236e6db65",
+  "plan_hash": "57176986ddcd65164cc720028aaa2ee0854d59074122b0b015ef17688b6db1aa",
+  "created_at": "2026-10-29T03:13:38.744934+00:00",
+  "model_id": "yolox-s-onnx-coco",
+  "capability_id": "model.yolox-s-onnx-coco",
+  "name": "Software contract fixture; inference mocked",
+  "action": "install",
+  "artifacts": [
+    {
+      "filename": "model.onnx",
+      "source_url": "https://github.com/test/model.onnx",
+      "expected_sha256": "dbfe5c16f9ce733267ef0bb6916c2f2cd444140f5bb1796dbc6c80355713dc13",
+      "expected_bytes": 43
+    },
+    {
+      "filename": "LICENSE.txt",
+      "source_url": "https://github.com/test/LICENSE.txt",
+      "expected_sha256": "d408031ad98879ea57f072063f3b99240a2486dcbba1e4115fa95535c03ec44a",
+      "expected_bytes": 20
+    }
+  ],
+  "license": {
+    "identifier": "Apache-2.0",
+    "code": "Apache-2.0",
+    "weights": "Official repository Apache-2.0 declaration; a separate asset license was not found in the inspected release",
+    "status": "declared",
+    "notes": [
+      "License scope is the official repository declaration, not independent legal verification of the weights.",
+      "Weights are fetched from the pinned official release; this app does not redistribute weights."
+    ]
+  },
+  "source_revision": "6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+  "target_directory": "/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-189/test_install_active_and_comple0/models/yolox-s-onnx-coco",
+  "total_download_bytes": 63,
+  "max_duration_s": 600,
+  "hardware": {
+    "platforms": [
+      "Darwin",
+      "Linux"
+    ],
+    "accelerators": [
+      "cpu"
+    ],
+    "required_packages": [
+      "onnxruntime",
+      "numpy",
+      "Pillow",
+      "opencv-python-headless",
+      "pydantic"
+    ],
+    "minimum_memory_gib": null,
+    "estimated_disk_bytes": 63,
+    "notes": [
+      "CPUExecutionProvider only. A bounded black-image smoke proves execution, not accuracy or production throughput."
+    ]
+  },
+  "readiness": {
+    "state": "unchecked",
+    "reason": "Host prerequisites are present. Installation and inference will run only after explicit approval.",
+    "checked_at": "2026-10-29T03:13:38.744934+00:00",
+    "evidence_scope": "prerequisites",
+    "evidence": []
+  },
+  "blockers": [],
+  "runtime_snapshot": {
+    "runtime_source": "f0d1c365f956d3f57e11686ab58a1f7aa07a4595b2cb3f0b481a733a6a1451fb",
+    "python": "3.12.14",
+    "system": "Darwin",
+    "architecture": "arm64",
+    "kernel": "25.6.0",
+    "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+    "macos": "26.7.1",
+    "recipe": "307a324bf124435ad55e6b4b4ec47ff683baf543990bd566a2858bbade57cfad",
+    "package:onnxruntime": "1.31.1",
+    "package:numpy": "2.5.4",
+    "package:Pillow": "12.3.0",
+    "package:opencv-python-headless": "4.14.0.94",
+    "package:pydantic": "2.14.1"
+  },
+  "existing_installation_hash": null
+}

@@ -21,10 +21,10 @@ def block_catalog(models: list[CapabilityManifest]) -> list[CapabilityManifest]:
     by_id = {item.id: item for item in models}
     result = []
     for name, definition in REGISTRY.items():
-        dependencies = ["model.apple-vision"] if name in {"ocr", "barcode"} else ["model.configured-vlm"] if name == "vlm_judge" else ["model.owlv2-base-patch16"] if name == "detect_open_vocab" else []
+        dependencies = ["model.apple-vision"] if name in {"ocr", "barcode"} else ["model.configured-vlm"] if name == "vlm_judge" else []
         checks = [evidence("adapter", name, True, "Implemented registry contract; invocation still requires a valid graph and its inputs.")]
         ready = all(by_id[item].installation_ready for item in dependencies)
-        learned = bool(dependencies) or name == "detect"
+        learned = bool(dependencies) or name in {"detect", "detect_open_vocab"}
         state = "blocked" if not ready else "unchecked" if learned else "ready"
         contract = block_schema(name)
         result.append(CapabilityManifest.model_validate({
@@ -46,7 +46,7 @@ def block_catalog(models: list[CapabilityManifest]) -> list[CapabilityManifest]:
 def unsupported_catalog() -> list[CapabilityManifest]:
     proposals: list[tuple[str, str, str, list[str], str]] = [
         ("model.sam3", "SAM 3", "model", ["instance_segmentation"], "No segmentation adapter or host smoke test is implemented; hardware compatibility and model terms require review."),
-        ("model.yolo", "YOLO variants", "model", ["detection", "instance_segmentation"], "No YOLO adapter is installed. Select an exact implementation/weight variant and review its license before adding an adapter."),
+        ("model.yolo", "Other YOLO variants", "model", ["detection", "instance_segmentation"], "YOLOX-s ONNX has its own exact supported capability. Other YOLO implementations and weights still require an adapter, license review and hardware validation."),
         ("model.paddleocr", "PaddleOCR alternative", "model", ["ocr"], "No PaddleOCR adapter, supported-weight manifest or OCR benchmark is implemented."),
         ("block.segment", "Instance segmentation", "tool", ["instance_segmentation"], "No segmentation block or mask output contract exists in the runtime."),
         ("tool.web_search", "External source acquisition", "tool", ["source_acquisition"], "No external search/crawl tool or data-transfer policy is installed."),

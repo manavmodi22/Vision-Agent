@@ -16,6 +16,9 @@ def detect(image: Image.Image, model: str, classes: list[str], min_conf: float) 
     if model == "rtdetr-v2-r18":
         from engine.models.rtdetr import detect_rtdetr
         return detect_rtdetr(image, model, classes, min_conf)
+    if model == "yolox-s-onnx-coco":
+        from engine.models.yolox import detect_yolox
+        return detect_yolox(image, classes, min_conf)
     if model.startswith("local-"):
         from engine.models.local_manifest import read_manifest
         from engine.models.manager import model_directory

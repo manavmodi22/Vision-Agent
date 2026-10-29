@@ -11,11 +11,12 @@ TENS = dict(zip("twenty thirty forty fifty sixty seventy eighty ninety".split(),
 WORDS = "|".join(sorted([*SMALL, *TENS, "hundred", "thousand", "dozen", "half", "quarter"], key=len, reverse=True))
 QUANTITY = rf"(?:[-+]?\d{{1,5}}(?:\.\d{{1,3}})?|\.\d{{1,3}}|(?:a\s+)?(?:{WORDS})(?:[- ]+(?:and[- ]+)?(?:{WORDS})){{0,5}})"
 UNITS = r"(?:seconds?|secs?|s|minutes?|mins?)"
-NEGATIVE = re.compile(
-    r"\b(?:no|without|do not|don't|never|disable|stop)\s+"
+NEGATIVE_COMPLEMENT = (
     r"(?:(?:create|creating|emit|emitting|generate|generating|trigger|triggering|send|sending|save|saving|raise|raising|record|recording|store|storing|persist|persisting)\s+)?"
     r"(?:(?:a|an|any|local|external|outbound|evidence)\s+){0,3}"
-    r"(?P<kind>event triggers?|events?|alerts?|notifications?|notify|notifying|flagging|flags?|evidence|crops?|frames?|images?|storage)\b", re.I)
+    r"(?P<kind>event triggers?|events?|alerts?|notifications?|notify|notifying|flagging|flags?|evidence|crops?|frames?|images?|storage)\b")
+NEGATIVE = re.compile(r"\b(?:no|without|do not|don't|never|disable|stop)\s+" + NEGATIVE_COMPLEMENT, re.I)
+COORDINATED_NEGATIVE = re.compile(r"\s*(?:,\s*)?\b(?:or|nor)\s+" + NEGATIVE_COMPLEMENT, re.I)
 POSITIVE = re.compile(
     r"\b(?:create|emit|generate|record|save|send|raise|trigger|produce)\s+"
     r"(?:(?:a|an|the|one|local|evidence)\s+){0,4}(?:events?|alerts?|notifications?)\b"
@@ -137,17 +138,32 @@ class EventIntent:
     excludes_storage: bool = False
 
 
+def _negative_phrases(text: str) -> list[re.Match[str]]:
+    """Keep adjacent or/nor complements in scope, without crossing other clauses."""
+    phrases = []
+    for initial in NEGATIVE.finditer(text):
+        phrases.append(initial)
+        end = initial.end()
+        while following := COORDINATED_NEGATIVE.match(text, end):
+            phrases.append(following)
+            end = following.end()
+    return phrases
+
+
 def event_intent(brief: str, *, parse_counts: bool = True) -> EventIntent:
     if len(brief) > 12000:
         raise ValueError("The task brief exceeds the bounded intent-check budget")
     text = brief.rsplit("User request:\n", 1)[-1].replace("’", "'")
-    negatives = list(NEGATIVE.finditer(text))
+    negatives = _negative_phrases(text)
     excludes_storage = any(re.fullmatch(r"evidence|crops?|frames?|images?|storage", match.group("kind"), re.I) for match in negatives)
-    remaining = NEGATIVE.sub(" ", text)
+    masked = list(text)
+    for match in negatives:
+        masked[match.start():match.end()] = " " * (match.end() - match.start())
+    remaining = "".join(masked)
     requested = bool(POSITIVE.search(remaining))
     only_display = bool(re.search(r"\b(?:show|display)\s+(?:boxes|counts|bounding boxes)\s+only\b|\bcount[- ]only\b", text, re.I))
     global_negative = any(not re.fullmatch(r"alerts?|notifications?|notify|notifying", match.group("kind"), re.I) for match in negatives)
-    conditional_negative = any(re.match(r"\s+(?:unless|until|before|below|under)\b", text[match.end():], re.I) for match in negatives)
+    conditional_negative = any(re.match(r"\s*,?\s*(?:unless|until|before|below|under)\b", text[match.end():], re.I) for match in negatives)
     conflicting = conditional_negative or (requested and (global_negative or only_display))
     disabled = bool(negatives or only_display) and not requested
     if not requested:

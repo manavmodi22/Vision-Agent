@@ -1,0 +1,54 @@
+{
+  "kind": "deterministic synthetic tensor compatibility, not model inference or accuracy",
+  "upstream_commit": "6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+  "upstream_source_sha256": "e1d6e1d263691ac15fdaa4f891efa83707da4af0fd895be122459105df3ee601",
+  "rng_seed": 71294,
+  "cases": [
+    {
+      "input_size": [
+        640,
+        640
+      ],
+      "active_raw_anchors": 250,
+      "detections": 207,
+      "matched_upstream": true
+    },
+    {
+      "input_size": [
+        1280,
+        720
+      ],
+      "active_raw_anchors": 250,
+      "detections": 116,
+      "matched_upstream": true
+    },
+    {
+      "input_size": [
+        480,
+        800
+      ],
+      "active_raw_anchors": 250,
+      "detections": 133,
+      "matched_upstream": true
+    },
+    {
+      "input_size": [
+        319,
+        217
+      ],
+      "active_raw_anchors": 250,
+      "detections": 156,
+      "matched_upstream": true
+    },
+    {
+      "input_size": [
+        20,
+        20
+      ],
+      "active_raw_anchors": 250,
+      "detections": 199,
+      "matched_upstream": true
+    }
+  ],
+  "adapter_ops_sha256": "948fc3f31a4033d98b07c94c88a2c4609d8a306d259d2345f4d681d94af00c80"
+}

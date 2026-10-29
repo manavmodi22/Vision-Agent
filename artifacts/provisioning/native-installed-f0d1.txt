@@ -1,0 +1,35 @@
+Window: "", App: VisionApp.
+0 sheet Secondary Actions: Raise
+	1 container
+		2 text YOLOX-s ONNX COCO (CPU)
+		3 button Close
+		4 text Review model installation and current execution readiness.
+		5 scroll area Secondary Actions: Scroll Up, Scroll Down
+			6 text Recorded job Completed Completed Installed and executed on a generated black image; no quality claim Updated 8:21:38 PM · started 8:21:32 PM Recorded result: Installed · adapter validation passed Installed and executed on a generated black image; no quality claim Installation /Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/yolox-s-onnx-coco Smoke test Passed Health receipt 43b9f8292c2c46269ecc4a7f18f3cf92 Execution readiness only. Project quality still requires reviewed examples and independent acceptance.
+			7 disclosure triangle Description: Recorded artifact hashes, Value: off
+			8 text Matched smoke receipt Generated black RGB image, 640 by 640 pixels; no user media Measured execution Observations Quality claim 675 ms 0 none This receipt verifies the recorded adapter execution on that input. Current catalog readiness is refreshed separately; project accuracy is unmeasured.
+			9 disclosure triangle Description: Input and execution identity, Value: off
+			10 text Plan for review 8:21:28 PM Action Download Time bound Install + validate adapter 35.9 MB 600 seconds Host prerequisites are present. Installation and inference will run only after explicit approval. Approval permits this plan’s download, local installation and bounded smoke test. The test checks adapter execution; it does not measure accuracy on your images or approve an application. Hardware and runtime requirements Platforms Darwin, Linux Accelerators cpu Packages onnxruntime, numpy, Pillow, opencv-python-headless, pydantic Estimated disk 35.9 MB CPUExecutionProvider only. A bounded black-image smoke proves execution, not accuracy or production throughput. License attribution Identifier Apache-2.0 Status Declared Code Apache-2.0 Weights Official repository Apache-2.0 declaration; a separate asset license was not found in the inspected release License scope is the official repository declaration, not independent legal verification of the weights. Weights are fetched from the pinned official release; this app does not redistribute weights. Pinned artifacts and sources model.onnx 35.9 MB
+			11 link Description: https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_s.onnx, Value: github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_s.onnx
+			12 text SHA256 c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063 LICENSE.txt 11 KB
+			13 link Description: https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/6ddff4824372906469a7fae2dc3206c7aa4bbaee/LICENSE, Value: raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/6ddff4824372906469a7fae2dc3206c7aa4bbaee/LICENSE
+			14 text SHA256 0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088 Source revision 6ddff4824372906469a7fae2dc3206c7aa4bbaee Installation path /Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/yolox-s-onnx-coco
+			15 disclosure triangle Description: Runtime pinned by this plan, Value: off
+			16 disclosure triangle Description: Immutable plan identity, Value: off
+			17 scroll bar (settable, float) 0
+				18 value indicator (settable, float) 0
+				19 increment arrow button
+				20 decrement arrow button
+				21 increment page button
+				22 decrement page button
+		23 button Refresh
+		24 button Review current validation plan
+25 menu bar
+	26 VisionApp
+	27 File
+	28 Edit
+	29 View
+	30 Window
+	31 Help
+
+The focused UI element is 0 sheet Secondary Actions: Raise

@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-10-29T03:33:13.997914+00:00",
+  "source_identity": "2f0804da25ccbd6047d9dee2389127f13e3aa944b2596e1b0e7b577e1d5363a5",
+  "status": "reviewed_provisioning_and_native_describe_build_preview_verified; new_box_edit_check_incomplete; overall_architecture_incomplete",
+  "python_tests": {
+    "passed": 758,
+    "duration_s": 391.25,
+    "tested_source_identity": "2f0804da25ccbd6047d9dee2389127f13e3aa944b2596e1b0e7b577e1d5363a5",
+    "log": "artifacts/provisioning/full-tests-2f08.log"
+  },
+  "mypy": {
+    "passed": true,
+    "source_files": 168,
+    "log": "artifacts/provisioning/mypy-2f08.log"
+  },
+  "ruff": {
+    "passed": true,
+    "log": "artifacts/provisioning/ruff-2f08.log"
+  },
+  "native_contracts": {
+    "passed_per_binary": 204,
+    "deterministic_checks": 182,
+    "prior_payloads": 14,
+    "mocked_provisioning_payloads": 4,
+    "actual_provisioning_payloads": 4,
+    "scope": "Software and decoding checks, separate from actual inference and quality.",
+    "evidence": "artifacts/native-provisioning-validation.json"
+  },
+  "native_release_sha256": "1d0118e1696808b2b906251188ac7b9bde21b897cba4f7fcec91a5b35cd1245a",
+  "native_packaged_sha256": "364568c8ea30695d37e2ddd338c656b228baad0d42bd420b61159f7c03cfac37",
+  "portable_build": "artifacts/provisioning/package-2f08.log",
+  "relocation": {
+    "passed": true,
+    "evidence": "artifacts/provisioning/bundle-2f08.json",
+    "scope": "Relocated imports, native OCR, fixture evaluation/trial gate, actual YOLOX black-image smoke and one real warehouse image, signatures."
+  },
+  "package_installation": "artifacts/provisioning/package-installation-2f08.json",
+  "actual_installation": "artifacts/provisioning/installation-2f08.json",
+  "native_installation": "artifacts/provisioning/native-installation-f0d1.json",
+  "native_revalidation": "artifacts/provisioning/native-validation-2f08.json",
+  "actual_planner_mcp": "artifacts/provisioning/agent-2f08.json",
+  "actual_native_goal": "artifacts/provisioning/native-agent-acceptance-2f08.json",
+  "original_negative_intent_failure": "artifacts/provisioning/agent-f0d1.json",
+  "unchanged_adapter_parity": "artifacts/provisioning/adapter-parity-f0d1.json",
+  "previous_report": "artifacts/runtime-validation-7f62.json",
+  "remaining": [
+    "Native final box-edit check and visually reopening the canonical copy remain unverified after screen capture failed; exact-image editor opening and described-goal preview passed. Prior annotation editing checks remain historical.",
+    "Independent reviewed real acceptance data and representative vision benchmarks remain incomplete; retained synthetic-label YOLOX diagnostic recall52.7% fails its80% gate.",
+    "Image scores do not validate temporal event correctness, false alarms or duration; affected applications remain local-trial-only and external delivery is suppressed.",
+    "Broader planner/refinement reliability and latency remain limitations; measured native planner call88.817s is not a controlled performance benchmark.",
+    "Additional reviewed installation recipes, dependency installs, integrated OCR alternatives, SAM3/segmentation, VLM/training adapter parity and failure-slice/resource comparison remain incomplete.",
+    "Camera/screen hardware acceptance, sustained throughput/coexistence, signing/notarization and full operational acceptance remain pending."
+  ]
+}

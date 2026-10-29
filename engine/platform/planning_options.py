@@ -69,7 +69,7 @@ def _project_options(service: WorkspaceService, project_id: str, detection_const
         # Model metadata already names a registered backend; model IDs never become paths or code.
         adapter = "apple-vision" if reading else "fixture-color-v1" if synthetic else (
             "owlv2" if model_id == "owlv2-base-patch16" else backends.get(model_id, "unknown"))
-        if adapter not in {"apple-vision", "fixture-color-v1", "owlv2", "rtdetr-v2-r18", "ssdlite320"}:
+        if adapter not in {"apple-vision", "fixture-color-v1", "owlv2", "rtdetr-v2-r18", "ssdlite320", "yolox-onnx"}:
             blocked.append(BlockedModelOption(capability_id=capability.id, reason="No compatible registered adapter contract"))
             continue
         exclusion = default_exclusion(facts)

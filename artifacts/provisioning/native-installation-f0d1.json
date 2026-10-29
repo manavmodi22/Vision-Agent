@@ -1,0 +1,153 @@
+{
+  "passed": true,
+  "runtime_source_identity": "f0d1c365f956d3f57e11686ab58a1f7aa07a4595b2cb3f0b481a733a6a1451fb",
+  "scope": "Actual packaged native review, user-authorized official download, bounded ONNX black-image inference, close/reopen durable receipt and refreshed catalog readiness. No quality claim.",
+  "job": {
+    "id": "ac03bfafae1b4c909fe5be06b232861f",
+    "plan_id": "52cff72e706f40ac8c9be11710e4a21e",
+    "plan_hash": "b68a18b347fd1eb0e5c380930810b087d55ab38cf87af3f34ac421c861e78cae",
+    "model_id": "yolox-s-onnx-coco",
+    "status": "completed",
+    "phase": "completed",
+    "created_at": "2026-10-29T03:21:32.881464+00:00",
+    "updated_at": "2026-10-29T03:21:38.329799+00:00",
+    "progress": 1.0,
+    "downloaded_bytes": 35869373,
+    "total_bytes": 35869373,
+    "message": "Installed and executed on a generated black image; no quality claim",
+    "error": null,
+    "result": {
+      "installed": true,
+      "installation_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/yolox-s-onnx-coco",
+      "artifact_hashes": {
+        "model.onnx": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+        "LICENSE.txt": "0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088"
+      },
+      "smoke_status": "passed",
+      "health_receipt_id": "43b9f8292c2c46269ecc4a7f18f3cf92",
+      "message": "Installed and executed on a generated black image; no quality claim"
+    }
+  },
+  "plan": {
+    "id": "52cff72e706f40ac8c9be11710e4a21e",
+    "plan_hash": "b68a18b347fd1eb0e5c380930810b087d55ab38cf87af3f34ac421c861e78cae",
+    "created_at": "2026-10-29T03:21:28.721066+00:00",
+    "model_id": "yolox-s-onnx-coco",
+    "capability_id": "model.yolox-s-onnx-coco",
+    "name": "YOLOX-s ONNX COCO (CPU)",
+    "action": "install",
+    "artifacts": [
+      {
+        "filename": "model.onnx",
+        "source_url": "https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_s.onnx",
+        "expected_sha256": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+        "expected_bytes": 35858002
+      },
+      {
+        "filename": "LICENSE.txt",
+        "source_url": "https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/6ddff4824372906469a7fae2dc3206c7aa4bbaee/LICENSE",
+        "expected_sha256": "0ec3668d3274bcf29e8a29e9576d5a2cd96fc78d3c5bec4387355a796e5d9088",
+        "expected_bytes": 11371
+      }
+    ],
+    "license": {
+      "identifier": "Apache-2.0",
+      "code": "Apache-2.0",
+      "weights": "Official repository Apache-2.0 declaration; a separate asset license was not found in the inspected release",
+      "status": "declared",
+      "notes": [
+        "License scope is the official repository declaration, not independent legal verification of the weights.",
+        "Weights are fetched from the pinned official release; this app does not redistribute weights."
+      ]
+    },
+    "source_revision": "6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+    "target_directory": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/models/yolox-s-onnx-coco",
+    "total_download_bytes": 35869373,
+    "max_duration_s": 600,
+    "hardware": {
+      "platforms": [
+        "Darwin",
+        "Linux"
+      ],
+      "accelerators": [
+        "cpu"
+      ],
+      "required_packages": [
+        "onnxruntime",
+        "numpy",
+        "Pillow",
+        "opencv-python-headless",
+        "pydantic"
+      ],
+      "minimum_memory_gib": null,
+      "estimated_disk_bytes": 35869373,
+      "notes": [
+        "CPUExecutionProvider only. A bounded black-image smoke proves execution, not accuracy or production throughput."
+      ]
+    },
+    "readiness": {
+      "state": "unchecked",
+      "reason": "Host prerequisites are present. Installation and inference will run only after explicit approval.",
+      "checked_at": "2026-10-29T03:21:28.721066+00:00",
+      "evidence_scope": "prerequisites",
+      "evidence": []
+    },
+    "blockers": [],
+    "runtime_snapshot": {
+      "runtime_source": "f0d1c365f956d3f57e11686ab58a1f7aa07a4595b2cb3f0b481a733a6a1451fb",
+      "python": "3.12.14",
+      "system": "Darwin",
+      "architecture": "arm64",
+      "kernel": "25.6.0",
+      "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+      "macos": "26.7.1",
+      "recipe": "056cffd49b31aa4de1d12c0d28a75e20a508693cd868fc1d0468767128a6650d",
+      "package:onnxruntime": "1.31.1",
+      "package:numpy": "2.5.4",
+      "package:Pillow": "12.3.0",
+      "package:opencv-python-headless": "4.14.0.94",
+      "package:pydantic": "2.14.1"
+    },
+    "existing_installation_hash": null
+  },
+  "health": {
+    "id": "43b9f8292c2c46269ecc4a7f18f3cf92",
+    "model_id": "yolox-s-onnx-coco",
+    "job_id": "ac03bfafae1b4c909fe5be06b232861f",
+    "plan_hash": "b68a18b347fd1eb0e5c380930810b087d55ab38cf87af3f34ac421c861e78cae",
+    "created_at": "2026-10-29T03:21:38.326919+00:00",
+    "installation_hash": "a4f84036308ed13da151095f391073307b2cbc26aa6cd8d44217e5ba5032dbbc",
+    "runtime_snapshot": {
+      "runtime_source": "f0d1c365f956d3f57e11686ab58a1f7aa07a4595b2cb3f0b481a733a6a1451fb",
+      "python": "3.12.14",
+      "system": "Darwin",
+      "architecture": "arm64",
+      "kernel": "25.6.0",
+      "kernel_build": "Darwin Kernel Version 25.6.0: Tue Aug 18 17:48:46 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6041",
+      "macos": "26.7.1",
+      "recipe": "056cffd49b31aa4de1d12c0d28a75e20a508693cd868fc1d0468767128a6650d",
+      "package:onnxruntime": "1.31.1",
+      "package:numpy": "2.5.4",
+      "package:Pillow": "12.3.0",
+      "package:opencv-python-headless": "4.14.0.94",
+      "package:pydantic": "2.14.1"
+    },
+    "input_description": "Generated black RGB image, 640 by 640 pixels; no user media",
+    "input_sha256": "af90227ef45eb554c3b8d30da879ed50fa48b3405808300e36f1a8d57f27efb5",
+    "elapsed_s": 0.6748543750145473,
+    "observation_count": 0,
+    "execution_identity_hash": "a2ce0af0adb2fe4d8dc4a5f338822dc6ccc514f64050a32b0ee23f637ac9efef",
+    "quality_claim": "none"
+  },
+  "retained_project_unchanged": {
+    "annotations.json": true,
+    "project.json": true,
+    "agent-state.json": true,
+    "build.json": true
+  },
+  "screenshots": [
+    "native-install-review-f0d1.png",
+    "native-installed-f0d1.png"
+  ],
+  "native_receipt_text": "native-installed-f0d1.txt"
+}

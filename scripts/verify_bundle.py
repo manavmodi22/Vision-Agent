@@ -13,7 +13,8 @@ from pathlib import Path
 import httpx
 
 
-def verify(bundle: Path, output: Path, image: Path | None, planner: str | None) -> None:
+def verify(bundle: Path, output: Path, image: Path | None, planner: str | None,
+           yolox_model_directory: Path | None = None) -> None:
     bundle = bundle.resolve()
     result: dict[str, object] = {"bundle": str(bundle), "relocation_test": True}
     environment = dict(os.environ)
@@ -31,6 +32,10 @@ def verify(bundle: Path, output: Path, image: Path | None, planner: str | None) 
             native = moved / "Contents/MacOS/VisionApp"
             environment["VISION_APP_BINARY"] = str(native)
             environment["VISION_DATA_DIR"] = str(folder / "data")
+            if yolox_model_directory is not None:
+                isolated_models = folder / "models"
+                shutil.copytree(yolox_model_directory.resolve(), isolated_models / "yolox-s-onnx-coco")
+                environment["VISION_MODELS_DIR"] = str(isolated_models)
             paths_script = (
                 "import sys,json,engine,torch,transformers,cv2; "
                 "print(json.dumps({'python':sys.executable,'engine':engine.__file__,"
@@ -124,6 +129,26 @@ def verify(bundle: Path, output: Path, image: Path | None, planner: str | None) 
                         assert isinstance(trial, dict) and trial.get("approval_scope") == "local_trial", trial
                         assert trial.get("external_delivery_enabled_by_approval") is False, trial
                         result["explicit_local_trial"] = trial
+                        if yolox_model_directory is not None:
+                            install_plan = call("POST", "/provisioning/plans", {"model_id": "yolox-s-onnx-coco"})
+                            assert isinstance(install_plan, dict) and install_plan["action"] == "validate", install_plan
+                            assert not install_plan["blockers"] and install_plan["total_download_bytes"] == 0, install_plan
+                            install_job = call("POST", "/provisioning/jobs", {
+                                "plan_id": install_plan["id"], "plan_hash": install_plan["plan_hash"], "approved": True})
+                            assert isinstance(install_job, dict)
+                            deadline = time.monotonic() + 120
+                            while install_job["status"] in {"queued", "running"}:
+                                if time.monotonic() > deadline:
+                                    raise TimeoutError("Packaged ONNX validation exceeded 120 seconds")
+                                time.sleep(.2)
+                                install_job = call("GET", "/provisioning/jobs/" + str(install_job["id"]))
+                                assert isinstance(install_job, dict)
+                            assert install_job["status"] == "completed", install_job
+                            install_result = install_job["result"]
+                            assert isinstance(install_result, dict) and install_result["smoke_status"] == "passed"
+                            receipt = call("GET", "/provisioning/health/" + str(install_result["health_receipt_id"]))
+                            result["packaged_yolox_validation"] = {"plan": install_plan, "job": install_job,
+                                "health": receipt, "scope": "Relocated packaged CPU inference on generated black pixels using an isolated copy of pinned weights; no network download or accuracy claim."}
                         if planner:
                             settings = call("GET", "/settings")
                             assert isinstance(settings, dict)
@@ -151,7 +176,9 @@ def verify(bundle: Path, output: Path, image: Path | None, planner: str | None) 
                                 "base_revision": manifest["revision"],
                                 "classes": [{"id": "person", "name": "person", "color": "#43C6AC"}],
                             })
-                            call("POST", f"/projects/{custom_id}/plan", {"mode": "template", "model": "owlv2-base-patch16"})
+                            detector_model = "yolox-s-onnx-coco" if yolox_model_directory is not None else "owlv2-base-patch16"
+                            call("POST", f"/projects/{custom_id}/plan", {"mode": "template", "model": detector_model})
+                            result["actual_detector_model"] = detector_model
                             result["actual_detector_preview"] = call("POST", f"/projects/{custom_id}/preview", {})
                         result["models"] = call("GET", "/models")
                 finally:
@@ -181,7 +208,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("bundle", type=Path)
     parser.add_argument("--output", type=Path, default=Path("artifacts/bundle-verification.json"))
-    parser.add_argument("--image", type=Path)
+    parser.add_argument("--image", type=Path, help="Preview one actual image with YOLOX when --yolox-model-directory is supplied, otherwise OWLv2")
     parser.add_argument("--planner", help="Optional actual local planner id at port 1234")
+    parser.add_argument("--yolox-model-directory", type=Path,
+                        help="Copy this existing pinned YOLOX directory into temporary storage and validate packaged ONNX inference")
     arguments = parser.parse_args()
-    verify(arguments.bundle, arguments.output, arguments.image, arguments.planner)
+    verify(arguments.bundle, arguments.output, arguments.image, arguments.planner, arguments.yolox_model_directory)

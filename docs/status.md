@@ -6,6 +6,66 @@ a contextual checkpoint in that conversation, not a replacement for the builder.
 
 ## Current software checkpoint
 
+The provisioning candidate is frozen at
+`2f0804da25ccbd6047d9dee2389127f13e3aa944b2596e1b0e7b577e1d5363a5`.
+It fixes the deterministic event-intent guard's handling of adjacent `or`/`nor`
+negation, preserving the original brief and conditional/conflicting instructions.
+The [full suite](../artifacts/provisioning/full-tests-2f08.log) passes **758 tests in
+391.25 seconds**; strict mypy on **168 files** and repository Ruff pass. The focused
+initial-event and related suites pass 112 checks in 4.37 seconds. Unchanged Debug
+and Release native binaries each pass **204 software/decoding checks**.
+
+A [fresh isolated API installation](../artifacts/provisioning/installation-2f08.json)
+verified pinned YOLOX artifacts, black-image inference, approval/hash checks and
+job replay in **13.773 seconds**. The [exact original Qwen/MCP goal](../artifacts/provisioning/agent-2f08.json)
+passed with one model response and actual inference on two unreviewed real frames
+in **75.757 seconds**. [Bundle verification](../artifacts/provisioning/bundle-2f08.json)
+passed relocation, isolated imports, OCR/fixture inference, actual YOLOX real-image
+and black-image inference, and signature checks. [Native revalidation](../artifacts/provisioning/native-validation-2f08.json)
+confirmed that a runtime change makes the old receipt “Not verified”; explicit
+zero-download validation restored “Ready” while preserving the historical receipt.
+
+The [native describe/build walkthrough](../artifacts/provisioning/native-agent-acceptance-2f08.json)
+used one Qwen call (88.817 seconds), produced five preview frames and 20 unreviewed
+annotation images, and opened the exact preview image in the annotation editor.
+The new box-edit check is **incomplete**: the CUA ScreenCaptureKit service returned
+an invalid-parameter error before an edit could be verified. Annotations remained
+unchanged. No evaluation, accuracy, review or deployment approval is claimed.
+The original project's four checked files remain unchanged; the public-data QA
+project remains unreviewed in the app because UI control became unavailable.
+
+[The canonical app copy and signature check passed](../artifacts/provisioning/package-installation-2f08.json), with the previous bundle preserved. A canonical relaunch UI check is not
+claimed. See the [recipe and recovery contract](capability-catalog.md). These
+checks establish the stated software and execution paths, not detector quality
+or completion of the full architecture.
+
+### Provisioning baseline: `f0d1`
+
+The retained [baseline](../artifacts/provisioning/baseline-f0d1.json) at
+`f0d1c365f956d3f57e11686ab58a1f7aa07a4595b2cb3f0b481a733a6a1451fb`
+passes **732 tests in 426.56 seconds**, strict mypy on 168 files and repository
+Ruff. Its [isolated API installation](../artifacts/provisioning/installation-f0d1.json)
+verified official download hashes, black-image inference and job replay in 4.318
+seconds. [Packaged relocation, ONNX smoke and signature checks](../artifacts/provisioning/bundle-f0d1.json)
+and the [actual native installation walkthrough](../artifacts/provisioning/native-installation-f0d1.json)
+passed, including closing/reopening the receipt and refreshing readiness. The
+retained project's four checked files were unchanged.
+
+The [exact Qwen/MCP goal failed](../artifacts/provisioning/agent-f0d1.json): the
+first correct count-only decision was rejected because the guard misread “Do not
+create events or send alerts.” The subsequent model turn asked an unnecessary
+clarification. The [original operation](../artifacts/provisioning/agent-f0d1-operation.json)
+and failure remain retained; the full described-goal path did not pass on `f0d1`.
+The `2f08` correction and successful exact live rerun are recorded above; they do
+not erase this retained baseline failure.
+
+[Integrated parity](../artifacts/provisioning/adapter-parity-f0d1.json) matches all
+30 retained outputs on synthetic NVIDIA frames with unreviewed published labels;
+the diagnostic recall remains **52.7% (59 / 112)** and fails its gate. Installation,
+parity and software checks do not promote model quality.
+
+### Previous packaged checkpoint: `7f62`
+
 Frozen runtime source
 `7f621816c32bcfd849c3c1a8986aa86dbb72157e54b818455e24ed7384a41228`
 passes **672 Python tests in 264.02 seconds**, strict mypy on **151 source files**,
@@ -17,8 +77,8 @@ accuracy. See the [full test log](../artifacts/evaluation-fairness/full-tests-fi
 [integration receipt](../artifacts/evaluation-fairness/integration-validation-7f62.json)
 and [native contract report](../artifacts/native-evaluation-validation.json).
 
-The installed `dist/VisionApp.app` contains `7f62`. Relocation, isolated packaged
-imports, native OCR, fixture inference and signature verification passed. The
+The previously verified `7f62` package passed relocation, isolated packaged
+imports, native OCR, fixture inference and signature verification. The
 native walkthrough saved evidence assignments, re-evaluated in the same
 conversation and checked explicit trial controls without changing annotations
 or approving the QA app. See [packaged verification](../artifacts/evaluation-fairness/bundle-verification-7f62-final.json)
@@ -32,6 +92,11 @@ accuracy pass. Earlier live-model observations remain historical evidence below.
 - Machine-generated capability catalog separates installed, available-to-install
   and unsupported capabilities, with readiness, license/source provenance,
   requirements and schemas. Presence on disk does not claim successful inference.
+- Reviewed provisioning for YOLOX-s ONNX: immutable source/hash/size/license plans,
+  explicit approval, durable bounded jobs, streamed verification, atomic install
+  and a fixed black-image smoke receipt. Stale or failed validation cannot keep
+  the catalog callable. This CPU adapter supports exact COCO classes; installed
+  model options still undergo vocabulary/task checks before planning.
 - Per-candidate planning selects from compatible installed capabilities and saves
   the proposed model/reason and exact options before execution. Recorded training
   purpose distinguishes ordinary candidates from engineering or unknown local
@@ -123,11 +188,13 @@ accuracy pass. Earlier live-model observations remain historical evidence below.
 - Core ML export, tracking/line-cross/dwell, tiling, segmentation masks and keypoints.
   RT-DETRv2 is the verified pretrained specialization backend; D-FINE/DEIM remain absent.
   Unsupported blocks reject compilation rather than pretending to run.
-- Measured model selection, unified provisioning and additional adapter families.
-  The planner chooses per-candidate models within typed workflow families; it is
-  not a general code generator. SAM 3, YOLO and PaddleOCR are not callable in the
-  app. YOLOX and PaddleOCR have actual isolated CPU probes, with runtime/license
-  and packaging work still required for integration.
+- Measured model selection and additional reviewed provisioning recipes. The
+  planner chooses per-candidate models within typed workflow families; it is not
+  a general code generator. YOLOX-s ONNX is integrated with one approved download
+  recipe and actual CPU smoke/parity evidence. OWLv2/RT-DETR unified recipes need
+  pinned multi-artifact manifests; dependency installation is not part of the API.
+  Other YOLO variants and SAM 3 remain unsupported. PaddleOCR has an isolated CPU
+  probe and runtime/license audit but no callable production adapter or recipe.
 - Representative independent acceptance data and broader task-complete recipes,
   failure-slice aggregates and standardized resource measurements. The protocol
   and promotion software gates are implemented; their tests are not evidence of

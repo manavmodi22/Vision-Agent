@@ -1,0 +1,18 @@
+{
+  "runtime_source_identity": "f0d1c365f956d3f57e11686ab58a1f7aa07a4595b2cb3f0b481a733a6a1451fb",
+  "full_suite": {
+    "passed": 732,
+    "elapsed_s": 426.56,
+    "log": "full-tests-f0d1.log"
+  },
+  "bundle_verification": "bundle-f0d1.json",
+  "strict_mypy_files": 168,
+  "ruff": "passed",
+  "native_software_checks": 204,
+  "actual_api_installation": "installation-f0d1.json",
+  "actual_native_installation": "native-installation-f0d1.json",
+  "actual_parity": "adapter-parity-f0d1.json",
+  "actual_agent": "agent-f0d1.json",
+  "actual_agent_status": "failed: coordinated negative event intent incorrectly rejected; original failure retained",
+  "scope": "Baseline before targeted event intent correction. Installation and adapter execution pass; complete described-goal integration has not passed at this source."
+}

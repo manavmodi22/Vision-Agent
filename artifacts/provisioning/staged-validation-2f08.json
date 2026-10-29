@@ -1,0 +1,6 @@
+{
+  "staged_runtime_source_identity": "2f0804da25ccbd6047d9dee2389127f13e3aa944b2596e1b0e7b577e1d5363a5",
+  "matches_tested_runtime": true,
+  "source_files": 169,
+  "scope": "Git index source and versioned playbook bytes match the runtime tested and packaged at2f08. Documentation/evidence are outside this runtime identity."
+}

@@ -21,7 +21,7 @@
 0.00.107.970 I cmn  common_param:   - MTL0    : Apple M4 Pro (38338 MiB, 38338 MiB free)
 0.00.107.971 I cmn  common_param:   - BLAS    : Accelerate (0 MiB, 0 MiB free)
 0.00.107.979 I cmn  common_param:   - CPU     : Apple M4 Pro (49152 MiB, 49152 MiB free)
-0.00.108.480 I cmn  common_param: system_info: n_threads = 10 (n_threads_batch = 10) / 14 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | DOTPROD = 1 | LLAMAFILE = 1 | ACCELERATE = 1 | REPACK = 1 | 
+0.00.108.480 I cmn  common_param: system_info: n_threads = 10 (n_threads_batch = 10) / 14 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | DOTPROD = 1 | LLAMAFILE = 1 | ACCELERATE = 1 | REPACK = 1 |
 0.00.108.538 I srv  init_listene: running without SSL
 0.00.108.587 I srv  init_listene: The UI is disabled
 0.00.108.589 I srv  init_listene: Use --ui/--no-ui (or deprecated --webui/--no-webui) to enable/disable
@@ -74,7 +74,7 @@
 0.00.250.400 I llama_model_loader: - type q6_K:   41 tensors
 0.00.250.401 I print_info: file format = GGUF V3 (latest)
 0.00.250.401 I print_info: file type   = Q4_K - Medium
-0.00.250.402 I print_info: file size   = 8.38 GiB (4.87 BPW) 
+0.00.250.402 I print_info: file size   = 8.38 GiB (4.87 BPW)
 0.00.250.409 I llama_prepare_model_devices: using device MTL0 (Apple M4 Pro) (unknown id) - 38338 MiB free
 0.00.278.527 I load: 0 unused tokens
 0.00.279.115 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
@@ -237,8 +237,8 @@ How are you?<|im_end|>
 8.04.129.559 I srv          load:  - looking for better prompt, base f_keep = -1.000, f_sim = 0.000
 8.04.129.561 I srv        update:  - cache state: 0 prompts, 0.000 MiB (limits: 8192.000 MiB, 8192 tokens, 8589934592 est)
 8.04.129.562 I srv  get_availabl: prompt cache update took 0.00 ms
-8.04.129.898 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-8.04.129.906 I slot launch_slot_: id  0 | task -1 | sampler params: 
+8.04.129.898 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+8.04.129.906 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -264,8 +264,8 @@ How are you?<|im_end|>
 8.49.649.211 I srv        update:  - cache state: 1 prompts, 151.262 MiB (limits: 8192.000 MiB, 8192 tokens, 52424 est)
 8.49.649.213 I srv        update:    - prompt 0x703ffc5b0:     968 tokens, checkpoints:  0,   151.262 MiB
 8.49.649.214 I srv  get_availabl: prompt cache update took 27.09 ms
-8.49.650.545 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-8.49.650.553 I slot launch_slot_: id  0 | task -1 | sampler params: 
+8.49.650.545 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+8.49.650.553 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -284,8 +284,8 @@ How are you?<|im_end|>
 9.13.065.786 I srv  server_strea: conv_id= (empty=1)
 9.13.068.239 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.913 (1407/1541) > 0.100
 9.13.068.241 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.913 (> 0.100 thold), f_keep = 0.941
-9.13.069.486 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-9.13.069.492 I slot launch_slot_: id  0 | task -1 | sampler params: 
+9.13.069.486 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+9.13.069.492 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -304,8 +304,8 @@ How are you?<|im_end|>
 9.26.014.859 I srv  server_strea: conv_id= (empty=1)
 9.26.017.104 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.670 (948/1415) > 0.100
 9.26.017.107 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.670 (> 0.100 thold), f_keep = 0.586
-9.26.018.359 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-9.26.018.367 I slot launch_slot_: id  0 | task -1 | sampler params: 
+9.26.018.359 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+9.26.018.367 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -327,8 +327,8 @@ How are you?<|im_end|>
 9.58.572.071 I srv  server_strea: conv_id= (empty=1)
 9.58.574.560 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.669 (946/1415) > 0.100
 9.58.574.563 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.669 (> 0.100 thold), f_keep = 0.607
-9.58.575.877 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-9.58.575.886 I slot launch_slot_: id  0 | task -1 | sampler params: 
+9.58.575.877 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+9.58.575.886 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -353,8 +353,8 @@ How are you?<|im_end|>
 17.51.438.424 I srv        update:    - prompt 0x703ffc5b0:     968 tokens, checkpoints:  0,   151.262 MiB
 17.51.438.424 I srv        update:    - prompt 0x703ffc510:    1445 tokens, checkpoints:  0,   225.799 MiB
 17.51.438.436 I srv  get_availabl: prompt cache update took 63.07 ms
-17.51.440.278 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-17.51.440.290 I slot launch_slot_: id  0 | task -1 | sampler params: 
+17.51.440.278 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+17.51.440.290 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -373,8 +373,8 @@ How are you?<|im_end|>
 19.52.619.692 I srv  server_strea: conv_id= (empty=1)
 19.52.622.289 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.689 (1034/1500) > 0.100
 19.52.622.291 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.689 (> 0.100 thold), f_keep = 0.652
-19.52.623.523 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-19.52.623.534 I slot launch_slot_: id  0 | task -1 | sampler params: 
+19.52.623.523 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+19.52.623.534 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -393,8 +393,8 @@ How are you?<|im_end|>
 20.13.726.515 I srv  server_strea: conv_id= (empty=1)
 20.13.730.042 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.918 (1496/1630) > 0.100
 20.13.730.046 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.918 (> 0.100 thold), f_keep = 0.944
-20.13.731.684 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-20.13.731.691 I slot launch_slot_: id  0 | task -1 | sampler params: 
+20.13.731.684 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+20.13.731.691 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -413,8 +413,8 @@ How are you?<|im_end|>
 20.30.359.099 I srv  server_strea: conv_id= (empty=1)
 20.30.361.898 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.689 (1037/1504) > 0.100
 20.30.361.901 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.689 (> 0.100 thold), f_keep = 0.607
-20.30.363.290 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-20.30.363.298 I slot launch_slot_: id  0 | task -1 | sampler params: 
+20.30.363.290 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+20.30.363.298 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -436,8 +436,8 @@ How are you?<|im_end|>
 21.01.162.707 I srv  server_strea: conv_id= (empty=1)
 21.01.165.844 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.688 (1035/1504) > 0.100
 21.01.165.848 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.688 (> 0.100 thold), f_keep = 0.628
-21.01.167.402 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-21.01.167.411 I slot launch_slot_: id  0 | task -1 | sampler params: 
+21.01.167.402 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+21.01.167.411 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -459,8 +459,8 @@ How are you?<|im_end|>
 21.39.635.427 I srv  server_strea: conv_id= (empty=1)
 21.39.637.876 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.688 (1035/1504) > 0.100
 21.39.637.881 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.688 (> 0.100 thold), f_keep = 0.634
-21.39.639.175 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-21.39.639.183 I slot launch_slot_: id  0 | task -1 | sampler params: 
+21.39.639.175 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+21.39.639.183 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -482,8 +482,8 @@ How are you?<|im_end|>
 22.12.090.111 I srv  server_strea: conv_id= (empty=1)
 22.12.095.111 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.878 (1500/1708) > 0.100
 22.12.095.163 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.878 (> 0.100 thold), f_keep = 0.909
-22.12.097.718 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-22.12.097.731 I slot launch_slot_: id  0 | task -1 | sampler params: 
+22.12.097.718 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+22.12.097.731 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -505,8 +505,8 @@ How are you?<|im_end|>
 22.35.274.822 I srv  server_strea: conv_id= (empty=1)
 22.35.277.275 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.688 (1038/1509) > 0.100
 22.35.277.277 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.688 (> 0.100 thold), f_keep = 0.557
-22.35.278.543 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-22.35.278.550 I slot launch_slot_: id  0 | task -1 | sampler params: 
+22.35.278.543 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+22.35.278.550 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -527,8 +527,8 @@ How are you?<|im_end|>
 22.56.424.090 I srv  server_strea: conv_id= (empty=1)
 22.56.427.881 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.879 (1505/1713) > 0.100
 22.56.427.884 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.879 (> 0.100 thold), f_keep = 0.909
-22.56.429.784 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-22.56.429.794 I slot launch_slot_: id  0 | task -1 | sampler params: 
+22.56.429.784 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+22.56.429.794 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -550,8 +550,8 @@ How are you?<|im_end|>
 23.26.281.045 I srv  server_strea: conv_id= (empty=1)
 23.26.283.597 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.690 (1037/1503) > 0.100
 23.26.283.599 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.690 (> 0.100 thold), f_keep = 0.555
-23.26.284.851 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-23.26.284.857 I slot launch_slot_: id  0 | task -1 | sampler params: 
+23.26.284.851 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+23.26.284.857 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -570,8 +570,8 @@ How are you?<|im_end|>
 23.43.700.910 I srv  server_strea: conv_id= (empty=1)
 23.43.703.433 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.693 (1037/1496) > 0.100
 23.43.703.435 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.693 (> 0.100 thold), f_keep = 0.649
-23.43.704.649 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-23.43.704.655 I slot launch_slot_: id  0 | task -1 | sampler params: 
+23.43.704.649 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+23.43.704.655 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -594,8 +594,8 @@ How are you?<|im_end|>
 24.10.600.058 I srv  server_strea: conv_id= (empty=1)
 24.10.604.572 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.859 (1492/1736) > 0.100
 24.10.604.577 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.859 (> 0.100 thold), f_keep = 0.895
-24.10.606.525 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-24.10.606.537 I slot launch_slot_: id  0 | task -1 | sampler params: 
+24.10.606.525 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+24.10.606.537 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -614,8 +614,8 @@ How are you?<|im_end|>
 24.21.273.712 I srv  server_strea: conv_id= (empty=1)
 24.21.276.203 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.699 (1038/1484) > 0.100
 24.21.276.206 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.699 (> 0.100 thold), f_keep = 0.583
-24.21.277.521 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-24.21.277.529 I slot launch_slot_: id  0 | task -1 | sampler params: 
+24.21.277.521 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+24.21.277.529 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -634,8 +634,8 @@ How are you?<|im_end|>
 24.37.748.625 I srv  server_strea: conv_id= (empty=1)
 24.37.751.045 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.693 (1037/1497) > 0.100
 24.37.751.048 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.693 (> 0.100 thold), f_keep = 0.662
-24.37.752.250 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-24.37.752.257 I slot launch_slot_: id  0 | task -1 | sampler params: 
+24.37.752.250 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+24.37.752.257 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -656,8 +656,8 @@ How are you?<|im_end|>
 24.58.389.194 I srv  server_strea: conv_id= (empty=1)
 24.58.391.764 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.682 (1034/1516) > 0.100
 24.58.391.766 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.682 (> 0.100 thold), f_keep = 0.636
-24.58.392.985 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-24.58.392.990 I slot launch_slot_: id  0 | task -1 | sampler params: 
+24.58.392.985 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+24.58.392.990 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -676,8 +676,8 @@ How are you?<|im_end|>
 25.29.304.581 I srv  server_strea: conv_id= (empty=1)
 25.29.307.712 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.688 (1035/1505) > 0.100
 25.29.307.715 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.688 (> 0.100 thold), f_keep = 0.649
-25.29.308.989 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-25.29.308.996 I slot launch_slot_: id  0 | task -1 | sampler params: 
+25.29.308.989 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+25.29.308.996 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -698,8 +698,8 @@ How are you?<|im_end|>
 25.59.991.669 I srv  server_strea: conv_id= (empty=1)
 25.59.994.345 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.685 (1035/1512) > 0.100
 25.59.994.347 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.685 (> 0.100 thold), f_keep = 0.633
-25.59.995.608 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-25.59.995.616 I slot launch_slot_: id  0 | task -1 | sampler params: 
+25.59.995.608 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+25.59.995.616 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -718,8 +718,8 @@ How are you?<|im_end|>
 26.26.042.806 I srv  server_strea: conv_id= (empty=1)
 26.26.045.299 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.685 (1035/1511) > 0.100
 26.26.045.301 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.685 (> 0.100 thold), f_keep = 0.644
-26.26.046.504 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-26.26.046.510 I slot launch_slot_: id  0 | task -1 | sampler params: 
+26.26.046.504 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+26.26.046.510 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -738,8 +738,8 @@ How are you?<|im_end|>
 26.50.467.119 I srv  server_strea: conv_id= (empty=1)
 26.50.469.785 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.685 (1035/1511) > 0.100
 26.50.469.788 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.685 (> 0.100 thold), f_keep = 0.653
-26.50.471.053 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-26.50.471.059 I slot launch_slot_: id  0 | task -1 | sampler params: 
+26.50.471.053 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+26.50.471.059 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -758,8 +758,8 @@ How are you?<|im_end|>
 27.08.967.263 I srv  server_strea: conv_id= (empty=1)
 27.08.969.689 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.685 (1034/1509) > 0.100
 27.08.969.692 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.685 (> 0.100 thold), f_keep = 0.647
-27.08.971.013 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-27.08.971.021 I slot launch_slot_: id  0 | task -1 | sampler params: 
+27.08.971.013 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+27.08.971.021 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -780,8 +780,8 @@ How are you?<|im_end|>
 27.31.550.820 I srv  server_strea: conv_id= (empty=1)
 27.31.554.610 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.885 (1505/1701) > 0.100
 27.31.554.615 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.885 (> 0.100 thold), f_keep = 0.910
-27.31.556.617 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-27.31.556.630 I slot launch_slot_: id  0 | task -1 | sampler params: 
+27.31.556.617 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+27.31.556.630 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -803,8 +803,8 @@ How are you?<|im_end|>
 28.00.159.098 I srv  server_strea: conv_id= (empty=1)
 28.00.161.470 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.681 (1034/1518) > 0.100
 28.00.161.473 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.681 (> 0.100 thold), f_keep = 0.563
-28.00.162.777 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-28.00.162.785 I slot launch_slot_: id  0 | task -1 | sampler params: 
+28.00.162.777 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+28.00.162.785 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -823,8 +823,8 @@ How are you?<|im_end|>
 28.33.731.632 I srv  server_strea: conv_id= (empty=1)
 28.33.734.383 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.689 (1034/1500) > 0.100
 28.33.734.386 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.689 (> 0.100 thold), f_keep = 0.646
-28.33.735.698 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-28.33.735.712 I slot launch_slot_: id  0 | task -1 | sampler params: 
+28.33.735.698 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+28.33.735.712 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -843,8 +843,8 @@ How are you?<|im_end|>
 28.54.120.841 I srv  server_strea: conv_id= (empty=1)
 28.54.123.431 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.691 (1036/1500) > 0.100
 28.54.123.433 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.691 (> 0.100 thold), f_keep = 0.656
-28.54.124.882 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-28.54.124.891 I slot launch_slot_: id  0 | task -1 | sampler params: 
+28.54.124.882 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+28.54.124.891 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -863,8 +863,8 @@ How are you?<|im_end|>
 29.15.249.913 I srv  server_strea: conv_id= (empty=1)
 29.15.253.479 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.691 (1036/1499) > 0.100
 29.15.253.483 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.691 (> 0.100 thold), f_keep = 0.656
-29.15.255.465 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-29.15.255.475 I slot launch_slot_: id  0 | task -1 | sampler params: 
+29.15.255.465 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+29.15.255.475 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -883,8 +883,8 @@ How are you?<|im_end|>
 29.44.587.509 I srv  server_strea: conv_id= (empty=1)
 29.44.590.154 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.691 (1035/1498) > 0.100
 29.44.590.157 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.691 (> 0.100 thold), f_keep = 0.652
-29.44.591.443 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-29.44.591.454 I slot launch_slot_: id  0 | task -1 | sampler params: 
+29.44.591.443 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+29.44.591.454 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -903,8 +903,8 @@ How are you?<|im_end|>
 30.08.316.682 I srv  server_strea: conv_id= (empty=1)
 30.08.319.178 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.694 (1035/1492) > 0.100
 30.08.319.181 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.694 (> 0.100 thold), f_keep = 0.653
-30.08.320.465 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-30.08.320.482 I slot launch_slot_: id  0 | task -1 | sampler params: 
+30.08.320.465 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+30.08.320.482 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -923,8 +923,8 @@ How are you?<|im_end|>
 30.33.138.031 I srv  server_strea: conv_id= (empty=1)
 30.33.140.490 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.693 (1034/1491) > 0.100
 30.33.140.492 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.693 (> 0.100 thold), f_keep = 0.658
-30.33.141.733 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-30.33.141.739 I slot launch_slot_: id  0 | task -1 | sampler params: 
+30.33.141.733 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+30.33.141.739 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -943,8 +943,8 @@ How are you?<|im_end|>
 30.50.347.996 I srv  server_strea: conv_id= (empty=1)
 30.50.350.374 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.688 (1034/1503) > 0.100
 30.50.350.377 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.688 (> 0.100 thold), f_keep = 0.659
-30.50.351.685 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-30.50.351.694 I slot launch_slot_: id  0 | task -1 | sampler params: 
+30.50.351.685 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+30.50.351.694 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -963,8 +963,8 @@ How are you?<|im_end|>
 31.09.973.141 I srv  server_strea: conv_id= (empty=1)
 31.09.975.562 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.695 (1035/1489) > 0.100
 31.09.975.566 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.695 (> 0.100 thold), f_keep = 0.653
-31.09.976.818 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-31.09.976.826 I slot launch_slot_: id  0 | task -1 | sampler params: 
+31.09.976.818 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+31.09.976.826 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -983,8 +983,8 @@ How are you?<|im_end|>
 31.30.232.806 I srv  server_strea: conv_id= (empty=1)
 31.30.235.177 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.693 (1034/1492) > 0.100
 31.30.235.181 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.693 (> 0.100 thold), f_keep = 0.661
-31.30.236.449 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-31.30.236.456 I slot launch_slot_: id  0 | task -1 | sampler params: 
+31.30.236.449 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+31.30.236.456 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1007,8 +1007,8 @@ How are you?<|im_end|>
 32.09.068.701 I srv  server_strea: conv_id= (empty=1)
 32.09.077.331 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.889 (1488/1674) > 0.100
 32.09.077.338 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.889 (> 0.100 thold), f_keep = 0.915
-32.09.083.365 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-32.09.083.380 I slot launch_slot_: id  0 | task -1 | sampler params: 
+32.09.083.365 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+32.09.083.380 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1040,8 +1040,8 @@ How are you?<|im_end|>
 33.22.566.937 I srv        update:    - prompt 0x703ffc510:    1445 tokens, checkpoints:  0,   225.799 MiB
 33.22.566.937 I srv        update:    - prompt 0x703ffc650:    1798 tokens, checkpoints:  0,   280.959 MiB
 33.22.566.939 I srv  get_availabl: prompt cache update took 72.92 ms
-33.22.568.328 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-33.22.568.338 I slot launch_slot_: id  0 | task -1 | sampler params: 
+33.22.568.328 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+33.22.568.338 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1056,8 +1056,8 @@ How are you?<|im_end|>
 33.52.037.932 I srv  server_strea: conv_id= (empty=1)
 33.52.040.408 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.980 (1235/1260) > 0.100
 33.52.040.412 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.980 (> 0.100 thold), f_keep = 0.977
-33.52.041.526 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-33.52.041.537 I slot launch_slot_: id  0 | task -1 | sampler params: 
+33.52.041.526 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+33.52.041.537 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1076,8 +1076,8 @@ How are you?<|im_end|>
 34.22.415.038 I srv  server_strea: conv_id= (empty=1)
 34.22.417.751 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.981 (1235/1259) > 0.100
 34.22.417.756 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.981 (> 0.100 thold), f_keep = 0.940
-34.22.419.005 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-34.22.419.015 I slot launch_slot_: id  0 | task -1 | sampler params: 
+34.22.419.005 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+34.22.419.015 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1096,8 +1096,8 @@ How are you?<|im_end|>
 34.39.881.013 I srv  server_strea: conv_id= (empty=1)
 34.39.883.008 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.982 (1235/1257) > 0.100
 34.39.883.011 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.982 (> 0.100 thold), f_keep = 0.941
-34.39.883.914 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-34.39.883.922 I slot launch_slot_: id  0 | task -1 | sampler params: 
+34.39.883.914 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+34.39.883.922 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1116,8 +1116,8 @@ How are you?<|im_end|>
 34.56.349.823 I srv  server_strea: conv_id= (empty=1)
 34.56.351.974 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.984 (1235/1255) > 0.100
 34.56.351.976 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.984 (> 0.100 thold), f_keep = 0.943
-34.56.352.940 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-34.56.352.947 I slot launch_slot_: id  0 | task -1 | sampler params: 
+34.56.352.940 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+34.56.352.947 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1136,8 +1136,8 @@ How are you?<|im_end|>
 35.05.226.869 I srv  server_strea: conv_id= (empty=1)
 35.05.228.949 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.642 (811/1263) > 0.100
 35.05.228.951 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.642 (> 0.100 thold), f_keep = 0.621
-35.05.229.847 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-35.05.229.854 I slot launch_slot_: id  0 | task -1 | sampler params: 
+35.05.229.847 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+35.05.229.854 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1156,8 +1156,8 @@ How are you?<|im_end|>
 35.19.000.234 I srv  server_strea: conv_id= (empty=1)
 35.19.002.241 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.643 (811/1261) > 0.100
 35.19.002.244 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.643 (> 0.100 thold), f_keep = 0.618
-35.19.003.167 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-35.19.003.175 I slot launch_slot_: id  0 | task -1 | sampler params: 
+35.19.003.167 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+35.19.003.175 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1176,8 +1176,8 @@ How are you?<|im_end|>
 35.37.829.736 I srv  server_strea: conv_id= (empty=1)
 35.37.832.325 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.981 (1235/1259) > 0.100
 35.37.832.329 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.981 (> 0.100 thold), f_keep = 0.922
-35.37.833.791 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-35.37.833.802 I slot launch_slot_: id  0 | task -1 | sampler params: 
+35.37.833.791 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+35.37.833.802 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1196,8 +1196,8 @@ How are you?<|im_end|>
 35.48.231.106 I srv  server_strea: conv_id= (empty=1)
 35.48.233.690 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.982 (1235/1258) > 0.100
 35.48.233.692 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.982 (> 0.100 thold), f_keep = 0.932
-35.48.234.659 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-35.48.234.666 I slot launch_slot_: id  0 | task -1 | sampler params: 
+35.48.234.659 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+35.48.234.666 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1216,8 +1216,8 @@ How are you?<|im_end|>
 36.01.378.868 I srv  server_strea: conv_id= (empty=1)
 36.01.380.888 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.982 (1235/1257) > 0.100
 36.01.380.890 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.982 (> 0.100 thold), f_keep = 0.929
-36.01.381.885 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-36.01.381.893 I slot launch_slot_: id  0 | task -1 | sampler params: 
+36.01.381.885 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+36.01.381.893 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1236,8 +1236,8 @@ How are you?<|im_end|>
 36.12.773.516 I srv  server_strea: conv_id= (empty=1)
 36.12.775.672 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.986 (1235/1252) > 0.100
 36.12.775.674 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.986 (> 0.100 thold), f_keep = 0.930
-36.12.776.559 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-36.12.776.565 I slot launch_slot_: id  0 | task -1 | sampler params: 
+36.12.776.559 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+36.12.776.565 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1256,8 +1256,8 @@ How are you?<|im_end|>
 36.23.119.936 I srv  server_strea: conv_id= (empty=1)
 36.23.122.205 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.986 (1235/1253) > 0.100
 36.23.122.207 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.986 (> 0.100 thold), f_keep = 0.945
-36.23.123.165 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-36.23.123.172 I slot launch_slot_: id  0 | task -1 | sampler params: 
+36.23.123.165 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+36.23.123.172 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1276,8 +1276,8 @@ How are you?<|im_end|>
 36.34.755.581 I srv  server_strea: conv_id= (empty=1)
 36.34.757.560 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.984 (1235/1255) > 0.100
 36.34.757.562 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.984 (> 0.100 thold), f_keep = 0.944
-36.34.758.448 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-36.34.758.454 I slot launch_slot_: id  0 | task -1 | sampler params: 
+36.34.758.448 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+36.34.758.454 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1296,8 +1296,8 @@ How are you?<|im_end|>
 36.43.489.358 I srv  server_strea: conv_id= (empty=1)
 36.43.494.337 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.979 (1235/1261) > 0.100
 36.43.494.342 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.979 (> 0.100 thold), f_keep = 0.946
-36.43.495.749 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-36.43.495.758 I slot launch_slot_: id  0 | task -1 | sampler params: 
+36.43.495.749 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+36.43.495.758 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1316,8 +1316,8 @@ How are you?<|im_end|>
 36.55.366.548 I srv  server_strea: conv_id= (empty=1)
 36.55.368.577 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.982 (1235/1257) > 0.100
 36.55.368.579 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.982 (> 0.100 thold), f_keep = 0.929
-36.55.369.490 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-36.55.369.497 I slot launch_slot_: id  0 | task -1 | sampler params: 
+36.55.369.490 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+36.55.369.497 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1336,8 +1336,8 @@ How are you?<|im_end|>
 37.06.427.027 I srv  server_strea: conv_id= (empty=1)
 37.06.429.066 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.980 (1235/1260) > 0.100
 37.06.429.068 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.980 (> 0.100 thold), f_keep = 0.935
-37.06.429.942 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-37.06.429.948 I slot launch_slot_: id  0 | task -1 | sampler params: 
+37.06.429.942 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+37.06.429.948 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1356,8 +1356,8 @@ How are you?<|im_end|>
 37.24.183.122 I srv  server_strea: conv_id= (empty=1)
 37.24.191.021 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.973 (1235/1269) > 0.100
 37.24.191.027 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.973 (> 0.100 thold), f_keep = 0.915
-37.24.193.323 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-37.24.193.336 I slot launch_slot_: id  0 | task -1 | sampler params: 
+37.24.193.323 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+37.24.193.336 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1372,8 +1372,8 @@ How are you?<|im_end|>
 38.02.625.612 I srv  server_strea: conv_id= (empty=1)
 38.02.628.610 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.765 (881/1152) > 0.100
 38.02.628.615 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.765 (> 0.100 thold), f_keep = 0.649
-38.02.630.082 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-38.02.630.094 I slot launch_slot_: id  0 | task -1 | sampler params: 
+38.02.630.082 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+38.02.630.094 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1388,8 +1388,8 @@ How are you?<|im_end|>
 38.29.653.735 I srv  server_strea: conv_id= (empty=1)
 38.29.656.062 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.671 (744/1109) > 0.100
 38.29.656.065 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.671 (> 0.100 thold), f_keep = 0.618
-38.29.656.956 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-38.29.656.963 I slot launch_slot_: id  0 | task -1 | sampler params: 
+38.29.656.956 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+38.29.656.963 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1408,8 +1408,8 @@ How are you?<|im_end|>
 39.05.990.872 I srv  server_strea: conv_id= (empty=1)
 39.05.993.159 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.809 (807/998) > 0.100
 39.05.993.163 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.809 (> 0.100 thold), f_keep = 0.683
-39.05.994.412 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-39.05.994.422 I slot launch_slot_: id  0 | task -1 | sampler params: 
+39.05.994.412 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+39.05.994.422 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1428,8 +1428,8 @@ How are you?<|im_end|>
 39.46.997.342 I srv  server_strea: conv_id= (empty=1)
 39.47.001.460 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.596 (744/1249) > 0.100
 39.47.001.464 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.596 (> 0.100 thold), f_keep = 0.701
-39.47.002.886 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-39.47.002.897 I slot launch_slot_: id  0 | task -1 | sampler params: 
+39.47.002.886 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+39.47.002.897 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1444,8 +1444,8 @@ How are you?<|im_end|>
 40.17.292.427 I srv  server_strea: conv_id= (empty=1)
 40.17.297.758 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.986 (1235/1252) > 0.100
 40.17.297.762 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.986 (> 0.100 thold), f_keep = 0.960
-40.17.299.428 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-40.17.299.445 I slot launch_slot_: id  0 | task -1 | sampler params: 
+40.17.299.428 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+40.17.299.445 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1464,8 +1464,8 @@ How are you?<|im_end|>
 40.38.139.327 I srv  server_strea: conv_id= (empty=1)
 40.38.141.385 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.980 (1236/1261) > 0.100
 40.38.141.387 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.980 (> 0.100 thold), f_keep = 0.922
-40.38.142.322 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-40.38.142.330 I slot launch_slot_: id  0 | task -1 | sampler params: 
+40.38.142.322 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+40.38.142.330 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1485,8 +1485,8 @@ How are you?<|im_end|>
 40.51.515.078 I srv  server_strea: conv_id= (empty=1)
 40.51.517.060 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.987 (1235/1251) > 0.100
 40.51.517.062 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.987 (> 0.100 thold), f_keep = 0.900
-40.51.517.944 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-40.51.517.949 I slot launch_slot_: id  0 | task -1 | sampler params: 
+40.51.517.944 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+40.51.517.949 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1505,8 +1505,8 @@ How are you?<|im_end|>
 40.57.133.017 I srv  server_strea: conv_id= (empty=1)
 40.57.135.121 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.554 (718/1297) > 0.100
 40.57.135.123 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.554 (> 0.100 thold), f_keep = 0.556
-40.57.135.996 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-40.57.136.003 I slot launch_slot_: id  0 | task -1 | sampler params: 
+40.57.135.996 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+40.57.136.003 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1538,8 +1538,8 @@ How are you?<|im_end|>
 55.14.870.342 I srv        update:    - prompt 0x703ffc650:    1798 tokens, checkpoints:  0,   280.959 MiB
 55.14.870.343 I srv        update:    - prompt 0x703ffca10:    1378 tokens, checkpoints:  0,   215.329 MiB
 55.14.870.346 I srv  get_availabl: prompt cache update took 162.58 ms
-55.14.873.020 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-55.14.873.035 I slot launch_slot_: id  0 | task -1 | sampler params: 
+55.14.873.020 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+55.14.873.035 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1558,8 +1558,8 @@ How are you?<|im_end|>
 56.32.349.322 I srv  server_strea: conv_id= (empty=1)
 56.32.364.958 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.925 (1681/1818) > 0.100
 56.32.364.963 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.925 (> 0.100 thold), f_keep = 0.945
-56.32.367.813 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-56.32.367.829 I slot launch_slot_: id  0 | task -1 | sampler params: 
+56.32.367.813 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+56.32.367.829 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1578,8 +1578,8 @@ How are you?<|im_end|>
 56.57.732.421 I srv  server_strea: conv_id= (empty=1)
 56.57.737.513 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.867 (1814/2093) > 0.100
 56.57.737.517 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.867 (> 0.100 thold), f_keep = 0.948
-56.57.739.517 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-56.57.739.530 I slot launch_slot_: id  0 | task -1 | sampler params: 
+56.57.739.517 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+56.57.739.530 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1614,8 +1614,8 @@ How are you?<|im_end|>
 383.28.768.955 I srv        update:    - prompt 0x703ffca10:    1378 tokens, checkpoints:  0,   215.329 MiB
 383.28.768.955 I srv        update:    - prompt 0x703ffc970:    2186 tokens, checkpoints:  0,   341.588 MiB
 383.28.768.963 I srv  get_availabl: prompt cache update took 112.10 ms
-383.28.770.429 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-383.28.770.438 I slot launch_slot_: id  0 | task -1 | sampler params: 
+383.28.770.429 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+383.28.770.438 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1635,8 +1635,8 @@ How are you?<|im_end|>
 392.03.303.766 I srv  server_strea: conv_id= (empty=1)
 392.03.311.681 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.846 (2479/2931) > 0.100
 392.03.311.685 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.846 (> 0.100 thold), f_keep = 0.813
-392.03.313.254 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-392.03.313.275 I slot launch_slot_: id  0 | task -1 | sampler params: 
+392.03.313.254 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+392.03.313.275 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1673,8 +1673,8 @@ How are you?<|im_end|>
 402.40.686.728 I srv        update:    - prompt 0x703ffc970:    2186 tokens, checkpoints:  0,   341.588 MiB
 402.40.686.728 I srv        update:    - prompt 0x703ffcbf0:    3034 tokens, checkpoints:  0,   474.098 MiB
 402.40.686.729 I srv  get_availabl: prompt cache update took 169.31 ms
-402.40.688.658 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-402.40.688.666 I slot launch_slot_: id  0 | task -1 | sampler params: 
+402.40.688.658 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+402.40.688.666 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1698,8 +1698,8 @@ How are you?<|im_end|>
 405.45.268.248 I srv  server_strea: conv_id= (empty=1)
 405.45.277.471 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.483 (1945/4026) > 0.100
 405.45.277.479 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.483 (> 0.100 thold), f_keep = 0.510
-405.45.279.188 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-405.45.279.195 I slot launch_slot_: id  0 | task -1 | sampler params: 
+405.45.279.188 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+405.45.279.195 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1751,8 +1751,8 @@ How are you?<|im_end|>
 425.43.044.633 I srv        update:    - prompt 0x703ffcbf0:    3034 tokens, checkpoints:  0,   474.098 MiB
 425.43.044.633 I srv        update:    - prompt 0x703ffcab0:    4419 tokens, checkpoints:  0,   690.520 MiB
 425.43.044.635 I srv  get_availabl: prompt cache update took 259.93 ms
-425.43.046.518 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-425.43.046.531 I slot launch_slot_: id  0 | task -1 | sampler params: 
+425.43.046.518 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+425.43.046.531 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1802,8 +1802,8 @@ How are you?<|im_end|>
 427.11.095.617 I srv        update:    - prompt 0x703ffcab0:    4419 tokens, checkpoints:  0,   690.520 MiB
 427.11.095.617 I srv        update:    - prompt 0x703ffc6f0:    4713 tokens, checkpoints:  0,   736.461 MiB
 427.11.095.618 I srv  get_availabl: prompt cache update took 72.00 ms
-427.11.097.196 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-427.11.097.203 I slot launch_slot_: id  0 | task -1 | sampler params: 
+427.11.097.196 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+427.11.097.203 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1849,8 +1849,8 @@ How are you?<|im_end|>
 432.15.852.713 I srv        update:    - prompt 0x703ffcab0:    4419 tokens, checkpoints:  0,   690.520 MiB
 432.15.852.713 I srv        update:    - prompt 0x703ffc8d0:    4111 tokens, checkpoints:  0,   642.392 MiB
 432.15.852.716 I srv  get_availabl: prompt cache update took 607.92 ms
-432.15.854.443 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-432.15.854.453 I slot launch_slot_: id  0 | task -1 | sampler params: 
+432.15.854.443 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+432.15.854.453 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1880,8 +1880,8 @@ How are you?<|im_end|>
 438.37.569.624 I srv  server_strea: conv_id= (empty=1)
 438.37.577.552 I slot get_availabl: id  0 | task -1 |  - checking sim = 1.000 (4378/4378) > 0.100
 438.37.577.557 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 1.000 (> 0.100 thold), f_keep = 0.938
-438.37.579.168 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy 
-438.37.579.174 I slot launch_slot_: id  0 | task -1 | sampler params: 
+438.37.579.168 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+438.37.579.174 I slot launch_slot_: id  0 | task -1 | sampler params:
 	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
 	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
 	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
@@ -1926,3 +1926,80 @@ How are you?<|im_end|>
 440.26.811.734 I slot print_timing: id  0 | task 7417 |   graph reallocs =          0    /     0        (same size) / (changed size)
 440.26.812.694 I slot      release: id  0 | task 7417 | stop processing: n_tokens = 4754, truncated = 0
 440.26.812.714 I srv  update_slots: all slots are idle
+506.21.488.905 I srv  server_strea: conv_id= (empty=1)
+506.21.623.250 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.693 (2767/3993) > 0.100
+506.21.623.256 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.693 (> 0.100 thold), f_keep = 0.582
+506.21.633.205 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+506.21.633.451 I slot launch_slot_: id  0 | task -1 | sampler params:
+	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+	mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+506.21.633.485 I slot launch_slot_: id  0 | task 7795 | processing task, is_child = 0
+506.21.633.609 I slot   operator(): id  0 | task 7795 | new prompt, n_ctx_slot = 8192, n_keep = 0, task.n_tokens = 3993
+506.21.633.849 I slot   operator(): id  0 | task 7795 | cached n_tokens = 2767, memory_seq_rm [2767, end)
+506.21.637.281 I slot init_sampler: id  0 | task 7795 | init sampler, took 0.77 ms, tokens: text = 3993, total = 3993
+507.14.278.290 I slot print_timing: id  0 | task 7795 | n_gen =    100, tg =   5.21 t/s, tg_3s =   5.26 t/s
+507.17.377.524 I slot print_timing: id  0 | task 7795 | n_gen =    116, tg =   5.20 t/s, tg_3s =   5.16 t/s
+507.20.451.208 I slot print_timing: id  0 | task 7795 | n_gen =    132, tg =   5.20 t/s, tg_3s =   5.21 t/s
+507.23.551.505 I slot print_timing: id  0 | task 7795 | n_gen =    148, tg =   5.20 t/s, tg_3s =   5.16 t/s
+507.26.692.079 I slot print_timing: id  0 | task 7795 | n_gen =    164, tg =   5.19 t/s, tg_3s =   5.09 t/s
+507.29.804.842 I slot print_timing: id  0 | task 7795 | n_gen =    180, tg =   5.18 t/s, tg_3s =   5.14 t/s
+507.32.959.858 I slot print_timing: id  0 | task 7795 | n_gen =    196, tg =   5.17 t/s, tg_3s =   5.07 t/s
+507.36.037.032 I slot print_timing: id  0 | task 7795 | n_gen =    212, tg =   5.18 t/s, tg_3s =   5.20 t/s
+507.39.087.627 I slot print_timing: id  0 | task 7795 | n_gen =    228, tg =   5.18 t/s, tg_3s =   5.24 t/s
+507.39.971.065 I slot print_timing: id  0 | task 7795 | prompt eval time =   33640.95 ms /  1226 tokens (   27.44 ms per token,    36.44 tokens per second)
+507.39.971.072 I slot print_timing: id  0 | task 7795 |        eval time =   44696.49 ms /   233 tokens (  192.66 ms per token,     5.19 tokens per second)
+507.39.971.073 I slot print_timing: id  0 | task 7795 |       total time =   78337.44 ms /  1459 tokens
+507.39.971.074 I slot print_timing: id  0 | task 7795 |    graphs reused =       7737
+507.39.971.074 I slot print_timing: id  0 | task 7795 |   graph reallocs =          0    /     0        (same size) / (changed size)
+507.39.974.267 I slot      release: id  0 | task 7795 | stop processing: n_tokens = 4225, truncated = 0
+507.39.975.163 I srv  update_slots: all slots are idle
+507.40.601.026 I srv  server_strea: conv_id= (empty=1)
+507.40.615.787 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.936 (3989/4262) > 0.100
+507.40.615.792 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.936 (> 0.100 thold), f_keep = 0.944
+507.40.618.826 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+507.40.618.933 I slot launch_slot_: id  0 | task -1 | sampler params:
+	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+	mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+507.40.618.935 I slot launch_slot_: id  0 | task 8029 | processing task, is_child = 0
+507.40.618.943 I slot   operator(): id  0 | task 8029 | new prompt, n_ctx_slot = 8192, n_keep = 0, task.n_tokens = 4262
+507.40.618.949 I slot   operator(): id  0 | task 8029 | cached n_tokens = 3989, memory_seq_rm [3989, end)
+507.40.619.942 I slot init_sampler: id  0 | task 8029 | init sampler, took 0.92 ms, tokens: text = 4262, total = 4262
+508.04.636.627 I slot print_timing: id  0 | task 8029 | prompt eval time =    6355.61 ms /   273 tokens (   23.28 ms per token,    42.95 tokens per second)
+508.04.636.633 I slot print_timing: id  0 | task 8029 |        eval time =   17662.06 ms /    94 tokens (  189.91 ms per token,     5.27 tokens per second)
+508.04.636.633 I slot print_timing: id  0 | task 8029 |       total time =   24017.67 ms /   367 tokens
+508.04.636.634 I slot print_timing: id  0 | task 8029 |    graphs reused =       7828
+508.04.636.635 I slot print_timing: id  0 | task 8029 |   graph reallocs =          0    /     0        (same size) / (changed size)
+508.04.637.033 I slot      release: id  0 | task 8029 | stop processing: n_tokens = 4355, truncated = 0
+508.04.637.093 I srv  update_slots: all slots are idle
+514.20.783.788 I srv  server_strea: conv_id= (empty=1)
+514.20.797.228 I slot get_availabl: id  0 | task -1 |  - checking sim = 0.711 (2840/3994) > 0.100
+514.20.797.232 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.711 (> 0.100 thold), f_keep = 0.652
+514.20.799.892 I slot launch_slot_: id  0 | task -1 | sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> greedy
+514.20.799.906 I slot launch_slot_: id  0 | task -1 | sampler params:
+	repeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000
+	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 64
+	top_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000
+	mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+514.20.799.910 I slot launch_slot_: id  0 | task 8124 | processing task, is_child = 0
+514.20.799.922 I slot   operator(): id  0 | task 8124 | new prompt, n_ctx_slot = 8192, n_keep = 0, task.n_tokens = 3994
+514.20.799.933 I slot   operator(): id  0 | task 8124 | cached n_tokens = 2840, memory_seq_rm [2840, end)
+514.20.800.993 I slot init_sampler: id  0 | task 8124 | init sampler, took 0.72 ms, tokens: text = 3994, total = 3994
+515.07.646.641 I slot print_timing: id  0 | task 8124 | n_gen =    100, tg =   5.58 t/s, tg_3s =   5.64 t/s
+515.10.657.068 I slot print_timing: id  0 | task 8124 | n_gen =    120, tg =   5.74 t/s, tg_3s =   6.64 t/s
+515.13.755.140 I slot print_timing: id  0 | task 8124 | n_gen =    139, tg =   5.79 t/s, tg_3s =   6.13 t/s
+515.16.779.224 I slot print_timing: id  0 | task 8124 | n_gen =    157, tg =   5.81 t/s, tg_3s =   5.95 t/s
+515.19.863.841 I slot print_timing: id  0 | task 8124 | n_gen =    175, tg =   5.81 t/s, tg_3s =   5.84 t/s
+515.22.982.879 I slot print_timing: id  0 | task 8124 | n_gen =    193, tg =   5.81 t/s, tg_3s =   5.77 t/s
+515.26.169.101 I slot print_timing: id  0 | task 8124 | n_gen =    211, tg =   5.79 t/s, tg_3s =   5.65 t/s
+515.29.229.789 I slot print_timing: id  0 | task 8124 | n_gen =    230, tg =   5.83 t/s, tg_3s =   6.21 t/s
+515.29.715.144 I slot print_timing: id  0 | task 8124 | prompt eval time =   29117.08 ms /  1154 tokens (   25.23 ms per token,    39.63 tokens per second)
+515.29.715.152 I slot print_timing: id  0 | task 8124 |        eval time =   39798.13 ms /   233 tokens (  171.54 ms per token,     5.83 tokens per second)
+515.29.715.154 I slot print_timing: id  0 | task 8124 |       total time =   68915.21 ms /  1387 tokens
+515.29.715.155 I slot print_timing: id  0 | task 8124 |    graphs reused =       8058
+515.29.715.155 I slot print_timing: id  0 | task 8124 |   graph reallocs =          0    /     0        (same size) / (changed size)
+515.29.715.363 I slot      release: id  0 | task 8124 | stop processing: n_tokens = 4226, truncated = 0
+515.29.715.376 I srv  update_slots: all slots are idle

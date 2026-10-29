@@ -1,0 +1,10 @@
+{
+  "runtime_source_identity": "2f0804da25ccbd6047d9dee2389127f13e3aa944b2596e1b0e7b577e1d5363a5",
+  "installed_bundle": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app",
+  "prior_bundle": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app.previous-20261029T033207Z",
+  "verified_candidate": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp-Provisioning-Final.app",
+  "native_packaged_sha256": "364568c8ea30695d37e2ddd338c656b228baad0d42bd420b61159f7c03cfac37",
+  "post_install_signature": "passed",
+  "installed_by": "Verified copy of tested candidate; canonical old bundle preserved. Running candidate left untouched.",
+  "native_ui_scope": "Candidate native install/revalidate, describe-build-preview and opening exact annotation image verified. Subsequent box-edit check blocked by screen-capture service failure; canonical relaunch not visually verified."
+}

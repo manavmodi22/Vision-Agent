@@ -7,6 +7,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from engine.models.manager import ModelUnavailable, model_directory, owlv2_path, rtdetr_path
+from engine.models.yolox_config import MODEL_BYTES, MODEL_FILENAME, MODEL_ID, MODEL_SHA256
 
 
 def canonical_hash(value: object) -> str:
@@ -41,6 +42,8 @@ def content_hash(path: Path) -> str:
 
 
 def model_path(model_id: str) -> Path:
+    if model_id == MODEL_ID:
+        return model_directory() / model_id
     if model_id == "owlv2-base-patch16":
         return owlv2_path()
     if model_id == "rtdetr-v2-r18":
@@ -55,8 +58,10 @@ def model_artifacts(model_id: str) -> tuple[dict[str, str], list[str]]:
     path = model_path(model_id)
     required = ["model.safetensors", "manifest.json"] if model_id.startswith("local-") else [
         "model.safetensors", "config.json", "preprocessor_config.json"]
+    if model_id == MODEL_ID:
+        required = [MODEL_FILENAME]
     artifacts = {item.name: content_hash(item) for item in sorted(path.glob("*"))
-                 if item.is_file() and item.suffix in {".json", ".txt", ".model", ".safetensors", ".vocab"}}
+                 if item.is_file() and item.suffix in {".json", ".txt", ".model", ".safetensors", ".vocab", ".onnx"}}
     return artifacts, [name for name in required if name not in artifacts]
 
 
@@ -64,6 +69,10 @@ def model_content_fingerprint(model_id: str) -> str:
     artifacts, missing = model_artifacts(model_id)
     if missing:
         raise ModelUnavailable(f"Local model '{model_id}' is missing: {', '.join(missing)}")
+    if model_id == MODEL_ID:
+        path = model_path(model_id) / MODEL_FILENAME
+        if artifacts[MODEL_FILENAME] != MODEL_SHA256 or path.stat().st_size != MODEL_BYTES:
+            raise ModelUnavailable("YOLOX checkpoint does not match the pinned official release SHA256 and size")
     return canonical_hash(artifacts)
 
 

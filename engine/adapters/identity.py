@@ -15,6 +15,8 @@ _CODE_BASELINES: dict[str, str] = {}
 
 
 def adapter_id(model_id: str) -> str:
+    if model_id == "yolox-s-onnx-coco":
+        return "yolox-onnx"
     if model_id in {"fixture-color-v1", "owlv2-base-patch16", "rtdetr-v2-r18", "apple-vision"}:
         return "owlv2" if model_id == "owlv2-base-patch16" else model_id
     if model_id.startswith("local-"):
@@ -25,6 +27,8 @@ def adapter_id(model_id: str) -> str:
 
 
 def execution_provider(adapter: str) -> str:
+    if adapter == "yolox-onnx":
+        return "CPUExecutionProvider"
     if adapter == "apple-vision":
         return "apple-vision-system"
     if adapter in {"owlv2", "rtdetr-v2-r18"}:
@@ -47,8 +51,10 @@ def _code_hash(adapter: str) -> str:
     else:
         files.extend(["engine/models/__init__.py", "engine/models/manager.py"])
         name = {"fixture-color-v1": "fixture", "owlv2": "owlv2", "rtdetr-v2-r18": "rtdetr",
-                "ssdlite320": "ssdlite", "local-unavailable": "local_manifest"}[adapter]
+                "ssdlite320": "ssdlite", "local-unavailable": "local_manifest", "yolox-onnx": "yolox"}[adapter]
         files.append(f"engine/models/{name}.py")
+        if adapter == "yolox-onnx":
+            files.extend(["engine/models/yolox_config.py", "engine/models/yolox_ops.py"])
         if adapter in {"ssdlite320", "rtdetr-v2-r18"}:
             files.append("engine/models/local_manifest.py")
     current = canonical_hash({name: content_hash(root / name) for name in files})
@@ -66,6 +72,8 @@ def _runtime_hash(adapter: str) -> str:
         names.extend(["torch", "transformers", "numpy", "scipy", "safetensors", "tokenizers"])
     elif adapter == "ssdlite320":
         names.extend(["torch", "torchvision", "numpy", "safetensors"])
+    elif adapter == "yolox-onnx":
+        names.extend(["onnxruntime", "numpy", "opencv-python-headless"])
     versions = {}
     for name in names:
         try:

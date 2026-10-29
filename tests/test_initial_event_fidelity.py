@@ -67,6 +67,95 @@ def test_negative_event_requests_remain_count_only(ending: str) -> None:
         validate_output_behavior(decision(1), brief)
 
 
+@pytest.mark.parametrize("ending", [
+    "Do not create events or send alerts.",
+    "Don't create events nor send notifications.",
+    "Never send alerts or create events or record notifications.",
+    "No events or alerts or notifications.",
+    "Without creating events, or sending alerts.",
+])
+def test_coordinated_negative_event_phrases_remain_count_only(ending: str) -> None:
+    brief = "Count pallets. " + ending
+    intent = event_intent(brief)
+    assert intent.disabled and not intent.requested and not intent.ambiguous_negation
+    plain = decision(None)
+    validate_output_behavior(plain, brief)
+    assert require_complete_alert(plain, brief) is plain
+    with pytest.raises(ValueError, match="without an event trigger"):
+        validate_output_behavior(decision(1), brief)
+
+
+def test_exact_yolox_brief_does_not_reject_a_correct_count_only_decision() -> None:
+    brief = ("Use yolox-s-onnx-coco to count people in these warehouse images and show their boxes. "
+             "Build exactly one workflow, use confidence 0.15 and a count MAE target of 0.5. "
+             "Do not create events or send alerts.")
+    plain = decision(None)
+    plain.choices[0].objects = ["person"]
+    plain.choices[0].min_confidence = .15
+    before = plain.model_dump_json()
+    validate_output_behavior(plain, brief)
+    assert require_complete_alert(plain, brief) is plain
+    assert plain.model_dump_json() == before and not plain.questions
+    candidate = compile_decision(plain, "media", "fixture-color-v1").candidates[0]
+    assert not any(block.type in {"rule", "sink_event"} for block in candidate.blocks)
+
+
+@pytest.mark.parametrize("condition", [
+    "unless count >= five", "until count >= five", "before count >= five",
+    "below five pallets", "under five pallets", ", unless count >= five",
+])
+def test_conditional_negation_after_a_coordinated_chain_still_requires_clarification(condition: str) -> None:
+    brief = "Do not create events or send alerts nor record notifications " + condition + "."
+    assert event_intent(brief).ambiguous_negation
+    for threshold in (None, 5):
+        with pytest.raises(ValueError, match="conditional negation"):
+            validate_event_values(decision(threshold), brief)
+        with pytest.raises(ValueError, match="conditional negation"):
+            require_complete_alert(decision(threshold), brief)
+
+
+@pytest.mark.parametrize("brief", [
+    "Do not create events, but send alerts when count >= five.",
+    "Do not create events; send alerts when count >= five.",
+    "Do not create events or send alerts. Save local evidence when count >= five.",
+    "Do not create events or detect people and send alerts when count >= five.",
+    "No external alerts or events, but save local evidence when count >= five.",
+    "Do not create events and send alerts when count >= five.",
+])
+def test_negation_does_not_absorb_conflicting_affirmative_clauses(brief: str) -> None:
+    assert event_intent(brief).ambiguous_negation
+    with pytest.raises(ValueError, match="conflicting"):
+        validate_event_values(decision(5), brief)
+
+
+@pytest.mark.parametrize("brief", [
+    "Create events or send alerts when count >= five.",
+    "Do not send external alerts or notifications. Create a local event when count >= five.",
+    "Create a local event when count >= five, but no external alerts or notifications.",
+])
+def test_coordinated_phrases_preserve_affirmative_local_event_intent(brief: str) -> None:
+    intent = event_intent(brief)
+    assert intent.requested and not intent.ambiguous_negation and intent.comparison == (">=", 5)
+    validate_event_values(decision(5), brief)
+
+
+@pytest.mark.parametrize("ending", [
+    "Do not create events or save crops.",
+    "No alerts nor record frames.",
+    "Do not create events or send alerts or store images.",
+    "Without alerts or evidence.",
+    "Do not save crops or record frames unless count >= five.",
+])
+def test_coordinated_negation_retains_unsupported_storage_exclusion(ending: str) -> None:
+    brief = "Count pallets. " + ending
+    assert event_intent(brief).excludes_storage
+    for threshold in (None, 5):
+        with pytest.raises(ValueError, match="disabling evidence storage is unsupported"):
+            validate_event_values(decision(threshold), brief)
+        with pytest.raises(ValueError, match="disabling evidence storage is unsupported"):
+            require_complete_alert(decision(threshold), brief)
+
+
 def test_event_nouns_in_object_names_do_not_invent_event_behavior() -> None:
     for brief in ("Count event badges.", "Detect the class flag.", "Count pallets."):
         assert not event_intent(brief).requested

@@ -1,0 +1,13 @@
+{
+  "options": [
+    {
+      "model_id": "yolox-s-onnx-coco",
+      "capability_id": "model.yolox-s-onnx-coco",
+      "name": "Software contract fixture; inference mocked",
+      "action": "validate",
+      "installed": true,
+      "download_bytes": 0,
+      "blockers": []
+    }
+  ]
+}

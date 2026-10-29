@@ -1,0 +1,1 @@
+{"frames": 30, "prediction_parity": true, "diagnostic": {"tp": 59, "fp": 97, "fn": 53, "precision": 0.3782051282051282, "recall": 0.5267857142857143, "count_mae": 1.7333333333333334}, "elapsed_s": 4.193507749994751}

@@ -1,52 +1,54 @@
 {
-  "checked_at": "2026-10-29T03:02:00.718807+00:00",
-  "source_identity": "7f621816c32bcfd849c3c1a8986aa86dbb72157e54b818455e24ed7384a41228",
-  "status": "packaged_evaluation_protocol_and_native_workflow_verified; overall_architecture_incomplete",
+  "checked_at": "2026-10-29T03:33:13.997914+00:00",
+  "source_identity": "2f0804da25ccbd6047d9dee2389127f13e3aa944b2596e1b0e7b577e1d5363a5",
+  "status": "reviewed_provisioning_and_native_describe_build_preview_verified; new_box_edit_check_incomplete; overall_architecture_incomplete",
   "python_tests": {
-    "passed": 672,
-    "duration_s": 264.02,
-    "tested_source_identity": "7f621816c32bcfd849c3c1a8986aa86dbb72157e54b818455e24ed7384a41228",
-    "log": "artifacts/evaluation-fairness/full-tests-final-7f62.log"
+    "passed": 758,
+    "duration_s": 391.25,
+    "tested_source_identity": "2f0804da25ccbd6047d9dee2389127f13e3aa944b2596e1b0e7b577e1d5363a5",
+    "log": "artifacts/provisioning/full-tests-2f08.log"
   },
   "mypy": {
     "passed": true,
-    "source_files": 151,
-    "log": "artifacts/evaluation-fairness/7f62-mypy.log"
+    "source_files": 168,
+    "log": "artifacts/provisioning/mypy-2f08.log"
   },
   "ruff": {
     "passed": true,
-    "log": "artifacts/evaluation-fairness/7f62-final-ruff.log"
+    "log": "artifacts/provisioning/ruff-2f08.log"
   },
   "native_contracts": {
-    "passed_per_binary": 173,
-    "deterministic_checks": 159,
-    "historical_payloads": 10,
-    "current_api_fixtures": 4,
-    "current_api_inference": "mocked; not detector-quality evidence",
-    "evidence": "artifacts/native-evaluation-validation.json"
+    "passed_per_binary": 204,
+    "deterministic_checks": 182,
+    "prior_payloads": 14,
+    "mocked_provisioning_payloads": 4,
+    "actual_provisioning_payloads": 4,
+    "scope": "Software and decoding checks, separate from actual inference and quality.",
+    "evidence": "artifacts/native-provisioning-validation.json"
   },
-  "native_release_sha256": "ecb9d8b6b746d6aa674af2d53456124a2a5d7e545fc6d0962565dc66387f646f",
-  "native_packaged_sha256": "d8500690916e271686b6424b8192bf3047c70403b75abf0055af1418a75103ab",
-  "portable_build": "artifacts/evaluation-fairness/portable-build-7f62-final.log",
+  "native_release_sha256": "1d0118e1696808b2b906251188ac7b9bde21b897cba4f7fcec91a5b35cd1245a",
+  "native_packaged_sha256": "364568c8ea30695d37e2ddd338c656b228baad0d42bd420b61159f7c03cfac37",
+  "portable_build": "artifacts/provisioning/package-2f08.log",
   "relocation": {
     "passed": true,
-    "evidence": "artifacts/evaluation-fairness/bundle-verification-7f62-final.json"
+    "evidence": "artifacts/provisioning/bundle-2f08.json",
+    "scope": "Relocated imports, native OCR, fixture evaluation/trial gate, actual YOLOX black-image smoke and one real warehouse image, signatures."
   },
-  "native_ui": "artifacts/evaluation-fairness/native-ui-qa-7f62.json",
-  "package_installation": "artifacts/evaluation-fairness/package-installation-7f62.json",
-  "protocol_regression": "artifacts/evaluation-fairness/protocol-checkpoint-7f62.json",
-  "actual_detector_smoke": {
-    "evidence": "artifacts/evaluation-fairness/bundle-verification-7f62.json",
-    "scope": "Actual OWLv2 execution on one real NVIDIA frame, returned zero detections. Not an accuracy pass. Python runtime identical, native executable predates Re-evaluate action."
-  },
-  "historical_real_native_flow": "artifacts/agent-experience/adapter-release/acceptance.json",
-  "previous_report": "artifacts/runtime-validation-e098.json",
+  "package_installation": "artifacts/provisioning/package-installation-2f08.json",
+  "actual_installation": "artifacts/provisioning/installation-2f08.json",
+  "native_installation": "artifacts/provisioning/native-installation-f0d1.json",
+  "native_revalidation": "artifacts/provisioning/native-validation-2f08.json",
+  "actual_planner_mcp": "artifacts/provisioning/agent-2f08.json",
+  "actual_native_goal": "artifacts/provisioning/native-agent-acceptance-2f08.json",
+  "original_negative_intent_failure": "artifacts/provisioning/agent-f0d1.json",
+  "unchanged_adapter_parity": "artifacts/provisioning/adapter-parity-f0d1.json",
+  "previous_report": "artifacts/runtime-validation-7f62.json",
   "remaining": [
-    "Independent real reviewed acceptance data and representative vision benchmarks remain incomplete. Positive acceptance protocol tests use mocked inference.",
-    "Image scores do not establish temporal event correctness, false alarms or duration; rule/match/event-sink applications are local-trial-only and external delivery is suppressed.",
-    "Broad real-planner/refinement reliability and local-model latency remain limitations.",
-    "Unified provisioning, integrated new adapter families, segmentation, named-field/failure-slice metrics and resource acceptance remain incomplete.",
-    "Camera/screen hardware acceptance, release signing/notarization and full operational acceptance remain pending."
-  ],
-  "current_real_native_preview": "artifacts/evaluation-fairness/native-warehouse-restoration-7f62.json"
+    "Native final box-edit check and visually reopening the canonical copy remain unverified after screen capture failed; exact-image editor opening and described-goal preview passed. Prior annotation editing checks remain historical.",
+    "Independent reviewed real acceptance data and representative vision benchmarks remain incomplete; retained synthetic-label YOLOX diagnostic recall52.7% fails its80% gate.",
+    "Image scores do not validate temporal event correctness, false alarms or duration; affected applications remain local-trial-only and external delivery is suppressed.",
+    "Broader planner/refinement reliability and latency remain limitations; measured native planner call88.817s is not a controlled performance benchmark.",
+    "Additional reviewed installation recipes, dependency installs, integrated OCR alternatives, SAM3/segmentation, VLM/training adapter parity and failure-slice/resource comparison remain incomplete.",
+    "Camera/screen hardware acceptance, sustained throughput/coexistence, signing/notarization and full operational acceptance remain pending."
+  ]
 }

@@ -16,6 +16,14 @@ enum PlatformContractChecks {
                 _ = try JSONDecoder().decode(EvaluationReadiness.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
             case "--evaluation-result":
                 _ = try JSONDecoder().decode(Evaluation.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
+            case "--provisioning-options":
+                _ = try JSONDecoder().decode(ProvisioningOptions.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
+            case "--provisioning-plan":
+                _ = try JSONDecoder().decode(ProvisioningPlan.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
+            case "--provisioning-job":
+                _ = try JSONDecoder().decode(ProvisioningJob.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
+            case "--provisioning-health":
+                _ = try JSONDecoder().decode(ProvisioningHealth.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
             case "--build-artifact":
                 _ = try JSONDecoder().decode(PlatformArtifactContent.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
             case "--planning-probe":

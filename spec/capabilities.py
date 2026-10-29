@@ -66,7 +66,7 @@ class CapabilityManifest(Contract):
     dependencies: list[str] = Field(default_factory=list)
     input_schema: dict[str, JsonValue] = Field(default_factory=dict)
     output_schema: dict[str, JsonValue] = Field(default_factory=dict)
-    install_method: Literal["bundled", "manual_weights", "system_framework", "local_training", "not_implemented"]
+    install_method: Literal["bundled", "manual_weights", "reviewed_provisioning", "system_framework", "local_training", "not_implemented"]
     install_instructions: str | None = None
     readiness: CapabilityReadiness
 

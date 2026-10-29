@@ -1,0 +1,26 @@
+{
+  "runtime_source_identity": "2f0804da25ccbd6047d9dee2389127f13e3aa944b2596e1b0e7b577e1d5363a5",
+  "project_id": "6d7129f0598a45e4",
+  "project_path": "/Users/manavrakeshku.modi/Library/Application Support/VisionApp/projects/6d7129f0598a45e4",
+  "describe_build_preview": "passed",
+  "annotation_editor_exact_preview_image": "visually verified opened warehouse-040.50s.png",
+  "new_box_edit_check": "incomplete: native screen-capture service returned invalid-parameter error before selection/edit; retry after session reset also failed. No box edit or review claimed.",
+  "annotations_unchanged_after_attempt": true,
+  "actual_planner_calls": 1,
+  "actual_planner_elapsed_s": 88.816894,
+  "preview_frames": 5,
+  "proposed_annotation_images": 20,
+  "reviewed_images": 0,
+  "evaluations": 0,
+  "deployment_id": null,
+  "retained_original_project_unchanged": {
+    "annotations.json": true,
+    "project.json": true,
+    "agent-state.json": true,
+    "build.json": true
+  },
+  "screenshot": "native-built-2f08.png",
+  "evidence_directory": "native-agent-2f08",
+  "workspace_restore": "Original projects remain unchanged. This public-data QA build is retained, unreviewed, in the app because screen control became unavailable.",
+  "scope": "Actual packaged native goal submission, local planner/MCP construction, detector preview, automatic unreviewed label proposals and editor opening. Not accuracy, acceptance, approval or a completed new box-edit check."
+}
