@@ -1,0 +1,5 @@
+Selected verbatim completed-check lines; full job metadata in ci-4ef0673.json.
+native	Run ./app/test-native.sh	2026-10-29T17:35:56.8355680Z {"status":"passed","checks":291}
+python	Run uv run pytest -q	2026-10-29T17:43:02.7997058Z 1285 passed, 2 skipped in 474.19s (0:07:54)
+python	Run uv run ruff check .	2026-10-29T17:43:03.8296752Z All checks passed!
+python	Run uv run mypy spec engine agent mcp_server evals	2026-10-29T17:43:23.9158206Z Success: no issues found in 199 source files

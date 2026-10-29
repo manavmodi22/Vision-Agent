@@ -4,6 +4,7 @@ from __future__ import annotations
 import asyncio
 import contextlib
 import json
+from collections import Counter
 
 from filelock import FileLock
 from mcp.server.fastmcp import FastMCP
@@ -14,12 +15,14 @@ from engine.investigations.probes import JSON_OBJECT
 from engine.investigations.store import InvestigationConflict, InvestigationStore
 from engine.investigations.tools import InvestigationTools, ToolOutcome, _page
 from engine.investigations.worker import run_owned_probe
+from engine.models.artifacts import canonical_hash
 from mcp_server.investigation_projection import (
     compact_identity,
     probe_projection,
     workflow_projection,
 )
 from spec.investigation import (
+    ActionReceipt,
     BuilderDecision,
     ConstructWorkflow,
     ModelCall,
@@ -54,6 +57,29 @@ def observation_projection(observation: Observation) -> dict[str, JsonValue]:
     return row
 
 
+def recent_action_context(actions: list[ActionReceipt]) -> list[JsonValue]:
+    """Expose actual selected arguments and repetition, not only the model's prose."""
+    arguments = [item.action.model_dump(mode="json") for item in actions]
+    signatures = [canonical_hash(value) for value in arguments]
+    occurrences = Counter(signatures)
+    rows: list[JsonValue] = []
+    for item, original, signature in zip(actions[-4:], arguments[-4:], signatures[-4:], strict=True):
+        selected = original.copy()
+        selected.pop("type")
+        graph = selected.pop("graph", None)
+        if graph is not None:
+            selected.update(graph_omitted=True, graph_sha256=canonical_hash(graph))
+        if len(json.dumps(selected, ensure_ascii=False)) > 2000:
+            selected = {"arguments_omitted_for_size": True}
+        rows.append({"id": item.id, "type": item.action.type, "arguments": selected,
+                     "arguments_sha256": signature,
+                     "same_arguments_attempts_in_task": occurrences[signature],
+                     "purpose": item.decision.decision_summary,
+                     "based_on_observation_ids": list(item.decision.based_on_observation_ids),
+                     "observation_id": item.observation_id, "status": item.status})
+    return rows
+
+
 def investigation_context(store: InvestigationStore, project_id: str, task_id: str) -> dict[str, JsonValue]:
     state = store.get(project_id, task_id)
     observations = store.observations(project_id, task_id)
@@ -70,7 +96,9 @@ def investigation_context(store: InvestigationStore, project_id: str, task_id: s
     projected: list[JsonValue] = []
     visible: list[str] = []
     seen_metadata: set[str] = set()
-    for observation in reversed(observations[-3:]):
+    # Deduplicate before applying the three-observation bound: repeated metadata
+    # must not evict a distinct actual probe and its geometry from the next call.
+    for observation in reversed(observations):
         projection = observation_projection(observation)
         if observation.status == "completed" and observation.result_type in {
             "discover_capabilities", "inspect_capability", "inspect_media"
@@ -81,19 +109,18 @@ def investigation_context(store: InvestigationStore, project_id: str, task_id: s
             seen_metadata.add(signature)
         projected.insert(0, projection)
         visible.insert(0, observation.id)
+        if len(projected) == 3:
+            break
     return {
         "state": state.model_dump(mode="json"),
         "observations": projected,
         "visible_observation_ids": [identifier for identifier in visible],
         "earlier_observations": [{"id": item.id, "result_type": item.result_type, "status": item.status}
                                  for item in observations if item.id not in visible],
-        "recent_actions": [{"id": item.id, "type": item.action.type,
-                            "purpose": item.decision.decision_summary,
-                            "based_on_observation_ids": [value for value in item.decision.based_on_observation_ids],
-                            "observation_id": item.observation_id, "status": item.status} for item in actions[-4:]],
+        "recent_actions": recent_action_context(actions),
         "last_model_error": calls[-1].error[:1500] if calls and calls[-1].error else None,
         "inspected_capabilities": list(known_capabilities.values())[-4:],
-        "context_note": "Identical repeated metadata observations are represented by their latest receipt; full history remains inspectable.",
+        "context_note": "The latest three distinct observations are supplied; identical metadata uses its newest receipt. Recent actions include actual arguments and attempt counts. Their purpose text is the model's earlier interpretation, not new tool evidence. Full history remains inspectable.",
         "development_media": development_media_summary(store, project_id),
         "planner_modality": "text_only; image paths are references, not supplied image pixels",
     }

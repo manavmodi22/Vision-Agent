@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-29T17:56:09.002063+00:00",
+  "engine_source_identity": "4c1d24d52abb0fd11ce8e0c127d5c0987931dfefadee7e82a30b579bd86a3e0e",
+  "basis": "Both production edits were frozen before the focused suite; subsequent edits were documentation and evidence only.",
+  "files": {
+    "engine/investigations/tools.py": "8f9c1aeb9ff6f884d8245bb8036483b5593438c7bffe60c49f09980e4c67aa82",
+    "mcp_server/investigations.py": "eb18e99874dd434f98574df7d593c296b97ee169d5010ada80c010572c271072",
+    "tests/test_investigation_tools.py": "b7e8bbb2834931ca631d038fce684672a3e14853d6dbb761b2f0949eea7a5b48",
+    "tests/test_investigation_context.py": "37aeceb761cccaf2fbd93394f8f2dca8c3c49c70b675fd9edbc69ad4aaa5823a"
+  },
+  "checks": {
+    "focused_pytest": {
+      "result": "171 passed in 39.65s",
+      "log": "investigation-usability-tests.log",
+      "scope": "tests/test_investigation* and artifacts/a0-investigation/test_run_case.py"
+    },
+    "ruff": {
+      "command": ".venv/bin/ruff check .",
+      "result": "All checks passed"
+    },
+    "mypy": {
+      "command": ".venv/bin/mypy spec engine agent mcp_server evals",
+      "result": "Success: no issues found in 199 source files",
+      "log": "usability-mypy.log"
+    }
+  },
+  "live_model_scope": "No live planner run of this changed source yet. Captured failure replay verifies context geometry retention and token budget only. Public original/degraded case pair uses immutable prior source503a0468."
+}

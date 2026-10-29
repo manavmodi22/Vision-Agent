@@ -12,6 +12,7 @@ from pydantic import BaseModel, ConfigDict, JsonValue
 
 from engine.adapters.contracts import BarcodeRequest, DetectionRequest, OcrRequest
 from engine.adapters.identity import adapter_id
+from engine.blocks.registry import REGISTRY
 from engine.capabilities import build_catalog, validate_experiment_capabilities
 from engine.investigations.media import DevelopmentMedia
 from engine.investigations.probes import (
@@ -54,18 +55,35 @@ def _stable(value: Any) -> Any:
     return [_stable(item) for item in value] if isinstance(value, list) else value
 
 
+def _probe_contract(capability: CapabilityManifest) -> tuple[list[str], bool]:
+    """Describe adapter prerequisites without loading models or claiming measured readiness."""
+    tasks: list[str] = []
+    if capability.kind == "model":
+        try:
+            adapter_id(capability.id.removeprefix("model."))
+            tasks = [task for task in capability.task_types if task in {"detection", "ocr", "barcode"}]
+        except ValueError:
+            pass
+    eligible = bool(tasks and capability.implemented and capability.installation_ready
+                    and capability.availability == "installed")
+    return tasks, eligible
+
+
+def _execution_role(capability: CapabilityManifest, probe_tasks: list[str]) -> str:
+    if capability.kind == "model":
+        return "typed_adapter_model" if probe_tasks else "catalogue_model"
+    if capability.id.startswith("block.") and capability.id.removeprefix("block.") in REGISTRY:
+        return "graph_block"
+    return "catalogue_tool"
+
+
 def descriptor(capability: CapabilityManifest) -> dict[str, JsonValue]:
     """One actual descriptor plus the exact executable adapter contracts."""
     payload = capability.model_dump(mode="json")
-    probe_tasks: list[str] = []
+    probe_tasks, probe_eligible = _probe_contract(capability)
     limitations = ["Provisional observations do not establish accuracy, review, or deployment approval."]
     if capability.kind == "model":
         identifier = capability.id.removeprefix("model.")
-        try:
-            adapter_id(identifier)
-            probe_tasks = [task for task in capability.task_types if task in {"detection", "ocr", "barcode"}]
-        except ValueError:
-            pass
         if probe_tasks:
             schemas: dict[str, type[BaseModel]] = {"detection": DetectionRequest, "ocr": OcrRequest, "barcode": BarcodeRequest}
             requests = []
@@ -86,8 +104,7 @@ def descriptor(capability: CapabilityManifest) -> dict[str, JsonValue]:
             limitations.append("This capability has no A0 typed adapter probe. Configured VLM judgement is deferred.")
     else:
         limitations.append("Catalogue visibility does not authorize arbitrary MCP calls; only investigation actions execute here.")
-    payload["probe_eligible"] = bool(probe_tasks and capability.implemented and capability.installation_ready
-                                     and capability.availability == "installed")
+    payload["probe_eligible"] = probe_eligible
     payload["probe_tasks"] = probe_tasks
     payload["limitations"] = limitations
     payload["descriptor_hash"] = canonical_hash(_stable(payload))
@@ -206,13 +223,15 @@ class InvestigationTools:
             return [(tokens(item.id), 3), (tokens(item.name), 3),
                     (tokens(" ".join(item.task_types)), 4), (tokens(item.description), 1)]
         def compact(item: CapabilityManifest) -> dict[str, Any]:
+            probe_tasks, eligible = _probe_contract(item)
+            policy = self._fixture_policy(item.id, fixture_project)
             row = {"capability_id": item.id, "name": item.name, "description": item.description[:400],
                     "kind": item.kind, "task_types": item.task_types, "availability": item.availability,
-                    "readiness": item.readiness.state, "installation_ready": item.installation_ready}
+                    "readiness": item.readiness.state, "installation_ready": item.installation_ready,
+                    "probe_tasks": probe_tasks, "probe_eligible": bool(eligible and policy["allowed"]),
+                    "execution_role": _execution_role(item, probe_tasks)}
             if item.id == "model.fixture-color-v1":
-                policy = self._fixture_policy(item.id, fixture_project)
-                row.update(project_eligibility=policy,
-                           probe_eligible=bool(item.implemented and item.installation_ready and policy["allowed"]))
+                row["project_eligibility"] = policy
             return row
         terms = tokens(action.query)
         inventory = not action.query.strip()
@@ -233,7 +252,7 @@ class InvestigationTools:
             matched = set().union(*(terms & words for words, _weight in metadata))
             if not inventory and not matched:
                 continue
-            rows.append({**compact(item), "matched_terms": sorted(matched),
+            rows.append({**compact(item), "matched_terms": sorted(matched), "unmatched_terms": sorted(terms - matched),
                 "match_score": sum(len(terms & words) * weight for words, weight in metadata)})
         rows.sort(key=lambda row: (-int(row["match_score"]), str(row["capability_id"])))
         scope = canonical_hash({"terms": sorted(terms), "inventory": inventory,
@@ -253,6 +272,7 @@ class InvestigationTools:
             for item in pool:
                 matches: list[dict[str, Any]] = []
                 score = 0.0
+                exact_terms = set().union(*(terms & words for words, _weight in fields(item)))
                 for words, weight in fields(item):
                     for term in sorted(terms):
                         choices = []
@@ -269,6 +289,7 @@ class InvestigationTools:
                             if pair not in matches:
                                 matches.append(pair)
                 suggestions.append({**compact(item), "description": item.description[:160],
+                    "matched_terms": sorted(exact_terms), "unmatched_terms": sorted(terms - exact_terms),
                     "suggestion_type": "approximate_metadata" if score else "inventory",
                     "suggestion_score": round(score, 3), "related_terms": matches[:4], "exact_query_match": False})
             suggestions.sort(key=lambda row: (-float(row["suggestion_score"]), not row["installation_ready"],
@@ -277,6 +298,7 @@ class InvestigationTools:
                 suggestions = [row for row in suggestions if row["suggestion_score"]]
             suggestions = suggestions[:min(3, action.limit)]
         return JSON_OBJECT.validate_python({"executed": False, "items": selected, **counts,
+                "query": action.query, "active_filters": {"kind": action.kind, "task_type": action.task_type},
                 "query_terms": sorted(terms), "available_kinds": kinds, "available_task_types": task_types,
                 "filter_diagnostics": diagnostics, "suggestions": suggestions, "suggestion_ignored_filters": ignored_filters,
                 "suggestion_semantics": "Suggestions are labelled catalogue alternatives, not exact query results or execution recommendations; related terms use generic substring/character similarity. Inventory suggestions have no measured query relevance.",
@@ -302,8 +324,14 @@ class InvestigationTools:
                 "warnings": ["pixels_not_visible_to_planner: this planner receives structured text; artifact references are not image attachments."]}
 
     def _authorize_probe(self, project_id: str, task_id: str, action: RunProbe) -> None:
+        if not action.capability_id.startswith("model."):
+            raise ValueError(f"run_probe requires an inspected model.* capability, not a graph block or catalogue tool; "
+                f"received capability_id={action.capability_id!r}. Inspect an eligible model capability and copy "
+                "request.model_id from its probe_request_schemas; discovery does not supply an inspected descriptor hash.")
         if action.capability_id != "model." + action.request.model_id:
-            raise ValueError("Selected capability does not match the typed adapter request")
+            raise ValueError(f"Probe capability_id={action.capability_id!r} does not match request.model_id={action.request.model_id!r}. "
+                "capability_id must equal 'model.' + request.model_id. Copy the exact request.model_id from the "
+                "inspected capability's probe_request_schemas, not the catalogue capability ID.")
         policy = self._fixture_policy(action.capability_id, self.service.get_project(project_id).fixture)
         if not policy["allowed"]:
             raise ValueError(str(policy["reason"]))
@@ -382,7 +410,8 @@ class InvestigationTools:
                     if any(row.get(key) is not None for key in ("box", "polygon", "source_box", "source_polygon"))]
         selected, counts = _page(rows, action.cursor, action.limit, scope)
         metadata_keys = ("search_semantics", "suggestion_semantics", "suggestion_ignored_filters", "available_kinds",
-                         "available_task_types", "filter_diagnostics", "query_terms", "limitations", "validated", "preview_success")
+                         "available_task_types", "filter_diagnostics", "query", "active_filters", "query_terms",
+                         "limitations", "validated", "preview_success")
         metadata = {key: payload[key] for key in metadata_keys if key in payload}
         if "items" in payload and not isinstance(result_ref, dict):
             metadata.update(source_total_items=payload.get("total_items"), source_next_cursor=payload.get("next_cursor"),

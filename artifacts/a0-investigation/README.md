@@ -48,9 +48,25 @@ in model context while all receipts remain inspectable.
 
 The current planner policy has a 16K ceiling and still respects smaller verified
 backend limits; unknown compatible backends retain the labelled 8K estimate.
-The existing 14B planner and a hash-verified Qwen3.5-9B Q6_K candidate are being
-qualified at the same 16K context, on the same generated case and frozen source.
+The existing 14B planner and a hash-verified Qwen3.5-9B Q6_K candidate completed
+the same generated case at 16K on frozen source `503a0468…`. Neither produced a
+draft. See [the comparison](MODEL-COMPARISON.md) and both complete ledgers.
 See `model-comparison-setup.json` and `qwen35-9b-qualification.json`. The candidate
 is an explicitly labelled Unsloth conversion, not an official Qwen quantization;
 the exact conversion-source commit is not established. Download, licence and
 successful loading alone establish no planning-quality improvement.
+
+Published commit `4ef0673` passed [GitHub CI](ci-4ef0673.json): 1,285 Python tests
+with two optional skips, Ruff, strict mypy and 291 native checks. The local
+[release check](native-release-20261029T174028Z/report.json) passed 293 checks
+including the actual Run4 and Run5 snapshots. These precede the subsequent
+discovery/context usability fixes.
+
+The context fix collects three distinct observations before applying the limit,
+so repeated capability metadata cannot displace the actual probe so easily.
+Recent action arguments and repetition counts are exposed explicitly. The
+[read-only replay](context-retention-replay.json) reconstructs calls 9 and 10 of
+the 9B failure: the original requests lacked OCR coordinates; corrected requests
+include them and fit the verified 16K budget. This is not a new model response
+or a completed adaptive build. Discovery also separates probe eligibility from
+installation readiness and distinguishes graph blocks from adapter models.

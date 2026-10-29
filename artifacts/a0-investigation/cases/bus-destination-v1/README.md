@@ -2,6 +2,8 @@
 
 Status: **prepared, visually inspected, not executed against the planner or a vision adapter**. The task and reference were frozen before any A0 decisions on this scene. No production source, app project, labels, review state or approval was changed.
 
+The separate [runner instructions](RUNNING.md) describe input validation and sequential original/degraded runs. Adding and checking that harness did not execute inference.
+
 Use the exact contents of `planner-prompt.txt` for both variants. Import only the selected variant's `scene.jpg` into a fresh project through the normal workspace import. Keep `manifest.json`, expected text, annotation geometry, prior reader outputs and the other variant out of the planner context.
 
 The full scene is a 1024 × 768 photograph with a clear target but several plausible distractors: operator branding, a registration plate, another bus's route display and building text. The front display occupies a small portion of the image. The evaluator reference is route **43**, destination **PLYMOUTH SKI CENTRE**, supported by TextOCR annotations and inspection of the original photograph. Exact reference words and polygons are in the manifest; this is not human review of app annotations.

@@ -1,0 +1,1730 @@
+{
+  "state": {
+    "schema_version": "a0.1",
+    "id": "cb733b4678ae4d77a681cb58e0540d64",
+    "project_id": "9a925ef9393c4fb6",
+    "objective": "Build an app that reads only the item code from each image. Ignore the shipping label. Use the supplied image to figure out how.",
+    "revision": 22,
+    "status": "awaiting_input",
+    "stage": "investigating",
+    "selected_workflow_revision": null,
+    "preview_observation_id": null,
+    "budget": {
+      "max_model_calls": 20,
+      "max_actions": 16,
+      "max_probes": 6,
+      "max_elapsed_s": 900.0,
+      "model_calls": 11,
+      "actions": 11,
+      "probes": 1,
+      "elapsed_s": 625.1557654999779
+    },
+    "pending_action_id": null,
+    "pending_model_call_id": null,
+    "latest_observation_ids": [
+      "9f5150ef8aae4fa9954afbcc3da0dcba"
+    ],
+    "question": "Do you have a specific model or capability in mind for detecting item codes from images? If not, I will continue exploring other options.",
+    "stop_reason": null,
+    "user_answers": [],
+    "created_at": "2026-10-29T17:32:24.084061+00:00",
+    "updated_at": "2026-10-29T17:42:49.235723+00:00"
+  },
+  "actions": [
+    {
+      "id": "6ae385e82ee74a27b427ddadf3cd0c53",
+      "model_call_id": "3f3e85a1a2954447988653fcc60ec287",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 0,
+        "decision_summary": "Discover available capabilities to identify potential models for reading item codes from images.",
+        "based_on_observation_ids": [],
+        "action": {
+          "type": "discover_capabilities",
+          "query": "item code detection",
+          "kind": null,
+          "task_type": "detection",
+          "limit": 8,
+          "cursor": null
+        }
+      },
+      "status": "completed",
+      "observation_id": "507309c0a1054ac3b1ea782d56a32320",
+      "started_at": "2026-10-29T17:33:04.997241+00:00",
+      "ended_at": "2026-10-29T17:33:05.489952+00:00"
+    },
+    {
+      "id": "e047b93fd37143c398ba84bc0f8bb781",
+      "model_call_id": "b26ea5b6bfde473ea38a51d690d13cc6",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 2,
+        "decision_summary": "I will inspect the media to understand the image content and determine the best approach for extracting item codes.",
+        "based_on_observation_ids": [
+          "507309c0a1054ac3b1ea782d56a32320"
+        ],
+        "action": {
+          "type": "inspect_media",
+          "media_ids": [
+            "media-3f285dcb38ea31a518cc7537c0fbe049"
+          ],
+          "representation": "metadata",
+          "limit": 3,
+          "cursor": null
+        }
+      },
+      "status": "completed",
+      "observation_id": "31d67f867a5140d38b86831c9c007d5e",
+      "started_at": "2026-10-29T17:33:43.365281+00:00",
+      "ended_at": "2026-10-29T17:33:43.391307+00:00"
+    },
+    {
+      "id": "40b95e785af842babff9417bc578d797",
+      "model_call_id": "1d121230817e4c699ffae322481f9307",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 4,
+        "decision_summary": "I will run a detection probe on the available model to identify item codes in the image, using the detected capability 'block.detect'.",
+        "based_on_observation_ids": [
+          "507309c0a1054ac3b1ea782d56a32320",
+          "31d67f867a5140d38b86831c9c007d5e"
+        ],
+        "action": {
+          "type": "run_probe",
+          "capability_id": "block.detect",
+          "inspected_descriptor_hash": "d41d8cd98f00b204e9800998ecf8427e00000000000000000000000000000000",
+          "media_id": "media-3f285dcb38ea31a518cc7537c0fbe049",
+          "source_sha256": "36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051",
+          "transforms": [],
+          "request": {
+            "task": "detection",
+            "model_id": "block.detect",
+            "classes": [
+              "item code"
+            ],
+            "min_conf": 0.5
+          }
+        }
+      },
+      "status": "failed",
+      "observation_id": "1e15947be50c46dd95ee892aad164db7",
+      "started_at": "2026-10-29T17:34:53.565592+00:00",
+      "ended_at": "2026-10-29T17:34:54.039684+00:00"
+    },
+    {
+      "id": "9e4f9648c26d4bdd868374e7f7b5a93e",
+      "model_call_id": "4748ec1463904bb095d0c9667528e781",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 6,
+        "decision_summary": "The initial probe using 'block.detect' failed due to a mismatch between the capability and the request. I will now inspect the capability 'block.detect' to understand its requirements and ensure compatibility with the task of reading item codes.",
+        "based_on_observation_ids": [
+          "507309c0a1054ac3b1ea782d56a32320",
+          "1e15947be50c46dd95ee892aad164db7"
+        ],
+        "action": {
+          "type": "inspect_capability",
+          "capability_id": "block.detect"
+        }
+      },
+      "status": "completed",
+      "observation_id": "852e0d56319c425f8e302807f3087485",
+      "started_at": "2026-10-29T17:35:48.007194+00:00",
+      "ended_at": "2026-10-29T17:35:48.503690+00:00"
+    },
+    {
+      "id": "de1b66d75f9a41ad8bda61072f336b6f",
+      "model_call_id": "4dd592425dd64ae8afdbeb6f8ba78529",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 8,
+        "decision_summary": "The capability 'block.detect' is not eligible for probing, and the initial probe failed due to a mismatch. I will discover other capabilities that may be suitable for reading item codes from images.",
+        "based_on_observation_ids": [
+          "507309c0a1054ac3b1ea782d56a32320",
+          "1e15947be50c46dd95ee892aad164db7",
+          "852e0d56319c425f8e302807f3087485"
+        ],
+        "action": {
+          "type": "discover_capabilities",
+          "query": "item code detection",
+          "kind": null,
+          "task_type": "detection",
+          "limit": 8,
+          "cursor": null
+        }
+      },
+      "status": "completed",
+      "observation_id": "67849c47af4540c09edf4687327b861b",
+      "started_at": "2026-10-29T17:36:41.599267+00:00",
+      "ended_at": "2026-10-29T17:36:42.098876+00:00"
+    },
+    {
+      "id": "95691aa9d27b46f9b4f0db7f1ba3fbde",
+      "model_call_id": "f75bdbc1f09d4e44a051ffbe1155d622",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 10,
+        "decision_summary": "The 'block.detect' capability is not eligible for probing, and the initial probe failed due to a mismatch. I will discover other capabilities that may be suitable for reading item codes from images.",
+        "based_on_observation_ids": [
+          "1e15947be50c46dd95ee892aad164db7",
+          "852e0d56319c425f8e302807f3087485"
+        ],
+        "action": {
+          "type": "discover_capabilities",
+          "query": "item code detection",
+          "kind": null,
+          "task_type": "detection",
+          "limit": 8,
+          "cursor": null
+        }
+      },
+      "status": "completed",
+      "observation_id": "f0a823c3875f42f488bbc2b00237684c",
+      "started_at": "2026-10-29T17:37:44.214123+00:00",
+      "ended_at": "2026-10-29T17:37:44.699389+00:00"
+    },
+    {
+      "id": "b6002c6abf814acba6eb104ea8de1e2d",
+      "model_call_id": "170681928ef64af98ce6580976a035ca",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 12,
+        "decision_summary": "The 'block.detect' capability is not eligible for probing, and the initial probe failed due to a mismatch. I will discover other capabilities that may be suitable for reading item codes from images.",
+        "based_on_observation_ids": [
+          "f0a823c3875f42f488bbc2b00237684c",
+          "852e0d56319c425f8e302807f3087485"
+        ],
+        "action": {
+          "type": "discover_capabilities",
+          "query": "item code detection",
+          "kind": null,
+          "task_type": "detection",
+          "limit": 8,
+          "cursor": null
+        }
+      },
+      "status": "completed",
+      "observation_id": "1e4dc96d1e1a4afab42adf7dff49f6c2",
+      "started_at": "2026-10-29T17:38:46.087230+00:00",
+      "ended_at": "2026-10-29T17:38:46.592619+00:00"
+    },
+    {
+      "id": "bd685d4f1bb445e994c1deacb848722a",
+      "model_call_id": "8c148d72d71742679d92192c2cfc84c4",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 14,
+        "decision_summary": "The 'block.detect' capability is not eligible for probing, and the initial probe failed due to a mismatch. I will discover other capabilities that may be suitable for reading item codes from images.",
+        "based_on_observation_ids": [
+          "1e4dc96d1e1a4afab42adf7dff49f6c2"
+        ],
+        "action": {
+          "type": "discover_capabilities",
+          "query": "item code detection",
+          "kind": null,
+          "task_type": "detection",
+          "limit": 8,
+          "cursor": null
+        }
+      },
+      "status": "completed",
+      "observation_id": "162779f6bbf4406f8bb73252461198ca",
+      "started_at": "2026-10-29T17:39:37.837706+00:00",
+      "ended_at": "2026-10-29T17:39:38.253451+00:00"
+    },
+    {
+      "id": "237701d8fb72417db4a912da684b8af0",
+      "model_call_id": "b7b049325be64a29bb159bc5204e9910",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 16,
+        "decision_summary": "I will inspect the media to understand its content and determine if it contains item codes that can be extracted using available capabilities.",
+        "based_on_observation_ids": [
+          "162779f6bbf4406f8bb73252461198ca"
+        ],
+        "action": {
+          "type": "inspect_media",
+          "media_ids": [
+            "media-3f285dcb38ea31a518cc7537c0fbe049"
+          ],
+          "representation": "metadata",
+          "limit": 3,
+          "cursor": null
+        }
+      },
+      "status": "completed",
+      "observation_id": "9639b327284644bbadcbafc4c12c32d4",
+      "started_at": "2026-10-29T17:40:29.531530+00:00",
+      "ended_at": "2026-10-29T17:40:29.559050+00:00"
+    },
+    {
+      "id": "a4f443284014462eb3a7b8070fddfb15",
+      "model_call_id": "78f3eef4e4a849789cf784a2aee3cf28",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 18,
+        "decision_summary": "I will inspect the 'block.detect_open_vocab' capability to determine if it can be used for detecting item codes from images.",
+        "based_on_observation_ids": [
+          "162779f6bbf4406f8bb73252461198ca"
+        ],
+        "action": {
+          "type": "inspect_capability",
+          "capability_id": "block.detect_open_vocab"
+        }
+      },
+      "status": "completed",
+      "observation_id": "6a9bf11874ba453190ef9ead5bd099a1",
+      "started_at": "2026-10-29T17:41:41.865222+00:00",
+      "ended_at": "2026-10-29T17:41:42.231098+00:00"
+    },
+    {
+      "id": "d20ebd4670344afca70bd91c781aacc2",
+      "model_call_id": "7bf2cb30449d4fbab4eea5f5a243110b",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 20,
+        "decision_summary": "I will ask the user to clarify if they have a specific model or capability in mind for detecting item codes, as the available detection capabilities are not probe-eligible and require further investigation.",
+        "based_on_observation_ids": [
+          "162779f6bbf4406f8bb73252461198ca",
+          "6a9bf11874ba453190ef9ead5bd099a1"
+        ],
+        "action": {
+          "type": "ask_user",
+          "question": "Do you have a specific model or capability in mind for detecting item codes from images? If not, I will continue exploring other options."
+        }
+      },
+      "status": "completed",
+      "observation_id": "9f5150ef8aae4fa9954afbcc3da0dcba",
+      "started_at": "2026-10-29T17:42:49.107599+00:00",
+      "ended_at": "2026-10-29T17:42:49.113665+00:00"
+    }
+  ],
+  "observations": [
+    {
+      "id": "507309c0a1054ac3b1ea782d56a32320",
+      "action_id": "6ae385e82ee74a27b427ddadf3cd0c53",
+      "result_type": "discover_capabilities",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "items": [
+          {
+            "capability_id": "block.detect",
+            "name": "Detect",
+            "description": "Run a locally installed detector.",
+            "kind": "tool",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "block.detect_open_vocab",
+            "name": "Detect Open Vocab",
+            "description": "Detect text-prompted classes using local OWLv2.",
+            "kind": "tool",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.fixture-color-v1",
+            "name": "Synthetic color fixture",
+            "description": "Original colored rectangles for software checks; not a warehouse detector.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "ready",
+            "installation_ready": true,
+            "project_eligibility": {
+              "allowed": false,
+              "requires_fixture_project": true,
+              "fixture_project": false,
+              "reason": "Synthetic fixture models cannot process nonfixture project media; project.synthetic alone does not grant fixture-adapter permission."
+            },
+            "probe_eligible": false,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-detector-rtdetr-prior001-20261028",
+            "name": "local-detector-rtdetr-prior001-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection",
+              "training"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-detector-rtdetr-smoke-20261028",
+            "name": "local-detector-rtdetr-smoke-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection",
+              "training"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-ssdlite-7dcfc58e1c6e",
+            "name": "local-ssdlite-7dcfc58e1c6e",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-ssdlite-9bdcf7bd1751",
+            "name": "local-ssdlite-9bdcf7bd1751",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-ssdlite-finetune-smoke-20261028",
+            "name": "local-ssdlite-finetune-smoke-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          }
+        ],
+        "total_items": 13,
+        "returned_items": 8,
+        "truncated": true,
+        "next_cursor": "a9d8092f186d44b1:8",
+        "query_terms": [
+          "code",
+          "detection",
+          "item"
+        ],
+        "available_kinds": [
+          "model",
+          "tool"
+        ],
+        "available_task_types": [
+          "annotation",
+          "barcode",
+          "counting",
+          "detection",
+          "evaluation",
+          "event_logic",
+          "events",
+          "evidence",
+          "image_transform",
+          "instance_segmentation",
+          "media",
+          "ocr",
+          "orchestration",
+          "planning",
+          "source_acquisition",
+          "spatial_filter",
+          "text_comparison",
+          "training",
+          "visual_judgement"
+        ],
+        "filter_diagnostics": [],
+        "suggestions": [],
+        "suggestion_ignored_filters": [],
+        "suggestion_semantics": "Suggestions are labelled catalogue alternatives, not exact query results or execution recommendations; related terms use generic substring/character similarity. Inventory suggestions have no measured query relevance.",
+        "search_semantics": "Empty query lists inventory. Otherwise match any casefolded alphanumeric metadata token; punctuation, one-character tokens and common function words are ignored. Rank weighted ID/name/task/description matches, then capability ID. Explicit kind/task filters remain exact.",
+        "warnings": [
+          "Discovery metadata grants no execution or installation authority."
+        ]
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:33:05.489889+00:00"
+    },
+    {
+      "id": "31d67f867a5140d38b86831c9c007d5e",
+      "action_id": "e047b93fd37143c398ba84bc0f8bb781",
+      "result_type": "inspect_media",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "items": [
+          {
+            "media_id": "media-3f285dcb38ea31a518cc7537c0fbe049",
+            "source_sha256": "36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051",
+            "pixels_sha256": "021544f7b620969533d4653a6ce512e202070381d52d5bc5ad8fffd99353cd60",
+            "width": 1600,
+            "height": 500,
+            "membership": "development"
+          }
+        ],
+        "input_refs": [
+          {
+            "media_id": "media-3f285dcb38ea31a518cc7537c0fbe049",
+            "source_sha256": "36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051",
+            "pixels_sha256": "021544f7b620969533d4653a6ce512e202070381d52d5bc5ad8fffd99353cd60",
+            "width": 1600,
+            "height": 500,
+            "membership": "development"
+          }
+        ],
+        "artifact_refs": [],
+        "pixels_visible_to_planner": false,
+        "total_items": 1,
+        "returned_items": 1,
+        "truncated": false,
+        "next_cursor": null,
+        "warnings": [
+          "pixels_not_visible_to_planner: this planner receives structured text; artifact references are not image attachments."
+        ]
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:33:43.391269+00:00"
+    },
+    {
+      "id": "1e15947be50c46dd95ee892aad164db7",
+      "action_id": "40b95e785af842babff9417bc578d797",
+      "result_type": "run_probe",
+      "status": "failed",
+      "payload": {
+        "executed": false,
+        "error": {
+          "code": "tool_rejected",
+          "message": "Selected capability does not match the typed adapter request",
+          "retryable": false,
+          "failed_stage": "authorization_or_preparation"
+        },
+        "timing": {
+          "total_ms": 5.2997919847257435
+        }
+      },
+      "error": {
+        "code": "tool_rejected",
+        "message": "Selected capability does not match the typed adapter request",
+        "retryable": false,
+        "failed_stage": "authorization_or_preparation"
+      },
+      "created_at": "2026-10-29T17:34:54.039635+00:00"
+    },
+    {
+      "id": "852e0d56319c425f8e302807f3087485",
+      "action_id": "9e4f9648c26d4bdd868374e7f7b5a93e",
+      "result_type": "inspect_capability",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "descriptor": {
+          "id": "block.detect",
+          "name": "Detect",
+          "kind": "tool",
+          "description": "Run a locally installed detector.",
+          "availability": "installed",
+          "implemented": true,
+          "installation_ready": true,
+          "callable": false,
+          "task_types": [
+            "detection"
+          ],
+          "version": "0.1",
+          "license": {
+            "identifier": "Project source; license unspecified",
+            "code": null,
+            "weights": null,
+            "status": "unverified",
+            "notes": [
+              "No license has been assigned to this user-owned repository. This catalog does not grant distribution rights."
+            ]
+          },
+          "provenance": {
+            "source_urls": [],
+            "revision": null,
+            "hashes": {
+              "registry.py": "bad4e584f4e3b5611f13be124b9b9e8b7200cd629ce0fdf1ffc7e1651c718653"
+            },
+            "scope": "bundled_code",
+            "notes": [
+              "Hash identifies adapter source, not model weights or a hardware smoke test."
+            ]
+          },
+          "hardware": {
+            "platforms": [
+              "host"
+            ],
+            "accelerators": [],
+            "required_packages": [],
+            "minimum_memory_gib": null,
+            "estimated_disk_bytes": null,
+            "notes": [
+              "Detector/model hardware requirements are selected and checked during compilation."
+            ]
+          },
+          "side_effects": [
+            "local_inference"
+          ],
+          "dependencies": [],
+          "input_schema": {
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "model": {
+                  "default": "owlv2-base-patch16",
+                  "title": "Model",
+                  "type": "string"
+                },
+                "classes": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 64,
+                  "minItems": 1,
+                  "title": "Classes",
+                  "type": "array"
+                },
+                "min_conf": {
+                  "default": 0.25,
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Min Conf",
+                  "type": "number"
+                }
+              },
+              "title": "DetectParams",
+              "type": "object"
+            },
+            "ports": {
+              "image": "image"
+            }
+          },
+          "output_schema": {
+            "ports": {
+              "dets": "detections"
+            }
+          },
+          "install_method": "bundled",
+          "install_instructions": null,
+          "readiness": {
+            "state": "unchecked",
+            "reason": "Adapter contract is implemented; the selected model needs an inference validation.",
+            "checked_at": "2026-10-29T17:35:48.497347+00:00",
+            "evidence_scope": "prerequisites",
+            "evidence": [
+              {
+                "kind": "adapter",
+                "subject": "detect",
+                "outcome": "pass",
+                "detail": "Implemented registry contract; invocation still requires a valid graph and its inputs.",
+                "observed_at": "2026-10-29T17:35:48.497010+00:00",
+                "metadata": {}
+              }
+            ]
+          },
+          "probe_eligible": false,
+          "probe_tasks": [],
+          "limitations": [
+            "Provisional observations do not establish accuracy, review, or deployment approval.",
+            "Catalogue visibility does not authorize arbitrary MCP calls; only investigation actions execute here."
+          ],
+          "descriptor_hash": "f1c4fb1d1f82c4f53803d088b7f8f601eccb4bda7d77f8daf0734707c4255796"
+        },
+        "model_view": {
+          "id": "block.detect",
+          "descriptor_hash": "f1c4fb1d1f82c4f53803d088b7f8f601eccb4bda7d77f8daf0734707c4255796",
+          "probe_eligible": false,
+          "probe_tasks": [],
+          "availability": "installed",
+          "installation_ready": true,
+          "version": "0.1",
+          "limitations": [
+            "Provisional observations do not establish accuracy, review, or deployment approval.",
+            "Catalogue visibility does not authorize arbitrary MCP calls; only investigation actions execute here."
+          ],
+          "readiness": {
+            "state": "unchecked",
+            "reason": "Adapter contract is implemented; the selected model needs an inference validation.",
+            "evidence_scope": "prerequisites"
+          },
+          "provenance": {
+            "scope": "bundled_code",
+            "revision": null,
+            "source_urls": [],
+            "hashes": {
+              "registry.py": "bad4e584f4e3b5611f13be124b9b9e8b7200cd629ce0fdf1ffc7e1651c718653"
+            }
+          },
+          "hardware": {
+            "platforms": [
+              "host"
+            ],
+            "accelerators": [],
+            "required_packages": []
+          },
+          "output_summary": "Actual detections/readings, normalized geometry, input-to-source transform, identity, timing, warnings; full result available as a saved artifact.",
+          "project_eligibility": {
+            "allowed": true,
+            "requires_fixture_project": false,
+            "fixture_project": false,
+            "reason": null
+          }
+        },
+        "project_eligibility": {
+          "allowed": true,
+          "requires_fixture_project": false,
+          "fixture_project": false,
+          "reason": null
+        },
+        "total_items": 1,
+        "returned_items": 1,
+        "truncated": false
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:35:48.503650+00:00"
+    },
+    {
+      "id": "67849c47af4540c09edf4687327b861b",
+      "action_id": "de1b66d75f9a41ad8bda61072f336b6f",
+      "result_type": "discover_capabilities",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "items": [
+          {
+            "capability_id": "block.detect",
+            "name": "Detect",
+            "description": "Run a locally installed detector.",
+            "kind": "tool",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "block.detect_open_vocab",
+            "name": "Detect Open Vocab",
+            "description": "Detect text-prompted classes using local OWLv2.",
+            "kind": "tool",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.fixture-color-v1",
+            "name": "Synthetic color fixture",
+            "description": "Original colored rectangles for software checks; not a warehouse detector.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "ready",
+            "installation_ready": true,
+            "project_eligibility": {
+              "allowed": false,
+              "requires_fixture_project": true,
+              "fixture_project": false,
+              "reason": "Synthetic fixture models cannot process nonfixture project media; project.synthetic alone does not grant fixture-adapter permission."
+            },
+            "probe_eligible": false,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-detector-rtdetr-prior001-20261028",
+            "name": "local-detector-rtdetr-prior001-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection",
+              "training"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-detector-rtdetr-smoke-20261028",
+            "name": "local-detector-rtdetr-smoke-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection",
+              "training"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-ssdlite-7dcfc58e1c6e",
+            "name": "local-ssdlite-7dcfc58e1c6e",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-ssdlite-9bdcf7bd1751",
+            "name": "local-ssdlite-9bdcf7bd1751",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-ssdlite-finetune-smoke-20261028",
+            "name": "local-ssdlite-finetune-smoke-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          }
+        ],
+        "total_items": 13,
+        "returned_items": 8,
+        "truncated": true,
+        "next_cursor": "a9d8092f186d44b1:8",
+        "query_terms": [
+          "code",
+          "detection",
+          "item"
+        ],
+        "available_kinds": [
+          "model",
+          "tool"
+        ],
+        "available_task_types": [
+          "annotation",
+          "barcode",
+          "counting",
+          "detection",
+          "evaluation",
+          "event_logic",
+          "events",
+          "evidence",
+          "image_transform",
+          "instance_segmentation",
+          "media",
+          "ocr",
+          "orchestration",
+          "planning",
+          "source_acquisition",
+          "spatial_filter",
+          "text_comparison",
+          "training",
+          "visual_judgement"
+        ],
+        "filter_diagnostics": [],
+        "suggestions": [],
+        "suggestion_ignored_filters": [],
+        "suggestion_semantics": "Suggestions are labelled catalogue alternatives, not exact query results or execution recommendations; related terms use generic substring/character similarity. Inventory suggestions have no measured query relevance.",
+        "search_semantics": "Empty query lists inventory. Otherwise match any casefolded alphanumeric metadata token; punctuation, one-character tokens and common function words are ignored. Rank weighted ID/name/task/description matches, then capability ID. Explicit kind/task filters remain exact.",
+        "warnings": [
+          "Discovery metadata grants no execution or installation authority."
+        ]
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:36:42.098835+00:00"
+    },
+    {
+      "id": "f0a823c3875f42f488bbc2b00237684c",
+      "action_id": "95691aa9d27b46f9b4f0db7f1ba3fbde",
+      "result_type": "discover_capabilities",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "items": [
+          {
+            "capability_id": "block.detect",
+            "name": "Detect",
+            "description": "Run a locally installed detector.",
+            "kind": "tool",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "block.detect_open_vocab",
+            "name": "Detect Open Vocab",
+            "description": "Detect text-prompted classes using local OWLv2.",
+            "kind": "tool",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.fixture-color-v1",
+            "name": "Synthetic color fixture",
+            "description": "Original colored rectangles for software checks; not a warehouse detector.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "ready",
+            "installation_ready": true,
+            "project_eligibility": {
+              "allowed": false,
+              "requires_fixture_project": true,
+              "fixture_project": false,
+              "reason": "Synthetic fixture models cannot process nonfixture project media; project.synthetic alone does not grant fixture-adapter permission."
+            },
+            "probe_eligible": false,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-detector-rtdetr-prior001-20261028",
+            "name": "local-detector-rtdetr-prior001-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection",
+              "training"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-detector-rtdetr-smoke-20261028",
+            "name": "local-detector-rtdetr-smoke-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection",
+              "training"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-ssdlite-7dcfc58e1c6e",
+            "name": "local-ssdlite-7dcfc58e1c6e",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-ssdlite-9bdcf7bd1751",
+            "name": "local-ssdlite-9bdcf7bd1751",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-ssdlite-finetune-smoke-20261028",
+            "name": "local-ssdlite-finetune-smoke-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          }
+        ],
+        "total_items": 13,
+        "returned_items": 8,
+        "truncated": true,
+        "next_cursor": "a9d8092f186d44b1:8",
+        "query_terms": [
+          "code",
+          "detection",
+          "item"
+        ],
+        "available_kinds": [
+          "model",
+          "tool"
+        ],
+        "available_task_types": [
+          "annotation",
+          "barcode",
+          "counting",
+          "detection",
+          "evaluation",
+          "event_logic",
+          "events",
+          "evidence",
+          "image_transform",
+          "instance_segmentation",
+          "media",
+          "ocr",
+          "orchestration",
+          "planning",
+          "source_acquisition",
+          "spatial_filter",
+          "text_comparison",
+          "training",
+          "visual_judgement"
+        ],
+        "filter_diagnostics": [],
+        "suggestions": [],
+        "suggestion_ignored_filters": [],
+        "suggestion_semantics": "Suggestions are labelled catalogue alternatives, not exact query results or execution recommendations; related terms use generic substring/character similarity. Inventory suggestions have no measured query relevance.",
+        "search_semantics": "Empty query lists inventory. Otherwise match any casefolded alphanumeric metadata token; punctuation, one-character tokens and common function words are ignored. Rank weighted ID/name/task/description matches, then capability ID. Explicit kind/task filters remain exact.",
+        "warnings": [
+          "Discovery metadata grants no execution or installation authority."
+        ]
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:37:44.699344+00:00"
+    },
+    {
+      "id": "1e4dc96d1e1a4afab42adf7dff49f6c2",
+      "action_id": "b6002c6abf814acba6eb104ea8de1e2d",
+      "result_type": "discover_capabilities",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "items": [
+          {
+            "capability_id": "block.detect",
+            "name": "Detect",
+            "description": "Run a locally installed detector.",
+            "kind": "tool",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "block.detect_open_vocab",
+            "name": "Detect Open Vocab",
+            "description": "Detect text-prompted classes using local OWLv2.",
+            "kind": "tool",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.fixture-color-v1",
+            "name": "Synthetic color fixture",
+            "description": "Original colored rectangles for software checks; not a warehouse detector.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "ready",
+            "installation_ready": true,
+            "project_eligibility": {
+              "allowed": false,
+              "requires_fixture_project": true,
+              "fixture_project": false,
+              "reason": "Synthetic fixture models cannot process nonfixture project media; project.synthetic alone does not grant fixture-adapter permission."
+            },
+            "probe_eligible": false,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-detector-rtdetr-prior001-20261028",
+            "name": "local-detector-rtdetr-prior001-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection",
+              "training"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-detector-rtdetr-smoke-20261028",
+            "name": "local-detector-rtdetr-smoke-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection",
+              "training"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-ssdlite-7dcfc58e1c6e",
+            "name": "local-ssdlite-7dcfc58e1c6e",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-ssdlite-9bdcf7bd1751",
+            "name": "local-ssdlite-9bdcf7bd1751",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-ssdlite-finetune-smoke-20261028",
+            "name": "local-ssdlite-finetune-smoke-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          }
+        ],
+        "total_items": 13,
+        "returned_items": 8,
+        "truncated": true,
+        "next_cursor": "a9d8092f186d44b1:8",
+        "query_terms": [
+          "code",
+          "detection",
+          "item"
+        ],
+        "available_kinds": [
+          "model",
+          "tool"
+        ],
+        "available_task_types": [
+          "annotation",
+          "barcode",
+          "counting",
+          "detection",
+          "evaluation",
+          "event_logic",
+          "events",
+          "evidence",
+          "image_transform",
+          "instance_segmentation",
+          "media",
+          "ocr",
+          "orchestration",
+          "planning",
+          "source_acquisition",
+          "spatial_filter",
+          "text_comparison",
+          "training",
+          "visual_judgement"
+        ],
+        "filter_diagnostics": [],
+        "suggestions": [],
+        "suggestion_ignored_filters": [],
+        "suggestion_semantics": "Suggestions are labelled catalogue alternatives, not exact query results or execution recommendations; related terms use generic substring/character similarity. Inventory suggestions have no measured query relevance.",
+        "search_semantics": "Empty query lists inventory. Otherwise match any casefolded alphanumeric metadata token; punctuation, one-character tokens and common function words are ignored. Rank weighted ID/name/task/description matches, then capability ID. Explicit kind/task filters remain exact.",
+        "warnings": [
+          "Discovery metadata grants no execution or installation authority."
+        ]
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:38:46.592553+00:00"
+    },
+    {
+      "id": "162779f6bbf4406f8bb73252461198ca",
+      "action_id": "bd685d4f1bb445e994c1deacb848722a",
+      "result_type": "discover_capabilities",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "items": [
+          {
+            "capability_id": "block.detect",
+            "name": "Detect",
+            "description": "Run a locally installed detector.",
+            "kind": "tool",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "block.detect_open_vocab",
+            "name": "Detect Open Vocab",
+            "description": "Detect text-prompted classes using local OWLv2.",
+            "kind": "tool",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.fixture-color-v1",
+            "name": "Synthetic color fixture",
+            "description": "Original colored rectangles for software checks; not a warehouse detector.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "ready",
+            "installation_ready": true,
+            "project_eligibility": {
+              "allowed": false,
+              "requires_fixture_project": true,
+              "fixture_project": false,
+              "reason": "Synthetic fixture models cannot process nonfixture project media; project.synthetic alone does not grant fixture-adapter permission."
+            },
+            "probe_eligible": false,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-detector-rtdetr-prior001-20261028",
+            "name": "local-detector-rtdetr-prior001-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection",
+              "training"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-detector-rtdetr-smoke-20261028",
+            "name": "local-detector-rtdetr-smoke-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection",
+              "training"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-ssdlite-7dcfc58e1c6e",
+            "name": "local-ssdlite-7dcfc58e1c6e",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-ssdlite-9bdcf7bd1751",
+            "name": "local-ssdlite-9bdcf7bd1751",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          },
+          {
+            "capability_id": "model.local-ssdlite-finetune-smoke-20261028",
+            "name": "local-ssdlite-finetune-smoke-20261028",
+            "description": "Locally trained detector; requires independent evaluation.",
+            "kind": "model",
+            "task_types": [
+              "detection"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "matched_terms": [
+              "detection"
+            ],
+            "match_score": 4
+          }
+        ],
+        "total_items": 13,
+        "returned_items": 8,
+        "truncated": true,
+        "next_cursor": "a9d8092f186d44b1:8",
+        "query_terms": [
+          "code",
+          "detection",
+          "item"
+        ],
+        "available_kinds": [
+          "model",
+          "tool"
+        ],
+        "available_task_types": [
+          "annotation",
+          "barcode",
+          "counting",
+          "detection",
+          "evaluation",
+          "event_logic",
+          "events",
+          "evidence",
+          "image_transform",
+          "instance_segmentation",
+          "media",
+          "ocr",
+          "orchestration",
+          "planning",
+          "source_acquisition",
+          "spatial_filter",
+          "text_comparison",
+          "training",
+          "visual_judgement"
+        ],
+        "filter_diagnostics": [],
+        "suggestions": [],
+        "suggestion_ignored_filters": [],
+        "suggestion_semantics": "Suggestions are labelled catalogue alternatives, not exact query results or execution recommendations; related terms use generic substring/character similarity. Inventory suggestions have no measured query relevance.",
+        "search_semantics": "Empty query lists inventory. Otherwise match any casefolded alphanumeric metadata token; punctuation, one-character tokens and common function words are ignored. Rank weighted ID/name/task/description matches, then capability ID. Explicit kind/task filters remain exact.",
+        "warnings": [
+          "Discovery metadata grants no execution or installation authority."
+        ]
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:39:38.253404+00:00"
+    },
+    {
+      "id": "9639b327284644bbadcbafc4c12c32d4",
+      "action_id": "237701d8fb72417db4a912da684b8af0",
+      "result_type": "inspect_media",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "items": [
+          {
+            "media_id": "media-3f285dcb38ea31a518cc7537c0fbe049",
+            "source_sha256": "36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051",
+            "pixels_sha256": "021544f7b620969533d4653a6ce512e202070381d52d5bc5ad8fffd99353cd60",
+            "width": 1600,
+            "height": 500,
+            "membership": "development"
+          }
+        ],
+        "input_refs": [
+          {
+            "media_id": "media-3f285dcb38ea31a518cc7537c0fbe049",
+            "source_sha256": "36c7d4ba68b402026183b91f8705393b27fc56d4175ed80f007010517f4b3051",
+            "pixels_sha256": "021544f7b620969533d4653a6ce512e202070381d52d5bc5ad8fffd99353cd60",
+            "width": 1600,
+            "height": 500,
+            "membership": "development"
+          }
+        ],
+        "artifact_refs": [],
+        "pixels_visible_to_planner": false,
+        "total_items": 1,
+        "returned_items": 1,
+        "truncated": false,
+        "next_cursor": null,
+        "warnings": [
+          "pixels_not_visible_to_planner: this planner receives structured text; artifact references are not image attachments."
+        ]
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:40:29.559021+00:00"
+    },
+    {
+      "id": "6a9bf11874ba453190ef9ead5bd099a1",
+      "action_id": "a4f443284014462eb3a7b8070fddfb15",
+      "result_type": "inspect_capability",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "descriptor": {
+          "id": "block.detect_open_vocab",
+          "name": "Detect Open Vocab",
+          "kind": "tool",
+          "description": "Detect text-prompted classes using local OWLv2.",
+          "availability": "installed",
+          "implemented": true,
+          "installation_ready": true,
+          "callable": false,
+          "task_types": [
+            "detection"
+          ],
+          "version": "0.1",
+          "license": {
+            "identifier": "Project source; license unspecified",
+            "code": null,
+            "weights": null,
+            "status": "unverified",
+            "notes": [
+              "No license has been assigned to this user-owned repository. This catalog does not grant distribution rights."
+            ]
+          },
+          "provenance": {
+            "source_urls": [],
+            "revision": null,
+            "hashes": {
+              "registry.py": "bad4e584f4e3b5611f13be124b9b9e8b7200cd629ce0fdf1ffc7e1651c718653"
+            },
+            "scope": "bundled_code",
+            "notes": [
+              "Hash identifies adapter source, not model weights or a hardware smoke test."
+            ]
+          },
+          "hardware": {
+            "platforms": [
+              "host"
+            ],
+            "accelerators": [],
+            "required_packages": [],
+            "minimum_memory_gib": null,
+            "estimated_disk_bytes": null,
+            "notes": [
+              "Detector/model hardware requirements are selected and checked during compilation."
+            ]
+          },
+          "side_effects": [
+            "local_inference"
+          ],
+          "dependencies": [],
+          "input_schema": {
+            "params": {
+              "additionalProperties": false,
+              "properties": {
+                "model": {
+                  "default": "owlv2-base-patch16",
+                  "title": "Model",
+                  "type": "string"
+                },
+                "classes": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 64,
+                  "minItems": 1,
+                  "title": "Classes",
+                  "type": "array"
+                },
+                "min_conf": {
+                  "default": 0.25,
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Min Conf",
+                  "type": "number"
+                }
+              },
+              "title": "DetectParams",
+              "type": "object"
+            },
+            "ports": {
+              "image": "image"
+            }
+          },
+          "output_schema": {
+            "ports": {
+              "dets": "detections"
+            }
+          },
+          "install_method": "bundled",
+          "install_instructions": null,
+          "readiness": {
+            "state": "unchecked",
+            "reason": "Adapter contract is implemented; the selected model needs an inference validation.",
+            "checked_at": "2026-10-29T17:41:42.223216+00:00",
+            "evidence_scope": "prerequisites",
+            "evidence": [
+              {
+                "kind": "adapter",
+                "subject": "detect_open_vocab",
+                "outcome": "pass",
+                "detail": "Implemented registry contract; invocation still requires a valid graph and its inputs.",
+                "observed_at": "2026-10-29T17:41:42.222841+00:00",
+                "metadata": {}
+              }
+            ]
+          },
+          "probe_eligible": false,
+          "probe_tasks": [],
+          "limitations": [
+            "Provisional observations do not establish accuracy, review, or deployment approval.",
+            "Catalogue visibility does not authorize arbitrary MCP calls; only investigation actions execute here."
+          ],
+          "descriptor_hash": "1906519712c4dbdf625442702831bef70052d565b0b776d0d41f4af6d1b2064c"
+        },
+        "model_view": {
+          "id": "block.detect_open_vocab",
+          "descriptor_hash": "1906519712c4dbdf625442702831bef70052d565b0b776d0d41f4af6d1b2064c",
+          "probe_eligible": false,
+          "probe_tasks": [],
+          "availability": "installed",
+          "installation_ready": true,
+          "version": "0.1",
+          "limitations": [
+            "Provisional observations do not establish accuracy, review, or deployment approval.",
+            "Catalogue visibility does not authorize arbitrary MCP calls; only investigation actions execute here."
+          ],
+          "readiness": {
+            "state": "unchecked",
+            "reason": "Adapter contract is implemented; the selected model needs an inference validation.",
+            "evidence_scope": "prerequisites"
+          },
+          "provenance": {
+            "scope": "bundled_code",
+            "revision": null,
+            "source_urls": [],
+            "hashes": {
+              "registry.py": "bad4e584f4e3b5611f13be124b9b9e8b7200cd629ce0fdf1ffc7e1651c718653"
+            }
+          },
+          "hardware": {
+            "platforms": [
+              "host"
+            ],
+            "accelerators": [],
+            "required_packages": []
+          },
+          "output_summary": "Actual detections/readings, normalized geometry, input-to-source transform, identity, timing, warnings; full result available as a saved artifact.",
+          "project_eligibility": {
+            "allowed": true,
+            "requires_fixture_project": false,
+            "fixture_project": false,
+            "reason": null
+          }
+        },
+        "project_eligibility": {
+          "allowed": true,
+          "requires_fixture_project": false,
+          "fixture_project": false,
+          "reason": null
+        },
+        "total_items": 1,
+        "returned_items": 1,
+        "truncated": false
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:41:42.231057+00:00"
+    },
+    {
+      "id": "9f5150ef8aae4fa9954afbcc3da0dcba",
+      "action_id": "d20ebd4670344afca70bd91c781aacc2",
+      "result_type": "ask_user",
+      "status": "completed",
+      "payload": {
+        "selected_action": {
+          "type": "ask_user",
+          "question": "Do you have a specific model or capability in mind for detecting item codes from images? If not, I will continue exploring other options."
+        },
+        "executed": false
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:42:49.113645+00:00"
+    }
+  ]
+}

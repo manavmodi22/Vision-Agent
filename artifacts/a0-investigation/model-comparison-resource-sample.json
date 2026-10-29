@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-10-29T17:44:18.812831+00:00",
+  "scope": "Single operating-system sample during sequential candidate planner inference; not a sustained feasibility benchmark",
+  "pressure": {
+    "returncode": 0,
+    "output": "2",
+    "error": ""
+  },
+  "swap": {
+    "returncode": 0,
+    "output": "vm.swapusage: total = 15360.00M  used = 14336.25M  free = 1023.75M  (encrypted)",
+    "error": ""
+  },
+  "vm": {
+    "returncode": 0,
+    "output": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     7515.\nPages active:                                 375902.\nPages inactive:                               369010.\nPages speculative:                              2315.\nPages throttled:                                   0.\nPages wired down:                            1459049.\nPages purgeable:                                   0.\n\"Translation faults\":                     1869784966.\nPages copy-on-write:                        53329501.\nPages zero filled:                        3411598768.\nPages reactivated:                         120208036.\nPages purged:                               27194358.\nFile-backed pages:                            236503.\nAnonymous pages:                              510724.\nPages stored in compressor:                  3112724.\nPages occupied by compressor:                 886781.\nDecompressions:                             77881598.\nCompressions:                              111797553.\nPageins:                                    51195869.\nPageouts:                                     749686.\nSwapins:                                      570164.\nSwapouts:                                    1693003.",
+    "error": ""
+  }
+}

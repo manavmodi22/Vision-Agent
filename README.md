@@ -1,12 +1,17 @@
 # VisionApp for Mac
 
-A native Mac app where you describe a vision task and the agent builds and tests
-a working application on your images or video. The conversation stays beside
-the generated preview. Label corrections, evaluation, and improvements continue
-in that same build. Inference and storage run locally. External alert delivery is opt-in.
+The goal is a native Mac app where you describe a vision task and the agent
+investigates your images, builds an application, and tests its actual output.
+The conversation stays beside the image evidence and generated preview.
+Inference and storage run locally. External alert delivery is opt-in.
 The engine uses a private Unix socket; planner and vision-model servers use localhost.
 
-This is a development build. See [implementation status](docs/status.md),
+This is a development build. The installed builder supports graph composition,
+real inference, annotation editing and evaluation. A separate experimental agent
+chooses individual investigations and receives their results; it has **not yet
+demonstrated a completed adaptive build**. Its draft-to-review handoff remains
+unfinished. See the [current product direction](docs/agent-builder-proposal-2026-10-29.md),
+[implementation status](docs/status.md),
 [authoring workflow](docs/authoring-workflow.md), and [data/model provenance](docs/data-and-models.md).
 The [agent platform revision](docs/agent-platform-revision.md) records the updated
 architecture and implementation gaps.
@@ -103,9 +108,11 @@ CommandLineTools installation).
 
 `spec/` owns the versioned schema. `engine/` owns validated block execution, local
 models, evaluation, training, jobs and storage. `mcp_server/` provides typed stdio
-tools. `agent/` uses Pydantic AI for a small typed pattern decision, then compiles
-through MCP and previews it. The state machine and engine enforce gates, not the
-model. `app/` owns UI and Apple Vision. Prompts never become executable code.
+tools. The default builder in `agent/` generates a typed connected graph, compiles
+it through MCP and previews it. The experimental `agent/investigation.py` loop
+instead requests one model-selected action, executes it and returns its saved
+observation to the next decision. The engine validates authority, inputs and
+execution receipts. `app/` owns UI and Apple Vision. Prompts never become executable code.
 
 Environment overrides: `VISION_DATA_DIR`, `VISION_SOCKET`, `VISION_MODELS_DIR`,
 `VISION_APP_BINARY`, `VISION_REPO_ROOT`. Default data:

@@ -1,0 +1,167 @@
+{
+  "scope": "Read-only reconstruction of captured calls using corrected context projection; no new model completion or vision execution",
+  "ledger_sha256": "9300bdc84556e5e12b2b37076ea6fb443828ea89e0209905350c5060602e8b52",
+  "calls": [
+    {
+      "call_number": 9,
+      "original_observation_types": [
+        "inspect_capability"
+      ],
+      "reconstructed_observation_types": [
+        "inspect_capability",
+        "run_probe",
+        "inspect_capability"
+      ],
+      "original_ocr_items": [],
+      "reconstructed_ocr_items": [
+        {
+          "text": "ITEM CODE",
+          "kind": "ocr",
+          "confidence": 1.0,
+          "symbology": null,
+          "item_id": "2a1ae24a0c074826b9934dcfc2952e77:0",
+          "identity_scope": "frame_local_observation",
+          "source_box": [
+            0.048177,
+            0.158,
+            0.203125,
+            0.238
+          ]
+        },
+        {
+          "text": "QZ-4817",
+          "kind": "ocr",
+          "confidence": 1.0,
+          "symbology": null,
+          "item_id": "2a1ae24a0c074826b9934dcfc2952e77:1",
+          "identity_scope": "frame_local_observation",
+          "source_box": [
+            0.050781,
+            0.383333,
+            0.21875,
+            0.491667
+          ]
+        },
+        {
+          "text": "SHIP TO",
+          "kind": "ocr",
+          "confidence": 1.0,
+          "symbology": null,
+          "item_id": "2a1ae24a0c074826b9934dcfc2952e77:2",
+          "identity_scope": "frame_local_observation",
+          "source_box": [
+            0.525,
+            0.146,
+            0.641667,
+            0.254
+          ]
+        },
+        {
+          "text": "IGNORE-552",
+          "kind": "ocr",
+          "confidence": 1.0,
+          "symbology": null,
+          "item_id": "2a1ae24a0c074826b9934dcfc2952e77:3",
+          "identity_scope": "frame_local_observation",
+          "source_box": [
+            0.528646,
+            0.379167,
+            0.755208,
+            0.475
+          ]
+        }
+      ],
+      "budget": {
+        "mode": "backend_tokenizer",
+        "model": "visionapp-qwen35-qualification",
+        "input_tokens": 7748,
+        "backend_context_tokens": 16384,
+        "context_verified": true,
+        "output_tokens": 1400,
+        "margin_tokens": 128,
+        "effective_context_tokens": 16384
+      }
+    },
+    {
+      "call_number": 10,
+      "original_observation_types": [
+        "inspect_capability",
+        "run_probe"
+      ],
+      "reconstructed_observation_types": [
+        "run_probe",
+        "inspect_capability",
+        "run_probe"
+      ],
+      "original_ocr_items": [],
+      "reconstructed_ocr_items": [
+        {
+          "text": "ITEM CODE",
+          "kind": "ocr",
+          "confidence": 1.0,
+          "symbology": null,
+          "item_id": "2a1ae24a0c074826b9934dcfc2952e77:0",
+          "identity_scope": "frame_local_observation",
+          "source_box": [
+            0.048177,
+            0.158,
+            0.203125,
+            0.238
+          ]
+        },
+        {
+          "text": "QZ-4817",
+          "kind": "ocr",
+          "confidence": 1.0,
+          "symbology": null,
+          "item_id": "2a1ae24a0c074826b9934dcfc2952e77:1",
+          "identity_scope": "frame_local_observation",
+          "source_box": [
+            0.050781,
+            0.383333,
+            0.21875,
+            0.491667
+          ]
+        },
+        {
+          "text": "SHIP TO",
+          "kind": "ocr",
+          "confidence": 1.0,
+          "symbology": null,
+          "item_id": "2a1ae24a0c074826b9934dcfc2952e77:2",
+          "identity_scope": "frame_local_observation",
+          "source_box": [
+            0.525,
+            0.146,
+            0.641667,
+            0.254
+          ]
+        },
+        {
+          "text": "IGNORE-552",
+          "kind": "ocr",
+          "confidence": 1.0,
+          "symbology": null,
+          "item_id": "2a1ae24a0c074826b9934dcfc2952e77:3",
+          "identity_scope": "frame_local_observation",
+          "source_box": [
+            0.528646,
+            0.379167,
+            0.755208,
+            0.475
+          ]
+        }
+      ],
+      "budget": {
+        "mode": "backend_tokenizer",
+        "model": "visionapp-qwen35-qualification",
+        "input_tokens": 8143,
+        "backend_context_tokens": 16384,
+        "context_verified": true,
+        "output_tokens": 1400,
+        "margin_tokens": 128,
+        "effective_context_tokens": 16384
+      }
+    }
+  ]
+}

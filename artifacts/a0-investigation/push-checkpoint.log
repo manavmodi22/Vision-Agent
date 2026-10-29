@@ -1,0 +1,5 @@
+{"old": "9c2d55999106f9fe774ae47cecb70ca2d78daf52", "new": "4ef067339a9f8c7de3b3c7f4d2b91a4e6b0824aa", "pack_bytes": 415766}
+584dccd4d52a2592797f5adf272bcd3930b3ca08
+{"sent_pack_bytes": 415766}
+branch 'main' set up to track 'origin/main'.
+{"expected_sha": "4ef067339a9f8c7de3b3c7f4d2b91a4e6b0824aa", "pack_bytes": 415766, "pack_sha256": "2d199244e3cf53cf468b5b1852734d272175cdb49e0ba056cb4aad760ef06bfd", "status": "verified_published", "ssh_exit": 0, "replies": ["unpack ok", "ok refs/heads/main"], "stderr": "\u0000", "remote_sha": "4ef067339a9f8c7de3b3c7f4d2b91a4e6b0824aa"}

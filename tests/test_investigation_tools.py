@@ -17,6 +17,7 @@ from engine.investigations.tools import InvestigationTools, ToolOutcome, descrip
 from engine.investigations.workflows import construct_workflow
 from engine.models.fixture import PALETTE
 from engine.service import WorkspaceService
+from spec.capabilities import CapabilityManifest
 from spec.evaluation import EvaluationConfigurationUpdate, EvidenceAssignment
 from spec.investigation import BuilderAction, NextAction, RunProbe, WorkflowDecision
 
@@ -215,6 +216,94 @@ def test_capability_search_is_metadata_only_and_descriptor_hash_ignores_check_ti
     assert "probe_output_schema" not in view
 
 
+@pytest.mark.parametrize("identifier,kind,tasks,implemented,installed,availability,readiness,eligible,role", [
+    ("model.apple-vision", "model", ["ocr", "barcode"], True, True, "installed", "unchecked", True, "typed_adapter_model"),
+    ("model.apple-vision", "model", ["ocr"], True, True, "installed", "ready", True, "typed_adapter_model"),
+    ("model.apple-vision", "model", ["ocr"], True, False, "available_to_install", "blocked", False, "typed_adapter_model"),
+    ("model.apple-vision", "model", ["ocr"], False, False, "unsupported", "unsupported", False, "typed_adapter_model"),
+    ("model.apple-vision", "model", ["planning"], True, True, "installed", "ready", False, "catalogue_model"),
+    ("model.unregistered", "model", ["detection"], True, True, "installed", "ready", False, "catalogue_model"),
+    ("block.detect", "tool", ["detection"], True, True, "installed", "unchecked", False, "graph_block"),
+    ("block.unregistered", "tool", ["detection"], False, False, "unsupported", "unsupported", False, "catalogue_tool"),
+    ("tool.example", "tool", ["detection"], True, True, "installed", "ready", False, "catalogue_tool"),
+])
+def test_every_discovery_role_uses_descriptor_probe_prerequisites(harness: Harness,
+        identifier: str, kind: str, tasks: list[str], implemented: bool, installed: bool,
+        availability: str, readiness: str, eligible: bool, role: str) -> None:
+    raw = harness.capability.model_dump(mode="json")
+    raw.update(id=identifier, kind=kind, task_types=tasks, implemented=implemented,
+               installation_ready=installed, availability=availability, callable=False)
+    raw["readiness"]["state"] = readiness
+    harness.capability = CapabilityManifest.model_validate(raw)
+    before = descriptor(harness.capability)
+    found = harness.perform(type="discover_capabilities")
+    row = found.payload["items"][0]
+    assert row["probe_eligible"] is eligible
+    assert row["probe_eligible"] == before["probe_eligible"]
+    assert row["probe_tasks"] == before["probe_tasks"]
+    assert row["execution_role"] == role
+    assert row["matched_terms"] == row["unmatched_terms"] == []
+    inspected = harness.perform(type="inspect_capability", capability_id=identifier)
+    assert inspected.payload["model_view"]["probe_eligible"] is eligible
+    assert inspected.payload["descriptor"]["descriptor_hash"] == before["descriptor_hash"]
+    assert "execution_role" not in inspected.payload["descriptor"]  # Discovery-only detail preserves hash content.
+
+
+@pytest.mark.parametrize("fixture_project,installed", [(False, True), (True, True), (True, False)])
+def test_discovery_fixture_gate_combines_project_and_machine_eligibility(harness: Harness,
+        fixture_project: bool, installed: bool) -> None:
+    project = harness.service.get_project(harness.project.id)
+    project.fixture = fixture_project
+    harness.service.repository.save(project)
+    harness.capability.installation_ready = installed
+    harness.capability.callable = False
+    before = descriptor(harness.capability)
+    found = harness.perform(type="discover_capabilities", query="fixture")
+    row = found.payload["items"][0]
+    assert row["execution_role"] == "typed_adapter_model" and row["probe_tasks"] == ["detection"]
+    assert row["probe_eligible"] is (fixture_project and installed)
+    inspected = harness.perform(type="inspect_capability", capability_id=harness.capability.id)
+    assert row["probe_eligible"] == inspected.payload["model_view"]["probe_eligible"]
+    assert inspected.payload["descriptor"]["descriptor_hash"] == before["descriptor_hash"]
+
+
+def test_search_echoes_exact_filters_and_unmatched_terms_without_task_routing(harness: Harness,
+        monkeypatch: pytest.MonkeyPatch) -> None:
+    reader = next(item for item in model_catalog() if item.id == "model.apple-vision")
+    monkeypatch.setattr(harness.tools, "_catalog", lambda: [harness.capability, reader])
+    found = harness.perform(type="discover_capabilities", query="item code detection", task_type="detection")
+    assert found.payload["query"] == "item code detection"
+    assert found.payload["active_filters"] == {"kind": None, "task_type": "detection"}
+    assert found.payload["total_items"] == 1
+    row = found.payload["items"][0]
+    assert row["capability_id"] == "model.fixture-color-v1"
+    assert row["matched_terms"] == ["detection"] and row["unmatched_terms"] == ["code", "item"]
+    saved = harness.perform(type="inspect_observation", observation_id=found.id)
+    assert saved.payload["query"] == found.payload["query"]
+    assert saved.payload["active_filters"] == found.payload["active_filters"]
+    empty = harness.perform(type="discover_capabilities", query="ocr", kind="tool", task_type="detection")
+    assert empty.payload["items"] == [] and empty.payload["total_items"] == 0
+    assert empty.payload["active_filters"] == {"kind": "tool", "task_type": "detection"}
+
+
+@pytest.mark.parametrize("capability,model,fragment", [
+    ("block.detect", "block.detect", "not a graph block"),
+    ("model.fixture-color-v1", "model.fixture-color-v1", "'model.' + request.model_id"),
+    ("model.apple-vision", "fixture-color-v1", "does not match"),
+])
+def test_probe_namespace_errors_point_to_inspected_request_contract(harness: Harness,
+        monkeypatch: pytest.MonkeyPatch, capability: str, model: str, fragment: str) -> None:
+    args = harness.probe_args()
+    args["capability_id"], args["request"]["model_id"] = capability, model
+    monkeypatch.setattr(DevelopmentMedia, "expose", lambda *_a, **_k: pytest.fail("Rejected probe exposed pixels"))
+    monkeypatch.setattr("engine.investigations.probes.run_inference", lambda *_a, **_k: pytest.fail("Rejected probe ran inference"))
+    observed = harness.perform(**args)
+    assert observed.status == "failed" and observed.payload["executed"] is False
+    assert fragment in observed.error["message"]
+    assert "probe_request_schemas" in observed.error["message"]
+    assert not read_usage(harness.service.root(harness.project.id)).uses
+
+
 def test_broad_live_search_matches_actual_reader_metadata(harness: Harness, monkeypatch: pytest.MonkeyPatch) -> None:
     reader = next(item for item in model_catalog() if item.id == "model.apple-vision")
     monkeypatch.setattr(harness.tools, "_catalog", lambda: [harness.capability, reader])
@@ -277,6 +366,8 @@ def test_unknown_filter_exposes_taxonomy_and_labelled_lexical_suggestions(harnes
     assert suggestion["capability_id"] == "model.apple-vision"
     assert suggestion["suggestion_type"] == "approximate_metadata" and suggestion["exact_query_match"] is False
     assert {"query_term": "code", "metadata_term": "barcode"} in suggestion["related_terms"]
+    assert suggestion["matched_terms"] == [] and suggestion["unmatched_terms"] == ["code", "reader"]
+    assert suggestion["execution_role"] == "typed_adapter_model" and suggestion["probe_tasks"] == ["ocr", "barcode"]
     assert len(payload["suggestions"]) <= 3 and "readiness" in suggestion
     captured = harness.perform(type="inspect_observation", observation_id=found.id)
     assert captured.status == "completed" and captured.payload["source_total_items"] == 0

@@ -1,0 +1,393 @@
+{
+  "git_head": "4ef067339a9f8c7de3b3c7f4d2b91a4e6b0824aa",
+  "engine_source_identity": "503a046821a66aa02d6010394b346415b3a7670010cba7cfd5df06d64a1fc3e4",
+  "native_source": {
+    "sha256": "cf5031231c53e8dd737c81600af2e58296927d081b4fd2e5f738c5b4534e26c6",
+    "files": [
+      {
+        "path": "app/Package.swift",
+        "sha256": "f0d33130fc64d2558ac8137c3c6f20c8357b2f46ead6257e25e4b7aba43de52c"
+      },
+      {
+        "path": "app/Sources/VisionApp/AgentAnnotationReview.swift",
+        "sha256": "3f1f4ff3886a63312f022e892b63a0f9f74e7d2ea7fe6a404e11d977a4ea4395"
+      },
+      {
+        "path": "app/Sources/VisionApp/AgentContractChecks.swift",
+        "sha256": "60c3509e96f19c796eabd832a6c1f9fe0593fdf42ec6e9a7105f365737363d5a"
+      },
+      {
+        "path": "app/Sources/VisionApp/AgentEvaluationProof.swift",
+        "sha256": "9bce8187a7db0e3d13119731f89514a86ad19083722ce879e75d7b4b0d9ba41a"
+      },
+      {
+        "path": "app/Sources/VisionApp/AgentHomeView.swift",
+        "sha256": "77e74a51f16a7c80979b0c164090f513f73478a7a126d9c6699c0a3b39ae087e"
+      },
+      {
+        "path": "app/Sources/VisionApp/AgentPlanView.swift",
+        "sha256": "e2d42f4108e92f1b6c3123077940001b36207bb567f6e45e5484dcb042935ad3"
+      },
+      {
+        "path": "app/Sources/VisionApp/AgentTimelineView.swift",
+        "sha256": "a8da1f6df77f8c60bef4dd79ebec7b22858ec76add45e779a6a343dffdf7fdaf"
+      },
+      {
+        "path": "app/Sources/VisionApp/AgentWorkLog.swift",
+        "sha256": "0d5cbc93663142ad279f9d30a0b9158208ecf85ecc85dd08db348963019288a8"
+      },
+      {
+        "path": "app/Sources/VisionApp/AgentWorkspaceActions.swift",
+        "sha256": "22c3003fe2d8a5d0432d87cbf35a9056d7b77324bed0f65e96c4e0367b02d4c4"
+      },
+      {
+        "path": "app/Sources/VisionApp/AgentWorkspaceStore.swift",
+        "sha256": "2bb73ff9de8c13a8d8bf9a7c2314dfcc7c6da1f1b6ba3c49562ad1bc833e5e1c"
+      },
+      {
+        "path": "app/Sources/VisionApp/AlertApprovalSheet.swift",
+        "sha256": "97596f0c093d7ea239e1ad34bfaaf20374a37867f411026d786a4b5178ebd3b8"
+      },
+      {
+        "path": "app/Sources/VisionApp/AlertContractChecks.swift",
+        "sha256": "ae7927328b81c8cba34771849d19fbf28ad11136a8c15fb2966a3b1ffe9db6f5"
+      },
+      {
+        "path": "app/Sources/VisionApp/AlertDTOs.swift",
+        "sha256": "d6bb398419de8172f324f33ec996e521dde63fbde79d945a04ec9153ab606964"
+      },
+      {
+        "path": "app/Sources/VisionApp/AlertTargetEditor.swift",
+        "sha256": "87cc3b3a3920d18604f7218687cb53e19be431653ed47c091ddf599334dfd271"
+      },
+      {
+        "path": "app/Sources/VisionApp/AlertWorkspace.swift",
+        "sha256": "d3833c0a4acb5e6b4b71579e608193d60d1f71c5d7fdcc8b72dc9f97152c0c07"
+      },
+      {
+        "path": "app/Sources/VisionApp/AlertsView.swift",
+        "sha256": "0616b35edcb1013d7d83ca9635ad27fa679f5d6d02da0ba8ac57679eff9e5332"
+      },
+      {
+        "path": "app/Sources/VisionApp/AnnotationCanvas.swift",
+        "sha256": "47ac9400af75578b10933a7bc8495183a2b4e5f47fbd696a644551a0b4542f45"
+      },
+      {
+        "path": "app/Sources/VisionApp/AnnotationContractChecks.swift",
+        "sha256": "3abbece1cc5d5c355736462222bc7a87d740bf9a59f07852b5edd7e1616102ac"
+      },
+      {
+        "path": "app/Sources/VisionApp/AnnotationGeometry.swift",
+        "sha256": "af7b568d55d6384b5378f88ac753508f2bd64ff7693983b2d77fa1e99bb04ae8"
+      },
+      {
+        "path": "app/Sources/VisionApp/AnnotationInspector.swift",
+        "sha256": "c1625093924b5441a31c65ed14a74803f6d59ffba4f5a3ff30e9ee138938d33d"
+      },
+      {
+        "path": "app/Sources/VisionApp/BlockCatalog.swift",
+        "sha256": "92bbe261d2b6814d38249392383fe3158020001f28dd8fe20c356aa861ea9c23"
+      },
+      {
+        "path": "app/Sources/VisionApp/BuildView.swift",
+        "sha256": "85a9f91ae0cd36f09f02d9a42d86146f61bdebe1281b2ad8a9083f762e9588bb"
+      },
+      {
+        "path": "app/Sources/VisionApp/CLIJSONOutput.swift",
+        "sha256": "5e263d0cf2434672b0102f76407b99a4a833d1889864929e553b06befbfd9d71"
+      },
+      {
+        "path": "app/Sources/VisionApp/CLIOutputChecks.swift",
+        "sha256": "c2c9ae0c71245b31c86b804766c4f45b39f31bc41df506582e16aaabeb4122dc"
+      },
+      {
+        "path": "app/Sources/VisionApp/CandidatePreview.swift",
+        "sha256": "18a735f21a25f22a08843688fa4192912af4a46453947580b6f7abb108c63abe"
+      },
+      {
+        "path": "app/Sources/VisionApp/CandidatePreviewChecks.swift",
+        "sha256": "9805480e5920db54741a9afa2db7d5532489223be03c2ca982fce8a0ad45dad5"
+      },
+      {
+        "path": "app/Sources/VisionApp/CapabilitiesView.swift",
+        "sha256": "1cb79fcaf8a59c65fdf9ec167a26902f098641430d3b259761ecfe38a2fed1aa"
+      },
+      {
+        "path": "app/Sources/VisionApp/CapabilityDTOs.swift",
+        "sha256": "f2d0632136da60bef4b48f11c9ec111f3652217af1ec602b3a5a54b17d4e99d4"
+      },
+      {
+        "path": "app/Sources/VisionApp/ContentView.swift",
+        "sha256": "2364b89e78940c6391af3c603df1c51aab9b582d391ff48f81627041e060012f"
+      },
+      {
+        "path": "app/Sources/VisionApp/DatasetDTOs.swift",
+        "sha256": "947b808ee1ea330dbac22d4287f6bd66c0bd68986e4629a651b33c1ca017a5a8"
+      },
+      {
+        "path": "app/Sources/VisionApp/DatasetLabelTransfer.swift",
+        "sha256": "cebdab013349394753d7647a09f0874aa46a1c5a5071dd7000defa7bd91b5e4b"
+      },
+      {
+        "path": "app/Sources/VisionApp/DatasetStudio.swift",
+        "sha256": "0fe05874347a128c843877729011fdb08f51f3f4bc69da156e538b0aa37837eb"
+      },
+      {
+        "path": "app/Sources/VisionApp/DatasetWorkspace.swift",
+        "sha256": "e6611f1b4ca46a7d55677ff9c440a7279d6362c91241e7308e45b28d6ef806d7"
+      },
+      {
+        "path": "app/Sources/VisionApp/DeploymentApprovalSheet.swift",
+        "sha256": "19a148d8de93cebeae56b5bf7f05282a65fb6a8ecfefadc8630cf91817db583c"
+      },
+      {
+        "path": "app/Sources/VisionApp/EngineClient.swift",
+        "sha256": "105b25d87a11cb596289a7ce4756c24fbe95d0189cfd5da1bf25be8c5a004e04"
+      },
+      {
+        "path": "app/Sources/VisionApp/EngineIdentity.swift",
+        "sha256": "74d19cf946da66517d479ab6977a9dec6c908fea346c5ced81e40a1647f25ee7"
+      },
+      {
+        "path": "app/Sources/VisionApp/EngineIdentityChecks.swift",
+        "sha256": "30cd189038836caf624459b164566731e55a26e93d4e96d62defef45f1ebe9d6"
+      },
+      {
+        "path": "app/Sources/VisionApp/EngineSupervisor.swift",
+        "sha256": "1b817912079ecccaa6c0576710378cb4c8277f12cce6e29f94543f7e6e623f49"
+      },
+      {
+        "path": "app/Sources/VisionApp/EvaluateView.swift",
+        "sha256": "831498e5119854718539cfab2ea560f8e1436dc29f89797baeba10e2d8bb4514"
+      },
+      {
+        "path": "app/Sources/VisionApp/EvaluationContractChecks.swift",
+        "sha256": "0d3c32a4eac18db634df1aa652a559485a6f5b757e99fa60c8e34986d818ab00"
+      },
+      {
+        "path": "app/Sources/VisionApp/EvaluationEvidenceChecks.swift",
+        "sha256": "5a2284d5c948dc70ad073ab9d96fef315c9dcec3ba5a73d86542645f00cbb9e8"
+      },
+      {
+        "path": "app/Sources/VisionApp/EvaluationEvidenceDTOs.swift",
+        "sha256": "cf2dd65263513f453e44cd3d67b731a7a05dbc04665149f7833fe0feee45fdea"
+      },
+      {
+        "path": "app/Sources/VisionApp/EvaluationEvidenceEditor.swift",
+        "sha256": "6052dd7a8fce8e12d24891f204e3279df96edba35d219fe0e7c37370da49d3fb"
+      },
+      {
+        "path": "app/Sources/VisionApp/EvaluationEvidenceStore.swift",
+        "sha256": "22493781026cbeb69873647404b4e6c81797afafe15261f4f0c7445ad763391b"
+      },
+      {
+        "path": "app/Sources/VisionApp/EvaluationPresentation.swift",
+        "sha256": "e208cca0debc5696730bdbd1361b0494820cfc62d3d0cbfced50feaef2b450fd"
+      },
+      {
+        "path": "app/Sources/VisionApp/EvaluationQualityView.swift",
+        "sha256": "442012bf234edc671be898a3cd21f119ee85f31d0d0190ef2e978a09973a1af3"
+      },
+      {
+        "path": "app/Sources/VisionApp/EvidenceApproval.swift",
+        "sha256": "485a8a07fb05b5e0c2bfcc2f1d946f9fe6994e262d6bf91fafc03ca55a58817b"
+      },
+      {
+        "path": "app/Sources/VisionApp/ExpectedTextEditor.swift",
+        "sha256": "3321052e79c7f6d80362d86308c48d1675ee807a4c34c1ae33d45f0048e468ee"
+      },
+      {
+        "path": "app/Sources/VisionApp/ImageCanvas.swift",
+        "sha256": "8b66811abf832dd80581c137622e1405a461d882e6fbdd74df2c272fe5d33ca5"
+      },
+      {
+        "path": "app/Sources/VisionApp/InvestigationArtifacts.swift",
+        "sha256": "434acb04582e9414cab6e1b1b36315e1d5d24ac581043d122ff79183ccf56681"
+      },
+      {
+        "path": "app/Sources/VisionApp/InvestigationContractChecks.swift",
+        "sha256": "851eed7edfb206128ffdedf2b9e3ee3c9cf47d53bf4a5c221d694014fd5f3ef1"
+      },
+      {
+        "path": "app/Sources/VisionApp/InvestigationDTOs.swift",
+        "sha256": "0a65136d393c15877ff72c0b56563bca7283b66ed41b05e04e768bcee001ec59"
+      },
+      {
+        "path": "app/Sources/VisionApp/InvestigationViews.swift",
+        "sha256": "cc88f13c06b72e323707481cd919a01eb5c4bc51c934e6d61064459f4de89b7b"
+      },
+      {
+        "path": "app/Sources/VisionApp/InvestigationWorkspaceStore.swift",
+        "sha256": "deb65f13338f54a5ffcd8dad7e6e234813f9ff2557c6c137a05c8eacbd2faa07"
+      },
+      {
+        "path": "app/Sources/VisionApp/LiveCaptureModel.swift",
+        "sha256": "0d50f5ff782061b85754b8708eb590a12dbe99546dd1103c9afed51bbd8cf82b"
+      },
+      {
+        "path": "app/Sources/VisionApp/LiveCaptureSources.swift",
+        "sha256": "0269e98cf421df56092767750f9acf3bf5fb5202cdb896ea0f802ff1e6efb9e6"
+      },
+      {
+        "path": "app/Sources/VisionApp/LiveCaptureView.swift",
+        "sha256": "277f1df8586d1b8e22e0175451a18e8dc78974927279ab7bebeb50b9cea63476"
+      },
+      {
+        "path": "app/Sources/VisionApp/LiveContractChecks.swift",
+        "sha256": "8804d481154515b2d3bd03e456e07091f7ff6f037c46dc35583c92b80db843b0"
+      },
+      {
+        "path": "app/Sources/VisionApp/LiveDTOs.swift",
+        "sha256": "fbaba9b920edf2adda0c56d9857453ccaf13293c6769fccd0a58f8526d6c3c50"
+      },
+      {
+        "path": "app/Sources/VisionApp/LiveFramePublisher.swift",
+        "sha256": "178ef429d90ee4c48ebebae4a4a62f315742ef32611c7250f3e09a668ee99c0a"
+      },
+      {
+        "path": "app/Sources/VisionApp/LiveReplayCLI.swift",
+        "sha256": "dbac1bb57a7a9debe2b95d47d22f94dd1b31b7be624c14a3ada91add7fa56389"
+      },
+      {
+        "path": "app/Sources/VisionApp/Models.swift",
+        "sha256": "1adc7aca90cbd85df2514a7a12428d6f73c98fc108428426689983e03a4f4259"
+      },
+      {
+        "path": "app/Sources/VisionApp/NativeOCRChecks.swift",
+        "sha256": "370cf63047ada3714f57c2ee0de41946d0c077016b39e614571797eb683a6c8d"
+      },
+      {
+        "path": "app/Sources/VisionApp/NativeSelfTests.swift",
+        "sha256": "63fee13846b865d43bf9e9d284a56a638b554e7e70f38f0b4e5db05ccd579dea"
+      },
+      {
+        "path": "app/Sources/VisionApp/OperateViews.swift",
+        "sha256": "741af4bc2c19e049e87a2048a9528c4c052e12acc9a18dc87245fcf3f92271e3"
+      },
+      {
+        "path": "app/Sources/VisionApp/PipelineInspector.swift",
+        "sha256": "3713fe476e8a46c72c716b4c17fb5897bd7b1a4a9f6e96386faa87bcc692de11"
+      },
+      {
+        "path": "app/Sources/VisionApp/PlatformContractChecks.swift",
+        "sha256": "3c9bb96d10b9e3473c30fc1f33f87273f52f24c5a2174cfdba8ce5d0abddce45"
+      },
+      {
+        "path": "app/Sources/VisionApp/PlatformDTOs.swift",
+        "sha256": "1352404a17d46b4f58a9ed35ab20c87b75acd1e3ae37b565360649dff2a4d981"
+      },
+      {
+        "path": "app/Sources/VisionApp/PlatformPresentation.swift",
+        "sha256": "46f2d0a0271a2f95d322a773404df5a00264750d9cfe4b4c69a7a86f27d48ed6"
+      },
+      {
+        "path": "app/Sources/VisionApp/PreviewOutcomeChecks.swift",
+        "sha256": "063de115a5d334d18eaf6bad99155e72978338d914a1f49a56e40d679770e113"
+      },
+      {
+        "path": "app/Sources/VisionApp/PreviewRuleOutcome.swift",
+        "sha256": "31c4238eef856af9b507b26c411a4241d34c7b34ff35146ba040fabaa3825da6"
+      },
+      {
+        "path": "app/Sources/VisionApp/ProvisioningContractChecks.swift",
+        "sha256": "b49f12ddc1f86aa71acf32bcebc0409e8950b6acc42e0b0ebed4ffb1dbedb352"
+      },
+      {
+        "path": "app/Sources/VisionApp/ProvisioningDTOs.swift",
+        "sha256": "2a57e55cba5e60c231f5a0c89c8c205f741463a6ac4dab14c47145910e7076b1"
+      },
+      {
+        "path": "app/Sources/VisionApp/ProvisioningSheet.swift",
+        "sha256": "35a9631ad84d0869fd78193ecb01f83db1083dd42e847fa075235377aee5f998"
+      },
+      {
+        "path": "app/Sources/VisionApp/ProvisioningStore.swift",
+        "sha256": "ead8f78174f9905a977a28d9ded534f5269bd93eec32087ddde4838e389772f4"
+      },
+      {
+        "path": "app/Sources/VisionApp/ReadingEvaluationDetails.swift",
+        "sha256": "888e8185a29bab99f24bb0b580bd0c34019542cc0e66b1ebd918c3850822dd7a"
+      },
+      {
+        "path": "app/Sources/VisionApp/ReadingEvidenceChecks.swift",
+        "sha256": "4d427a0adcf96b691c0499b9fe5d9bb07e4bc8552ad1e8d1fdc09a77449a6797"
+      },
+      {
+        "path": "app/Sources/VisionApp/ReadingEvidenceDTOs.swift",
+        "sha256": "fad582c37b4973bcf49ddab5296681c69b2cb63887c9131f0a84b94f5e404f43"
+      },
+      {
+        "path": "app/Sources/VisionApp/ReadingEvidenceView.swift",
+        "sha256": "b2948c829e5fddc940843cfcbffbfae332b27ed8fc0412999558c174a14ece86"
+      },
+      {
+        "path": "app/Sources/VisionApp/RecordedVideoSource.swift",
+        "sha256": "b81f9c48bd80e3ef218f8e49a22884bedc50a84d31ecb83ab0e46001faa8dbda"
+      },
+      {
+        "path": "app/Sources/VisionApp/ReplayArtifacts.swift",
+        "sha256": "d44293b4a9b5f59eaa99b465fcfa715069c09f51e7ffbd6de1c92f89a2ec5584"
+      },
+      {
+        "path": "app/Sources/VisionApp/SettingsView.swift",
+        "sha256": "7bf53585c0c5de4a272225539f08f2320d3e9badc4e56bdd0b1c2f6057035398"
+      },
+      {
+        "path": "app/Sources/VisionApp/TextComparisonChecks.swift",
+        "sha256": "7764fe8fcc1d7948aa463383610808fe51f2cf36ec45569f92d8ad8d4215b719"
+      },
+      {
+        "path": "app/Sources/VisionApp/TextComparisonEvidence.swift",
+        "sha256": "6056d7fb8222a6edfc6b6ab17d1852b85d4dbdcf628f2947b2f2d15a33ab5f44"
+      },
+      {
+        "path": "app/Sources/VisionApp/TextRegionChecks.swift",
+        "sha256": "9fd57f915a0df2b14a3219607d505d10bb318b2e75b503deed3ec9db6a2a1b9d"
+      },
+      {
+        "path": "app/Sources/VisionApp/TextRegionDTOs.swift",
+        "sha256": "7233f1789154982402da68367970793965929fdf7ab964fa4fc01506545599e0"
+      },
+      {
+        "path": "app/Sources/VisionApp/TextRegionEditing.swift",
+        "sha256": "ec9b220595bc0059506a5fd71ad287daccfa64ea2e6e1579edb460350c78859e"
+      },
+      {
+        "path": "app/Sources/VisionApp/TextRegionGeometry.swift",
+        "sha256": "026074e3d810becb7934a419c8be7103685313c0f88499e30a51e3c8da732000"
+      },
+      {
+        "path": "app/Sources/VisionApp/TextRegionInspector.swift",
+        "sha256": "a8fc5aba27e20af6665601cd8daf01f886b1811d303f6f8878a16ebb88b24e3e"
+      },
+      {
+        "path": "app/Sources/VisionApp/TextRegionPredictionCopy.swift",
+        "sha256": "1e8565696c34d39c7e6a62dbe1535cbb447dd43cf778a5e8a5c2aafdefc7ef93"
+      },
+      {
+        "path": "app/Sources/VisionApp/Theme.swift",
+        "sha256": "f0a07b847022def21bbd23e184012477f3beb3fdd9d16b1514df41ddd665b7b4"
+      },
+      {
+        "path": "app/Sources/VisionApp/VisionApp.swift",
+        "sha256": "f0a61cc9ed762429f1d12d4efc6a0214a401cad3957162b2c255055aa86a0dfb"
+      },
+      {
+        "path": "app/Sources/VisionApp/VisionBridge.swift",
+        "sha256": "50369a21ae7da1490bb460526560a33c63f88da4cf6e23b04a2c4a5bddabed15"
+      },
+      {
+        "path": "app/Sources/VisionApp/WorkspaceModel.swift",
+        "sha256": "afcd70722b2c447fa354751e490e93dd1050a901b8124d5cac6a754da4e0d988"
+      },
+      {
+        "path": "app/Sources/VisionApp/ZonesView.swift",
+        "sha256": "59115807d8a9819389380c02c0ad4590c0e679a6adac0eefa4e8d76c055fbef2"
+      },
+      {
+        "path": "app/Tests/VisionAppTests/NativeTests.swift",
+        "sha256": "b155c1d7ea3adad9005d6210379a6cc4e7d7f2a078d1e1d13aeb669985267176"
+      }
+    ]
+  }
+}

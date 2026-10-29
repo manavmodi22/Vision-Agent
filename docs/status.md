@@ -46,9 +46,9 @@ unseen-task generalization and the wider release requirements remain open.
 The [A0 implementation plan](a0-implementation-plan.md) names the loop, tool and
 persistence changes needed next; it is not an implementation claim.
 
-### A0 development work after the published checkpoint
+### Experimental A0 checkpoint: `4ef0673`
 
-The working tree now has a separate durable investigation runtime. It captures
+The published source now has a separate durable investigation runtime. It captures
 one model-selected action, executes discovery/media inspection/provisional vision
 inference through MCP, and returns the actual observation to the next model call.
 The model can request a workflow, receive its compiled preview, and select the
@@ -62,10 +62,25 @@ The local llama backend's actual chat template/tokenizer is checked before model
 requests; other compatible servers explicitly use an estimated budget. Oversized
 preview details remain retrievable as saved observations.
 
+The [GitHub CI run](https://github.com/manavmodi22/Vision-Agent/actions/runs/40922692488)
+for commit `4ef067339a9f8c7de3b3c7f4d2b91a4e6b0824aa` passed **1,285 Python tests
+with two optional skips**, Ruff, strict mypy on 199 files, and 291 native checks.
+The local Release binary passed **293 checks** including the retained Run4 and
+Run5 snapshots with actual OCR; see the [release receipt](../artifacts/a0-investigation/native-release-20261029T174028Z/report.json).
+These checks validate software contracts, not the agent's ability to finish a task.
+
 **A0 is not yet accepted.** The first three actual local-planner runs failed to
 reach a vision probe because discovery/documentation was not usable enough. The
-fourth reached actual Apple OCR but could not feed its verbose result into the
-next bounded model request. Those traces and subsequent fixes remain in the
+fourth and fifth reached actual Apple OCR but exceeded the then-active 8K context
+budget on the next request. After bounded result projections and a verified 16K
+window, the Qwen3-14B baseline still failed: it ran no vision inference, repeatedly
+searched detection capabilities, and asked the user to choose a model after
+626 seconds. The [complete baseline trace](../artifacts/a0-investigation/qwen14-16k-baseline/report.json)
+is retained. The Qwen3.5-9B candidate ran actual OCR and an empty barcode probe,
+then asked for crop coordinates already present in earlier OCR evidence. It also
+produced no draft. The [comparison](../artifacts/a0-investigation/MODEL-COMPARISON.md)
+records both failures and the resource change that prevents a controlled speed
+ranking. The default model is unchanged. Earlier traces and subsequent fixes remain in the
 [evidence index](../artifacts/a0-investigation/README.md).
 
 The development native app now has session-bound investigations, durable controls,
