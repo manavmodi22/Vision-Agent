@@ -14,11 +14,11 @@ from pydantic import JsonValue, TypeAdapter, ValidationError
 
 from agent.graph_structure import OUTPUTS
 from agent.investigation_client import InvestigationClient
+from agent.investigation_docs import graph_contract_schema
 from agent.investigation_grounding import DecisionGrounding
 from agent.machine import AgentError, AgentState
 from agent.mcp_client import connect_tools
 from agent.planner import check_model, local_model_url
-from spec.authoring import GraphCandidate
 from spec.investigation import (
     BuilderDecision,
     ConstructWorkflow,
@@ -133,7 +133,7 @@ def action_contracts() -> dict[str, JsonValue]:
 
 def node_contracts() -> dict[str, JsonValue]:
     """Response grammars are not prompt text: expose field types and port names."""
-    schema = GraphCandidate.model_json_schema()
+    schema = graph_contract_schema()
     definitions = schema["$defs"]
     variants = schema["properties"]["nodes"]["items"]["discriminator"]["mapping"]
     return {kind: {**_visible_contract(definitions[reference.removeprefix("#/$defs/")], definitions),
@@ -144,7 +144,7 @@ def node_contracts() -> dict[str, JsonValue]:
 def workflow_action_contracts() -> dict[str, JsonValue]:
     """Only construction is legal in this stage; node docs provide its variants."""
     action = ConstructWorkflow.model_json_schema()
-    graph = GraphCandidate.model_json_schema()
+    graph = graph_contract_schema()
     graph_fields = _compact_schema(graph["properties"])
     graph_fields["nodes"]["items"] = {"type": "object", "description": "A typed node from node_contracts; its type selects its fields and ports."}
     fields = {name: _compact_schema(field) for name, field in action["properties"].items() if name != "type"}

@@ -1,0 +1,21 @@
+{
+  "base_commit": "713046b68b5134ba13c5ea2c6e54396ede402e8d",
+  "all_project_imports_in_worktree": true,
+  "project_module_count": 97,
+  "a0_visible_contracts_exactly_equal": true,
+  "shared_authoring_file_exact_pre713046b": true,
+  "legacy_schema_character_reduction": 3303,
+  "production_root_modified": false,
+  "inference_started": false,
+  "server_changes": false,
+  "tests": {
+    "result": "passed",
+    "count": 162,
+    "elapsed_seconds": 23.9,
+    "includes_all_five_failing_legacy_budget_cases": true,
+    "log": "tests.log"
+  },
+  "ruff": "passed",
+  "mypy": "passed:3 source files",
+  "test_command": "python -B -m pytest -q tests/test_planner_context_budget.py tests/test_graph_authoring.py tests/test_graph_authoring_mcp.py tests/test_graph_comparison_fidelity.py tests/test_graph_transform_fidelity.py tests/test_investigation_docs.py tests/test_investigation_loop.py tests/test_investigation_grounding.py"
+}
