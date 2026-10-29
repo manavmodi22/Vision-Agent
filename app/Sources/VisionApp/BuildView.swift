@@ -4,6 +4,7 @@ struct BuildView: View {
     @EnvironmentObject var model: WorkspaceModel
     @StateObject private var agent: AgentWorkspaceStore
     @StateObject private var reviewStore: DatasetWorkspace
+    @NativeState<String?> private var investigationObservationID: String?
     @NativeState<String> private var artifactTab = "Preview"
     @NativeState<Bool> private var trainingApproval = false
     @NativeState<Bool> private var deploymentApproval = false
@@ -18,7 +19,7 @@ struct BuildView: View {
     private var messages: [ChatMessage] { model.project?.messages ?? [] }
     private var working: Bool { model.busy || agent.running }
     private var pendingGoal: String? { AgentConversation.pendingSubmission(agent.submittedGoal, messages: messages) }
-    private var hasStarted: Bool { working || agent.build != nil || pendingGoal != nil || !messages.isEmpty }
+    private var hasStarted: Bool { working || agent.investigation != nil || agent.build != nil || pendingGoal != nil || !messages.isEmpty }
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
             VStack(spacing: 0) {
@@ -26,21 +27,31 @@ struct BuildView: View {
                     VStack(alignment: .leading, spacing: 20) {
                         Text(hasStarted ? "Build with your agent" : "What should your app do?").font(.title3.weight(.semibold))
                         media
-                        if let plan = agent.build?.plan { AgentPlanCard(plan: plan, execution: agent.build?.execution) }
-                        conversation
-                        if agent.build != nil { AgentTimelineView(agent: agent) }
-                        DisclosureGroup("Build status history") { AgentWorkLog(agent: agent).padding(.top, 10) }.font(.caption).foregroundStyle(Studio.muted)
+                        if agent.usingInvestigation {
+                            if let snapshot = agent.investigation { InvestigationActivityView(snapshot: snapshot, selectedObservationID: $investigationObservationID) }
+                            else if let goal = agent.submittedGoal { messageBubble("Your objective", text: goal) }
+                        } else {
+                            if let plan = agent.build?.plan { AgentPlanCard(plan: plan, execution: agent.build?.execution) }
+                            conversation
+                            if agent.build != nil { AgentTimelineView(agent: agent) }
+                            DisclosureGroup("Build status history") { AgentWorkLog(agent: agent).padding(.top, 10) }.font(.caption).foregroundStyle(Studio.muted)
+                        }
                     }.padding(24)
                 }
                 Divider()
                 VStack(alignment: .leading, spacing: 12) {
-                    nextStep
+                    if agent.usingInvestigation { InvestigationControls(agent: agent) }
+                    else { nextStep }
                     composer
                 }.padding(18).background(Studio.background)
             }.frame(minWidth: 340, idealWidth: 410, maxWidth: 460)
             Divider()
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
+                    if agent.usingInvestigation {
+                        if let snapshot = agent.investigation { InvestigationEvidenceView(snapshot: snapshot, selectedObservationID: $investigationObservationID).id(snapshot.state.id) }
+                        else { EmptyCard(symbol: "viewfinder", title: "Investigation evidence", detail: agent.error ?? "The agent's actual vision observations will appear here.").frame(minHeight: 390) }
+                    } else {
                     application
                     if model.candidate != nil {
                         Picker("Application view", selection: $artifactTab) { Text("Preview").tag("Preview"); Text("Workflow details").tag("Workflow") }.pickerStyle(.segmented)
@@ -60,23 +71,24 @@ struct BuildView: View {
                             AgentEvaluationProof(build: build, busy: working || reviewStore.loading, approve: { deploymentApproval = true }, train: { trainingApproval = true }, correctImage: { openReview(imagePath: $0) }, reviewAnnotations: { openReview() }, editEvidence: { openEvidence() })
                         }
                     }
+                    }
                 }.padding(24)
             }.frame(maxWidth: .infinity)
         }
         .task(id: agent.projectID) {
             while !Task.isCancelled {
                 await agent.refresh()
-                if let build = agent.build { model.applyBuild(build) }
+                if !agent.usingInvestigation, let build = agent.build { model.applyBuild(build) }
                 do { try await Task.sleep(for: .seconds(2)) } catch { return }
             }
         }
-        .task(id: model.frame?.imagePath) { if model.frame != nil { await reviewStore.load() } }
+        .task(id: model.frame?.imagePath) { if !agent.usingInvestigation, model.frame != nil { await reviewStore.load() } }
         .sheet(isPresented: $annotationReview) { AgentAnnotationReview(store: reviewStore) }
         .sheet(isPresented: $evidenceEditor, onDismiss: { if reviewAfterEvidence { reviewAfterEvidence = false; openReview() } }) {
             EvaluationEvidenceEditor(projectID: agent.projectID, client: model.client, candidateIndex: evidenceCandidate, candidateName: evidenceCandidateName, onChanged: {
                 try? await model.refresh()
                 await agent.refresh()
-                if let build = agent.build { model.applyBuild(build) }
+                if !agent.usingInvestigation, let build = agent.build { model.applyBuild(build) }
                 await reviewStore.load()
             }, onReview: { reviewAfterEvidence = true; evidenceEditor = false })
         }
@@ -171,10 +183,10 @@ struct BuildView: View {
                 TextEditor(text: $model.prompt).font(.callout).scrollContentBackground(.hidden).padding(8).frame(height: 90)
             }.background(Studio.panel).clipShape(RoundedRectangle(cornerRadius: 9))
             HStack {
-                if working { ProgressView().controlSize(.small); Text(agent.running ? agent.build.map { AgentConversation.phaseLabel($0.phase) } ?? "Working" : model.activity).font(.caption).foregroundStyle(Studio.muted).lineLimit(2) }
+                if working { ProgressView().controlSize(.small); Text(agent.running ? (agent.usingInvestigation ? agent.investigation?.state.statusLabel ?? "Investigating" : agent.build.map { AgentConversation.phaseLabel($0.phase) } ?? "Working") : model.activity).font(.caption).foregroundStyle(Studio.muted).lineLimit(2) }
                 Spacer()
-                Button(messages.isEmpty && agent.build == nil ? "Build my app" : "Continue building") { model.buildApp() }
-                    .buttonStyle(.borderedProminent).disabled(working || model.prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                Button(agent.usingInvestigation ? (agent.investigation?.state.terminal == true ? "Start new investigation" : agent.investigation?.state.resumable == true ? "Answer and continue" : "Build my app") : (messages.isEmpty && agent.build == nil ? "Build my app" : "Continue building")) { model.buildApp() }
+                    .buttonStyle(.borderedProminent).disabled(working || agent.investigationRequestPending || (agent.usingInvestigation && agent.investigation != nil && agent.investigation?.state.resumable != true && agent.investigation?.state.terminal != true) || model.prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }
         }
     }

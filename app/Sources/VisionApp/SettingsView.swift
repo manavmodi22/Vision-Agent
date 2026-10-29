@@ -3,6 +3,7 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject var model: WorkspaceModel
     @EnvironmentObject var supervisor: EngineSupervisor
+    @AppStorage("vision.experimentalInvestigations") private var experimentalInvestigations = false
     var server: [String: JSONValue] { model.health?.object["model_server"]?.object ?? [:] }
     var reachable: Bool { server["reachable"] == .bool(true) }
     var body: some View {
@@ -21,6 +22,10 @@ struct SettingsView: View {
                         HStack { Button("Check connection") { model.perform("Checking model server") { try await model.refresh() } }; Spacer(); Button("Save settings") { model.saveSettings() }.buttonStyle(.borderedProminent) }.disabled(model.busy)
                     }.frame(maxWidth: .infinity).panel()
                     VStack(alignment: .leading, spacing: 18) {
+                        Eyebrow(text: "Agent runtime")
+                        Toggle("Experimental agent", isOn: $experimentalInvestigations)
+                        Text("Applies to new app sessions. The agent chooses bounded vision experiments and can construct a draft. Existing sessions keep their runtime. Draft review handoff is not yet available.").font(.caption).foregroundStyle(Studio.muted)
+                        Divider()
                         Eyebrow(text: "Model policy")
                         Toggle("Allow AGPL models", isOn: $model.settings.allowAgpl).disabled(true)
                         Text("AGPL adapters are not installed in this build.").font(.caption).foregroundStyle(Studio.muted)

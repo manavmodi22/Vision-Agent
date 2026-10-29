@@ -1,0 +1,159 @@
+.....F.........F                                                         [100%]
+=================================== FAILURES ===================================
+______ test_actual_probe_observation_changes_next_selected_action[False] _______
+
+tmp_path = PosixPath('/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-274/test_actual_probe_observation_1')
+object_present = False
+
+    @pytest.mark.parametrize("object_present", [True, False])
+    async def test_actual_probe_observation_changes_next_selected_action(tmp_path: Path, object_present: bool) -> None:
+        store, project, task, client = workspace(tmp_path, object_present=object_present)
+        contexts: list[dict[str, Any]] = []
+        capability: dict[str, Any] = {}
+        media: dict[str, Any] = {}
+    
+        async def decide(request: dict[str, Any]) -> dict[str, Any]:
+            context = request["context"]
+            contexts.append(context)
+            observations = context["observations"]
+            if not observations:
+                return reply(context, {"type": "inspect_capability", "capability_id": "model.fixture-color-v1"})
+            latest = observations[-1]
+            if latest["result_type"] == "inspect_capability":
+                capability.update(latest["payload"]["descriptor"])
+                return reply(context, {"type": "inspect_media"}, [latest["id"]])
+            if latest["result_type"] == "inspect_media":
+                media.update(latest["payload"]["items"][0])
+                confidence = 1.0
+            elif latest["result_type"] == "run_probe" and latest["payload"]["request"]["min_conf"] == 1.0:
+                assert latest["payload"]["executed"] is True
+                assert latest["payload"]["total_items"] == 0
+                confidence = .4  # Chosen only after receiving the actual empty observation.
+            elif latest["result_type"] == "run_probe":
+                if latest["payload"]["total_items"]:
+                    return reply(context, {"type": "inspect_observation", "observation_id": latest["id"], "view": "geometry"}, [latest["id"]])
+                return reply(context, {"type": "ask_user", "question": "What visible evidence should this empty result be checked against?"}, [latest["id"]])
+            else:
+                assert latest["result_type"] == "inspect_observation" and latest["payload"]["items"]
+                return reply(context, {"type": "finish", "outcome": "inconclusive", "summary": "The software fixture produced geometry, but application correctness remains unverified", "evidence_ids": [latest["id"]]}, [latest["id"]])
+            return reply(context, {"type": "run_probe", "capability_id": capability["id"],
+                "inspected_descriptor_hash": capability["descriptor_hash"], "media_id": media["media_id"],
+                "source_sha256": media["source_sha256"], "request": {"task": "detection", "model_id": "fixture-color-v1",
+                "classes": ["pallet"], "min_conf": confidence}}, [latest["id"]])
+    
+        result = await run_steps(client, decide, "scripted-observation-dependent-decider")
+>       assert result.status == ("inconclusive" if object_present else "awaiting_input")
+E       AssertionError: assert 'inconclusive' == 'awaiting_input'
+E         
+E         - awaiting_input
+E         + inconclusive
+
+tests/test_investigation_loop.py:134: AssertionError
+___ test_model_selected_workflow_stage_previews_in_worker_before_draft_ready ___
+
+tmp_path = PosixPath('/private/var/folders/5d/x2b1rfnx0n788kgn7qxvmcmh0000gp/T/pytest-of-manavrakeshku.modi/pytest-274/test_model_selected_workflow_s0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10d3c1850>
+
+    async def test_model_selected_workflow_stage_previews_in_worker_before_draft_ready(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        """Scripted protocol integration, not live-agent acceptance or model-quality evidence."""
+        import mcp_server.investigations as module
+        from agent.templates import build_template
+        from spec.investigation import WorkflowDecision
+    
+        service = WorkspaceService(tmp_path / "workspace")
+        project = service.create_project("Workflow loop software fixture", "custom")
+        service.demo(project.id)  # Marks these generated sources eligible for the fixture model.
+        original_candidates = build_template("pallets", "media", "fixture-color-v1")
+        service.save_candidates(project.id, original_candidates, "Existing project candidate must survive investigation")
+        store = InvestigationStore(service)
+        task = store.create(project.id, "Create a draft from a software fixture and inspect its actual preview")
+        server: FastMCP[None] = FastMCP("workflow loop integration test")
+        register_investigation_tools(server, store)
+        client = InvestigationClient(cast(ClientSession, LocalSession(server)), project.id, task.id)
+        root = service.root(project.id)
+        before = {name: (root / name).read_bytes() for name in ("project.json", "annotations.json")}
+        worker_actions: list[str] = []
+        real_worker = module.run_owned_probe
+    
+        async def observe_real_worker(*args: Any, **kwargs: Any) -> dict[str, object]:
+            worker_actions.append(args[4].type)
+            return await real_worker(*args, **kwargs)  # Execute the real subprocess and inference.
+    
+        monkeypatch.setattr(module, "run_owned_probe", observe_real_worker)
+        media: dict[str, Any] = {}
+        preview_seen: dict[str, Any] = {}
+        schema_stages: list[str] = []
+    
+        async def decide(request: dict[str, Any]) -> dict[str, Any]:
+            context = request["context"]
+            schema_stages.append(request["schema"]["properties"]["type"]["const"])
+            observations = context["observations"]
+            if not observations:
+                return reply(context, {"type": "inspect_capability", "capability_id": "model.fixture-color-v1"})
+            latest = observations[-1]
+            assert latest["status"] == "completed", latest.get("error")
+            if latest["result_type"] == "inspect_capability":
+                return reply(context, {"type": "inspect_media", "limit": 1}, [latest["id"]])
+            if latest["result_type"] == "inspect_media":
+                media.update(latest["payload"]["items"][0])
+                return reply(context, {"type": "prepare_workflow", "evidence_ids": [latest["id"]],
+                    "summary": "Construct and measure a fixture draft using the inspected development image"}, [latest["id"]])
+            if latest["result_type"] == "prepare_workflow":
+                assert context["state"]["stage"] == "workflow"
+                assert request["schema"]["properties"]["type"]["const"] == "workflow_decision"
+                assert request["schema"]["required"][0] == "type"
+                assert {"frame_sample", "crop", "resize", "detect", "count_per_zone", "rule", "sink_event"} <= set(context["node_contracts"])
+                assert "model_capability_id" in context["node_contracts"]["detect"]["required_fields"]
+                assert "dets" in context["node_contracts"]["detect"]["outputs"]
+                choice = WorkflowDecision.model_validate({"type": "workflow_decision",
+                    "state_revision": context["state"]["revision"],
+                    "decision_summary": "Scripted choice of a real executable fixture graph",
+                    "based_on_observation_ids": [latest["id"]],
+                    "action": {"type": "construct_workflow", "media_ids": [media["media_id"]],
+                        "evidence_ids": [latest["id"]], "graph": {"name": "Task-owned fixture draft",
+                            "metric": "count_mae", "target": .5, "nodes": [
+                                {"type": "frame_sample", "id": "sample", "fps": 1},
+                                {"type": "crop", "id": "crop", "image": "$sample.frame", "box": [0, 0, .5, 1]},
+                                {"type": "resize", "id": "resize", "image": "$crop.image", "width": 320, "height": 400},
+                                {"type": "detect", "id": "det", "image": "$resize.image", "classes": ["pallet"],
+                                 "min_confidence": .4, "model_capability_id": "model.fixture-color-v1",
+                                 "model_reason": "Synthetic software verification only"},
+                                {"type": "count_per_zone", "id": "count", "dets": "$det.dets", "include_unassigned": False},
+                                {"type": "rule", "id": "rule", "counts": "$count.counts", "operator": ">=", "threshold": 1, "hold_seconds": 0},
+                                {"type": "sink_event", "id": "event", "event": "$rule.event"},
+                            ]}}})
+                return {"decision": choice.model_dump(mode="json")}
+            assert latest["result_type"] == "construct_workflow"
+            assert context["state"]["stage"] == "investigating"
+            assert request["schema"]["properties"]["type"]["const"] == "next_action"
+            payload = latest["payload"]
+            assert payload["executed"] is True and payload["validated"] is True and payload["preview_success"] is True
+            assert payload["preview_media_ids"] == [media["media_id"]]
+            assert payload["spec_hash"] == payload["preview_spec_hash"]
+            frame = payload["preview"]["frames"][0]
+            assert frame["source_image_sha256"] == media["source_sha256"]
+            assert frame["counts"]["all"] > 0 and frame["events"]
+            inference = frame["inferences"][0]
+            assert inference["input_to_frame"] == [0, 0, .5, 1]
+            assert inference["result"]["input_size"] == [320, 400]
+            assert inference["result"]["identity"]["identity_scope"] == "synthetic_code"
+            preview_seen.update(latest)
+            return reply(context, {"type": "finish", "outcome": "draft_ready",
+                "workflow_revision_id": payload["workflow_revision_id"], "evidence_ids": [latest["id"]],
+                "summary": "A fixture draft executed successfully; real-world accuracy and deployment remain unapproved"}, [latest["id"]])
+    
+        state = await run_steps(client, decide, "scripted-workflow-protocol-test")
+>       assert state.status == "draft_ready", state.stop_reason
+E       AssertionError: The model-visible context exceeds the bounded local context window.
+E       assert 'inconclusive' == 'draft_ready'
+E         
+E         - draft_ready
+E         + inconclusive
+
+tests/test_investigation_loop.py:426: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_investigation_loop.py::test_actual_probe_observation_changes_next_selected_action[False]
+FAILED tests/test_investigation_loop.py::test_model_selected_workflow_stage_previews_in_worker_before_draft_ready
+2 failed, 14 passed in 11.45s

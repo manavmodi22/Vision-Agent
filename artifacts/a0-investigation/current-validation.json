@@ -1,0 +1,10 @@
+{
+  "source_identity": "868861fddf5060f1c2749890aa1ad830ff8aa8c7ba49965ec0da0b689a8a9a12",
+  "started_at": "2026-10-29T17:04:38.560150+00:00",
+  "scope": "Current engine source full pytest suite; native tests and live loop recorded separately",
+  "source_after": "868861fddf5060f1c2749890aa1ad830ff8aa8c7ba49965ec0da0b689a8a9a12",
+  "result": "1261 passed in 516.66s",
+  "mypy_macos": "194 files passed",
+  "mypy_linux": "194 files passed",
+  "limitation": "Two subsequently added parent-death regression tests were not in this pytest collection and fail on this source; fixes follow."
+}

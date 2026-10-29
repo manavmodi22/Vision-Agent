@@ -37,12 +37,14 @@ from engine.api.contracts import (
 )
 from engine.api.dataset_routes import build_router as dataset_router
 from engine.api.evaluation_routes import evaluation_router
+from engine.api.investigation_routes import build_router as investigation_router
 from engine.api.live_routes import build_router as live_router
 from engine.api.provisioning_routes import provisioning_router
 from engine.api.sample_routes import build_router as sample_router
 from engine.builds.manager import BuildManager
 from engine.datasets import DatasetConflict, DatasetService
 from engine.evidence import events_csv
+from engine.investigations.manager import InvestigationManager
 from engine.jobs import Job, JobManager
 from engine.live import LiveManager
 from engine.provisioning import ProvisioningConflict, ProvisioningManager
@@ -60,6 +62,7 @@ def create_app(data_dir: Path) -> FastAPI:
     alerts = AlertService(service)
     live = LiveManager(service)
     builds = BuildManager(service)
+    investigations = InvestigationManager(service)
     provisioning = ProvisioningManager(data_dir)
     identity = runtime_identity(data_dir)
 
@@ -70,6 +73,7 @@ def create_app(data_dir: Path) -> FastAPI:
             yield
         finally:
             await builds.close()
+            await investigations.close()
             await run_in_threadpool(provisioning.close)
             await run_in_threadpool(live.close)
             await run_in_threadpool(alerts.stop)
@@ -78,6 +82,7 @@ def create_app(data_dir: Path) -> FastAPI:
     app.state.service = service
     app.state.live = live
     app.state.builds = builds
+    app.state.investigations = investigations
     app.state.provisioning = provisioning
     jobs = JobManager(service)
     app.include_router(provisioning_router(provisioning))
@@ -89,6 +94,7 @@ def create_app(data_dir: Path) -> FastAPI:
     app.include_router(live_router(live))
     app.include_router(sample_router(service))
     app.include_router(build_workflow_router(service, builds))
+    app.include_router(investigation_router(investigations))
     app.include_router(capability_router(service))
     agent_states = AgentStateStore(service)
 

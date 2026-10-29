@@ -6,6 +6,11 @@ enum PlatformContractChecks {
         var checks = 0
         for (flag, path) in zip(arguments, arguments.dropFirst()) {
             switch flag {
+            case "--investigation-snapshot":
+                let snapshot = try JSONDecoder().decode(InvestigationSnapshot.self, from: Data(contentsOf: URL(fileURLWithPath: path)))
+                guard snapshot.state.supported else { throw EngineError.protocolError("Unsupported investigation version") }
+                if snapshot.state.status == "draft_ready", snapshot.selectedDraft == nil { throw EngineError.protocolError("Draft-ready snapshot has no matching valid preview") }
+                checks += 1
             case "--text-region-annotation":
                 _ = try JSONDecoder().decode(ImageAnnotationResponse.self, from: Data(contentsOf: URL(fileURLWithPath: path))); checks += 1
             case "--dataset-manifest":

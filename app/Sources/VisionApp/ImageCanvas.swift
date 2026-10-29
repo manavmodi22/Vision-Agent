@@ -20,6 +20,7 @@ struct ImageGeometry {
 
 struct ImageCanvas: View {
     let path: String?
+    var imageData: Data? = nil
     var detections: [Detection] = []
     var zones: [Zone] = []
     var readings: [DisplayReading] = []
@@ -32,7 +33,7 @@ struct ImageCanvas: View {
     @NativeState<CGPoint?> private var dragEnd: CGPoint?
     var body: some View {
         GeometryReader { geometry in
-            if let path, let image = NSImage(contentsOfFile: path) {
+            if let image = imageData.flatMap(NSImage.init(data:)) ?? path.flatMap(NSImage.init(contentsOfFile:)) {
                 let rect = ImageGeometry.fittedRect(image: image.size, container: geometry.size)
                 ZStack(alignment: .topLeading) {
                     Color.black.opacity(0.35)

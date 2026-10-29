@@ -31,10 +31,12 @@ def build_server(data_dir: Path, *, service: WorkspaceService | None = None) -> 
     from engine.builds.store import BuildStore
     from engine.compiler import compile_pipeline
     from engine.evidence_audit import EvidenceAuditStore
+    from engine.investigations.store import InvestigationStore
     from engine.service import WorkspaceService
     from mcp_server.builds import register_build_tools
     from mcp_server.durable import register_durable_tools
     from mcp_server.evidence_audit import register_evidence_audit
+    from mcp_server.investigations import register_investigation_tools
 
     service = service or WorkspaceService(data_dir)
     server: FastMCP[None] = FastMCP(
@@ -184,4 +186,5 @@ def build_server(data_dir: Path, *, service: WorkspaceService | None = None) -> 
     register_durable_tools(server, AgentStateStore(service))
     register_evidence_audit(server, EvidenceAuditStore(service))
     register_build_tools(server, BuildStore(service))
+    register_investigation_tools(server, InvestigationStore(service))
     return server

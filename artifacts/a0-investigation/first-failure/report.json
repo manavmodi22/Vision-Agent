@@ -1,0 +1,12 @@
+{
+  "source_identity": "c80b1c49e05350871ca222e837929e44948a6b61442b1dbd1f32b23c7219bc17",
+  "status": "awaiting_input",
+  "model_calls": 3,
+  "probes_executed": 0,
+  "elapsed_s": 69.78634891705588,
+  "question": "Please provide the correct media ID for the image you want to use for identifying item codes.",
+  "task_sha256": "1ae179ccfb73f661850e8ad9e6917b4884bd541e8d172df047eff4b3f047840a",
+  "diagnosis": "Action schema constrained decoding but its field vocabulary was not included in the model messages. Search semantics and empty-media-list inventory behavior were also absent. Actual model invented a media ID and asked the user for an internal identifier. Runtime rejected it.",
+  "harness_error": "The completed manager task was removed from its dictionary before the smoke reporter next polled, causing KeyError after durable completion. Reporter now retains the asyncio task handle. Durable task is intact.",
+  "scope": "Actual Qwen failure on a generated fixture; no vision probe or successful adaptive task claim."
+}

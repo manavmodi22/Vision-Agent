@@ -38,13 +38,41 @@ project's checked files are unchanged. The new project remains unreviewed, with
 no evaluation, events or deployment approval. Earlier file-picker automation
 timeouts are retained; reconnecting to the canonical app recovered the walkthrough.
 
-**The builder still asks for a graph and then runs a prescribed host sequence.**
+**The installed builder still asks for a graph and then runs a prescribed host sequence.**
 It does not return experimental results to a continuing model that chooses its
 next experiment. Static graph composition is groundwork for A2, not completion of
 A0–A3. Data-dependent object crops, per-object joins, application view synthesis,
 unseen-task generalization and the wider release requirements remain open.
 The [A0 implementation plan](a0-implementation-plan.md) names the loop, tool and
 persistence changes needed next; it is not an implementation claim.
+
+### A0 development work after the published checkpoint
+
+The working tree now has a separate durable investigation runtime. It captures
+one model-selected action, executes discovery/media inspection/provisional vision
+inference through MCP, and returns the actual observation to the next model call.
+The model can request a workflow, receive its compiled preview, and select the
+exact previewed revision as a draft. Pause/resume/cancel, cumulative budgets,
+source ownership, development-data exclusions and immutable receipts are enforced
+by the host. This path does not approve deployment or mark annotations reviewed.
+
+A scripted integration test executes the complete workflow path in an owned
+worker and checks that existing project candidates, labels and events survive.
+The local llama backend's actual chat template/tokenizer is checked before model
+requests; other compatible servers explicitly use an estimated budget. Oversized
+preview details remain retrievable as saved observations.
+
+**A0 is not yet accepted.** The first three actual local-planner runs failed to
+reach a vision probe because discovery/documentation was not usable enough. The
+fourth reached actual Apple OCR but could not feed its verbose result into the
+next bounded model request. Those traces and subsequent fixes remain in the
+[evidence index](../artifacts/a0-investigation/README.md).
+
+The development native app now has session-bound investigations, durable controls,
+actual probe regions/readings and exact draft previews. Its retained four-reading
+OCR observation was visibly verified, and a fresh goal was submitted through the
+composer. The canonical app remains at the composition checkpoint; experimental
+investigations do not yet hand drafts into the existing review/deployment flow.
 
 ### Previous text-region checkpoint: `3751`
 

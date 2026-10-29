@@ -1,0 +1,21 @@
+{
+  "source": "503a046821a66aa02d6010394b346415b3a7670010cba7cfd5df06d64a1fc3e4",
+  "servers": [
+    {
+      "port": 1234,
+      "alias": "visionapp-planner",
+      "n_ctx": 16384,
+      "health": {
+        "status": "ok"
+      }
+    },
+    {
+      "port": 1236,
+      "alias": "visionapp-qwen35-qualification",
+      "n_ctx": 16384,
+      "health": {
+        "status": "ok"
+      }
+    }
+  ]
+}

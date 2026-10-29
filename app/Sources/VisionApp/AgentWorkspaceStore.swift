@@ -40,12 +40,20 @@ final class AgentWorkspaceStore: ObservableObject {
     @Published var build: AgentBuildStatus?
     @Published var error: String?
     @Published private(set) var submittedGoal: String?
-    var running: Bool { build?.running == true }
+    @Published var investigation: InvestigationSnapshot?
+    @Published var runtime: AgentRuntime?
+    @Published var investigationRequestPending = false
+    var sessionResolved = false
+    var investigationTaskID: String?
+    var usingInvestigation: Bool { runtime == .investigation }
+    var running: Bool { usingInvestigation ? investigation?.state.running == true : build?.running == true }
     init(projectID: String, client: EngineClient) {
         self.projectID = projectID; self.client = client
+        runtime = UserDefaults.standard.string(forKey: "vision.agentRuntime.\(projectID)").flatMap(AgentRuntime.init(rawValue:))
+        investigationTaskID = UserDefaults.standard.string(forKey: "vision.investigationTask.\(projectID)")
         submittedGoal = UserDefaults.standard.string(forKey: "vision.submittedGoal.\(projectID)")
     }
-    private func retainSubmission(_ prompt: String?) {
+    func retainSubmission(_ prompt: String?) {
         submittedGoal = prompt
         UserDefaults.standard.set(prompt, forKey: "vision.submittedGoal.\(projectID)")
     }
@@ -53,12 +61,20 @@ final class AgentWorkspaceStore: ObservableObject {
         if let build, submittedGoal != nil, AgentConversation.pendingSubmission(submittedGoal, messages: build.project.messages) == nil { retainSubmission(nil) }
     }
     func refresh() async {
-        do { build = try await client.request("GET", "/projects/\(projectID)/build"); reconcileSubmission(); error = nil }
-        catch EngineError.server(404, _) { build = nil; error = nil }
-        catch is CancellationError { }
+        do {
+            try await resolveSession()
+            if usingInvestigation { try await refreshInvestigation() }
+            else if runtime == .legacy {
+                let response: AgentBuildStatus = try await client.request("GET", "/projects/\(projectID)/build")
+                guard runtime == .legacy else { return }
+                build = response; reconcileSubmission()
+            }
+            error = nil
+        } catch is CancellationError { }
         catch { self.error = error.localizedDescription }
     }
     func start(prompt: String) async throws -> AgentBuildStatus {
+        bindRuntime(.legacy)
         retainSubmission(prompt)
         let response: AgentBuildStatus = try await client.request("POST", "/projects/\(projectID)/build", body: ["prompt": .string(prompt)])
         build = response; reconcileSubmission(); error = nil; return response

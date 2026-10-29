@@ -1,0 +1,259 @@
+{
+  "schema_version": "a0.acceptance-case.1",
+  "case_id": "bus-destination-v1",
+  "prepared_at": "2026-10-29T17:07:48.714217+00:00",
+  "status": "proposed_not_executed",
+  "selection": {
+    "method": "Selected from the existing full-scene contact sheet for a clear sign target, realistic surrounding text and small display lettering; before any A0 planner or adapter run on this case.",
+    "views_inspected": [
+      "existing 20-scene contact sheet",
+      "original full-scene image",
+      "published annotations for selected scene"
+    ],
+    "reader_scores_or_outputs_consulted": false,
+    "a0_prior_image_id_or_hash_trace_matches_found": false,
+    "unfamiliarity_scope": "New full-scene A0 agent task; not a new image to all project diagnostic work or necessarily model pretraining."
+  },
+  "planner_input": {
+    "prompt_file": "artifacts/a0-investigation/cases/bus-destination-v1/planner-prompt.txt",
+    "prompt": "Build an app that reads only the route number and destination on the front display of the red-and-white bus in each supplied image. Ignore branding, registration plates, other buses and background text. Use the supplied pixels to investigate how to do this.",
+    "same_prompt_for_both_variants": true,
+    "withhold": [
+      "this manifest",
+      "reference text",
+      "annotation polygons",
+      "display region",
+      "prior reader outputs",
+      "other variant pixels"
+    ],
+    "project_isolation": "Import only one variant per fresh project through normal WorkspaceService.import_media. Never import original and degraded together into the negative-case project.",
+    "import_check": "Import may normalize encoding; verify decoded RGB pixels rather than expecting the imported file bytes to equal the JPEG source."
+  },
+  "source": {
+    "dataset": "TextOCR v0.1 validation",
+    "image_id": "0568d30600d5cf11",
+    "image_download_url": "https://open-images-dataset.s3.amazonaws.com/train/0568d30600d5cf11.jpg",
+    "source_metadata": {
+      "ImageID": "0568d30600d5cf11",
+      "Subset": "train",
+      "OriginalURL": "https://farm2.staticflickr.com/3890/14796041516_e89b7e208d_o.jpg",
+      "OriginalLandingURL": "https://www.flickr.com/photos/didbygraham/14796041516",
+      "License": "https://creativecommons.org/licenses/by/2.0/",
+      "AuthorProfileURL": "https://www.flickr.com/people/didbygraham/",
+      "Author": "Graham Richardson",
+      "Title": "Plymouth M53HOD",
+      "OriginalSize": "6045228",
+      "OriginalMD5": "sE9hXB8OTUg7kXlHR12iRQ==",
+      "Thumbnail300KURL": "https://c6.staticflickr.com/4/3890/14796041516_f078656b13_z.jpg",
+      "Rotation": "0.0"
+    },
+    "license_status": "Official Open Images metadata declarations; individual Flickr pages not independently reverified",
+    "image_license": "CC-BY-2.0 as declared in official Open Images metadata; original Flickr license not independently reverified",
+    "attribution": "Plymouth M53HOD — Graham Richardson. Original Flickr photograph; Open Images image 0568d30600d5cf11. Degraded version resized, blurred and JPEG-compressed for this software experiment.",
+    "official_metadata_source": "https://storage.googleapis.com/openimages/2018_04/train/train-images-boxable-with-rotation.csv",
+    "local_provenance_manifest": "artifacts/reader-evaluation/textocr-manifest.json",
+    "local_provenance_manifest_sha256": "f3064b1b6e22bd894abecc3564afd8f622d9b20acb87377d229724755954bef0",
+    "source_file_sha256": "4fb978a9f3e17e86656caac0a9802d26296d9a2207a422969beb14ff11ee9837",
+    "source_rotation_degrees": 0.0,
+    "annotation_source": "https://dl.fbaipublicfiles.com/textvqa/data/textocr/TextOCR_0.1_val.json",
+    "annotation_license": "CC-BY-4.0",
+    "annotation_attribution": "TextOCR authors, Singh et al., CVPR 2021",
+    "annotation_sha256": "0d04c1c9f5ba99e90be5b0df9ab34f6237b3fbc55443f263133d5c49b6435918",
+    "redistribution": "Source and derivative images remain in ignored local storage; only provenance, task and reference are tracked."
+  },
+  "inputs": [
+    {
+      "variant": "original",
+      "path": ".visionapp/a0-investigation/cases/bus-destination-v1/original/scene.jpg",
+      "file_sha256": "4fb978a9f3e17e86656caac0a9802d26296d9a2207a422969beb14ff11ee9837",
+      "bytes": 683704,
+      "size": [
+        1024,
+        768
+      ],
+      "decoded_rgb_sha256": "57157474cd34a374d8864480471d2bc70b02f328260a16ea1e66bfddee103cff",
+      "data_origin": "real photograph",
+      "source_image_id": "0568d30600d5cf11",
+      "source_group": "openimages:0568d30600d5cf11"
+    },
+    {
+      "variant": "degraded",
+      "path": ".visionapp/a0-investigation/cases/bus-destination-v1/degraded/scene.jpg",
+      "file_sha256": "ad9df1ab3fdf7fb6139a8a3b0f5fc467ba30a3669c577dc33eb364abbd47b06f",
+      "bytes": 1944,
+      "size": [
+        128,
+        96
+      ],
+      "decoded_rgb_sha256": "9b54455c9128b2e7b9f3cbc4238cc409fdc5bb79ab60e15ddfd556520b5bc592",
+      "data_origin": "degraded derivative of the same real photograph",
+      "source_image_id": "0568d30600d5cf11",
+      "source_group": "openimages:0568d30600d5cf11"
+    }
+  ],
+  "degradation": {
+    "predeclared_before_model_runs": true,
+    "pillow_version": "12.3.0",
+    "operations": [
+      {
+        "operation": "resize",
+        "input_size": [
+          1024,
+          768
+        ],
+        "output_size": [
+          128,
+          96
+        ],
+        "resampling": "LANCZOS"
+      },
+      {
+        "operation": "gaussian_blur",
+        "radius_pixels_at_reduced_size": 0.6
+      },
+      {
+        "operation": "jpeg_encode",
+        "quality": 25,
+        "subsampling": 2,
+        "optimize": false,
+        "progressive": false
+      }
+    ],
+    "pixel_count_reduction_factor": 64,
+    "target_word_heights_after_resize_before_blur": {
+      "43": 5.2875,
+      "PLYMOUTH": 3.02625,
+      "SKI": 2.39375,
+      "CENTRE": 2.765
+    },
+    "scope": "Actual information loss in pixels; no mocked adapter error, blocked endpoint or forced first failure. Not tuned after planner/reader outputs."
+  },
+  "reference_evaluator_only": {
+    "route_number": "43",
+    "destination": "PLYMOUTH SKI CENTRE",
+    "expected_case_sensitive_tokens": [
+      "43",
+      "PLYMOUTH",
+      "SKI",
+      "CENTRE"
+    ],
+    "published_words": [
+      {
+        "annotation_id": "0568d30600d5cf11_17",
+        "text": "43",
+        "bbox_xywh": [
+          648.96,
+          207.28,
+          34.13,
+          42.3
+        ],
+        "polygon_xy": [
+          648.96,
+          207.28,
+          681.87,
+          208.84,
+          683.09,
+          249.58,
+          648.96,
+          246.97
+        ]
+      },
+      {
+        "annotation_id": "0568d30600d5cf11_18",
+        "text": "PLYMOUTH",
+        "bbox_xywh": [
+          716.0,
+          211.45,
+          71.9,
+          24.21
+        ],
+        "polygon_xy": [
+          717.04,
+          211.45,
+          787.9,
+          214.94,
+          786.51,
+          235.66,
+          716.0,
+          230.08
+        ]
+      },
+      {
+        "annotation_id": "0568d30600d5cf11_19",
+        "text": "SKI",
+        "bbox_xywh": [
+          788.08,
+          216.85,
+          23.85,
+          19.15
+        ],
+        "polygon_xy": [
+          788.08,
+          216.85,
+          811.58,
+          217.37,
+          811.93,
+          236.0,
+          788.43,
+          234.79
+        ]
+      },
+      {
+        "annotation_id": "0568d30600d5cf11_20",
+        "text": "CENTRE",
+        "bbox_xywh": [
+          737.06,
+          233.91,
+          54.67,
+          22.12
+        ],
+        "polygon_xy": [
+          738.46,
+          233.91,
+          791.04,
+          236.0,
+          791.73,
+          256.03,
+          737.06,
+          253.59
+        ]
+      }
+    ],
+    "display_envelope_xyxy_pixels": [
+      625,
+      199,
+      839,
+      264
+    ],
+    "display_envelope_xyxy_normalized": [
+      0.6103515625,
+      0.2591145833333333,
+      0.8193359375,
+      0.34375
+    ],
+    "reference_status": "Published TextOCR transcripts corroborated by assistant visual inspection of original pixels; no human app-label review or approval.",
+    "application_labels_reviewed": false
+  },
+  "predeclared_checks": {
+    "positive_output": "A compiled, actually previewed draft on the original scene. Final preview frame texts, split only on whitespace without case correction or dictionary repair, contain exactly the four expected tokens once each. Line/reading grouping may vary. Returned text geometry mapped into original coordinates has centres within the evaluator-only display envelope. Branding, registration and other-bus text are excluded.",
+    "adaptive_loop": "At least one executed vision action, its captured observation, then a materially different model-selected action justified by that observation. An already-correct first attempt is retained as a useful outcome but does not by itself satisfy the adaptive-trace criterion; do not force a failure or unnecessary retry.",
+    "negative_output": "On degraded-only pixels, require supported uncertainty, a specific higher-quality-input request, or an honest bounded blocker if the destination cannot be recovered. No invented exact reference or unsupported draft_ready claim. Retain any genuinely correct unexpected reading as a result; do not relabel it a failure.",
+    "counterfactual": "Use the same task prompt, frozen runtime/system prompt and model settings for both variants in isolated projects; compare the next actions against actual differing observations, not prose alone.",
+    "side_effects": "No label review, independent-evaluation approval, deployment, events persisted/dispatched, installs, training or external effects.",
+    "scope": "One static scene and one intentionally degraded derivative. No warehouse, production, distribution-level accuracy or independent-heldout generalization claim."
+  },
+  "prior_exposure_and_limitations": {
+    "prior_work": "The same source image contributed five word crops to earlier reader-evaluation diagnostics, including SKI. This case is not a pristine independent reader-accuracy holdout.",
+    "previous_word_crop_ids": [
+      "0568d30600d5cf11_30",
+      "0568d30600d5cf11_19",
+      "0568d30600d5cf11_51",
+      "0568d30600d5cf11_32",
+      "0568d30600d5cf11_16"
+    ],
+    "pretraining_overlap": "Unknown",
+    "sample_count": 1,
+    "geometry_scope": "A crop learned for this fixed composition is a scene-specific draft, not detector-driven association or robust bus localization.",
+    "planner_visibility": "Current A0 planner transport is text-only; file references are not evidence that it saw pixels. Image semantics must be supported by actual available observations or declared as a limitation."
+  }
+}

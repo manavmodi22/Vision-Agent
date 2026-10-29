@@ -34,6 +34,7 @@ enum NativeSelfTests {
             checks += try AnnotationContractChecks.run()
             checks += try LiveContractChecks.run()
             checks += try AgentContractChecks.run()
+            checks += try InvestigationContractChecks.run()
             checks += try EvaluationContractChecks.run()
             checks += try EvaluationEvidenceChecks.run()
             checks += try ProvisioningContractChecks.run()

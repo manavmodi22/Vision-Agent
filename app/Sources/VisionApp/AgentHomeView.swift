@@ -13,6 +13,7 @@ struct SampleCatalogItem: Decodable, Identifiable {
 struct AgentHomeView: View {
     @EnvironmentObject var model: WorkspaceModel
     @EnvironmentObject var supervisor: EngineSupervisor
+    @AppStorage("vision.experimentalInvestigations") private var experimentalInvestigations = false
     @NativeState<String> private var goal = ""
     @NativeState<[URL]> private var media = []
     @NativeState<[SampleCatalogItem]> private var samples = []
@@ -22,6 +23,7 @@ struct AgentHomeView: View {
             VStack(alignment: .leading, spacing: 24) {
                 Text("What are you building?").font(.system(size: 30, weight: .medium))
                 Text("Describe the vision app you need. Your agent builds it and tests it on your examples.").font(.callout).foregroundStyle(Studio.muted)
+                if experimentalInvestigations { Text("Experimental agent · draft review handoff unavailable").font(.caption).foregroundStyle(.orange) }
                 VStack(alignment: .leading, spacing: 16) {
                     ZStack(alignment: .topLeading) {
                         if goal.isEmpty { Text("Describe what to detect and what should happen…").font(.system(size: 16)).foregroundStyle(Studio.muted).padding(16).allowsHitTesting(false) }

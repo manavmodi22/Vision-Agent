@@ -1,0 +1,17 @@
+{
+  "app": "dist/VisionApp-Development.app",
+  "engine_source": "8e78ad05f0d232edefffcc2c112953b2c28797bfd1644fda4b1a743a5abf084f",
+  "workspace": ".visionapp/a0-investigation/run-20261029T170438Z/workspace",
+  "project_id": "a5c75eebf2574ccd",
+  "observations": [
+    {
+      "task_id": "71b3580f8d734b7d854a65f4cfcef549",
+      "verified": "CUA AX and screenshot show retained Inconclusive status, real source image with four OCR quadrilaterals and readings ITEM CODE, QZ-4817, SHIP TO, IGNORE-552. Not a completed draft."
+    },
+    {
+      "task_id": "f052ca681d1945a0b3be2ada319ebc8a",
+      "verified": "Entered the original goal in the native composer and clicked Start new investigation; UI showed actual running state, empty initial evidence pane and model-call budget1/20. Continued model trace captured separately."
+    }
+  ],
+  "screenshots": "Displayed in CUA tool responses; no standalone screenshot file claimed."
+}

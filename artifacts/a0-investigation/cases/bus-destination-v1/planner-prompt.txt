@@ -1,0 +1,1 @@
+Build an app that reads only the route number and destination on the front display of the red-and-white bus in each supplied image. Ignore branding, registration plates, other buses and background text. Use the supplied pixels to investigate how to do this.

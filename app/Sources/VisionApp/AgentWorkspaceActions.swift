@@ -7,6 +7,13 @@ extension WorkspaceModel {
         guard !text.isEmpty else { return }
         let agent = agentWorkspace(for: id)
         perform("Starting your app build") {
+            try await agent.resolveSession()
+            if agent.usingInvestigation || (agent.runtime == nil && AgentRuntime.newAppDefault == .investigation) {
+                if agent.usingInvestigation { try await agent.refreshInvestigation() }
+                if agent.investigation?.state.resumable == true { try await agent.resumeInvestigation(answer: text) }
+                else { try await agent.startInvestigation(objective: text) }
+                self.prompt = ""; self.savePromptDraft(); return
+            }
             let response: AgentBuildStatus
             if agent.build?.nextAction == "answer_questions" { response = try await agent.resume(prompt: text) }
             else { response = try await agent.start(prompt: text) }
@@ -17,6 +24,7 @@ extension WorkspaceModel {
     func createAndBuild(goal: String, paths: [String], sampleID: String? = nil) {
         let text = goal.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty else { return }
+        let runtime = AgentRuntime.newAppDefault
         perform("Creating your vision app") {
             let title = String(text.split(separator: "\n").first.map(String.init)?.prefix(60) ?? text.prefix(60))
             let project: Project = try await self.client.request("POST", "/projects", body: ["name": .string(title), "use_case": .string("custom")])
@@ -30,14 +38,24 @@ extension WorkspaceModel {
                 let _: Project = try await self.client.request("POST", "/projects/\(project.id)/media", body: ["paths": .array(paths.map(JSONValue.string))])
             }
             try await self.refresh()
-            self.applyBuild(try await self.agentWorkspace(for: project.id).start(prompt: text))
+            let agent = self.agentWorkspace(for: project.id)
+            agent.bindRuntime(runtime)
+            if runtime == .investigation { try await agent.startInvestigation(objective: text) }
+            else { self.applyBuild(try await agent.start(prompt: text)) }
             self.prompt = ""; self.savePromptDraft()
         }
+    }
+    func controlInvestigation(_ agent: AgentWorkspaceStore, action: String) {
+        perform(action == "pause" ? "Pausing investigation" : "Cancelling investigation") { try await agent.controlInvestigation(action) }
+    }
+    func resumeInvestigation(_ agent: AgentWorkspaceStore) {
+        perform("Resuming investigation") { try await agent.resumeInvestigation() }
     }
     func continueBuild(action: String = "continue", trainingApproved: Bool = false) {
         guard let id = selectedID else { return }
         section = "Agent"
         let agent = agentWorkspace(for: id)
+        guard !agent.usingInvestigation else { return }
         perform("Continuing your app build") {
             guard await self.flushAnnotations() else { return }
             self.applyBuild(try await agent.resume(action: action, trainingApproved: trainingApproved))

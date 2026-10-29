@@ -1,0 +1,10 @@
+{
+  "mode": "backend_tokenizer",
+  "model": "visionapp-planner",
+  "input_tokens": 6286,
+  "backend_context_tokens": 8192,
+  "context_verified": true,
+  "output_tokens": 1400,
+  "margin_tokens": 128,
+  "effective_context_tokens": 8192
+}

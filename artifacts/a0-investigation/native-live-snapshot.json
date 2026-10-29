@@ -1,0 +1,858 @@
+{
+  "state": {
+    "schema_version": "a0.1",
+    "id": "71b3580f8d734b7d854a65f4cfcef549",
+    "project_id": "a5c75eebf2574ccd",
+    "objective": "Build an app that reads only the item code from each image. Ignore the shipping label. Use the supplied image to figure out how.",
+    "revision": 4,
+    "status": "running",
+    "stage": "investigating",
+    "selected_workflow_revision": null,
+    "preview_observation_id": null,
+    "budget": {
+      "max_model_calls": 16,
+      "max_actions": 14,
+      "max_probes": 5,
+      "max_elapsed_s": 600.0,
+      "model_calls": 4,
+      "actions": 2,
+      "probes": 0,
+      "elapsed_s": 163.73956199999998
+    },
+    "pending_action_id": null,
+    "pending_model_call_id": "13e17d7c23cd4ff2a89acc30d56f01b2",
+    "latest_observation_ids": [
+      "e406ecd54bf04f7c86242b0a8591145f"
+    ],
+    "question": null,
+    "stop_reason": null,
+    "user_answers": [],
+    "created_at": "2026-10-29T17:04:38.411968+00:00",
+    "updated_at": "2026-10-29T17:07:23.402965+00:00"
+  },
+  "actions": [
+    {
+      "id": "1de520ed0ead4952bb0972e3f47bdced",
+      "model_call_id": "c874ab922902438b9d81de2cab8a2741",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 0,
+        "decision_summary": "Discover available capabilities to identify potential tools for reading item codes from images.",
+        "based_on_observation_ids": [],
+        "action": {
+          "type": "discover_capabilities",
+          "query": "item code reader",
+          "kind": "model",
+          "task_type": "ocr",
+          "limit": 8,
+          "cursor": null
+        }
+      },
+      "status": "completed",
+      "observation_id": "a90a6693a2f14023a263eff219e0c797",
+      "started_at": "2026-10-29T17:05:15.977690+00:00",
+      "ended_at": "2026-10-29T17:05:16.418607+00:00"
+    },
+    {
+      "id": "7f07a2dcaa1d4548a89ffde23f620d1b",
+      "model_call_id": "a44c29c1afa74b07bfeb9b8fef67c2ff",
+      "decision": {
+        "type": "next_action",
+        "state_revision": 2,
+        "decision_summary": "The discovered capability 'Apple Vision OCR and barcode' is a potential candidate for reading item codes. Next, I will inspect this capability to understand its parameters and requirements before running a probe.",
+        "based_on_observation_ids": [],
+        "action": {
+          "type": "inspect_capability",
+          "capability_id": "model.apple-vision"
+        }
+      },
+      "status": "completed",
+      "observation_id": "e406ecd54bf04f7c86242b0a8591145f",
+      "started_at": "2026-10-29T17:05:54.311837+00:00",
+      "ended_at": "2026-10-29T17:05:54.836335+00:00"
+    }
+  ],
+  "observations": [
+    {
+      "id": "a90a6693a2f14023a263eff219e0c797",
+      "action_id": "1de520ed0ead4952bb0972e3f47bdced",
+      "result_type": "discover_capabilities",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "items": [],
+        "total_items": 0,
+        "returned_items": 0,
+        "truncated": false,
+        "next_cursor": null,
+        "query_terms": [
+          "code",
+          "item",
+          "reader"
+        ],
+        "available_kinds": [
+          "model",
+          "tool"
+        ],
+        "available_task_types": [
+          "annotation",
+          "barcode",
+          "counting",
+          "detection",
+          "evaluation",
+          "event_logic",
+          "events",
+          "evidence",
+          "image_transform",
+          "instance_segmentation",
+          "media",
+          "ocr",
+          "orchestration",
+          "planning",
+          "source_acquisition",
+          "spatial_filter",
+          "text_comparison",
+          "training",
+          "visual_judgement"
+        ],
+        "filter_diagnostics": [],
+        "suggestions": [
+          {
+            "capability_id": "model.apple-vision",
+            "name": "Apple Vision OCR and barcode",
+            "description": "Native macOS OCR and barcode bridge.",
+            "kind": "model",
+            "task_types": [
+              "ocr",
+              "barcode"
+            ],
+            "availability": "installed",
+            "readiness": "unchecked",
+            "installation_ready": true,
+            "suggestion_type": "approximate_metadata",
+            "suggestion_score": 6.0,
+            "related_terms": [
+              {
+                "query_term": "code",
+                "metadata_term": "barcode"
+              }
+            ],
+            "exact_query_match": false
+          }
+        ],
+        "suggestion_ignored_filters": [],
+        "suggestion_semantics": "Suggestions are labelled catalogue alternatives, not exact query results or execution recommendations; related terms use generic substring/character similarity. Inventory suggestions have no measured query relevance.",
+        "search_semantics": "Empty query lists inventory. Otherwise match any casefolded alphanumeric metadata token; punctuation, one-character tokens and common function words are ignored. Rank weighted ID/name/task/description matches, then capability ID. Explicit kind/task filters remain exact.",
+        "warnings": [
+          "Discovery metadata grants no execution or installation authority."
+        ]
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:05:16.418563+00:00"
+    },
+    {
+      "id": "e406ecd54bf04f7c86242b0a8591145f",
+      "action_id": "7f07a2dcaa1d4548a89ffde23f620d1b",
+      "result_type": "inspect_capability",
+      "status": "completed",
+      "payload": {
+        "executed": false,
+        "descriptor": {
+          "id": "model.apple-vision",
+          "name": "Apple Vision OCR and barcode",
+          "kind": "model",
+          "description": "Native macOS OCR and barcode bridge.",
+          "availability": "installed",
+          "implemented": true,
+          "installation_ready": true,
+          "callable": false,
+          "task_types": [
+            "ocr",
+            "barcode"
+          ],
+          "version": "26.7.1",
+          "license": {
+            "identifier": "macOS system framework",
+            "code": "macOS system framework",
+            "weights": "macOS system framework",
+            "status": "declared",
+            "notes": []
+          },
+          "provenance": {
+            "source_urls": [],
+            "revision": null,
+            "hashes": {},
+            "scope": "registry_metadata",
+            "notes": [
+              "Registry metadata; current weights have not been content-verified by discovery."
+            ]
+          },
+          "hardware": {
+            "platforms": [
+              "Darwin"
+            ],
+            "accelerators": [
+              "system-managed"
+            ],
+            "required_packages": [],
+            "minimum_memory_gib": null,
+            "estimated_disk_bytes": null,
+            "notes": [
+              "Memory and throughput are not estimated without measurement."
+            ]
+          },
+          "side_effects": [
+            "read_images",
+            "local_inference"
+          ],
+          "dependencies": [],
+          "input_schema": {},
+          "output_schema": {},
+          "install_method": "system_framework",
+          "install_instructions": "Build the native bridge and configure VISION_APP_BINARY.",
+          "readiness": {
+            "state": "unchecked",
+            "reason": "Prerequisites are present; run a bounded inference validation before promotion.",
+            "checked_at": "2026-10-29T17:05:54.723830+00:00",
+            "evidence_scope": "prerequisites",
+            "evidence": [
+              {
+                "kind": "platform",
+                "subject": "macOS",
+                "outcome": "pass",
+                "detail": "Apple Vision requires macOS",
+                "observed_at": "2026-10-29T17:05:54.723585+00:00",
+                "metadata": {}
+              },
+              {
+                "kind": "file",
+                "subject": "/Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/MacOS/VisionApp",
+                "outcome": "pass",
+                "detail": "File presence does not verify model inference or weights",
+                "observed_at": "2026-10-29T17:05:54.723612+00:00",
+                "metadata": {
+                  "bytes": 10899552,
+                  "mtime_ns": 1793290987844198040
+                }
+              }
+            ]
+          },
+          "probe_request_schemas": [
+            {
+              "additionalProperties": false,
+              "properties": {
+                "task": {
+                  "const": "ocr",
+                  "default": "ocr",
+                  "title": "Task",
+                  "type": "string"
+                },
+                "model_id": {
+                  "type": "string",
+                  "const": "apple-vision"
+                },
+                "languages": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "Languages",
+                  "type": "array"
+                }
+              },
+              "title": "OcrRequest",
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "task": {
+                  "const": "barcode",
+                  "default": "barcode",
+                  "title": "Task",
+                  "type": "string"
+                },
+                "model_id": {
+                  "type": "string",
+                  "const": "apple-vision"
+                }
+              },
+              "title": "BarcodeRequest",
+              "type": "object"
+            }
+          ],
+          "probe_output_schema": {
+            "$defs": {
+              "DetectionObservation": {
+                "additionalProperties": false,
+                "properties": {
+                  "box": {
+                    "maxItems": 4,
+                    "minItems": 4,
+                    "prefixItems": [
+                      {
+                        "maximum": 1,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "maximum": 1,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "maximum": 1,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "maximum": 1,
+                        "minimum": 0,
+                        "type": "number"
+                      }
+                    ],
+                    "title": "Box",
+                    "type": "array"
+                  },
+                  "polygon": {
+                    "anyOf": [
+                      {
+                        "items": {
+                          "maxItems": 2,
+                          "minItems": 2,
+                          "prefixItems": [
+                            {
+                              "maximum": 1,
+                              "minimum": 0,
+                              "type": "number"
+                            },
+                            {
+                              "maximum": 1,
+                              "minimum": 0,
+                              "type": "number"
+                            }
+                          ],
+                          "type": "array"
+                        },
+                        "maxItems": 256,
+                        "minItems": 3,
+                        "type": "array"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Polygon"
+                  },
+                  "label": {
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "title": "Label",
+                    "type": "string"
+                  },
+                  "confidence": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "title": "Confidence",
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "box",
+                  "label",
+                  "confidence"
+                ],
+                "title": "DetectionObservation",
+                "type": "object"
+              },
+              "ExecutionIdentity": {
+                "additionalProperties": false,
+                "properties": {
+                  "capability_id": {
+                    "title": "Capability Id",
+                    "type": "string"
+                  },
+                  "model_id": {
+                    "title": "Model Id",
+                    "type": "string"
+                  },
+                  "adapter_id": {
+                    "title": "Adapter Id",
+                    "type": "string"
+                  },
+                  "identity_scope": {
+                    "enum": [
+                      "local_artifacts_verified",
+                      "system_framework_versioned",
+                      "synthetic_code"
+                    ],
+                    "title": "Identity Scope",
+                    "type": "string"
+                  },
+                  "artifact_hashes": {
+                    "additionalProperties": {
+                      "pattern": "^[0-9a-f]{64}$",
+                      "type": "string"
+                    },
+                    "title": "Artifact Hashes",
+                    "type": "object"
+                  },
+                  "unavailable_artifacts": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "title": "Unavailable Artifacts",
+                    "type": "array"
+                  },
+                  "adapter_code_sha256": {
+                    "pattern": "^[0-9a-f]{64}$",
+                    "title": "Adapter Code Sha256",
+                    "type": "string"
+                  },
+                  "runtime_manifest_sha256": {
+                    "pattern": "^[0-9a-f]{64}$",
+                    "title": "Runtime Manifest Sha256",
+                    "type": "string"
+                  },
+                  "system_identity": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "title": "System Identity",
+                    "type": "object"
+                  },
+                  "provider": {
+                    "title": "Provider",
+                    "type": "string"
+                  },
+                  "config_sha256": {
+                    "pattern": "^[0-9a-f]{64}$",
+                    "title": "Config Sha256",
+                    "type": "string"
+                  },
+                  "identity_hash": {
+                    "pattern": "^[0-9a-f]{64}$",
+                    "title": "Identity Hash",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "capability_id",
+                  "model_id",
+                  "adapter_id",
+                  "identity_scope",
+                  "artifact_hashes",
+                  "adapter_code_sha256",
+                  "runtime_manifest_sha256",
+                  "system_identity",
+                  "provider",
+                  "config_sha256",
+                  "identity_hash"
+                ],
+                "title": "ExecutionIdentity",
+                "type": "object"
+              },
+              "InferenceTiming": {
+                "additionalProperties": false,
+                "properties": {
+                  "total_ms": {
+                    "minimum": 0,
+                    "title": "Total Ms",
+                    "type": "number"
+                  },
+                  "startup_ms": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Startup Ms"
+                  },
+                  "load_ms": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Load Ms"
+                  },
+                  "preprocess_ms": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Preprocess Ms"
+                  },
+                  "inference_ms": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Inference Ms"
+                  },
+                  "postprocess_ms": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Postprocess Ms"
+                  },
+                  "transport_ms": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Transport Ms"
+                  },
+                  "model_cached": {
+                    "anyOf": [
+                      {
+                        "type": "boolean"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Model Cached"
+                  }
+                },
+                "required": [
+                  "total_ms"
+                ],
+                "title": "InferenceTiming",
+                "type": "object"
+              },
+              "TextObservation": {
+                "additionalProperties": false,
+                "properties": {
+                  "box": {
+                    "anyOf": [
+                      {
+                        "maxItems": 4,
+                        "minItems": 4,
+                        "prefixItems": [
+                          {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                          }
+                        ],
+                        "type": "array"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Box"
+                  },
+                  "polygon": {
+                    "anyOf": [
+                      {
+                        "items": {
+                          "maxItems": 2,
+                          "minItems": 2,
+                          "prefixItems": [
+                            {
+                              "maximum": 1,
+                              "minimum": 0,
+                              "type": "number"
+                            },
+                            {
+                              "maximum": 1,
+                              "minimum": 0,
+                              "type": "number"
+                            }
+                          ],
+                          "type": "array"
+                        },
+                        "maxItems": 256,
+                        "minItems": 3,
+                        "type": "array"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Polygon"
+                  },
+                  "text": {
+                    "maxLength": 16384,
+                    "title": "Text",
+                    "type": "string"
+                  },
+                  "kind": {
+                    "enum": [
+                      "ocr",
+                      "barcode"
+                    ],
+                    "title": "Kind",
+                    "type": "string"
+                  },
+                  "confidence": {
+                    "anyOf": [
+                      {
+                        "maximum": 1,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Confidence"
+                  },
+                  "symbology": {
+                    "anyOf": [
+                      {
+                        "maxLength": 80,
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "title": "Symbology"
+                  }
+                },
+                "required": [
+                  "text",
+                  "kind"
+                ],
+                "title": "TextObservation",
+                "type": "object"
+              }
+            },
+            "additionalProperties": false,
+            "properties": {
+              "schema_version": {
+                "const": 1,
+                "default": 1,
+                "title": "Schema Version",
+                "type": "integer"
+              },
+              "task": {
+                "enum": [
+                  "detection",
+                  "ocr",
+                  "barcode"
+                ],
+                "title": "Task",
+                "type": "string"
+              },
+              "input_size": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "exclusiveMinimum": 0,
+                    "maximum": 32768,
+                    "type": "integer"
+                  },
+                  {
+                    "exclusiveMinimum": 0,
+                    "maximum": 32768,
+                    "type": "integer"
+                  }
+                ],
+                "title": "Input Size",
+                "type": "array"
+              },
+              "input_pixels_sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "title": "Input Pixels Sha256",
+                "type": "string"
+              },
+              "detections": {
+                "items": {
+                  "$ref": "#/$defs/DetectionObservation"
+                },
+                "maxItems": 10000,
+                "title": "Detections",
+                "type": "array"
+              },
+              "readings": {
+                "items": {
+                  "$ref": "#/$defs/TextObservation"
+                },
+                "maxItems": 10000,
+                "title": "Readings",
+                "type": "array"
+              },
+              "identity": {
+                "$ref": "#/$defs/ExecutionIdentity"
+              },
+              "timing": {
+                "$ref": "#/$defs/InferenceTiming"
+              },
+              "warnings": {
+                "items": {
+                  "maxLength": 1000,
+                  "type": "string"
+                },
+                "maxItems": 20,
+                "title": "Warnings",
+                "type": "array"
+              }
+            },
+            "required": [
+              "task",
+              "input_size",
+              "input_pixels_sha256",
+              "identity",
+              "timing"
+            ],
+            "title": "InferenceResult",
+            "type": "object"
+          },
+          "probe_eligible": true,
+          "probe_tasks": [
+            "ocr",
+            "barcode"
+          ],
+          "limitations": [
+            "Provisional observations do not establish accuracy, review, or deployment approval."
+          ],
+          "descriptor_hash": "b930031944e10655d1e38584e49b5f2fd1d469806de50eb0e32828dd008274a9"
+        },
+        "model_view": {
+          "id": "model.apple-vision",
+          "descriptor_hash": "b930031944e10655d1e38584e49b5f2fd1d469806de50eb0e32828dd008274a9",
+          "probe_eligible": true,
+          "probe_tasks": [
+            "ocr",
+            "barcode"
+          ],
+          "probe_request_schemas": [
+            {
+              "additionalProperties": false,
+              "properties": {
+                "task": {
+                  "const": "ocr",
+                  "default": "ocr",
+                  "title": "Task",
+                  "type": "string"
+                },
+                "model_id": {
+                  "type": "string",
+                  "const": "apple-vision"
+                },
+                "languages": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "Languages",
+                  "type": "array"
+                }
+              },
+              "title": "OcrRequest",
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "task": {
+                  "const": "barcode",
+                  "default": "barcode",
+                  "title": "Task",
+                  "type": "string"
+                },
+                "model_id": {
+                  "type": "string",
+                  "const": "apple-vision"
+                }
+              },
+              "title": "BarcodeRequest",
+              "type": "object"
+            }
+          ],
+          "availability": "installed",
+          "installation_ready": true,
+          "version": "26.7.1",
+          "limitations": [
+            "Provisional observations do not establish accuracy, review, or deployment approval."
+          ],
+          "readiness": {
+            "state": "unchecked",
+            "reason": "Prerequisites are present; run a bounded inference validation before promotion.",
+            "evidence_scope": "prerequisites"
+          },
+          "provenance": {
+            "scope": "registry_metadata",
+            "revision": null,
+            "source_urls": [],
+            "hashes": {}
+          },
+          "hardware": {
+            "platforms": [
+              "Darwin"
+            ],
+            "accelerators": [
+              "system-managed"
+            ],
+            "required_packages": []
+          },
+          "output_summary": "Actual detections/readings, normalized geometry, input-to-source transform, identity, timing, warnings; full result available as a saved artifact."
+        },
+        "total_items": 1,
+        "returned_items": 1,
+        "truncated": false
+      },
+      "error": null,
+      "created_at": "2026-10-29T17:05:54.836163+00:00"
+    }
+  ]
+}

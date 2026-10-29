@@ -1,0 +1,27 @@
+........................................................................ [  5%]
+........................................................................ [ 11%]
+........................................................................ [ 17%]
+.............s..s....................................................... [ 23%]
+........................................................................ [ 29%]
+........................................................................ [ 35%]
+........................................................................ [ 41%]
+........................................................................ [ 47%]
+........................................................................ [ 53%]
+........................................................................ [ 59%]
+........................................................................ [ 65%]
+........................................................................ [ 71%]
+........................................................................ [ 77%]
+........................................................................ [ 83%]
+........................................................................ [ 89%]
+........................................................................ [ 95%]
+....................................................                     [100%]
+============================= slowest 8 durations ==============================
+23.44s call     tests/test_build_acceptance.py::test_agent_build_evaluates_every_candidate_and_waits_for_human_deployment[count_mae]
+20.72s call     tests/test_build_acceptance.py::test_agent_build_evaluates_every_candidate_and_waits_for_human_deployment[recall]
+19.26s call     tests/test_build_acceptance.py::test_confidence_followup_edits_selected_winner_through_mcp_without_rebuilding
+18.42s call     tests/core/test_core.py::test_many_independent_photos_never_synthesize_dwell_time
+16.11s call     tests/test_build_acceptance.py::test_alternatives_with_different_goal_scopes_cannot_select_an_old_goal[zones]
+14.08s call     tests/test_build_acceptance.py::test_alternatives_with_different_goal_scopes_cannot_select_an_old_goal[classes]
+11.95s call     tests/core/test_reading_identity.py::test_saved_reading_score_and_approval_are_stale_after_identity_change[macos]
+10.51s call     tests/test_agent_refinement_capabilities.py::test_manager_pauses_unchanged_then_explicit_vision_only_answer_can_apply
+1202 passed, 2 skipped in 370.00s (0:06:09)

@@ -1,0 +1,78 @@
+{
+  "measurement": "Actual local llama chat-template rendering and tokenization of eight saved model requests; no model generation or strategy change.",
+  "measured_at_utc": "2026-10-29T17:06:55.490921+00:00",
+  "source_trace": "artifacts/a0-investigation/third-failure/task.json",
+  "source_trace_sha256": "a9a1e40c7c95f2e2187421ac56e567231ea0f958c907f09af23c2a8f263ed397",
+  "model_alias": "visionapp-planner",
+  "backend": "Pinned local llama server with Qwen3-14B Q4_K_M",
+  "active_context_tokens": 8192,
+  "endpoints": [
+    "/apply-template",
+    "/tokenize"
+  ],
+  "tokenize_options": {
+    "add_special": false,
+    "parse_special": true
+  },
+  "current": {
+    "context_order": [
+      "state",
+      "observations",
+      "visible_observation_ids",
+      "earlier_observations",
+      "recent_actions",
+      "last_model_error",
+      "inspected_capabilities",
+      "planner_modality",
+      "action_contracts"
+    ],
+    "adjacent_common_prefix_tokens": [
+      701,
+      701,
+      701,
+      701,
+      701,
+      702,
+      702
+    ],
+    "median_common_prefix_tokens": 701,
+    "prompt_token_counts": [
+      1682,
+      2092,
+      2465,
+      3196,
+      3357,
+      3407,
+      3108,
+      3177
+    ]
+  },
+  "stable_docs_first": {
+    "change": "Move action_contracts, node_contracts when present, and planner_modality before remaining unchanged context fields.",
+    "adjacent_common_prefix_tokens": [
+      1423,
+      1423,
+      1423,
+      1423,
+      1423,
+      1424,
+      1424
+    ],
+    "median_common_prefix_tokens": 1423,
+    "prompt_token_counts": [
+      1683,
+      2093,
+      2466,
+      3197,
+      3358,
+      3408,
+      3109,
+      3178
+    ]
+  },
+  "interpretation": {
+    "extra_reusable_prefix_tokens_median": 722,
+    "total_input_token_delta_per_request": 1,
+    "limitation": "Common token prefixes measure reuse opportunity, not elapsed-time improvement. This retained trace used earlier smaller action documentation; no claim is made about Run4 cache behavior."
+  }
+}

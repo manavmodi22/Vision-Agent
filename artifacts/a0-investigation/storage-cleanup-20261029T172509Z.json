@@ -1,0 +1,752 @@
+{
+  "schema_version": "0.1",
+  "operation": "explicit_generated_build_cleanup",
+  "started_at": "2026-10-29T17:25:09.126456+00:00",
+  "status": "completed",
+  "repository": "/Users/manavrakeshku.modi/vision-agent",
+  "source_identity_before": "8e78ad05f0d232edefffcc2c112953b2c28797bfd1644fda4b1a743a5abf084f",
+  "free_bytes_before": 8599658496,
+  "allowed_paths": [
+    "dist/RuntimeProbe.app",
+    "dist/VisionApp-Annotations.app",
+    "dist/VisionApp-Evaluation.app.previous",
+    "dist/VisionApp-Provisioning.app",
+    "dist/VisionApp-Readers.app",
+    "dist/VisionApp.app.previous",
+    "dist/VisionApp.app.previous-20261029T020102153217",
+    "dist/VisionApp.app.previous-20261029T020710221459",
+    "dist/VisionApp.app.previous-20261029T030114Z",
+    "dist/VisionApp.app.previous-20261029T033207Z",
+    "dist/VisionApp.app.previous-20261029T035838Z",
+    "dist/VisionApp.app.previous-20261029T153340Z",
+    ".visionapp/adapter-probes/ocr-minimal/build-tools",
+    ".visionapp/adapter-probes/ocr-minimal/opencv-71d3237a093b60a27601c20e9ee6c3e52154e8b1",
+    ".visionapp/adapter-probes/ocr-minimal/opencv-build",
+    ".visionapp/adapter-probes/ocr-minimal/opencv-source.tar.gz"
+  ],
+  "protected_paths": [
+    "dist/VisionApp.app",
+    "dist/VisionApp-Development.app",
+    "dist/VisionApp-Provisioning-Final.app",
+    "dist/VisionApp.app.previous-20261029T162446Z",
+    ".visionapp/runtime",
+    ".visionapp/a0-investigation",
+    ".visionapp/datasets",
+    ".visionapp/model-qualification",
+    ".venv",
+    "agent",
+    "engine",
+    "spec",
+    "mcp_server",
+    "app"
+  ],
+  "preservation_root": ".visionapp/storage-cleanup/20261029T172509Z",
+  "scope": "Only these exact generated build paths. No project data, evidence, global caches, models, or active bundles.",
+  "candidate_records": [
+    {
+      "path": "dist/RuntimeProbe.app",
+      "status": "deleted",
+      "allocated_bytes_before": 1118384128,
+      "root_inode_before": 37771768,
+      "preservation": {
+        "archive": ".visionapp/storage-cleanup/20261029T172509Z/RuntimeProbe.app.preserved.tar.gz",
+        "bytes": 3429749,
+        "sha256": "a4cf98158775bafb0f45fce345c15f762b478d0c20911071f1767185206f2f6d",
+        "verified": true,
+        "members": [
+          "Contents/Info.plist",
+          "Contents/MacOS",
+          "Contents/_CodeSignature",
+          "Contents/Resources/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/visionapp_engine-0.1.0.dist-info",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/spec",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/agent",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/mcp_server"
+        ],
+        "build_manifests": [
+          {
+            "path": "Contents/Resources/engine/dependencies.json",
+            "sha256": "2a7920fcded9665a6994c43465285565edab44eefa61ff4cc99c276aa06a104a",
+            "bytes": 67874
+          },
+          {
+            "path": "Contents/Resources/engine/locked-requirements.txt",
+            "sha256": "a9619d2ce16a7a592ded7f5ea62b15f809725921aa5b31d0c478448a31397fce",
+            "bytes": 120615
+          },
+          {
+            "path": "Contents/Resources/engine/build.json",
+            "sha256": "4c3b87a52ec5c5ffdfa5e4eeacfbd994597a4a47cb78103eaba2d1b49e57dd31",
+            "bytes": 201
+          }
+        ],
+        "includes_native_executable": true
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:25:46.104630+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 8544243712,
+      "deleted_at": "2026-10-29T17:25:50.357891+00:00",
+      "free_bytes_immediately_after": 9321959424
+    },
+    {
+      "path": "dist/VisionApp-Annotations.app",
+      "status": "deleted",
+      "allocated_bytes_before": 1203400704,
+      "root_inode_before": 39055883,
+      "preservation": {
+        "archive": ".visionapp/storage-cleanup/20261029T172509Z/VisionApp-Annotations.app.preserved.tar.gz",
+        "bytes": 5066711,
+        "sha256": "a303e4ec3487d05dac1f4d0fad56fe3453f6422a1fae08551b885cc00d3b7628",
+        "verified": true,
+        "members": [
+          "Contents/Info.plist",
+          "Contents/MacOS",
+          "Contents/_CodeSignature",
+          "Contents/Resources/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/visionapp_engine-0.1.0.dist-info",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/spec",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/agent",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/mcp_server"
+        ],
+        "build_manifests": [
+          {
+            "path": "Contents/Resources/engine/dependencies.json",
+            "sha256": "0199968ca581c499bc3d5a9b383a23a31f6643caa6c9e855fafc7d8aa4307309",
+            "bytes": 68129
+          },
+          {
+            "path": "Contents/Resources/engine/locked-requirements.txt",
+            "sha256": "38bb7578247477f11d7836da51f194b071781991f81cbe6e385949b1e3f9c73a",
+            "bytes": 122466
+          },
+          {
+            "path": "Contents/Resources/engine/build.json",
+            "sha256": "18c3b7530a5b2ecbfb4f594a8c0632dabd115bf8c9810c6beb0181ed52fc70e8",
+            "bytes": 411
+          }
+        ],
+        "includes_native_executable": true
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:25:50.795781+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 9321910272,
+      "deleted_at": "2026-10-29T17:25:55.878941+00:00",
+      "free_bytes_immediately_after": 10542010368
+    },
+    {
+      "path": "dist/VisionApp-Evaluation.app.previous",
+      "status": "deleted",
+      "allocated_bytes_before": 1123065856,
+      "root_inode_before": 38615800,
+      "preservation": {
+        "archive": ".visionapp/storage-cleanup/20261029T172509Z/VisionApp-Evaluation.app.previous.preserved.tar.gz",
+        "bytes": 4611044,
+        "sha256": "c57b3cf4be41ad092bbcf745f1e24eaaa9c482becb2590aa36888d5241eb7b57",
+        "verified": true,
+        "members": [
+          "Contents/Info.plist",
+          "Contents/MacOS",
+          "Contents/_CodeSignature",
+          "Contents/Resources/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/visionapp_engine-0.1.0.dist-info",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/spec",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/agent",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/mcp_server"
+        ],
+        "build_manifests": [
+          {
+            "path": "Contents/Resources/engine/dependencies.json",
+            "sha256": "2a7920fcded9665a6994c43465285565edab44eefa61ff4cc99c276aa06a104a",
+            "bytes": 67874
+          },
+          {
+            "path": "Contents/Resources/engine/locked-requirements.txt",
+            "sha256": "eda0e22708b49e9dabea6a0fe3abab3308d54cdc4dc572fa7219e3e486762b12",
+            "bytes": 120615
+          },
+          {
+            "path": "Contents/Resources/engine/build.json",
+            "sha256": "fe12a059814e2044eee9b5e64621ded9c6b5a1bf9d0cca325325d841b83696ef",
+            "bytes": 411
+          }
+        ],
+        "includes_native_executable": true
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:25:56.325232+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 10541572096,
+      "deleted_at": "2026-10-29T17:26:01.314522+00:00",
+      "free_bytes_immediately_after": 11661807616
+    },
+    {
+      "path": "dist/VisionApp-Provisioning.app",
+      "status": "deleted",
+      "allocated_bytes_before": 1202524160,
+      "root_inode_before": 38729196,
+      "preservation": {
+        "archive": ".visionapp/storage-cleanup/20261029T172509Z/VisionApp-Provisioning.app.preserved.tar.gz",
+        "bytes": 4837605,
+        "sha256": "6c5fa7498f62b4793be24043c65e5b5d1edad5c7009dae5a1bc69888669c461e",
+        "verified": true,
+        "members": [
+          "Contents/Info.plist",
+          "Contents/MacOS",
+          "Contents/_CodeSignature",
+          "Contents/Resources/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/visionapp_engine-0.1.0.dist-info",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/spec",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/agent",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/mcp_server"
+        ],
+        "build_manifests": [
+          {
+            "path": "Contents/Resources/engine/dependencies.json",
+            "sha256": "0199968ca581c499bc3d5a9b383a23a31f6643caa6c9e855fafc7d8aa4307309",
+            "bytes": 68129
+          },
+          {
+            "path": "Contents/Resources/engine/locked-requirements.txt",
+            "sha256": "9bc03597a4ad304da742d527819a964087e63ca9a376f01ea0625f1a9029f5eb",
+            "bytes": 122466
+          },
+          {
+            "path": "Contents/Resources/engine/build.json",
+            "sha256": "1676d28824b35596c494d82934c0cbe5560de1c59698e3ad62ae385d4c4c6c83",
+            "bytes": 411
+          }
+        ],
+        "includes_native_executable": true
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:26:01.753112+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 11660701696,
+      "deleted_at": "2026-10-29T17:26:06.458873+00:00",
+      "free_bytes_immediately_after": 12872744960
+    },
+    {
+      "path": "dist/VisionApp-Readers.app",
+      "status": "deleted",
+      "allocated_bytes_before": 1202884608,
+      "root_inode_before": 38924795,
+      "preservation": {
+        "archive": ".visionapp/storage-cleanup/20261029T172509Z/VisionApp-Readers.app.preserved.tar.gz",
+        "bytes": 4933984,
+        "sha256": "eb2f8e8cb574a425d7d958891fd484e1a1b703a5a1bd34f738b7e0d490800070",
+        "verified": true,
+        "members": [
+          "Contents/Info.plist",
+          "Contents/MacOS",
+          "Contents/_CodeSignature",
+          "Contents/Resources/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/visionapp_engine-0.1.0.dist-info",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/spec",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/agent",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/mcp_server"
+        ],
+        "build_manifests": [
+          {
+            "path": "Contents/Resources/engine/dependencies.json",
+            "sha256": "0199968ca581c499bc3d5a9b383a23a31f6643caa6c9e855fafc7d8aa4307309",
+            "bytes": 68129
+          },
+          {
+            "path": "Contents/Resources/engine/locked-requirements.txt",
+            "sha256": "97ca4d7b77338ed6b52968cefb082ed072d51c02a564c1562c733c23d16ce5b8",
+            "bytes": 122466
+          },
+          {
+            "path": "Contents/Resources/engine/build.json",
+            "sha256": "a3491a5e0ecfcccdfd3edf46edfc43922a4a10015f0e01f3a73e7b1136a231c6",
+            "bytes": 411
+          }
+        ],
+        "includes_native_executable": true
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:26:06.904393+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 12869607424,
+      "deleted_at": "2026-10-29T17:26:11.724111+00:00",
+      "free_bytes_immediately_after": 14089322496
+    },
+    {
+      "path": "dist/VisionApp.app.previous",
+      "status": "deleted",
+      "allocated_bytes_before": 6459392,
+      "root_inode_before": 37654816,
+      "preservation": {
+        "archive": ".visionapp/storage-cleanup/20261029T172509Z/VisionApp.app.previous.preserved.tar.gz",
+        "bytes": 1557047,
+        "sha256": "eab56c661d1cc6e696559f6fcc9982d6429f4e31cf13bffd46d258fe17e74b5d",
+        "verified": true,
+        "members": [
+          "Contents/Info.plist",
+          "Contents/MacOS",
+          "Contents/_CodeSignature",
+          "Contents/Resources/repo-root.txt"
+        ],
+        "build_manifests": [],
+        "includes_native_executable": true
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:26:38.951131+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 14078300160,
+      "deleted_at": "2026-10-29T17:26:38.956606+00:00",
+      "free_bytes_immediately_after": 14084734976
+    },
+    {
+      "path": "dist/VisionApp.app.previous-20261029T020102153217",
+      "status": "deleted",
+      "allocated_bytes_before": 1121996800,
+      "root_inode_before": 38424191,
+      "preservation": {
+        "archive": ".visionapp/storage-cleanup/20261029T172509Z/VisionApp.app.previous-20261029T020102153217.preserved.tar.gz",
+        "bytes": 4337688,
+        "sha256": "6bea51d49ac5439bda5239dec7404e0208502a4104213199f0074c50e93781aa",
+        "verified": true,
+        "members": [
+          "Contents/Info.plist",
+          "Contents/MacOS",
+          "Contents/_CodeSignature",
+          "Contents/Resources/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/visionapp_engine-0.1.0.dist-info",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/spec",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/agent",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/mcp_server"
+        ],
+        "build_manifests": [
+          {
+            "path": "Contents/Resources/engine/dependencies.json",
+            "sha256": "2a7920fcded9665a6994c43465285565edab44eefa61ff4cc99c276aa06a104a",
+            "bytes": 67874
+          },
+          {
+            "path": "Contents/Resources/engine/locked-requirements.txt",
+            "sha256": "522b7bc5a9c9cc082a85aacbdf6d1ef3a9c59cf5c41ca4d77010c31970529077",
+            "bytes": 120615
+          },
+          {
+            "path": "Contents/Resources/engine/build.json",
+            "sha256": "ba6137798c48227ab8e281511deb8f56ce3087a767cfbe495c5795a44b08a450",
+            "bytes": 411
+          }
+        ],
+        "includes_native_executable": true
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:26:39.428914+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 14063685632,
+      "deleted_at": "2026-10-29T17:26:45.564922+00:00",
+      "free_bytes_immediately_after": 15208394752
+    },
+    {
+      "path": "dist/VisionApp.app.previous-20261029T020710221459",
+      "status": "deleted",
+      "allocated_bytes_before": 1122144256,
+      "root_inode_before": 38501237,
+      "preservation": {
+        "archive": ".visionapp/storage-cleanup/20261029T172509Z/VisionApp.app.previous-20261029T020710221459.preserved.tar.gz",
+        "bytes": 4378764,
+        "sha256": "7ede83a62c05156a8780d3ab3ef2161daec157d877a80ecc347418860a4d392f",
+        "verified": true,
+        "members": [
+          "Contents/Info.plist",
+          "Contents/MacOS",
+          "Contents/_CodeSignature",
+          "Contents/Resources/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/visionapp_engine-0.1.0.dist-info",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/spec",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/agent",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/mcp_server"
+        ],
+        "build_manifests": [
+          {
+            "path": "Contents/Resources/engine/dependencies.json",
+            "sha256": "2a7920fcded9665a6994c43465285565edab44eefa61ff4cc99c276aa06a104a",
+            "bytes": 67874
+          },
+          {
+            "path": "Contents/Resources/engine/locked-requirements.txt",
+            "sha256": "d165b3084bb07cb383d624ffca6c471bc69ffbf08fa4a6b6dc2769359095c591",
+            "bytes": 120615
+          },
+          {
+            "path": "Contents/Resources/engine/build.json",
+            "sha256": "4df2d83c3e7864b7b9703e88b1eaade51046bb8912f8d7a8fd7105d30977adde",
+            "bytes": 411
+          }
+        ],
+        "includes_native_executable": true
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:26:46.007792+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 14998310912,
+      "deleted_at": "2026-10-29T17:26:50.527970+00:00",
+      "free_bytes_immediately_after": 16027914240
+    },
+    {
+      "path": "dist/VisionApp.app.previous-20261029T030114Z",
+      "status": "deleted",
+      "allocated_bytes_before": 1122144256,
+      "root_inode_before": 38545447,
+      "preservation": {
+        "archive": ".visionapp/storage-cleanup/20261029T172509Z/VisionApp.app.previous-20261029T030114Z.preserved.tar.gz",
+        "bytes": 4379171,
+        "sha256": "235b7de6766c56bb1d0ce1fbbec4c483a8f3df68cd1d9421ed950db00aa9c0e3",
+        "verified": true,
+        "members": [
+          "Contents/Info.plist",
+          "Contents/MacOS",
+          "Contents/_CodeSignature",
+          "Contents/Resources/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/visionapp_engine-0.1.0.dist-info",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/spec",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/agent",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/mcp_server"
+        ],
+        "build_manifests": [
+          {
+            "path": "Contents/Resources/engine/dependencies.json",
+            "sha256": "2a7920fcded9665a6994c43465285565edab44eefa61ff4cc99c276aa06a104a",
+            "bytes": 67874
+          },
+          {
+            "path": "Contents/Resources/engine/locked-requirements.txt",
+            "sha256": "2a270f54128fca00de2229e33566131d37f49e02699d3756d2771b4c5a588e3d",
+            "bytes": 120615
+          },
+          {
+            "path": "Contents/Resources/engine/build.json",
+            "sha256": "75c875f48fe67de220d0fd5823cb87ab31158b307818bd688fb27ebb2cbd2e0f",
+            "bytes": 411
+          }
+        ],
+        "includes_native_executable": true
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:26:51.002967+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 16027787264,
+      "deleted_at": "2026-10-29T17:26:55.577016+00:00",
+      "free_bytes_immediately_after": 17164091392
+    },
+    {
+      "path": "dist/VisionApp.app.previous-20261029T033207Z",
+      "status": "deleted",
+      "allocated_bytes_before": 1123065856,
+      "root_inode_before": 38672304,
+      "preservation": {
+        "archive": ".visionapp/storage-cleanup/20261029T172509Z/VisionApp.app.previous-20261029T033207Z.preserved.tar.gz",
+        "bytes": 4613267,
+        "sha256": "4568b31a24b78b04b414c07e2a318bc76352452e519a973af21dec990b04eb8a",
+        "verified": true,
+        "members": [
+          "Contents/Info.plist",
+          "Contents/MacOS",
+          "Contents/_CodeSignature",
+          "Contents/Resources/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/visionapp_engine-0.1.0.dist-info",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/spec",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/agent",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/mcp_server"
+        ],
+        "build_manifests": [
+          {
+            "path": "Contents/Resources/engine/dependencies.json",
+            "sha256": "2a7920fcded9665a6994c43465285565edab44eefa61ff4cc99c276aa06a104a",
+            "bytes": 67874
+          },
+          {
+            "path": "Contents/Resources/engine/locked-requirements.txt",
+            "sha256": "9a4a15f5a3db976a18f87b131e1651692b50131484af9f99ecb4c52b6209d30c",
+            "bytes": 120615
+          },
+          {
+            "path": "Contents/Resources/engine/build.json",
+            "sha256": "fe12a059814e2044eee9b5e64621ded9c6b5a1bf9d0cca325325d841b83696ef",
+            "bytes": 411
+          }
+        ],
+        "includes_native_executable": true
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:26:56.168529+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 17145434112,
+      "deleted_at": "2026-10-29T17:27:01.504832+00:00",
+      "free_bytes_immediately_after": 18289393664
+    },
+    {
+      "path": "dist/VisionApp.app.previous-20261029T035838Z",
+      "status": "deleted",
+      "allocated_bytes_before": 1202524160,
+      "root_inode_before": 38824010,
+      "preservation": {
+        "archive": ".visionapp/storage-cleanup/20261029T172509Z/VisionApp.app.previous-20261029T035838Z.preserved.tar.gz",
+        "bytes": 4838032,
+        "sha256": "3251a8dd6b335f4985991e263d2150b1c65dcb1cc50e93d78c2a166df0a29631",
+        "verified": true,
+        "members": [
+          "Contents/Info.plist",
+          "Contents/MacOS",
+          "Contents/_CodeSignature",
+          "Contents/Resources/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/visionapp_engine-0.1.0.dist-info",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/spec",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/agent",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/mcp_server"
+        ],
+        "build_manifests": [
+          {
+            "path": "Contents/Resources/engine/dependencies.json",
+            "sha256": "0199968ca581c499bc3d5a9b383a23a31f6643caa6c9e855fafc7d8aa4307309",
+            "bytes": 68129
+          },
+          {
+            "path": "Contents/Resources/engine/locked-requirements.txt",
+            "sha256": "6455e1d4ae9169d9d56e9db0812f5811453f2216f4a926d76840d4dd7a768810",
+            "bytes": 122466
+          },
+          {
+            "path": "Contents/Resources/engine/build.json",
+            "sha256": "ec84692814395c3de841bd310e41ad8c0306d09d4eaa7c49202b273bfc775f03",
+            "bytes": 411
+          }
+        ],
+        "includes_native_executable": true
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:27:01.992690+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 18287255552,
+      "deleted_at": "2026-10-29T17:27:06.537061+00:00",
+      "free_bytes_immediately_after": 19506274304
+    },
+    {
+      "path": "dist/VisionApp.app.previous-20261029T153340Z",
+      "status": "deleted",
+      "allocated_bytes_before": 1202884608,
+      "root_inode_before": 38958039,
+      "preservation": {
+        "archive": ".visionapp/storage-cleanup/20261029T172509Z/VisionApp.app.previous-20261029T153340Z.preserved.tar.gz",
+        "bytes": 4934002,
+        "sha256": "e4f6281a20a933d695698dbbdf3b64d50032beaabcd50546a3b5e7e7e61cdfb9",
+        "verified": true,
+        "members": [
+          "Contents/Info.plist",
+          "Contents/MacOS",
+          "Contents/_CodeSignature",
+          "Contents/Resources/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/visionapp_engine-0.1.0.dist-info",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/spec",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/agent",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/engine",
+          "Contents/Resources/PythonRuntime/lib/python3.12/site-packages/mcp_server"
+        ],
+        "build_manifests": [
+          {
+            "path": "Contents/Resources/engine/dependencies.json",
+            "sha256": "0199968ca581c499bc3d5a9b383a23a31f6643caa6c9e855fafc7d8aa4307309",
+            "bytes": 68129
+          },
+          {
+            "path": "Contents/Resources/engine/locked-requirements.txt",
+            "sha256": "97ca4d7b77338ed6b52968cefb082ed072d51c02a564c1562c733c23d16ce5b8",
+            "bytes": 122466
+          },
+          {
+            "path": "Contents/Resources/engine/build.json",
+            "sha256": "a3491a5e0ecfcccdfd3edf46edfc43922a4a10015f0e01f3a73e7b1136a231c6",
+            "bytes": 411
+          }
+        ],
+        "includes_native_executable": true
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:27:07.036230+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 19507044352,
+      "deleted_at": "2026-10-29T17:27:11.646671+00:00",
+      "free_bytes_immediately_after": 21130428416
+    },
+    {
+      "path": ".visionapp/adapter-probes/ocr-minimal/build-tools",
+      "status": "deleted",
+      "allocated_bytes_before": 128122880,
+      "root_inode_before": 38872429,
+      "preservation": {
+        "retained_rebuild_receipts": [
+          "artifacts/adapter-probes/ocr-minimal/opencv-build-source.json",
+          "artifacts/adapter-probes/ocr-minimal/opencv-build-recipe.json",
+          "artifacts/adapter-probes/ocr-minimal/build_image_opencv.py",
+          "artifacts/adapter-probes/ocr-minimal/package_image_opencv.py"
+        ],
+        "retained_finished_wheel": ".visionapp/adapter-probes/ocr-minimal/opencv_image_only-4.10.0+visionimage1-cp312-cp312-macosx_11_0_arm64.whl",
+        "retained_runtime": ".visionapp/adapter-probes/ocr-minimal/venv"
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:27:12.118584+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 21128441856,
+      "deleted_at": "2026-10-29T17:27:12.702631+00:00",
+      "free_bytes_immediately_after": 21262016512
+    },
+    {
+      "path": ".visionapp/adapter-probes/ocr-minimal/opencv-71d3237a093b60a27601c20e9ee6c3e52154e8b1",
+      "status": "deleted",
+      "allocated_bytes_before": 220594176,
+      "root_inode_before": 38877073,
+      "preservation": {
+        "retained_rebuild_receipts": [
+          "artifacts/adapter-probes/ocr-minimal/opencv-build-source.json",
+          "artifacts/adapter-probes/ocr-minimal/opencv-build-recipe.json",
+          "artifacts/adapter-probes/ocr-minimal/build_image_opencv.py",
+          "artifacts/adapter-probes/ocr-minimal/package_image_opencv.py"
+        ],
+        "retained_finished_wheel": ".visionapp/adapter-probes/ocr-minimal/opencv_image_only-4.10.0+visionimage1-cp312-cp312-macosx_11_0_arm64.whl",
+        "retained_runtime": ".visionapp/adapter-probes/ocr-minimal/venv"
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:27:13.188001+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 21426876416,
+      "deleted_at": "2026-10-29T17:27:14.887937+00:00",
+      "free_bytes_immediately_after": 21726494720
+    },
+    {
+      "path": ".visionapp/adapter-probes/ocr-minimal/opencv-build",
+      "status": "deleted",
+      "allocated_bytes_before": 38010880,
+      "root_inode_before": 38887534,
+      "preservation": {
+        "retained_rebuild_receipts": [
+          "artifacts/adapter-probes/ocr-minimal/opencv-build-source.json",
+          "artifacts/adapter-probes/ocr-minimal/opencv-build-recipe.json",
+          "artifacts/adapter-probes/ocr-minimal/build_image_opencv.py",
+          "artifacts/adapter-probes/ocr-minimal/package_image_opencv.py"
+        ],
+        "retained_finished_wheel": ".visionapp/adapter-probes/ocr-minimal/opencv_image_only-4.10.0+visionimage1-cp312-cp312-macosx_11_0_arm64.whl",
+        "retained_runtime": ".visionapp/adapter-probes/ocr-minimal/venv"
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:27:15.350843+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 21724024832,
+      "deleted_at": "2026-10-29T17:27:15.579937+00:00",
+      "free_bytes_immediately_after": 21759684608
+    },
+    {
+      "path": ".visionapp/adapter-probes/ocr-minimal/opencv-source.tar.gz",
+      "status": "deleted",
+      "allocated_bytes_before": 95014912,
+      "root_inode_before": 38873134,
+      "preservation": {
+        "retained_rebuild_receipts": [
+          "artifacts/adapter-probes/ocr-minimal/opencv-build-source.json",
+          "artifacts/adapter-probes/ocr-minimal/opencv-build-recipe.json",
+          "artifacts/adapter-probes/ocr-minimal/build_image_opencv.py",
+          "artifacts/adapter-probes/ocr-minimal/package_image_opencv.py"
+        ],
+        "retained_finished_wheel": ".visionapp/adapter-probes/ocr-minimal/opencv_image_only-4.10.0+visionimage1-cp312-cp312-macosx_11_0_arm64.whl",
+        "retained_runtime": ".visionapp/adapter-probes/ocr-minimal/venv"
+      },
+      "open_reference_check": {
+        "at": "2026-10-29T17:27:16.056376+00:00",
+        "method": "lsof -nP -Fpn",
+        "references": []
+      },
+      "free_bytes_immediately_before": 21759422464,
+      "deleted_at": "2026-10-29T17:27:16.061043+00:00",
+      "free_bytes_immediately_after": 21854441472
+    }
+  ],
+  "rebuild_evidence": [
+    "scripts/package_runtime.py",
+    "scripts/build_app.sh",
+    "artifacts/adapter-probes/ocr-minimal/opencv-build-source.json",
+    "artifacts/adapter-probes/ocr-minimal/opencv-build-recipe.json",
+    "artifacts/adapter-probes/ocr-minimal/build_image_opencv.py",
+    "artifacts/adapter-probes/ocr-minimal/package_image_opencv.py"
+  ],
+  "source_identity_after": "f52f9cff4f3a35cf625e540f1209dd0e1f13a73e47814856a2395ae62758e25e",
+  "source_identity_unchanged": false,
+  "protected_roots_unchanged": true,
+  "free_bytes_after": 21854437376,
+  "net_free_bytes_change": 13254778880,
+  "deleted_allocated_bytes": 13233221632,
+  "preserved_archive_bytes": 51917064,
+  "completed_at": "2026-10-29T17:27:16.115421+00:00",
+  "source_guard_interruptions": [
+    {
+      "detected_source": "f52f9cff4f3a35cf625e540f1209dd0e1f13a73e47814856a2395ae62758e25e",
+      "original_expected_source": "8e78ad05f0d232edefffcc2c112953b2c28797bfd1644fda4b1a743a5abf084f",
+      "outcome": "Stopped before remaining paths; coordinator confirmed intentional source change after live run completed.",
+      "modified_source_files_since_cleanup_start": [
+        "mcp_server/investigations.py"
+      ],
+      "coordinator_authorized_resume": true,
+      "resume_expected_source": "f52f9cff4f3a35cf625e540f1209dd0e1f13a73e47814856a2395ae62758e25e"
+    }
+  ],
+  "resume_free_bytes_before": 14078730240,
+  "source_identity_matches_authorized_resume_baseline": true,
+  "source_change_attribution": "Coordinator changed only mcp_server/investigations.py after live run completion; cleanup did not edit production source.",
+  "protected_processes_after": [
+    "21555 /Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/MacOS/VisionApp",
+    "21557 /Users/manavrakeshku.modi/vision-agent/dist/VisionApp.app/Contents/Resources/PythonRuntime/bin/python3.12",
+    "31043 /Users/manavrakeshku.modi/vision-agent/dist/VisionApp-Development.app/Contents/MacOS/VisionApp",
+    "31047 /Users/manavrakeshku.modi/vision-agent/.venv/bin/python",
+    "45543 /Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server",
+    "46319 /Users/manavrakeshku.modi/vision-agent/.visionapp/runtime/llama-b11963/llama-server",
+    "91392 /Users/manavrakeshku.modi/vision-agent/dist/VisionApp-Provisioning-Final.app/Contents/MacOS/VisionApp",
+    "91397 /Users/manavrakeshku.modi/vision-agent/dist/VisionApp-Provisioning-Final.app/Contents/Resources/PythonRuntime/bin/python3.12"
+  ],
+  "free_space_measurement_note": "Net filesystem free-byte change is observed, not exclusive attribution: concurrent live application and test activity may also change available bytes. Deleted allocated bytes are recorded separately; preserved archives remain on disk."
+}
